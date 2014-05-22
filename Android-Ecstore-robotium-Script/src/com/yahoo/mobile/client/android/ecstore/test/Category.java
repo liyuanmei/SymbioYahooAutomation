@@ -42,7 +42,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 	public void tearDown() throws Exception {
 
 		solo.finishOpenedActivities();
-
+		super.tearDown();
 	}
 
 	// Go to clothes page.
