@@ -31,7 +31,7 @@ Action.tapIconPlusOnTableView = function () {
     tapIconPlusOnTableView.tap();
 };
 
-//Click the icon plue different twice
+//Click the icon plue different twice.
 Action.clickOnTheDifferentIconPlus = function () {
     $.delay(sleep);
     var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[0].cells()[1].buttons()[0];
@@ -188,6 +188,7 @@ Action.tapGoodsButton = function () {
     tapGoodsButton.tap();
 };
 
+/**
 //05-06-2014
 Action.englishInputMethod = function () {
     $.delay(sleep);
@@ -202,7 +203,7 @@ Action.englishInputMethod = function () {
     //remove test keyword.
     keyboard.keys()["Delete"].tap();
 };
-
+**/
 Action.goCategoryWhenSearchSettingOpen = function () {
     $.delay(sleep);
 

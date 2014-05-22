@@ -18,7 +18,7 @@ test("[1937855] check return icon display", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
      
-    //Check return icon display
+    //Check return icon display.
     Assert.backButtonOnSearchBar();
     Action.tapBackOnSearchBar();
     Action.goDiscoveryStream();
@@ -39,8 +39,6 @@ test("[1937857] auto complete function", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
-    Action.englishInputMethod();
-
     Action.searchBarInput("h");
      
     //check autoComplete page display
@@ -53,8 +51,6 @@ test("[1937858] auto complete layout view", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
-    Action.englishInputMethod();
-
     Action.searchBarInput("h");
      
     Assert.checkIconPlusDisplay();
@@ -65,8 +61,6 @@ test("[1937858] auto complete layout view", function () {
 test("[1937859] click the auto - complete list right side '+' Icon", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-
-    Action.englishInputMethod();
 
     Action.searchBarInput("h");
     $.delay(sleep);
@@ -86,8 +80,6 @@ test("[1937859] click the auto - complete list right side '+' Icon", function ()
 test("[1937860] click on the search for 2 times suggest different keyword '+' icon on the right", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-
-    Action.englishInputMethod();
 
     Action.searchBarInput("h");
     $.delay(sleep);
@@ -110,9 +102,6 @@ test("[1937860] click on the search for 2 times suggest different keyword '+' ic
 test("[1937861] according to the search Suggestions", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-
-    Action.englishInputMethod();
-    $.delay(sleep);
 
     Action.searchBarInput("h");
     $.delay(sleep);
@@ -150,8 +139,6 @@ test("[1937863] Have a keyword, see clear input icon display", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
-    Action.englishInputMethod();
-
     Action.searchBarInput("h");
      
     //Verify whether the clean button
@@ -163,8 +150,6 @@ test("[1937863] Have a keyword, see clear input icon display", function () {
 test("[1937864] click remove input icon", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-
-    Action.englishInputMethod();
 
     Action.searchBarInput("h");
     Action.tapClean();
@@ -179,8 +164,6 @@ test("[1937865] check the keyboard to remove function", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
-    Action.englishInputMethod();;
-
     Action.searchBarInput("1234");
     Action.tapKeyboardDelete();
      
@@ -193,8 +176,6 @@ test("[1937865] check the keyboard to remove function", function () {
 test("[1937866] enter a keyword search", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-
-    Action.englishInputMethod();
 
     Action.searchBarInput("h");
     Action.tapKeyboardSearch();
@@ -228,9 +209,6 @@ test("[1937873] Check list recent search for '+' icon on the right side", functi
     //Click on search and input “h” and "hp" for search record
     Action.tapSearchIconOnNavBar();
 
-    Action.englishInputMethod();
-    $.delay(sleep);
-
     Action.searchBarInput("h");
     Action.tapKeyboardSearch();
     $.delay(sleep);
@@ -259,9 +237,6 @@ test("[1937874] At the most recent search keyword search", function () {
     Action.goCategoryWhenSearchSettingOpen();
     //Click on search and input “h” and "hp" for search record
     Action.tapSearchIconOnNavBar();
-
-    Action.englishInputMethod();
-    $.delay(sleep);
 
     Action.searchBarInput("h");
     Action.tapKeyboardSearch();
@@ -295,9 +270,6 @@ test("[1937875] No search Suggestions according to look at it", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
-    Action.englishInputMethod();
-    $.delay(sleep);
-
     Action.searchBarInput("yeruieujeueu");
      
     //Validate the input “yeruieujeueu” , no search Suggestions
@@ -320,9 +292,6 @@ test("[1937877] Click on the recent twice different keyword search for the right
     Action.goCategoryWhenSearchSettingOpen();
     //Click on search and input “h” and "hp" for search record
     Action.tapSearchIconOnNavBar();
-
-    Action.englishInputMethod();
-    $.delay(sleep);
 
     Action.searchBarInput("h");
     Action.tapKeyboardSearch();
@@ -363,9 +332,6 @@ test("[1937878] Clean up into recent search keyword", function () {
     //Click on search and input “h” and "hp" for search record
     Action.tapSearchIconOnNavBar();
 
-    Action.englishInputMethod();
-    $.delay(sleep);
-
     Action.searchBarInput("h");
     Action.tapKeyboardSearch();
     $.delay(sleep);
@@ -397,9 +363,6 @@ test("[1937879] Clean up into the keyword search proposal", function () {
     Action.goCategoryWhenSearchSettingOpen();
     //Click on search and input “h”
     Action.tapSearchIconOnNavBar();
-
-    Action.englishInputMethod();
-    $.delay(sleep);
 
     Action.searchBarInput("h");
     $.delay(sleep);
@@ -456,9 +419,6 @@ test("[1937890] Click to return to the icon L2 layer classification", function (
 test("[1937886] Enter any long keyword search", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-
-    Action.englishInputMethod();
-    $.delay(sleep);
 
     Action.searchBarInput("JJHGHKJHHHHHJJJJJJHG");
     Action.tapKeyboardSearch();
@@ -530,9 +490,6 @@ test("[1937896] View the search results page", function () {
     //click search and input "JJHGHKJHHHHHJJJJJJHG"
     Action.tapSearchIconOnNavBar();
 
-    Action.englishInputMethod();
-    $.delay(sleep);
-
     Action.searchBarInput("JJHGHKJHHHHHJJJJJJHG");
     Action.tapKeyboardSearch();
     $.delay(5);
@@ -560,9 +517,6 @@ test("[1937905] View the search results page", function () {
     //tap goods button on tableviews
     Action.tapGoodsButton();
     Action.tapSearchIconOnNavBar();
-
-    Action.englishInputMethod();
-    $.delay(sleep);
      
     Action.searchBarInput("JJHHJHUIUUH");
      
