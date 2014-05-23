@@ -1,8 +1,8 @@
 package com.yahoo.mobile.client.android.ecstore.Action;
 
 import java.util.ArrayList;
-
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
@@ -95,13 +95,22 @@ public class Action {
 	public static void navigateToCategoryScreen(Solo solo) throws Exception {
 
 		solo.clickOnView(solo.getView("id/tab_text", 2));
-		solo.clickOnText("全部分類");
-		if(solo.searchText("應用程式")){
-			solo.goBack();
-		}
-		com.yahoo.mobile.client.android.ecstore.Assert.Assert
-				.CategoryListShow(solo);
+		// solo.clickOnText("全部分類");
 
+		try {
+			TextView tv = (TextView) solo.getView("section_title", 0);
+			Log.i("number", tv.getText().toString());
+			if (tv.getText().toString().equals("應用程式")) {
+
+				solo.sleep(2000);
+				solo.goBack();
+
+			}
+		} catch (AssertionError e) {
+
+			solo.clickOnText("全部分類");
+		}
+		solo.clickOnText("全部分類");
 	}
 
 	public static int getListviewOnCurrentScreen(Solo solo) throws Exception {
