@@ -96,6 +96,9 @@ public class Action {
 
 		solo.clickOnView(solo.getView("id/tab_text", 2));
 		solo.clickOnText("全部分類");
+		if(solo.searchText("應用程式")){
+			solo.goBack();
+		}
 		com.yahoo.mobile.client.android.ecstore.Assert.Assert
 				.CategoryListShow(solo);
 
