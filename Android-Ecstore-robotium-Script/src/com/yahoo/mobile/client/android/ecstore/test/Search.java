@@ -34,7 +34,7 @@ public class Search extends ActivityInstrumentationTestCase2 {
 	protected void setUp() throws Exception {
 
 		solo = new Solo(getInstrumentation(), getActivity());
-
+		Assert.testFirstLaunch(solo);
 	}
 
 	@Override
