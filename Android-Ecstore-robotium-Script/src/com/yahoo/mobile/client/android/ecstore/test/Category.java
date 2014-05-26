@@ -35,7 +35,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 	@Override
 	protected void setUp() throws Exception {
 		solo = new Solo(getInstrumentation(), getActivity());
-		// Assert.FirstLaunch(solo);
+		Assert.testFirstLaunch(solo);
 	}
 
 	@Override
