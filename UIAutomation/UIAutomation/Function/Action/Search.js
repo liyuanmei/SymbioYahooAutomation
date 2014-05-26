@@ -176,3 +176,20 @@ Action.goCategoryWhenSearchSettingOpen = function () {
     $.delay(sleep);
     app.tabBar().buttons()[2].tap();
 };
+
+Action.repeatInputWhenSearch = function () {
+    for (var i = 0; i < 11 ; i++) {
+        $.delay(sleep);
+        Action.searchBarInput("1");
+        Action.tapKeyboardSearch();
+        Action.goBackOnSearchPage();  
+    };
+};
+
+Action.repeatChooseWhenSearch = function () {
+    $.delay(sleep);
+    for (var i = 0; i < 10 ; i++) {
+        app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].tap();
+        Action.goBackOnSearchPage();
+    };
+};

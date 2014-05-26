@@ -114,3 +114,30 @@ Assert.coatCategorySearchResultsPageDisplayedInList = function () {
     var coatCategorySearchResultsPageDisplayedInList = app.mainWindow().navigationBar().staticTexts()[1].name();
     assertEquals("搜尋上衣",coatCategorySearchResultsPageDisplayedInList);
 };
+
+Assert.checkInRecentMemorySearch = function (sText) {
+    $.delay(sleep);
+    var getValue = app.mainWindow().tableViews()[0].cells()[0].staticTexts()[0].name();
+    assertEquals(sText,getValue);
+};
+
+Assert.repeatChoosePageDisplay = function () {
+    $.delay(sleep);
+    var mainWindow = app.mainWindow();
+    var mycars = new Array()
+    mycars[0] = "11"
+    mycars[1] = "111"
+    mycars[2] = "1111"
+    mycars[3] = "11111"
+    mycars[4] = "111111"
+    mycars[5] = "1111111"
+    mycars[6] = "11111111"
+    mycars[7] = "111111111"
+    mycars[8] = "1111111111"
+    mycars[9] = "11111111111"
+    
+    assertTrue(app.mainWindow().tableViews()[0].cells().length<20);
+    for (var i = 0; i < 10; i++) {
+        assertEquals(mycars[i],app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].name())
+    };
+};

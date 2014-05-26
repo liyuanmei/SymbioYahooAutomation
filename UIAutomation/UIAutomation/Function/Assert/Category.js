@@ -158,19 +158,19 @@ Assert.itemPageShowCorrect = function (sTitle) {
     var collectionViews = app.mainWindow().collectionViews()[0];
 
     //Assert item title show correct.
-    var titleName = collectionViews.cells()[1];
-    assertEquals(sTitle, titleName.name());
+    //var titleName = collectionViews.cells()[1];
+    //assertEquals(sTitle, titleName.name());
 
     //Assert size selection bar show correct.
-    var sizeSelectionBar = collectionViews.cells()[4];
-    assertEquals("請選擇尺寸與規格", sizeSelectionBar.name());
+    //var sizeSelectionBar = collectionViews.cells()[4];
+    //assertEquals("請選擇尺寸與規格", sizeSelectionBar.name());
 
     //Assert buy and add to cart button show correct.
-    var addToCartButton = collectionViews.cells()[5].buttons()[0];
-    var butButton = collectionViews.cells()[5].buttons()[1];
+    var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
+    var butButton = collectionViews.cells()["立即購買"].buttons()[1];
     
-    assertEquals("加入購物車", addToCartButton.name());
-    assertEquals("立即購買", butButton.name());
+    assertEquals("立即購買", addToCartButton.name());
+    assertEquals("加入購物車", butButton.name());
 };
 
 /**

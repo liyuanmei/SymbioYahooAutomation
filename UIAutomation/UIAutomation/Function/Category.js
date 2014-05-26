@@ -131,7 +131,6 @@ test("[1938053] can switch to 排序 tab after click 排序 button", function ()
     Action.goDiscoveryStream();
 });
 
-//04-21-2014
 test("[1938054] can switch to 篩選 tab after click 篩選 button", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
@@ -191,7 +190,6 @@ test("[1938060] check the elements on 篩選 screen", function () {
     Action.goDiscoveryStream();
 });
 
-//04-22-2014
 test("[1938063] check “確定” button exist on Advanced bar", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
@@ -358,6 +356,58 @@ test("[1938087] check able to tap '有現貨' and untap '有現貨' button", fun
     //Tap cancel button and navigate back to discovery screen.
     Action.tapCancelButtonInAdvancedBar();
 
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+//The second stage
+test("[1938093] check able to tap '優良商店' and untap '優良商店' button", function () {
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "優良商店" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(8);
+    Assert.filterAttributeButtonIsTapped(8);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(8);
+    Assert.filterAttributeButtonIsNotTapped(8);
+
+    //Tap cancel button and navigate back to discovery screen.
+    Action.tapCancelButtonInAdvancedBar();
+
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938099] check able to navigate to itempage.", function() {
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    //Tap item on list to navigate to item page.
+    Action.tapItemOnProductListScreen();
+    $.delay(sleep);
+
+    obj.scrollDowns(1);
+    $.delay(sleep);
+
+    target.logElementTree();
+    //var ItemOnProductListScreen = app.mainWindow().collectionViews()[0].cells()[1].name();
+     
+    //Verify screen successful navigated to item page.
+    Assert.itemPageShowCorrect();
+
+    //Tap back button go back to list screen.
+    Action.goBack();
+
+    //go back to discovery screen.
     Action.goBack();
     Action.goDiscoveryStream();
 });

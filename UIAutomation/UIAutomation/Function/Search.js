@@ -600,3 +600,80 @@ test("[1937905] View the search results page", function () {
     Action.backToAllCategory();
     Action.goDiscoveryStream();
 });
+
+//The second stage
+test("[1937868] check not enter search directly" , function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+    Action.tapSearchIconOnNavBar();
+    $.delay(3);
+
+    Action.tapKeyboardSearch();
+    $.delay(3);
+    Assert.checkSearchPage("全部分類");
+    Action.goDiscoveryStream();
+});
+
+test("[1937869] check in recent memory search function" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+
+    Action.searchBarInput("h");
+    $.delay(4);
+    Action.tapIconPlusOnFirstFloorTableView();
+    var IconPlusValue = app.mainWindow().textFields()[0].value();
+
+    Action.tapKeyboardSearch();
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+
+    Action.tapSearchIconOnNavBar();
+
+    Assert.checkInRecentMemorySearch(IconPlusValue);
+
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    //clean searches
+    Action.cleanSearches();
+});
+
+test("[1937870] direct input keyword - check in recent memory search function" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInput("keyword");
+
+    var directInput = app.mainWindow().textFields()[0].value();
+    Action.tapKeyboardSearch();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+
+    Action.tapSearchIconOnNavBar();
+    Assert.checkInRecentMemorySearch(directInput);
+
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    //clean searches
+    Action.cleanSearches();
+});
+
+ test("[1937871] auto complete inspection in recent memory only 6 times keyword function" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.repeatInputWhenSearch();
+
+    Action.tapReturnOnSearchBar();
+    Action.tapSearchIconOnNavBar();
+    $.delay(sleep);
+
+    Action.repeatChooseWhenSearch();
+    $.delay(sleep);
+    Action.tapReturnOnSearchBar();
+    Action.tapSearchIconOnNavBar();
+
+    Assert.repeatChoosePageDisplay();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+ });
