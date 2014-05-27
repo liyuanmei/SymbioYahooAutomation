@@ -51,13 +51,11 @@ Action.tapCommodityPictureOnLargePhotoView = function () {
     app.mainWindow().collectionViews()[0].tapWithOptions({tapOffset:{x:0.53, y:0.56}});
 };
 
-//05-08-2014
 Action.slidingCommodityPage = function () {
     $.delay(3);
     app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.51, y:0.84}, endOffset:{x:0.50, y:0.47}, duration:1.8});
 };
 
-//05-12-2014
 Action.tapStorePicture = function () {
     $.delay(sleep);
     app.mainWindow().collectionViews()[0].tapWithOptions({tapOffset:{x:0.51, y:0.32}});
@@ -77,7 +75,6 @@ Action.tapheartIconOnStoreWhenSRP = function () {
     tapheartIconOnStoreWhenSRP.tap();
 };
 
-//05-19-2014
 Action.selectOptionOnSortingTabWhenSRP = function (option) {
     $.delay(sleep);
     var sortTabTableView = app.mainWindow().tableViews()[0];
@@ -93,7 +90,6 @@ Action.selectOptionOnSortingTabWhenSRP = function (option) {
     }
 };
 
-//05-20-2014
 Action.tapClearButtonOnFilterScreenWhenSRP = function() {
     $.delay(sleep);
     var clearButton = app.mainWindow().buttons()["清除"];
