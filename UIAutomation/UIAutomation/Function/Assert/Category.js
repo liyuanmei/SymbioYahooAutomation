@@ -1,19 +1,19 @@
 Assert.commodityHeader = function (){
     $.delay(sleep);
-    assertEquals("服飾", app.navigationBar().name());
-    assertEquals("UINavigationBarBackIndicatorDefault.png", app.navigationBar().buttons()[0].name());
-    assertEquals(1, app.navigationBar().buttons()[2].isEnabled());
+    method.verifyEquals("服飾", app.navigationBar().name());
+    method.verifyEquals("UINavigationBarBackIndicatorDefault.png", app.navigationBar().buttons()[0].name());
+    method.verifyEquals(1, app.navigationBar().buttons()[2].isEnabled());
 };
 
 Assert.categoryScreen = function () {
     $.delay(sleep);
-    assertEquals("全部分類", app.navigationBar().name());
+    method.verifyEquals("全部分類", app.navigationBar().name());
 };
 
 Assert.checkTab = function () {
     $.delay(sleep);
-    assertEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].name());
-    assertEquals("分類",app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].name());
+    method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].name());
+    method.verifyEquals("分類",app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].name());
 };
 
 Assert.verifyApparelCategory = function () {
@@ -21,26 +21,26 @@ Assert.verifyApparelCategory = function () {
 
     $.delay(sleep);
 
-    assertEquals(7, app.mainWindow().collectionViews()[0].cells().length);
+    method.verifyEquals(7, app.mainWindow().collectionViews()[0].cells().length);
 
-    assertEquals("漢神百貨品牌服飾", app.mainWindow().collectionViews()[0].cells()[1].name());
-    assertEquals("漢神百貨內睡衣", app.mainWindow().collectionViews()[0].cells()[2].name());
-    assertEquals("流行女裝", app.mainWindow().collectionViews()[0].cells()[3].name());
-    assertEquals("中大尺碼女裝(M-7L)", app.mainWindow().collectionViews()[0].cells()[4].name());
-    assertEquals("女性內睡衣", app.mainWindow().collectionViews()[0].cells()[5].name());
-    assertEquals("品牌/潮流男裝", app.mainWindow().collectionViews()[0].cells()[6].name());
+    method.verifyEquals("漢神百貨品牌服飾", app.mainWindow().collectionViews()[0].cells()[1].name());
+    method.verifyEquals("漢神百貨內睡衣", app.mainWindow().collectionViews()[0].cells()[2].name());
+    method.verifyEquals("流行女裝", app.mainWindow().collectionViews()[0].cells()[3].name());
+    method.verifyEquals("中大尺碼女裝(M-7L)", app.mainWindow().collectionViews()[0].cells()[4].name());
+    method.verifyEquals("女性內睡衣", app.mainWindow().collectionViews()[0].cells()[5].name());
+    method.verifyEquals("品牌/潮流男裝", app.mainWindow().collectionViews()[0].cells()[6].name());
 };
 
 Assert.commodityButtonStatus = function () {
     $.delay(sleep);
     var commodityButtonStatus = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].isEnabled();
-    assertEquals(1, commodityButtonStatus);
+    method.verifyEquals(1, commodityButtonStatus);
 };
 
 Assert.categoryButtonStatus  = function () {
     $.delay(sleep);
     var categoryButtonStatus = app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].isEnabled();
-    assertEquals(1, categoryButtonStatus);
+    method.verifyEquals(1, categoryButtonStatus);
 };
 
 Assert.commodityItemsShowCount = function (iCount) {
@@ -48,7 +48,7 @@ Assert.commodityItemsShowCount = function (iCount) {
     var commodityItemListCount = app.mainWindow().collectionViews()[0].cells().length;
 
     //Due to the first cell is commodity and category tab, so the array list should plus one.
-    assertEquals(iCount, commodityItemListCount);
+    method.verifyEquals(iCount, commodityItemListCount);
 };
 
 Assert.categoriesList = function () {
@@ -69,14 +69,14 @@ Assert.categoriesList = function () {
 
     $.delay(sleep);
     for (var i = 0; i < 12; i++) {
-        assertEquals(this.CategoriesName[i], app.mainWindow().tableViews()[1].cells()[i].name());
+        method.verifyEquals(this.CategoriesName[i], app.mainWindow().tableViews()[1].cells()[i].name());
     }
 };
 
 Assert.buttonOnAdvancedIsEnabled = function (i) {
     $.delay(sleep);
     var buttonOnAdvanced = app.mainWindow().segmentedControls()[0].buttons()[i];
-    assertEquals(1, buttonOnAdvanced.isEnabled());
+    method.verifyEquals(1, buttonOnAdvanced.isEnabled());
 };
 
 Assert.elementsOrderInSortTab = function () {
@@ -88,10 +88,10 @@ Assert.elementsOrderInSortTab = function () {
     var priceLowToHigh = sortTabTableView.cells()[2].name();
     var priceHighToLow = sortTabTableView.cells()[3].name();
 
-    assertEquals("相關度", relevanceValue);
-    assertEquals("最新上架", latestItems);
-    assertEquals("價錢低到高", priceLowToHigh);
-    assertEquals("價錢高到低", priceHighToLow);
+    method.verifyEquals("相關度", relevanceValue);
+    method.verifyEquals("最新上架", latestItems);
+    method.verifyEquals("價錢低到高", priceLowToHigh);
+    method.verifyEquals("價錢高到低", priceHighToLow);
 };
 
 Assert.elementsOnFilterScreen = function () {
@@ -99,11 +99,11 @@ Assert.elementsOnFilterScreen = function () {
 
     //Verify "100000 + 元" show correct.
     var priceNumber100000 = app.mainWindow().staticTexts()[1].name();
-    assertEquals("100000+ 元", priceNumber100000);
+    method.verifyEquals("100000+ 元", priceNumber100000);
 
     //Verify "0 元" show correct.
     var priceNumber0 = app.mainWindow().staticTexts()[2].name();
-    assertEquals("0 元", priceNumber0);
+    method.verifyEquals("0 元", priceNumber0);
 
     //verify circle image and bar image show correct.
     var circleImage1 = app.mainWindow().images()[2].name();
@@ -111,16 +111,16 @@ Assert.elementsOnFilterScreen = function () {
     var barImage1 = app.mainWindow().images()[4].name();
     var barImage2 = app.mainWindow().images()[5].name();
 
-    assertEquals("circle.png", circleImage1);
-    assertEquals("circle.png", circleImage2);
-    assertEquals("bar-grey.png", barImage1);
-    assertEquals("bar-blu.png", barImage2);
+    method.verifyEquals("circle.png", circleImage1);
+    method.verifyEquals("circle.png", circleImage2);
+    method.verifyEquals("bar-grey.png", barImage1);
+    method.verifyEquals("bar-blu.png", barImage2);
 
     //Verify all attribute elements show correct.
     this.AttributeElements = ["可刷卡", "0利率", "可分期", "超商付款", "超商取貨", "有現貨", "有影音", "有圖片", "優良商店"];
 
     for (var i = 0; i < 9; i++){
-    assertEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[1].cells()[i].name());
+    method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[1].cells()[i].name());
     }
 };
 
@@ -128,7 +128,7 @@ Assert.buttonExistOnNavigationBar = function (i, sName) {
     $.delay(sleep);
 
     var navBar = app.navigationBar().buttons()[i];
-    assertEquals(sName, navBar.name());
+    method.verifyEquals(sName, navBar.name());
 }
 
 Assert.filterAttributeButtonIsTapped = function (i) {
@@ -136,7 +136,7 @@ Assert.filterAttributeButtonIsTapped = function (i) {
     var attributeButton = app.mainWindow().collectionViews()[1].cells()[i];
     var buttonStatus = attributeButton.value();
 
-    assertEquals(1, buttonStatus);
+    method.verifyEquals(1, buttonStatus);
 };
 
 Assert.filterAttributeButtonIsNotTapped = function (i) {
@@ -144,12 +144,12 @@ Assert.filterAttributeButtonIsNotTapped = function (i) {
     var attributeButton = app.mainWindow().collectionViews()[1].cells()[i];
     var buttonStatus = attributeButton.value();
 
-    assertEquals(0, buttonStatus);
+    method.verifyEquals(0, buttonStatus);
 };
 
 Assert.navigationBarName = function (sName) {
     $.delay(sleep);
-    assertEquals(sName, app.navigationBar().name());
+    method.verifyEquals(sName, app.navigationBar().name());
 };
 
 Assert.itemPageShowCorrect = function (sTitle) {
@@ -169,8 +169,8 @@ Assert.itemPageShowCorrect = function (sTitle) {
     var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
     var butButton = collectionViews.cells()["立即購買"].buttons()[1];
     
-    assertEquals("立即購買", addToCartButton.name());
-    assertEquals("加入購物車", butButton.name());
+    method.verifyEquals("立即購買", addToCartButton.name());
+    method.verifyEquals("加入購物車", butButton.name());
 };
 
 /**
@@ -189,7 +189,7 @@ Assert.productPriceShowCorrect = function (productIndex, priceIndex) {
 
     //Use the regex to match the first characters is $
     var stringRe = /^\$/g.test(priceValue);
-    assertTrue(stringRe, "The first characters not $");
+    method.verifyTrue(stringRe, "The first characters not $");
 };
 
 /**
@@ -207,7 +207,7 @@ Assert.storeRatingShowCorrect = function (productIndex, ratingIndex) {
     var ratingValue = ratingIndexValue.value();
     
     //Get the value of rating, if this value is less than 10 then return True.
-    assertTrue(ratingValue <= 10, "Rating value isnot correct, the value is greater than 10");
+    method.verifyTrue(ratingValue <= 10, "Rating value isnot correct, the value is greater than 10");
 };
 
 Assert.favoritesIconShowCorrect = function (productIndex) {
@@ -218,23 +218,23 @@ Assert.favoritesIconShowCorrect = function (productIndex) {
     var favoritesIcon = itemCell.buttons()[0];
     var favoritesIconName = favoritesIcon.name();
 
-    assertEquals("icon star", favoritesIconName);
+    method.verifyEquals("icon star", favoritesIconName);
 };
 
 Assert.logInWindowShowCorrect = function (sLogin, sForgotPassword, sCreateAccount) {
     $.delay(sleep);
 
     var yahooLogoName = app.mainWindow().images()[0].name();
-    assertEquals("yaccounts_logo_purple", yahooLogoName);
+    method.verifyEquals("yaccounts_logo_purple", yahooLogoName);
 
     var loginButtonName = app.mainWindow().buttons()[0].name();
-    assertEquals(sLogin, loginButtonName);
+    method.verifyEquals(sLogin, loginButtonName);
 
     var forgotPasswordButtonName = app.mainWindow().buttons()[1].name();
-    assertEquals(sForgotPassword, forgotPasswordButtonName);
+    method.verifyEquals(sForgotPassword, forgotPasswordButtonName);
 
     var createAccountButtonName = app.mainWindow().buttons()[2].name();
-    assertEquals(sCreateAccount, createAccountButtonName);
+    method.verifyEquals(sCreateAccount, createAccountButtonName);
 };
 
 Assert.userLoginHistoryScreen = function (sNavBarName, sUserName) {
@@ -242,12 +242,12 @@ Assert.userLoginHistoryScreen = function (sNavBarName, sUserName) {
 
     //Verify navigation bar name show correct.
     var navBarName = app.navigationBar().name();
-    assertEquals(sNavBarName, navBarName);
+    method.verifyEquals(sNavBarName, navBarName);
 
     //Verify user name show correct.
     var tableview = app.mainWindow().staticTexts()[1];
     var username = tableview.name();
-    assertEquals(sUserName, username);
+    method.verifyEquals(sUserName, username);
 };
 
 Assert.productAddedToMyFavoritesScreen = function (productName) {
@@ -255,7 +255,7 @@ Assert.productAddedToMyFavoritesScreen = function (productName) {
     var collectionView = app.mainWindow().collectionViews()[0];
     var productCell = collectionView.cells()[0];
 
-    assertEquals(productName, productCell.name());
+    method.verifyEquals(productName, productCell.name());
 };
 
 Assert.productRemovedFromMyFavoritesScreen = function (productName) {
@@ -271,7 +271,7 @@ Assert.buttonOnTabBarShowCorrect = function (buttonName) {
     var tabBar = app.mainWindow().tabBar();
     var button = tabBar.buttons()[buttonName];
 
-    assertTrue(button.isVisible(), buttonName + " not exist");
+    method.verifyTrue(button.isVisible(), buttonName + " not exist");
 };
 
 Assert.buttonExist = function (elements) {
@@ -286,7 +286,7 @@ Assert.buttonExist = function (elements) {
 
 Assert.checkButtonExist = function (elements) {
     $.delay(sleep);
-    assertTrue(Assert.buttonExist(elements), elements.name() + " button not exists");
+    method.verifyTrue(Assert.buttonExist(elements), elements.name() + " button not exists");
 };
 
 Assert.itemCellShowCorrectOnCategoryScreen = function (itemName) {
@@ -294,7 +294,7 @@ Assert.itemCellShowCorrectOnCategoryScreen = function (itemName) {
     var itemCell = app.mainWindow().tableViews()[0].cells()[itemName];
     var itemCellName = itemCell.name();
 
-    assertEquals(itemName, itemCellName);
+    method.verifyEquals(itemName, itemCellName);
 };
 
 Assert.allCategoryItemShowCorrect = function (i, itemName) {
@@ -302,14 +302,14 @@ Assert.allCategoryItemShowCorrect = function (i, itemName) {
     var itemCell = app.mainWindow().tableViews()[1].cells()[i];
     var tabItemName = itemCell.name();
 
-    assertEquals(itemName, tabItemName);
+    method.verifyEquals(itemName, tabItemName);
 };
 
 Assert.elementsShouldContainText = function (elements, keyword) {
     $.delay(sleep);
     var elementsName = elements.name();
     
-    assertTrue(elementsName.indexOf(keyword) >= 0, elementsName + " not contain text: " + keyword);
+    method.verifyTrue(elementsName.indexOf(keyword) >= 0, elementsName + " not contain text: " + keyword);
 };
 
 Assert.numberOfItemsShowCorrect = function (elements) {
@@ -319,7 +319,7 @@ Assert.numberOfItemsShowCorrect = function (elements) {
 
     var stringRe = /\d/g.test(numberOfItems);
 
-    assertTrue(stringRe, "elements: " + numberOfItems + " not contains numbers");
+    method.verifyTrue(stringRe, "elements: " + numberOfItems + " not contains numbers");
 };
 
 Assert.advancedButtonsOrder = function () {
@@ -333,9 +333,9 @@ Assert.advancedButtonsOrder = function () {
     var button2Name = button2.name();
     var button3Name = button3.name();
 
-    assertEquals(button1Name, "排序");
-    assertEquals(button2Name, "瀏覽模式");
-    assertEquals(button3Name, "篩選");
+    method.verifyEquals(button1Name, "排序");
+    method.verifyEquals(button2Name, "瀏覽模式");
+    method.verifyEquals(button3Name, "篩選");
 };
 
 Assert.successfulSwitchToPhotoGridView = function () {
@@ -352,7 +352,7 @@ Assert.successfulSwitchToPhotoGridView = function () {
 
     //if first cellY == secondCellY then these two cell place at same line.
     //So collectionview successful switch to photo grid view.
-    assertEquals(firstCellY, secondCellY);
+    method.verifyEquals(firstCellY, secondCellY);
 };
 
 Assert.successfulSwitchToListingView = function () {
@@ -368,8 +368,8 @@ Assert.successfulSwitchToListingView = function () {
     var secondCellHeight = Action.getElementsHeightString(secondCell);
 
     //verify success switch to listing veiw.
-    assertEquals(firstCellX, secondCellX);
-    assertTrue(firstCellHeight == secondCellHeight && firstCellHeight < 130 && secondCellHeight < 130, "Switch to listing mode failed.");
+    method.verifyEquals(firstCellX, secondCellX);
+    method.verifyTrue(firstCellHeight == secondCellHeight && firstCellHeight < 130 && secondCellHeight < 130, "Switch to listing mode failed.");
 };
 
 Assert.successfulSwitchToLargeImageView = function () {
@@ -380,5 +380,5 @@ Assert.successfulSwitchToLargeImageView = function () {
     var firstCellWidth = Action.getElementsWidthString(firstCell);
     var firstCellHeight = Action.getElementsHeightString(firstCell);
 
-    assertTrue(firstCellWidth == 320 && firstCellHeight > 320 && firstCellHeight < 450, "Switch to large image view failed.");
+    method.verifyTrue(firstCellWidth == 320 && firstCellHeight > 320 && firstCellHeight < 450, "Switch to large image view failed.");
 };

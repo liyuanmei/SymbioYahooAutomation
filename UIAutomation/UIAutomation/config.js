@@ -48,6 +48,7 @@ var statusBar = app.statusBar();
 
 var obj = {};
 var sleep = 2;
+var method = {};
 
 var tabBarDiscoveryStream = tabBar.buttons()[0];
 var tabBarFavoriteStores = tabBar.buttons()[1];
@@ -60,4 +61,46 @@ obj.scrollDowns = function (total) {
         $.delay(sleep);
         app.mainWindow().collectionViews()[0].scrollDown();
     }
+};
+
+method.checkInstanceExists = function (instance) {
+    var errorTimes = 0;
+    if (instance) {
+        $.message(instance + " exists");
+        return;
+    }
+    while (!instance && errorTimes < 50) {
+        errorTimes++;
+        $.delay(1);
+        $.message("instance not exist try: " + errorTimes + " times");
+    }
+};
+
+method.verifyTrue = function (expression, message, endCase) {
+
+    if (!expression) {
+
+        if (!message){
+
+            var assertMessage = "Assertion failed";
+
+            UIALogger.logError(assertMessage);
+        }
+        else {
+
+            UIALogger.logError(message);
+        }
+    }
+
+    if (endCase) {
+
+        throw new AssertionException(message);
+    }
+};
+
+method.verifyEquals = function (expected, received, message) {
+
+    var defMessage = "Expected <" + expected + "> but received <" + received + ">";
+
+    method.verifyTrue(expected == received, message ? message + ": " + defMessage : defMessage);
 };

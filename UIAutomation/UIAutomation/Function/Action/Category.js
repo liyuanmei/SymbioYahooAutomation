@@ -1,35 +1,44 @@
-Action.goApparelCategory = function (){
+Action.goApparelCategory = function () {
+    $.delay(sleep);
     Action.tapButtonOnTabBar(2);
     
     Action.tapItemOnCategoryScreen(0); 
 };
 
-Action.goCommodityTab = function (){
+Action.goCommodityTab = function () {
     $.delay(sleep);
     var commodityButton = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].tap);
     commodityButton.tap(); 
 };
 
 Action.goBack = function () {
     $.delay(sleep);
     var goBack = app.navigationBar().buttons()[1]; 
+    method.checkInstanceExists(app.navigationBar().buttons()[1].tap);
     goBack.tap();
 };
 
 Action.goDiscoveryStream = function () {
     $.delay(sleep);
-    app.tabBar().buttons()[0].tap(); 
+
+    var buttonToGoDiscoryStream = app.tabBar().buttons()[0];
+
+    method.checkInstanceExists(app.tabBar().buttons()[0].tap);
+    buttonToGoDiscoryStream.tap();
 };
 
 Action.tapCategory = function () {
     $.delay(sleep);
     var categoryButton = app.mainWindow().collectionViews()[0].cells()[0].buttons()[0];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].tap);
     categoryButton.tap();
 };
 
 Action.goCategoryTab = function () {
     $.delay(sleep);
     var categoryButton = app.mainWindow().collectionViews()[0].cells()[0].buttons()[0];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].tap);
     categoryButton.tap();
 };
 
@@ -40,24 +49,31 @@ Action.scrollCollectionViewElementWithName = function (sName) {
 
 Action.tapSearchIconOnCategoryList = function () {
     $.delay(sleep);
-    app.mainWindow().navigationBar().buttons()[2].tap();
+    var tapSearchIconOnCategoryList = app.mainWindow().navigationBar().buttons()[2];
+    method.checkInstanceExists(app.mainWindow().navigationBar().buttons()[2].tap);
+    tapSearchIconOnCategoryList.tap();
 };
 
 Action.tapAdvancedButton = function () {
     $.delay(sleep);
     var advancedButton = app.mainWindow().collectionViews()[0].buttons()[0];
+
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[0].tap);
     advancedButton.tap();
 };
 
 Action.tapButtonsInAdvancedBar = function (i) {
     $.delay(sleep);
     var buttonOnAdvanced = app.mainWindow().segmentedControls()[0].buttons()[i];
+
+    method.checkInstanceExists(app.mainWindow().segmentedControls()[0].buttons()[i].tap);
     buttonOnAdvanced.tap();
 };
 
 Action.tapCancelButtonInAdvancedBar = function () {
     $.delay(sleep);
     var cancelButton = app.mainWindow().navigationBar().buttons()[0];
+    method.checkInstanceExists(app.mainWindow().navigationBar().buttons()[0].tap);
     cancelButton.tap();
 };
 /**
@@ -81,6 +97,7 @@ Action.tapItemOnProductListScreen = function () {
     $.delay(sleep);
     var collectionViews = app.mainWindow().collectionViews()[0];
     
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].tapWithOptions);
     //This action is tapped item big image.
     collectionViews.tapWithOptions({
         tapOffset: {
@@ -104,6 +121,7 @@ Action.exitLoginWindow = function () {
     $.delay(sleep);
 
     var exitLoginWindowButton = app.navigationBar().buttons()[0];
+    method.checkInstanceExists(app.navigationBar().buttons()[0].tap);
     exitLoginWindowButton.tap();
 };
 
@@ -117,7 +135,7 @@ Action.doUserLogin = function (sUserName, sPassword) {
         $.delay(sleep);
 
         //Verify login window show.
-        Assert.logInWindowShowCorrect("登入", "忘記密碼或帳號了？", "新建帳號");
+        Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
     }
     catch (err) {
         UIALogger.logError("Login window could not open due to: " + err);
@@ -213,7 +231,7 @@ Action.removeLoginHistory = function (sName) {
     }
 
     //Verify Login window show correct, after successful removed account.
-    Assert.logInWindowShowCorrect("登入", "忘記密碼或帳號了？", "新建帳號");
+    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
 
     //Tap close button to exit login screen.
     Action.exitLoginWindow();      
@@ -226,6 +244,8 @@ Action.tapButtonOnTabBar = function (sButton) {
     $.delay(sleep);
     var tabBar = app.mainWindow().tabBar();
     var button = tabBar.buttons()[sButton];
+
+    method.checkInstanceExists(app.mainWindow().tabBar().buttons()[sButton].tap);
     button.tap();
 };
 
@@ -246,6 +266,8 @@ Action.selectCategoryItem = function (itemName) {
 Action.tapItemOnCategoryScreen = function (itemName) {
     $.delay(sleep);
     var categoryItem = app.mainWindow().tableViews()[1].cells()[itemName];
+
+    method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[itemName].tap);
     categoryItem.tap();
 };
 
@@ -255,6 +277,8 @@ Action.doSearch = function (keyword) {
     //Tap search button
     var searchButton = app.mainWindow().navigationBar().buttons()[2];
     if (Assert.buttonExist(searchButton) == true) {
+
+        method.checkInstanceExists(app.mainWindow().navigationBar().buttons()[2].tap);
         searchButton.tap();
         $.delay(sleep);
     }
@@ -273,25 +297,30 @@ Action.doSearch = function (keyword) {
 Action.tapSearchButtonOnSRP = function () {
     $.delay(sleep);
     var searchButton = app.navigationBar().buttons()[0];
+    method.checkInstanceExists(app.navigationBar().buttons()[0].tap);
     searchButton.tap();
 };
 
 Action.getElementsOriginXString = function (elements) {
+    $.delay(sleep);
     var elementsOrigin = elements.rect();
     return elementsOrigin.origin.x.toString();
 };
 
 Action.getElementsOriginYString = function (elements) {
+    $.delay(sleep);
     var elementsOrigin = elements.rect();
     return elementsOrigin.origin.y.toString();
 };
 
 Action.getElementsWidthString = function (elements) {
+    $.delay(sleep);
     var elementsOrigin = elements.rect();
     return elementsOrigin.size.width.toString();
 };
 
 Action.getElementsHeightString = function (elements) {
+    $.delay(sleep);
     var elementsOrigin = elements.rect();
     return elementsOrigin.size.height.toString();
 };
@@ -316,6 +345,7 @@ Action.chooseCategoryBrowseMode = function (sMode) {
     var brosweModeButtons = app.mainWindow().buttons()[sMode];
 
     if (Assert.buttonExist(brosweModeButtons) == true){
+        method.checkInstanceExists(app.mainWindow().buttons()[sMode].tap);
         brosweModeButtons.tap();
         $.delay(sleep);
     }
@@ -323,3 +353,58 @@ Action.chooseCategoryBrowseMode = function (sMode) {
         UIALogger.logError("Cannot found browse mode button: " + sMode);
     }
 };
+
+Action.tapClearButtonOnFilterScreen = function() {
+    $.delay(sleep);
+
+    var clearButton = app.mainWindow().buttons()[1];
+
+    //wait clear button become visible.
+    clearButton.waitUntilVisible(20);
+
+    //tap clear button.
+    clearButton.tap();
+};
+
+Action.tapSubmitButtonOnAdvanceScreen = function () {
+    $.delay(sleep);
+    var submitButton = app.navigationBar().buttons()[2];
+
+    if (Assert.buttonExist(submitButton) == true) {
+        submitButton.tap();
+    }
+    else {
+        $.error ("Could not found submit button on navigation bar.");
+    }
+}
+
+Action.selectOptionOnSortingTab = function (option) {
+    $.delay(sleep);
+    var sortTabTableView = app.mainWindow().tableViews()[1];
+    var option = sortTabTableView.cells()[option];
+    
+    if (Assert.buttonExist(option) == true) {
+
+        method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[option].tap);
+        option.tap();
+    }
+    else {
+        $.error (option + " button cannot found.");
+    }
+};
+
+Action.back18BanScreen = function () {
+    $.delay(sleep);
+    var backButtonOn18Ban = app.mainWindow().buttons()[1];
+
+    method.checkInstanceExists(app.mainWindow().buttons()[1].tap);
+    backButtonOn18Ban.tap();
+};
+
+Action.tapStoreNameOnCategory =  function () {
+    $.delay(sleep);
+
+    var tapStoreNameOnCategory = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].tap);
+    tapStoreNameOnCategory.tap();
+};  

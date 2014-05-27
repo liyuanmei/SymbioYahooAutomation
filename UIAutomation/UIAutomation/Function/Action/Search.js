@@ -1,25 +1,29 @@
 Action.tapSearchIconOnNavBar = function () {
     $.delay(sleep);
     var tapSearchIconOnNavBar = app.navigationBar().buttons()[2];
+    method.checkInstanceExists(app.navigationBar().buttons()[2].tap);
     tapSearchIconOnNavBar.tap();
-    app.mainWindow();
 };
 
 Action.tapBackOnSearchBar = function () {
     $.delay(sleep);
     var tapBackOnSearchBar = app.mainWindow().buttons()[1];
+    method.checkInstanceExists(app.mainWindow().buttons()[1].tap);
     tapBackOnSearchBar.tap();
 };
 
 Action.searchBarInput = function (skey) {
     $.delay(sleep);
-    var app = target.frontMostApp();
-    app.keyboard().typeString(skey);
+    var keyboard = app.keyboard();
+
+    method.checkInstanceExists(keyboard.typeString);
+    keyboard.typeString(skey);
 };
 
 Action.tapIconPlusOnTableView = function () {
     $.delay(sleep);
     var tapIconPlusOnTableView = app.mainWindow().tableViews()[1].cells()[1].buttons()[0];
+    method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[1].buttons()[0].tap);
     tapIconPlusOnTableView.tap();
 };
 
@@ -27,18 +31,21 @@ Action.tapIconPlusOnTableView = function () {
 Action.clickOnTheDifferentIconPlus = function () {
     $.delay(sleep);
     var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[1].cells()[0].buttons()[0];
+    method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[0].buttons()[0].tap);
     clickOnTheDifferentIconPlus.tap();
 };
 
 Action.tapKeyboardSearch = function () {
     $.delay(sleep);
     var tapKeyboardSearch = app.keyboard().buttons()["Search"];
+    method.checkInstanceExists(app.keyboard().buttons()["Search"].tap);
     tapKeyboardSearch.tap();
 };
 
 Action.tapClean = function () {
     $.delay(sleep);
     var tapClean = app.mainWindow().textFields()[0].buttons()[0];
+    method.checkInstanceExists(app.mainWindow().textFields()[0].buttons()[0].tap);
     tapClean.tap();
 };
 
@@ -80,19 +87,24 @@ Action.cleanSearches = function () {
 
 Action.searchBarInputChinese = function (sValue) {
     $.delay(sleep);
-    var app = target.frontMostApp();
     var searchField = app.mainWindow().textFields()[0];
+
+    method.checkInstanceExists(searchField.setValue);
     searchField.setValue(sValue);
 };
 
 Action.tapReturnOnSearchBar = function () {
     $.delay(sleep);
-    app.mainWindow().buttons()[0].tap();
+    var tapReturnOnSearchBar = app.mainWindow().buttons()[0];
+    method.checkInstanceExists(app.mainWindow().buttons()[0].tap);
+    
+    tapReturnOnSearchBar.tap();
 };
 
 Action.tapIconPlusOnFirstFloorTableView = function () {
     $.delay(sleep);
     var tapIconPlusOnFirstFloorTableView = app.mainWindow().tableViews()[0].cells()[1].buttons()[0];
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[1].buttons()[0].tap);
     tapIconPlusOnFirstFloorTableView.tap();
  };
 
@@ -100,12 +112,14 @@ Action.tapIconPlusOnFirstFloorTableView = function () {
 Action.clickOnTheDifferentIconPlusOnFirstFloorTableView = function () {
     $.delay(sleep);
     var  clickOnTheDifferentIconPlusOnFirstFloorTableView = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[0].buttons()[0].tap);
     clickOnTheDifferentIconPlusOnFirstFloorTableView.tap();
 };
 
 Action.goBackOnSearchPage = function () {
     $.delay(sleep);
     var goBack = app.navigationBar().buttons()[2];
+    method.checkInstanceExists(app.navigationBar().buttons()[2].tap);
     goBack.tap();
 };
 
@@ -120,47 +134,48 @@ Action.goApparelCategoryWhenSearchSettingOpen = function (){
 
 Action.backToAllCategory = function () {
     $.delay(sleep);
-    var backToAllCategory = app.navigationBar().buttons()[1];
-    backToAllCategory.tap();
-};
-
-Action.goDiscoveryStream = function () {
-    $.delay(sleep);
-    app.tabBar().buttons()[0].tap();
+    //var backToAllCategory = app.mainWindows()[0].navigationBar().buttons()[1];
+    //backToAllCategory.tap();
+    app.navigationBar().tapWithOptions({tapOffset:{x:0.04, y:0.03}});
 };
 
 Action.tapSearchIconOnApparelCategory = function () {
     var tapSearchIconOnApparelCategory = app.navigationBar().buttons()[2];
+    method.checkInstanceExists(app.navigationBar().buttons()[2].tap);
     tapSearchIconOnApparelCategory.tap();
 };
 
-//04-25-2014
+
 Action.goFashionWomenClothingCategory = function () {
     $.delay(sleep);
     var goFashionWomenClothingCategory = app.mainWindow().collectionViews()[0].cells()[3];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[3].tap);
     goFashionWomenClothingCategory.tap();
 };
 
 Action.tapBackSubclassification = function () {
     $.delay(sleep);
     var tapBackSubclassification = app.navigationBar().buttons()[1];
+    method.checkInstanceExists(app.navigationBar().buttons()[1].tap);
     tapBackSubclassification.tap();
 };
 
 Action.goCoatCategory = function () {
     $.delay(sleep);
     var goCoatCategory = app.mainWindow().collectionViews()[0].cells()[1];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].tap);
     goCoatCategory.tap();
 };
 
-//04-28-2014
+
 Action.tapGoodsButton = function () {
     $.delay(sleep);
     var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].tap);
     tapGoodsButton.tap();
 };
 
-//05-06-2014
+
 Action.englishInputMethod = function () {
     $.delay(sleep);  
     //veriy keyboard has a "Delete" button
@@ -174,8 +189,11 @@ Action.englishInputMethod = function () {
 
 Action.goCategoryWhenSearchSettingOpen = function () {
     $.delay(sleep);
-    app.tabBar().buttons()[2].tap();
+    var goCategoryWhenSearchSettingOpen = app.tabBar().buttons()[2];
+    method.checkInstanceExists(app.tabBar().buttons()[2].tap);
+    goCategoryWhenSearchSettingOpen.tap();
 };
+
 
 Action.repeatInputWhenSearch = function () {
     for (var i = 0; i < 11 ; i++) {
@@ -193,3 +211,51 @@ Action.repeatChooseWhenSearch = function () {
         Action.goBackOnSearchPage();
     };
 };
+
+Action.tapStoreTab = function () {
+    $.delay(sleep);
+    var tapStoreTab = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].tap);
+    tapStoreTab.tap();
+};
+
+Action.clickTokyoStore = function () {
+    $.delay(sleep);
+    app.mainWindow().collectionViews()[0].tapWithOptions({tapOffset:{x:0.51, y:0.55}});    
+};
+
+Action.tapShoppingInformationPage = function () {
+    $.delay(sleep);
+    var tokyoStore = app.navigationBar().buttons()[0];
+    method.checkInstanceExists(app.navigationBar().buttons()[0].tap);
+    tokyoStore.tap();
+    target.logElementTree();
+    $.delay(3);
+
+    var tapShoppingInformationPage = app.mainWindow().tableViews()[0].cells()["購物須知"];
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()["購物須知"].tap);
+    tapShoppingInformationPage.tap();
+};
+
+Action.tapGoodsInTokyoStore = function () {
+    $.delay(sleep);
+    var tapGoodsInTokyoStore = app.mainWindow().collectionViews()[0].cells()[2];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[2].tap);
+    tapGoodsInTokyoStore.tap();
+};
+/**
+Action.doSearch = function (sKeyWords) {
+    //tap search icon on navigation bar.
+    Action.tapSearchIconOnNavBar();
+
+    //check keyboard is english keyboard.
+    Action.englishInputMethod();
+
+    //inpurt keywords.
+    Action.searchBarInputChinese(sKeyWords);
+
+    //tap search button.
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+};
+**/

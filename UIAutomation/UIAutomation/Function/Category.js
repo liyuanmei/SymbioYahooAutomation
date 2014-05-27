@@ -411,3 +411,27 @@ test("[1938099] check able to navigate to itempage.", function() {
     Action.goBack();
     Action.goDiscoveryStream();
 });
+
+test("[1938100] check product price show correct.", function () {
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //first parameter is second product, second parameter is the  location of price in product cell.
+    Assert.productPriceShowCorrect(2, 2);
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938101] check the rating show correct.", function () {
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //Verify the value of rating is less than 10, if not fail.
+    Assert.storeRatingShowCorrect(1, 1);
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
