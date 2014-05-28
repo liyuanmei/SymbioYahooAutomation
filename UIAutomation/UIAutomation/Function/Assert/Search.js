@@ -64,7 +64,6 @@ Assert.searchSuggestionsPageDisplay = function () {
     method.verifyTrue(app.mainWindow().tableViews()[1].cells().length<1);
 };
 
-//04-23-2014
 Assert.searchButtonOnApparelCategoryIsEnabled = function () {
     $.delay(sleep);
     
@@ -73,7 +72,6 @@ Assert.searchButtonOnApparelCategoryIsEnabled = function () {
     method.verifyEquals(1, searchButtonValue);
 };
 
-//04-24-2014
 Assert.tapIconPlusOnTableViewCheckTextIsEnabled = function (sKey) {
     $.delay(sleep);
     //To obtain search box text and check search box text show the correct
@@ -102,19 +100,16 @@ Assert.searchResultsPage = function (sKey) {
     method.verifyEquals('"'+sKey+'"',searchResultsPageName);
 };
 
-//04-25-2014
 Assert.longtextSearchPageDisplay = function () {
     $.delay(sleep);
     method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<=1);
 };
 
-//04-28-2014
 Assert.coatCategorySearchResultsPageDisplayedInList = function () {
     $.delay(sleep);
     var coatCategorySearchResultsPageDisplayedInList = app.mainWindow().navigationBar().staticTexts()[1].name();
     method.verifyEquals("搜尋上衣",coatCategorySearchResultsPageDisplayedInList);
 };
-
 
 Assert.ShoppingInformationPage = function () {
     $.delay(sleep);
@@ -147,7 +142,6 @@ Assert.checkInRecentMemorySearch = function (sText) {
     var getValue = app.mainWindow().tableViews()[0].cells()[0].staticTexts()[0].name();
     method.verifyEquals(sText,getValue);
 };
-
 
 Assert.repeatChoosePageDisplay = function () {
     $.delay(sleep);
