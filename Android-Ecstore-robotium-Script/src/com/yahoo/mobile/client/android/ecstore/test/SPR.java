@@ -125,7 +125,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 				Action.getIsViewShown(solo, "heart_button"));
 
 	}
-// 1937921:go back to goods tab.
+	// 1937921:go back to goods tab.
 	public void testBackToGoodsTab() throws Exception {
 
 		// navigate to category screen
