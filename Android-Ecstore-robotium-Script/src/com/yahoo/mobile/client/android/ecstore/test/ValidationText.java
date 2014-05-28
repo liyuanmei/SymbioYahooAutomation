@@ -28,9 +28,9 @@ public class ValidationText {
 	
 	public static final String All_Categories = "全部分類";
 	
-    public static final String Categories = "分類";
+    	public static final String Categories = "分類";
     
-    public static final String OK = "確定";
+    	public static final String OK = "確定";
 	
 	public static final String Setting = "設定";
 
