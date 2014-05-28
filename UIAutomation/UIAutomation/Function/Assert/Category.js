@@ -22,7 +22,7 @@ Assert.verifyApparelCategory = function () {
     $.delay(sleep);
 
     method.verifyEquals(7, app.mainWindow().collectionViews()[0].cells().length);
-
+    
     method.verifyEquals("漢神百貨品牌服飾", app.mainWindow().collectionViews()[0].cells()[1].name());
     method.verifyEquals("漢神百貨內睡衣", app.mainWindow().collectionViews()[0].cells()[2].name());
     method.verifyEquals("流行女裝", app.mainWindow().collectionViews()[0].cells()[3].name());
@@ -87,7 +87,7 @@ Assert.elementsOrderInSortTab = function () {
     var latestItems = sortTabTableView.cells()[1].name();
     var priceLowToHigh = sortTabTableView.cells()[2].name();
     var priceHighToLow = sortTabTableView.cells()[3].name();
-
+    
     method.verifyEquals("相關度", relevanceValue);
     method.verifyEquals("最新上架", latestItems);
     method.verifyEquals("價錢低到高", priceLowToHigh);
@@ -129,7 +129,7 @@ Assert.buttonExistOnNavigationBar = function (i, sName) {
 
     var navBar = app.navigationBar().buttons()[i];
     method.verifyEquals(sName, navBar.name());
-}
+};
 
 Assert.filterAttributeButtonIsTapped = function (i) {
     $.delay(sleep);
@@ -266,20 +266,20 @@ Assert.productRemovedFromMyFavoritesScreen = function (productName) {
     assertNotEquals(productName, productCell.name());
 };
 
-Assert.buttonOnTabBarShowCorrect = function (buttonName) {
+ Assert.buttonOnTabBarShowCorrect = function (buttonName) {
     $.delay(sleep);
     var tabBar = app.mainWindow().tabBar();
     var button = tabBar.buttons()[buttonName];
 
     method.verifyTrue(button.isVisible(), buttonName + " not exist");
-};
+ };
 
 Assert.buttonExist = function (elements) {
     if (elements.isVisible() == true) {
-    UIALogger.logMessage(elements.name() + " button exists on screen.");
+      UIALogger.logMessage(elements.name() + " button exists on screen.");
     }
     else {
-    UIALogger.logError(elements.name() + " Cannot found button.");
+      UIALogger.logError(elements.name() + " Cannot found button.");
     }
     return true;
 };
@@ -308,7 +308,7 @@ Assert.allCategoryItemShowCorrect = function (i, itemName) {
 Assert.elementsShouldContainText = function (elements, keyword) {
     $.delay(sleep);
     var elementsName = elements.name();
-    
+    $.delay(sleep);
     method.verifyTrue(elementsName.indexOf(keyword) >= 0, elementsName + " not contain text: " + keyword);
 };
 
@@ -381,4 +381,45 @@ Assert.successfulSwitchToLargeImageView = function () {
     var firstCellHeight = Action.getElementsHeightString(firstCell);
 
     method.verifyTrue(firstCellWidth == 320 && firstCellHeight > 320 && firstCellHeight < 450, "Switch to large image view failed.");
+};
+
+Assert.checkPriceBarShowCorrect = function (price) {
+    $.delay(sleep);
+
+    //Verify price show correct.
+    var priceNumber = app.mainWindow().staticTexts()[1].name();
+    method.verifyEquals(price, priceNumber);
+};
+
+Assert.checkPriceValueShowLessThan = function (productIndex, priceIndex, value) {
+    var collectionViews = app.mainWindow().collectionViews()[0];
+
+    var itemCell = collectionViews.cells()[productIndex];
+    var priceLocate = itemCell.staticTexts()[priceIndex];
+    var priceValue = priceLocate.value();
+
+    var priceNumber = priceValue.replace(/[^\d\.-]/g, "");
+
+    $.message(priceNumber);
+    //verify the price number should less than "value"
+    method.verifyTrue(priceNumber >= value, "price not show correct.");
+};
+
+Assert.check18BanScreenShowCorrect = function () {
+    $.delay(sleep);
+
+    var imageOn18Ban = app.mainWindow().images()[1];
+    var backButtonOn18Ban = app.mainWindow().buttons()[1];
+    var submitButtonOn18Ban = app.mainWindow().buttons()[2];
+    var staticTextsOn18Ban = app.mainWindow().staticTexts()[1];
+
+    method.checkInstanceExists(app.mainWindow().images()[1].name);
+    method.checkInstanceExists(app.mainWindow().buttons()[1].name);
+    method.checkInstanceExists(app.mainWindow().buttons()[2].name);
+    method.checkInstanceExists(app.mainWindow().staticTexts()[1].name);
+
+    method.verifyEquals(imageOn18Ban.name(), "icon-ticrf.png");
+    method.verifyEquals(backButtonOn18Ban.name(), "未滿18歲離開");
+    method.verifyEquals(submitButtonOn18Ban.name(), "已滿18歲進入");
+    method.verifyEquals(staticTextsOn18Ban.name(), "18歲以上會員始可瀏覽及購買，若您未滿18歲請勿進入");
 };

@@ -123,7 +123,6 @@ Action.goBackOnSearchPage = function () {
     goBack.tap();
 };
 
-//04-23-2014
 Action.goApparelCategoryWhenSearchSettingOpen = function (){
     $.delay(sleep);
     app.tabBar().buttons()[2].tap();
@@ -145,7 +144,7 @@ Action.tapSearchIconOnApparelCategory = function () {
     tapSearchIconOnApparelCategory.tap();
 };
 
-
+//04-25-2014
 Action.goFashionWomenClothingCategory = function () {
     $.delay(sleep);
     var goFashionWomenClothingCategory = app.mainWindow().collectionViews()[0].cells()[3];
@@ -167,14 +166,12 @@ Action.goCoatCategory = function () {
     goCoatCategory.tap();
 };
 
-
 Action.tapGoodsButton = function () {
     $.delay(sleep);
     var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1];
     method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].tap);
     tapGoodsButton.tap();
 };
-
 
 Action.englishInputMethod = function () {
     $.delay(sleep);  
@@ -193,7 +190,6 @@ Action.goCategoryWhenSearchSettingOpen = function () {
     method.checkInstanceExists(app.tabBar().buttons()[2].tap);
     goCategoryWhenSearchSettingOpen.tap();
 };
-
 
 Action.repeatInputWhenSearch = function () {
     for (var i = 0; i < 11 ; i++) {
