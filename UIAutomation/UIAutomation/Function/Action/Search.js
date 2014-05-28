@@ -27,7 +27,7 @@ Action.tapIconPlusOnTableView = function () {
     tapIconPlusOnTableView.tap();
 };
 
-//Click the icon plue different twice
+//Click the icon plue different twice.
 Action.clickOnTheDifferentIconPlus = function () {
     $.delay(sleep);
     var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[1].cells()[0].buttons()[0];

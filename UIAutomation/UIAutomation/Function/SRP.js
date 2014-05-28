@@ -10,7 +10,7 @@ test("[1937918] Check the Tab display" , function () {
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
-    //Tap Advanced button.
+    //Tap Advanced button
     Action.tapButtonsInAdvancedBarWhenSRP();
 
     //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.

@@ -20,7 +20,7 @@ Assert.checkReturnPageDisplay =function (text) {
     method.verifyEquals(text, app.mainWindow().navigationBar().name());
 };
 
-//Check if search Suggestions
+//Check if search Suggestions.
 Assert.autoCompletePageDisplay = function () {
     $.delay(sleep);
     var mainWindow = app.mainWindow();

@@ -97,7 +97,7 @@ Assert.elementsOrderInSortTab = function () {
 Assert.elementsOnFilterScreen = function () {
     $.delay(sleep);
 
-    //Verify "100000 + 元" show correct.
+    //Verify "100000 + 元" show correct
     var priceNumber100000 = app.mainWindow().staticTexts()[1].name();
     method.verifyEquals("100000+ 元", priceNumber100000);
 
