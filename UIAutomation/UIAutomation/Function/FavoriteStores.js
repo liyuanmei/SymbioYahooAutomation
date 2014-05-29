@@ -14,7 +14,7 @@ test("[1959922] Verify user can access correct store page from recommendation.",
     Assert.checkButtonOnStore();
     Action.tapButtonOnTabBar(1);
     
-    //Log out and remove user login history
+    //Log out and remove user login history.
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 

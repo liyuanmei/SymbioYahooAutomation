@@ -13,7 +13,7 @@ test("[1959923] Verify store rate from items collected", function () {
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
 
-    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
