@@ -28,3 +28,5 @@
 #import "Function/SRP.js"
 #import "Function/shoppingCart.js"
 #import "Function/RecentHistory.js"
+#import "Function/FavoriteItem.js"
+#import "Function/FavoriteStores.js"
