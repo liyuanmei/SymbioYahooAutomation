@@ -554,7 +554,7 @@ test("[1937961] check able to tap '超商付款' and untap '超商付款' button
     Action.tapButtonOnFilterAttributeScreen(3);
     Assert.filterAttributeButtonIsNotTapped(3);
 
-    //Tap cancel button and navigate back to discovery screen.
+    //Tap cancel button and navigate back to discovery screen
     Action.tapCancelButtonInAdvancedBar();
 
     Action.goBackOnSearchPage();
