@@ -43,7 +43,7 @@ var Assert = {};
 #import "Function/Assert/Welcome.js"
 #import "Function/Assert/SRP.js"
 #import "Function/Assert/ShoppingCart.js"
-//#import "Function/Assert/RecentHistory.js"
+#import "Function/Assert/RecentHistory.js"
 
 var target = UIATarget.localTarget();
 var app = target.frontMostApp();

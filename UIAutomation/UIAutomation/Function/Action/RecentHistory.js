@@ -20,3 +20,21 @@ Action.addToRecentBrowse = function () {
     Action.tapButtonOnTabBar(0);
     }
 };
+
+Action.tapCleanSearchOnSidebr = function (i) {
+    $.delay(sleep);
+    var menuButton = app.navigationBar().buttons()[1];
+    menuButton.tap();
+    $.delay(sleep);
+    
+    var tableViews = app.windows()[0].tableViews()[0];
+    var tableCells = tableViews.cells()["Settings"];
+    tableCells.tap();
+    $.delay(sleep);
+    
+    app.windows()[0].collectionViews()[0].cells()[0].switches()[0].setValue(i);
+    
+    var closeButton = app.windows()[0].navigationBar().buttons()[1];
+    closeButton.tap();
+    menuButton.tap();
+};

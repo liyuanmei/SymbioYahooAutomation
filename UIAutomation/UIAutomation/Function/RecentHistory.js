@@ -33,3 +33,25 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     Action.tapButtonOnTabBar(4);
     Action.removeLoginHistory("mobileappstore1");
 });
+
+test("[1900011]  verify settings screen." , function () {
+    Action.cleanSearches();
+
+    Action.tapCleanSearchOnSidebr(0);
+
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+
+    Action.tapSearchIconOnNavBar();
+    $.delay(sleep);
+
+    Assert.searchSuggestionsPageDisplayOnRecentHisory();
+    Action.tapReturnOnSearchBar();
+
+    Action.tapCleanSearchOnSidebr(1);
+});

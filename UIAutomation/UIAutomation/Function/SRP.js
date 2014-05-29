@@ -442,3 +442,25 @@ test("[1937949] check able to tap '可刷卡' and untap '可刷卡' button", fun
     Action.goDiscoveryStream();
     Action.cleanSearches();
 });
+
+test("[1977511] verify shouldn't duplicate keyword in search box" , function () {
+    Action.cleanSearches();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("一一二");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("一一一二");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Assert.searchResultsPage("一一一二");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.cleanSearches();
+});
