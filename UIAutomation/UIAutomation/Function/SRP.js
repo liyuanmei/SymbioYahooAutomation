@@ -576,7 +576,7 @@ test("[1937967] check able to tap '有現貨' and untap '有現貨' button", fun
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
 
-    //Tap "有現貨" and verify this button enabled after tap.
+    //Tap "有現貨" and verify this button enabled after tap
     Action.tapButtonOnFilterAttributeScreen(5);
     Assert.filterAttributeButtonIsTapped(5);
 
