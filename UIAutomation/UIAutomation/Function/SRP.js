@@ -443,6 +443,186 @@ test("[1937949] check able to tap '可刷卡' and untap '可刷卡' button", fun
     Action.cleanSearches();
 });
 
+test("[1937952] check able to tap '有影音' and untap '有影音' button", function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "有影音" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(6);
+    Assert.filterAttributeButtonIsTapped(6);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(6);
+    Assert.filterAttributeButtonIsNotTapped(6);
+
+    //Tap cancel button and navigate back to discovery screen.
+    Action.tapCancelButtonInAdvancedBar();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937955] check able to tap '0利率' and untap '0利率' button", function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "0利率" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(1);
+    Assert.filterAttributeButtonIsTapped(1);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(1);
+    Assert.filterAttributeButtonIsNotTapped(1);
+
+    //Tap cancel button and navigate back to discovery screen.
+    Action.tapCancelButtonInAdvancedBar();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937958] check able to tap '可分期' and untap '可分期' button", function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "可分期" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(2);
+    Assert.filterAttributeButtonIsTapped(2);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(2);
+    Assert.filterAttributeButtonIsNotTapped(2);
+
+    //Tap cancel button and navigate back to discovery screen.
+    Action.tapCancelButtonInAdvancedBar();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937961] check able to tap '超商付款' and untap '超商付款' button", function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "超商付款" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(3);
+    Assert.filterAttributeButtonIsTapped(3);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(3);
+    Assert.filterAttributeButtonIsNotTapped(3);
+
+    //Tap cancel button and navigate back to discovery screen.
+    Action.tapCancelButtonInAdvancedBar();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937967] check able to tap '有現貨' and untap '有現貨' button", function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "有現貨" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(5);
+    Assert.filterAttributeButtonIsTapped(5);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(5);
+    Assert.filterAttributeButtonIsNotTapped(5);
+
+    //Tap cancel button and navigate back to discovery screen.
+    Action.tapCancelButtonInAdvancedBar();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937973] check able to tap '優良商店' and untap '優良商店' button", function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "優良商店" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(8);
+    Assert.filterAttributeButtonIsTapped(8);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(8);
+    Assert.filterAttributeButtonIsNotTapped(8);
+
+    //Tap cancel button and navigate back to discovery screen.
+    Action.tapCancelButtonInAdvancedBar();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();;
+});
+
 test("[1977511] verify shouldn't duplicate keyword in search box" , function () {
     Action.cleanSearches();
     Action.tapSearchIconOnNavBar();
