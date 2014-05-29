@@ -26,3 +26,5 @@
 #import "Function/Category.js"
 #import "Function/Search.js"
 #import "Function/SRP.js"
+#import "Function/shoppingCart.js"
+#import "Function/RecentHistory.js"
