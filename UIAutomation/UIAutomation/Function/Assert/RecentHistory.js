@@ -6,6 +6,6 @@ Assert.checkSearchRecordPageOnRecentHisory = function () {
 Assert.searchSuggestionsPageDisplayOnRecentHisory = function () {
     var mainWindow = app.mainWindow();
     $.delay(5);
-    method.verifyTrue(app.mainWindow().tableViews()[0].cells().length<1);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<=1);
 };
 
