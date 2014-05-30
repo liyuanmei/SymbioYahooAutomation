@@ -152,7 +152,7 @@ Assert.navigationBarName = function (sName) {
     method.verifyEquals(sName, app.navigationBar().name());
 };
 
-Assert.itemPageShowCorrect = function (sTitle) {
+Assert.itemPageShowCorrect = function () {
     $.delay(sleep);
 
     var collectionViews = app.mainWindow().collectionViews()[0];

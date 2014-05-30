@@ -14,8 +14,8 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" , function 
     obj.scrollDowns(1);
     $.delay(sleep);
 
-    target.logElementTree();
-    $.delay(sleep);
+    //target.logElementTree();
+    //$.delay(sleep);
      
     Action.butButtonShoppingCart();
 
@@ -69,8 +69,8 @@ test("[1959883] verify all delete shopping cart of goods" ,function () {
     obj.scrollDowns(1);
     $.delay(sleep);
 
-    target.logElementTree();
-    $.delay(sleep);
+    //target.logElementTree();
+    //$.delay(sleep);
      
     Action.addToShoppingCart();
     Action.chooseTheSizeOnShoppingCart();

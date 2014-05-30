@@ -20,3 +20,15 @@ Assert.textExistOnShoppingCart = function (elements) {
     }
     return true;
 };
+
+Assert.checkCollectionScreenCorrect = function(){
+    $.delay(5);
+    method.verifyEquals("你的最愛商店",app.mainWindow().collectionViews()[0].staticTexts()[0].name());
+    method.verifyEquals("你可能會喜歡的商店",app.mainWindow().collectionViews()[0].staticTexts()[1].name());
+};
+
+Assert.checkLogInFirstOnFavoritePage = function(){
+    $.delay(sleep);
+    var clogInFirstOnFavoritePage = app.windows()[0].collectionViews()[0].cells()[0].buttons()[0].name();
+    method.verifyEquals("請先登入", clogInFirstOnFavoritePage);
+};

@@ -644,3 +644,558 @@ test("[1977511] verify shouldn't duplicate keyword in search box" , function () 
     Action.tapReturnOnSearchBar();
     Action.cleanSearches();
 });
+
+test("[1937976] check click on the picture of commodity",function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+    
+    //tap commodity picture
+    Action.tapCommodityPictureOnSearchResultsPage();
+    $.delay(sleep);
+
+    obj.scrollDowns(1);
+    $.delay(sleep);
+
+    target.logElementTree();
+    var tapCommodityPictureShowPage = app.mainWindow().collectionViews()[0].cells()[1].name();
+
+    //Verify screen successful navigated to item page.
+    Assert.itemPageShowCorrectOnCoatSearchPage(tapCommodityPictureShowPage);
+
+    Action.goBack();
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937979] check click on the name of commodity" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+    $.delay(sleep);
+
+    //tap commodity Name
+    Action.tapCommodityNameOnSearchResultsPage();
+    $.delay(sleep);
+
+    obj.scrollDowns(1);
+    $.delay(sleep);
+
+    target.logElementTree();
+    var tapCommodityNameShowPage = app.mainWindow().collectionViews()[0].cells()[1].name();
+
+    //Verify screen successful navigated to item page.
+    Assert.itemPageShowCorrectOnCoatSearchPage(tapCommodityNameShowPage);
+
+    Action.goBack();
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937980] check the commodity prices", function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //first parameter is second product, second parameter is the  location of price in product cell.
+    Assert.productPriceShowCorrect(2,3);
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937981] check the rating show correct." ,function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+    target.logElementTree();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify the value of rating is less than 10, if not fail.
+    Assert.storeRatingShowCorrect(1, 1);
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937982] check favorites icon show correct." , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify favorites icon show correct, this function need passing product index parameters.
+    Assert.favoritesIconShowCorrect(1);
+
+    //get product price X .
+    var productPrice = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[3];
+    var productPriceX = Action.getElementsOriginXString(productPrice);
+
+    //get favorites icon X .
+    var favoritesIcon = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    var favoritesIconX = Action.getElementsOriginXString(favoritesIcon);
+
+    //Verify favorites icon place at product price right side.
+    method.verifyTrue(favoritesIconX < productPriceX < 20, "favorites icon not at product price right side.");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937983] check log in window show after unregister user tap favorites icon." , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    $.delay(sleep);
+    target.logElementTree();
+     
+    //tap favorites icon, after tapped log in window show up.
+    Action.tapFavoritesIcon(1);
+
+    //Verify login window show correct.
+    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937984] login user able to add product to favorites." , function () {
+    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    $.delay(sleep);
+
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    $.delay(3);
+    target.logElementTree();
+
+    //Tap favorites icon add a production to favorites.
+    Action.tapFavoritesIcon(1);
+    var productName = app.mainWindow().collectionViews()[0].cells()[1].name();
+
+    //got my favorites screen.
+    Action.tapButtonOnTabBar(4);
+    Action.goMayFavoritesScreenWhenSRP();
+
+    //Assert product show in My favorites screen.
+    Assert.productAddedToMyFavoritesScreen(productName);
+
+    //Remove favorites item.
+    Action.tapButtonOnTabBar(2);
+    Action.tapFavoritesIcon(1);
+
+    //Verify favorites item successful removed.
+    Action.tapButtonOnTabBar(4);
+    $.delay(3);
+    Assert.productRemovedFromMyFavoritesScreen(productName);
+
+    //Restore app to default screen.
+    Action.goBack();
+    Action.tapButtonOnTabBar(2);
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+
+    Action.tapButtonOnTabBar(4);
+    Action.removeLoginHistory("mobileappstore3");
+});
+
+test("[1937977] on item listing-list view check store name show correct." , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify successful switch to listing view.
+    Assert.successfulSwitchToListingView();
+
+    //get store name X and Y.
+    var storeName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    var storeNameX = Action.getElementsOriginXString(storeName);
+    var storeNameY = Action.getElementsOriginYString(storeName);
+
+    //get item cell X and Y
+    var itemCell = app.mainWindow().collectionViews()[0].cells()[1];
+    var itemCellX = Action.getElementsOriginXString(itemCell);
+    var itemCellY = Action.getElementsOriginYString(itemCell);
+
+    //The image on list view width should be 140 && (storeNameY - itemCellY) < 20
+    method.verifyTrue(storeNameX == 140 && (storeNameY - itemCellY) < 20, "Store name not place at item image right side.");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937995] check favorites icon show correct with photo grid view" ,function() {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("小圖");
+
+    $.delay(sleep);
+    target.logElementTree();
+
+    //verify favorites icon show on product cell.
+    Assert.favoritesIconShowCorrect(1);
+
+    //get product price X and Y.
+    var productPrice = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    var productPriceX = Action.getElementsOriginXString(productPrice);
+    var productPriceY = Action.getElementsOriginYString(productPrice);
+
+    //get favorites icon X and Y
+    var favoritesIcon = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    var favoritesIconX = Action.getElementsOriginXString(favoritesIcon);
+    var favoritesIconY = Action.getElementsOriginYString(favoritesIcon);
+
+    //Verify favorites icon place at product price right side.
+    method.verifyTrue(favoritesIconX < productPriceX && (productPriceY - favoritesIconY) < 20, "favorites icon not at product price right side.");
+
+    //Go back to advanced bar switch browse mode to list view.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937996] on photo grid view unregister user tap favorites icon login window should open." , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("小圖");
+
+    //Verify successful switch to photo grid view.
+    Assert.successfulSwitchToPhotoGridView();
+    
+    //tap favorites icon, after tapped log in window show up.
+    Action.tapFavoritesIcon(1);
+
+    //Verify login window show correct.
+    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    //Go back to advanced bar switch browse mode to list view.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937997] On photo grid view register user able to add product to his favorites list" , function () {
+    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    $.delay(sleep);
+
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    $.delay(sleep);
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("小圖");
+
+    //Tap favorites icon add a production to favorites.
+    Action.tapFavoritesIcon(1);
+    var productName = app.mainWindow().collectionViews()[0].cells()[1].name();
+
+    //got my favorites screen.
+    Action.tapButtonOnTabBar(4);
+    Action.goMayFavoritesScreenWhenSRP();
+
+    $.delay(sleep);
+    target.logElementTree();
+
+    //Assert product show in My favorites screen.
+    Assert.productAddedToMyFavoritesScreenWhenSRP(productName);
+
+    //Remove favorites item.
+    Action.tapButtonOnTabBar(2);
+    Action.tapFavoritesIcon(1);
+
+    //Verify favorites item successful removed.
+    Action.tapButtonOnTabBar(4);
+    $.delay(3);
+    Assert.productRemovedFromMyFavoritesScreenWhenSRP(productName);
+
+    //Restore app to default screen.
+    Action.goBack();
+    Action.tapButtonOnTabBar(2);
+
+    //Go back to advanced bar switch browse mode to list view.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    $.delay(sleep);
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+
+    //Log out and remove user login history.
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+
+    Action.tapButtonOnTabBar(4);
+    Action.removeLoginHistory("mobileappstore3");
+});
+
+test("[1938001] on item listing-Large photo view tap commodity picture  should navigate to item details page." , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    Action.tapCommodityPictureOnLargePhotoView();
+    $.delay(sleep);
+    obj.scrollDowns(1);
+
+    var itemPageShowCorrect = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
+
+    //Verify screen successful navigated to item page.
+    Assert.itemPageShowCorrectOnCoatSearchPage(itemPageShowCorrect);
+
+    Action.goBack();
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1938005] check the commodity prices on item listing-Large photo view" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    Action.slidingCommodityPage();
+
+    //first parameter is second product, second parameter is the  location of price in product cell.
+    Assert.productPriceShowCorrect(2,3);
+
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1938006] check the rating show correct on item listing-Large photo view" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    Action.slidingCommodityPage();
+
+    //Verify the value of rating is less than 10, if not fail.
+    Assert.storeRatingShowCorrect(1, 1);
+
+    //get store name X and Y.
+    var storeNameElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    var storeNameElementX = Action.getElementsOriginXString(storeNameElement);
+    var storeNameElementY = Action.getElementsOriginYString(storeNameElement);
+
+    //get store name width.
+    var storeNameElementWidth = Action.getElementsWidthString(storeNameElement);
+
+    //get store rating X and Y.
+    var storeRatingElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[1];
+    var storeRatingElementX = Action.getElementsOriginXString(storeRatingElement);
+    var storeRatingElementY = Action.getElementsOriginYString(storeRatingElement);
+
+    //Verify store rating should at store name right side.
+    var storeNmeXPlusStoreNameWidth = parseInt(storeNameElementX) + parseInt(storeNameElementWidth);
+    var restus = parseInt(storeRatingElementY) - parseInt(storeNameElementY);
+
+    method.verifyTrue(storeRatingElementX > storeNmeXPlusStoreNameWidth && restus == 1, "Store rating not at sotre name right side.");
+
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});

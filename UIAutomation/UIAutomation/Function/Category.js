@@ -88,6 +88,16 @@ test("[1938048] Scroll screen more items should successful loaded", function () 
     Action.goCommodityTab();
     $.delay(sleep);
 
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+    $.delay(sleep);
+
     //Verify currently should have 20 items in screen.
     Assert.commodityItemsShowCount(21);
 
@@ -398,7 +408,7 @@ test("[1938099] check able to navigate to itempage.", function() {
     obj.scrollDowns(1);
     $.delay(sleep);
 
-    target.logElementTree();
+    //target.logElementTree();
     //var ItemOnProductListScreen = app.mainWindow().collectionViews()[0].cells()[1].name();
      
     //Verify screen successful navigated to item page.
