@@ -89,7 +89,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937919:Default to choose ‚ÄúÂïÜÂìÅ‚Äù Tab.
+	// 1937919:Default to choose °∞…Ã∆∑°± Tab.
 	public void testDefaultTab() throws Exception {
 
 		// navigate to category screen
@@ -261,7 +261,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937932:Check if default to choose ‚Äúsort‚Äù Tab
+	// 1937932:Check if default to choose °∞sort°± Tab
 	public void testDefaultChooseSortTab() throws Exception {
 
 		// navigate to category screen
@@ -374,7 +374,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937944:check the function of ‚ÄúÁ¢∫ÂÆö‚Äùbutton
+	// 1937944:check the function of °∞¥_∂®°±button
 	public void testCheckConfirmButtonFunction() throws Exception {
 
 		// navigate to category screen
@@ -403,7 +403,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937949:unselected ‚ÄúÂèØÂà∑Âç°‚Äù
+	// 1937949:unselected °∞ø…À¢ø®°±
 	public void testUnselectedCanSwipeFunction() throws Exception {
 
 		// navigate to category screen
@@ -452,7 +452,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937952:unselected ‚ÄúÊúâÂΩ±Èü≥‚Äù
+	// 1937952:unselected °∞”–”∞“Ù°±
 	public void testUnselectedHasVideoFunction() throws Exception {
 
 		// navigate to category screen
@@ -480,7 +480,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937955:unselected "0Âà©Áéá"
+	// 1937955:unselected "0¿˚¬ "
 	public void testUnselectedZeroIntFunction() throws Exception {
 
 		// navigate to category screen
@@ -506,7 +506,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937958:unselected "ÂèØÂàÜÊúü"
+	// 1937958:unselected "ø…∑÷∆⁄"
 	public void testUnselectedccInstallFunction() throws Exception {
 
 		// navigate to category screen
@@ -532,7 +532,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937961:unselected "Ë∂ÖÂïÜ‰ªòÊ¨æ"
+	// 1937961:unselected "≥¨…Ã∏∂øÓ"
 	public void testUnselectedCvsPayFunction() throws Exception {
 
 		// navigate to category screen
@@ -560,29 +560,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	/*
-	 * // 1937964:unselected "Ë∂ÖÂïÜÂèñË≤®" public void testCvsPickDisplay() throws
-	 * Exception {
-	 * 
-	 * // navigate to category screen Action.navigateToCategoryScreen(solo);
-	 * 
-	 * // click search button Action.clickSearchButtonOnScreen(solo);
-	 * 
-	 * // input keyword and search Action.searchAfterPutData(solo, 0,
-	 * ValidationText.Jacket);
-	 * 
-	 * // navigate to Filter screen Action.enterAdvancedSortPage(solo);
-	 * 
-	 * // Action.closeSoftKeyBoard(solo);
-	 * 
-	 * String view_id = "tb_cvs_pick"; Action.clickView(solo, view_id);
-	 * assertTrue("Cvs pay button is not selected.", ((ToggleButton)
-	 * solo.getView(view_id)).isChecked());
-	 * 
-	 * }
-	 */
-
-	// 1937964:unselected "Ë∂ÖÂïÜÂèñË≤®"
+	// 1937964:unselected "≥¨…Ã»°ÿõ"
 	public void testUnselectedCvsPickFunction() throws Exception {
 
 		// navigate to category screen
@@ -610,31 +588,8 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937965:HasStock option display
-	public void testHasStockOptionDisplay() throws Exception {
 
-		// navigate to category screen
-		Action.navigateToCategoryScreen(solo);
-
-		// click search button
-		Action.clickSearchButtonOnScreen(solo);
-
-		// input keyword and search
-		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
-
-		// navigate to Filter screen
-		Action.enterAdvancedSortPage(solo);
-
-		// Action.closeSoftKeyBoard(solo);
-
-		String view_id = "tb_hasstock";
-		Action.clickView(solo, view_id);
-		assertTrue("Has stock button is not selected.",
-				((ToggleButton) solo.getView(view_id)).isChecked());
-
-	}
-
-	// 1937967:unselected "ÊúâÁèæË≤®"
+	// 1937967:unselected "”–¨Fÿõ"
 	public void testUnselectedHasStockFunction() throws Exception {
 
 		// navigate to category screen
@@ -662,7 +617,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937970:unselected "ÊúâÂúñÁâá"
+	// 1937970:unselected "”–àD∆¨"
 	public void testUnselectedHasImageFunction() throws Exception {
 
 		// navigate to category screen
@@ -692,7 +647,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937973:unselected "ÂÑ™ËâØÂïÜÂ∫ó"
+	// 1937973:unselected "Éû¡º…ÃµÍ"
 	public void testUnselectedisSuperiorFunction() throws Exception {
 
 		// navigate to category screen
@@ -788,57 +743,6 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 				" Cannot find the commodity price or price format is incorrect! ",
 				isNum);
 
-	}
-
-	// 1937981:Store name on the right of store evaluation
-	public void testGoodsEvaluationDisplay() throws Exception {
-
-		// navigate to category screen
-		Action.navigateToCategoryScreen(solo);
-
-		// click search button
-		Action.clickSearchButtonOnScreen(solo);
-
-		// input keyword and search
-		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
-
-		// list style
-		Action.setListViewStyleAfterSearch(solo);
-
-		// compare the position of two views
-		boolean flag = TestHelper.positionCompare(solo,
-				"listitem_productlist_store_name", 0,
-				"listitem_productlist_store_rating", 0, 3);
-
-		if (!flag) {
-			assertTrue("Store name is not on the right of store evaluation.",
-					false);
-		}
-
-	}
-
-	// 1937982:Commodity prices are on the left of stars
-	public void testStarsDisplay() throws Exception {
-
-		// navigate to category screen
-		Action.navigateToCategoryScreen(solo);
-
-		// click search button
-		Action.clickSearchButtonOnScreen(solo);
-
-		// input keyword and search
-		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
-
-		// list style
-		Action.setListViewStyleAfterSearch(solo);
-
-		// compare the position of two views
-		boolean flag = TestHelper.positionCompare(solo,
-				"listitem_productlist_price", 0, "star_button", 0, 3);
-
-		if (!flag) {
-			assertTrue("Commodity prices are not on the left of stars.", false);
-		}
 	}
 
 	// 1937983:Check to click the start icon without login.
@@ -1195,7 +1099,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938013:"ÂÖ±XXXÁ≠Ü" is displayed
+	// 1938013:"π≤XXXπP" is displayed
 	public void testSearchResultDisplay() throws Exception {
 
 		// navigate to category screen
@@ -1497,21 +1401,6 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 					1);
 			assertTrue("Not 2 lines.", tv.getMaxLines() == 2);
 		}
-	}
-
-	// 1937913:check header display.
-	public void testHeaderResult() throws Exception {
-
-		// navigate to category screen
-		Action.navigateToCategoryScreen(solo);
-
-		// click search button
-		Action.clickSearchButtonOnScreen(solo);
-
-		// input keyword and search
-		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
-
-		assertTrue("some icon not exists.", solo.getView("").isShown());
 	}
 
 	// 1977511:verify shouldn't duplicate keyword in search box
