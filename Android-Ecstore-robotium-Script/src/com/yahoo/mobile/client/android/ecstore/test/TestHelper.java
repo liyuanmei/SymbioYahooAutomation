@@ -16,7 +16,7 @@ public class TestHelper {
 		int height = display.getHeight();
 		float xStart = width - 10;
 		float xEnd = 10;
-		solo.drag(xStart, xEnd, height / 2, height / 2, stepCount);
+		 solo.drag(xStart, xEnd, height / 2, height / 2, stepCount);
 	}
 
 	@SuppressWarnings("deprecation")
