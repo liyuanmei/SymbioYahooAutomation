@@ -1,23 +1,29 @@
-package com.yahoo.mobile.client.android.ecstore.test;
+package com.yahoo.mobile.client.android.ecstore.test.Category;
 
-import android.annotation.SuppressLint;
+ 
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
 import com.robotium.solo.Solo;
+import com.yahoo.mobile.client.android.ecstore.Account.Account;
 import com.yahoo.mobile.client.android.ecstore.Action.Action;
 import com.yahoo.mobile.client.android.ecstore.Assert.Assert;
+import com.yahoo.mobile.client.android.ecstore.test.TestHelper;
+import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
 
-@SuppressLint("NewApi")
 @SuppressWarnings("rawtypes")
 public class Category extends ActivityInstrumentationTestCase2 {
 	private static final String LAUNCHER_ACTIVITY_FULL_CLASSNAME = "com.yahoo.mobile.client.android.ecstore.ui.ECSplashActivity";
 	private static Class launcherActivityClass;
 	private Solo solo;
+	private boolean isNum;
 	static {
 		try {
 			launcherActivityClass = Class
@@ -49,10 +55,8 @@ public class Category extends ActivityInstrumentationTestCase2 {
 	public void enterClassification() throws Exception {
 
 		solo.waitForActivity("ECSplashActivity", 3000);
-		solo.waitForText("全部分類", 1, 3000);
-		solo.clickOnText("全部分類");
-		solo.waitForText("服飾", 1, 3000);
-		solo.clickOnText("服飾");
+		Action.clickText(solo, ValidationText.All_Categories);
+		Action.clickText(solo, ValidationText.Apparel);
 
 	}
 
@@ -60,7 +64,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 	public void testBackFunction() throws Exception {
 
 		enterClassification();
-		solo.clickOnView(solo.getView("up", 0));// Tap back key
+		solo.clickOnView(solo.getView("up", 0));
 		solo.sleep(3000);
 		Assert.CategoryListShow(solo);
 
@@ -70,11 +74,10 @@ public class Category extends ActivityInstrumentationTestCase2 {
 	public void testTab() throws Exception {
 
 		enterClassification();
-		String[] CategoryList = { "分類", "商品" };
-		int size = CategoryList.length;
+		int size = ValidationText.store_title.length;
 		for (int i = 0; i < size; i++) {
-			boolean textFound = solo.searchText(CategoryList[i]);
-			assertTrue(CategoryList[i] + " not found", textFound);
+			boolean textFound = solo.searchText(ValidationText.store_title[i]);
+			assertTrue(ValidationText.store_title[i] + " not found", textFound);
 		}
 
 	}
@@ -83,13 +86,18 @@ public class Category extends ActivityInstrumentationTestCase2 {
 	public void testHeader() throws Exception {
 
 		enterClassification();
-		solo.waitForText("商品", 1, 3000);
-		solo.clickOnText("商品");
+		Action.clickText(solo, ValidationText.Commodity);
 		solo.sleep(3000);
+		// Back button
+		ImageView back = (ImageView) solo.getView("home");
 
+		// Search button
 		View search = solo.getView("menu_search");
+
+		// Filter button
 		View advance = solo.getView("menu_filter");
-		boolean views = search.isShown() && advance.isShown();
+
+		boolean views = back.isShown() && search.isShown() && advance.isShown();
 		assertTrue("views not found", views);
 
 	}
@@ -98,12 +106,10 @@ public class Category extends ActivityInstrumentationTestCase2 {
 	public void testSortTab() throws Exception {
 
 		enterClassification();
-		String[] CategoryList = { "漢神百貨品牌服飾", "漢神百貨內睡衣", "流行女裝", "中大尺碼女裝",
-				"女性內睡衣", "品牌/潮流男裝" };
-		int size = CategoryList.length;
+		int size = ValidationText.CostumeList.length;
 		for (int i = 0; i < size; i++) {
-			boolean textFound = solo.searchText(CategoryList[i]);
-			assertTrue(CategoryList[i] + " not found", textFound);
+			boolean textFound = solo.searchText(ValidationText.CostumeList[i]);
+			assertTrue(ValidationText.CostumeList[i] + " not found", textFound);
 		}
 
 	}
@@ -112,22 +118,22 @@ public class Category extends ActivityInstrumentationTestCase2 {
 	public void testItemList() throws Exception {
 
 		enterClassification();
-		solo.waitForText("商品", 1, 3000);
-		solo.clickOnText("商品");
-		solo.waitForText("分類", 1, 3000);
-		solo.clickOnText("分類");
+		Action.clickText(solo, ValidationText.Commodity);
+		Action.clickText(solo, ValidationText.Categories);
 		solo.goBack();
+		solo.sleep(1000);
 		Assert.CategoryListShow(solo);
 
 	}
 
-	// 1938052:check "搜寻服饰" show in search bar.
+	// 1938052:check "��Ѱ����" show in search bar.
 	public void testSearchbarDefault() throws Exception {
 
 		enterClassification();
 		solo.sleep(3000);
 		solo.clickOnView(solo.getView("menu_search"));
-		assertTrue("Cannot find '搜尋服飾'", solo.searchText("搜尋服飾", 1));
+		assertTrue("Cannot find text",
+				solo.searchText(ValidationText.Search_Apparel, 1));
 
 	}
 
@@ -136,11 +142,13 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 		enterClassification();
 		Action.enterAdvancedPage(solo);
-		String[] CategoryList = { "相關度", "最新上架", "價錢低到高", "價錢高到低" };
-		int size = CategoryList.length;
+		int size = ValidationText.CategoryList_Tab1.length;
+
 		for (int i = 0; i < size; i++) {
-			boolean textFound = solo.searchText(CategoryList[i]);
-			assertTrue(CategoryList[i] + " not found", textFound);
+			boolean textFound = solo
+					.searchText(ValidationText.CategoryList_Tab1[i]);
+			assertTrue(ValidationText.CategoryList_Tab1[i] + " not found",
+					textFound);
 		}
 
 	}
@@ -153,12 +161,13 @@ public class Category extends ActivityInstrumentationTestCase2 {
 		Action.enterAdvancedPage(solo);
 		solo.sleep(3000);
 		solo.clickOnView(solo.getView("btn_filter"));
-		String[] CategoryList = { "可刷卡", "0利率", "可分期", "超商付款", "有現貨", "有影音",
-				"有圖片", "優良商店" };
-		int size = CategoryList.length;
+
+		int size = ValidationText.CategoryList_Tab2.length;
 		for (int i = 0; i < size; i++) {
-			boolean textFound = solo.searchText(CategoryList[i]);
-			assertTrue(CategoryList[i] + " not found", textFound);
+			boolean textFound = solo
+					.searchText(ValidationText.CategoryList_Tab2[i]);
+			assertTrue(ValidationText.CategoryList_Tab2[i] + " not found",
+					textFound);
 		}
 
 	}
@@ -181,8 +190,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 2014-04-18
-	// 1938055: verify the order of 排序 items
+	// 1938055: verify the order of ���� items
 	public void testSortOptions() throws Exception {
 
 		enterClassification();
@@ -194,10 +202,14 @@ public class Category extends ActivityInstrumentationTestCase2 {
 		assertEquals("Not four items in list.", listviewCount, 4);
 		for (int i = 0; i < listviewCount; i++) {
 
-			boolean sortList = lv.getItemAtPosition(0).equals("相關度")
-					&& lv.getItemAtPosition(1).equals("最新上架")
-					&& lv.getItemAtPosition(2).equals("價錢低到高")
-					&& lv.getItemAtPosition(3).equals("價錢高到低");
+			boolean sortList = lv.getItemAtPosition(0).equals(
+					ValidationText.CategoryList_Tab1[0])
+					&& lv.getItemAtPosition(1).equals(
+							ValidationText.CategoryList_Tab1[1])
+					&& lv.getItemAtPosition(2).equals(
+							ValidationText.CategoryList_Tab1[2])
+					&& lv.getItemAtPosition(3).equals(
+							ValidationText.CategoryList_Tab1[3]);
 
 			assertTrue("Sort incorrect.", sortList);
 
@@ -205,7 +217,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938063:Check the "确定" button to display
+	// 1938063:Check the "ȷ��" button to display
 	public void testComfirmButtonDisplay() throws Exception {
 
 		enterClassification();
@@ -213,7 +225,8 @@ public class Category extends ActivityInstrumentationTestCase2 {
 		solo.sleep(3000);
 		solo.clickOnView(solo.getView("btn_filter"));
 		Button lv = (Button) solo.getView("btn_ok");
-		assertEquals("Not find confirm button.", "確定", lv.getText().toString());
+		assertEquals("Not find confirm button.", ValidationText.OK, lv
+				.getText().toString());
 
 	}
 
@@ -221,8 +234,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 	public void testCheckTheDefaultItems() throws Exception {
 
 		enterClassification();
-		solo.waitForText("商品", 1, 3000);
-		solo.clickOnText("商品");
+		Action.clickText(solo, ValidationText.Commodity);
 		solo.sleep(3000);
 		GridView lv = (GridView) solo.getView("gridview", 0);
 		int defaultItems = lv.getCount();
@@ -234,8 +246,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 	public void testAutoLoadMore() throws Exception {
 
 		enterClassification();
-		solo.waitForText("商品", 1, 3000);
-		solo.clickOnText("商品");
+		Action.clickText(solo, ValidationText.Commodity);
 		solo.sleep(3000);
 		GridView lv = (GridView) solo.getView("gridview", 0);
 
@@ -249,7 +260,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938069:check “可刷卡” can changed to unselected.
+	// 1938069:check ����ˢ���� can changed to unselected.
 	public void testCreditCardMode() throws Exception {
 
 		enterClassification();
@@ -257,42 +268,41 @@ public class Category extends ActivityInstrumentationTestCase2 {
 		// Go to advanced sort page.
 		Action.enterAdvancedSortPage(solo);
 
-		// solo.clickOnToggleButton("可刷卡");
+		// solo.clickOnToggleButton("��ˢ��");
 		ToggleButton tb = (ToggleButton) solo.getView("tb_cc");
 
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertTrue(" '可刷卡'  button unselected.", tb.isChecked());
+		assertTrue(" '��ˢ��'  button unselected.", tb.isChecked());
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertFalse("'可刷卡'  button  selected.", tb.isChecked());
+		assertFalse("'��ˢ��'  button  selected.", tb.isChecked());
 
 	}
 
-	// 2014-04-24
 	// 1938102:Check the Star icon display
 	public void testStarIconDisplay() throws Exception {
 
 		enterClassification();
-		solo.waitForText("商品", 1, 3000);
-		solo.clickOnText("商品");
+		Action.clickText(solo, ValidationText.Commodity);
 		solo.sleep(3000);
 		View star = (View) solo.getView("star_button", 1);
 		assertTrue(" Cannot find the star icon ", star.isShown());
 
 	}
 
-	// 2014-04-25
-	// 1938130:Check "全部分類" at the bottom of the screen.
+	// 1938130:Check "ȫ�����" at the bottom of the screen.
 	public void testAllClassificationExist() throws Exception {
 
 		View classificationIcon = (View) solo.getView("tab_image", 2);
 
 		TextView classificationText = (TextView) solo.getView("tab_text", 2);
-		boolean text = classificationText.getText().toString().equals("全部分類");
+		boolean text = classificationText.getText().toString()
+				.equals(ValidationText.All_Categories);
 
 		assertTrue("All classification does not exist.",
 				classificationIcon.isShown() && text);
+
 	}
 
 	// 1938131:Check all classification item page.
@@ -300,6 +310,108 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 		solo.clickOnView(solo.getView("tab_image", 2));
 		Assert.CategoryListShow(solo);
+
 	}
+
+	// 1938133:Check the screen top text.
+	public void testClassificationTextOnTheTop() throws Exception {
+
+		solo.clickOnView(solo.getView("tab_image", 2));
+		TextView classificationText = (TextView) solo
+				.getView("action_bar_title");
+		boolean text = classificationText.getText().toString().trim()
+				.equals(ValidationText.All_Categories);
+
+		assertTrue("All classification text does not exist.", text);
+
+	}
+
+	// 1938135:Check the search icon on the screen top.
+	public void testSearchIconOnTheTop() throws Exception {
+
+		solo.clickOnView(solo.getView("tab_image", 2));
+		View searchIcon = (View) solo.getView("menu_search", 0);
+
+		assertTrue("Search icon does not exist.", searchIcon.isShown());
+
+	}
+
+	// 1938141:Check latest update side bar.
+	public void testLatestUpdateSidebar() throws Exception {
+
+		solo.clickOnView(solo.getView("tab_image", 2));
+
+		TextView mostFavoriteText = (TextView) solo.getView("tab_text", 0);
+		boolean text = mostFavoriteText.getText().toString()
+				.equals(ValidationText.News);
+
+		View latestUpdateIcon = (View) solo.getView("tab_image", 0);
+
+		assertTrue("Latest update sidebar does not exist.",
+				latestUpdateIcon.isShown() && text);
+	}
+
+	// 1938143:Check most favorite store side bar.
+	public void testMostFavoriteSidebar() throws Exception {
+
+		solo.clickOnView(solo.getView("tab_image", 2));
+
+		TextView mostFavoriteText = (TextView) solo.getView("tab_text", 1);
+		boolean text = mostFavoriteText.getText().toString()
+				.equals(ValidationText.Favorite_Stores);
+		String texts = mostFavoriteText.getText().toString();
+		Log.i("what", texts);
+		View mostFavoriteIcon = (View) solo.getView("tab_image", 1);
+
+		assertTrue("Most favorite sidebar does not exist.",
+				mostFavoriteIcon.isShown() && text);
+	}
+
+	// 1938145:Check shopping Cart side bar
+	public void testShoppingCartSidebar() throws Exception {
+
+		solo.clickOnView(solo.getView("tab_image", 2));
+
+		TextView shoppingCart = (TextView) solo.getView("tab_text", 3);
+		boolean text = shoppingCart.getText().toString()
+				.equals(ValidationText.Shopping_Cart);
+
+		View shoppingCartIcon = (View) solo.getView("tab_image", 3);
+
+		assertTrue("Shopping Cart sidebar does not exist.",
+				shoppingCartIcon.isShown() && text);
+	}
+
+	// 1938147:Check my account side bar.
+	public void testMyAccountSidebar() throws Exception {
+
+		solo.clickOnView(solo.getView("tab_image", 2));
+
+		TextView myAccount = (TextView) solo.getView("tab_text", 4);
+		boolean text = myAccount.getText().toString().trim()
+				.equals(ValidationText.My_Account);
+
+		String temp = myAccount.getText().toString();
+		Log.i("what", temp);
+
+		View myAccountIcon = (View) solo.getView("tab_image", 4);
+
+		assertTrue("My account sidebar does not exist.",
+				myAccountIcon.isShown() && text);
+	}
+
+	// 1938149:Check '���' is displayed on the top of the screen.
+	public void testDressDisplayedOnTheScreen() throws Exception {
+
+		enterClassification();
+		TextView dressText = (TextView) solo.getView("action_bar_title", 0);
+		boolean text = dressText.getText().toString().trim()
+				.equals(ValidationText.Apparel);
+		Log.i("what", dressText.getText().toString());
+		assertTrue("dress does not exist.", text);
+
+	}
+
+		
 
 }

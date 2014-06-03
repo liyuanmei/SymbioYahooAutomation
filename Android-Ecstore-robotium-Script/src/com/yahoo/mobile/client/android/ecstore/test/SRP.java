@@ -587,8 +587,6 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 				((ToggleButton) solo.getView(view_id)).isChecked());
 
 	}
-
-
 	// 1937967:unselected "�ЬF؛"
 	public void testUnselectedHasStockFunction() throws Exception {
 
