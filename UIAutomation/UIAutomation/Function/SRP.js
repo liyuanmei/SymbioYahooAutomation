@@ -1199,3 +1199,256 @@ test("[1938006] check the rating show correct on item listing-Large photo view" 
     Action.goDiscoveryStream();
     Action.cleanSearches();
 });
+
+test("[1938007] check favorites icon show correct on item listing-Large photo view" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+    Action.slidingCommodityPage();
+
+    $.delay(sleep);
+    target.logElementTree();
+
+    //verify favorites icon show on product cell.
+    Assert.favoritesIconShowCorrect(1);
+
+    //get product price X and Y.
+    var productPrice = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[3];
+    var productPriceX = Action.getElementsOriginXString(productPrice);
+    var productPriceY = Action.getElementsOriginYString(productPrice);
+
+    //get favorites icon X and Y
+    var favoritesIcon = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    var favoritesIconX = Action.getElementsOriginXString(favoritesIcon);
+    var favoritesIconY = Action.getElementsOriginYString(favoritesIcon);
+
+    //Verify favorites icon place at product price right side.
+    method.verifyTrue(favoritesIconX < productPriceX < 20, "favorites icon not at product price right side.");
+
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1938008] check log in window show after unregister user tap favorites icon on item listing-Large photo view." , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    Action.slidingCommodityPage();
+
+    $.delay(sleep);
+    target.logElementTree();
+     
+    //tap favorites icon, after tapped log in window show up.
+    Action.tapFavoritesIcon(1);
+
+    //Verify login window show correct.
+    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1938013] check 共xxxx筆結果." , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(3);
+
+    //verify 共xxxx筆結果 show correct.
+    target.logElementTree();
+    var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[0];
+
+    Assert.numberOfItemsShowCorrect(numberOfItems);
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1938024] store Logo below store name" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+
+    Action.tapStorePicture();
+    $.delay(4);
+
+    //verify 共xxxx筆結果 show correct.
+    target.logElementTree();
+    var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[0];
+
+    Assert.numberOfItemsShowCorrect(numberOfItems);
+
+    //verify there are two key authentication page
+    Assert.checkButtonOnStore();
+
+    //Back to the top shop page
+    Action.goBackOnSearchPage();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1938025] check  commodity quantity" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    Action.tapStoreTab();
+    $.delay(4);
+
+    //verify xxx件商品 show correct.
+    target.logElementTree();
+    var numberOfItems = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
+
+    Assert.numberOfItemsShowCorrect(numberOfItems);
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+ });
+
+ test("[1938026] click the shop commodity" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    Action.tapStoreTab();
+    $.delay(sleep);
+
+    Action.tapCommodityNumber();
+    $.delay(4);
+
+    Assert.checkStorelistShowCorrect();
+
+    //Back to the top shop page
+    Action.goBackOnSearchPage();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+ });
+
+test("[1938027] check store evaluation shows" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    Action.tapStoreTab();
+    $.delay(sleep);
+    target.logElementTree(); 
+
+    //Verify the value of rating is less than 10, if not fail.
+    Assert.storeRatingShowCorrect(1, 1);
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1938029] view to join wish list icon display." , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    Action.tapStoreTab();
+    $.delay(3);
+
+    Assert.heartIconShowCorrect(1);
+
+    //get evaluate X and Y.
+    var evaluate = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[1];
+    var evaluateX = Action.getElementsOriginXString(evaluate);
+    var evaluateY = Action.getElementsOriginYString(evaluate);
+
+    //get favorites icon X and Y
+    var heartIcon = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    var heartIconX = Action.getElementsOriginXString(heartIcon);
+    var heartIconY = Action.getElementsOriginYString(heartIcon);
+
+    //Verify heart icon place at product price right side.
+    method.verifyTrue( evaluateX < heartIconX && (evaluateY - heartIconY) < 20, "heart icon at product price right side.");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+ });
+
+test("[1938030] check heart icon jump to login screen" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    Action.tapStoreTab();
+    $.delay(sleep);
+
+    Action.tapheartIconOnStoreWhenSRP();
+    //Verify login window show correct.
+    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});

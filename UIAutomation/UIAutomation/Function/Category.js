@@ -445,3 +445,66 @@ test("[1938101] check the rating show correct.", function () {
     Action.goBack();
     Action.goDiscoveryStream();
 });
+
+test("[1938039] search name on header should changed after search another keyword.", function () {
+    //go 服飾 screen.
+    Action.goApparelCategory();
+
+    //do search
+    Action.doSearch("上衣");
+
+    var collectionViews = app.mainWindow().collectionViews()[0];
+    var itemCell = collectionViews.cells()[1];
+    var itemSummary = itemCell.staticTexts()[2];
+
+    //verify search result page contain expect search keyword.
+    Assert.elementsShouldContainText(itemSummary, "上衣");
+    
+    //Do search again.
+    Action.tapSearchButtonOnSRP();
+    Action.searchBarInputChinese("iphone");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Verify search result page contain expect search keyword.
+    var productItem = app.mainWindow().collectionViews()[0].cells()[1];
+    var productSummary = productItem.staticTexts()[2];
+
+    Assert.elementsShouldContainText(productSummary, "hone");
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938044] check 進階 button exist.", function () {
+    //go 商品 screen.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //Verify 進階 button exist on screen.
+    $.delay(sleep);
+    var advancedButton = app.mainWindow().collectionViews()[0].buttons()[0]
+
+    Assert.checkButtonExist(advancedButton);
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938045] check 共xxxx筆結果.", function () {
+    //go 商品 screen.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    //verify 共xxxx筆結果 show correct.
+    var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[0];
+
+    Assert.numberOfItemsShowCorrect(numberOfItems);
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});

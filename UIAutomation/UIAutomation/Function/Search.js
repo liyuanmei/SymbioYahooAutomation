@@ -677,3 +677,29 @@ test("[1937870] direct input keyword - check in recent memory search function" ,
     Action.goDiscoveryStream();
     Action.cleanSearches();
  });
+
+ test("[1937872] direct input keyword check memory only the last 6 times keyword function" , function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.repeatInputWhenSearch();
+
+    Action.tapReturnOnSearchBar();
+    Action.tapSearchIconOnNavBar();
+
+    Assert.repeatInputPageDisplay();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+ });
+
+test("[1937889] click to return to the icon L1 layer classification" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.tapReturnOnSearchBar();
+    Assert.checkSearchPage("全部分類");
+    $.delay(sleep);
+    Action.goDiscoveryStream();
+});
