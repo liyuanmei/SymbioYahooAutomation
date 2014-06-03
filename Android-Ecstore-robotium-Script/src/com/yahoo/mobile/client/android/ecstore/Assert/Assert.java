@@ -5,9 +5,9 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-
 import com.robotium.solo.Solo;
 import com.yahoo.mobile.client.android.ecstore.Action.Action;
+import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
 
 public class Assert {
 
@@ -19,9 +19,9 @@ public class Assert {
 		boolean flag = prefs.getBoolean("Time", false);
 
 		if (!flag) {
-
+			View versionAlert ;
 			try {
-				View versionAlert = (View) solo.getView("alertTitle");
+				versionAlert = (View) solo.getView("alertTitle");
 				if (versionAlert.isShown())
 					solo.goBack();
 			} catch (final AssertionError e) {
@@ -86,10 +86,11 @@ public class Assert {
 	// check if navigate to search result page
 	public static void navigateToResultPage(Solo solo) throws Exception {
 
-		solo.waitForText("筆結果", 1, 3000);
+		solo.waitForText(ValidationText.Results_value, 1, 3000);
 		junit.framework.Assert.assertTrue(
 				"Failed to navigate to search result Screen",
-				solo.searchText("商品") && solo.searchText("商店"));
+				solo.searchText(ValidationText.Commodity)
+						&& solo.searchText(ValidationText.Commodity));
 	}
 
 	//
@@ -105,9 +106,7 @@ public class Assert {
 	// check all Category item are show.
 	public static void CategoryListShow(Solo solo) throws Exception {
 
-		String[] CategoryList = { "服飾", "美妝", "鞋包配飾", "媽咪寶貝", "電腦/週邊", "家電/視聽",
-				"相機/\n手機/玩具", "美食/\n保健/飲料", "醫療/\n日用品/寵物", "居家/\n寢具/傢俱",
-				"運動/\n戶外/休閒", "圖書/\n文具/影音" };
+		String[] CategoryList = ValidationText.CategoryList;
 		int size = CategoryList.length;
 		for (int i = 0; i < size; i++) {
 			boolean textFound = solo.searchText(CategoryList[i]);
@@ -118,11 +117,10 @@ public class Assert {
 
 	}
 
-	// is 服飾L2層分類 list show
+	// is ���L2�ӷ�� list show
 	public static void costumeL2ListShow(Solo solo) throws Exception {
 
-		String[] CostumeList = { "漢神百貨品牌服飾", "漢神百貨內睡衣", "流行女裝", "中大尺碼女裝",
-				"女性內睡衣", "品牌/潮流男裝" };
+		String[] CostumeList = ValidationText.CostumeList;
 		int size = CostumeList.length;
 		for (int i = 0; i < size; i++) {
 			boolean textFound = solo.searchText(CostumeList[i]);
@@ -131,12 +129,11 @@ public class Assert {
 		}
 	}
 
-	// is 流行女裝category list show
+	// is ����Ů�bcategory list show
 	public static void womenClothingCategoryListShow(Solo solo)
 			throws Exception {
 
-		String[] WomenClothing = { "上衣", "外套/罩衫", "背心/小可愛", "洋裝", "褲子", "裙子",
-				"牛仔女裝", "內搭褲", "禮服" };
+		String[] WomenClothing = ValidationText.WomenClothing;
 		int size = WomenClothing.length;
 		for (int i = 0; i < size; i++) {
 			boolean textFound = solo.searchText(WomenClothing[i]);
@@ -147,14 +144,14 @@ public class Assert {
 
 	public static void noResultDisplay(Solo solo) throws Exception {
 
-		solo.waitForText("筆結果", 1, 3000);
+		solo.waitForText(ValidationText.Results_value, 1, 3000);
 		junit.framework.Assert.assertTrue("There have searched esults.",
-				solo.searchText("很抱歉"));
+				solo.searchText(ValidationText.Sorry_Text));
 	}
 
 	public static void navigateToSortTab(Solo solo) throws Exception {
 
-		String[] CategoryList = { "相關度", "最新上架", "價錢低到高", "價錢高到低" };
+		String[] CategoryList = ValidationText.CategoryList_Tab1;
 		int size = CategoryList.length;
 		for (int i = 0; i < size; i++) {
 			boolean textFound = solo.searchText(CategoryList[i]);
@@ -165,8 +162,7 @@ public class Assert {
 
 	public static void navigateToFilterTab(Solo solo) throws Exception {
 
-		String[] CategoryList = { "可刷卡", "0利率", "可分期", "超商付款", "有現貨", "有影音",
-				"有圖片", "優良商店" };
+		String[] CategoryList = ValidationText.CategoryList_Tab2;
 		int size = CategoryList.length;
 		for (int i = 0; i < size; i++) {
 			boolean textFound = solo.searchText(CategoryList[i]);
@@ -185,11 +181,12 @@ public class Assert {
 		boolean views = ScrollBar.isShown() && TableRowOne.isShown()
 				&& TableRowTwo.isShown() && TableRowThree.isShown();
 		junit.framework.Assert.assertTrue("views not found.", views);
+
 	}
 
 	public static void navigateToAdvancedTab(Solo solo) throws Exception {
 
-		String[] CategoryList = { "排序", "瀏覽模式", "篩選" };
+		String[] CategoryList = ValidationText.CategoryList_Tab3;
 		int size = CategoryList.length;
 		for (int i = 0; i < size; i++) {
 			boolean textFound = solo.searchText(CategoryList[i]);
