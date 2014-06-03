@@ -89,7 +89,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937919:Default to choose ¡°ÉÌÆ·¡± Tab.
+	// 1937919:Default to choose â€œå•†å“â€ Tab.
 	public void testDefaultTab() throws Exception {
 
 		// navigate to category screen
@@ -261,7 +261,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937932:Check if default to choose ¡°sort¡± Tab
+	// 1937932:Check if default to choose â€œsortâ€ Tab
 	public void testDefaultChooseSortTab() throws Exception {
 
 		// navigate to category screen
@@ -374,7 +374,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937944:check the function of ¡°´_¶¨¡±button
+	// 1937944:check the function of â€œç¢ºå®šâ€button
 	public void testCheckConfirmButtonFunction() throws Exception {
 
 		// navigate to category screen
@@ -403,7 +403,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937949:unselected ¡°¿ÉË¢¿¨¡±
+	// 1937949:unselected â€œå¯åˆ·å¡â€
 	public void testUnselectedCanSwipeFunction() throws Exception {
 
 		// navigate to category screen
@@ -452,7 +452,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937952:unselected ¡°ÓĞÓ°Òô¡±
+	// 1937952:unselected â€œæœ‰å½±éŸ³â€
 	public void testUnselectedHasVideoFunction() throws Exception {
 
 		// navigate to category screen
@@ -480,7 +480,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937955:unselected "0ÀûÂÊ"
+	// 1937955:unselected "0åˆ©ç‡"
 	public void testUnselectedZeroIntFunction() throws Exception {
 
 		// navigate to category screen
@@ -506,7 +506,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937958:unselected "¿É·ÖÆÚ"
+	// 1937958:unselected "å¯åˆ†æœŸ"
 	public void testUnselectedccInstallFunction() throws Exception {
 
 		// navigate to category screen
@@ -532,7 +532,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937961:unselected "³¬ÉÌ¸¶¿î"
+	// 1937961:unselected "è¶…å•†ä»˜æ¬¾"
 	public void testUnselectedCvsPayFunction() throws Exception {
 
 		// navigate to category screen
@@ -560,7 +560,29 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937964:unselected "³¬ÉÌÈ¡Ø›"
+	/*
+	 * // 1937964:unselected "è¶…å•†å–è²¨" public void testCvsPickDisplay() throws
+	 * Exception {
+	 * 
+	 * // navigate to category screen Action.navigateToCategoryScreen(solo);
+	 * 
+	 * // click search button Action.clickSearchButtonOnScreen(solo);
+	 * 
+	 * // input keyword and search Action.searchAfterPutData(solo, 0,
+	 * ValidationText.Jacket);
+	 * 
+	 * // navigate to Filter screen Action.enterAdvancedSortPage(solo);
+	 * 
+	 * // Action.closeSoftKeyBoard(solo);
+	 * 
+	 * String view_id = "tb_cvs_pick"; Action.clickView(solo, view_id);
+	 * assertTrue("Cvs pay button is not selected.", ((ToggleButton)
+	 * solo.getView(view_id)).isChecked());
+	 * 
+	 * }
+	 */
+
+	// 1937964:unselected "è¶…å•†å–è²¨"
 	public void testUnselectedCvsPickFunction() throws Exception {
 
 		// navigate to category screen
@@ -612,7 +634,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937967:unselected "ÓĞ¬FØ›"
+	// 1937967:unselected "æœ‰ç¾è²¨"
 	public void testUnselectedHasStockFunction() throws Exception {
 
 		// navigate to category screen
@@ -640,7 +662,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937970:unselected "ÓĞˆDÆ¬"
+	// 1937970:unselected "æœ‰åœ–ç‰‡"
 	public void testUnselectedHasImageFunction() throws Exception {
 
 		// navigate to category screen
@@ -670,7 +692,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937973:unselected "ƒÁ¼ÉÌµê"
+	// 1937973:unselected "å„ªè‰¯å•†åº—"
 	public void testUnselectedisSuperiorFunction() throws Exception {
 
 		// navigate to category screen
@@ -1173,7 +1195,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938013:"¹²XXX¹P" is displayed
+	// 1938013:"å…±XXXç­†" is displayed
 	public void testSearchResultDisplay() throws Exception {
 
 		// navigate to category screen
