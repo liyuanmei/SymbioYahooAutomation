@@ -21,6 +21,9 @@ var Assert = {};
 #import "Function/Action/SRP.js"
 #import "Function/Action/ShoppingCart.js"
 #import "Function/Action/RecentHistory.js"
+#import "Function/Action/StorePage.js"
+#import "Function/Action/MyAccount.js"
+#import "Function/Action/ItemPage.js"
 
 //Assert
 #import "smoke/Assert/FavoriteStores.js"
@@ -44,6 +47,8 @@ var Assert = {};
 #import "Function/Assert/SRP.js"
 #import "Function/Assert/ShoppingCart.js"
 #import "Function/Assert/RecentHistory.js"
+#import "Function/Assert/MyAccount.js"
+#import "Function/Assert/ItemPage.js"
 
 var target = UIATarget.localTarget();
 var app = target.frontMostApp();

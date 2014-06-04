@@ -423,3 +423,30 @@ Assert.check18BanScreenShowCorrect = function () {
     method.verifyEquals(submitButtonOn18Ban.name(), "已滿18歲進入");
     method.verifyEquals(staticTextsOn18Ban.name(), "18歲以上會員始可瀏覽及購買，若您未滿18歲請勿進入");
 };
+
+//pan
+Assert.buttonOnSidebarIsEnabled = function () {
+    $.delay(sleep);
+    for (var i = 0; i < 12; i++) {
+        var buttonOnSidebar = app.windows()[0].tableViews()[0].cells()[i].staticTexts()[0];
+        method.verifyEquals(1, buttonOnSidebar.isEnabled());
+    };  
+};
+
+Assert.checkStoreName = function(i){
+    $.delay(sleep);
+    var finalStoreName = app.windows()[0].collectionViews()[0].cells()[0].staticTexts()[0].name();
+    method.verifyEquals(i, finalStoreName);
+};
+
+Assert.checkStoreCategoryCellsShowCorrectly = function () {
+    var StoreCategoryCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length<21;
+    $.delay(5);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<21);
+};
+
+Assert.checkStoreCategoryTabIsEnabled = function () {
+    $.delay(sleep);
+    var storeCategoryTabIsEnabled = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    method.verifyEquals(1, storeCategoryTabIsEnabled.isEnabled());
+};

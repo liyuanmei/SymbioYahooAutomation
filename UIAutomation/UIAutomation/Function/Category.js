@@ -508,3 +508,239 @@ test("[1938045] check 共xxxx筆結果.", function () {
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
+
+test("[1938061] check 清除 button show correct on advanced bar.", function (){
+    //Go 商品 screen.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //tap Advance button
+    Action.tapAdvancedButton();
+
+    //Tap 篩選 button.
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "優良商店" and verify 清除 button show up.
+    Action.tapButtonOnFilterAttributeScreen(8);
+
+    var attributeCollectView = app.mainWindow().collectionViews()[1];
+    var attributeCollectViewOriginY = Action.getElementsOriginYString(attributeCollectView);
+    var attributeCollectViewOriginX = Action.getElementsOriginXString(attributeCollectView);
+
+    var clearButton = app.mainWindow().buttons()["清除"];
+    var clearButtonOriginY = Action.getElementsOriginYString(clearButton);
+    var clearButtonOriginX = Action.getElementsOriginXString(clearButton);
+
+    assertTrue(clearButtonOriginY > attributeCollectViewOriginY && clearButtonOriginX === attributeCollectViewOriginX, "Clear button location not correct.");
+
+    //Tap cancel button on Advance bar.
+    Action.tapCancelButtonInAdvancedBar();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938062] tap clear button can clear to user input.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //tap advanced button.
+    Action.tapAdvancedButton();
+
+    //go to 篩選 tab.
+    Action.tapButtonsInAdvancedBar(2);
+
+    //verify the default price is 100000 +
+    Assert.checkPriceBarShowCorrect("100000+ 元");
+
+    //drag price bar to 1020 price.    
+    app.mainWindow().dragInsideWithOptions({startOffset: {x: 0.92, y: 0.29}, endOffset:{x: 0.234, y: 0.29}});
+    
+    //Verify price show correct after dragging.
+    Assert.checkPriceBarShowCorrect("1020 元");
+
+    //Tap clear button
+    Action.tapClearButtonOnFilterScreen();
+
+    //Verify price bar restore to default value.
+    Assert.checkPriceBarShowCorrect("100000+ 元");
+
+    //Tap submit button and restore application to default location.
+    Action.tapSubmitButtonOnAdvanceScreen();
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938065] product items in list should show correct after user adjust price bar.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //tap advanced button.
+    Action.tapAdvancedButton();
+
+    //go to soring tab.
+    Action.tapButtonsInAdvancedBar(0);
+
+    //select price from high to low.
+    Action.selectOptionOnSortingTab("價錢高到低");
+    $.delay(sleep);
+
+    //verify price value show correct.
+    //the first parameter is product index and the second parameter is price index in product cell.
+    Assert.checkPriceValueShowLessThan(1, 3, "100000000");
+
+    //go to advanced screen and drag price bar to 1020.
+    //tap advanced button.
+    Action.tapAdvancedButton();
+
+    //go to 篩選 tab.
+    Action.tapButtonsInAdvancedBar(2);
+
+    //verify the default price is 100000 +
+    Assert.checkPriceBarShowCorrect("100000+ 元");
+
+    //drag price bar to 1020 price.    
+    app.mainWindow().dragInsideWithOptions({startOffset: {x: 0.92, y: 0.29}, endOffset:{x: 0.234, y: 0.29}});
+    
+    //Verify price show correct after dragging.
+    Assert.checkPriceBarShowCorrect("1020 元");
+
+    //Tap submit button.
+    Action.tapSubmitButtonOnAdvanceScreen();
+    $.delay(sleep);
+
+    //verify price value show correct.
+    Assert.checkPriceValueShowLessThan(1, 3, "100000000");
+
+    //Restore application to default loaction.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938084] check able to tap 超商取貨 and untap 超商取貨", function () {
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "超商取貨" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(4);
+    Assert.filterAttributeButtonIsTapped(4);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(4);
+    Assert.filterAttributeButtonIsNotTapped(4);
+
+    //Tap cancel button on Advance bar.
+    Action.tapCancelButtonInAdvancedBar();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938090] check able to tap 有圖片 and untap 有圖片", function () {
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "有圖片" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(7);
+    Assert.filterAttributeButtonIsTapped(7);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(7);
+    Assert.filterAttributeButtonIsNotTapped(7);
+
+    //Tap cancel button on Advance bar.
+    Action.tapCancelButtonInAdvancedBar();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938102] check favorites icon show correct.", function () {
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //Verify favorites icon show correct, this function need passing product index parameters.
+    Assert.favoritesIconShowCorrect(3);
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938103] check log in window show after unregister user tap favorites icon.", function () {
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    obj.scrollDowns(1);
+     
+    //tap favorites icon, after tapped log in window show up.
+    Action.tapFavoritesIcon(1);
+
+    //Verify login window show correct.
+    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938104] login user able to add product to favorites", function () {
+    Action.doUserLogin("mobileappstore3", "A1234qwer");
+
+    //go to production item list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //Tap favorites icon add a production to favorites.
+    Action.tapFavoritesIcon(1);
+    var productName = app.mainWindow().collectionViews()[0].cells()[1].name();
+
+    //got my favorites screen.
+    Action.tapButtonOnTabBar(4);
+    Action.goMayFavoritesScreen();
+
+    //Assert product show in My favorites screen.
+    Assert.productAddedToMyFavoritesScreen(productName);
+
+    //Remove favorites item.
+    Action.tapButtonOnTabBar(2);
+    Action.tapFavoritesIcon(1);
+
+    //Verify favorites item successful removed.
+    Action.tapButtonOnTabBar(4);
+    $.delay(3);
+    Assert.productRemovedFromMyFavoritesScreen(productName);
+     
+    //Restore app to default screen.
+    Action.goBack();
+    Action.tapButtonOnTabBar(2);
+    Action.goBack();
+    Action.goDiscoveryStream();
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+
+    Action.tapButtonOnTabBar(4);
+    Action.removeLoginHistory("mobileappstore3");
+});

@@ -408,3 +408,106 @@ Action.tapStoreNameOnCategory =  function () {
     method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].tap);
     tapStoreNameOnCategory.tap();
 };  
+
+//pan
+Action.tapButtonOnMyUser = function (i) {
+    $.delay(sleep);
+    var buttonOnMyUser = app.mainWindow().tableViews()[0].cells()[i];
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[i].tap);
+    buttonOnMyUser.tap();
+};
+
+Action.selectCategoryOnEditFavorite = function () {
+    $.delay(sleep);
+    for (var i = 0; i < 12; i++) {
+        $.delay(1);
+        var categoryOnEditFavorite = app.mainWindow().collectionViews()[0].cells()[i];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[i].tap);
+        categoryOnEditFavorite.tap();
+    };    
+};
+
+Action.tapMenuButton = function () {
+    $.delay(sleep);
+    var menuButton = app.navigationBar().buttons()[1];
+    method.checkInstanceExists(app.navigationBar().buttons()[1].tap);
+    menuButton.tap();
+};
+
+Action.tapButtonOnMenu = function (i) {
+    $.delay(sleep);
+    var buttonOnMenu = app.windows()[0].tableViews()[0].cells()[i];
+    method.checkInstanceExists(app.windows()[0].tableViews()[0].cells()[i].tap);
+    buttonOnMenu.tap();
+};
+
+Action.goBackWhenBackMenu = function () {
+    $.delay(sleep);
+    var backWhenBackMenu = app.windows()[0].navigationBar().buttons()[1]; 
+    method.checkInstanceExists(app.windows()[0].navigationBar().buttons()[1].tap);
+    backWhenBackMenu.tap();
+};
+
+Action.verifyEditingFavoriteCategories = function () {
+    $.delay(sleep);
+    var menuButton = app.navigationBar().buttons()[1];
+    menuButton.tap();
+    $.delay(sleep);
+    
+    Action.tapButtonOnMenu(1);
+    Assert.buttonOnSidebarIsEnabled();
+    Action.goBackWhenBackMenu();
+
+    menuButton.tap();
+};
+
+Action.tapFavoriteStoreIcon = function () {
+    $.delay(sleep);
+    var FavoriteStoreIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[0];
+    method.checkInstanceExists(app.windows()[0].collectionViews()[0].cells()[1].buttons()[0].tap);
+    FavoriteStoreIcon.tap();
+};
+
+Action.tapFirstViewsOnFavoriteStorePage = function () {
+    $.delay(sleep);
+    var firstViewsOnFavoriteStorePage = app.windows()[0].collectionViews()[0].cells()[0];
+    method.checkInstanceExists(app.windows()[0].collectionViews()[0].cells()[0].tap);
+    firstViewsOnFavoriteStorePage.tap();
+};
+
+Action.tapCancelFavoriteStoreIcon = function () {
+    $.delay(sleep);
+    var cancelFavoriteStoreIcon = app.navigationBar().buttons()[3];
+    method.checkInstanceExists(app.navigationBar().buttons()[3].tap);
+    cancelFavoriteStoreIcon.tap();
+};
+
+Action.tapBackOnFavoriteStorePage = function () {
+    var backOnFavoriteStorePage = app.navigationBar().buttons()[2];
+    method.checkInstanceExists(app.navigationBar().buttons()[2].tap);
+    backOnFavoriteStorePage.tap();
+};
+
+Action.tapFirstViewsOnFavoriteStorePageWithOutLogin = function () {
+    var firstViewsOnFavoriteStorePageWithOutLogin = app.windows()[0].collectionViews()[0];
+    method.checkInstanceExists(app.windows()[0].collectionViews()[0].tapWithOptions);
+    //This action is tapped store views
+    firstViewsOnFavoriteStorePageWithOutLogin.tapWithOptions({
+        tapOffset: {
+            x: 0.46,
+            y: 0.52
+        }
+    });
+};
+
+Action.tapStoreCategoryTab = function () {
+    var storeCategoryTab = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].buttons()[0].tap);
+    storeCategoryTab.tap();
+};
+
+Action.tapStoreCommodityTab = function () {
+    var storeCommodityTab = app.mainWindow().collectionViews()[0].cells()[1].buttons()[1];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].buttons()[1].tap);
+    storeCommodityTab.tap();
+};
