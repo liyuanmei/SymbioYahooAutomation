@@ -1,6 +1,5 @@
 package com.yahoo.mobile.client.android.ecstore.test.Category;
 
- 
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.view.View;
@@ -412,6 +411,292 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 	}
 
-		
+	// 1938072:check “有影音” can changed to unselected.
+	public void testHasVideoMode() throws Exception {
+
+		enterClassification();
+
+		// Go to advanced sort page.
+		Action.enterAdvancedSortPage(solo);
+
+		// Get "hasVideo" button.
+		ToggleButton tb = (ToggleButton) solo.getView("tb_hasvideo");
+
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertTrue(" '有影音'  button unselected.", tb.isChecked());
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertFalse("'有影音'  button  selected.", tb.isChecked());
+
+	}
+
+	// 1938075:check “0利率” can changed to unselected.
+	public void testZeroInterestMode() throws Exception {
+
+		enterClassification();
+
+		// Go to advanced sort page.
+		Action.enterAdvancedSortPage(solo);
+
+		// Get "0 Interest" button.
+		ToggleButton tb = (ToggleButton) solo.getView("tb_cczeroint");
+
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertTrue(" '0利率'  button unselected.", tb.isChecked());
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertFalse("'0利率'  button  selected.", tb.isChecked());
+	}
+
+	// 1938078:check “可分期” can changed to unselected.
+	public void testInstallmentsMode() throws Exception {
+
+		enterClassification();
+
+		// Go to advanced sort page.
+		Action.enterAdvancedSortPage(solo);
+
+		// Get "Installments" button.
+		ToggleButton tb = (ToggleButton) solo.getView("tb_ccinstall");
+
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertTrue(" '可分期'  button unselected.", tb.isChecked());
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertFalse("'可分期'  button  selected.", tb.isChecked());
+
+	}
+
+	// 1938081:check “超商付款” can changed to unselected.
+	public void testSupermarketPaymentMode() throws Exception {
+
+		enterClassification();
+
+		// Go to advanced sort page.
+		Action.enterAdvancedSortPage(solo);
+
+		// Get "Payment" button.
+		ToggleButton tb = (ToggleButton) solo.getView("tb_cvs_pay");
+
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertTrue(" '超商付款'  button unselected.", tb.isChecked());
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertFalse("'超商付款'  button  selected.", tb.isChecked());
+
+	}
+
+	// 1938084:check “超商取貨” can changed to unselected.
+	public void testSupermarketPickupMode() throws Exception {
+
+		enterClassification();
+
+		// Go to advanced sort page.
+		Action.enterAdvancedSortPage(solo);
+
+		// Get "Pickup" button.
+		ToggleButton tb = (ToggleButton) solo.getView("tb_cvs_pick");
+
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertTrue(" '超商取貨'  button unselected.", tb.isChecked());
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertFalse("'超商取貨'  button  selected.", tb.isChecked());
+
+	}
+
+	// 1938087:check “有現貨” can changed to unselected.
+	public void testHasStockMode() throws Exception {
+		enterClassification();
+
+		// Go to advanced sort page.
+		Action.enterAdvancedSortPage(solo);
+
+		// Get "Has Stock" button.
+		ToggleButton tb = (ToggleButton) solo.getView("tb_hasstock");
+
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertTrue(" '有現貨'  button unselected.", tb.isChecked());
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertFalse("'有現貨'  button  selected.", tb.isChecked());
+
+	}
+
+	// 1938090:check “有圖片” can changed to unselected.
+	public void testHasImageMode() throws Exception {
+		enterClassification();
+
+		// Go to advanced page.
+		Action.enterAdvancedSortPage(solo);
+
+		// Get "HasImage" button.
+		ToggleButton tb = (ToggleButton) solo.getView("tb_hasimage");
+
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertTrue(" '有圖片'  button unselected.", tb.isChecked());
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertFalse("'有圖片'  button  selected.", tb.isChecked());
+
+	}
+
+	// 1938093:check “優良商店” can changed to unselected.
+	public void testSuperiorStoreMode() throws Exception {
+
+		enterClassification();
+
+		// Go to advanced page.
+		Action.enterAdvancedSortPage(solo);
+
+		// Get "SuperiorStore" button.
+		ToggleButton tb = (ToggleButton) solo.getView("tb_issuperior");
+
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertTrue(" '優良商店'  button unselected.", tb.isChecked());
+		solo.clickOnView(tb);
+		solo.sleep(3000);
+		assertFalse("'優良商店'  button  selected.", tb.isChecked());
+
+	}
+
+	// 1938100:Check the commodity price display.
+	public void testCommodityPriceDisplay() throws Exception {
+
+		enterClassification();
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		TextView price;
+		try {
+			price = (TextView) solo.getView("listitem_productlist_price", 0);
+		} catch (AssertionError e) {
+			enterClassification();
+			Action.clickText(solo, ValidationText.Commodity);
+			price = (TextView) solo.getView("listitem_productlist_price", 0);
+		}
+		String sr = price.getText().toString();
+
+		// Judgment whether the price matches the format of '$xxx'.
+		boolean isNum = sr.matches("[$][0-9]+");
+
+		assertTrue(
+				" Cannot find the commodity price or price format is incorrect! ",
+				isNum);
+
+	}
+
+	// 1938101:Check the Shops score display.
+	public void testShopsScoreDisplay() throws Exception {
+
+		enterClassification();
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		TextView price = null;
+		try {
+			price = (TextView) solo.getView(
+					"listitem_productlist_store_rating", 0);
+		} catch (AssertionError e) {
+			enterClassification();
+			Action.clickText(solo, ValidationText.Commodity);
+			solo.sleep(3000);
+		}
+		String sr = price.getText().toString();
+
+		// Judgment whether the price matches the format of 'x.x'.
+		boolean isNum = sr.matches("^[0-9].[0-9]+$");
+
+		assertTrue(
+				" Cannot find the shops score or score format is incorrect! ",
+				isNum);
+
+	}
+
+	// 1938103:Check to click the start icon without login.
+	public void testStarIconWithoutLogin() throws Exception {
+
+		// Account.accountLogIn(solo);
+		Account.JudgementAccountWithoutLogin(solo);
+		// Account.accountLogIn(solo);
+		enterClassification();
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		View star = (View) solo.getView("star_button", 0);
+		solo.clickOnView(star);
+		solo.sleep(3000);
+
+		// Get toast text.
+		TextView toastTextView = (TextView) solo.getView("message", 0);
+		if (toastTextView != null) {
+			String toastText = toastTextView.getText().toString();
+			assertEquals(toastText, ValidationText.Please_login_account);
+		}
+	}
+
+	// 1938104:Check to click the start icon when login.
+	public void testStartIconWhenLogin() throws Exception {
+
+		Account.JudgementAccountLogin(solo);
+		enterClassification();
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		Action.clickStarIconNote(solo);
+	}
+
+	// 1938113:Check the commodity price displays in grid view.
+	public void testCommodityPriceDisplayInGridView() throws Exception {
+
+		enterClassification();
+
+		// Change the item view to photo grid view
+		Action.setSmallPhotoViewStyleAfterSearch(solo);
+
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		TextView price = (TextView) solo.getView("listitem_productlist_price",
+				0);
+		String sr = price.getText().toString();
+
+		// Judgment whether the price matches the format of '$xxx'.
+		boolean isNum = sr.matches("[$][0-9]+");
+
+		assertTrue(
+				" Cannot find the commodity price or price format is incorrect! ",
+				isNum);
+		// Restore to list view.
+		Action.setListViewStyleAfterSearch(solo);
+	}
+
+	// 1938114:Check the Shops score displays in grid view.
+	public void testShopsScoreDisplayInGridView() throws Exception {
+
+		enterClassification();
+
+		// Change the item view to photo grid view
+		Action.setSmallPhotoViewStyleAfterSearch(solo);
+
+		solo.waitForText(ValidationText.Commodity, 1, 3000);
+		solo.clickOnText(ValidationText.Commodity);
+		solo.sleep(3000);
+		TextView price = (TextView) solo.getView(
+				"listitem_productlist_store_rating", 0);
+		String sr = price.getText().toString();
+
+		// Judgment whether the price matches the format of 'x.x'. boolean isNum
+		isNum = sr.matches("^[0-9].[0-9]+$");
+
+		assertTrue(
+				" Cannot find the shops score or score format is incorrect! ",
+				isNum);
+
+		// Restore to list view. Action.setListViewStyleAfterSearch(solo);
+	}
 
 }
