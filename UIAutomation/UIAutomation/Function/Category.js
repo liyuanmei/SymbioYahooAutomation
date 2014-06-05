@@ -705,7 +705,7 @@ test("[1938103] check log in window show after unregister user tap favorites ico
 });
 
 test("[1938104] login user able to add product to favorites", function () {
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 
     //go to production item list.
     Action.goApparelCategory();
@@ -741,6 +741,516 @@ test("[1938104] login user able to add product to favorites", function () {
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
+});
+
+//6.5
+test("[1938049] check advanced buttons order.", function () {
+    //Go 商品 screen.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //tap Advance button
+    Action.tapAdvancedButton();
+
+    //Verify advance buttons order.
+    Assert.advancedButtonsOrder();
+
+    //Tap cancel button on Advance bar.
+    Action.tapCancelButtonInAdvancedBar();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938097] on item listing-list view check store name show correct.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(4);
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify successful switch to listing view.
+    Assert.successfulSwitchToListingView();
+
+    //get store name X and Y.
+    var storeName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()["Miu-Star"];
+    var storeNameX = Action.getElementsOriginXString(storeName);
+    var storeNameY = Action.getElementsOriginYString(storeName);
+
+    //get item cell X and Y
+    var itemCell = app.mainWindow().collectionViews()[0].cells()[1];
+    var itemCellX = Action.getElementsOriginXString(itemCell);
+    var itemCellY = Action.getElementsOriginYString(itemCell);
+
+    //The image on list view width should be 140 && (storeNameY - itemCellY) < 20
+    assertTrue(storeNameX == 140 && (storeNameY - itemCellY) < 20, "Store name not place at item image right side.");
+
+    //Go back to advanced bar switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938110] check store name is under the product image.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(sleep);
+    target.logElementTree();
+
+    //get first cell Y
+    var firstCell = app.mainWindow().collectionViews()[0].cells()[1];
+    var firstCellY = Action.getElementsOriginYString(firstCell);
+
+    //Get store name Y
+    var storeName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    var storeNameY = Action.getElementsOriginYString(storeName);
+
+    //Image height shoudl be 320.
+    assertTrue(10 < (storeNameY - firstCellY - 320) < 20, "Store name is not under the product image.");
+    $.delay(4);
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938112] able to navigate to item page through tap store name", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    Action.tapStoreNameOnCategory();
+    $.delay(sleep);
+
+    obj.scrollDowns(1);
+    $.delay(sleep);
+    
+    //Verify screen successful navigated to item page.
+    Assert.itemPageShowCorrect();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938114] check store rating place at store name right location.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(4);
+
+    //get store name and store rating X and Y
+    var storeName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    var storeNameX = Action.getElementsOriginXString(storeName);
+    var storeNameY = Action.getElementsOriginYString(storeName);
+
+    var storeRating = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[1];
+    var storeRatingX = Action.getElementsOriginXString(storeRating);
+    var storeRatingY = Action.getElementsOriginYString(storeRating);
+
+    //get store name width.
+    var storeNameWidth = Action.getElementsWidthString(storeName);
+
+    //verify rating number show correct.
+    Assert.storeRatingShowCorrect(1, 1);
+
+    //verify rating should place at store name right location.
+    assertTrue(0 < storeRatingX - storeNameX - storeNameWidth && storeRatingX - storeNameX - storeNameWidth < 10 && storeRatingY - 1 == storeNameY, "Store reting not at store name right location.");
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938113] check item price show correct.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(4);
+
+    //get product name and product price X and Y.
+    var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
+    var productNameX = Action.getElementsOriginXString(productName);
+    var productNameY = Action.getElementsOriginYString(productName);
+
+    var productPrice = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[3];
+    var productPriceX = Action.getElementsOriginXString(productPrice);
+    var productPriceY = Action.getElementsOriginYString(productPrice);
+
+    //get product name height
+    var productNameHeight = Action.getElementsHeightString(productName);
+    //verify product price show correct.
+    Assert.productPriceShowCorrect("Miu-Star", 3);
+
+    //Verify product price place under product name.
+    assertTrue(0 < productPriceY - productNameY - productNameHeight && productPriceY - productNameY - productNameHeight < 5 && productPriceX == productNameX, "Product price not place under product name.");
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938115] check favorites icon show correct with photo grid view.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(4);
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("小圖");
+    
+    //Verify successful switch to photo grid view.
+    Assert.successfulSwitchToPhotoGridView();
+
+    //verify favorites icon show on product cell.
+    Assert.favoritesIconShowCorrect(1);
+
+    //get product price X and Y.
+    var productPrice = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    var productPriceX = Action.getElementsOriginXString(productPrice);
+    var productPriceY = Action.getElementsOriginYString(productPrice);
+
+    //get favorites icon X and Y
+    var favoritesIcon = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    var favoritesIconX = Action.getElementsOriginXString(favoritesIcon);
+    var favoritesIconY = Action.getElementsOriginYString(favoritesIcon);
+
+    //Verify favorites icon place at product price right side.
+    assertTrue(favoritesIconX < productPriceX && (productPriceY - favoritesIconY) < 20, "favorites icon not at product price right side.");
+
+    //Go back to advanced bar switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938116] on photo grid view unregister user tap favorites icon login window should open.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(4);
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("小圖");
+
+    //Verify successful switch to photo grid view.
+    Assert.successfulSwitchToPhotoGridView();
+    
+    //tap favorites icon, after tapped log in window show up.
+    Action.tapFavoritesIcon(1);
+
+    //Verify login window show correct.
+    Assert.logInWindowShowCorrectOnAddAccount();
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    //Go back to advanced bar switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938117] On photo grid view register user able to add product to his favorites list.", function() {
+    //Do login
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+
+    //go to production item list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //Store product name.
+    $.delay(sleep);
+    var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("小圖");
+
+    //Verify successful switch to photo grid view.
+    Assert.successfulSwitchToPhotoGridView();
+
+    //Tap favorites icon add a production to favorites.
+    Action.tapFavoritesIcon(1);
+
+    //got my favorites screen.
     Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore3");
+    Action.goMayFavoritesScreen();
+
+    //Assert product show in My favorites screen.
+    Assert.productAddedToMyFavoritesScreen(productName);
+
+    //Remove favorites item.
+    Action.tapButtonOnTabBar(2);
+    Action.tapFavoritesIcon(1);
+
+    //Verify favorites item successful removed.
+    Action.tapButtonOnTabBar(4);
+    $.delay(3);
+    Assert.productRemovedFromMyFavoritesScreen(productName);
+     
+    //Restore app to default screen.
+    Action.goBack();
+    Action.tapButtonOnTabBar(2);
+
+    //Go back to advanced bar switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
+});
+
+test("[1938124] on item listing-list view tap store name page should navigate to item details page.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(4);
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify successful switch to listing view.
+    Assert.successfulSwitchToListingView();
+
+    //Tap store name to navigate to item details page.
+    var storeNameElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    var storeName = storeNameElement.name()
+    $.delay(4);
+
+    Action.tapElementsOnScreen(storeNameElement);
+
+    //Verify screen successful navigate to item details.
+    Assert.itemPageShowCorrect(storeName);
+
+    //Back to list screen.
+    Action.goBack();
+
+    //Switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Verify current view is large image.
+    Assert.successfulSwitchToLargeImageView();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938125] on item listing-list view check product price show correct.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(4);
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify successful switch to listing view.
+    Assert.successfulSwitchToListingView();
+
+    //Get product name X and Y
+    var productNameElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
+    var productNameElementX = Action.getElementsOriginXString(productNameElement);
+    var productNameElementY = Action.getElementsOriginYString(productNameElement);
+
+    //Get product name height
+    var productNameElementHeight = Action.getElementsHeightString(productNameElement);
+
+    //Get product price X and Y
+    var productPriceElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[3];
+    var productPriceElementX = Action.getElementsOriginXString(productPriceElement);
+    var productPriceElementY = Action.getElementsOriginYString(productPriceElement);
+
+    //verify product price should underneath the product name.
+    var productNameElementYPlusProductNameElementHeight = productNameElementY + productNameElementY;
+    assertTrue(productNameElementX == productPriceElementX && productPriceElementY > productNameElementYPlusProductNameElementHeight, "product price is not underneath the product name");
+
+    //Switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Verify current view is large image.
+    Assert.successfulSwitchToLargeImageView();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938126] on item listing-list view check product rating show correct.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(4);
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify successful switch to listing view.
+    Assert.successfulSwitchToListingView();
+
+    //Verify the value of rating is less than 10, if not fail.
+    Assert.storeRatingShowCorrect(1, 1);
+
+    //get store name X and Y.
+    var storeNameElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    var storeNameElementX = Action.getElementsOriginXString(storeNameElement);
+    var storeNameElementY = Action.getElementsOriginYString(storeNameElement);
+
+    //get store name width.
+    var storeNameElementWidth = Action.getElementsWidthString(storeNameElement);
+
+    //get store rating X and Y.
+    var storeRatingElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[1];
+    var storeRatingElementX = Action.getElementsOriginXString(storeRatingElement);
+    var storeRatingElementY = Action.getElementsOriginYString(storeRatingElement);
+
+    //Verify store rating should at store name right side.
+    var storeNmeXPlusStoreNameWidth = parseInt(storeNameElementX) + parseInt(storeNameElementWidth);
+    var restus = parseInt(storeRatingElementY) - parseInt(storeNameElementY);
+
+    assertTrue(storeRatingElementX > storeNmeXPlusStoreNameWidth && restus == 1, "Store rating not at sotre name right side.");
+
+    //Switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Verify current view is large image.
+    Assert.successfulSwitchToLargeImageView();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938127] on item listing-list view check favorites icon show correct.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(4);
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify successful switch to listing view.
+    Assert.successfulSwitchToListingView();
+
+    //Verify favorites icon show correct, this function need passing product index parameters.
+    Assert.favoritesIconShowCorrect(1);
+
+    //Get product price X and Y
+    var productPriceElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[3];
+    var productPriceElementX = Action.getElementsOriginXString(productPriceElement);
+    var productPriceElementY = Action.getElementsOriginYString(productPriceElement);
+
+    //Get product price width.
+    var productPriceElementWidth = Action.getElementsWidthString(productPriceElement);
+
+    //Get favorites icon X and Y
+    var favoritesElement = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    var favoritesElementX = Action.getElementsOriginXString(favoritesElement);
+    var favoritesElementY = Action.getElementsOriginYString(favoritesElement);
+
+    //verify favorites icon should at product price right side.
+    var productPriceXPlusProductPriceWidth = parseInt(productPriceElementX) + parseInt(productPriceElementWidth);
+
+    assertTrue(favoritesElementX > productPriceXPlusProductPriceWidth, "favorites icon not at product price right side.");
+
+    //Switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Verify current view is large image.
+    Assert.successfulSwitchToLargeImageView();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
 });

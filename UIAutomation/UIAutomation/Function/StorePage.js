@@ -32,7 +32,7 @@ test("[1959901] Verify stores categiry show correctly.", function () {
 test("[1959904] Verify user can check purchasing info from store page" , function () {
     Action.cleanSearches();
     $.delay(sleep);
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 
     Action.goApparelCategoryWhenShoppingCart();
     Action.goCommodityTab();
@@ -77,6 +77,6 @@ test("[1959904] Verify user can check purchasing info from store page" , functio
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore3");
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
 });

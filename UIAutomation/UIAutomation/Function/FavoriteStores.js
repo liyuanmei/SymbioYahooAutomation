@@ -1,6 +1,6 @@
 test("[1953649] verify Editing favorite categories is Synchronous with sidebar.", function () {
     Action.cleanSearches();
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     $.delay(5);
 
     //edit favorite categories
@@ -19,14 +19,14 @@ test("[1953649] verify Editing favorite categories is Synchronous with sidebar."
     //Log out and remove user login history
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore3");
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1959922] Verify user can access correct store page from recommendation.", function () {
     Action.cleanSearches();
     $.delay(sleep);
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 
     Action.tapButtonOnTabBar(1);
     $.delay(5);
@@ -43,8 +43,8 @@ test("[1959922] Verify user can access correct store page from recommendation.",
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore3");
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1959912] Verify there is an indicator to allow user login in",function (){
@@ -66,7 +66,7 @@ test("[1959886] Verify the page display when user is logged in and has no favori
     $.delay(sleep);
 
     //user login
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 
     //tap favorite button
     Action.tapButtonOnTabBar(1);
@@ -79,14 +79,14 @@ test("[1959886] Verify the page display when user is logged in and has no favori
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore3");
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1959888] Verify Just added favorite store can be displayed on my favorite stores tab.",function () {
     //do user login
     Action.cleanSearches();
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     $.delay(sleep);
 
     //add favorite store
@@ -113,6 +113,6 @@ test("[1959888] Verify Just added favorite store can be displayed on my favorite
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore3");   
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");   
 });

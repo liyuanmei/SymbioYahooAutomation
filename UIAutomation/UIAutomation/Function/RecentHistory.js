@@ -1,7 +1,7 @@
 test("[1900004] verify can browse recent items in「商品」tab ", function () {
     Action.cleanSearches();
     $.delay(sleep);
-    Action.doUserLogin("mobileappstore1", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore1", "A1234qwer");
 
     Action.addToRecentBrowse();
 
@@ -9,7 +9,7 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     Action.tapButtonOnTabBar(4);
 
     Action.goRecentBrowse();
-    $.delay(5);
+    $.delay(10);
 
     //Verify currently should have 20 items in screen.
     Assert.commodityItemsShowCount(21);
@@ -36,15 +36,15 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore1");
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore1");
 });
 
 test("[1900011]  verify settings screen." , function () {
     Action.cleanSearches();
     Action.cleanBrowsingHistory();
     $.delay(sleep);
-    Action.doUserLogin("mobileappstore1", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore1", "A1234qwer");
     $.delay(sleep);
 
     Action.tapCleanSearchOnSidebr(0);
@@ -78,6 +78,6 @@ test("[1900011]  verify settings screen." , function () {
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore1");
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore1");
 });

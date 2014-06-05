@@ -33,3 +33,4 @@
 #import "Function/StorePage.js"
 #import "Function/MyAccount.js"
 #import "Function/ItemPage.js"
+#import "Function/TabBar.js"

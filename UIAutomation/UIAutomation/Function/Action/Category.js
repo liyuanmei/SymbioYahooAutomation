@@ -511,3 +511,102 @@ Action.tapStoreCommodityTab = function () {
     method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].buttons()[1].tap);
     storeCommodityTab.tap();
 };
+//6.4
+Action.tapItemOnCategoryScreenWhenItemPage = function (itemName) {
+    $.delay(sleep);
+    var categoryItem = app.mainWindow().tableViews()[0].cells()[itemName];
+
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[itemName].tap);
+    categoryItem.tap();
+};
+
+Action.tapStoreOnShoppingCartPage = function () {
+    $.delay(sleep);
+    var storeOnShoppingCartPage = app.mainWindow().scrollViews()[0].webViews()[0].links()[4];
+    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].links()[4].tap);
+    storeOnShoppingCartPage.tap();
+};
+
+Action.tapShareOnProductPage = function () {
+    $.delay(sleep);
+    var slideTheScreen = app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.51, y:0.86}, endOffset:{x:0.98, y:0.04}, duration:1.7});
+    $.delay(10);
+    var shareOnProductPage = app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["分享商品"];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["分享商品"].tap);
+    shareOnProductPage.tap();
+};
+
+Action.tapCancelButtonOnShareViews = function () {
+    var cancelButtonOnShareViews = app.mainWindow().buttons()[0];
+    method.checkInstanceExists(app.mainWindow().buttons()[0].tap);
+    cancelButtonOnShareViews.tap();
+};
+
+Action.tapCollectionList = function () {
+    var collectionList = app.windows()[0].collectionViews()[0].cells()[0];
+    method.checkInstanceExists(app.windows()[0].collectionViews()[0].cells()[0].tap);
+    collectionList.tap();
+};
+
+Action.tapProductCollectionButton = function () {
+    var productCollectionButton = app.mainWindow().tableViews()[0].cells()[3];
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[3].tap);
+    productCollectionButton.tap();
+};
+
+Action.tapSale = function () {
+    var sale = app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["促銷活動, 2"];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["促銷活動, 2"].tap);
+    sale.tap();
+};
+
+Action.tapCancelOnShoppingCart = function () {
+    $.delay(sleep);
+    var tapConfirmOnShoppingCart = app.navigationBar().buttons()[0];
+    method.checkInstanceExists(app.navigationBar().buttons()[0].tap);
+    tapConfirmOnShoppingCart.tap();
+};
+
+//6.5
+Action.tapAddAccountOnLogin = function (sUserName, sPassword) {
+    $.delay(sleep);
+    var tabBar = app.mainWindow().tabBar();
+
+    //Tap login button on tabBar and login window should show.
+    try{
+        tabBar.buttons()[4].tap();
+        $.delay(sleep);
+
+        $.delay(sleep);
+        var tapAddAccountOnLogin = app.mainWindow().tableViews()[0].cells()["Add Account"];
+        method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()["Add Account"].tap);
+        tapAddAccountOnLogin.tap();
+    }
+    catch (err) {
+        UIALogger.logError("Login window could not open due to: " + err);
+    }
+    
+    $.delay(4);
+
+    //Enter username and password and click submit button.
+    var loginWindow = app.mainWindow();
+    var usernameField =loginWindow.textFields()[0];
+    var passwordField = loginWindow.secureTextFields()[0];
+
+    try{
+        usernameField.setValue(sUserName);
+        passwordField.setValue(sPassword);
+        
+        var loginButton = loginWindow.buttons()[0];
+        loginButton.tap();
+
+        $.delay(10);
+        
+        //Verify user log in successful
+        var userNameOnAccount = app.mainWindow().staticTexts()[1];
+        assertEquals(userNameOnAccount.name(), sUserName);
+    }
+    catch (err) {
+        UIALogger.logError("User unable to login due to: " + err);
+    }
+};

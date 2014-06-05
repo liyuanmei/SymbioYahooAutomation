@@ -450,3 +450,46 @@ Assert.checkStoreCategoryTabIsEnabled = function () {
     var storeCategoryTabIsEnabled = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
     method.verifyEquals(1, storeCategoryTabIsEnabled.isEnabled());
 };
+
+Assert.buttonOnSidebarIsEnabled = function () {
+    $.delay(sleep);
+    for (var i = 0; i < 12; i++) {
+        var buttonOnSidebar = app.windows()[0].tableViews()[0].cells()[i].staticTexts()[0];
+        method.verifyEquals(1, buttonOnSidebar.isEnabled());
+    };  
+};
+//6.4
+Assert.checkStoreNameWhenItemPage = function(i){
+    $.delay(sleep);
+    var finalStoreName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
+    method.verifyEquals(i, finalStoreName);
+};
+
+Assert.checkFavoriteStoreTabIsEnabled = function () {
+    $.delay(sleep);
+    var favoriteStoreTabIsEnabled = app.mainWindow().tabBar().buttons()[1];
+    method.verifyEquals(1, favoriteStoreTabIsEnabled.value());
+};
+
+Assert.checkShareButtonIsEnabled = function () {
+    $.delay(sleep);
+    var mail = app.mainWindow().scrollViews()[0].buttons()[0];
+    var fackBook = app.mainWindow().scrollViews()[0].buttons()[1];
+    method.verifyEquals(1, mail.isEnabled());
+    $.delay(sleep);
+    method.verifyEquals(1, fackBook.isEnabled());
+};
+
+Assert.checkStoreNameWhenFavoriteItem = function(i){
+    $.delay(sleep);
+    var finalStoreName = app.mainWindow().collectionViews()[0].cells()[0].staticTexts()[0].name();
+    method.verifyEquals(i, finalStoreName);
+};
+
+//6.5
+Assert.logInWindowShowCorrectOnAddAccount = function () {
+    $.delay(sleep);
+
+    var yahooAddAccount = app.mainWindow().tableViews()[0].cells()["Add Account"].staticTexts()[0].name();
+    method.verifyEquals("Add Account", yahooAddAccount);
+};

@@ -806,6 +806,7 @@ test("[1937982] check favorites icon show correct." , function () {
 });
 
 test("[1937983] check log in window show after unregister user tap favorites icon." , function () {
+    Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
@@ -822,13 +823,16 @@ test("[1937983] check log in window show after unregister user tap favorites ico
     Action.chooseCategoryBrowseMode("列表");
 
     $.delay(sleep);
-    target.logElementTree();
      
     //tap favorites icon, after tapped log in window show up.
     Action.tapFavoritesIcon(1);
+    $.delay(sleep);
+
+    target.logElementTree();
+    
 
     //Verify login window show correct.
-    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+    Assert.logInWindowShowCorrectOnAddAccount();
 
     //Tap exit button exit login window.
     Action.exitLoginWindow();
@@ -840,7 +844,7 @@ test("[1937983] check log in window show after unregister user tap favorites ico
 });
 
 test("[1937984] login user able to add product to favorites." , function () {
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     $.delay(sleep);
 
     Action.goCategoryWhenSearchSettingOpen();
@@ -893,8 +897,8 @@ test("[1937984] login user able to add product to favorites." , function () {
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore3");
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1937977] on item listing-list view check store name show correct." , function () {
@@ -1000,7 +1004,7 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
     Action.tapFavoritesIcon(1);
 
     //Verify login window show correct.
-    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+    Assert.logInWindowShowCorrectOnAddAccount();
 
     //Tap exit button exit login window.
     Action.exitLoginWindow();
@@ -1018,7 +1022,7 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
 });
 
 test("[1937997] On photo grid view register user able to add product to his favorites list" , function () {
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     $.delay(sleep);
 
     Action.goCategoryWhenSearchSettingOpen();
@@ -1079,8 +1083,8 @@ test("[1937997] On photo grid view register user able to add product to his favo
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore3");
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1938001] on item listing-Large photo view tap commodity picture  should navigate to item details page." , function () {
@@ -1270,7 +1274,7 @@ test("[1938008] check log in window show after unregister user tap favorites ico
     Action.tapFavoritesIcon(1);
 
     //Verify login window show correct.
-    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+    Assert.logInWindowShowCorrectOnAddAccount();
 
     //Tap exit button exit login window.
     Action.exitLoginWindow();
@@ -1442,7 +1446,7 @@ test("[1938030] check heart icon jump to login screen" , function () {
 
     Action.tapheartIconOnStoreWhenSRP();
     //Verify login window show correct.
-    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+    Assert.logInWindowShowCorrectOnAddAccount();
 
     //Tap exit button exit login window.
     Action.exitLoginWindow();
