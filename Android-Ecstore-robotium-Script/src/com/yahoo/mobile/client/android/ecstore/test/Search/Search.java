@@ -3,7 +3,9 @@ package com.yahoo.mobile.client.android.ecstore.test.Search;
 import java.util.ArrayList;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.robotium.solo.Solo;
 import com.yahoo.mobile.client.android.ecstore.Action.Action;
@@ -835,5 +837,95 @@ public class Search extends ActivityInstrumentationTestCase2 {
 		Assert.noResultDisplay(solo);
 
 	}
- 
+
+	// 1937893:The L5 layer classification click returns Icon
+	public void testClickReturnIconInL5Layer() throws Exception {
+
+		Action.enterToJacket(solo);
+		Action.clickText(solo, ValidationText.T_shirt);
+		Action.clickSearchButtonOnScreen(solo);
+		solo.goBack();
+		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
+		Log.i("number", searchText.getText().toString());
+		assertTrue("Not enter to T-shirt category!", searchText.getText()
+				.toString().equals(ValidationText.T_shirt));
+	}
+
+	// 1937894:The L6 layer classification click returns Icon
+	public void testClickReturnIconInL6Layer() throws Exception {
+
+		Action.enterToJacket(solo);
+		Action.clickText(solo, ValidationText.T_shirt);
+		Action.clickText(solo, ValidationText.Categories);
+		Action.clickText(solo, ValidationText.No_Sleeve_Shirt);
+		Action.clickSearchButtonOnScreen(solo);
+		solo.goBack();
+		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
+		Log.i("number", searchText.getText().toString());
+		assertTrue("Not enter to Sleeve Shirt category!", searchText.getText()
+				.toString().trim().equals(ValidationText.No_Sleeve_Shirt));
+	}
+
+	// 1937909:Search in L4 classification
+	public void testSearchInL4Layer() throws Exception {
+		Action.enterToJacket(solo);
+		Action.clickText(solo, ValidationText.Commodity);
+		Action.clickSearchButtonOnScreen(solo);
+
+		// element and test_data
+		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+
+		solo.sleep(3000);
+		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
+		Log.i("number", searchText.getText().toString());
+		assertTrue("Not enter to Jacket category!", searchText.getText()
+				.toString().trim().equals(ValidationText.Jacket));
+	}
+
+	// 1937898:click search icon
+	public void testClickSearchIcon() throws Exception {
+
+		solo.clickOnView(solo.getView("tab_text", 2));
+		Action.clickSearchButtonOnScreen(solo);
+		// element and test_data
+		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+		assertTrue("Not enter to search page.",
+				solo.searchText(ValidationText.Results_value));
+	}
+
+	// 1937899:Click return icon in L2 item list.
+	public void testClickReturnIconInL2() throws Exception {
+		Action.clickText(solo, ValidationText.All_Categories);
+		Action.clickText(solo, ValidationText.Apparel);
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.goBack();
+		Action.navigateToCategoryScreen(solo);
+	}
+
+	// 1937900:Click return icon in L3 item list.
+	public void testClickReturnIconInL3() throws Exception {
+		solo.clickOnView(solo.getView("tab_text", 2));
+		Action.clickText(solo, ValidationText.Apparel);
+		Action.clickText(solo, ValidationText.Popular_Women);
+		Action.clickText(solo, ValidationText.Categories);
+		solo.goBack();
+		int size = ValidationText.CostumeList.length;
+		for (int i = 0; i < size; i++) {
+			boolean textFound = solo.searchText(ValidationText.CostumeList[i]);
+			assertTrue(ValidationText.CostumeList[i] + " not found", textFound);
+		}
+
+	}
+
+	// 1937901:Click return icon in L4 item list.
+	public void testClickReturnIconInL4() throws Exception {
+		Action.enterToJacket(solo);
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.goBack();
+		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
+		Log.i("number", searchText.getText().toString());
+		assertTrue("Not back to fashion category!", searchText.getText()
+				.toString().trim().equals(ValidationText.Popular_Women));
+	}
+
 }

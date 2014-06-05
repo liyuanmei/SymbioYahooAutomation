@@ -2,156 +2,192 @@ package com.yahoo.mobile.client.android.ecstore.test;
 
 public class ValidationText {
 
-	public static final String skip = "ÂÔß^";
+	public static final String skip = "ç•¥é";
 
-	public static final String To_use = "Ç°ÍùÊ¹ÓÃ";
+	public static final String To_use = "å‰å¾€ä½¿ç”¨";
 
-	public static final String Personalized = "½¨Á¢‚€ÈË»¯µÄÙÎïówò";
+	public static final String Personalized = "å»ºç«‹å€‹äººåŒ–çš„è³¼ç‰©é«”é©—";
 
-	public static final String Search_All_categories = "ËÑŒ¤È«²¿·Öî";
+	public static final String Search_All_categories = "æœå°‹å…¨éƒ¨åˆ†é¡";
 
-	public static final String News = "×îĞÂ„Ó‘B";
+	public static final String News = "æœ€æ–°å‹•æ…‹";
 
-	public static final String Dong = "–|";
+	public static final String Dong = "æ±";
 	
-	public static final String Dong_Jing = "–|¾©ÖøÒÂ";
-
-	public static final String Apparel = "·şï—";
-
-	public static final String Popular_Women = "Á÷ĞĞÅ®Ñb";
-
-	public static final String Jacket = "ÉÏÒÂ";
-
-	public static final String Commodity = "ÉÌÆ·";
-
-	public static final String Search_Top = "ËÑŒ¤ÉÏÒÂ";
-
-	public static final String Search_Apparel = "ËÑŒ¤·şï—";
+	public static final String Dong_J = "æ±äº¬";
 	
-	public static final String Search = "ËÑŒ¤";
+	public static final String Dong_Jing = "æ±äº¬è‘—è¡£";
+
+	public static final String Apparel = "æœé£¾";
+
+	public static final String Popular_Women = "æµè¡Œå¥³è£";
+
+	public static final String Jacket = "ä¸Šè¡£";
+
+	public static final String T_shirt = "Tæ¤";
 	
-	public static final String Search_recorder = "ËÑŒ¤Ó›ä›";
+	public static final String No_Sleeve_Shirt = "ç„¡è¢–Tæ¤";
 	
-	public static final String Search_clean = "Çå³ıËÑŒ¤Ó›ä›";
+	public static final String Commodity = "å•†å“";
 
-	public static final String All_Categories = "È«²¿·Öî";
+	public static final String Search_Top = "æœå°‹ä¸Šè¡£";
 
-	public static final String Categories = "·Öî";
-
-	public static final String OK = "´_¶¨";
-
-	public static final String Setting = "ÔO¶¨";
-
-	public static final String Clear_Search_History = "Çå³ıËÑŒ¤Ó›ä›";
-
-	public static final String Results_value = "¹P½Y¹û";
+	public static final String Search_Apparel = "æœå°‹æœé£¾";
 	
-	public static final String Shop = "ÉÌµê";
+	public static final String Search = "æœå°‹";
+	
+	public static final String Recent_Browse = "æœ€è¿‘ç€è¦½";
+	
+	public static final String Browse_Record = "ç€è¦½è¨˜éŒ„";
+	
+	public static final String Clean_Browse_Record = "æ¸…é™¤ç€è¦½è¨˜éŒ„";
+	
+	public static final String Search_recorder = "æœå°‹è¨˜éŒ„";
+	
+	public static final String Search_clean = "æ¸…é™¤æœå°‹è¨˜éŒ„";
 
-	public static final String Please_login_account = "ÕˆÏÈµÇÈë¤Ì–";
+	public static final String All_Categories = "å…¨éƒ¨åˆ†é¡";
 
-	public static final String Has_added_collection = "ÒÑ¼ÓÈëÉÌÆ·ÊÕ²Ø";
+	public static final String Categories = "åˆ†é¡";
 
-	public static final String Has_removed_collection = "´ËÉÌÆ·ÊÕ²ØÒÑÒÆ³ı";
+	public static final String OK = "ç¢ºå®š";
+	
+	public static final String Special = "â€˜";
 
-	public static final String Has_added_Commodity = "ÒÑ¼ÓÈë×îÛÉÌµê";
+	public static final String Setting = "è¨­å®š";
 
-	public static final String Has_removed_Commodity = "´Ë×îÛÉÌµêÒÑÒÆ³ı";
+	public static final String Clear_Search_History = "æ¸…é™¤æœå°‹è¨˜éŒ„";
 
-	public static final String Version_Update = "°æ±¾¸üĞÂ";
+	public static final String Results_value = "ç­†çµæœ";
+	
+	public static final String Shop = "å•†åº—";
 
-	public static final String Sorry_Text = "ºÜ±§Ç¸";
+	public static final String Please_login_account = "è«‹å…ˆç™»å…¥å¸³è™Ÿ";
+	
+	public static final String Product_Collection = "å•†å“æ”¶è—";
 
-	public static final String Favorite_Stores = "×îÛÉÌµê";
+	public static final String Has_added_collection = "å·²åŠ å…¥å•†å“æ”¶è—";
 
-	public static final String Shopping_Cart = "ÙÎïÜ‡";
+	public static final String Has_removed_collection = "æ­¤å•†å“æ”¶è—å·²ç§»é™¤";
 
-	public static final String My_Account = "ÎÒµÄ¤‘ô";
+	public static final String Has_added_Commodity = "å·²åŠ å…¥æœ€æ„›å•†åº—";
 
-	public static final String Beauty = "ÃÀŠy";
+	public static final String Has_removed_Commodity = "æ­¤æœ€æ„›å•†åº—å·²ç§»é™¤";
 
-	public static final String Shoes_Bags_Accessories = "Ğ¬°üÅäï—";
+	public static final String Version_Update = "ç‰ˆæœ¬æ›´æ–°";
 
-	public static final String Computers_Peripherals = "ëŠÄX/ßLß…";
+	public static final String Sorry_Text = "å¾ˆæŠ±æ­‰";
 
-	public static final String Mommy_Baby = "‹ŒßäŒšØ";
+	public static final String Favorite_Stores = "æœ€æ„›å•†åº—";
 
-	public static final String HomeAppliances_AV = "¼ÒëŠ/Ò•Â ";
+	public static final String Shopping_Cart = "è³¼ç‰©è»Š";
 
-	public static final String Gourmet_Health_Beverage = "ÃÀÊ³/\n±£½¡/ï‹ÁÏ";
+	public static final String My_Account = "æˆ‘çš„å¸³æˆ¶";
 
-	public static final String Gourmet_Health_Beverage2 = "ÃÀÊ³/±£½¡/ï‹ÁÏ";
+	public static final String Beauty = "ç¾å¦";
 
-	public static final String Camera_Mobile_Toys = "Ïà™C/\nÊÖ™C/Íæ¾ß";
+	public static final String Shoes_Bags_Accessories = "é‹åŒ…é…é£¾";
 
-	public static final String Camera_Mobile_Toys2 = "Ïà™C/ÊÖ™C/Íæ¾ß";
+	public static final String Computers_Peripherals = "é›»è…¦/é€±é‚Š";
 
-	public static final String Medical_Commodity_pet = "át¯Ÿ/\nÈÕÓÃÆ·/Œ™Îï";
+	public static final String Mommy_Baby = "åª½å’ªå¯¶è²";
 
-	public static final String Medical_Commodity_pet2 = "át¯Ÿ/ÈÕÓÃÆ·/Œ™Îï";
+	public static final String HomeAppliances_AV = "å®¶é›»/è¦–è½";
 
-	public static final String Home_Bedding_Furniture = "¾Ó¼Ò/\nŒ‹¾ß/‚í¾ã";
+	public static final String Gourmet_Health_Beverage = "ç¾é£Ÿ/\nä¿å¥/é£²æ–™";
 
-	public static final String Home_Bedding_Furniture2 = "¾Ó¼Ò/Œ‹¾ß/‚í¾ã";
+	public static final String Gourmet_Health_Beverage2 = "ç¾é£Ÿ/ä¿å¥/é£²æ–™";
 
-	public static final String Sports_Outdoor_Recreation = "ß\„Ó/\n‘ôÍâ/Ğİéf";
+	public static final String Camera_Mobile_Toys = "ç›¸æ©Ÿ/\næ‰‹æ©Ÿ/ç©å…·";
 
-	public static final String Sports_Outdoor_Recreation2 = "ß\„Ó/‘ôÍâ/Ğİéf";
+	public static final String Camera_Mobile_Toys2 = "ç›¸æ©Ÿ/æ‰‹æ©Ÿ/ç©å…·";
 
-	public static final String Books_Stationery_Video = "ˆD•ø/\nÎÄ¾ß/Ó°Òô";
+	public static final String Medical_Commodity_pet = "é†«ç™‚/\næ—¥ç”¨å“/å¯µç‰©";
 
-	public static final String Books_Stationery_Video2 = "ˆD•ø/ÎÄ¾ß/Ó°Òô";
+	public static final String Medical_Commodity_pet2 = "é†«ç™‚/æ—¥ç”¨å“/å¯µç‰©";
 
-	public static final String Wishlist_Favorite_Store = "ÒªÊÕ²Ø×îÛÉÌµê£¿";
+	public static final String Home_Bedding_Furniture = "å±…å®¶/\nå¯¢å…·/å‚¢ä¿±";
 
-	public static final String Not_Collection_Any_Commodity = "Äãß€›]ÊÕ²ØÈÎºÎÉÌÆ·à¸";
+	public static final String Home_Bedding_Furniture2 = "å±…å®¶/å¯¢å…·/å‚¢ä¿±";
 
-	public static final String Inflatable_Doll = "³äÆøÍŞÍŞ";
+	public static final String Sports_Outdoor_Recreation = "é‹å‹•/\næˆ¶å¤–/ä¼‘é–’";
 
-	public static final String New_Add_Account = "ĞÂÔö¤Ì–";
+	public static final String Sports_Outdoor_Recreation2 = "é‹å‹•/æˆ¶å¤–/ä¼‘é–’";
 
-	public static final String Create_Account = "½¨Á¢¤Ì–";
+	public static final String Books_Stationery_Video = "åœ–æ›¸/\næ–‡å…·/å½±éŸ³";
 
-	public static final String Log_In = "µÇÈë";
+	public static final String Books_Stationery_Video2 = "åœ–æ›¸/æ–‡å…·/å½±éŸ³";
 
-	public static final String Log_Out = "µÇ³ö";
+	public static final String Wishlist_Favorite_Store = "è¦æ”¶è—æœ€æ„›å•†åº—ï¼Ÿ";
+
+	public static final String Not_Collection_Any_Commodity = "ä½ é‚„æ²’æ”¶è—ä»»ä½•å•†å“å–”";
+
+	public static final String Inflatable_Doll = "å……æ°”å¨ƒå¨ƒ";
+
+	public static final String New_Add_Account = "æ–°å¢å¸³è™Ÿ";
+
+	public static final String Create_Account = "å»ºç«‹å¸³è™Ÿ";
+
+	public static final String Log_In = "ç™»å…¥";
+
+	public static final String Log_Out = "ç™»å‡º";
 
 	public static final String apple = "iphone";
-
-	public static final String Add_Shopping_Cart = "¼ÓÈëÙÎïÜ‡";
-
-	public static final String Already_Add_Shopping_Cart = "ÒÑ¼ÓÈëÙÎïÜ‡";
-
-	public static final String Own_Shopping_Cart = "±¾µêÙÎïÜ‡";
 	
-	public static final String See_All_Store_Product = "¿´±¾µê¼ÒÈ«²¿ÉÌÆ·";
+	public static final String Add_Shopping_Cart = "åŠ å…¥è³¼ç‰©è»Š";
+
+	public static final String Maybe_Like = "ä½ å¯èƒ½æœƒå–œæ­¡";
+
+	public static final String Already_Add_Shopping_Cart = "å·²åŠ å…¥è³¼ç‰©è»Š";
+
+	public static final String Own_Shopping_Cart = "æœ¬åº—è³¼ç‰©è»Š";
 	
-	public static final String one = "Ò»Ò»¶ş";
+	public static final String See_All_Store_Product = "çœ‹æœ¬åº—å®¶å…¨éƒ¨å•†å“";
 	
-	public static final String two = "Ò»Ò»Ò»¶ş";
+	public static final String one = "ä¸€ä¸€äºŒ";
 	
-	public static final String Next_buy = "ÏÂ´ÎÙÙI";
+	public static final String two = "ä¸€ä¸€ä¸€äºŒ";
 	
-	public static final String Shopping_tips = "ÙÎïíšÖª";
+	public static final String Next_buy = "ä¸‹æ¬¡è³¼è²·";
+	
+	public static final String Shopping_tips = "è³¼ç‰©é ˆçŸ¥";
+	
+	public static final String ECoupon = "é›»å­æŠ˜åƒ¹åˆ¸";
+	
+	public static final String Discount = "æŠ˜æ‰£";
+	
+	public static final String Sales_Promotion = "ä¿ƒéŠ·æ´»å‹•";
+	
+	public static final String Full = "è³¼ç‰©æ»¿";
+	
+	public static final String model = "é€ é€ ";
+	
+	public static final String Sorry = "å¾ˆæŠ±æ­‰ï¼Œç›®å‰ç„¡æ³•é¡¯ç¤ºæœå°‹çµæœ";
+	
+	public static final String Search_All_Store = "æœå°‹å…¨éƒ¨å•†åº—";
+	
+	public static final String Share_Product = "åˆ†äº«å•†å“";
+	
+	public static final String Default_Item = "å¾…ç”Ÿæ•ˆ+å·²ç”Ÿæ•ˆ";
 
-	public static final String[] store_title = { "·Öî", "ÉÌÆ·" };
+	public static final String[] store_title = { "åˆ†é¡", "å•†å“" };
 
-	public static final String[] CategoryList = { "·şï—", "ÃÀŠy", "Ğ¬°üÅäï—", "‹ŒßäŒšØ",
-			"ëŠÄX/ßLß…", "¼ÒëŠ/Ò•Â ", "Ïà™C/\nÊÖ™C/Íæ¾ß", "ÃÀÊ³/\n±£½¡/ï‹ÁÏ", "át¯Ÿ/\nÈÕÓÃÆ·/Œ™Îï",
-			"¾Ó¼Ò/\nŒ‹¾ß/‚í¾ã", "ß\„Ó/\n‘ôÍâ/Ğİéf", "ˆD•ø/\nÎÄ¾ß/Ó°Òô" };
+	public static final String[] CategoryList = { "æœé£¾", "ç¾å¦", "é‹åŒ…é…é£¾", "åª½å’ªå¯¶è²",
+			"é›»è…¦/é€±é‚Š", "å®¶é›»/è¦–è½", "ç›¸æ©Ÿ/\næ‰‹æ©Ÿ/ç©å…·", "ç¾é£Ÿ/\nä¿å¥/é£²æ–™", "é†«ç™‚/\næ—¥ç”¨å“/å¯µç‰©",
+			"å±…å®¶/\nå¯¢å…·/å‚¢ä¿±", "é‹å‹•/\næˆ¶å¤–/ä¼‘é–’", "åœ–æ›¸/\næ–‡å…·/å½±éŸ³" };
 
-	public static final String[] CostumeList = { "hÉñ°ÙØ›Æ·ÅÆ·şï—", "hÉñ°ÙØ›ƒÈË¯ÒÂ", "Á÷ĞĞÅ®Ñb",
-			"ÖĞ´ó³ß´aÅ®Ñb", "Å®ĞÔƒÈË¯ÒÂ", "Æ·ÅÆ/³±Á÷ÄĞÑb" };
+	public static final String[] CostumeList = { "æ¼¢ç¥ç™¾è²¨å“ç‰Œæœé£¾", "æ¼¢ç¥ç™¾è²¨å…§ç¡è¡£", "æµè¡Œå¥³è£",
+			"ä¸­å¤§å°ºç¢¼å¥³è£", "å¥³æ€§å…§ç¡è¡£", "å“ç‰Œ/æ½®æµç”·è£" };
 
-	public static final String[] WomenClothing = { "ÉÏÒÂ", "ÍâÌ×/ÕÖÉÀ", "±³ĞÄ/Ğ¡¿ÉÛ",
-			"ÑóÑb", "Ñ×Ó", "È¹×Ó", "Å£×ĞÅ®Ñb", "ƒÈ´îÑ", "¶Y·ş" };
+	public static final String[] WomenClothing = { "ä¸Šè¡£", "å¤–å¥—/ç½©è¡«", "èƒŒå¿ƒ/å°å¯æ„›",
+			"æ´‹è£", "è¤²å­", "è£™å­", "ç‰›ä»”å¥³è£", "å…§æ­è¤²", "ç¦®æœ" };
 
-	public static final String[] CategoryList_Tab1 = { "ÏàêP¶È", "×îĞÂÉÏ¼Ü", "ƒråXµÍµ½¸ß",
-			"ƒråX¸ßµ½µÍ" };
+	public static final String[] CategoryList_Tab1 = { "ç›¸é—œåº¦", "æœ€æ–°ä¸Šæ¶", "åƒ¹éŒ¢ä½åˆ°é«˜",
+			"åƒ¹éŒ¢é«˜åˆ°ä½" };
 
-	public static final String[] CategoryList_Tab2 = { "¿ÉË¢¿¨", "0ÀûÂÊ", "¿É·ÖÆÚ",
-			"³¬ÉÌ¸¶¿î", "ÓĞ¬FØ›", "ÓĞÓ°Òô", "ÓĞˆDÆ¬", "ƒÁ¼ÉÌµê" };
+	public static final String[] CategoryList_Tab2 = { "å¯åˆ·å¡", "0åˆ©ç‡", "å¯åˆ†æœŸ",
+			"è¶…å•†ä»˜æ¬¾", "æœ‰ç¾è²¨", "æœ‰å½±éŸ³", "æœ‰åœ–ç‰‡", "å„ªè‰¯å•†åº—" };
 
-	public static final String[] CategoryList_Tab3 = { "ÅÅĞò", "gÓ[Ä£Ê½", "ºYßx" };
+	public static final String[] CategoryList_Tab3 = { "æ’åº", "ç€è¦½æ¨¡å¼", "ç¯©é¸" };
 
 }

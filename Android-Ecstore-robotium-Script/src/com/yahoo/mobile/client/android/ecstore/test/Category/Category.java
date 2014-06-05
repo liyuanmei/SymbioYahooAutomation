@@ -699,4 +699,226 @@ public class Category extends ActivityInstrumentationTestCase2 {
 		// Restore to list view. Action.setListViewStyleAfterSearch(solo);
 	}
 
+	// 1938098:test productlist titlle display.
+	public void testTwoLineDisplay() throws Exception {
+
+		enterClassification();
+		solo.clickOnText(ValidationText.Commodity);
+		try {
+			TextView tv = (TextView) solo.getView("listitem_productlist_title",
+					1);
+			Log.i("number", String.valueOf(tv.getMaxLines()));
+			assertTrue("Not 2 lines.", tv.getMaxLines() == 2);
+		} catch (AssertionError e) {
+			solo.clickOnText(ValidationText.Commodity);
+			TextView tv = (TextView) solo.getView("listitem_productlist_title",
+					1);
+			assertTrue("Not 2 lines.", tv.getMaxLines() == 2);
+		}
+	}
+
+	// 1938099:check advanced page tab display.
+	public void testTapProductName() throws Exception {
+
+		enterClassification();
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		solo.clickInList(1);
+		solo.sleep(5000);
+		View imageView = (View) solo.getView("productitem_images");
+		assertTrue("Not in item page.", imageView.isShown());
+
+	}
+
+	// 1938112:check advanced page tab display.
+	public void testTapProductNameInGridView() throws Exception {
+
+		enterClassification();
+		Action.setSmallPhotoViewStyleAfterSearch(solo);
+		solo.sleep(3000);
+		solo.clickInList(1);
+		solo.sleep(5000);
+		View imageView = (View) solo.getView("productitem_images");
+		assertTrue("Not in item page.", imageView.isShown());
+		Action.setListViewStyleAfterSearch(solo);
+	}
+
+	// 1938116:Check to click the start icon without login in grid view.
+	public void testStarIconWithoutLoginInGridView() throws Exception {
+
+		// Account.accountLogIn(solo);
+		Account.JudgementAccountWithoutLogin(solo);
+
+		enterClassification();
+
+		Action.setSmallPhotoViewStyleAfterSearch(solo);
+
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		View star = (View) solo.getView("star_button", 1);
+		solo.clickOnView(star);
+
+		// Get toast text.
+		TextView toastTextView = (TextView) solo.getView("message", 0);
+		if (toastTextView != null) {
+			String toastText = toastTextView.getText().toString();
+			assertEquals(toastText, ValidationText.Please_login_account);
+		}
+
+		// Restore to list view.
+		Action.setListViewStyleAfterSearch(solo);
+	}
+
+	// 1938117:Check to click the start icon in grid view when login.
+	public void testStartIconInGridViewWhenLogin() throws Exception {
+
+		Account.JudgementAccountLogin(solo);
+		enterClassification();
+
+		// Change the item view to photo grid view
+		Action.setSmallPhotoViewStyleAfterSearch(solo);
+
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+
+		Action.clickStarIconNote(solo);
+
+		// Restore to list view.
+		Action.setListViewStyleAfterSearch(solo);
+	}
+
+	// 1938115:Check the Star icon display in grid view.
+	public void testStarIconDisplayInGridView() throws Exception {
+
+		enterClassification();
+
+		// Change the item view to photo grid view
+		Action.setSmallPhotoViewStyleAfterSearch(solo);
+
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		View star = (View) solo.getView("star_button", 1);
+		assertTrue(" Cannot find star icon ", star.isShown());
+
+		// Restore to list view.
+		Action.setListViewStyleAfterSearch(solo);
+	}
+
+	// 1938125:Check the commodity price displays in large photo view.
+	public void testCommodityPriceDisplayInLargePhotoView() throws Exception {
+
+		enterClassification();
+
+		// Change the item view to photo large photo view
+		Action.setLargePhotoViewStyleAfterSearch(solo);
+
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		TextView price = (TextView) solo.getView("listitem_productlist_price",
+				0);
+		String sr = price.getText().toString();
+
+		// Judgment whether the price matches the format of '$xxx'.
+		boolean isNum = sr.matches("[$][0-9]+");
+
+		assertTrue(
+				" Cannot find the commodity price or price format is incorrect! ",
+				isNum);
+		// Restore to list view.
+		Action.setListViewStyleAfterSearch(solo);
+	}
+
+	// 1938126:Check the Shops score displays in large photo view.
+	public void testShopsScoreDisplayInLargePhotoView() throws Exception {
+
+		enterClassification();
+
+		// Change the item view to photo large photo view
+		Action.setLargePhotoViewStyleAfterSearch(solo);
+
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		TextView price = null;
+		try {
+			price = (TextView) solo.getView(
+					"listitem_productlist_store_rating", 0);
+		} catch (AssertionError e) {
+			solo.clickOnText(ValidationText.Commodity);
+		}
+		String sr = price.getText().toString();
+
+		// Judgment whether the price matches the format of 'x.x'.
+		boolean isNum = sr.matches("^[0-9].[0-9]+$");
+
+		assertTrue(
+				" Cannot find the shops score or score format is incorrect! ",
+				isNum);
+
+		// Restore to list view.
+		Action.setListViewStyleAfterSearch(solo);
+	}
+
+	// 1938127:Check the Star icon display in large photo view.
+	public void testStarIconDisplayInLargePhotoView() throws Exception {
+
+		enterClassification();
+
+		// Change the item view to photo large photo view
+		Action.setLargePhotoViewStyleAfterSearch(solo);
+
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		View star = (View) solo.getView("star_button", 0);
+		assertTrue(" Cannot find star icon ", star.isShown());
+
+		// Restore to list view.
+		Action.setListViewStyleAfterSearch(solo);
+	}
+
+	// 1938128:Check to click the start icon without login in large photo view.
+	public void testStarIconWithoutLoginInLargePhotoView() throws Exception {
+
+		// Change the item view to photo large photo view
+		Action.setLargePhotoViewStyleAfterSearch(solo);
+
+		enterClassification();
+		Action.setSmallPhotoViewStyleAfterSearch(solo);
+
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		View star = (View) solo.getView("star_button", 1);
+		solo.clickOnView(star);
+
+		// Get toast text.
+		TextView toastTextView = (TextView) solo.getView("message", 0);
+		if (toastTextView != null) {
+			String toastText = toastTextView.getText().toString();
+			assertEquals(toastText, ValidationText.Please_login_account);
+		}
+
+		// Restore to list view.
+		Action.setListViewStyleAfterSearch(solo);
+	}
+
+	// 1938129:Check to click the start icon in large photo view when login.
+	public void testStartIconInLargePhotoViewWhenLogin() throws Exception {
+
+		Account.JudgementAccountLogin(solo);
+		enterClassification();
+
+		// Change the item view to photo large photo view
+		Action.setLargePhotoViewStyleAfterSearch(solo);
+
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.sleep(3000);
+		try {
+		} catch (AssertionError e) {
+			TestHelper.swipeUp2(solo, 1);
+		}
+		solo.sleep(1000);
+		Action.clickStarIconNote(solo);
+
+		// Restore to list view.
+		Action.setListViewStyleAfterSearch(solo);
+	}
 }
