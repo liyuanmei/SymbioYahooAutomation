@@ -1420,4 +1420,75 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 				solo.searchText(ValidationText.two));
 
 	}
+	
+	// 1937989:Verify click product image in grid view.
+		public void testClickProductImageInGridView() throws Exception {
+
+			Action.clickText(solo, ValidationText.All_Categories);
+			Action.clickText(solo, ValidationText.Apparel);
+			Action.setSmallPhotoViewStyleAfterSearch(solo);
+			// click search button
+			Action.clickSearchButtonOnScreen(solo);
+
+			// input keyword and search
+			Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+
+			View productImage = (View) solo
+					.getView("listitem_productlist_image", 0);
+			solo.clickOnView(productImage);
+			TextView introduct = (TextView) solo.getView(
+					"productitem_product_name");
+			assertTrue("Not enter to product page.", introduct.isShown());
+			Action.setListViewStyleAfterSearch(solo);
+		}
+		
+		// 1938004:Verify click product name in large photo view.
+		public void testClickProductNameInLargePhotoView() throws Exception {
+
+			Action.clickText(solo, ValidationText.All_Categories);
+			Action.clickText(solo, ValidationText.Apparel);
+			Action.setLargePhotoViewStyleAfterSearch(solo);
+			// click search button
+			Action.clickSearchButtonOnScreen(solo);
+			// input keyword and search
+			Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+			
+			TextView productName = (TextView)solo.getView("listitem_productlist_title");
+			Log.i("number",productName.getText().toString());
+			solo.clickOnView(productName);
+			assertTrue("Not enter to product page.", productName.isShown());
+	 
+			Action.setListViewStyleAfterSearch(solo);
+		}
+		
+		// 1938009:Click star icon to add the product to favorite list.
+		public void testClickStarIconAddToFavoriteList() throws Exception {
+			
+			Account.JudgementAccountWithoutLogin(solo);
+			Action.clickText(solo, ValidationText.All_Categories);
+			// click search button
+			Action.clickSearchButtonOnScreen(solo);
+
+			// input keyword and search
+			Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+			Account.JudgementAccountLogin(solo);
+			solo.clickOnView(solo.getView("tab_image", 2));
+			solo.sleep(3000);
+			Action.clickStarIconNote(solo);
+		}
+		
+		//1937926:check the default browse mode.
+		public void testCheckTheDefaultBrowseMode() throws Exception {
+			
+			Action.clickText(solo, ValidationText.All_Categories);
+			// click search button
+			Action.clickSearchButtonOnScreen(solo);
+
+			// input keyword and search
+			Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+			
+			GridView lv = (GridView) solo.getView("gridview", 0);
+			int defaultItems = lv.getCount();
+			assertEquals("The default browse mode is listview.", 21, defaultItems);
+		}
 }

@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.robotium.solo.Solo;
+import com.yahoo.mobile.client.android.ecstore.Account.Account;
 import com.yahoo.mobile.client.android.ecstore.Action.Action;
 import com.yahoo.mobile.client.android.ecstore.Assert.Assert;
 import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
@@ -77,7 +80,7 @@ public class Search extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937855:Picture "≥¨" is shown
+	// 1937855:Picture "ÔøΩÔøΩ" is shown
 	public void testPictureChaoIsShown() throws Exception {
 
 		// clear history information then back to home screen
@@ -91,7 +94,7 @@ public class Search extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937856£∫back to the previous screen
+	// 1937856ÔøΩÔøΩback to the previous screen
 	public void testBackToPreviousScreen() throws Exception {
 
 		// clear history information then back to home screen
@@ -133,7 +136,7 @@ public class Search extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937858:°∞+°± icon is shown
+	// 1937858:ÔøΩÔøΩ+ÔøΩÔøΩ icon is shown
 	public void testPlusIsShownOnListView() throws Exception {
 
 		// clear history information then back to home screen
@@ -151,7 +154,7 @@ public class Search extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937859:add suggestion into search bar by clicking °∞+°± icon
+	// 1937859:add suggestion into search bar by clicking ÔøΩÔøΩ+ÔøΩÔøΩ icon
 	public void testAddSuggestionIntoSearchBar() throws Exception {
 
 		// clear history information then back to home screen
@@ -178,7 +181,7 @@ public class Search extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937860:change suggestion info if clicking °∞+°± icon again
+	// 1937860:change suggestion info if clicking ÔøΩÔøΩ+ÔøΩÔøΩ icon again
 	public void testChangeSuggestionInSearchBar() throws Exception {
 
 		// clear history information then back to home screen
@@ -688,7 +691,7 @@ public class Search extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937889:back to L1å”∑÷Óê list
+	// 1937889:back to L1ÔøΩ”∑ÔøΩÔøΩ list
 	public void testBackToHomeList() throws Exception {
 
 		// clear history information then back to home screen
@@ -708,7 +711,7 @@ public class Search extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937890:back to ∑˛ÔóL2å”∑÷Óê list
+	// 1937890:back to ÔøΩÔøΩÔøΩL2ÔøΩ”∑ÔøΩÔøΩ list
 	public void testBackToCostumeList() throws Exception {
 
 		// clear history information then back to home screen
@@ -730,7 +733,7 @@ public class Search extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937891:back to ¡˜––≈Æ—b list
+	// 1937891:back to ÔøΩÔøΩÔøΩÔøΩ≈ÆÔøΩb list
 	public void testBackToWomenClothingList() throws Exception {
 
 		// clear history information then back to home screen
@@ -760,7 +763,7 @@ public class Search extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937892:back to ¡˜––≈Æ—b>…œ“¬ list
+	// 1937892:back to ÔøΩÔøΩÔøΩÔøΩ≈ÆÔøΩb>ÔøΩÔøΩÔøΩÔøΩ list
 	public void testBackToCoatList() throws Exception {
 
 		// clear history information then back to home screen
@@ -926,6 +929,225 @@ public class Search extends ActivityInstrumentationTestCase2 {
 		Log.i("number", searchText.getText().toString());
 		assertTrue("Not back to fashion category!", searchText.getText()
 				.toString().trim().equals(ValidationText.Popular_Women));
+	}
+
+	// 1937902:Click return icon in L5 item list.
+	public void testClickReturnIconInL5() throws Exception {
+		Action.enterToJacket(solo);
+		Action.clickText(solo, ValidationText.T_shirt);
+		Action.clickText(solo, ValidationText.Commodity);
+		solo.goBack();
+		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
+		Log.i("number", searchText.getText().toString());
+		assertTrue("Not back to jacket category!", searchText.getText()
+				.toString().trim().equals(ValidationText.Jacket));
+	}
+
+	// 1937903:Click return icon in L6 item list.
+	public void testClickReturnIconInL6() throws Exception {
+		Action.enterToJacket(solo);
+		Action.clickText(solo, ValidationText.T_shirt);
+		Action.clickText(solo, ValidationText.Categories);
+		Action.clickText(solo, ValidationText.No_Sleeve_Shirt);
+		solo.goBack();
+		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
+		Log.i("number", searchText.getText().toString());
+		assertTrue("Not back to T_shirt category!", searchText.getText()
+				.toString().trim().equals(ValidationText.T_shirt));
+	}
+
+	// 1937904:Input keywords and search.
+	public void testInputkeywordsAndSearch() throws Exception {
+
+		Action.clickText(solo, ValidationText.All_Categories);
+		Action.clickText(solo, ValidationText.Apparel);
+		Action.clickText(solo, ValidationText.Commodity);
+		Action.clickSearchButtonOnScreen(solo);
+		// element and test_data
+		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+
+		// if find product and store tab,we can confirm already in search
+		// result.
+		TextView product = (TextView) solo.getView(
+				"category_tab_primary_title", 0);
+		TextView store = (TextView) solo.getView("category_tab_primary_title",
+				1);
+		assertTrue("Not enter to search result page.", product.isShown()
+				&& store.isShown());
+	}
+
+	// 1937906:Search in L1 category.
+	public void testSearchInL1Category() throws Exception {
+
+		Action.clickText(solo, ValidationText.All_Categories);
+		Action.clickSearchButtonOnScreen(solo);
+		// element and test_data
+		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+
+		// if find product and store tab,we can confirm already in search
+		// result.
+		TextView product = (TextView) solo.getView(
+				"category_tab_primary_title", 0);
+		TextView store = (TextView) solo.getView("category_tab_primary_title",
+				1);
+		assertTrue("Not enter to search result page.", product.isShown()
+				&& store.isShown());
+	}
+
+	// 1937907:Search in L2 category.
+	public void testSearchInL2Category() throws Exception {
+
+		Action.clickText(solo, ValidationText.All_Categories);
+		Action.clickText(solo, ValidationText.Apparel);
+		Action.clickText(solo, ValidationText.Commodity);
+		Action.clickSearchButtonOnScreen(solo);
+		// element and test_data
+		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+
+		// if find product and store tab,we can confirm already in search
+		// result.
+		TextView product = (TextView) solo.getView(
+				"category_tab_primary_title", 0);
+		TextView store = (TextView) solo.getView("category_tab_primary_title",
+				1);
+		assertTrue("Not enter to search result page.", product.isShown()
+				&& store.isShown());
+	}
+
+	// 1937908:Search in L3 category.
+	public void testSearchInL3Category() throws Exception {
+
+		Action.clickText(solo, ValidationText.All_Categories);
+		Action.clickText(solo, ValidationText.Apparel);
+		Action.clickText(solo, ValidationText.Popular_Women);
+		Action.clickSearchButtonOnScreen(solo);
+		// element and test_data
+		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+
+		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
+
+		// if find product and store tab,we can confirm already in search
+		// result.
+		TextView product = (TextView) solo.getView(
+				"category_tab_primary_title", 0);
+		TextView store = (TextView) solo.getView("category_tab_primary_title",
+				1);
+		assertTrue(
+				"Not enter to search result page.",
+				product.isShown()
+						&& store.isShown()
+						&& searchText.getText().toString().trim()
+								.equals(ValidationText.Popular_Women));
+	}
+
+	// 1937910:Search in L5 category.
+	public void testSearchInL5Category() throws Exception {
+		Action.enterToJacket(solo);
+		Action.clickText(solo, ValidationText.T_shirt);
+		Action.clickSearchButtonOnScreen(solo);
+		// element and test_data
+		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+
+		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
+
+		// if find product and store tab,we can confirm already in search
+		// result.
+		TextView product = (TextView) solo.getView(
+				"category_tab_primary_title", 0);
+		TextView store = (TextView) solo.getView("category_tab_primary_title",
+				1);
+
+		Log.i("number", searchText.getText().toString());
+		assertTrue(
+				"Not enter to search result page.",
+				product.isShown()
+						&& store.isShown()
+						&& searchText.getText().toString().trim()
+								.equals(ValidationText.T_shirt));
+
+	}
+
+	// // 1937911:Search in L6 category.
+	public void testSearchInL6Category() throws Exception {
+
+		Action.enterToJacket(solo);
+		Action.clickText(solo, ValidationText.T_shirt);
+		Action.clickText(solo, ValidationText.Categories);
+		Action.clickText(solo, ValidationText.No_Sleeve_Shirt);
+		Action.clickSearchButtonOnScreen(solo);
+		// element and test_data
+		Action.searchAfterPutData(solo, 0, ValidationText.Jacket);
+		// if find product and store tab,we can confirm already in search
+		// result.
+		TextView product = (TextView) solo.getView(
+				"category_tab_primary_title", 0);
+		TextView store = (TextView) solo.getView("category_tab_primary_title",
+				1);
+		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
+		Log.i("number", searchText.getText().toString());
+		assertTrue(
+				"Not enter to search result page.",
+				product.isShown()
+						&& store.isShown()
+						&& searchText.getText().toString().trim()
+								.equals(ValidationText.No_Sleeve_Shirt));
+	}
+
+	// 1937912:check search result.
+	public void testSearchResult() throws Exception {
+
+		// navigate to category screen
+		Action.navigateToCategoryScreen(solo);
+
+		// click search button
+		Action.clickSearchButtonOnScreen(solo);
+
+		// input keyword and search
+		Action.searchAfterPutData(solo, 0, ValidationText.apple);
+
+		try {
+			assertTrue("Not 2 lines.", solo.searchText("phone"));
+		} catch (AssertionError e) {
+
+			// input keyword and search
+			Action.searchAfterPutData(solo, 0, ValidationText.apple);
+			assertTrue("Not 2 lines.", solo.searchText("phone"));
+		}
+	}
+
+	// 1959905:Verify "ÊêúÁ¥¢ÂÖ®ÈÉ®ÂïÜÂ∫ó" function.
+	public void testSearchAllStore() throws Exception {
+
+		Action.clickSearchButtonOnScreen(solo);
+		// element and test_data
+		Action.searchAfterPutData(solo, 0, ValidationText.Dong_Jing);
+
+		Action.clickText(solo, ValidationText.Shop);
+		ImageView dongjing = (ImageView) solo.getView(
+				"listitem_storelist_image", 0);
+		solo.clickOnView(dongjing);
+		solo.sleep(1000);
+		// Action.clickSearchButtonOnScreen(solo);
+		View iv = solo.getView("menu_search");
+		solo.clickOnView(iv);
+
+		Action.searchAfterPutData(solo, 0, ValidationText.model);
+		/* Button optionButton = (Button)solo.getView("option_button",2); */
+		solo.clickOnText(ValidationText.Search_All_Store);
+		solo.sleep(1000);
+		assertFalse("Search all store button still exist.",
+				solo.getView("option_button").isShown());
+	}
+
+	// 1977507:verify search result when enter special characters in search box.
+	public void testEnterSpecialCharactersToSearch() throws Exception {
+
+		Account.JudgementAccountLogin(solo);
+		Action.clickSearchButtonOnScreen(solo);
+		// element and test_data
+		Action.searchAfterPutData(solo, 0, ValidationText.Special);
+		assertTrue("No result note pop up.",
+				solo.searchText(ValidationText.Results_value));
 	}
 
 }

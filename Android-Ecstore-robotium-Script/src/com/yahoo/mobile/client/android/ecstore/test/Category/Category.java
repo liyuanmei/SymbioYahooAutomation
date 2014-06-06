@@ -125,7 +125,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938052:check "ËÑÑ°·şÊÎ" show in search bar.
+	// 1938052:check "ï¿½ï¿½Ñ°ï¿½ï¿½ï¿½ï¿½" show in search bar.
 	public void testSearchbarDefault() throws Exception {
 
 		enterClassification();
@@ -189,7 +189,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938055: verify the order of ÅÅĞò items
+	// 1938055: verify the order of ï¿½ï¿½ï¿½ï¿½ items
 	public void testSortOptions() throws Exception {
 
 		enterClassification();
@@ -216,7 +216,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938063:Check the "È·¶¨" button to display
+	// 1938063:Check the "È·ï¿½ï¿½" button to display
 	public void testComfirmButtonDisplay() throws Exception {
 
 		enterClassification();
@@ -259,7 +259,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938069:check ¡°¿ÉË¢¿¨¡± can changed to unselected.
+	// 1938069:check ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½ can changed to unselected.
 	public void testCreditCardMode() throws Exception {
 
 		enterClassification();
@@ -267,15 +267,15 @@ public class Category extends ActivityInstrumentationTestCase2 {
 		// Go to advanced sort page.
 		Action.enterAdvancedSortPage(solo);
 
-		// solo.clickOnToggleButton("¿ÉË¢¿¨");
+		// solo.clickOnToggleButton("ï¿½ï¿½Ë¢ï¿½ï¿½");
 		ToggleButton tb = (ToggleButton) solo.getView("tb_cc");
 
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertTrue(" '¿ÉË¢¿¨'  button unselected.", tb.isChecked());
+		assertTrue(" 'ï¿½ï¿½Ë¢ï¿½ï¿½'  button unselected.", tb.isChecked());
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertFalse("'¿ÉË¢¿¨'  button  selected.", tb.isChecked());
+		assertFalse("'ï¿½ï¿½Ë¢ï¿½ï¿½'  button  selected.", tb.isChecked());
 
 	}
 
@@ -290,7 +290,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938130:Check "È«²¿·Öî" at the bottom of the screen.
+	// 1938130:Check "È«ï¿½ï¿½ï¿½ï¿½ï¿½" at the bottom of the screen.
 	public void testAllClassificationExist() throws Exception {
 
 		View classificationIcon = (View) solo.getView("tab_image", 2);
@@ -399,7 +399,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 				myAccountIcon.isShown() && text);
 	}
 
-	// 1938149:Check '·şï—' is displayed on the top of the screen.
+	// 1938149:Check 'ï¿½ï¿½ï¿½' is displayed on the top of the screen.
 	public void testDressDisplayedOnTheScreen() throws Exception {
 
 		enterClassification();
@@ -411,7 +411,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938072:check ¡°ÓĞÓ°Òô¡± can changed to unselected.
+	// 1938072:check ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ can changed to unselected.
 	public void testHasVideoMode() throws Exception {
 
 		enterClassification();
@@ -424,14 +424,14 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertTrue(" 'ÓĞÓ°Òô'  button unselected.", tb.isChecked());
+		assertTrue(" 'ï¿½ï¿½Ó°ï¿½ï¿½'  button unselected.", tb.isChecked());
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertFalse("'ÓĞÓ°Òô'  button  selected.", tb.isChecked());
+		assertFalse("'ï¿½ï¿½Ó°ï¿½ï¿½'  button  selected.", tb.isChecked());
 
 	}
 
-	// 1938075:check ¡°0ÀûÂÊ¡± can changed to unselected.
+	// 1938075:check ï¿½ï¿½0ï¿½ï¿½ï¿½Ê¡ï¿½ can changed to unselected.
 	public void testZeroInterestMode() throws Exception {
 
 		enterClassification();
@@ -444,13 +444,13 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertTrue(" '0ÀûÂÊ'  button unselected.", tb.isChecked());
+		assertTrue(" '0ï¿½ï¿½ï¿½ï¿½'  button unselected.", tb.isChecked());
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertFalse("'0ÀûÂÊ'  button  selected.", tb.isChecked());
+		assertFalse("'0ï¿½ï¿½ï¿½ï¿½'  button  selected.", tb.isChecked());
 	}
 
-	// 1938078:check ¡°¿É·ÖÆÚ¡± can changed to unselected.
+	// 1938078:check ï¿½ï¿½ï¿½É·ï¿½ï¿½Ú¡ï¿½ can changed to unselected.
 	public void testInstallmentsMode() throws Exception {
 
 		enterClassification();
@@ -463,14 +463,14 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertTrue(" '¿É·ÖÆÚ'  button unselected.", tb.isChecked());
+		assertTrue(" 'ï¿½É·ï¿½ï¿½ï¿½'  button unselected.", tb.isChecked());
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertFalse("'¿É·ÖÆÚ'  button  selected.", tb.isChecked());
+		assertFalse("'ï¿½É·ï¿½ï¿½ï¿½'  button  selected.", tb.isChecked());
 
 	}
 
-	// 1938081:check ¡°³¬ÉÌ¸¶¿î¡± can changed to unselected.
+	// 1938081:check ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½î¡± can changed to unselected.
 	public void testSupermarketPaymentMode() throws Exception {
 
 		enterClassification();
@@ -483,14 +483,14 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertTrue(" '³¬ÉÌ¸¶¿î'  button unselected.", tb.isChecked());
+		assertTrue(" 'ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½'  button unselected.", tb.isChecked());
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertFalse("'³¬ÉÌ¸¶¿î'  button  selected.", tb.isChecked());
+		assertFalse("'ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½'  button  selected.", tb.isChecked());
 
 	}
 
-	// 1938084:check ¡°³¬ÉÌÈ¡Ø›¡± can changed to unselected.
+	// 1938084:check ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Ø›ï¿½ï¿½ can changed to unselected.
 	public void testSupermarketPickupMode() throws Exception {
 
 		enterClassification();
@@ -503,14 +503,14 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertTrue(" '³¬ÉÌÈ¡Ø›'  button unselected.", tb.isChecked());
+		assertTrue(" 'ï¿½ï¿½ï¿½ï¿½È¡Ø›'  button unselected.", tb.isChecked());
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertFalse("'³¬ÉÌÈ¡Ø›'  button  selected.", tb.isChecked());
+		assertFalse("'ï¿½ï¿½ï¿½ï¿½È¡Ø›'  button  selected.", tb.isChecked());
 
 	}
 
-	// 1938087:check ¡°ÓĞ¬FØ›¡± can changed to unselected.
+	// 1938087:check ï¿½ï¿½ï¿½Ğ¬FØ›ï¿½ï¿½ can changed to unselected.
 	public void testHasStockMode() throws Exception {
 		enterClassification();
 
@@ -522,14 +522,14 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertTrue(" 'ÓĞ¬FØ›'  button unselected.", tb.isChecked());
+		assertTrue(" 'ï¿½Ğ¬FØ›'  button unselected.", tb.isChecked());
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertFalse("'ÓĞ¬FØ›'  button  selected.", tb.isChecked());
+		assertFalse("'ï¿½Ğ¬FØ›'  button  selected.", tb.isChecked());
 
 	}
 
-	// 1938090:check ¡°ÓĞˆDÆ¬¡± can changed to unselected.
+	// 1938090:check ï¿½ï¿½ï¿½ĞˆDÆ¬ï¿½ï¿½ can changed to unselected.
 	public void testHasImageMode() throws Exception {
 		enterClassification();
 
@@ -541,14 +541,14 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertTrue(" 'ÓĞˆDÆ¬'  button unselected.", tb.isChecked());
+		assertTrue(" 'ï¿½ĞˆDÆ¬'  button unselected.", tb.isChecked());
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertFalse("'ÓĞˆDÆ¬'  button  selected.", tb.isChecked());
+		assertFalse("'ï¿½ĞˆDÆ¬'  button  selected.", tb.isChecked());
 
 	}
 
-	// 1938093:check ¡°ƒÁ¼ÉÌµê¡± can changed to unselected.
+	// 1938093:check ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµê¡± can changed to unselected.
 	public void testSuperiorStoreMode() throws Exception {
 
 		enterClassification();
@@ -561,10 +561,10 @@ public class Category extends ActivityInstrumentationTestCase2 {
 
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertTrue(" 'ƒÁ¼ÉÌµê'  button unselected.", tb.isChecked());
+		assertTrue(" 'ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½'  button unselected.", tb.isChecked());
 		solo.clickOnView(tb);
 		solo.sleep(3000);
-		assertFalse("'ƒÁ¼ÉÌµê'  button  selected.", tb.isChecked());
+		assertFalse("'ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½'  button  selected.", tb.isChecked());
 
 	}
 
@@ -910,7 +910,7 @@ public class Category extends ActivityInstrumentationTestCase2 {
 		Action.setLargePhotoViewStyleAfterSearch(solo);
 
 		Action.clickText(solo, ValidationText.Commodity);
-		solo.sleep(3000);
+		 solo.sleep(3000);
 		try {
 		} catch (AssertionError e) {
 			TestHelper.swipeUp2(solo, 1);
