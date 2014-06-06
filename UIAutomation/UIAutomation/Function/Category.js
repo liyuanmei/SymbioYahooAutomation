@@ -1254,3 +1254,280 @@ test("[1938127] on item listing-list view check favorites icon show correct.", f
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
+
+//6.6
+test("[1938128] on item listing-list view unregister user tap favorites icon should successul open login window.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(4);
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify successful switch to listing view.
+    Assert.successfulSwitchToListingView();
+
+    //Verify favorites icon show correct, this function need passing product index parameters.
+    Assert.favoritesIconShowCorrect(1);
+
+    //tap favorites icon, after tapped log in window show up.
+    Action.tapFavoritesIcon(1);
+
+    //Verify login window show correct.
+    Assert.logInWindowShowCorrectOnAddAccount();
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    //Switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Verify current view is large image.
+    Assert.successfulSwitchToLargeImageView();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938129] on item listing-list view register should able to add item to his favorites list through tap favorites icon.", function () {
+    //Do login
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+
+    //go to production item list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //Store product name.
+    $.delay(sleep);
+    var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify successful switch to photo grid view.
+    Assert.successfulSwitchToListingView();
+
+    //Tap favorites icon add a production to favorites.
+    Action.tapFavoritesIcon(1);
+
+    //got my favorites screen.
+    Action.tapButtonOnTabBar(4);
+    Action.goMayFavoritesScreen();
+
+    //Assert product show in My favorites screen.
+    Assert.productAddedToMyFavoritesScreen(productName);
+
+    //Remove favorites item.
+    Action.tapButtonOnTabBar(2);
+    Action.tapFavoritesIcon(1);
+
+    //Verify favorites item successful removed.
+    Action.tapButtonOnTabBar(4);
+    $.delay(3);
+    Assert.productRemovedFromMyFavoritesScreen(productName);
+     
+    //Restore app to default screen.
+    Action.goBack();
+    Action.tapButtonOnTabBar(2);
+
+    //Go back to advanced bar switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
+});
+
+test("[1938130] check 全部分類 tab button show correct", function () {
+    Action.tapButtonOnTabBar(0);
+    Assert.buttonOnTabBarShowCorrect("全部分類");
+    Action.goDiscoveryStream();
+});
+
+test("[1938131] check 全部分類 tab show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.categoriesList();
+    Action.goDiscoveryStream();
+});
+
+test("[1938133] check 全部分類 show on screen top", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.navigationBarName("全部分類");
+    Action.goDiscoveryStream();
+});
+
+test("[1938150] check 美妝 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(1, "美妝");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(1);
+
+    //verify screen successful navigate to 美妝 screen.
+    Assert.navigationBarName("美妝");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938151] check 鞋包配飾 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(2, "鞋包配飾");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(2);
+
+    //verify screen successful navigate to 鞋包配飾 screen.
+    Assert.navigationBarName("鞋包配飾");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938152] check 媽咪寶貝 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(3, "媽咪寶貝");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(3);
+
+    //verify screen successful navigate to 媽咪寶貝 screen.
+    Assert.navigationBarName("媽咪寶貝");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938153] check 電腦/週邊 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(4, "電腦/週邊");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(4);
+
+    //verify screen successful navigate to 電腦/週邊 screen.
+    Assert.navigationBarName("電腦/週邊");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938154] check 家電/視聽 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(5, "家電/視聽");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(5);
+
+    //verify screen successful navigate to 家電/視聽 screen.
+    Assert.navigationBarName("家電/視聽");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938155] check 相機/ 手機/玩具 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(6, "相機/ 手機/玩具");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(6);
+
+    //verify screen successful navigate to 相機/ 手機/玩具 screen.
+    Assert.navigationBarName("相機/手機/玩具");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938156] check 美食/ 保健/飲料 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(7, "美食/ 保健/飲料");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(7);
+
+    //verify screen successful navigate to 美食/ 保健/飲料 screen.
+    Assert.navigationBarName("美食/保健/飲料");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938157] check 日用品/ 清潔/寵物 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(8, "醫療/ 日用品/寵物");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(8);
+
+    //verify screen successful navigate to 醫療/ 日用品/寵物 screen.
+    Assert.navigationBarName("醫療/日用品/寵物");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938158] check 居家/ 寢具/傢俱 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(9, "居家/ 寢具/傢俱");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(9);
+
+    //verify screen successful navigate to 日用品/ 清潔/寵物 screen.
+    Assert.navigationBarName("居家/寢具/傢俱");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1938159] check 運動/ 戶外/休閒 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(10, "運動/ 戶外/休閒");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(10);
+
+    //verify screen successful navigate to 日用品/ 清潔/寵物 screen.
+    Assert.navigationBarName("運動/戶外/休閒");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
