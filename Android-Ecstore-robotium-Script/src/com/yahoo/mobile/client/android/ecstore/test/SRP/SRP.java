@@ -89,7 +89,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937919:Default to choose ¡°ÉÌÆ·¡± Tab.
+	// 1937919:Default to choose ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ Tab.
 	public void testDefaultTab() throws Exception {
 
 		// navigate to category screen
@@ -261,7 +261,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937932:Check if default to choose ¡°sort¡± Tab
+	// 1937932:Check if default to choose ï¿½ï¿½sortï¿½ï¿½ Tab
 	public void testDefaultChooseSortTab() throws Exception {
 
 		// navigate to category screen
@@ -322,7 +322,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937935: check sort tab items
+/*	// 1937935: check sort tab items
 	public void testCheckSortTabItems() throws Exception {
 
 		// navigate to category screen
@@ -352,7 +352,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 			}
 		}
 
-	}
+	}*/
 
 	// 1937940: check Layout
 	public void testCheckLayoutOfFilterTab() throws Exception {
@@ -374,7 +374,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937944:check the function of ¡°´_¶¨¡±button
+	// 1937944:check the function of ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½button
 	public void testCheckConfirmButtonFunction() throws Exception {
 
 		// navigate to category screen
@@ -403,7 +403,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937949:unselected ¡°¿ÉË¢¿¨¡±
+	// 1937949:unselected ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½
 	public void testUnselectedCanSwipeFunction() throws Exception {
 
 		// navigate to category screen
@@ -452,7 +452,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937952:unselected ¡°ÓÐÓ°Òô¡±
+	// 1937952:unselected ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½
 	public void testUnselectedHasVideoFunction() throws Exception {
 
 		// navigate to category screen
@@ -480,7 +480,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937955:unselected "0ÀûÂÊ"
+	// 1937955:unselected "0ï¿½ï¿½ï¿½ï¿½"
 	public void testUnselectedZeroIntFunction() throws Exception {
 
 		// navigate to category screen
@@ -506,7 +506,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937958:unselected "¿É·ÖÆÚ"
+	// 1937958:unselected "ï¿½É·ï¿½ï¿½ï¿½"
 	public void testUnselectedccInstallFunction() throws Exception {
 
 		// navigate to category screen
@@ -532,7 +532,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937961:unselected "³¬ÉÌ¸¶¿î"
+	// 1937961:unselected "ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½"
 	public void testUnselectedCvsPayFunction() throws Exception {
 
 		// navigate to category screen
@@ -560,7 +560,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937964:unselected "³¬ÉÌÈ¡Ø›"
+	// 1937964:unselected "ï¿½ï¿½ï¿½ï¿½È¡Ø›"
 	public void testUnselectedCvsPickFunction() throws Exception {
 
 		// navigate to category screen
@@ -587,7 +587,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 				((ToggleButton) solo.getView(view_id)).isChecked());
 
 	}
-	// 1937967:unselected "ÓÐ¬FØ›"
+	// 1937967:unselected "ï¿½Ð¬FØ›"
 	public void testUnselectedHasStockFunction() throws Exception {
 
 		// navigate to category screen
@@ -615,7 +615,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937970:unselected "ÓÐˆDÆ¬"
+	// 1937970:unselected "ï¿½ÐˆDÆ¬"
 	public void testUnselectedHasImageFunction() throws Exception {
 
 		// navigate to category screen
@@ -645,7 +645,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1937973:unselected "ƒžÁ¼ÉÌµê"
+	// 1937973:unselected "ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½"
 	public void testUnselectedisSuperiorFunction() throws Exception {
 
 		// navigate to category screen
@@ -1097,7 +1097,7 @@ public class SRP extends ActivityInstrumentationTestCase2 {
 
 	}
 
-	// 1938013:"¹²XXX¹P" is displayed
+	// 1938013:"ï¿½ï¿½XXXï¿½P" is displayed
 	public void testSearchResultDisplay() throws Exception {
 
 		// navigate to category screen
