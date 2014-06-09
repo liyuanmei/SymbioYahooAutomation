@@ -56,7 +56,6 @@ Action.tapKeyboardDelete = function () {
     tapKeyboardDelete.tap();
 };
 
-
 //clean Searches
 Action.cleanSearches = function () {
     $.delay(sleep);
@@ -255,3 +254,28 @@ Action.doSearch = function (sKeyWords) {
     $.delay(sleep);
 };
 **/
+Action.tapClassificationButtonWhenS = function () {
+    $.delay(sleep);
+    var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].buttons()[0];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].tap);
+    tapGoodsButton.tap();
+};
+
+//6.9
+Action.tapDetermineInAdvancedBarWhenSRP = function () {
+    var tapDetermineInAdvancedBarWhenSRP = app.navigationBar().buttons()["確定"];
+    method.checkInstanceExists(app.navigationBar().buttons()["確定"].tap);
+    tapDetermineInAdvancedBarWhenSRP.tap();
+};
+
+Action.tapClearButtonOnFilterScreenInAdvancedBarWhenSRP = function() {
+    $.delay(sleep);
+
+    var clearButton = app.mainWindow().buttons()[0];
+
+    //wait clear button become visible.
+    clearButton.waitUntilVisible(20);
+
+    //tap clear button.
+    clearButton.tap();
+};

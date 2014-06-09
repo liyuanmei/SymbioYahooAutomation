@@ -703,3 +703,279 @@ test("[1937889] click to return to the icon L1 layer classification" , function 
     $.delay(sleep);
     Action.goDiscoveryStream();
 });
+
+//6.9
+test("[1937893] Click to return to the icon L5 layer classification", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+     
+    //go fashion women's clothing category
+    Action.goFashionWomenClothingCategory();
+
+    //go to coat 
+    Action.goCoatCategory();
+    $.delay(sleep);
+
+    //go to T-Shirt
+    Action.tapClassificationButtonWhenS();
+    $.delay(sleep);
+
+    Action.goCoatCategory();
+     
+    Action.tapSearchIconOnNavBar();
+    Action.tapReturnOnSearchBar();
+    
+    Assert.checkReturnPageDisplay("T恤");
+     
+    //return fashion women's clothing category
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937894] Click to return to the icon L6 layer classification", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+     
+    //go fashion women's clothing category
+    Action.goFashionWomenClothingCategory();
+
+    //go to coat 
+    Action.goCoatCategory();
+    $.delay(sleep);
+
+    //go to T-Shirt
+    Action.tapClassificationButtonWhenS();
+    $.delay(sleep);
+
+    Action.goCoatCategory();
+    $.delay(sleep);
+
+    //go to  sleeveless T-Shirt
+    Action.tapClassificationButtonWhenS();
+    $.delay(sleep);
+
+    Action.goCoatCategory();
+   
+    Action.tapSearchIconOnNavBar();
+    Action.tapReturnOnSearchBar();
+    
+    Assert.checkReturnPageDisplay("無袖T恤");
+     
+    //return fashion women's clothing category
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937898] Click on the search icon", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+   
+    Action.tapSearchIconOnNavBar();    
+    Assert.textIsEnabled("搜尋服飾");
+    Action.tapReturnOnSearchBar();
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937909] Click to return to the icon L4 layer classification", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+     
+    //go fashion women's clothing category
+    Action.goFashionWomenClothingCategory();
+
+    //go to coat 
+    Action.goCoatCategory();
+     
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInput("keyword");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+    
+    Assert.searchResultsPage("keyword");
+     
+    //return fashion women's clothing category
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937899] L2 Itemlist click on the 'back' icon", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+    Action.tapGoodsButton();
+
+    Action.goBack();
+    $.delay(sleep);
+
+    Assert.checkReturnPageDisplay("全部分類");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937900] L3 Itemlist click on the 'back' icon", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+
+    //go fashion women's clothing category
+    Action.goFashionWomenClothingCategory();
+    $.delay(sleep);
+
+    Action.tapGoodsButton();
+
+    Action.goBack();
+    Assert.checkReturnPageDisplay("服飾");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937901] L4 Itemlist click on the 'back' icon", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+    
+    //go fashion women's clothing category
+    Action.goFashionWomenClothingCategory();
+
+    //go to coat 
+    Action.goCoatCategory();
+    $.delay(sleep);
+
+    Action.tapGoodsButton();
+
+    Action.goBack();
+    Assert.checkReturnPageDisplay("流行女裝");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937902] L5 Itemlist click on the 'back' icon", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+    
+    //go fashion women's clothing category
+    Action.goFashionWomenClothingCategory();
+    $.delay(sleep);
+
+    //go to coat 
+    Action.goCoatCategory();
+
+    //go to T-Shirt
+    Action.tapClassificationButtonWhenS();
+    $.delay(sleep);
+
+    Action.goCoatCategory();
+
+    Action.tapGoodsButton();
+
+    Action.goBack();
+    Assert.checkReturnPageDisplay("上衣");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937903] L6 Itemlist click on the 'back' icon", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+    
+    //go fashion women's clothing category
+    Action.goFashionWomenClothingCategory();
+
+    //go to coat 
+    Action.goCoatCategory();
+    $.delay(sleep);
+
+    //go to T-Shirt
+    Action.tapClassificationButtonWhenS();
+    $.delay(sleep);
+
+    Action.goCoatCategory();
+    $.delay(sleep);
+
+    //go to  sleeveless T-Shirt
+    Action.tapClassificationButtonWhenS();
+    $.delay(sleep);
+
+    Action.goCoatCategory();
+    $.delay(sleep);
+
+    Action.goBack();
+    Assert.checkReturnPageDisplay("T恤");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937904] Enter a keyword search", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+
+    Action.tapGoodsButton();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInput("keyword");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+    
+    Assert.searchResultsPage("keyword");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937906] Classification of L1 in search", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+
+    Action.tapSearchIconOnNavBar();
+
+    Assert.textIsEnabled("搜尋全部商品");
+    $.delay(sleep);
+
+    Action.searchBarInput("keyword");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+    
+    Assert.searchResultsPage("keyword");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});

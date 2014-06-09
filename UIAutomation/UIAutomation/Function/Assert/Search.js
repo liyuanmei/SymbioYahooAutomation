@@ -170,3 +170,10 @@ Assert.elementsShouldContainTextWhenSearch = function (elements, keyword) {
     
     assertNotEquals(elementsName.indexOf(keyword) >= 0, elementsName + " not contain text: " + keyword);
 };
+
+//6.9
+Assert.checkFavoriteStoreCellsShowCorrectly = function () {
+    var favoriteStoreCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length>2;
+    $.delay(5);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length>2);
+};

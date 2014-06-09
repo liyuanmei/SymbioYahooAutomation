@@ -98,3 +98,48 @@ Action.tapClearButtonOnFilterScreenWhenSRP = function() {
     //tap clear button.
     clearButton.tap();
 };
+
+//6.6.
+Action.tapAllCoatgoryWhenSRP = function () {
+   $.delay(sleep);
+   var tapAllCoatgoryWhenSRP = app.mainWindow().collectionViews()[0].buttons()[0];
+   method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[0].tap);
+   tapAllCoatgoryWhenSRP.tap();
+};
+
+Action.tapSearchResultOfStore = function () {
+    $.delay(sleep);
+    var searchResultOfStore = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].tap);
+    searchResultOfStore.tap();
+};
+
+Action.tapSearchIconOnNavBarWhenSRP = function() {
+    $.delay(sleep);
+    var tapSearchIconOnNavBar = app.navigationBar().buttons()[4];
+    method.checkInstanceExists(app.navigationBar().buttons()[4].tap);
+    tapSearchIconOnNavBar.tap();
+};
+
+Action.tapReturnOnSearchBarWhenSRP = function () {
+    $.delay(sleep);
+    var returnOnSearchBarWhenSRP = app.windows()[0].buttons()[0];
+    method.checkInstanceExists(app.windows()[0].buttons()[0].tap);
+    returnOnSearchBarWhenSRP.tap();
+};
+
+Action.tapButtonsInAdvancedBarWhenSRPStore = function () {
+    $.delay(sleep);
+    var tapButtonsInAdvancedBarWhenSRPStore = app.mainWindow().collectionViews()[0].buttons()[0];
+
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[0].tap);
+    tapButtonsInAdvancedBarWhenSRPStore.tap();
+};
+
+//6.9
+Action.tapStoreGoodsNum = function () {
+    $.delay(sleep);
+    var tapStoreGoodsNum = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2].tap);
+    tapStoreGoodsNum.tap();
+};

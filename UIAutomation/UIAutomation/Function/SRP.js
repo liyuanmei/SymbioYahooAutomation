@@ -1456,3 +1456,118 @@ test("[1938030] check heart icon jump to login screen" , function () {
     Action.goDiscoveryStream();
     Action.cleanSearches();
 });
+
+//6.9
+test("[1937929] Click 'all categories' button" , function () {
+    Action.cleanSearches();
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    $.delay(5);
+    
+    //verify all coatgory show correct
+    Assert.checkAllCoatgoryShowCorrectOnSRP();
+
+    Action.tapAllCoatgoryWhenSRP();
+
+    Assert.searchResultsPage("上衣");
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+ });
+
+test("[1937930] Browse by specific classification search results" , function () {
+    Action.cleanSearches();
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+    
+    //go to ”漢神百貨品牌服飾“
+    Action.goCoatCategory();
+    $.delay(sleep);
+
+    Action.tapSearchIconOnNavBar();
+    Assert.textIsEnabled("搜尋漢神百貨品牌服飾");
+    $.delay(sleep);
+
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    $.delay(5);
+    
+    //verify ”漢神百貨品牌服飾“
+    Assert.searchResultsPage("上衣");
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+ });
+
+test("[1937941] Check the 'remove' button shows ", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    $.delay(5);
+    
+    //tap Advance button
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap 篩選 button.
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "可刷卡" and verify 清除 button show up.
+    Action.tapButtonOnFilterAttributeScreen(0);
+
+    var attributeCollectView = app.mainWindow().collectionViews()[1];
+    var attributeCollectViewOriginY = Action.getElementsOriginYString(attributeCollectView);
+    var attributeCollectViewOriginX = Action.getElementsOriginXString(attributeCollectView);
+
+    var clearButton = app.mainWindow().buttons()["清除"];
+    var clearButtonOriginY = Action.getElementsOriginYString(clearButton);
+    var clearButtonOriginX = Action.getElementsOriginXString(clearButton);
+
+    method.verifyTrue(clearButtonOriginY > attributeCollectViewOriginY && clearButtonOriginX === attributeCollectViewOriginX, "Clear button location not correct.");
+
+    //Tap cancel button on Advance bar.
+    Action.tapCancelButtonInAdvancedBar();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938064] check able to tap 超商取貨 and untap 超商取貨", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    $.delay(5);
+
+    //tap Advance button
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "超商取貨" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(4);
+    Assert.filterAttributeButtonIsTapped(4);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(4);
+    Assert.filterAttributeButtonIsNotTapped(4);
+
+    //Tap cancel button on Advance bar.
+    Action.tapCancelButtonInAdvancedBar();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});

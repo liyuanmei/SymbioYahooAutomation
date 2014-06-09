@@ -130,3 +130,25 @@ Assert.checkAdvancedShowCorrectWhenSRP = function () {
     var AdvancedShowCorrectWhenSRP = app.mainWindow().collectionViews()[0].buttons()[1];
     method.verifyTrue(1,AdvancedShowCorrectWhenSRP);
 };
+
+//6.6
+Assert.checkAllCoatgoryShowCorrectOnSRP = function () {
+    $.delay(sleep);
+    var checkAllCoatgoryShowCorrectOnSRP = app.mainWindow().collectionViews()[0].buttons()[0];
+    method.verifyTrue(1,checkAllCoatgoryShowCorrectOnSRP);
+};
+
+Assert.checkSearchBarWhenSRP = function () {
+    $.delay(sleep);
+    var checkSearchBarWhenSRP = app.mainWindow().tableViews()[0].cells(1).staticTexts()[0].name();
+    method.verifyEquals("上衣",checkSearchBarWhenSRP);
+};
+
+//6.9
+Assert.filterAttributeButtonIsTappedOnSRP = function (k,i) {
+    $.delay(sleep);
+    var attributeButton = app.mainWindow().collectionViews()[k].cells()[i];
+    var buttonStatus = attributeButton.value();
+
+    method.verifyEquals(0, buttonStatus);
+};
