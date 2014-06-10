@@ -1079,8 +1079,13 @@ test("[1938124] on item listing-list view tap store name page should navigate to
 
     Action.tapElementsOnScreen(storeNameElement);
 
+    obj.scrollDowns(1);
+
     //Verify screen successful navigate to item details.
-    Assert.itemPageShowCorrect(storeName);
+    Assert.itemPageShowCorrect();
+
+    //Verify screen successful navigate to item details.
+    //Assert.itemPageShowCorrect(storeName);
 
     //Back to list screen.
     Action.goBack();

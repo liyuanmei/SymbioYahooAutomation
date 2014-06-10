@@ -360,7 +360,7 @@ Action.tapClearButtonOnFilterScreen = function() {
     var clearButton = app.mainWindow().buttons()[1];
 
     //wait clear button become visible.
-    clearButton.waitUntilVisible(20);
+    //clearButton.waitUntilVisible(20);
 
     //tap clear button.
     clearButton.tap();
@@ -609,4 +609,19 @@ Action.tapAddAccountOnLogin = function (sUserName, sPassword) {
     catch (err) {
         UIALogger.logError("User unable to login due to: " + err);
     }
+};
+
+Action.tapButtonOnMyUserWhenCategory = function (i) {
+    $.delay(sleep);
+    var buttonOnMyUserWhenCategory = app.mainWindow().tableViews()[1].cells()[i];
+    method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[i].tap);
+    buttonOnMyUserWhenCategory.tap();
+};
+
+//6.10
+Action.tapChoosePreductCategory = function (i,j) {
+    $.delay(sleep);
+    var choosePreductCategory = app.mainWindow().collectionViews()[i].cells()[j];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[i].cells()[j].tap);
+    choosePreductCategory.tap();
 };

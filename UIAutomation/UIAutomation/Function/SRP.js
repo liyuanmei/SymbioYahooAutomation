@@ -1571,3 +1571,213 @@ test("[1938064] check able to tap 超商取貨 and untap 超商取貨", function
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
+
+//6.10
+test("[1938011] check ‘Store’ TAB list shows", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(5);
+
+    //verify the default view
+    Assert.tapTabCheckSListDisplay();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938012] check ‘Store’ TAB on '漢神百貨品牌服飾'' list shows", function () {
+    Action.cleanSearches();
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+    
+    //go to ”漢神百貨品牌服飾“
+    Action.goCoatCategory();
+    $.delay(sleep);
+
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(5);
+
+    //verify the default view
+    Assert.tapTabCheckSListDisplay();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938014] check header" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(5);
+
+    //get backIcon X and Y.
+    var backIcon = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[1];
+    var backIconX = Action.getElementsOriginXString(backIcon);
+    var backIconY = Action.getElementsOriginYString(backIcon);
+
+    //get navName X and Y
+    var navName = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    var navNameX = Action.getElementsOriginXString(navName);
+    var navNameY = Action.getElementsOriginYString(navName);
+
+    //Verify heart icon place at product price right side.
+    assertTrue( backIconX < navNameX && (backIconY - navNameY) < 20, "navName at backIcon right side.");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1938015] Check the 'return' icon", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    Action.goBackOnSearchPage();
+    $.delay(5);
+
+    Assert.textIsEnabled("上衣");
+    Action.tapReturnOnSearchBar();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938016] Click on the search icon", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(5);
+
+    Action.tapSearchResultOfStore();
+    Action.tapSearchIconOnNavBarWhenSRP();
+    $.delay(5);
+
+    Assert.autoCompletePageDisplay();
+    Action.tapReturnOnSearchBarWhenSRP();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938018] check a search bar, and then close the search bar", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(5);
+
+    Action.tapSearchResultOfStore();
+    Action.tapSearchIconOnNavBarWhenSRP();
+    Action.tapReturnOnSearchBarWhenSRP();
+    $.delay(sleep);
+
+    Assert.checkReturnPageDisplay("Line-up線上衣飾");
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938019] Check the default show 20 stores", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("s");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(5);
+
+    //Check the default show 20 stores
+    Assert.commodityItemsShowCount(21);
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938032] Click ‘advanced’ button", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(5);
+
+    Action.tapSearchResultOfStore();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRPStore();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(0);
+
+    Assert.advancedButtonsOrder();
+
+    //Tap cancel button on Advance bar.
+    Action.tapCancelButtonInAdvancedBar();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938017] Enter a keyword search", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(5);
+
+    Action.tapSearchResultOfStore();
+
+    Action.tapSearchIconOnNavBarWhenSRP();
+    Action.searchBarInputChinese("iphone");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Assert.searchResultsPage("iphone");
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});

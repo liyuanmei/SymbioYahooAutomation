@@ -493,3 +493,43 @@ Assert.logInWindowShowCorrectOnAddAccount = function () {
     var yahooAddAccount = app.mainWindow().tableViews()[0].cells()["Add Account"].staticTexts()[0].name();
     method.verifyEquals("Add Account", yahooAddAccount);
 };
+
+//6.6
+Assert.checkStoreName = function(i){
+    $.delay(sleep);
+    var finalStoreName = app.windows()[0].collectionViews()[0].cells()[0].staticTexts()[0].name();
+    method.verifyEquals(i, finalStoreName);
+};
+
+Assert.checkStoreCategoryCellsShowCorrectly = function () {
+    var StoreCategoryCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length<21;
+    $.delay(5);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<21);
+};
+
+Assert.checkStoreCategoryTabIsEnabled = function () {
+    $.delay(sleep);
+    var storeCategoryTabIsEnabled = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    method.verifyEquals(1, storeCategoryTabIsEnabled.isEnabled());
+};
+
+Assert.checkDefaultBrowserModeIsList = function () {
+    var defaultBrowserModeIsList = app.mainWindow().buttons()[1];
+    $.delay(sleep);
+    method.verifyEquals(1, defaultBrowserModeIsList.isEnabled());
+};
+
+Assert.checkDefaultAdvanceButtonIsSort = function () {
+    var DefaultAdvanceButtonIsSort = app.mainWindow().segmentedControls()[0].buttons()[0];
+    $.delay(sleep);
+    method.verifyEquals(1, DefaultAdvanceButtonIsSort.isEnabled());
+};
+
+Assert.checkCategoryOnEditFavoriteIsSelected = function () {
+    $.delay(sleep);
+    for (var i = 0; i < 12; i++) {
+        $.delay(1);
+        var categoryOnEditFavoriteIsSelected = app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0];
+        method.verifyEquals(1, categoryOnEditFavoriteIsSelected.isEnabled());
+    };    
+};

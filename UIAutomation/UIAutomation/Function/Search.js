@@ -46,7 +46,7 @@ test("[1937857] Auto complete function", function () {
     $.delay(sleep);
 
     Action.searchBarInput("h");
-    $.delay(sleep);
+    $.delay(5);
      
     //check autoComplete page display
     Assert.autoCompletePageDisplay();
@@ -978,4 +978,248 @@ test("[1937906] Classification of L1 in search", function () {
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
+});
+
+//6.10
+test("[1937907] Classification of L2 in search", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+
+    Action.tapGoodsButton();
+    Action.tapSearchIconOnNavBar();
+
+    Assert.textIsEnabled("搜尋服飾");
+    $.delay(sleep);
+    
+    Action.searchBarInput("keyword");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+    
+    Assert.searchResultsPage("keyword");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937908] Classification of L3 in search", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+    
+    //go fashion women's clothing category
+    Action.goFashionWomenClothingCategory();
+
+    Action.tapGoodsButton();
+    Action.tapSearchIconOnNavBar();
+
+    Assert.textIsEnabled("搜尋流行女裝");
+    $.delay(sleep);
+    
+    Action.searchBarInput("keyword");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+    
+    Assert.searchResultsPage("keyword");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937910] Classification of L5 in search", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+    
+    //go fashion women's clothing category
+    Action.goFashionWomenClothingCategory();
+
+    //go to coat 
+    Action.goCoatCategory();
+
+    //go to T-Shirt
+    Action.tapClassificationButtonWhenS();
+    $.delay(sleep);
+
+    Action.goCoatCategory();
+
+    Action.tapGoodsButton();
+    Action.tapSearchIconOnNavBar();
+
+    Assert.textIsEnabled("搜尋T恤");
+    $.delay(sleep);
+    
+    Action.searchBarInput("keyword");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+    
+    Assert.searchResultsPage("keyword");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937911] Classification of L6 in search", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goApparelCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+    
+    //go fashion women's clothing category
+    Action.goFashionWomenClothingCategory();
+
+    //go to coat 
+    Action.goCoatCategory();
+
+    //go to T-Shirt
+    Action.tapClassificationButtonWhenS();
+    $.delay(sleep);
+
+    Action.goCoatCategory();
+
+    //go to  sleeveless T-Shirt
+    Action.tapClassificationButtonWhenS();
+    $.delay(sleep);
+
+    Action.goCoatCategory();
+    $.delay(sleep);
+
+    Action.tapSearchIconOnNavBar();
+
+    Assert.textIsEnabled("搜尋無袖T恤");
+    $.delay(sleep);
+    
+    Action.searchBarInput("keyword");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+    
+    Assert.searchResultsPage("keyword");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1937912] check the search results", function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+
+    Action.englishInputMethod();
+    $.delay(sleep);
+    
+    Action.searchBarInput("iPhone");
+    Action.tapKeyboardSearch();
+    $.delay(5);
+
+    //verify type "iphone" show the correct
+    target.logElementTree();
+    $.delay(sleep);
+    var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
+
+    UIALogger.logMessage(productName.name());
+    Assert.elementsShouldContainText(productName, "hone");
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1959905] Verify '搜索全部商店'function" , function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("東京著衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(5);
+
+    Action.tapSearchResultOfStore();
+    Action.tapSearchIconOnNavBarWhenSRP();
+    Action.searchBarInputChinese("造型");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapAllCoatgoryWhenSRP();
+
+    Assert.checkButtonsNotExistOnStoreSearchPage(0);
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1977507] [bug case]verify search result when enter special characters in search box." , function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    Action.goCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInput(",");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+  
+    //verify exist to goods
+    Assert.checkFavoriteStoreCellsShowCorrectly();
+     
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「篩選」layer.", function () {
+    Action.cleanSearches();
+    $.delay(sleep);
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+
+    Action.englishInputMethod();
+    
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //go to 篩選 tab.
+    Action.tapButtonsInAdvancedBar(2);
+
+    //drag price bar to 253 price.    
+    app.mainWindow().dragInsideWithOptions({startOffset:{x:0.92, y:0.28}, endOffset:{x:0.00, y:0.31}, duration:1.4});
+    //app.mainWindow().dragInsideWithOptions({startOffset: {x: 0.92, y: 0.29}, endOffset:{x: 0.234, y: 0.29}});
+
+    Action.tapDetermineInAdvancedBarWhenSRP();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //go to 篩選 tab.
+    Action.tapButtonsInAdvancedBar(2);
+    
+    //Tap clear button
+    Action.tapClearButtonOnFilterScreenInAdvancedBarWhenSRP();
+
+    //Verify price bar restore to default value.
+    Assert.checkPriceBarShowCorrect("0 元");
+
+    Action.tapDetermineInAdvancedBarWhenSRP();
+
+    //Tap submit button and restore application to default location.
+    //Action.tapSubmitButtonOnAdvanceScreen();
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
 });

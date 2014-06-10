@@ -143,3 +143,12 @@ Action.tapStoreGoodsNum = function () {
     method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2].tap);
     tapStoreGoodsNum.tap();
 };
+
+//6.10
+Action.tapButtonsInAdvancedBarWhenOptions = function () {
+    $.delay(sleep);
+    var tapButtonsInAdvancedBarWhenSRP = app.mainWindow().collectionViews()[0].buttons()[0];
+
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[1].tap);
+    tapButtonsInAdvancedBarWhenSRP.tap();
+};

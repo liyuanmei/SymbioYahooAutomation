@@ -1,15 +1,32 @@
 Action.tapSearchIconOnNavBar = function () {
     $.delay(sleep);
-    var tapSearchIconOnNavBar = app.navigationBar().buttons()[2];
-    method.checkInstanceExists(app.navigationBar().buttons()[2].tap);
-    tapSearchIconOnNavBar.tap();
+        if(target.systemVersion() == "6.1.3"){
+        $.delay(sleep);
+        var tapSearchIconOnNavBar = app.navigationBar().buttons()[1];
+
+        method.checkInstanceExists(tapSearchIconOnNavBar.tap);
+        tapSearchIconOnNavBar.tap();
+    }
+    else{
+        var tapSearchIconOnNavBar = app.navigationBar().buttons()[2];
+        method.checkInstanceExists(app.navigationBar().buttons()[2].tap);
+        tapSearchIconOnNavBar.tap();
+    }
 };
 
 Action.tapBackOnSearchBar = function () {
     $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+    var tapBackOnSearchBar = app.mainWindow().buttons()[0];
+
+    method.checkInstanceExists(tapBackOnSearchBar.tap);
+    tapBackOnSearchBar.tap();
+    }
+    else{
     var tapBackOnSearchBar = app.mainWindow().buttons()[1];
     method.checkInstanceExists(app.mainWindow().buttons()[1].tap);
     tapBackOnSearchBar.tap();
+    }
 };
 
 Action.searchBarInput = function (skey) {
@@ -185,9 +202,18 @@ Action.englishInputMethod = function () {
 
 Action.goCategoryWhenSearchSettingOpen = function () {
     $.delay(sleep);
+    if(target.systemVersion == 6.0){
     var goCategoryWhenSearchSettingOpen = app.tabBar().buttons()[2];
     method.checkInstanceExists(app.tabBar().buttons()[2].tap);
     goCategoryWhenSearchSettingOpen.tap();
+    }
+    else{
+    $.delay(sleep);
+
+    var searchButton = app.tabBar().buttons()[2];
+    method.checkInstanceExists(searchButton.tap);
+    searchButton.tap();
+    }
 };
 
 Action.repeatInputWhenSearch = function () {
