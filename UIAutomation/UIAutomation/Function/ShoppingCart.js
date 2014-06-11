@@ -1,7 +1,7 @@
 test("[1959876] Verify the number of bottom bubble on shopping cart" , function () {
     Action.cleanSearches();
     $.delay(sleep);
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 
     Action.goApparelCategoryWhenShoppingCart();
     Action.goCommodityTab();
@@ -46,13 +46,13 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" , function 
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore3");
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1959883] verify all delete shopping cart of goods" ,function () {
     Action.cleanSearches();
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     $.delay(5);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -98,6 +98,6 @@ test("[1959883] verify all delete shopping cart of goods" ,function () {
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 
-    Action.tapButtonOnTabBar(4);
-    Action.removeLoginHistory("mobileappstore3");
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
 });

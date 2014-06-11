@@ -560,7 +560,10 @@ test("[1937896] View the search results page", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("JJHGHKJHHHHHJJJJJJHG");
+    Action.searchBarInput("JJHG");
+    $.delay(sleep);
+    
+    Action.searchBarInput("HKJHHHHHJJJJJJHG");
     Action.tapKeyboardSearch();
     $.delay(5);
      
