@@ -29,12 +29,13 @@ test("[1959922] Verify user can access correct store page from recommendation.",
     Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 
     Action.tapButtonOnTabBar(1);
-    $.delay(5);
+    $.delay(10);
 
-    obj.scrollDowns(3);
+    //obj.scrollDowns(3);
 
     //Tap item on list to navigate to item page.
-    Action.tapItemOnProductListScreen();
+    Action.tapStoreNameOnCategory();
+    //Action.tapFirstViewsOnFavoriteStorePage();
 
     Assert.checkButtonOnStore();
     Action.tapButtonOnTabBar(1);
