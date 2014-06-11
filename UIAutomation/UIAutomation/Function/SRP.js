@@ -1781,3 +1781,196 @@ test("[1938017] Enter a keyword search", function () {
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);
 });
+
+//6.11
+test("[1937914] Check the 'return' icon" , function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+
+    Action.searchBarInput("keyword");
+    Action.tapKeyboardSearch();
+    Action.goBackOnSearchPage();
+
+    Action.tapReturnOnSearchBar();
+    Assert.checkSearchPage("全部分類");
+    $.delay(sleep);
+    Action.goDiscoveryStream();
+});
+
+test("[1937989] Click the commodity pictures", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapItemOnProductListScreen();
+    //obj.scrollDowns(1);
+
+    Action.slidingCommodityPage();
+
+    Assert.itemPageShowCorrect();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938009] Login - click join collection after listing of stars." , function () {
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(sleep);
+
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    $.delay(sleep);
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("小圖");
+
+    //Tap favorites icon add a production to favorites.
+    Action.tapFavoritesIcon(1);
+    var productName = app.mainWindow().collectionViews()[0].cells()[1].name();
+
+    //got my favorites screen.
+    Action.tapButtonOnTabBar(4);
+    Action.goMayFavoritesScreenWhenSRP();
+
+    $.delay(sleep);
+    target.logElementTree();
+
+    //Assert product show in My favorites screen.
+    Assert.productAddedToMyFavoritesScreenWhenSRP(productName);
+
+    //Remove favorites item.
+    Action.tapButtonOnTabBar(2);
+    Action.tapFavoritesIcon(1);
+
+    //Verify favorites item successful removed.
+    Action.tapButtonOnTabBar(4);
+    $.delay(3);
+    Assert.productRemovedFromMyFavoritesScreenWhenSRP(productName);
+
+    //Restore app to default screen.
+    Action.goBack();
+    Action.tapButtonOnTabBar(2);
+
+    //Go back to advanced bar switch browse mode to list view.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    $.delay(sleep);
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+
+    //Log out and remove user login history.
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+});
+
+test("[1938031] After login, click on add collection list icon ", function () {
+    Action.cleanSearches();
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(sleep);
+
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(6);
+
+    //verify the heart icon display
+    Assert.heartIconShowCorrect(1);
+    Action.tapFavoriteStoreIcon();
+    Assert.filterAttributeButtonIsTappedOnSRP(0,1);
+
+    Action.tapFavoriteStoreIcon();
+    $.delay(sleep);
+
+    //Log out and remove user login history.
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+   
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938033] check according to the 'low price to dealer' sort" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    Action.tapGoodsTab();
+
+    //tap advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //go to 排序 tab.
+    Action.tapButtonsInAdvancedBar(0);
+
+    //select price from high to low.
+    Action.selectOptionOnSortingTabWhenSRP(2);
+    $.delay(sleep);
+
+    //verify 價錢低到高 price value show correct.
+    //the first parameter is product index and the second parameter is price index in product cell.
+    Assert.checkPriceValueShowLessThan(1, 3, "1");
+
+    //Restore application to default loaction.
+    Action.tapButtonOnTabBar(2);
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1938034] product items should sorting by price high to low after user select this option.", function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    Action.tapGoodsTab();
+
+    //tap advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //go to 排序 tab.
+    Action.tapButtonsInAdvancedBar(0);
+
+    //select price from high to low.
+    Action.selectOptionOnSortingTabWhenSRP(3);
+    $.delay(sleep);
+
+    //verify 價錢高到低 price value show correct.
+    //the first parameter is product index and the second parameter is price index in product cell.
+    Assert.checkPriceValueShowLessThan(1, 3, "100000000");
+
+    //Restore application to default loaction.
+    Action.tapButtonOnTabBar(2);
+
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+    Action.cleanSearches();
+});

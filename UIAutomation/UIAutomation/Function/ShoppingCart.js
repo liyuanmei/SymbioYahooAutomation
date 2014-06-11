@@ -101,3 +101,55 @@ test("[1959883] verify all delete shopping cart of goods" ,function () {
     //Action.tapButtonOnTabBar(4);
     //Action.removeLoginHistory("mobileappstore3");
 });
+
+test("[1977500] verify all delete shopping cart of goods" ,function () {
+    //login the app
+    Action.cleanSearches();
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+
+    //add goods to shopping cart
+    $.delay(sleep);
+    Action.tapButtonOnTabBar(2);
+    $.delay(sleep);
+
+    Action.tapItemOnCategoryScreenWhenItemPage(0);
+    $.delay(sleep);
+
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    Action.tapItemOnProductListScreen();
+    $.delay(sleep);
+
+    obj.scrollDowns(1);
+    Action.addToShoppingCart();
+    Action.chooseTheSizeOnShoppingCart();
+    Action.tapConfirmOnShoppingCart();
+
+    //switch between store and shopping cart
+    Action.tapButtonOnTabBar(3);
+    
+    Action.tapShoppingCartlist(0);
+  
+    Action.tapStoreOnShoppingCartPage();
+
+    Action.goBack();
+    $.delay(10);
+
+    Assert.checkbutButtonShoppingCart();
+
+    //delete shopping cart
+    Action.tapButtonOnTabBar(3);
+    Action.tapDeleteOnShoppingCart();
+
+    //restore settings
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
+});

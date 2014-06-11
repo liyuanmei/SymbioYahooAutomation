@@ -625,3 +625,24 @@ Action.tapChoosePreductCategory = function (i,j) {
     method.checkInstanceExists(app.mainWindow().collectionViews()[i].cells()[j].tap);
     choosePreductCategory.tap();
 };
+
+//6.9 pan FavoriteStore
+Action.doRefreshFavoriteStorePage = function () {
+    $.delay(sleep);
+    app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.65, y:0.29}, endOffset:{x:0.51, y:0.79}});
+};
+
+Action.tapChoosePreductCategory = function (i,j) {
+    $.delay(sleep);
+    var choosePreductCategory = app.mainWindow().collectionViews()[i].cells()[j];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[i].cells()[j].tap);
+    choosePreductCategory.tap();
+};
+
+//6.10 pan storeOnShoppingCartPage
+Action.tapBuyNextTime = function () {
+    $.delay(sleep);
+    var buyNextTime = app.mainWindow().scrollViews()[0].webViews()[0].links()[2];
+    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].links()[2].tap);
+    buyNextTime.tap();
+};

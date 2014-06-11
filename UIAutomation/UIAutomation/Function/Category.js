@@ -1536,3 +1536,263 @@ test("[1938159] check 運動/ 戶外/休閒 show correct.", function () {
     Action.goBack();
     Action.goDiscoveryStream();
 });
+
+//6.11
+test("[1938046] check the default browser mode", function () {
+    //go to production item list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    //tap advanced button
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+    $.delay(sleep);
+    target.logElementTree();
+
+    //check the default browser mode is list
+    Assert.checkDefaultBrowserModeIsList();
+
+    //restore
+    Action.tapButtonsInAdvancedBar(0);
+    Action.tapCancelButtonInAdvancedBar();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938050] Check the default is sort Tab", function () {
+    //go to production item list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    //tap advanced button
+    Action.tapAdvancedButton();
+    $.delay(sleep);
+    Assert.checkDefaultAdvanceButtonIsSort();
+
+    //restore
+    Action.tapCancelButtonInAdvancedBar();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938064] check 確定 button is effective", function () {
+    //go to production item list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    //tap advanced button
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(2);
+    Action.tapButtonOnFilterAttributeScreen(0);
+    Action.tapSubmitButtonOnAdvanceScreen();
+    $.delay(5);
+
+    //check filter is effective
+    Assert.checkReturnPageDisplay("服飾");
+
+    //restore
+    Action.tapAdvancedButton();
+    Action.tapClearButtonOnFilterScreen();
+    Action.tapButtonsInAdvancedBar(0);
+    Action.tapCancelButtonInAdvancedBar();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938096] click product image", function () {
+    //go to production item list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    //go to item page
+    Action.tapItemOnProductListScreen();
+    Action.slidingCommodityPage();
+
+    //check product page is correct
+    Assert.itemPageShowCorrect();
+
+    //restore
+    Action.goBack();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938109] click product image", function () {
+    //go to production item list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(sleep);
+    
+    //tap advanced button
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+    Action.chooseCategoryBrowseMode("小圖");
+    $.delay(sleep);
+
+    //go to item page
+    Action.tapCommodityPictureOnSearchResultsPage();
+    Action.slidingCommodityPage();
+
+    //check product page is correct
+    Assert.itemPageShowCorrect();
+
+    //restore
+    Action.tapButtonOnTabBar(2);
+    Action.tapItemOnCategoryScreen(0); 
+    Action.goCommodityTab();
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+    Action.chooseCategoryBrowseMode("列表");
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938121] click product image", function () {
+    //go to production item list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(sleep);
+    
+    //tap advanced button
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+    Action.chooseCategoryBrowseMode("大圖");
+    $.delay(sleep);
+
+    //go to item page
+    Action.tapCommodityPictureOnSearchResultsPage();
+    Action.slidingCommodityPage();
+    $.delay(sleep);
+
+    //check product page is correct
+    Assert.itemPageShowCorrect();
+
+    //restore
+    Action.tapButtonOnTabBar(2);
+    Action.tapItemOnCategoryScreen(0); 
+    Action.goCommodityTab();
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+    Action.chooseCategoryBrowseMode("列表");
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938160] check 圖書/ 文具/影音 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(11, "圖書/ 文具/影音");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(11);
+
+    //verify screen successful navigate to 日用品/ 清潔/寵物 screen.
+    Assert.navigationBarName("圖書/文具/影音");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1953648] verify edit favorite category if correct", function () {
+    //do user login
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(5);
+    //obj.scrollDowns(1);
+
+    //edit favorite categories
+    Action.tapButtonOnMyUserWhenCategory(6);
+
+    Action.selectCategoryOnEditFavorite();
+    $.delay(sleep);
+
+    //verify edit favorite category if correct
+    Assert.checkCategoryOnEditFavoriteIsSelected();
+
+    //restore
+    Action.selectCategoryOnEditFavorite();
+    Action.goBack();
+
+    //Log out and remove user login history
+    Action.doUserLogout();
+
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1953657] verify edit favorite category if correct on sidebar.", function () {
+    //do user login
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(5);
+    //obj.scrollDowns(1);
+
+    //edit favorite categories
+    Action.tapButtonOnMyUserWhenCategory(6);
+
+    Action.selectCategoryOnEditFavorite();
+
+    Action.goBack();
+
+    //slect favorite categories and assert them
+    Action.verifyEditingFavoriteCategories();
+    $.delay(5);
+
+    //restore
+    Action.tapButtonOnMyUser(6);
+    Action.selectCategoryOnEditFavorite();
+    Action.goBack();
+
+    //Log out and remove user login history
+    Action.doUserLogout();
+
+    Action.tapButtonOnTabBar(0);
+
+    //Action.tapButtonOnTabBar(4);
+    //Action.removeLoginHistory("mobileappstore3");
+});
+
+test("[1959882] Verify18 ban prompt.", function () {
+    //go to 18 ban page
+    Action.tapButtonOnTabBar(2);
+    Action.tapItemOnCategoryScreen(10);
+    Action.tapChoosePreductCategory(0,7);
+
+    //Assert.check18BanScreenShowCorrect();
+
+    //tap cancel on 18 ban page
+    Action.back18BanScreen();
+
+    //check back to "運動／戶外／休閒" page after user tap cancel on 18 ban page
+    Assert.navigationBarName("運動/戶外/休閒");
+
+    //restore
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1959881] product items should shorting by price low to high after user select this option.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+
+    //tap advanced button.
+    Action.tapAdvancedButton();
+
+    //go to soring tab.
+    Action.tapButtonsInAdvancedBar("排序");
+
+    //select price from high to low.
+    Action.selectOptionOnSortingTab("價錢低到高");
+    $.delay(sleep);
+
+    //verify price value show correct.
+    //the first parameter is product index and the second parameter is price index in product cell.
+    Assert.checkPriceValueShowLessThan(1, 3, "1");
+
+    //Restore application to default loaction.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});

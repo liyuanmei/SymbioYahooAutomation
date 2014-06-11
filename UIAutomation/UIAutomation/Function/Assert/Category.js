@@ -533,3 +533,30 @@ Assert.checkCategoryOnEditFavoriteIsSelected = function () {
         method.verifyEquals(1, categoryOnEditFavoriteIsSelected.isEnabled());
     };    
 };
+
+//6.9
+Assert.checkFavoriteStoreCellsShowCorrectly = function () {
+var favoriteStoreCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length>2;
+    $.delay(5);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length>2);
+};
+
+Assert.checkFavoriteItemButtonIsTapped = function () {
+    $.delay(sleep);
+    var favoriteItemButtonIsTapped = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+    method.verifyEquals(1, favoriteItemButtonIsTapped.value());
+};
+
+//6.10
+Assert.checkItemNumberOnShoppingCartIsEnabled = function () {
+    $.delay(sleep);
+    var itemNumberOnShoppingCart = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[8];
+    method.verifyEquals(1, itemNumberOnShoppingCart.isEnabled());
+};
+
+//6.11
+Assert.checkTextShowCorrectly = function (i,j) {
+    $.delay(sleep);
+    var checkTextShowCorrectly = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[i];
+    method.verifyEquals(j,checkTextShowCorrectly.name());
+};

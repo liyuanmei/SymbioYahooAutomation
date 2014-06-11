@@ -152,3 +152,4 @@ Assert.filterAttributeButtonIsTappedOnSRP = function (k,i) {
 
     method.verifyEquals(0, buttonStatus);
 };
+
