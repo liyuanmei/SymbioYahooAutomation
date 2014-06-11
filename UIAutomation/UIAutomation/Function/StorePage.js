@@ -71,6 +71,7 @@ test("[1959904] Verify user can check purchasing info from store page" , functio
 
     Action.tapButtonOnTabBar(3);
     Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
 
     //Log out and remove user login history

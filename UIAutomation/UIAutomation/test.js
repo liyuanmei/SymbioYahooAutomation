@@ -29,7 +29,7 @@
 //#import "Function/shoppingCart.js"
 //#import "Function/RecentHistory.js"
 //#import "Function/FavoriteItem.js"
-#import "Function/FavoriteStores.js"
+//#import "Function/FavoriteStores.js"
 #import "Function/StorePage.js"
 #import "Function/MyAccount.js"
 #import "Function/ItemPage.js"
