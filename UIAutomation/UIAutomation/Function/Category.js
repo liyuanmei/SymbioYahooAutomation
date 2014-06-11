@@ -705,7 +705,7 @@ test("[1938103] check log in window show after unregister user tap favorites ico
 });
 
 test("[1938104] login user able to add product to favorites", function () {
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    Action.doUserLogin("mobileappstore3", "A1234qwer");
 
     //go to production item list.
     Action.goApparelCategory();
