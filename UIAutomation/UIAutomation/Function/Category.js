@@ -414,12 +414,10 @@ test("[1938099] check able to navigate to itempage.", function() {
     //Verify screen successful navigated to item page.
     Assert.itemPageShowCorrect();
 
-    //Tap back button go back to list screen.
-    Action.goBack();
-
-    //go back to discovery screen.
-    Action.goBack();
-    Action.goDiscoveryStream();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
 });
 
 test("[1938100] check product price show correct.", function () {
@@ -736,20 +734,26 @@ test("[1938104] login user able to add product to favorites", function () {
     //go to production item list.
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(sleep);
 
     //Tap favorites icon add a production to favorites.
     Action.tapFavoritesIcon(1);
+    $.delay(sleep);
+
     var productName = app.mainWindow().collectionViews()[0].cells()[1].name();
 
     //got my favorites screen.
     Action.tapButtonOnTabBar(4);
     Action.goMayFavoritesScreen();
+    $.delay(sleep);
 
     //Assert product show in My favorites screen.
     Assert.productAddedToMyFavoritesScreen(productName);
 
     //Remove favorites item.
     Action.tapButtonOnTabBar(2);
+    $.delay(sleep);
+
     Action.tapFavoritesIcon(1);
 
     //Verify favorites item successful removed.
@@ -760,6 +764,8 @@ test("[1938104] login user able to add product to favorites", function () {
     //Restore app to default screen.
     Action.goBack();
     Action.tapButtonOnTabBar(2);
+    $.delay(sleep);
+
     Action.goBack();
     Action.goDiscoveryStream();
 
@@ -989,12 +995,15 @@ test("[1938116] on photo grid view unregister user tap favorites icon login wind
     Action.tapButtonsInAdvancedBar(1);
 
     Action.chooseCategoryBrowseMode("小圖");
+    $.delay(sleep);
 
     //Verify successful switch to photo grid view.
     Assert.successfulSwitchToPhotoGridView();
+    $.delay(sleep);
     
     //tap favorites icon, after tapped log in window show up.
     Action.tapFavoritesIcon(1);
+    $.delay(sleep);
 
     //Verify login window show correct.
     Assert.logInWindowShowCorrectOnAddAccount();
@@ -1301,12 +1310,15 @@ test("[1938128] on item listing-list view unregister user tap favorites icon sho
 
     //Verify successful switch to listing view.
     Assert.successfulSwitchToListingView();
+    $.delay(sleep);
 
     //Verify favorites icon show correct, this function need passing product index parameters.
     Assert.favoritesIconShowCorrect(1);
+    $.delay(sleep);
 
     //tap favorites icon, after tapped log in window show up.
     Action.tapFavoritesIcon(1);
+    $.delay(sleep);
 
     //Verify login window show correct.
     Assert.logInWindowShowCorrectOnAddAccount();
@@ -1350,9 +1362,11 @@ test("[1938129] on item listing-list view register should able to add item to hi
 
     //Verify successful switch to photo grid view.
     Assert.successfulSwitchToListingView();
+    $.delay(sleep);
 
     //Tap favorites icon add a production to favorites.
     Action.tapFavoritesIcon(1);
+    $.delay(sleep);
 
     //got my favorites screen.
     Action.tapButtonOnTabBar(4);
