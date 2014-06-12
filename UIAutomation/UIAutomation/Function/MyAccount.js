@@ -7,7 +7,7 @@ test("[1959920] Verify the number of e-coupon can count correctly", function () 
     Action.tapButtonOnTabBar(4);
     $.delay(sleep);
 
-    //go to electronic coupons
+    //go to electronic coupons.
     Action.goElectronicCoupons();
     $.delay(10);
 
