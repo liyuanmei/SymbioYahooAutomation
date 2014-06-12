@@ -106,3 +106,38 @@ test("[1953636] verify favorite items", function () {
     //Action.tapButtonOnTabBar(4);
     //Action.removeLoginHistory("mobileappstore3");
 });
+
+//6.12
+test("[1959929] verify user can add favorite item.", function () {
+    //login the app
+    Action.cleanSearches();
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(sleep);
+
+    //add favorite item
+    Action.tapButtonOnTabBar(2);
+    Action.tapItemOnCategoryScreenWhenItemPage(0);
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    var storeNameElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    $.delay(4);
+
+    Action.tapElementsOnScreen(storeNameElement);
+    $.delay(5);
+
+    Action.tapFavoritesIcon(1);
+    Action.goBack();
+    $.delay(sleep);
+
+    //check favorite icon is tapped
+    Assert.checkFavoriteItemButtonIsTapped();
+
+    //restore
+    Action.tapFavoritesIcon(1);
+    Action.tapButtonOnTabBar(2);
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+});

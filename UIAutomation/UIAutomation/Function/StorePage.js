@@ -185,3 +185,26 @@ test("[1959906] Verify store promotion item's display", function () {
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
 });
+
+//6.12
+test("[1959913] Verify user can access store page by tapping store logo ", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //go to store page
+    Action.tapStoreTab();
+    $.delay(5);
+
+    Action.tapSearchResultOfStore();
+    
+    //Display properly store page, will not display the item page
+    Assert.checkButtonOnStore();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});

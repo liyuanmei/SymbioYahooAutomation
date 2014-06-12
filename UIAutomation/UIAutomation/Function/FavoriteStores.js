@@ -117,3 +117,87 @@ test("[1959888] Verify Just added favorite store can be displayed on my favorite
     //Action.tapButtonOnTabBar(4);
     //Action.removeLoginHistory("mobileappstore3");   
 });
+
+//6.12
+test("[1959907] verify the number of store items,collected number with my favorite store.",function () {
+    //do user login
+    Action.cleanSearches();
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(sleep);
+
+    //go to favorite store page
+    Action.tapButtonOnTabBar(1);
+    $.delay(10);
+
+    var storeItem = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[4];
+    var collection = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[6];
+    //check store items and collect
+    Assert.elementsShouldContainText(storeItem, "件商品");
+    Assert.elementsShouldContainText(collection, "人收藏");
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+});
+
+test("[1954565] Verify pull down to refresh when favorite store is empty.",function () {
+    //do user login
+    Action.cleanSearches();
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(sleep);
+
+    //go to favorite store page
+    Action.tapButtonOnTabBar(1);
+    $.delay(5);
+    
+    //do refresh
+    Action.doRefreshFavoriteStorePage();
+    $.delay(5);
+
+    //check the page is correct
+    Assert.checkReturnPageDisplay("最愛商店");
+
+    //check the cells is not empty
+    Assert.checkFavoriteStoreCellsShowCorrectly();
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+});
+
+test("[1954610] Verify pull down to refresh when favorite store is exist.",function () {
+    //do user login
+    Action.cleanSearches();
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(sleep);
+
+    //add favorite store
+    Action.tapButtonOnTabBar(1);
+    $.delay(5);
+
+    Action.tapFavoriteStoreIcon();
+    $.delay(5);
+
+    //do refresh
+    Action.doRefreshFavoriteStorePage();
+    $.delay(5);
+
+    //check the page is correct
+    Assert.checkReturnPageDisplay("最愛商店");
+
+    //check the cells is not empty
+    Assert.checkFavoriteStoreCellsShowCorrectly();
+
+    //restore settings
+    Action.tapFirstViewsOnFavoriteStorePage();
+    $.delay(5);
+
+    Action.tapCancelFavoriteStoreIcon();
+    $.delay(sleep);
+
+    Action.tapBackOnFavoriteStorePage();
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+});

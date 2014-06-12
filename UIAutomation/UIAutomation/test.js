@@ -22,7 +22,7 @@
 //#import "smoke/shoppingCartlist.js"
 
 //functional.
-//#import "Function/welcome.js"
+#import "Function/welcome.js"
 #import "Function/Category.js"
 #import "Function/Search.js"
 #import "Function/SRP.js"
@@ -32,5 +32,9 @@
 #import "Function/FavoriteStores.js"
 #import "Function/StorePage.js"
 #import "Function/MyAccount.js"
-#import "Function/ItemPage.js"
 #import "Function/TabBar.js"
+#import "Function/DiscoveryStream.js"
+#import "Function/Login.js"
+#import "Function/Options.js"
+#import "Function/Functional.js"
+#import "Function/ItemPage.js"

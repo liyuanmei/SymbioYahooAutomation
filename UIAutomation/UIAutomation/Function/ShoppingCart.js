@@ -153,3 +153,112 @@ test("[1977500] verify all delete shopping cart of goods" ,function () {
     //Action.tapButtonOnTabBar(4);
     //Action.removeLoginHistory("mobileappstore3");
 });
+
+//6.12
+test("[1959885] verify the shopping cart detail" ,function () {
+    //login the app
+    Action.cleanSearches();
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(sleep);
+
+    //add item to shopping cart
+    Action.tapButtonOnTabBar(2);
+    Action.tapItemOnCategoryScreenWhenItemPage(0);
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    Action.tapItemOnProductListScreen();
+    $.delay(sleep);
+    
+    obj.scrollDowns(1);
+    $.delay(sleep);
+
+    Action.addToShoppingCart();
+    Action.chooseTheSizeOnShoppingCart();
+    Action.tapConfirmOnShoppingCart();
+
+    //go to shopping cart page
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
+    Action.tapShoppingCartlist(0);
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
+
+    //check item number is correct
+    Assert.checkItemNumberOnShoppingCartIsEnabled();
+
+    //restore
+    Action.tapButtonOnTabBar(3);
+    Action.tapDeleteOnShoppingCart();
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+});
+
+test("[1959903] Verify user can view next buy items then view shopping cart items" ,function () {
+    //login the app
+    Action.cleanSearches();
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(sleep);
+
+    //add item to shopping cart
+    Action.tapButtonOnTabBar(2);
+    Action.tapItemOnCategoryScreenWhenItemPage(0);
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    Action.tapItemOnProductListScreen();
+    $.delay(sleep);
+    
+    obj.scrollDowns(1);
+    $.delay(sleep);
+
+    Action.addToShoppingCart();
+    Action.chooseTheSizeOnShoppingCart();
+    Action.tapConfirmOnShoppingCart();
+
+    //go to shopping cart page
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
+    Action.tapShoppingCartlist(0);
+    Action.tapButtonOnTabBar(3);
+    $.delay(sleep);
+
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
+
+    //tap buy next time tab and back
+    Action.tapBuyNextTime();
+    $.delay(5);
+
+    Action.goBack();
+    Action.tapShoppingCartlist(0);
+    $.delay(10);
+
+    //check shopping cart list can bi tapped and no issue
+    Assert.checkSearchPage("本店購物車");
+
+    //restore
+    Action.tapButtonOnTabBar(3);
+    Action.tapDeleteOnShoppingCart();
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+});

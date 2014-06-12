@@ -25,6 +25,7 @@ var Assert = {};
 #import "Function/Action/MyAccount.js"
 #import "Function/Action/ItemPage.js"
 #import "Function/Action/Options.js"
+#import "Function/Action/Functional.js"
 
 //Assert
 #import "smoke/Assert/FavoriteStores.js"
@@ -50,6 +51,7 @@ var Assert = {};
 #import "Function/Assert/RecentHistory.js"
 #import "Function/Assert/MyAccount.js"
 #import "Function/Assert/ItemPage.js"
+#import "Function/Assert/Functional.js"
 
 var target = UIATarget.localTarget();
 var app = target.frontMostApp();
