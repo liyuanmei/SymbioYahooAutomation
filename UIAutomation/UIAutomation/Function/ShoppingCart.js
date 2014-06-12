@@ -130,11 +130,11 @@ test("[1977500] verify all delete shopping cart of goods" ,function () {
     Action.tapButtonOnTabBar(3);
     
     Action.tapShoppingCartlist(0);
+    $.delay(10);
   
     Action.tapStoreOnShoppingCartPage();
 
     Action.goBack();
-    $.delay(10);
 
     Assert.checkbutButtonShoppingCart();
 

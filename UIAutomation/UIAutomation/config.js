@@ -24,6 +24,7 @@ var Assert = {};
 #import "Function/Action/StorePage.js"
 #import "Function/Action/MyAccount.js"
 #import "Function/Action/ItemPage.js"
+#import "Function/Action/Options.js"
 
 //Assert
 #import "smoke/Assert/FavoriteStores.js"

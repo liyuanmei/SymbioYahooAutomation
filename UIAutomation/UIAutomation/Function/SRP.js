@@ -1838,6 +1838,7 @@ test("[1938009] Login - click join collection after listing of stars." , functio
     Assert.buttonOnAdvancedIsEnabled(1);
 
     Action.chooseCategoryBrowseMode("小圖");
+    $.delay(5);
 
     //Tap favorites icon add a production to favorites.
     Action.tapFavoritesIcon(1);
