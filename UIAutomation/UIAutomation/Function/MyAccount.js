@@ -11,7 +11,7 @@ test("[1959920] Verify the number of e-coupon can count correctly", function () 
     Action.goElectronicCoupons();
     $.delay(10);
 
-    Assert.checkElectronicCouponsDisplay();
+    Assert.checkElectronicCouponsDisplay("電子折價券");
 
     //Log out and remove user login history
     Action.tapButtonOnTabBar(4);
