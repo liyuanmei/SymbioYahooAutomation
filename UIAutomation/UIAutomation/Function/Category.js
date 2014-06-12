@@ -687,14 +687,22 @@ test("[1938102] check favorites icon show correct.", function () {
 test("[1938103] check log in window show after unregister user tap favorites icon.", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
-
-    obj.scrollDowns(1);
+    $.delay(3);
      
     //tap favorites icon, after tapped log in window show up.
     Action.tapFavoritesIcon(1);
+    $.delay(3);
 
-    //Verify login window show correct.
-    Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+    var login = app.mainWindow().tableViews()[0].cells()["Add Account"].staticTexts()[0].name();
+
+    if(login == "Add Account"){
+        $.delay(sleep);
+        Assert.logInWindowShowCorrectOnAddAccount();
+    }
+    else{
+        //Verify login window show correct.
+        Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+    }
 
     //Tap exit button exit login window.
     Action.exitLoginWindow();
@@ -705,8 +713,26 @@ test("[1938103] check log in window show after unregister user tap favorites ico
 });
 
 test("[1938104] login user able to add product to favorites", function () {
-    Action.doUserLogin("mobileappstore3", "A1234qwer");
+    Action.tapButtonOnTabBar(4);
+    $.delay(sleep);
 
+    var login = app.mainWindow().tableViews()[0].cells()["Add Account"].staticTexts()[0].name();
+    $.delay(sleep);
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    if(login == "Add Account"){
+        $.delay(sleep);
+        Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    }
+    else{
+        $.delay(sleep);
+
+        //Verify login window show correct.
+        Action.doUserLogin("mobileappstore3", "A1234qwer");
+    }
+    
     //go to production item list.
     Action.goApparelCategory();
     Action.goCommodityTab();
@@ -740,9 +766,6 @@ test("[1938104] login user able to add product to favorites", function () {
     //Log out and remove user login history
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
 });
 
 //6.5
