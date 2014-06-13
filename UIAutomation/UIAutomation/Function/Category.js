@@ -1833,3 +1833,96 @@ test("[1959881] product items should shorting by price low to high after user se
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
+
+
+//6.13
+test("[1954573] verify user under the age of 18  never seen 18 ban screen function.", function () {
+    //go to 18 ban page
+    Action.tapButtonOnTabBar(2);
+    $.delay(sleep);
+
+    Action.tapItemOnCategoryScreen(10);
+    $.delay(sleep);
+
+    Action.tapChoosePreductCategory(0,7);
+    $.delay(sleep);
+
+    //tap cancel on 18 ban page
+    Action.back18BanScreen();
+    $.delay(sleep);
+
+    //check back to "運動／戶外／休閒" page after user tap cancel on 18 ban page
+    Assert.navigationBarName("運動/戶外/休閒");
+
+    //restore
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1938141] check 最新動態 button exist", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.buttonOnTabBarShowCorrect("最新動態");
+    Action.goDiscoveryStream();
+});
+
+test("[1938143] check 最愛商店 button exist.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.buttonOnTabBarShowCorrect("最愛商店");
+    Action.goDiscoveryStream();
+});
+
+test("[1938145] check 購物車 button exist.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.buttonOnTabBarShowCorrect("購物車");
+    Action.goDiscoveryStream();
+});
+
+test("[1938147] check 我的帳戶 button exist.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.buttonOnTabBarShowCorrect("我的帳戶");
+    Action.goDiscoveryStream();
+});
+
+test("[1938149] check 服飾 show correct.", function () {
+    Action.tapButtonOnTabBar(2);
+    Assert.allCategoryItemShowCorrect(0, "服飾");
+
+    //Go to item list screen.
+    Action.tapItemOnCategoryScreen(0);
+
+    //verify screen successful navigate to 服飾 screen.
+    Assert.navigationBarName("服飾");
+
+    //Tap back button and go back to discovery screen.
+    Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+test("[1954571] verify 18 ban show correct.", function () {
+    //do search.
+    Action.doSearch("充氣娃娃");
+
+    //switch layout to big image
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Go to item detail screen.
+    Action.tapItemOnProductListScreen();
+    $.delay(sleep);
+    
+    //Verify 18 ban screen show correct.
+    Assert.check18BanScreenShowCorrect();
+
+    //Tap back button exit 18 ban screen.
+    Action.back18BanScreen();
+
+    //tap discory stream to restore screen to default.
+    Action.goDiscoveryStream();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});

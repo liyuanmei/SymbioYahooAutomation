@@ -1226,3 +1226,23 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
+
+test("[1959914] Verify user can access store page by tapping store logo", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("東京");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(5);
+
+    Action.tapSearchResultOfStore();
+
+    Assert.checkButtonOnStore();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});

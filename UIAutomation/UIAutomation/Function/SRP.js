@@ -1975,3 +1975,34 @@ test("[1938034] product items should sorting by price high to low after user sel
     Action.goDiscoveryStream();
     Action.cleanSearches();
 });
+
+test("[1937970] check able to tap 有圖片 and untap 有圖片", function () {
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    $.delay(5);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap 篩選 button
+    Action.tapButtonsInAdvancedBar(2);
+
+    //Tap "有圖片" and verify this button enabled after tap.
+    Action.tapButtonOnFilterAttributeScreen(7);
+    Assert.filterAttributeButtonIsTapped(7);
+
+    //Tap button again and verify button is not enabled.
+    Action.tapButtonOnFilterAttributeScreen(7);
+    Assert.filterAttributeButtonIsNotTapped(7);
+
+    //Tap cancel button on Advance bar.
+    Action.tapCancelButtonInAdvancedBar();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
