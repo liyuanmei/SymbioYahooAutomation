@@ -1123,7 +1123,7 @@ test("[1937912] check the search results", function () {
     //verify type "iphone" show the correct
     target.logElementTree();
     $.delay(sleep);
-    var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
+    var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[1];
 
     UIALogger.logMessage(productName.name());
     Assert.elementsShouldContainText(productName, "hone");

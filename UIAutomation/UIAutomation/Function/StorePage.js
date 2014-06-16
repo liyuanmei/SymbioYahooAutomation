@@ -11,15 +11,19 @@ test("[1959901] Verify stores categiry show correctly.", function () {
     //tap store category tab and store commodity tab
     Action.tapStoreCategoryTab();
     $.delay(sleep);
+
     Action.tapStoreCommodityTab();
     $.delay(sleep);
+
     Action.tapStoreCategoryTab();
     $.delay(sleep);
+
     target.logElementTree();
 
     //assert stores category show correctly
     Assert.checkStoreCategoryCellsShowCorrectly();
     $.delay(sleep);
+    
     Assert.checkStoreCategoryTabIsEnabled();
     $.delay(sleep);
 
@@ -31,8 +35,6 @@ test("[1959901] Verify stores categiry show correctly.", function () {
 
 test("[1959904] Verify user can check purchasing info from store page" , function () {
     Action.cleanSearches();
-    $.delay(sleep);
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 
     Action.goApparelCategoryWhenShoppingCart();
     Action.goCommodityTab();
@@ -74,13 +76,6 @@ test("[1959904] Verify user can check purchasing info from store page" , functio
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
 });
 
 //6.11
@@ -110,6 +105,11 @@ test("[1959890] Verify the store custom categories is show correct", function ()
 test("[1959898] Not log in, click on the add collection list icon ", function () {
     Action.cleanSearches();
 
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+    $.delay(sleep);
+
     Action.tapButtonOnTabBar(1);
     $.delay(10);
 
@@ -122,6 +122,10 @@ test("[1959898] Not log in, click on the add collection list icon ", function ()
 
     //Tap exit button exit login window.
     Action.exitLoginWindow();
+    Action.tapButtonOnTabBar(0);
+    $.delay(sleep);
+
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     Action.tapButtonOnTabBar(0);
 });
 
@@ -150,10 +154,9 @@ test("[1959925] Verify user can search funtion in store page ", function () {
 
 test("[1959906] Verify store promotion item's display", function () {
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-    $.delay(sleep);
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
+
     Action.tapItemOnCategoryScreenWhenItemPage(0);
     $.delay(sleep);
 
@@ -180,10 +183,6 @@ test("[1959906] Verify store promotion item's display", function () {
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
 });
 
 //6.12

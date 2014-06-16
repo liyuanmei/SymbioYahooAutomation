@@ -2,6 +2,7 @@ test("[1938036] Check Header", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
     $.delay(sleep);
+
     Assert.commodityHeader();
     Action.goBack(); //Go back to category page.
     Action.goDiscoveryStream(); //Go to discover stream screen.
@@ -112,8 +113,10 @@ test("[1938048] Scroll screen more items should successful loaded", function () 
 test("[1938052] check 搜尋服飾 show in search bar", function () {
     //Go to apparel category and tap Search icon
     Action.goApparelCategory();
+    $.delay(sleep);
 
     Action.tapSearchIconOnCategoryList();
+    $.delay(sleep);
 
     //Verify "搜尋服飾" show in sarch bar.
     Assert.textIsEnabled("搜尋服飾");
@@ -126,9 +129,11 @@ test("[1938052] check 搜尋服飾 show in search bar", function () {
 test("[1938053] can switch to 排序 tab after click 排序 button", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
      
     //tap 排序 button and verify 排序 button is enabled. the order of 排序 button is 0.
     Action.tapButtonsInAdvancedBar(0);
@@ -144,9 +149,11 @@ test("[1938053] can switch to 排序 tab after click 排序 button", function ()
 test("[1938054] can switch to 篩選 tab after click 篩選 button", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //tap 篩選 button and verify 篩選 button is enabled. the order of 排序 button is 2.
     Action.tapButtonsInAdvancedBar(2);
@@ -162,9 +169,11 @@ test("[1938054] can switch to 篩選 tab after click 篩選 button", function ()
 test("[1938055] verify the elements order in 排序 tab", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //tap 排序 button and verify elements order in 排序 tab show correct.
     Action.tapButtonsInAdvancedBar(0);
@@ -182,9 +191,11 @@ test("[1938055] verify the elements order in 排序 tab", function () {
 test("[1938060] check the elements on 篩選 screen", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //tap 篩選 button and verify 篩選 button is enabled. the order of 排序 button is 2.
     Action.tapButtonsInAdvancedBar(2);
@@ -203,9 +214,11 @@ test("[1938060] check the elements on 篩選 screen", function () {
 test("[1938063] check “確定” button exist on Advanced bar", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
@@ -223,9 +236,11 @@ test("[1938063] check “確定” button exist on Advanced bar", function () {
 test("[1938069] check able to tap '可刷卡' and untap '可刷卡' button", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
@@ -248,9 +263,11 @@ test("[1938069] check able to tap '可刷卡' and untap '可刷卡' button", fun
 test("[1938072] check able to tap '有影音' and untap '有影音' button", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
@@ -273,9 +290,11 @@ test("[1938072] check able to tap '有影音' and untap '有影音' button", fun
 test("[1938075] check able to tap '0利率' and untap '0利率' button", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
@@ -298,9 +317,11 @@ test("[1938075] check able to tap '0利率' and untap '0利率' button", functio
 test("[1938078] check able to tap '可分期' and untap '可分期' button", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
@@ -323,9 +344,11 @@ test("[1938078] check able to tap '可分期' and untap '可分期' button", fun
 test("[1938081] check able to tap '超商付款' and untap '超商付款' button", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
@@ -348,9 +371,11 @@ test("[1938081] check able to tap '超商付款' and untap '超商付款' button
 test("[1938087] check able to tap '有現貨' and untap '有現貨' button", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
@@ -374,9 +399,11 @@ test("[1938087] check able to tap '有現貨' and untap '有現貨' button", fun
 test("[1938093] check able to tap '優良商店' and untap '優良商店' button", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
@@ -407,9 +434,6 @@ test("[1938099] check able to navigate to itempage.", function() {
 
     obj.scrollDowns(1);
     $.delay(sleep);
-
-    //target.logElementTree();
-    //var ItemOnProductListScreen = app.mainWindow().collectionViews()[0].cells()[1].name();
      
     //Verify screen successful navigated to item page.
     Assert.itemPageShowCorrect();
@@ -423,6 +447,7 @@ test("[1938099] check able to navigate to itempage.", function() {
 test("[1938100] check product price show correct.", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //first parameter is second product, second parameter is the  location of price in product cell.
     Assert.productPriceShowCorrect(2, 2);
@@ -435,6 +460,7 @@ test("[1938100] check product price show correct.", function () {
 test("[1938101] check the rating show correct.", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(sleep);
 
     //Verify the value of rating is less than 10, if not fail.
     Assert.storeRatingShowCorrect(1, 1);
@@ -454,6 +480,7 @@ test("[1938039] search name on header should changed after search another keywor
     var collectionViews = app.mainWindow().collectionViews()[0];
     var itemCell = collectionViews.cells()[1];
     var itemSummary = itemCell.staticTexts()[2];
+    $.delay(sleep);
 
     //verify search result page contain expect search keyword.
     Assert.elementsShouldContainText(itemSummary, "上衣");
@@ -467,6 +494,7 @@ test("[1938039] search name on header should changed after search another keywor
     //Verify search result page contain expect search keyword.
     var productItem = app.mainWindow().collectionViews()[0].cells()[1];
     var productSummary = productItem.staticTexts()[2];
+    $.delay(sleep);
 
     Assert.elementsShouldContainText(productSummary, "hone");
 
@@ -481,7 +509,7 @@ test("[1938044] check 進階 button exist.", function () {
     Action.goCommodityTab();
 
     //Verify 進階 button exist on screen.
-    $.delay(sleep);
+    $.delay(3);
     var advancedButton = app.mainWindow().collectionViews()[0].buttons()[0]
 
     Assert.checkButtonExist(advancedButton);
@@ -495,7 +523,7 @@ test("[1938045] check 共xxxx筆結果.", function () {
     //go 商品 screen.
     Action.goApparelCategory();
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(3);
 
     //verify 共xxxx筆結果 show correct.
     var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[0];
@@ -511,9 +539,11 @@ test("[1938061] check 清除 button show correct on advanced bar.", function (){
     //Go 商品 screen.
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //tap Advance button
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap 篩選 button.
     Action.tapButtonsInAdvancedBar(2);
@@ -543,9 +573,11 @@ test("[1938062] tap clear button can clear to user input.", function () {
     //Go to product list.
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //tap advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //go to 篩選 tab.
     Action.tapButtonsInAdvancedBar(2);
@@ -555,12 +587,14 @@ test("[1938062] tap clear button can clear to user input.", function () {
 
     //drag price bar to 1020 price.    
     app.mainWindow().dragInsideWithOptions({startOffset: {x: 0.92, y: 0.29}, endOffset:{x: 0.234, y: 0.29}});
+    $.delay(sleep);
     
     //Verify price show correct after dragging.
     Assert.checkPriceBarShowCorrect("1020 元");
 
     //Tap clear button
     Action.tapClearButtonOnFilterScreen();
+    $.delay(sleep);
 
     //Verify price bar restore to default value.
     Assert.checkPriceBarShowCorrect("100000+ 元");
@@ -575,9 +609,11 @@ test("[1938065] product items in list should show correct after user adjust pric
     //Go to product list.
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //tap advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //go to soring tab.
     Action.tapButtonsInAdvancedBar(0);
@@ -596,12 +632,14 @@ test("[1938065] product items in list should show correct after user adjust pric
 
     //go to 篩選 tab.
     Action.tapButtonsInAdvancedBar(2);
+    $.delay(sleep);
 
     //verify the default price is 100000 +
     Assert.checkPriceBarShowCorrect("100000+ 元");
 
     //drag price bar to 1020 price.    
     app.mainWindow().dragInsideWithOptions({startOffset: {x: 0.92, y: 0.29}, endOffset:{x: 0.234, y: 0.29}});
+    $.delay(sleep);
     
     //Verify price show correct after dragging.
     Assert.checkPriceBarShowCorrect("1020 元");
@@ -621,9 +659,11 @@ test("[1938065] product items in list should show correct after user adjust pric
 test("[1938084] check able to tap 超商取貨 and untap 超商取貨", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
@@ -647,6 +687,7 @@ test("[1938084] check able to tap 超商取貨 and untap 超商取貨", function
 test("[1938090] check able to tap 有圖片 and untap 有圖片", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
@@ -673,6 +714,7 @@ test("[1938090] check able to tap 有圖片 and untap 有圖片", function () {
 test("[1938102] check favorites icon show correct.", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(sleep);
 
     //Verify favorites icon show correct, this function need passing product index parameters.
     Assert.favoritesIconShowCorrect(3);
@@ -707,6 +749,112 @@ test("[1938103] check log in window show after unregister user tap favorites ico
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
+    Action.goDiscoveryStream();
+});
+
+
+test("[1938116] on photo grid view unregister user tap favorites icon login window should open.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(5);
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("小圖");
+    $.delay(sleep);
+
+    //Verify successful switch to photo grid view.
+    Assert.successfulSwitchToPhotoGridView();
+    $.delay(sleep);
+    
+    //tap favorites icon, after tapped log in window show up.
+    Action.tapFavoritesIcon(1);
+    $.delay(3);
+
+    //Verify login window show correct.
+    var login = app.mainWindow().tableViews()[0].cells()["Add Account"].staticTexts()[0].name();
+
+    if(login == "Add Account"){
+        $.delay(sleep);
+        Assert.logInWindowShowCorrectOnAddAccount();
+    }
+    else{
+        //Verify login window show correct.
+        Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+    }
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    //Go back to advanced bar switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
+    Action.goDiscoveryStream();
+});
+
+test("[1938128] on item listing-list view unregister user tap favorites icon should successul open login window.", function () {
+    //Go to product list.
+    Action.goApparelCategory();
+    Action.goCommodityTab();
+    $.delay(5);
+
+    //Tap Advanced button.
+    Action.tapAdvancedButton();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    //Verify successful switch to listing view.
+    Assert.successfulSwitchToListingView();
+    $.delay(sleep);
+
+    //Verify favorites icon show correct, this function need passing product index parameters.
+    Assert.favoritesIconShowCorrect(1);
+    $.delay(sleep);
+
+    //tap favorites icon, after tapped log in window show up.
+    Action.tapFavoritesIcon(1);
+    $.delay(3);
+
+    //Verify login window show correct.
+    var login = app.mainWindow().tableViews()[0].cells()["Add Account"].staticTexts()[0].name();
+
+    if(login == "Add Account"){
+        $.delay(sleep);
+        Assert.logInWindowShowCorrectOnAddAccount();
+    }
+    else{
+        //Verify login window show correct.
+        Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+    }
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    //Switch browse mode to large image.
+    Action.tapAdvancedButton();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    //Verify current view is large image.
+    Assert.successfulSwitchToLargeImageView();
+
+    //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
 
@@ -768,10 +916,6 @@ test("[1938104] login user able to add product to favorites", function () {
 
     Action.goBack();
     Action.goDiscoveryStream();
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
 });
 
 //6.5
@@ -779,9 +923,11 @@ test("[1938049] check advanced buttons order.", function () {
     //Go 商品 screen.
     Action.goApparelCategory();
     Action.goCommodityTab();
+    $.delay(5);
 
     //tap Advance button
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Verify advance buttons order.
     Assert.advancedButtonsOrder();
@@ -982,50 +1128,7 @@ test("[1938115] check favorites icon show correct with photo grid view.", functi
     Action.goDiscoveryStream();
 });
 
-test("[1938116] on photo grid view unregister user tap favorites icon login window should open.", function () {
-    //Go to product list.
-    Action.goApparelCategory();
-    Action.goCommodityTab();
-    $.delay(4);
-
-    //Tap Advanced button.
-    Action.tapAdvancedButton();
-
-    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
-    Action.tapButtonsInAdvancedBar(1);
-
-    Action.chooseCategoryBrowseMode("小圖");
-    $.delay(sleep);
-
-    //Verify successful switch to photo grid view.
-    Assert.successfulSwitchToPhotoGridView();
-    $.delay(sleep);
-    
-    //tap favorites icon, after tapped log in window show up.
-    Action.tapFavoritesIcon(1);
-    $.delay(sleep);
-
-    //Verify login window show correct.
-    Assert.logInWindowShowCorrectOnAddAccount();
-
-    //Tap exit button exit login window.
-    Action.exitLoginWindow();
-
-    //Go back to advanced bar switch browse mode to large image.
-    Action.tapAdvancedButton();
-    Action.tapButtonsInAdvancedBar(1);
-
-    Action.chooseCategoryBrowseMode("大圖");
-
-    //Back to discovery screen.
-    Action.tapButtonOnTabBar(2);
-    Action.goDiscoveryStream();
-});
-
 test("[1938117] On photo grid view register user able to add product to his favorites list.", function() {
-    //Do login
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-
     //go to production item list.
     Action.goApparelCategory();
     Action.goCommodityTab();
@@ -1077,13 +1180,6 @@ test("[1938117] On photo grid view register user able to add product to his favo
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1938124] on item listing-list view tap store name page should navigate to item details page.", function () {
@@ -1247,6 +1343,7 @@ test("[1938127] on item listing-list view check favorites icon show correct.", f
 
     //Tap Advanced button.
     Action.tapAdvancedButton();
+    $.delay(sleep);
 
     //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
     Action.tapButtonsInAdvancedBar(1);
@@ -1276,7 +1373,8 @@ test("[1938127] on item listing-list view check favorites icon show correct.", f
     //verify favorites icon should at product price right side.
     var productPriceXPlusProductPriceWidth = parseInt(productPriceElementX) + parseInt(productPriceElementWidth);
 
-    assertTrue(favoritesElementX > productPriceXPlusProductPriceWidth, "favorites icon not at product price right side.");
+    method.verifyTrue(favoritesElementX > productPriceXPlusProductPriceWidth, "favorites icon not at product price right side.");
+    $.delay(3);
 
     //Switch browse mode to large image.
     Action.tapAdvancedButton();
@@ -1293,63 +1391,13 @@ test("[1938127] on item listing-list view check favorites icon show correct.", f
 });
 
 //6.6
-test("[1938128] on item listing-list view unregister user tap favorites icon should successul open login window.", function () {
-    //Go to product list.
-    Action.goApparelCategory();
-    Action.goCommodityTab();
-    $.delay(4);
-
-    //Tap Advanced button.
-    Action.tapAdvancedButton();
-
-    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
-    Action.tapButtonsInAdvancedBar(1);
-    Assert.buttonOnAdvancedIsEnabled(1);
-
-    Action.chooseCategoryBrowseMode("列表");
-
-    //Verify successful switch to listing view.
-    Assert.successfulSwitchToListingView();
-    $.delay(sleep);
-
-    //Verify favorites icon show correct, this function need passing product index parameters.
-    Assert.favoritesIconShowCorrect(1);
-    $.delay(sleep);
-
-    //tap favorites icon, after tapped log in window show up.
-    Action.tapFavoritesIcon(1);
-    $.delay(sleep);
-
-    //Verify login window show correct.
-    Assert.logInWindowShowCorrectOnAddAccount();
-
-    //Tap exit button exit login window.
-    Action.exitLoginWindow();
-
-    //Switch browse mode to large image.
-    Action.tapAdvancedButton();
-    Action.tapButtonsInAdvancedBar(1);
-
-    Action.chooseCategoryBrowseMode("大圖");
-
-    //Verify current view is large image.
-    Assert.successfulSwitchToLargeImageView();
-
-    //Back to discovery screen.
-    Action.tapButtonOnTabBar(2);
-    Action.goDiscoveryStream();
-});
-
 test("[1938129] on item listing-list view register should able to add item to his favorites list through tap favorites icon.", function () {
-    //Do login
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-
     //go to production item list.
     Action.goApparelCategory();
     Action.goCommodityTab();
 
     //Store product name.
-    $.delay(sleep);
+    $.delay(5);
     var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
 
     //Tap Advanced button.
@@ -1387,6 +1435,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
     //Restore app to default screen.
     Action.goBack();
     Action.tapButtonOnTabBar(2);
+    $.delay(sleep);
 
     //Go back to advanced bar switch browse mode to large image.
     Action.tapAdvancedButton();
@@ -1397,13 +1446,6 @@ test("[1938129] on item listing-list view register should able to add item to hi
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1938130] check 全部分類 tab button show correct", function () {
@@ -1601,7 +1643,7 @@ test("[1938050] Check the default is sort Tab", function () {
     //go to production item list.
     Action.goApparelCategory();
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(3);
 
     //tap advanced button
     Action.tapAdvancedButton();
@@ -1735,11 +1777,7 @@ test("[1938160] check 圖書/ 文具/影音 show correct.", function () {
 });
 
 test("[1953648] verify edit favorite category if correct", function () {
-    //do user login
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-    $.delay(5);
-    //obj.scrollDowns(1);
-
+    Action.tapButtonOnTabBar(4);
     //edit favorite categories
     Action.tapButtonOnMyUserWhenCategory(6);
 
@@ -1752,19 +1790,11 @@ test("[1953648] verify edit favorite category if correct", function () {
     //restore
     Action.selectCategoryOnEditFavorite();
     Action.goBack();
-
-    //Log out and remove user login history
-    Action.doUserLogout();
-
     Action.tapButtonOnTabBar(0);
 });
 
 test("[1953657] verify edit favorite category if correct on sidebar.", function () {
-    //do user login
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-    $.delay(5);
-    //obj.scrollDowns(1);
-
+    Action.tapButtonOnTabBar(4);
     //edit favorite categories
     Action.tapButtonOnMyUserWhenCategory(6);
 
@@ -1781,13 +1811,7 @@ test("[1953657] verify edit favorite category if correct on sidebar.", function 
     Action.selectCategoryOnEditFavorite();
     Action.goBack();
 
-    //Log out and remove user login history
-    Action.doUserLogout();
-
     Action.tapButtonOnTabBar(0);
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1959882] Verify18 ban prompt.", function () {

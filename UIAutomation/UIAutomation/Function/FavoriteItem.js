@@ -1,9 +1,5 @@
 test("[1959923] Verify store rate from items collected", function () {
     Action.cleanSearches();
-    $.delay(sleep);
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-    $.delay(sleep);
-
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
@@ -53,66 +49,50 @@ test("[1959923] Verify store rate from items collected", function () {
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
     Action.cleanSearches();
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
 });
 
 //6.4
 test("[1953636] verify favorite items", function () {
-    //login the app
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 
-    //add favorite item
-    $.delay(sleep);
     Action.tapButtonOnTabBar(2);
+    $.delay(sleep);
+
     Action.tapItemOnCategoryScreenWhenItemPage(0);
+
     Action.goCommodityTab();
     $.delay(sleep);
+
     Action.tapItemOnProductListScreen();
     $.delay(5);
 
-    //target.logElementTree();
     Action.tapFavoritesIcon(1);
     var firstStoreName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
     
     //go user collection page
     Action.tapButtonOnTabBar(4);
-    $.delay(sleep);
+    $.delay(5);
 
     Action.tapProductCollectionButton();
-    //$.delay(sleep);
-    //target.logElementTree();
+    $.delay(sleep);
 
     //check the stores name are correct
     Assert.checkStoreName(firstStoreName);
     $.delay(sleep);
     
     Action.tapCollectionList();
+    $.delay(sleep);
+    
     Action.tapFavoritesIcon(1);
     Action.tapButtonOnTabBar(4);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
+    Action.tapButtonOnTabBar(0);
 });
 
 //6.12
 test("[1959929] verify user can add favorite item.", function () {
-    //login the app
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-    $.delay(sleep);
 
     //add favorite item
     Action.tapButtonOnTabBar(2);
@@ -136,8 +116,6 @@ test("[1959929] verify user can add favorite item.", function () {
     //restore
     Action.tapFavoritesIcon(1);
     Action.tapButtonOnTabBar(2);
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
 });

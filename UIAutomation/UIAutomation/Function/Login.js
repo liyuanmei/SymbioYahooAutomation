@@ -1,4 +1,8 @@
 test("[1977501] verify login and Logout of interaction", function () {
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+
 	Action.cleanSearches();
     $.delay(sleep);
 
@@ -18,4 +22,7 @@ test("[1977501] verify login and Logout of interaction", function () {
     Action.doUserLogout();
 
     Action.tapButtonOnTabBar(0);
+    $.delay(sleep);
+    
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 });

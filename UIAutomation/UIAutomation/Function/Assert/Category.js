@@ -440,9 +440,9 @@ Assert.checkStoreName = function(i){
 };
 
 Assert.checkStoreCategoryCellsShowCorrectly = function () {
-    var StoreCategoryCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length<21;
+    var StoreCategoryCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length<41;
     $.delay(5);
-    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<21);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<41);
 };
 
 Assert.checkStoreCategoryTabIsEnabled = function () {
@@ -499,12 +499,6 @@ Assert.checkStoreName = function(i){
     $.delay(sleep);
     var finalStoreName = app.windows()[0].collectionViews()[0].cells()[0].staticTexts()[0].name();
     method.verifyEquals(i, finalStoreName);
-};
-
-Assert.checkStoreCategoryCellsShowCorrectly = function () {
-    var StoreCategoryCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length<21;
-    $.delay(5);
-    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<21);
 };
 
 Assert.checkStoreCategoryTabIsEnabled = function () {

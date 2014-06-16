@@ -349,7 +349,6 @@ test("[1937944] Check the '確定' button" , function (){
     Action.tapButtonsInAdvancedBar(2);
     Action.tapbuttonExistOnNavigationBar(2);
 
-
     //Verify tap "確定" button ,search results page show the correct 
     Assert.searchResultsPage("上衣");
 
@@ -806,6 +805,11 @@ test("[1937982] check favorites icon show correct." , function () {
 });
 
 test("[1937983] check log in window show after unregister user tap favorites icon." , function () {
+    //Log out and remove user login history
+    Action.tapButtonOnTabBar(4);
+    Action.doUserLogout();
+    $.delay(sleep);
+
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
@@ -830,7 +834,6 @@ test("[1937983] check log in window show after unregister user tap favorites ico
 
     target.logElementTree();
     
-
     //Verify login window show correct.
     Assert.logInWindowShowCorrectOnAddAccount();
 
@@ -840,6 +843,116 @@ test("[1937983] check log in window show after unregister user tap favorites ico
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
+    Action.cleanSearches();
+});
+
+test("[1937996] on photo grid view unregister user tap favorites icon login window should open." , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    $.delay(sleep);
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("小圖");
+    $.delay(sleep);
+
+    //Verify successful switch to photo grid view.
+    Assert.successfulSwitchToPhotoGridView();
+    $.delay(sleep);
+    
+    //tap favorites icon, after tapped log in window show up.
+    Action.tapFavoritesIcon(1);
+
+    //Verify login window show correct.
+    Assert.logInWindowShowCorrectOnAddAccount();
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+    $.delay(sleep);
+
+    //Go back to advanced bar switch browse mode to list view.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+    $.delay(sleep);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.cleanSearches();
+});
+
+test("[1938008] check log in window show after unregister user tap favorites icon on item listing-Large photo view." , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    $.delay(sleep);
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("大圖");
+
+    Action.slidingCommodityPage();
+
+    $.delay(sleep);
+    target.logElementTree();
+     
+    //tap favorites icon, after tapped log in window show up.
+    Action.tapFavoritesIcon(1);
+    $.delay(sleep);
+
+    //Verify login window show correct.
+    Assert.logInWindowShowCorrectOnAddAccount();
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+    $.delay(sleep);
+
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+
+    Action.chooseCategoryBrowseMode("列表");
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.cleanSearches();
+});
+
+test("[1938030] check heart icon jump to login screen" , function () {
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+
+    Action.tapStoreTab();
+    $.delay(sleep);
+
+    Action.tapheartIconOnStoreWhenSRP();
+    //Verify login window show correct.
+    Assert.logInWindowShowCorrectOnAddAccount();
+
+    //Tap exit button exit login window.
+    Action.exitLoginWindow();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
     Action.cleanSearches();
 });
 
@@ -894,8 +1007,8 @@ test("[1937984] login user able to add product to favorites." , function () {
     Action.cleanSearches();
 
     //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
+    //Action.tapButtonOnTabBar(4);
+    //Action.doUserLogout();
 
     //Action.tapButtonOnTabBar(4);
     //Action.removeLoginHistory("mobileappstore3");
@@ -983,48 +1096,11 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
     Action.cleanSearches();
 });
 
-test("[1937996] on photo grid view unregister user tap favorites icon login window should open." , function () {
-    Action.goCategoryWhenSearchSettingOpen();
-    Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
-    Action.tapKeyboardSearch();
 
-    //Tap Advanced button.
-    Action.tapButtonsInAdvancedBarWhenSRP();
-    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
-    Action.tapButtonsInAdvancedBar(1);
-    Assert.buttonOnAdvancedIsEnabled(1);
-
-    Action.chooseCategoryBrowseMode("小圖");
-
-    //Verify successful switch to photo grid view.
-    Assert.successfulSwitchToPhotoGridView();
-    
-    //tap favorites icon, after tapped log in window show up.
-    Action.tapFavoritesIcon(1);
-
-    //Verify login window show correct.
-    Assert.logInWindowShowCorrectOnAddAccount();
-
-    //Tap exit button exit login window.
-    Action.exitLoginWindow();
-
-    //Go back to advanced bar switch browse mode to list view.
-    Action.tapButtonsInAdvancedBarWhenSRP();
-    Action.tapButtonsInAdvancedBar(1);
-
-    Action.chooseCategoryBrowseMode("列表");
-
-    Action.goBackOnSearchPage();
-    Action.tapReturnOnSearchBar();
-    Action.goDiscoveryStream();
-    Action.cleanSearches();
-});
 
 test("[1937997] On photo grid view register user able to add product to his favorites list" , function () {
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-    $.delay(sleep);
-
+    //Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    //$.delay(sleep);
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
@@ -1080,8 +1156,8 @@ test("[1937997] On photo grid view register user able to add product to his favo
     Action.cleanSearches();
 
     //Log out and remove user login history.
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
+    //Action.tapButtonOnTabBar(4);
+    //Action.doUserLogout();
 
     //Action.tapButtonOnTabBar(4);
     //Action.removeLoginHistory("mobileappstore3");
@@ -1250,46 +1326,6 @@ test("[1938007] check favorites icon show correct on item listing-Large photo vi
     Action.cleanSearches();
 });
 
-test("[1938008] check log in window show after unregister user tap favorites icon on item listing-Large photo view." , function () {
-    Action.goCategoryWhenSearchSettingOpen();
-    Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
-    Action.tapKeyboardSearch();
-
-    //Tap Advanced button.
-    Action.tapButtonsInAdvancedBarWhenSRP();
-
-    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped
-    Action.tapButtonsInAdvancedBar(1);
-    Assert.buttonOnAdvancedIsEnabled(1);
-
-    Action.chooseCategoryBrowseMode("大圖");
-
-    Action.slidingCommodityPage();
-
-    $.delay(sleep);
-    target.logElementTree();
-     
-    //tap favorites icon, after tapped log in window show up.
-    Action.tapFavoritesIcon(1);
-
-    //Verify login window show correct.
-    Assert.logInWindowShowCorrectOnAddAccount();
-
-    //Tap exit button exit login window.
-    Action.exitLoginWindow();
-
-    Action.tapButtonsInAdvancedBarWhenSRP();
-    Action.tapButtonsInAdvancedBar(1);
-
-    Action.chooseCategoryBrowseMode("列表");
-
-    Action.goBackOnSearchPage();
-    Action.tapReturnOnSearchBar();
-    Action.goDiscoveryStream();
-    Action.cleanSearches();
-});
-
 test("[1938013] check 共xxxx筆結果." , function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
@@ -1434,28 +1470,6 @@ test("[1938029] view to join wish list icon display." , function () {
     Action.goDiscoveryStream();
     Action.cleanSearches();
  });
-
-test("[1938030] check heart icon jump to login screen" , function () {
-    Action.goCategoryWhenSearchSettingOpen();
-    Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
-    Action.tapKeyboardSearch();
-
-    Action.tapStoreTab();
-    $.delay(sleep);
-
-    Action.tapheartIconOnStoreWhenSRP();
-    //Verify login window show correct.
-    Assert.logInWindowShowCorrectOnAddAccount();
-
-    //Tap exit button exit login window.
-    Action.exitLoginWindow();
-
-    Action.goBackOnSearchPage();
-    Action.tapReturnOnSearchBar();
-    Action.goDiscoveryStream();
-    Action.cleanSearches();
-});
 
 //6.9
 test("[1937929] Click 'all categories' button" , function () {
@@ -1821,9 +1835,8 @@ test("[1937989] Click the commodity pictures", function () {
 });
 
 test("[1938009] Login - click join collection after listing of stars." , function () {
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-    $.delay(sleep);
-
+    //Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    //$.delay(sleep);
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
@@ -1878,17 +1891,15 @@ test("[1938009] Login - click join collection after listing of stars." , functio
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
     Action.cleanSearches();
-
     //Log out and remove user login history.
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
+    //Action.tapButtonOnTabBar(4);
+    //Action.doUserLogout();
 });
 
 test("[1938031] After login, click on add collection list icon ", function () {
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-    $.delay(sleep);
-
+    //Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    //$.delay(sleep);
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
@@ -1905,10 +1916,9 @@ test("[1938031] After login, click on add collection list icon ", function () {
 
     Action.tapFavoriteStoreIcon();
     $.delay(sleep);
-
     //Log out and remove user login history.
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
+    //Action.tapButtonOnTabBar(4);
+    //Action.doUserLogout();
    
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);

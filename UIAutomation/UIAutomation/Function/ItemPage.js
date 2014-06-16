@@ -1,9 +1,10 @@
 test("[1953619] Verify the for piece goods discount", function () {
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     $.delay(sleep);
+
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
+
     Action.tapItemOnCategoryScreenWhenItemPage(0);
     $.delay(sleep);
 
@@ -24,23 +25,17 @@ test("[1953619] Verify the for piece goods discount", function () {
     Assert.checkSalesPromotionActivity();
 
     Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1953617] Verify the for full discount activity list", function () {
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
-    $.delay(sleep);
+
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
+
     Action.tapItemOnCategoryScreenWhenItemPage(0);
     $.delay(sleep);
 
@@ -65,21 +60,15 @@ test("[1953617] Verify the for full discount activity list", function () {
     //Assert.checkSalesPromotionActivity();
 
     Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1953614] Verify the for full discount activity list", function () {
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     $.delay(sleep);
+
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
 
@@ -108,21 +97,14 @@ test("[1953614] Verify the for full discount activity list", function () {
     Assert.checkSalesPromotionActivity();
 
     Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1959927] Verify user can add an item to shopping cart.", function () {
     //login the app
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 
     //add item to shopping cart
     $.delay(sleep);
@@ -164,19 +146,13 @@ test("[1959927] Verify user can add an item to shopping cart.", function () {
     Action.tapDeleteOnShoppingCart();
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
-
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
 });
 
 test("[1959893] Verify Sharing method can be shown.", function () {
     //login the app
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 
     //tap share itme
     $.delay(sleep);
@@ -205,10 +181,93 @@ test("[1959893] Verify Sharing method can be shown.", function () {
     $.delay(sleep);
     Action.tapCancelButtonOnShareViews();
     Action.tapButtonOnTabBar(2);
-    //Log out and remove user login history
-    Action.tapButtonOnTabBar(4);
-    Action.doUserLogout();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
 
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
+//6.16
+test("[1953620] verify the gifts are displayed in the shopping cart.", function () {
+    //login the app
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    //search item page with gifts
+    Action.tapButtonOnTabBar(2);
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("送贈品220130");
+    Action.tapKeyboardSearch();
+    $.delay(5);
+
+    //go to item page and add item to shoppingcart
+    Action.tapCommodityPictureOnSearchResultsPage();
+    obj.scrollDowns(1);
+    $.delay(5);
+
+    Action.addToShoppingCartWhenItemPage();
+    $.delay(sleep);
+
+    //go to shopping cart page
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
+    Action.tapShoppingCartlist(0);
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(3);
+    $.delay(sleep);
+
+    Action.tapShoppingCartlist(0);
+    $.delay(15);
+    target.logElementTree();
+    $.delay(sleep);
+
+    //check the gifts are displayed correctly
+    var gift = app.mainWindow().scrollViews()[0].webViews()[0].links()[4].staticTexts()[0];
+    $.delay(5);
+    target.logElementTree();
+    $.delay(5);
+
+    Assert.elementsShouldContainText(gift, "送贈品");
+    $.delay(sleep);
+
+    //restore
+    Action.tapButtonOnTabBar(3);
+    Action.tapDeleteOnShoppingCart();
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1953626] verify Payment.", function () {
+    //login the app
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    //go to itme page
+    Action.tapButtonOnTabBar(2);
+    $.delay(sleep);
+
+    Action.tapItemOnCategoryScreenWhenItemPage(0);;
+    Action.goCommodityTab();
+    $.delay(5);
+
+    Action.tapItemOnProductListScreen();
+    $.delay(sleep);
+
+    obj.scrollDowns(2);
+    $.delay(sleep);
+
+    Action.tapPaymentOnProductPage();
+    $.delay(5);
+
+    //check the payment displayed correctly
+    Assert.checkPaymentAndDelivery();
+
+    //restore
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
 });
