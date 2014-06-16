@@ -1,6 +1,6 @@
 test("[1959919] Verify 0 result function on leaf-category", function () {
     Action.cleanSearches();
-	Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
 
     Action.tapItemOnCategoryScreenWhenOptions(9);
     Action.tapChoosePreductCategoryWhenOptions(0,1);
