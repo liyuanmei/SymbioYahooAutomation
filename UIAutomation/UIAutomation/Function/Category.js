@@ -1,4 +1,3 @@
-/**
 test("[1938036] Check Header", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
@@ -879,7 +878,7 @@ test("[1938128] on item listing-list view unregister user tap favorites icon sho
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
-**/
+
 test("[1938104] login user able to add product to favorites", function () {
     $.delay(3);
 
