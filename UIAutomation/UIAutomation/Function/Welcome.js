@@ -1,19 +1,31 @@
 test("Welcomen page test script, need run this script before all other scripts", function () {
+	$.delay(12);
+
+	var logPage = app.mainWindow().buttons()[0].name();
 	$.delay(sleep);
 
-	//Verify elements on Welcome screen show correct.
-	Assert.verifyWelcomeScreen();
+	if(logPage == "登入"){
+		//Verify elements on Welcome screen show correct.
+		Assert.verifyWelcomeScreen();
+		$.delay(sleep);
 
-	//Tap "略過，前往下一步" button.
-	Action.tapNextButtonOnWelcomeScreen();
-	$.delay(sleep);
+		//Tap "略過，前往下一步" button.
+        Action.tapNextButtonOnWelcomeScreen();
+    }
+    else{
+    	Assert.checkStartUsing();
+    	$.delay(sleep);
+
+    	//tap "開始使用"
+        Action.tapCreatePersonalExperience();
+    }
 
 	//Verify elements on Personal category show correct.
 	Assert.personalCategoryScreen();
 
 	//Tap "建立個人化的購物體驗"
 	Action.tapCreatePersonalExperience();
-	$.delay(5);
+	$.delay(15);
 
 	//Verify screen successful navigate to "最新動態" screen.
 	Assert.discoveryScreenShowCorrect();
