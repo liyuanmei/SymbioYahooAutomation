@@ -725,11 +725,28 @@ test("[1938102] check favorites icon show correct.", function () {
 });
 
 test("[1938103] check log in window show after unregister user tap favorites icon.", function () {
+    Action.tapButtonOnTabBar(4);
+    $.delay(sleep);
+    
+    var logined = app.mainWindow().images()[2].name();
+    if(logined == "img-default-profile.png"){
+        $.delay(sleep);
+        //Log out and remove user login history
+        Action.tapButtonOnTabBar(4);
+        Action.doUserLogout();
+    }
+    else{
+        $.delay(sleep);
+        //Tap exit button exit login window.
+        Action.exitLoginWindow();
+    }
+
+    $.delay(sleep);
     Action.goApparelCategory();
     Action.goCommodityTab();
     $.delay(3);
      
-    //tap favorites icon, after tapped log in window show up.
+    //tap favorites icon, after tapped log in window show up
     Action.tapFavoritesIcon(1);
     $.delay(3);
 
