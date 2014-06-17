@@ -21,6 +21,8 @@ public class ValidationText {
 	public static final String SEARCH_ALL_CATEGORIES = "搜尋全部分類";
 
 	public static final String NEWS = "最新動態";
+	
+	public static final String YOUR_FAVORITE = "你的最愛";
 
 	public static final String DONG = "東";
 	
@@ -89,6 +91,8 @@ public class ValidationText {
 	public static final String HAS_ADDED_COMMODITY = "已加入最愛商店";
 
 	public static final String HAS_REMOVED_COMMODITY = "此最愛商店已移除";
+	
+	public static final String ALREAD_ADDED = "你已收藏了";
 
 	public static final String VERSION_UPDATE = "版本更新";
 
