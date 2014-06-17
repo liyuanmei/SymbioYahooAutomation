@@ -569,7 +569,7 @@ Action.tapCancelOnShoppingCart = function () {
 
 //6.5
 Action.tapAddAccountOnLogin = function (sUserName, sPassword) {
-    $.delay(sleep);
+    $.delay(5);
     var tabBar = app.mainWindow().tabBar();
 
     //Tap login button on tabBar and login window should show.
@@ -586,7 +586,7 @@ Action.tapAddAccountOnLogin = function (sUserName, sPassword) {
         UIALogger.logError("Login window could not open due to: " + err);
     }
     
-    $.delay(4);
+    $.delay(10);
 
     //Enter username and password and click submit button.
     var loginWindow = app.mainWindow();

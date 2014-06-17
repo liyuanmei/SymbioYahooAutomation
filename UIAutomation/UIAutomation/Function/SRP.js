@@ -769,6 +769,7 @@ test("[1937981] check the rating show correct." ,function () {
 });
 
 test("[1937982] check favorites icon show correct." , function () {
+    Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
