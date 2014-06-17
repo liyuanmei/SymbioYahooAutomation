@@ -1436,6 +1436,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
     //got my favorites screen.
     Action.tapButtonOnTabBar(4);
     Action.goMayFavoritesScreen();
+    $.delay(sleep);
 
     //Assert product show in My favorites screen.
     Assert.productAddedToMyFavoritesScreen(productName);
@@ -1461,6 +1462,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
     Action.chooseCategoryBrowseMode("大圖");
 
     //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
@@ -1761,6 +1763,8 @@ test("[1938121] click product image", function () {
 
     //go to item page
     Action.tapCommodityPictureOnSearchResultsPage();
+    $.delay(sleep);
+    
     Action.slidingCommodityPage();
     $.delay(sleep);
 
