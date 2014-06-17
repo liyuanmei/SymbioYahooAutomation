@@ -20,7 +20,7 @@ Assert.verifyWelcomeScreen = function () {
 
 Assert.personalCategoryScreen = function () {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3"){
         this.CategoriesName = [
         "服飾",
         "美妝",
@@ -37,8 +37,8 @@ Assert.personalCategoryScreen = function () {
           method.verifyEquals(this.CategoriesName[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
       }
       method.verifyEquals("建立個人化的購物體驗", app.mainWindow().buttons()[0].name());
-        }
-        else{
+    }
+      else{
         this.CategoriesName = [
         "服飾",
         "美妝",
@@ -58,7 +58,7 @@ Assert.personalCategoryScreen = function () {
           method.verifyEquals(this.CategoriesName[i], app.mainWindow().collectionViews()[0].cells()[i].name());
       }
       method.verifyEquals("建立個人化的購物體驗", app.mainWindow().buttons()[0].name());
-          }
+    }
 };
 
 Assert.discoveryScreenShowCorrect = function () {
