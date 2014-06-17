@@ -4,7 +4,7 @@ test("Welcomen page test script, need run this script before all other scripts",
 	$.delay(sleep);
 	if(logPage == "登入"){
 
-	//Verify elements on Welcome screen show correct.
+	//Verify elements on Welcome screen show correct
 	Assert.verifyWelcomeScreen();
 	$.delay(sleep);
 
