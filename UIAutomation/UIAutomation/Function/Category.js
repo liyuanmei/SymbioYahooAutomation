@@ -476,6 +476,8 @@ test("[1938039] search name on header should changed after search another keywor
 
     //do search
     Action.doSearch("上衣");
+    $.delay(4);
+    app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.72, y:0.75}, endOffset:{x:0.79, y:0.59}, duration:1.2});
 
     var collectionViews = app.mainWindow().collectionViews()[0];
     var itemCell = collectionViews.cells()[1];
@@ -489,7 +491,8 @@ test("[1938039] search name on header should changed after search another keywor
     Action.tapSearchButtonOnSRP();
     Action.searchBarInputChinese("iphone");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(4);
+    app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.72, y:0.75}, endOffset:{x:0.79, y:0.59}, duration:1.2});
 
     //Verify search result page contain expect search keyword.
     var productItem = app.mainWindow().collectionViews()[0].cells()[1];
@@ -725,11 +728,28 @@ test("[1938102] check favorites icon show correct.", function () {
 });
 
 test("[1938103] check log in window show after unregister user tap favorites icon.", function () {
+    Action.tapButtonOnTabBar(4);
+    $.delay(sleep);
+    
+    var logined = app.mainWindow().images()[2].name();
+    if(logined == "img-default-profile.png"){
+        $.delay(sleep);
+        //Log out and remove user login history
+        Action.tapButtonOnTabBar(4);
+        Action.doUserLogout();
+    }
+    else{
+        $.delay(sleep);
+        //Tap exit button exit login window.
+        Action.exitLoginWindow();
+    }
+
+    $.delay(sleep);
     Action.goApparelCategory();
     Action.goCommodityTab();
     $.delay(3);
      
-    //tap favorites icon, after tapped log in window show up.
+    //tap favorites icon, after tapped log in window show up
     Action.tapFavoritesIcon(1);
     $.delay(3);
 
@@ -855,10 +875,13 @@ test("[1938128] on item listing-list view unregister user tap favorites icon sho
 
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
 
 test("[1938104] login user able to add product to favorites", function () {
+    $.delay(3);
+
     Action.tapButtonOnTabBar(4);
     $.delay(sleep);
 
@@ -869,11 +892,11 @@ test("[1938104] login user able to add product to favorites", function () {
     Action.exitLoginWindow();
 
     if(login == "Add Account"){
-        $.delay(sleep);
+        $.delay(3);
         Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     }
     else{
-        $.delay(sleep);
+        $.delay(3);
 
         //Verify login window show correct.
         Action.doUserLogin("mobileappstore3", "A1234qwer");
@@ -1419,6 +1442,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
     //got my favorites screen.
     Action.tapButtonOnTabBar(4);
     Action.goMayFavoritesScreen();
+    $.delay(sleep);
 
     //Assert product show in My favorites screen.
     Assert.productAddedToMyFavoritesScreen(productName);
@@ -1444,6 +1468,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
     Action.chooseCategoryBrowseMode("大圖");
 
     //Back to discovery screen.
+    Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
@@ -1744,6 +1769,8 @@ test("[1938121] click product image", function () {
 
     //go to item page
     Action.tapCommodityPictureOnSearchResultsPage();
+    $.delay(sleep);
+    
     Action.slidingCommodityPage();
     $.delay(sleep);
 
