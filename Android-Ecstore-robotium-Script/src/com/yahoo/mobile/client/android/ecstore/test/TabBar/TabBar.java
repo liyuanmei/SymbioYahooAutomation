@@ -80,7 +80,7 @@ public class TabBar extends ActivityInstrumentationTestCase2<Activity> {
 
         super.setUp();
         solo = new Solo(getInstrumentation(), getActivity());
-
+        Assert.testFirstLaunch(solo);
     }
 
     @Override
