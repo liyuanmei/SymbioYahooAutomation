@@ -476,6 +476,8 @@ test("[1938039] search name on header should changed after search another keywor
 
     //do search
     Action.doSearch("上衣");
+    $.delay(4);
+    app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.72, y:0.75}, endOffset:{x:0.79, y:0.59}, duration:1.2});
 
     var collectionViews = app.mainWindow().collectionViews()[0];
     var itemCell = collectionViews.cells()[1];
@@ -489,7 +491,8 @@ test("[1938039] search name on header should changed after search another keywor
     Action.tapSearchButtonOnSRP();
     Action.searchBarInputChinese("iphone");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(4);
+    app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.72, y:0.75}, endOffset:{x:0.79, y:0.59}, duration:1.2});
 
     //Verify search result page contain expect search keyword.
     var productItem = app.mainWindow().collectionViews()[0].cells()[1];
@@ -872,10 +875,13 @@ test("[1938128] on item listing-list view unregister user tap favorites icon sho
 
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
 
 test("[1938104] login user able to add product to favorites", function () {
+    $.delay(3);
+
     Action.tapButtonOnTabBar(4);
     $.delay(sleep);
 
@@ -886,11 +892,11 @@ test("[1938104] login user able to add product to favorites", function () {
     Action.exitLoginWindow();
 
     if(login == "Add Account"){
-        $.delay(sleep);
+        $.delay(3);
         Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     }
     else{
-        $.delay(sleep);
+        $.delay(3);
 
         //Verify login window show correct.
         Action.doUserLogin("mobileappstore3", "A1234qwer");
