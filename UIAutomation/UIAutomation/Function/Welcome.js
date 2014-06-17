@@ -4,14 +4,13 @@ test("Welcomen page test script, need run this script before all other scripts" 
 	var logPage = app.mainWindow().buttons()[0].name();
 	$.delay(sleep);
 
-	if (logPage == "登入") {
+	if(logPage == "登入") {
+	//Verify elements on Welcome screen show correct
+	Assert.verifyWelcomeScreen();
+	$.delay(sleep);
 
-		//Verify elements on Welcome screen show correct
-		Assert.verifyWelcomeScreen();
-		$.delay(sleep);
-
-		//Tap &quot;略過，前往下一步&quot; button.
-		Action.tapNextButtonOnWelcomeScreen();
+	//Tap &quot;略過，前往下一步&quot; button.
+	Action.tapNextButtonOnWelcomeScreen();
 	}
 	else{
 		Assert.checkStartUsing();
