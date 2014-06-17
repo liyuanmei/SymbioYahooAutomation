@@ -23,7 +23,7 @@ test("Welcomen page test script, need run this script before all other scripts" 
 	//Verify elements on Personal category show correct.
     Assert.personalCategoryScreen();
 
-    //Tap &quot;建立個人化的購物體驗&quot;
+    //Tap "建立個人化的購物體驗";
     Action.tapCreatePersonalExperience();
     $.delay(15);
 
