@@ -1556,7 +1556,7 @@ test("[1937941] Check the 'remove' button shows ", function () {
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1938064] check able to tap 超商取貨 and untap 超商取貨", function () {
+test("[1937964] check able to tap 超商取貨 and untap 超商取貨", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
