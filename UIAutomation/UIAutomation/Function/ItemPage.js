@@ -132,7 +132,13 @@ test("[1959927] Verify user can add an item to shopping cart.", function () {
     $.delay(5);
 
     Action.tapShoppingCartlist(0);
-    $.delay(10);
+    $.delay(5);
+
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
 
     Action.tapStoreOnShoppingCartPage();
     $.delay(5);
@@ -217,7 +223,8 @@ test("[1953620] verify the gifts are displayed in the shopping cart.", function 
     $.delay(sleep);
 
     Action.tapShoppingCartlist(0);
-    $.delay(15);
+    $.delay(20);
+
     target.logElementTree();
     $.delay(sleep);
 
