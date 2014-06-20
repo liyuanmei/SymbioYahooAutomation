@@ -1,3 +1,25 @@
+//category sidebar
+test("[1953657] verify edit favorite category if correct on sidebar.", function () {
+    Action.tapButtonOnTabBar(4);
+    //edit favorite categories
+    Action.tapButtonOnMyUser(6);
+
+    Action.selectCategoryOnEditFavorite();
+
+    Action.goBack();
+
+    //slect favorite categories and assert them
+    Action.verifyEditingFavoriteCategories();
+    $.delay(5);
+
+    //restore
+    Action.tapButtonOnMyUser(6);
+    Action.selectCategoryOnEditFavorite();
+    Action.goBack();
+
+    Action.tapButtonOnTabBar(0);
+});
+
 test("[1937918] Check the Tab display" , function () {
     Action.cleanSearches();
     $.delay(sleep);
