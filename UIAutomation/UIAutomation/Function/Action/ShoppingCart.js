@@ -34,7 +34,7 @@ Action.tapShoppingCartlist = function (i) {
 };
 
 Action.tapDeleteOnShoppingCart = function () {
-    $.delay(sleep);
+    $.delay(5);
     app.mainWindow().tableViews()[0].dragInsideWithOptions({startOffset:{x:0.99, y:0.19}, endOffset:{x:0.75, y:0.18}});
     $.delay(5);
     app.mainWindow().tableViews()[0].cells()[0].buttons()["Delete"].tap();

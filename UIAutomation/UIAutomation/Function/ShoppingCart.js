@@ -17,10 +17,19 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" , function 
 
     Action.chooseTheSizeOnShoppingCart();
     Action.tapConfirmOnShoppingCart();
-    Action.tapButtonOnTabBar(3);
     
+    //go to shopping cart page
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
     Action.tapShoppingCartlist(0);
-    $.delay(10);
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
 
     Assert.checkbutButtonShoppingCart();
     
@@ -64,6 +73,7 @@ test("[1959883] verify all delete shopping cart of goods" ,function () {
     Action.tapConfirmOnShoppingCart();
 
     Action.tapButtonOnTabBar(3);
+    $.delay(5);
 
     Action.tapDeleteOnShoppingCart();
     //Action.tapConfirmOnDeleteShoppingCart();
@@ -101,10 +111,18 @@ test("[1977500] verify all delete shopping cart of goods" ,function () {
     Action.tapConfirmOnShoppingCart();
 
     //switch between store and shopping cart
+    //go to shopping cart page
     Action.tapButtonOnTabBar(3);
-    
+    $.delay(5);
+
     Action.tapShoppingCartlist(0);
-    $.delay(10);
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
   
     Action.tapStoreOnShoppingCartPage();
 
@@ -114,6 +132,8 @@ test("[1977500] verify all delete shopping cart of goods" ,function () {
 
     //delete shopping cart
     Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
     Action.tapDeleteOnShoppingCart();
 
     //restore settings
@@ -163,7 +183,7 @@ test("[1959885] verify the shopping cart detail" ,function () {
 
     //restore
     Action.tapButtonOnTabBar(3);
-    $.delay(sleep);
+    $.delay(5);
 
     Action.tapDeleteOnShoppingCart();
     $.delay(sleep);
@@ -219,6 +239,8 @@ test("[1959903] Verify user can view next buy items then view shopping cart item
 
     //restore
     Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
     Action.tapDeleteOnShoppingCart();
     $.delay(sleep);
 
