@@ -12,9 +12,6 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" , function 
 
     obj.scrollDowns(1);
     $.delay(sleep);
-
-    //target.logElementTree();
-    //$.delay(sleep);
      
     Action.butButtonShoppingCart();
 
@@ -26,11 +23,9 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" , function 
     $.delay(10);
 
     Assert.checkbutButtonShoppingCart();
-
-    app.mainWindow().logElementTree();
-    $.delay(3);
     
     Action.goBack();
+    $.delay(5);
 
     Action.tapDeleteOnShoppingCart();
     $.delay(sleep);
