@@ -1,3 +1,4 @@
+
 test("[1953649] verify Editing favorite categories is Synchronous with sidebar.", function () {
     Action.cleanSearches();
     Action.tapButtonOnTabBar(4);
@@ -53,8 +54,7 @@ test("[1959912] Verify there is an indicator to allow user login in",function ()
     Assert.checkLogInFirstOnFavoritePage();
     Action.goDiscoveryStream();
 
-    Action.tapButtonOnTabBar(4);
-    Action.tapAddAccountOnLogin("mobileappstore3");
+    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 });
 
 test("[1959886] Verify the page display when user is logged in and has no favorite stores.",function () {
