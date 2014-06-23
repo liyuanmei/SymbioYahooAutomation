@@ -1,4 +1,3 @@
-
 test("[1953649] verify Editing favorite categories is Synchronous with sidebar.", function () {
     Action.cleanSearches();
     Action.tapButtonOnTabBar(4);
