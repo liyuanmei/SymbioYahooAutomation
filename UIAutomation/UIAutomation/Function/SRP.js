@@ -1,3 +1,25 @@
+//category sidebar
+test("[1953657] verify edit favorite category if correct on sidebar.", function () {
+    Action.tapButtonOnTabBar(4);
+    //edit favorite categories
+    Action.tapButtonOnMyUser(6);
+
+    Action.selectCategoryOnEditFavorite();
+
+    Action.goBack();
+
+    //slect favorite categories and assert them
+    Action.verifyEditingFavoriteCategories();
+    $.delay(5);
+
+    //restore
+    Action.tapButtonOnMyUser(6);
+    Action.selectCategoryOnEditFavorite();
+    Action.goBack();
+
+    Action.tapButtonOnTabBar(0);
+});
+
 test("[1937918] Check the Tab display" , function () {
     Action.cleanSearches();
     $.delay(sleep);
@@ -1053,10 +1075,12 @@ test("[1937977] on item listing-list view check store name show correct." , func
 });
 
 test("[1937995] check favorites icon show correct with photo grid view" ,function() {
+    Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1084,6 +1108,7 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
 
     //Verify favorites icon place at product price right side.
     method.verifyTrue(favoritesIconX < productPriceX && (productPriceY - favoritesIconY) < 20, "favorites icon not at product price right side.");
+    $.delay(3);
 
     //Go back to advanced bar switch browse mode to list view.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1097,8 +1122,6 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
     Action.cleanSearches();
 });
 
-
-
 test("[1937997] On photo grid view register user able to add product to his favorites list" , function () {
     //Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
     //$.delay(sleep);
@@ -1106,6 +1129,7 @@ test("[1937997] On photo grid view register user able to add product to his favo
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1143,6 +1167,7 @@ test("[1937997] On photo grid view register user able to add product to his favo
     //Restore app to default screen.
     Action.goBack();
     Action.tapButtonOnTabBar(2);
+    $.delay(3);
 
     //Go back to advanced bar switch browse mode to list view.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1155,13 +1180,6 @@ test("[1937997] On photo grid view register user able to add product to his favo
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
     Action.cleanSearches();
-
-    //Log out and remove user login history.
-    //Action.tapButtonOnTabBar(4);
-    //Action.doUserLogout();
-
-    //Action.tapButtonOnTabBar(4);
-    //Action.removeLoginHistory("mobileappstore3");
 });
 
 test("[1938001] on item listing-Large photo view tap commodity picture  should navigate to item details page." , function () {
@@ -1169,6 +1187,7 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1189,6 +1208,8 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
     Assert.itemPageShowCorrectOnCoatSearchPage(itemPageShowCorrect);
 
     Action.goBack();
+    $.delay(3);
+
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
 
@@ -1205,6 +1226,7 @@ test("[1938005] check the commodity prices on item listing-Large photo view" , f
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1219,6 +1241,7 @@ test("[1938005] check the commodity prices on item listing-Large photo view" , f
 
     //first parameter is second product, second parameter is the  location of price in product cell.
     Assert.productPriceShowCorrect(2,3);
+    $.delay(3);
 
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
@@ -1236,6 +1259,7 @@ test("[1938006] check the rating show correct on item listing-Large photo view" 
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1269,6 +1293,7 @@ test("[1938006] check the rating show correct on item listing-Large photo view" 
     var restus = parseInt(storeRatingElementY) - parseInt(storeNameElementY);
 
     method.verifyTrue(storeRatingElementX > storeNmeXPlusStoreNameWidth && restus == 1, "Store rating not at sotre name right side.");
+    $.delay(3);
 
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
@@ -1286,6 +1311,7 @@ test("[1938007] check favorites icon show correct on item listing-Large photo vi
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1315,6 +1341,7 @@ test("[1938007] check favorites icon show correct on item listing-Large photo vi
 
     //Verify favorites icon place at product price right side.
     method.verifyTrue(favoritesIconX < productPriceX < 20, "favorites icon not at product price right side.");
+    $.delay(3);
 
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
@@ -1359,7 +1386,7 @@ test("[1938024] store Logo below store name" , function () {
     Action.tapStoreTab();
 
     Action.tapStorePicture();
-    $.delay(4);
+    $.delay(6);
 
     //verify 共xxxx筆結果 show correct.
     target.logElementTree();
@@ -1398,7 +1425,7 @@ test("[1938025] check  commodity quantity" , function () {
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
     Action.cleanSearches();
- });
+});
 
  test("[1938026] click the shop commodity" , function () {
     Action.goCategoryWhenSearchSettingOpen();
@@ -1421,7 +1448,7 @@ test("[1938025] check  commodity quantity" , function () {
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
     Action.cleanSearches();
- });
+});
 
 test("[1938027] check store evaluation shows" , function () {
     Action.goCategoryWhenSearchSettingOpen();
@@ -1470,7 +1497,7 @@ test("[1938029] view to join wish list icon display." , function () {
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
     Action.cleanSearches();
- });
+});
 
 //6.9
 test("[1937929] Click 'all categories' button" , function () {
@@ -1492,7 +1519,7 @@ test("[1937929] Click 'all categories' button" , function () {
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);
- });
+});
 
 test("[1937930] Browse by specific classification search results" , function () {
     Action.cleanSearches();
@@ -1518,7 +1545,7 @@ test("[1937930] Browse by specific classification search results" , function () 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);
- });
+});
 
 test("[1937941] Check the 'remove' button shows ", function () {
     Action.cleanSearches();
@@ -1526,7 +1553,6 @@ test("[1937941] Check the 'remove' button shows ", function () {
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
-
     $.delay(5);
     
     //tap Advance button
@@ -1562,7 +1588,6 @@ test("[1937964] check able to tap 超商取貨 and untap 超商取貨", function
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
-
     $.delay(5);
 
     //tap Advance button
@@ -1733,7 +1758,7 @@ test("[1938019] Check the default show 20 stores", function () {
     $.delay(sleep);
 
     Action.tapStoreTab();
-    $.delay(5);
+    $.delay(10);
 
     //Check the default show 20 stores
     Assert.commodityItemsShowCount(21);
@@ -1842,6 +1867,7 @@ test("[1938009] Login - click join collection after listing of stars." , functio
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1880,6 +1906,7 @@ test("[1938009] Login - click join collection after listing of stars." , functio
     //Restore app to default screen.
     Action.goBack();
     Action.tapButtonOnTabBar(2);
+    $.delay(5);
 
     //Go back to advanced bar switch browse mode to list view.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1933,6 +1960,7 @@ test("[1938033] check according to the 'low price to dealer' sort" , function ()
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     Action.tapGoodsTab();
+    $.delay(5);
 
     //tap advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1963,6 +1991,7 @@ test("[1938034] product items should sorting by price high to low after user sel
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     Action.tapGoodsTab();
+    $.delay(5);
 
     //tap advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1993,7 +2022,6 @@ test("[1937970] check able to tap 有圖片 and untap 有圖片", function () {
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
-
     $.delay(5);
 
     //Tap Advanced button.

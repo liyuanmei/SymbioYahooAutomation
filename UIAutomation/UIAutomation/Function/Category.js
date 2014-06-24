@@ -1822,27 +1822,6 @@ test("[1953648] verify edit favorite category if correct", function () {
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1953657] verify edit favorite category if correct on sidebar.", function () {
-    Action.tapButtonOnTabBar(4);
-    //edit favorite categories
-    Action.tapButtonOnMyUserWhenCategory(6);
-
-    Action.selectCategoryOnEditFavorite();
-
-    Action.goBack();
-
-    //slect favorite categories and assert them
-    Action.verifyEditingFavoriteCategories();
-    $.delay(5);
-
-    //restore
-    Action.tapButtonOnMyUser(6);
-    Action.selectCategoryOnEditFavorite();
-    Action.goBack();
-
-    Action.tapButtonOnTabBar(0);
-});
-
 test("[1959882] Verify18 ban prompt.", function () {
     //go to 18 ban page
     Action.tapButtonOnTabBar(2);
