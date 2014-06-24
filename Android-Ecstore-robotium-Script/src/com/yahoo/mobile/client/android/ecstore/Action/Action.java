@@ -35,6 +35,7 @@ public final class Action {
      * This is elements view ID.
      */
     public static final int
+            VIEW_ID_ZERO = 0 ,
             VIEW_ID_ONE = 1 ,
             VIEW_ID_TWO = 2 ,
             VIEW_ID_THREE = 3 ,
@@ -62,6 +63,10 @@ public final class Action {
         // click on up icon
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         clickHomeButtonOnScreen(solo);
+
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        TestHelper.swipeUp(solo, 1);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
         // clear history information and back
         solo.waitForText(ValidationText.SETTING, 1,
@@ -151,7 +156,7 @@ public final class Action {
     public static void clickSearchButtonOnScreen(final Solo solo)
             throws Exception {
 
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         View iv = solo.getView("menu_search", 0);
         solo.clickOnView(iv);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
@@ -181,7 +186,7 @@ public final class Action {
      */
     public static void addInitializeData(final Solo solo,
             final int textviewId, final String data)throws Exception {
-
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.enterText(textviewId, data);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
     }
@@ -243,7 +248,7 @@ public final class Action {
     public static void removeFavoriteStore(final Solo solo) throws Exception {
 
         solo.clickOnView(solo.getView("tab_text", 1));
-
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
         try {
             View storeName = (View) solo
                     .getView("listitem_favoritestore_storename");
@@ -254,7 +259,7 @@ public final class Action {
                     solo.sleep(ValidationText.WAIT_TIME_SHORT);
                     Button ok = (Button) solo.getView("button1");
                     solo.clickOnView(ok);
-                    solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                    solo.sleep(ValidationText.WAIT_TIME_LONG);
 
                 }
         } catch (AssertionError e) {
@@ -422,7 +427,7 @@ public final class Action {
             throws Exception {
 
         solo.waitForText(text, 1,
-                ValidationText.WAIT_TIME_SHORT);
+                ValidationText.WAIT_TIME_MIDDLE);
         solo.clickOnText(text);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
@@ -527,13 +532,14 @@ public final class Action {
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnText(ValidationText.PRODUCT_COLLECTION);
         solo.sleep(ValidationText.WAIT_TIME_LONG);
-        if(solo.searchText(ValidationText.ALREAD_ADDED)){
-            TextView  title = (TextView)solo.getView ("tx_header",0);
+        if (solo.searchText(ValidationText.ALREAD_ADDED)) {
+            TextView  title = (TextView) solo.getView("tx_header", 0);
             Log.i("number", title.getText().toString().trim().substring(5,6));
             if (title.isShown()) {
-                String number = title.getText().toString().trim().substring(5,6);
+                String number = title.getText().toString()
+                        .trim().substring(5,6);
                 int numbers = Integer.parseInt(number);
-                for (int f = 0 ; f < numbers ; f++ ) {
+                for (int f = 0; f < numbers; f++) {
                     solo.clickLongOnView(solo.getView(
                             "listitem_productlist_image", 0));
                     solo.sleep(ValidationText.WAIT_TIME_SHORT);
@@ -541,13 +547,13 @@ public final class Action {
                     solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
                 }
                 junit.framework.Assert.assertFalse(
-                        "Did not remove all.",title.isShown());
+                        "Did not remove all.", title.isShown());
 
             } else {
-                junit.framework.Assert.assertTrue("Did not remove all",true);
+                junit.framework.Assert.assertTrue("Did not remove all", true);
             }
         } else {
-                junit.framework.Assert.assertTrue("Did not remove all",true );
+                junit.framework.Assert.assertTrue("Did not remove all", true);
         }
         }
 
@@ -620,8 +626,8 @@ public final class Action {
             radioButtons = (View) solo.getView(
                     "product_item_spec_item_selections", 0);
         } catch (AssertionError e) {
-            TestHelper.swipeUp(solo, 2);
-            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            TestHelper.swipeUp2(solo, 2);
+           // solo.sleep(ValidationText.WAIT_TIME_SHORT);
             View shopCarts = solo
                     .getView("productitem_btn_add_to_shopping_cart");
             solo.clickOnView(shopCarts);
@@ -640,6 +646,9 @@ public final class Action {
             buddle = solo.getView("tab_badge", VIEW_ID_THREE);
             junit.framework.Assert.assertTrue("No items in shopping cart.",
                     buddle.isShown());
+        } else {
+            junit.framework.Assert.assertTrue("Add failed.",
+                   true);
         }
 
         solo.goBack();

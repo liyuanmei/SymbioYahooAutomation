@@ -311,7 +311,6 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1937862:Hide search clear icon.
      * @throws Exception if has error
@@ -920,6 +919,8 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
         solo.scrollToTop();
         Action.clickText(solo, ValidationText.APPAREL);
 
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+
         Action.clickText(solo, ValidationText.POPULAR_WOMEN);
 
         // click search button
@@ -953,6 +954,8 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
         solo.scrollToTop();
         Action.clickText(solo, ValidationText.APPAREL);
+
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
         Action.clickText(solo, ValidationText.POPULAR_WOMEN);
 
@@ -989,6 +992,8 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
         solo.scrollToTop();
         Action.clickText(solo, ValidationText.APPAREL);
 
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+
         Action.clickText(solo, ValidationText.POPULAR_WOMEN);
 
         // click search button
@@ -1017,6 +1022,8 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
         solo.scrollToTop();
         Action.clickText(solo, ValidationText.APPAREL);
+
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
         Action.clickText(solo, ValidationText.COMMODITY);
 
@@ -1490,7 +1497,7 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
         View iv = solo.getView("menu_search");
         solo.clickOnView(iv);
-
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.searchAfterPutData(solo, 0, ValidationText.MODEL);
 
         solo.clickOnText(ValidationText.SEARCH_ALL_STORE);

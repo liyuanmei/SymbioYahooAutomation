@@ -339,10 +339,10 @@ public class SRP extends ActivityInstrumentationTestCase2 <Activity> {
 
     }
 
-    /**
+  /*  *//**
      * 1937944:Check the function of "OK" button.
      * @throws Exception if has error
-     */
+     *//*
     public final void testCheckConfirmButtonFunction() throws Exception {
 
         Action.enterToJacketAfterSearch(solo);
@@ -362,7 +362,7 @@ public class SRP extends ActivityInstrumentationTestCase2 <Activity> {
         assertEquals("Go back to search result screen failed", gvList.size(),
                 1);
 
-    }
+    }*/
 
     /**
      * 1937949:Unselected "Credit cards".
@@ -915,11 +915,15 @@ ValidationText.PLEASE_LOGIN_ACCOUNT, 1, ValidationText.WAIT_TIME_LONGER)){
 
         Action.setLargePhotoViewStyleAfterSearch(solo);
 
-        Action.enterAdvancedBrowserModePage(solo);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.clickOnView(solo.getView("menu_filter"));
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
         assertTrue("Large pictrue icon is not selected! ",
                 ((RadioButton) solo.getView("btn_list_large")).isChecked());
-        Action.setListViewStyleAfterSearch(solo);
+
+        solo.clickOnView(solo.getView("btn_list_small"));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
     }
 
     /**
@@ -1501,7 +1505,7 @@ ValidationText.PLEASE_LOGIN_ACCOUNT, 1, ValidationText.WAIT_TIME_LONGER)){
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         View iv = solo.getView("menu_search");
         solo.clickOnView(iv);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         View keywords = (View) solo.getView("search_autocompletetext");
         assertTrue("Search component not displayed.", keywords.isShown());
 

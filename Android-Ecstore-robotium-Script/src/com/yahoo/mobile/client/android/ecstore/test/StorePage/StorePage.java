@@ -111,6 +111,7 @@ public class StorePage extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickElementsInWebviewByClassname(solo, "pimg");
         solo.sleep(ValidationText.WAIT_TIME_LONG);
         TestHelper.swipeUp(solo, 1);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnText(ValidationText.SHOPPING_TIPS);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
@@ -118,7 +119,6 @@ public class StorePage extends ActivityInstrumentationTestCase2<Activity> {
         TextView mustKnow = (TextView) solo.getView("text_must_know");
         assertTrue("Shopping Tips not display", mustKnow.isShown());
     }
-
 
     /**
      * 1959901:Verify all classification and product page.
@@ -156,7 +156,6 @@ public class StorePage extends ActivityInstrumentationTestCase2<Activity> {
                 categoryThumb.isShown());
 
     }
-
 
     /**
      * 1959887:Verify purchase person-time.
@@ -198,7 +197,7 @@ public class StorePage extends ActivityInstrumentationTestCase2<Activity> {
     public final void testAddFavoriteStoreWithoutLogin() throws Exception {
 
         Account.judgementAccountWithoutLogin(solo);
-        solo.clickOnView(solo.getView("tab_image",1));
+        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnText(ValidationText.MAYBE_LIKE);
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
@@ -227,7 +226,7 @@ public class StorePage extends ActivityInstrumentationTestCase2<Activity> {
     public final void testViewStorePromotion() throws Exception {
 
         Account.judgementAccountLogin(solo);
-        solo.clickOnView(solo.getView("tab_image",1));
+        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnText(ValidationText.MAYBE_LIKE);
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
@@ -250,4 +249,38 @@ public class StorePage extends ActivityInstrumentationTestCase2<Activity> {
         assertTrue("Account has login.", solo.searchText(
                 ValidationText.SALES_PROMOTION));
     }
+
+    /**
+     * 1959890:Verify the store custom categories is show correct.
+     * @throws Exception if has error
+     */
+    public final void testStoreCategoryShowCorrect() throws Exception {
+
+        Account.judgementAccountLogin(solo);
+        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.clickOnText(ValidationText.MAYBE_LIKE);
+        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+        View recommend = (View) solo.getView(
+                "listitem_recommended_image1", 0);
+        solo.clickOnView(recommend);
+
+        // Checks whether the product image is show.
+        View image = (View) solo.getView("listitem_productlist_image", 0);
+        assertTrue("Not enter recommended page.", image.isShown());
+
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+        solo.clickOnText(ValidationText.CATEGORIES);
+        TextView subName = (TextView) solo.getView("sub_category_name",
+                Action.VIEW_ID_ONE);
+        assertTrue("Not switch to category.", subName.isShown());
+
+        solo.clickOnText(ValidationText.RESULTS_VALUE);
+
+        // Checks whether the product image is show.
+        View images = (View) solo.getView("listitem_productlist_image", 0);
+        assertTrue("Not enter recommended page.", images.isShown());
+    }
+
 }

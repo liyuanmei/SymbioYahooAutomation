@@ -228,6 +228,11 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
         Account.judgementAccountLogin(solo);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.clickHomeButtonOnScreen(solo);
+
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        TestHelper.swipeUp(solo, 1);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
         solo.clickOnText(ValidationText.SETTING);
         solo.clickOnText(ValidationText.CLEAN_BROWSE_RECORD);
         solo.clickOnView(solo.getView("button1"));
@@ -277,9 +282,9 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
      */
     public final void testRemoveStoreFromRecently() throws Exception {
 
-        Account.judgementAccountLogin(solo);
+    Account.judgementAccountLogin(solo);
         for (int i = 0; i < Action.VIEW_ID_THREE; i++) {
-            Action.enterToItemPage(solo);
+            Action.enterToItemPages(solo);
             View shopTitle = (View) solo.getView("productitem_store_name");
             solo.clickOnView(shopTitle);
             solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
@@ -288,9 +293,13 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
         }
 
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.clickText(solo, ValidationText.RECENT_BROWSE);
 
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+
         View shop = (View) solo.getView("category_tab_primary_title", 1);
+
         solo.clickOnView(shop);
 
         TextView result = (TextView) solo.getView("tx_header", 1);
@@ -304,13 +313,18 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickOnView(solo.getView("button1"));
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-        TextView results = (TextView) solo.getView("tx_header", 1);
-        String counts = results.getText().toString().trim().substring(6,7);
-        Log.i("number", "counts:" + counts);
+        try {
+            TextView results = (TextView) solo.getView("tx_header", 1);
+            String counts = results.getText().toString().trim().substring(6,7);
+            Log.i("number", "counts:" + counts);
 
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        assertTrue("Remove store failed. ",
-                Integer.valueOf(count) > Integer.valueOf(counts));
+            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+            assertTrue("Remove store failed. ",
+                    Integer.valueOf(count) > Integer.valueOf(counts));
+        } catch (AssertionError e) {
+            assertTrue("Remove store failed. ",
+                    solo.searchText(ValidationText.NO_DATA_SHOP));
+        }
 
     }
 
@@ -359,7 +373,8 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
         Action.enterToItemPage(solo);
         solo.goBack();
         Action.clickStarIconNote(solo);
-        solo.goBack();
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
+       // solo.goBack();
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
         solo.sleep(ValidationText.WAIT_TIME_LONG);
 
@@ -371,6 +386,7 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
 
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(solo.getView("tab_image", 2));
+        solo.goBack();
         solo.scrollToTop();
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.clickText(solo, ValidationText.APPAREL);
@@ -379,7 +395,7 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
 
         // Click star icon to add to favorite.
         Action.clickStarIconNote(solo);
-
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         TextView outNumberTwo = (TextView) solo

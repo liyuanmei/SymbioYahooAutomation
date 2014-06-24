@@ -90,6 +90,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
     protected final void setUp() throws Exception {
         solo = new Solo(getInstrumentation(), getActivity());
         Assert.testFirstLaunch(solo);
+        System.gc();
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
     }
 
@@ -100,6 +101,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         System.gc();
         super.tearDown();
     }
+
 
     /**
      * 1938037:Check back function.
@@ -170,7 +172,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1938043:Check can return to item list.
      * @throws Exception if has error
@@ -185,7 +186,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         Assert.categoryListShow(solo);
 
     }
-
 
     /**
      * 1938052:Check "Search Clothing" text is show in search bar.
@@ -318,7 +318,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1938047:Check default items display.
      * @throws Exception if has error
@@ -349,6 +348,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         // Scroll the screen to load more data.
         for (int i = 0; i < Action.VIEW_ID_FIVE; i++) {
             TestHelper.swipeUp(solo, 1);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
         }
 
         boolean listviewCount2 =
@@ -541,7 +541,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         assertFalse("'Has Image'  button  selected.", tb.isChecked());
 
     }
-
 
     /**
      * 1938093:Check "SuperiorStore" can changed to unselected.
@@ -769,7 +768,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1938149:Check 'Apparel' is displayed on the top of the screen.
      * @throws Exception if has error
@@ -836,7 +834,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1938153:Check 'Computers_Peripherals' is displayed on the top of the
      * screen.
@@ -859,7 +856,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
      * 1938154:Check 'Homeappliances_AV' is displayed on the top of the screen.
      * @throws Exception if has error
      */
-     public final void testHouseholdAppliancesDisplayedOnTheScreen()
+    public final void testHouseholdAppliancesDisplayedOnTheScreen()
              throws Exception {
 
         solo.clickOnView(solo.getView("tab_image", 2));
@@ -880,7 +877,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
      * 1938155:Check 'Camera_Mobile_Toys' is displayed on the top of the screen.
      * @throws Exception if has error
      */
-     public final void testFasionDigitalDisplayedOnTheScreen()
+    public final void testFasionDigitalDisplayedOnTheScreen()
              throws Exception {
 
         solo.clickOnView(solo.getView("tab_image", 2));
@@ -894,7 +891,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         assertTrue("Fasion digital text does not exist.", text);
 
     }
-
 
     /**
      * 1938156:Check 'GOURMET/Health/Beverage' is displayed on the top of the
@@ -932,7 +928,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1938158:Check 'Home/Bedding/Furniture' is displayed on the top of the
      * screen.
@@ -954,7 +949,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         assertTrue("home text does not exist.", text);
 
     }
-
 
     /**
      * 1938160:Check 'Books/STATIONERY/Video' is displayed on the top of the
@@ -996,7 +990,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1938104:Check to click the start icon when login.
      * @throws Exception if has error
@@ -1017,7 +1010,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     public final void testStarIconWithoutLoginInGridView() throws Exception {
 
-        Account.overAccountLogIn(solo);
+       // Account.overAccountLogIn(solo);
         Account.judgementAccountWithoutLogin(solo);
 
         Action.enterCategoryClothesPage(solo);
@@ -1096,7 +1089,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         Action.setSmallPhotoViewStyleAfterSearch(solo);
 
         Action.clickText(solo, ValidationText.COMMODITY);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         TextView price = (TextView) solo.getView("listitem_productlist_price",
                 0);
         String sr = price.getText().toString();
@@ -1111,38 +1104,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         // Restore to list view.
         Action.setListViewStyleAfterSearch(solo);
     }
-
-    /**
-     * 1938114:Check the Shops score displays in grid view.
-     * @throws Exception if has error
-     *//*
-    public final void testShopsScoreDisplayInGridView()
-            throws Exception {
-
-        Action.enterCategoryClothesPage(solo);
-
-        // Change the item view to photo grid view
-        Action.setSmallPhotoViewStyleAfterSearch(solo);
-
-        solo.waitForText(ValidationText.COMMODITY, 1,
-                ValidationText.WAIT_TIME_MIDDLE);
-        solo.clickOnText(ValidationText.COMMODITY);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TextView price = (TextView) solo.getView(
-                "listitem_productlist_store_rating", 0);
-        String sr = price.getText().toString();
-
-        // Judgment whether the price matches the format of 'x.x'. boolean isNum
-        isNum = sr.matches("^[0-9].[0-9]+$");
-
-        assertTrue(
-                " Cannot find the shops score or score format is incorrect! ",
-                isNum);
-
-        // Restore to list view.
-        Action.setListViewStyleAfterSearch(solo);
-
-    }*/
 
     /**
      * 1938125:Check the commodity price displays in large photo view.
@@ -1354,7 +1315,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1938099:Check enter to item page.
      * @throws Exception if has error
@@ -1414,7 +1374,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         assertTrue("The default tab is incorrect.", btnSort.isShown());
 
     }
-
 
     /**
      * 1953657:verify side bar edit category function.
@@ -1536,7 +1495,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1938109:Click product image in Grid view.
      * @throws Exception if has error
@@ -1593,7 +1551,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1938039:Input keywords and search.
      * @throws Exception if has error
@@ -1622,7 +1579,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
     }
 
-
     /**
      * 1938044:Check "Advanced" button display.
      * @throws Exception if has error
@@ -1639,7 +1595,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         assertTrue("'Advanced' button not found!", advancedView.isShown());
 
     }
-
 
     /**
      * 1938061:Check unselected button function.
@@ -1682,6 +1637,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         Action.setLargePhotoViewStyleAfterSearch(solo);
         solo.clickInList(1);
         solo.sleep(ValidationText.WAIT_TIME_LONG);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         View imageView = (View) solo.getView("productitem_images");
         assertTrue("Not enter the item page in large view.",
                 imageView.isShown());
@@ -1690,4 +1646,6 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         Action.setListViewStyleAfterSearch(solo);
 
     }
+
+
 }
