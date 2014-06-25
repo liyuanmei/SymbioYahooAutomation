@@ -737,7 +737,6 @@ test("[1937976] check click on the picture of commodity",function () {
     obj.scrollDowns(1);
     $.delay(sleep);
 
-    target.logElementTree();
     var tapCommodityPictureShowPage = app.mainWindow().collectionViews()[0].cells()[1].name();
     $.delay(5);
 
@@ -774,9 +773,6 @@ test("[1937979] check click on the name of commodity" , function () {
     $.delay(sleep);
 
     obj.scrollDowns(1);
-    $.delay(sleep);
-
-    target.logElementTree();
     $.delay(sleep);
 
     var tapCommodityNameShowPage = app.mainWindow().collectionViews()[0].cells()[1].name();

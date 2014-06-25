@@ -1053,7 +1053,9 @@ test("[1938110] check store name is under the product image.", function () {
     Action.goApparelCategory();
     Action.goCommodityTab();
     $.delay(10);
+
     target.logElementTree();
+    $.delay(5);
 
     //get first cell Y
     var firstCell = app.mainWindow().collectionViews()[0].cells()[1];

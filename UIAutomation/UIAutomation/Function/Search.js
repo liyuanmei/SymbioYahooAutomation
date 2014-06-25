@@ -1132,6 +1132,7 @@ test("[1937911] Classification of L6 in search", function () {
 });
 
 test("[1937912] check the search results", function () {
+    Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
@@ -1148,7 +1149,7 @@ test("[1937912] check the search results", function () {
     var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
 
     UIALogger.logMessage(productName.name());
-    Assert.elementsShouldContainText(productName, "IPHONE");
+    Assert.elementsShouldContainText(productName, "iPhone");
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
