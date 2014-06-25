@@ -16,9 +16,10 @@ test("[1959901] Verify stores categiry show correctly.", function () {
     $.delay(sleep);
 
     Action.tapStoreCategoryTab();
-    $.delay(sleep);
+    $.delay(10);
 
     target.logElementTree();
+    $.delay(sleep);
 
     //assert stores category show correctly
     Assert.checkStoreCategoryCellsShowCorrectly();
@@ -38,7 +39,7 @@ test("[1959904] Verify user can check purchasing info from store page" , functio
 
     Action.goApparelCategoryWhenShoppingCart();
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     //Tap item on list to navigate to item page.
     Action.tapItemOnProductListScreen();
@@ -88,7 +89,7 @@ test("[1959890] Verify the store custom categories is show correct", function ()
     $.delay(sleep);
 
     Action.tapStoreTab();
-    $.delay(5);
+    $.delay(10);
 
     Action.tapSearchResultOfStore();
 
@@ -138,7 +139,7 @@ test("[1959925] Verify user can search funtion in store page ", function () {
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("東京");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(10);
  
     Action.tapCommodityNameOnSearchResultsPage();
     $.delay(sleep);
@@ -161,7 +162,7 @@ test("[1959906] Verify store promotion item's display", function () {
     $.delay(sleep);
 
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
     $.delay(sleep);
@@ -192,11 +193,11 @@ test("[1959913] Verify user can access store page by tapping store logo ", funct
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(10);
 
     //go to store page
     Action.tapStoreTab();
-    $.delay(5);
+    $.delay(10);
 
     Action.tapSearchResultOfStore();
     

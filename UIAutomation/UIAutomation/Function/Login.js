@@ -14,6 +14,7 @@ test("[1977501] verify login and Logout of interaction", function () {
     $.delay(sleep);
 
     Action.tapAddAccountOnLogin("mobileappstore1", "A1234qwer");
+    $.delay(sleep);
 
     Assert.checkReturnPageDisplay("我的帳戶");
 

@@ -7,7 +7,7 @@ test("[1959920] Verify the number of e-coupon can count correctly", function () 
 
     //go to electronic coupons.
     Action.goElectronicCoupons();
-    $.delay(10);
+    $.delay(20);
 
     Assert.checkElectronicCouponsDisplay("電子折價券");
     Action.tapButtonOnTabBar(4);
@@ -24,6 +24,7 @@ test("[1977495] Verify Super gift points", function () {
     $.delay(sleep);
 
     target.logElementTree();
+    $.delay(sleep);
 
     Assert.checkSuperGiftPoints("超贈點 · 可用 0 、待生效 0",2);
  
@@ -33,13 +34,15 @@ test("[1977495] Verify Super gift points", function () {
 test("[1959899] Verify the numbers of collected items can be increasing/decreasing in my account page", function () {
     //login the app
     Action.cleanSearches();
-
-    //add favorite item
     $.delay(sleep);
+
     Action.tapButtonOnTabBar(2);
+    $.delay(sleep);
+
     Action.tapItemOnCategoryScreenWhenItemPage(0);
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
+
     Action.tapItemOnProductListScreen();
     $.delay(5);
 
@@ -52,6 +55,7 @@ test("[1959899] Verify the numbers of collected items can be increasing/decreasi
     $.delay(sleep);
 
     Action.tapButtonOnMyUser(3);
+    $.delay(5);
     
     Assert.checkStoreName(firstStoreName);
     $.delay(sleep);
@@ -98,12 +102,12 @@ test("[1977523] verify recent history from My Account", function () {
 
     //go to order query called browse recently
     Action.tapButtonOnMyUser(1);
-    $.delay(5);
+    $.delay(10);
 
     Assert.searchSuggestionsPageDisplayOnRecentHisory();
 
     Action.tapStoreTab();
-    $.delay(5);
+    $.delay(10);
 
     Assert.searchSuggestionsPageDisplayOnRecentHisory();
 
@@ -125,7 +129,7 @@ test("[1977527] verify remove an item from recently browsed", function () {
     $.delay(5);
 
     Action.deleteRecordsRecently();
-    $.delay(sleep);
+    $.delay(10);
     
     Assert.searchSuggestionsPageDisplayOnRecentHisory();
 
@@ -141,7 +145,7 @@ test("[1977531] verify remove a store from recently browsed", function () {
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapStoreTab();
     $.delay(5);
@@ -163,7 +167,7 @@ test("[1977531] verify remove a store from recently browsed", function () {
     $.delay(5);
 
     Action.deleteRecordsRecently();
-    $.delay(sleep);
+    $.delay(10);
     
     Assert.searchSuggestionsPageDisplayOnRecentHisory();
     Action.tapButtonOnTabBar(4);

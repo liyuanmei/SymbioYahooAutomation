@@ -4,7 +4,7 @@ test("[1954564] Verify pull down to refresh.", function () {
 
     //do refresh
     Action.doRefreshFavoriteStorePage();
-    $.delay(5);
+    $.delay(10);
 
     //check the page is correct
     Assert.checkReturnPageDisplay("最新動態");

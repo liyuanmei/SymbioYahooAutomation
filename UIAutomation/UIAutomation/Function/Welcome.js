@@ -1,5 +1,5 @@
 test("Welcomen page test script, need run this script before all other scripts" , function  () {
-	$.delay(10);
+	$.delay(15);
 
 	var logPage = app.mainWindow().buttons()[0].name();
 	$.delay(sleep);

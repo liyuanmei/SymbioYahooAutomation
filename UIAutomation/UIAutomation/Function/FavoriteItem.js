@@ -4,7 +4,7 @@ test("[1959923] Verify store rate from items collected", function () {
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(10);
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -56,12 +56,12 @@ test("[1953636] verify favorite items", function () {
     Action.cleanSearches();
 
     Action.tapButtonOnTabBar(2);
-    $.delay(sleep);
+    $.delay(3);
 
     Action.tapItemOnCategoryScreenWhenItemPage(0);
 
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
     $.delay(5);
@@ -74,14 +74,14 @@ test("[1953636] verify favorite items", function () {
     $.delay(5);
 
     Action.tapProductCollectionButton();
-    $.delay(sleep);
+    $.delay(3);
 
     //check the stores name are correct
     Assert.checkStoreName(firstStoreName);
     $.delay(sleep);
     
     Action.tapCollectionList();
-    $.delay(sleep);
+    $.delay(3);
     
     Action.tapFavoritesIcon(1);
     Action.tapButtonOnTabBar(4);
@@ -98,7 +98,7 @@ test("[1959929] verify user can add favorite item.", function () {
     Action.tapButtonOnTabBar(2);
     Action.tapItemOnCategoryScreenWhenItemPage(0);
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     var storeNameElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
     $.delay(4);

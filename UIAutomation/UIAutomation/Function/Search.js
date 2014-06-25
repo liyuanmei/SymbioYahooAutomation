@@ -242,6 +242,7 @@ test("[1937867] Type in Chinese to check auto complete", function () {
      
     //In the search bar type in Chinese
     Action.searchBarInputChinese("東");
+    $.delay(sleep);
      
     //Check the search Suggestions have been displayed in the list
     Assert.autoCompletePageDisplay();
@@ -272,6 +273,8 @@ test("[1937873] Check list recent search for '+' icon on the right side", functi
      
     //Click on the plus to validate recent search record is added to the right
     Action.tapSearchIconOnNavBar();
+    $.delay(sleep);
+
     Action.tapIconPlusOnFirstFloorTableView();
     Assert.textIsEnabled("h")
     Action.tapReturnOnSearchBar();
@@ -305,9 +308,11 @@ test("[1937874] At the most recent search keyword search", function () {
     //Enter the search page
     Action.tapSearchIconOnNavBar();
     $.delay(sleep);
+
     Action.tapIconPlusOnFirstFloorTableView();
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(5);
+
     Assert.checkSearchPage("\"h\"");
      
     //Clean searches
@@ -325,6 +330,7 @@ test("[1937875] No search Suggestions according to look at it", function () {
     $.delay(sleep);
 
     Action.searchBarInput("yeruieujeueu");
+    $.delay(sleep);
      
     //Validate the input “yeruieujeueu” , no search Suggestions
     Assert.searchSuggestionsPageDisplay();
@@ -335,6 +341,7 @@ test("[1937875] No search Suggestions according to look at it", function () {
 test("[1937876] No recent search shows that view", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
+    $.delay(sleep);
      
     //check no recent search shows that view
     Assert.searchSuggestionsPageDisplay();
@@ -373,6 +380,7 @@ test("[1937877] Click on the recent twice different keyword search for the right
      
     //click on the different icon plus
     Action.clickOnTheDifferentIconPlusOnFirstFloorTableView();
+    $.delay(sleep);
      
     //verify click on the different icon plus on first floor tableView show the correct
     Assert.clickOnTheDifferentIconPlusOnFirstFloorTableView(plusValue);
@@ -407,8 +415,10 @@ test("[1937878] Clean up into recent search keyword", function () {
      
     Action.tapSearchIconOnNavBar();
     $.delay(sleep);
+
     Action.tapIconPlusOnFirstFloorTableView();
     $.delay(sleep);
+
     Action.tapClean();
     $.delay(sleep);
      
@@ -443,7 +453,7 @@ test("[1937879] Clean up into the keyword search proposal", function () {
 
 test("[1937887] To view the search icon display", function () {
     Action.goApparelCategoryWhenSearchSettingOpen();
-    $.delay(sleep);
+    $.delay(5);
      
     //verify search Button an apparel category is enabled
     Assert.searchButtonOnApparelCategoryIsEnabled();
@@ -472,6 +482,7 @@ test("[1937890] Click to return to the icon L2 layer classification", function (
     //tap search icon on apparel category
     Action.tapSearchIconOnApparelCategory();
     Action.tapReturnOnSearchBar();
+    $.delay(sleep);
      
     //check Return "服飾" Page Display
     Assert.checkReturnPageDisplay("服飾");
@@ -489,7 +500,9 @@ test("[1937886] Enter any long keyword search", function () {
     Action.searchBarInput("JJHGHKJHHHHHJJJJJJHG");
     Action.tapKeyboardSearch();
     $.delay(5);
+
     target.logElementTree();
+    $.delay(sleep);
      
     //Validate the input “JJHGHKJHHHHHJJJJJJHG” , no search Suggestions
     Assert.longtextSearchPageDisplay();
@@ -509,6 +522,7 @@ test("[1937891] Click to return to the icon L3 layer classification", function (
      
     Action.tapSearchIconOnNavBar();
     Action.tapReturnOnSearchBar();
+    $.delay(sleep);
     
     Assert.checkReturnPageDisplay("流行女裝");
      
@@ -533,6 +547,7 @@ test("[1937892] Click to return to the icon L4 layer classification", function (
      
     Action.tapSearchIconOnNavBar();
     Action.tapReturnOnSearchBar();
+    $.delay(sleep);
      
     Assert.checkReturnPageDisplay("上衣");
     $.delay(sleep);
@@ -570,6 +585,7 @@ test("[1937896] View the search results page", function () {
     //Validate the input “JJHGHKJHHHHHJJJJJJHG” , no search Suggestions
     Assert.longtextSearchPageDisplay();
     $.delay(sleep);
+
     Action.goBackOnSearchPage();
     
     //return fashion women's clothing category
@@ -704,6 +720,7 @@ test("[1937889] click to return to the icon L1 layer classification" , function 
     Action.tapReturnOnSearchBar();
     Assert.checkSearchPage("全部分類");
     $.delay(sleep);
+
     Action.goDiscoveryStream();
 });
 
@@ -730,6 +747,7 @@ test("[1937893] Click to return to the icon L5 layer classification", function (
      
     Action.tapSearchIconOnNavBar();
     Action.tapReturnOnSearchBar();
+    $.delay(5);
     
     Assert.checkReturnPageDisplay("T恤");
      
@@ -768,6 +786,7 @@ test("[1937894] Click to return to the icon L6 layer classification", function (
    
     Action.tapSearchIconOnNavBar();
     Action.tapReturnOnSearchBar();
+    $.delay(5);
     
     Assert.checkReturnPageDisplay("無袖T恤");
      
@@ -801,6 +820,7 @@ test("[1937909] Click to return to the icon L4 layer classification", function (
      
     //go fashion women's clothing category
     Action.goFashionWomenClothingCategory();
+    $.delay(sleep);
 
     //go to coat 
     Action.goCoatCategory();
@@ -975,7 +995,7 @@ test("[1937906] Classification of L1 in search", function () {
 
     Action.searchBarInput("keyword");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(5);
     
     Assert.searchResultsPage("keyword");
      
@@ -999,7 +1019,7 @@ test("[1937907] Classification of L2 in search", function () {
     
     Action.searchBarInput("keyword");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(5);
     
     Assert.searchResultsPage("keyword");
      
@@ -1045,6 +1065,7 @@ test("[1937910] Classification of L5 in search", function () {
 
     //go to coat 
     Action.goCoatCategory();
+    $.delay(sleep);
 
     //go to T-Shirt
     Action.tapClassificationButtonWhenS();
@@ -1095,6 +1116,7 @@ test("[1937911] Classification of L6 in search", function () {
     $.delay(sleep);
 
     Action.tapSearchIconOnNavBar();
+    $.delay(sleep);
 
     Assert.textIsEnabled("搜尋無袖T恤");
     $.delay(sleep);
@@ -1118,7 +1140,7 @@ test("[1937912] check the search results", function () {
     
     Action.searchBarInput("iPhone");
     Action.tapKeyboardSearch();
-    $.delay(5);
+    $.delay(10);
 
     //verify type "iphone" show the correct
     target.logElementTree();
@@ -1144,7 +1166,7 @@ test("[1959905] Verify '搜索全部商店'function" , function () {
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("東京著衣");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapStoreTab();
     $.delay(5);
@@ -1173,7 +1195,7 @@ test("[1977507] [bug case]verify search result when enter special characters in 
     Action.tapSearchIconOnNavBar();
     Action.searchBarInput(",");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(10);
   
     //verify exist to goods
     Assert.checkFavoriteStoreCellsShowCorrectly();
@@ -1192,13 +1214,15 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(10);
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
+    $.delay(sleep);
 
     //go to 篩選 tab.
     Action.tapButtonsInAdvancedBar(2);
+    $.delay(sleep);
 
     //drag price bar to 253 price.    
     app.mainWindow().dragInsideWithOptions({startOffset:{x:0.92, y:0.28}, endOffset:{x:0.00, y:0.31}, duration:1.4});
@@ -1215,6 +1239,7 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     
     //Tap clear button
     Action.tapClearButtonOnFilterScreenInAdvancedBarWhenSRP();
+    $.delay(sleep);
 
     //Verify price bar restore to default value.
     Assert.checkPriceBarShowCorrect("0 元");
@@ -1233,7 +1258,7 @@ test("[1959914] Verify user can access store page by tapping store logo", functi
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("東京");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapStoreTab();
     $.delay(5);

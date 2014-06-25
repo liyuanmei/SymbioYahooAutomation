@@ -9,7 +9,7 @@ test("[1953619] Verify the for piece goods discount", function () {
     $.delay(sleep);
 
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
     $.delay(sleep);
@@ -20,8 +20,11 @@ test("[1953619] Verify the for piece goods discount", function () {
 
     Action.tapCancelOnShoppingCart(); 
     Action.tapSale();
+    $.delay(10);
 
     Assert.checkSearchPage("促銷活動");
+    $.delay(sleep);
+
     Assert.checkSalesPromotionActivity();
 
     Action.tapButtonOnTabBar(2);
@@ -40,7 +43,7 @@ test("[1953617] Verify the for full discount activity list", function () {
     $.delay(sleep);
 
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
     $.delay(sleep);
@@ -51,13 +54,12 @@ test("[1953617] Verify the for full discount activity list", function () {
 
     Action.tapCancelOnShoppingCart(); 
     Action.tapSale();
-    $.delay(sleep);
+    $.delay(10);
 
     var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
     Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
 
     Assert.checkSearchPage("促銷活動");
-    //Assert.checkSalesPromotionActivity();
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -76,7 +78,7 @@ test("[1953614] Verify the for full discount activity list", function () {
     $.delay(sleep);
 
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
     $.delay(sleep);
@@ -88,12 +90,15 @@ test("[1953614] Verify the for full discount activity list", function () {
 
     Action.tapCancelOnShoppingCart(); 
     Action.tapSale();
-    $.delay(sleep);
+    $.delay(10);
 
     var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
     Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
+    $.delay(sleep);
 
     Assert.checkSearchPage("促銷活動");
+    $.delay(sleep);
+
     Assert.checkSalesPromotionActivity();
 
     Action.tapButtonOnTabBar(2);
@@ -115,7 +120,7 @@ test("[1959927] Verify user can add an item to shopping cart.", function () {
     $.delay(sleep);
 
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
     $.delay(sleep);
@@ -169,7 +174,7 @@ test("[1959893] Verify Sharing method can be shown.", function () {
     $.delay(sleep);
 
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
     $.delay(sleep);
@@ -202,7 +207,7 @@ test("[1953620] verify the gifts are displayed in the shopping cart.", function 
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("送贈品220130");
     Action.tapKeyboardSearch();
-    $.delay(5);
+    $.delay(10);
 
     //go to item page and add item to shoppingcart
     Action.tapCommodityPictureOnSearchResultsPage();
@@ -231,6 +236,7 @@ test("[1953620] verify the gifts are displayed in the shopping cart.", function 
     //check the gifts are displayed correctly
     var gift = app.mainWindow().scrollViews()[0].webViews()[0].links()[4].staticTexts()[0];
     $.delay(5);
+
     target.logElementTree();
     $.delay(5);
 
@@ -258,10 +264,10 @@ test("[1953626] verify Payment.", function () {
 
     Action.tapItemOnCategoryScreenWhenItemPage(0);;
     Action.goCommodityTab();
-    $.delay(5);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
-    $.delay(sleep);
+    $.delay(3);
 
     obj.scrollDowns(2);
     $.delay(sleep);

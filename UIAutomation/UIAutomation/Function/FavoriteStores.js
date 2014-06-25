@@ -5,14 +5,19 @@ test("[1953649] verify Editing favorite categories is Synchronous with sidebar."
 
     //edit favorite categories
     Action.tapButtonOnMyUser(6);
+    $.delay(sleep);
 
     Action.selectCategoryOnEditFavorite();
+    $.delay(sleep);
 
     Action.goBack();
+    $.delay(sleep);
     //slect favorite categories and assert them, then restore
     Action.verifyEditingFavoriteCategories();
 
     Action.tapButtonOnMyUser(6);
+    $.delay(sleep);
+
     Action.selectCategoryOnEditFavorite();
     Action.goBack();
 
@@ -27,7 +32,7 @@ test("[1959922] Verify user can access correct store page from recommendation.",
 
     //Tap item on list to navigate to item page.
     Action.tapStoreNameOnCategory();
-    //Action.tapFirstViewsOnFavoriteStorePage();
+    $.delay(5);
 
     Assert.checkButtonOnStore();
     Action.tapButtonOnTabBar(1);
@@ -47,7 +52,7 @@ test("[1959912] Verify there is an indicator to allow user login in",function ()
 
     //tap favorite button
     Action.tapButtonOnTabBar(1);
-    $.delay(4);
+    $.delay(10);
 
     //check "請先登入" button
     Assert.checkLogInFirstOnFavoritePage();
@@ -89,9 +94,11 @@ test("[1959888] Verify Just added favorite store can be displayed on my favorite
     //restore settings
     Action.tapFirstViewsOnFavoriteStorePage();
     $.delay(5);
+
     target.logElementTree();
     Action.tapCancelFavoriteStoreIcon();
     $.delay(sleep);
+
     Action.tapBackOnFavoriteStorePage();
     Action.tapButtonOnTabBar(0);
 });
@@ -123,10 +130,11 @@ test("[1954565] Verify pull down to refresh when favorite store is empty.",funct
     
     //do refresh
     Action.doRefreshFavoriteStorePage();
-    $.delay(5);
+    $.delay(10);
 
     //check the page is correct
     Assert.checkReturnPageDisplay("最愛商店");
+    $.delay(sleep);
 
     //check the cells is not empty
     Assert.checkFavoriteStoreCellsShowCorrectly();
@@ -144,7 +152,7 @@ test("[1954610] Verify pull down to refresh when favorite store is exist.",funct
     $.delay(5);
 
     Action.tapFavoriteStoreIcon();
-    $.delay(5);
+    $.delay(10);
 
     //do refresh
     Action.doRefreshFavoriteStorePage();
@@ -152,6 +160,7 @@ test("[1954610] Verify pull down to refresh when favorite store is exist.",funct
 
     //check the page is correct
     Assert.checkReturnPageDisplay("最愛商店");
+    $.delay(sleep);
 
     //check the cells is not empty
     Assert.checkFavoriteStoreCellsShowCorrectly();

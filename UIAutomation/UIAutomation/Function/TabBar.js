@@ -4,7 +4,7 @@ test("[1977546] Verify verify tab bar can switch.", function () {
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(1);
-    $.delay(sleep);
+    $.delay(5);
     
     Assert.checkFavoriteStoreTabIsEnabled();
     

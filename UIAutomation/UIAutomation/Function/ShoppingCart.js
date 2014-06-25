@@ -4,7 +4,7 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" , function 
 
     Action.goApparelCategoryWhenShoppingCart();
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     //Tap item on list to navigate to item page.
     Action.tapItemOnProductListScreen();
@@ -57,7 +57,7 @@ test("[1959883] verify all delete shopping cart of goods" ,function () {
 
     Action.goApparelCategoryWhenShoppingCart();
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     //Tap item on list to navigate to item page.
     Action.tapItemOnProductListScreen();
@@ -100,7 +100,7 @@ test("[1977500] verify all delete shopping cart of goods" ,function () {
     $.delay(sleep);
 
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
     $.delay(sleep);
@@ -153,7 +153,7 @@ test("[1959885] verify the shopping cart detail" ,function () {
     Action.tapButtonOnTabBar(2);
     Action.tapItemOnCategoryScreenWhenItemPage(0);
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
     $.delay(sleep);
@@ -203,7 +203,7 @@ test("[1959903] Verify user can view next buy items then view shopping cart item
     Action.tapButtonOnTabBar(2);
     Action.tapItemOnCategoryScreenWhenItemPage(0);
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
 
     Action.tapItemOnProductListScreen();
     $.delay(sleep);
@@ -232,7 +232,7 @@ test("[1959903] Verify user can view next buy items then view shopping cart item
 
     Action.goBack();
     Action.tapShoppingCartlist(0);
-    $.delay(10);
+    $.delay(20);
 
     //check shopping cart list can bi tapped and no issue
     Assert.checkSearchPage("本店購物車");

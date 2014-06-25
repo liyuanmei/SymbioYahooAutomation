@@ -1,13 +1,20 @@
 test("[1959919] Verify 0 result function on leaf-category", function () {
     Action.cleanSearches();
     Action.tapButtonOnTabBar(2);
+    $.delay(sleep);
 
     Action.tapItemOnCategoryScreenWhenOptions(9);
+    $.delay(sleep);
+
     Action.tapChoosePreductCategoryWhenOptions(0,1);
+    $.delay(sleep);
+
     Action.tapClassificationButtonWhenS();
     $.delay(5);
 
     Action.tapChoosePreductCategoryWhenOptions(0,14);
+    $.delay(sleep);
+
     Action.tapClassificationButtonWhenS();
     $.delay(5);
 
