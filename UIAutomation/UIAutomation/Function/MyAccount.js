@@ -26,7 +26,7 @@ test("[1977495] Verify Super gift points", function () {
     target.logElementTree();
     $.delay(sleep);
 
-    Assert.checkSuperGiftPoints("超贈點 · 可用 0 、待生效 0",2);
+    Assert.checkSuperGiftPoints("超贈點 · 可用 0 、待發放 0",2);
  
     Action.tapButtonOnTabBar(0);
 });
@@ -110,7 +110,10 @@ test("[1977523] verify recent history from My Account", function () {
     $.delay(10);
 
     Assert.searchSuggestionsPageDisplayOnRecentHisory();
+    $.delay(sleep);
 
+    Action.tapGoodsTab();
+    Action.tapButtonOnTabBar(4);
     Action.tapButtonOnTabBar(0);
 });
 
@@ -133,6 +136,7 @@ test("[1977527] verify remove an item from recently browsed", function () {
     
     Assert.searchSuggestionsPageDisplayOnRecentHisory();
 
+    Action.tapButtonOnTabBar(4);
     Action.tapButtonOnTabBar(0);
 });
 

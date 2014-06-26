@@ -16,7 +16,7 @@ Action.tapChooseOnElectronicCoupons = function () {
 Action.addToRecentBrowseOnce = function () {
     Action.goApparelCategoryWhenShoppingCart();
     Action.goCommodityTab();
-    $.delay(sleep);
+    $.delay(10);
     obj.scrollDowns(1);
 
     //Tap item on list to navigate to item page.
