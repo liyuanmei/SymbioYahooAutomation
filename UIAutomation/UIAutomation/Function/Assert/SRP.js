@@ -1,7 +1,13 @@
 Assert.checkGoodsAndStoreTabDisplay = function  () {
     $.delay(sleep);
-    method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].name());
-    method.verifyEquals("商店",app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].name());
+    if(target.systemVersion() == "6.1.3"){
+        method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0].name());
+        method.verifyEquals("商店",app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1].name());
+    }
+    else{
+        method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].name());
+        method.verifyEquals("商店",app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].name());
+    }
 };
 
 Assert.checkButtonOnList = function (sKey) {
@@ -11,18 +17,20 @@ Assert.checkButtonOnList = function (sKey) {
 
 Assert.tapTabCheckSListDisplay = function () {
     $.delay(sleep);
-    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<20);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<21);
 };
 
 Assert.elementsOrderInSortTabWhenSRP = function () {
     $.delay(sleep);
 
     var relevanceValue = app.mainWindow().tableViews()[0].cells()[0].staticTexts()[0].name();
-    var latestItems = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
-    var priceLowToHigh = app.mainWindow().tableViews()[0].cells()[2].staticTexts()[0].name();
-    var priceHighToLow = app.mainWindow().tableViews()[0].cells()[3].staticTexts()[0].name();
+    var popularity = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
+    var latestItems = app.mainWindow().tableViews()[0].cells()[2].staticTexts()[0].name();
+    var priceLowToHigh = app.mainWindow().tableViews()[0].cells()[3].staticTexts()[0].name();
+    var priceHighToLow = app.mainWindow().tableViews()[0].cells()[4].staticTexts()[0].name();
     
     method.verifyEquals("相關度", relevanceValue);
+    method.verifyEquals("最高人氣", popularity);
     method.verifyEquals("最新上架", latestItems);
     method.verifyEquals("價錢低到高", priceLowToHigh);
     method.verifyEquals("價錢高到低", priceHighToLow);
@@ -42,9 +50,16 @@ Assert.elementsOnFilterScreenWhenSRP = function () {
     //verify circle image and bar image show correct.
     var circleImage1 = app.mainWindow().images()[0].name();
     var circleImage2 = app.mainWindow().images()[1].name();
-    var barImage1 = app.mainWindow().images()[2].name();
-    var barImage2 = app.mainWindow().images()[3].name();
-
+    $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        var barImage1 = app.mainWindow().images()[3].name();
+        var barImage2 = app.mainWindow().images()[2].name();
+    }
+    else{
+        var barImage1 = app.mainWindow().images()[2].name();
+        var barImage2 = app.mainWindow().images()[3].name();
+    }
+    
     method.verifyEquals("circle.png", circleImage1);
     method.verifyEquals("circle.png", circleImage2);
     method.verifyEquals("bar-grey.png", barImage1);
@@ -54,22 +69,31 @@ Assert.elementsOnFilterScreenWhenSRP = function () {
     this.AttributeElements = ["可刷卡", "0利率", "可分期", "超商付款", "超商取貨", "有現貨", "有影音", "有圖片", "優良商店"];
 
     for (var i = 0; i < 9; i++){
+        $.delay(sleep);
+        if(target.systemVersion() == "6.1.3"){
+        method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
+    }
+        else{
         method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[1].cells()[i].name());
+    }
     }
 };
 
 Assert.itemPageShowCorrectOnCoatSearchPage = function (sTitle) {
-    $.delay(sleep);
 
     var collectionViews = app.mainWindow().collectionViews()[0];
 
-    //Assert item title show correct
-    var titleNameOnCoatSearchPage = collectionViews.cells()[1];
-    method.verifyEquals(sTitle, titleNameOnCoatSearchPage.name());
-
-    //Assert buy and add to cart button show correct.
-    var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
-    var butButton = collectionViews.cells()["立即購買"].buttons()[1];
+    $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        //Assert buy and add to cart button show correct.
+        var addToCartButton = collectionViews.cells()[4].buttons()[0];
+        var butButton = collectionViews.cells()[4].buttons()[1];
+    }
+    else{
+        //Assert buy and add to cart button show correct.
+        var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
+        var butButton = collectionViews.cells()["立即購買"].buttons()[1];
+    }
     
     method.verifyEquals("立即購買", addToCartButton.name());
     method.verifyEquals("加入購物車", butButton.name());
@@ -77,10 +101,19 @@ Assert.itemPageShowCorrectOnCoatSearchPage = function (sTitle) {
 
 Assert.productAddedToMyFavoritesScreenWhenSRP = function (productName) {
     $.delay(4);
-    var collectionView = app.mainWindow().collectionViews()[0];
-    var productCell = collectionView.cells()[0].staticTexts()[3];
+    if(target.systemVersion() == "6.1.3"){
+        var collectionView = app.mainWindow().collectionViews()[0];
+        var productCell = collectionView.cells()[0].staticTexts()[0];
 
-    method.verifyEquals(productName, productCell.name());
+        method.verifyEquals(productName, productCell.name());
+    }
+    else{
+        var collectionView = app.mainWindow().collectionViews()[0];
+        var productCell = collectionView.cells()[0].staticTexts()[3];
+
+        method.verifyEquals(productName, productCell.name());
+    }
+    
 };
 
 Assert.productRemovedFromMyFavoritesScreenWhenSRP = function (productName) {
@@ -92,12 +125,22 @@ Assert.productRemovedFromMyFavoritesScreenWhenSRP = function (productName) {
 };
 
 Assert.checkButtonOnStore = function () {
-    $.delay(3);
-    var storeClassify = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
-    var storeCommodity = app.mainWindow().collectionViews()[0].cells()[1].buttons()[1];
+    $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        var storeClassify = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[0];
+        var storeCommodity = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[1];
 
-    method.verifyEquals("本店分類", storeClassify.name());
-    method.verifyEquals("本店商品", storeCommodity.name());
+        method.verifyEquals("本店分類", storeClassify.name());
+        method.verifyEquals("本店商品", storeCommodity.name());
+    }
+    else{
+        var storeClassify = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+        var storeCommodity = app.mainWindow().collectionViews()[0].cells()[1].buttons()[1];
+
+        method.verifyEquals("本店分類", storeClassify.name());
+        method.verifyEquals("本店商品", storeCommodity.name());
+    } 
+    
 };
 
 Assert.checkStorelistShowCorrect = function () {
@@ -118,10 +161,16 @@ Assert.heartIconShowCorrect = function (productIndex) {
 
 Assert.checkPriceBarShowCorrectWhenSRP = function (price) {
     $.delay(sleep);
-
-    //Verify price show correct.
-    var priceNumber = app.mainWindow().staticTexts()[0].name();
-    method.verifyEquals(price, priceNumber);
+    if(target.systemVersion() == "6.1.3"){
+        //Verify price show correct.
+        var priceNumber = app.mainWindow().staticTexts()[1].name();
+        method.verifyEquals(price, priceNumber);
+    }
+    else{
+        //Verify price show correct.
+        var priceNumber = app.mainWindow().staticTexts()[0].name();
+        method.verifyEquals(price, priceNumber);
+    }
 };
 
 Assert.checkAdvancedShowCorrectWhenSRP = function () {
@@ -151,4 +200,30 @@ Assert.filterAttributeButtonIsTappedOnSRP = function (k,i) {
     var buttonStatus = attributeButton.value();
 
     method.verifyEquals(0, buttonStatus);
+};
+
+Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions = function (price) {
+    $.delay(sleep);
+    //Verify price show correct.
+    var priceNumber = app.mainWindow().staticTexts()[0].name();
+    method.verifyEquals(price, priceNumber);
+};
+
+//6.25
+Assert.buttonOnAdvancedIsEnabledShow = function (i,j) {
+    $.delay(sleep);
+    var buttonOnAdvanced = app.mainWindow().buttons()[i].name();
+    method.verifyEquals(j, buttonOnAdvanced);
+};
+
+Assert.chooseButtonsOnAdvanced = function (k,i,j) {
+    $.delay(sleep);
+    var chooseButtonsOnAdvanced = app.mainWindow().collectionViews()[k].cells()[i].staticTexts()[0].name();
+    method.verifyEquals(j, chooseButtonsOnAdvanced);
+};
+
+Assert.checkItemName = function (j) {
+    $.delay(sleep);
+    var checkItemName = app.mainWindow().collectionViews()[0].cells()[1].name();
+    method.verifyEquals(j, checkItemName);
 };

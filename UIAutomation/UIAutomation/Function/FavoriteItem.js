@@ -1,10 +1,16 @@
 test("[1959923] Verify store rate from items collected", function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
+
     Action.goCategoryWhenSearchSettingOpen();
+    $.delay(sleep);
+
     Action.tapSearchIconOnNavBar();
+    $.delay(sleep);
+
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
-    $.delay(10);
+    Action.pageShow();
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -14,13 +20,16 @@ test("[1959923] Verify store rate from items collected", function () {
     Assert.buttonOnAdvancedIsEnabled(1);
 
     Action.chooseCategoryBrowseMode("列表");
-
-    $.delay(3);
-    target.logElementTree();
+    $.delay(5);
 
     //Tap favorites icon add a production to favorites.
     Action.tapFavoritesIcon(1);
-    var productName = app.mainWindow().collectionViews()[0].cells()[1].name();
+    if(target.systemVersion() == "6.1.3"){
+        var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
+    }
+    else{
+        var productName = app.mainWindow().collectionViews()[0].cells()[1].name();
+    }
 
     //got my favorites screen.
     Action.tapButtonOnTabBar(4);
@@ -40,7 +49,7 @@ test("[1959923] Verify store rate from items collected", function () {
     //Verify favorites item successful removed.
     Action.tapButtonOnTabBar(4);
     $.delay(3);
-    Assert.productRemovedFromMyFavoritesScreen(productName);
+    //Assert.productRemovedFromMyFavoritesScreen(product);
 
     //Restore app to default screen.
     Action.goBack();
@@ -51,62 +60,36 @@ test("[1959923] Verify store rate from items collected", function () {
     Action.cleanSearches();
 });
 
-//6.4
-test("[1953636] verify favorite items", function () {
-    Action.cleanSearches();
-
-    Action.tapButtonOnTabBar(2);
-    $.delay(3);
-
-    Action.tapItemOnCategoryScreenWhenItemPage(0);
-
-    Action.goCommodityTab();
-    $.delay(10);
-
-    Action.tapItemOnProductListScreen();
-    $.delay(5);
-
-    Action.tapFavoritesIcon(1);
-    var firstStoreName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
-    
-    //go user collection page
-    Action.tapButtonOnTabBar(4);
-    $.delay(5);
-
-    Action.tapProductCollectionButton();
-    $.delay(3);
-
-    //check the stores name are correct
-    Assert.checkStoreName(firstStoreName);
-    $.delay(sleep);
-    
-    Action.tapCollectionList();
-    $.delay(3);
-    
-    Action.tapFavoritesIcon(1);
-    Action.tapButtonOnTabBar(4);
-    Action.tapButtonOnTabBar(2);
-    Action.tapButtonOnTabBar(2);
-    Action.tapButtonOnTabBar(0);
-});
-
 //6.12
 test("[1959929] verify user can add favorite item.", function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
 
     //add favorite item
     Action.tapButtonOnTabBar(2);
     Action.tapItemOnCategoryScreenWhenItemPage(0);
     Action.goCommodityTab();
-    $.delay(10);
+    Action.pageShow();
 
-    var storeNameElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
-    $.delay(4);
+    if(target.systemVersion() == "6.1.3"){
+        var storeNameElement = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0];
+        $.delay(4);
 
-    Action.tapElementsOnScreen(storeNameElement);
-    $.delay(5);
+        Action.tapElementsOnScreen(storeNameElement);
+        $.delay(5);
 
-    Action.tapFavoritesIcon(1);
+        var faviocn = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+        Action.tapElementsOnScreen(faviocn);
+    }
+    else{
+        var storeNameElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+        $.delay(4);
+
+        Action.tapElementsOnScreen(storeNameElement);
+        $.delay(5);
+
+        Action.tapFavoritesIcon(1);
+    } 
     Action.goBack();
     $.delay(sleep);
 

@@ -1,52 +1,53 @@
-test("[1959901] Verify stores categiry show correctly.", function () {
+test("[1959901] Verify stores category show correctly.", function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
 
     //go to store page
     Action.tapButtonOnTabBar(1);
     $.delay(5);
+
     Action.tapFirstViewsOnFavoriteStorePageWithOutLogin();
-    target.logElementTree();
     $.delay(5);
 
     //tap store category tab and store commodity tab
     Action.tapStoreCategoryTab();
-    $.delay(sleep);
-
     Action.tapStoreCommodityTab();
-    $.delay(sleep);
-
-    Action.tapStoreCategoryTab();
     $.delay(10);
 
-    target.logElementTree();
-    $.delay(sleep);
+    Action.tapStoreCategoryTab();
+    $.delay(5);
 
-    //assert stores category show correctly
-    Assert.checkStoreCategoryCellsShowCorrectly();
-    $.delay(sleep);
-    
-    Assert.checkStoreCategoryTabIsEnabled();
+    if(target.systemVersion() == "6.1.3"){
+        //assert stores category show correctly
+        Assert.checkStoreCategoryCellsShowCorrectly();
+    }
+    else{
+        //assert stores category show correctly
+        Assert.checkStoreCategoryCellsShowCorrectly();
+        Assert.checkStoreCategoryTabIsEnabled();
+    }
     $.delay(sleep);
 
     //restore
     Action.tapStoreCommodityTab();
-    Action.tapBackOnFavoriteStorePage();
+    Action.tapButtonOnTabBar(1);
     Action.tapButtonOnTabBar(0);
 });
 
 test("[1959904] Verify user can check purchasing info from store page" , function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
 
     Action.goApparelCategoryWhenShoppingCart();
     Action.goCommodityTab();
-    $.delay(10);
+    Action.pageShow();
 
     //Tap item on list to navigate to item page.
     Action.tapItemOnProductListScreen();
-    $.delay(sleep);
+    $.delay(15);
 
     obj.scrollDowns(1);
-    $.delay(sleep);
+    $.delay(10);
      
     Action.butButtonShoppingCart();
 
@@ -81,21 +82,25 @@ test("[1959904] Verify user can check purchasing info from store page" , functio
 
 //6.11
 test("[1959890] Verify the store custom categories is show correct", function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
-    $.delay(sleep);
+    Action.pageShow();
 
     Action.tapStoreTab();
-    $.delay(10);
+    $.delay(5);
 
     Action.tapSearchResultOfStore();
+    $.delay(5);
 
     Assert.checkButtonOnStore();
 
     Action.tapClassificationButtonWhenItemPage();
+    $.delay(5);
+
     Assert.tapTabCheckSListDisplay();
 
     Action.tapButtonOnTabBar(2);
@@ -104,6 +109,7 @@ test("[1959890] Verify the store custom categories is show correct", function ()
 });
 
 test("[1959898] Not log in, click on the add collection list icon ", function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
 
     //Log out and remove user login history
@@ -116,8 +122,10 @@ test("[1959898] Not log in, click on the add collection list icon ", function ()
 
     //verify the heart icon display
     Assert.heartIconShowCorrect(1);
+    $.delay(5);
+    
     Action.tapFavoriteStoreIcon();
-    $.delay(sleep);
+    $.delay(10);
 
     Assert.logInWindowShowCorrectOnAddAccount();
 
@@ -127,10 +135,13 @@ test("[1959898] Not log in, click on the add collection list icon ", function ()
     $.delay(sleep);
 
     Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    $.delay(5);
+
     Action.tapButtonOnTabBar(0);
 });
 
 test("[1959925] Verify user can search funtion in store page ", function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
     Action.tapButtonOnTabBar(2);
 
@@ -142,9 +153,10 @@ test("[1959925] Verify user can search funtion in store page ", function () {
     $.delay(10);
  
     Action.tapCommodityNameOnSearchResultsPage();
-    $.delay(sleep);
+    $.delay(15);
 
     obj.scrollDowns(1);
+    $.delay(10);
 
     Assert.itemPageShowCorrect();
 
@@ -154,6 +166,7 @@ test("[1959925] Verify user can search funtion in store page ", function () {
 });
 
 test("[1959906] Verify store promotion item's display", function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
@@ -165,14 +178,17 @@ test("[1959906] Verify store promotion item's display", function () {
     $.delay(10);
 
     Action.tapItemOnProductListScreen();
-    $.delay(sleep);
+    $.delay(15);
 
     obj.scrollDowns(1);
+    $.delay(10);
+
     Action.addToShoppingCart();
-    $.delay(sleep);
+    $.delay(5);
 
     Action.tapCancelOnShoppingCart(); 
-    Action.tapSale();
+    Action.tapChooseOnItemPage("促銷活動");
+    $.delay(5);
 
     Assert.checkSearchPage("促銷活動");
     Assert.checkSalesPromotionActivity();
@@ -188,6 +204,7 @@ test("[1959906] Verify store promotion item's display", function () {
 
 //6.12
 test("[1959913] Verify user can access store page by tapping store logo ", function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
@@ -197,13 +214,73 @@ test("[1959913] Verify user can access store page by tapping store logo ", funct
 
     //go to store page
     Action.tapStoreTab();
-    $.delay(10);
+    $.delay(5);
 
     Action.tapSearchResultOfStore();
     
     //Display properly store page, will not display the item page
     Assert.checkButtonOnStore();
 
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+//7.1
+test("[1959924] Verify store promotion item's display", function () {
+    target.logDeviceInfo();
+    Action.cleanSearches();
+    Action.tapButtonOnTabBar(2);
+    $.delay(sleep);
+
+    Action.tapItemOnCategoryScreenWhenItemPage(0);
+    $.delay(sleep);
+
+    Action.goCommodityTab();
+    $.delay(sleep);
+
+    Action.tapItemOnProductListScreen();
+    $.delay(15);
+
+    obj.scrollDowns(1);
+    Action.addToShoppingCart();
+    $.delay(sleep);
+
+    Action.tapCancelOnShoppingCart();
+    $.delay(sleep);
+     
+    Action.tapChooseOnItemPage("促銷活動");
+    $.delay(15);
+
+    Assert.checkSearchPage("促銷活動");
+    Assert.checkSalesPromotionActivity();
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
+test("[1959887] Verify '購買人次' display", function () {
+    target.logDeviceInfo();
+    target.logDeviceInfo();
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("東京著衣");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapStoreTab();
+    $.delay(10);
+
+    Action.tapSearchResultOfStore();
+    $.delay(5);
+
+    var buyNum = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[1];
+    Assert.elementsShouldContainText(buyNum,"人購買");
+
+    Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);

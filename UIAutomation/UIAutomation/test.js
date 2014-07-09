@@ -16,13 +16,13 @@
 //#import "smoke/favoriteStore.js"
 //#import "smoke/favoriteItem.js"
 //#import "smoke/welcome.js"
-//#import "smoke/shopping.js"
+//#import "smoke/shopping.js1
 //#import "smoke/itempage.js"
 //#import "smoke/storeListings.js"
 //#import "smoke/shoppingCartlist.js"
 
 //functional.
-#import "Function/welcome.js"
+//#import "Function/welcome.js"
 #import "Function/Category.js"
 #import "Function/Search.js"
 #import "Function/SRP.js"
@@ -38,3 +38,7 @@
 #import "Function/Options.js"
 #import "Function/Functional.js"
 #import "Function/ItemPage.js"
+#import "Function/Sidebar.js"
+#import "Function/StoreList.js"
+#import "Function/StorePromotion.js"
+#import "Function/CheckOut.js"

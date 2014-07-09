@@ -1,0 +1,78 @@
+//6.30
+//three
+test("[1959892] Verify user can edit category preferences", function () {
+	Action.cleanSearches();
+    $.delay(sleep);
+    
+    //Verify user can edit category preferences
+    Action.verifyEditingFavoriteCategories();
+
+    Assert.checkReturnPageDisplay("最新動態");
+});
+
+test("[1977532] verify settings screen" , function () {
+    Action.cleanSearches();
+    Action.cleanBrowsingHistory();
+    $.delay(sleep);
+    
+    //search records
+    Action.tapCleanSearchRecordsOnSidebr(0);
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInput("h");
+    Action.tapKeyboardSearch();
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+
+    Action.tapSearchIconOnNavBar();
+    Assert.autoCompletePageDisplayWhenRecentHisory();
+    Action.tapReturnOnSearchBar();
+    $.delay(5);
+
+    //Browsing history
+    Action.tapCleanSearchOnSidebr(0);
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("上衣");
+    Action.tapKeyboardSearch();
+    $.delay(10);
+
+    //Tap item on list to navigate to item page.
+    Action.tapItemOnProductListScreen();
+
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+
+    //go to my account
+    Action.tapButtonOnTabBar(4);
+
+    Action.goRecentBrowse();
+    $.delay(10);
+
+    Assert.searchSuggestionsPageDisplayOnRecentHisory();
+
+    Action.tapButtonOnTabBar(4);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+
+    Action.tapCleanSearchOnSidebr(1);
+
+    Action.tapButtonOnTabBar(0);
+});
+
+//7.1
+//category
+test("[1953649] verify edit favorite category if correct on sidebar.", function () {
+    target.logDeviceInfo();
+
+    Action.tapButtonOnSidebarWhenCategory();
+    $.delay(10);
+
+    Assert.checkReturnPageDisplay("最新動態");
+});

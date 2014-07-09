@@ -1,6 +1,8 @@
 //6.12
 test("[1954564] Verify pull down to refresh.", function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
+    $.delay(5);
 
     //do refresh
     Action.doRefreshFavoriteStorePage();

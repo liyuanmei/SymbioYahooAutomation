@@ -1,4 +1,5 @@
 test("[1977501] verify login and Logout of interaction", function () {
+    target.logDeviceInfo();
     //Log out and remove user login history
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
@@ -7,6 +8,8 @@ test("[1977501] verify login and Logout of interaction", function () {
     $.delay(sleep);
 
     Action.tapButtonOnTabBar(4);
+    $.delay(5);
+
     Assert.logInWindowShowCorrectOnAddAccount();
 
     //Tap exit button exit login window.
@@ -14,7 +17,6 @@ test("[1977501] verify login and Logout of interaction", function () {
     $.delay(sleep);
 
     Action.tapAddAccountOnLogin("mobileappstore1", "A1234qwer");
-    $.delay(sleep);
 
     Assert.checkReturnPageDisplay("我的帳戶");
 

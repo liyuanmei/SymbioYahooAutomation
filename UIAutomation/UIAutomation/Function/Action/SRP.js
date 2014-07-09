@@ -7,30 +7,37 @@ Action.searchBarInputChinese = function (sValue) {
 
 Action.tapGoodsTab = function () {
     $.delay(sleep);
-    var tapGoodsTab = app.mainWindow().collectionViews()[0].cells()[0].buttons()[0];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].tap);
-    tapGoodsTab.tap();
+    if(target.systemVersion() == "6.1.3"){
+        var tapGoodsTab = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0]);
+        tapGoodsTab.tap();
+    }
+    else{
+        var tapGoodsTab = app.mainWindow().collectionViews()[0].cells()[0].buttons()[0];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[0]);
+        tapGoodsTab.tap();
+    }
 };
 
 Action.tapButtonsInAdvancedBarWhenSRP = function () {
     $.delay(sleep);
-    var tapButtonsInAdvancedBarWhenSRP = app.mainWindow().collectionViews()[0].buttons()[1];
+    var tapButtonsInAdvancedBarWhenSRP = app.mainWindow().collectionViews()[0].buttons()["進階"];
 
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[1].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()["進階"]);
     tapButtonsInAdvancedBarWhenSRP.tap();
 };
 
 Action.tapbuttonExistOnNavigationBar = function (i) {
     $.delay(sleep);
     var tapbuttonExistOnNavigationBar = app.navigationBar().buttons()[i];
-    method.checkInstanceExists(app.navigationBar().buttons()[i].tap);
+    method.checkInstanceExists(app.navigationBar().buttons()[i]);
     tapbuttonExistOnNavigationBar.tap();
 };
 
 Action.tapCommodityNameOnSearchResultsPage = function () {
     $.delay(sleep);
     var tapCommodityNameOnSearchResultsPage = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0]);
     tapCommodityNameOnSearchResultsPage.tap();
 };
 
@@ -64,15 +71,22 @@ Action.tapStorePicture = function () {
 Action.tapCommodityNumber = function () {
     $.delay(sleep);
     var tapCommodityNumber = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2]);
     tapCommodityNumber.tap();
 }; 
 
 Action.tapheartIconOnStoreWhenSRP = function () {
     $.delay(sleep);
-    var tapheartIconOnStoreWhenSRP = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].buttons()[0].tap);
-    tapheartIconOnStoreWhenSRP.tap();
+    //if(target.systemVersion() == "6.1.3"){
+    //    var tapheartIconOnStoreWhenSRP = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[0];
+    //    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[0].tap);
+    //    tapheartIconOnStoreWhenSRP.tap();
+    //}
+    //else{
+        var tapheartIconOnStoreWhenSRP = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].buttons()[0]);
+        tapheartIconOnStoreWhenSRP.tap();
+    //}
 };
 
 Action.selectOptionOnSortingTabWhenSRP = function (option) {
@@ -82,7 +96,7 @@ Action.selectOptionOnSortingTabWhenSRP = function (option) {
     
     if (Assert.buttonExist(option) == true) {
 
-        method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[option].tap);
+        method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[option]);
         option.tap();
     }
     else {
@@ -93,7 +107,7 @@ Action.selectOptionOnSortingTabWhenSRP = function (option) {
 Action.tapClearButtonOnFilterScreenWhenSRP = function() {
     $.delay(sleep);
     var clearButton = app.mainWindow().buttons()["清除"];
-    method.checkInstanceExists(app.mainWindow().buttons()["清除"].tap);
+    method.checkInstanceExists(app.mainWindow().buttons()["清除"]);
 
     //tap clear button.
     clearButton.tap();
@@ -103,28 +117,35 @@ Action.tapClearButtonOnFilterScreenWhenSRP = function() {
 Action.tapAllCoatgoryWhenSRP = function () {
    $.delay(sleep);
    var tapAllCoatgoryWhenSRP = app.mainWindow().collectionViews()[0].buttons()[0];
-   method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[0].tap);
+   method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[0]);
    tapAllCoatgoryWhenSRP.tap();
 };
 
 Action.tapSearchResultOfStore = function () {
     $.delay(sleep);
     var searchResultOfStore = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0]);
     searchResultOfStore.tap();
 };
 
 Action.tapSearchIconOnNavBarWhenSRP = function() {
     $.delay(sleep);
-    var tapSearchIconOnNavBar = app.navigationBar().buttons()[4];
-    method.checkInstanceExists(app.navigationBar().buttons()[4].tap);
-    tapSearchIconOnNavBar.tap();
+    if(target.systemVersion() == "6.1.3"){  
+        var tapSearchIconOnNavBar = app.navigationBar().buttons()[3];
+        method.checkInstanceExists(app.navigationBar().buttons()[3]);
+        tapSearchIconOnNavBar.tap();
+    }
+    else{
+        var tapSearchIconOnNavBar = app.navigationBar().buttons()[4];
+        method.checkInstanceExists(app.navigationBar().buttons()[4]);
+        tapSearchIconOnNavBar.tap();
+    }
 };
 
 Action.tapReturnOnSearchBarWhenSRP = function () {
     $.delay(sleep);
     var returnOnSearchBarWhenSRP = app.windows()[0].buttons()[0];
-    method.checkInstanceExists(app.windows()[0].buttons()[0].tap);
+    method.checkInstanceExists(app.windows()[0].buttons()[0]);
     returnOnSearchBarWhenSRP.tap();
 };
 
@@ -132,7 +153,7 @@ Action.tapButtonsInAdvancedBarWhenSRPStore = function () {
     $.delay(sleep);
     var tapButtonsInAdvancedBarWhenSRPStore = app.mainWindow().collectionViews()[0].buttons()[0];
 
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[0].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[0]);
     tapButtonsInAdvancedBarWhenSRPStore.tap();
 };
 
@@ -140,7 +161,7 @@ Action.tapButtonsInAdvancedBarWhenSRPStore = function () {
 Action.tapStoreGoodsNum = function () {
     $.delay(sleep);
     var tapStoreGoodsNum = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2]);
     tapStoreGoodsNum.tap();
 };
 
@@ -149,6 +170,6 @@ Action.tapButtonsInAdvancedBarWhenOptions = function () {
     $.delay(sleep);
     var tapButtonsInAdvancedBarWhenSRP = app.mainWindow().collectionViews()[0].buttons()[0];
 
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[1].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[1]);
     tapButtonsInAdvancedBarWhenSRP.tap();
 };

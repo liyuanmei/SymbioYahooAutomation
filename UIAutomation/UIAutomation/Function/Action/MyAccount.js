@@ -1,14 +1,14 @@
 Action.goElectronicCoupons = function () {
     $.delay(sleep);
     var goElectronicCoupons = app.mainWindow().tableViews()[0].cells()[5];
-    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[5].tap);
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[5]);
     goElectronicCoupons.tap();
 };
 
 Action.tapChooseOnElectronicCoupons = function () {
     $.delay(sleep);
     var tapChooseOnElectronicCoupons = app.mainWindow().scrollViews()[0].webViews()[0].elements().value();
-    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].elements().value().tap);
+    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].elements().value());
     tapChooseOnElectronicCoupons.tap();
 };
 
@@ -33,6 +33,6 @@ Action.deleteRecordsRecently = function () {
 
     $.delay(sleep);
     var deleteRecordsRecently = app.mainWindow().collectionViews()[0].cells()[1].buttons()["刪除"];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].buttons()["刪除"].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].buttons()["刪除"]);
     deleteRecordsRecently.tap();
 };

@@ -1,15 +1,14 @@
 Action.tapSearchIconOnNavBar = function () {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
-        $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
         var tapSearchIconOnNavBar = app.navigationBar().buttons()[1];
 
-        method.checkInstanceExists(tapSearchIconOnNavBar.tap);
+        method.checkInstanceExists(tapSearchIconOnNavBar);
         tapSearchIconOnNavBar.tap();
     }
     else{
         var tapSearchIconOnNavBar = app.navigationBar().buttons()[2];
-        method.checkInstanceExists(app.navigationBar().buttons()[2].tap);
+        method.checkInstanceExists(app.navigationBar().buttons()[2]);
         tapSearchIconOnNavBar.tap();
     }
 };
@@ -17,52 +16,66 @@ Action.tapSearchIconOnNavBar = function () {
 Action.tapBackOnSearchBar = function () {
     $.delay(sleep);
     if(target.systemVersion() == "6.1.3"){
-    var tapBackOnSearchBar = app.mainWindow().buttons()[0];
+        var tapBackOnSearchBar = app.mainWindow().buttons()[0];
 
-    method.checkInstanceExists(tapBackOnSearchBar.tap);
-    tapBackOnSearchBar.tap();
+        method.checkInstanceExists(tapBackOnSearchBar);
+        tapBackOnSearchBar.tap();
     }
     else{
-    var tapBackOnSearchBar = app.mainWindow().buttons()[1];
-    method.checkInstanceExists(app.mainWindow().buttons()[1].tap);
-    tapBackOnSearchBar.tap();
+        var tapBackOnSearchBar = app.mainWindow().buttons()[1];
+        method.checkInstanceExists(app.mainWindow().buttons()[1]);
+        tapBackOnSearchBar.tap();
     }
 };
 
 Action.searchBarInput = function (skey) {
     $.delay(sleep);
     var keyboard = app.keyboard();
-
-    method.checkInstanceExists(keyboard.typeString);
     keyboard.typeString(skey);
 };
 
 Action.tapIconPlusOnTableView = function () {
     $.delay(sleep);
-    var tapIconPlusOnTableView = app.mainWindow().tableViews()[1].cells()[1].buttons()[0];
-    method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[1].buttons()[0].tap);
-    tapIconPlusOnTableView.tap();
+    if(target.systemVersion() == "6.1.3"){
+        var tapIconPlusOnTableView = app.mainWindow().tableViews()[0].cells()[1].buttons()[0];
+
+        method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[1].buttons()[0]);
+        tapIconPlusOnTableView.tap();
+    }
+    else{
+        var tapIconPlusOnTableView = app.mainWindow().tableViews()[1].cells()[1].buttons()[0];
+        method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[1].buttons()[0]);
+        tapIconPlusOnTableView.tap();
+    }
 };
 
 //Click the icon plue different twice.
 Action.clickOnTheDifferentIconPlus = function () {
     $.delay(sleep);
-    var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[1].cells()[0].buttons()[0];
-    method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[0].buttons()[0].tap);
-    clickOnTheDifferentIconPlus.tap();
+    if(target.systemVersion() == "6.1.3"){
+        var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
+
+        method.checkInstanceExists(clickOnTheDifferentIconPlus);
+        clickOnTheDifferentIconPlus.tap();
+    }
+    else{
+        var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[1].cells()[0].buttons()[0];
+        method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[0].buttons()[0]);
+        clickOnTheDifferentIconPlus.tap();
+    }
 };
 
 Action.tapKeyboardSearch = function () {
     $.delay(sleep);
     var tapKeyboardSearch = app.keyboard().buttons()["Search"];
-    method.checkInstanceExists(app.keyboard().buttons()["Search"].tap);
+    method.checkInstanceExists(app.keyboard().buttons()["Search"]);
     tapKeyboardSearch.tap();
 };
 
 Action.tapClean = function () {
     $.delay(sleep);
     var tapClean = app.mainWindow().textFields()[0].buttons()[0];
-    method.checkInstanceExists(app.mainWindow().textFields()[0].buttons()[0].tap);
+    method.checkInstanceExists(app.mainWindow().textFields()[0].buttons()[0]);
     tapClean.tap();
 };
 
@@ -75,44 +88,89 @@ Action.tapKeyboardDelete = function () {
 
 //clean Searches
 Action.cleanSearches = function () {
-    $.delay(sleep);
-    var menuButton = app.navigationBar().buttons()[1];
-    menuButton.tap();
-    $.delay(sleep);
+    $.delay(3);
+    if(target.systemVersion() == "6.1.3"){
+        var menuButton = app.navigationBar().buttons()[0];
+
+        method.checkInstanceExists(menuButton);
+        menuButton.tap();
+        $.delay(2);
     
-    var tableViews = app.windows()[0].tableViews()[0];
-    var tableCells = tableViews.cells()["Settings"];
-    tableCells.tap();
-    $.delay(sleep);
+        var tableViews = app.windows()[0].tableViews()[0];
+        var tableCells = tableViews.cells()["Settings"];
+
+        method.checkInstanceExists(tableCells);
+        tableCells.tap();
+        $.delay(2);
     
-    UIATarget.onAlert = function onAlert() {
-        return true;
+        UIATarget.onAlert = function onAlert() {
+            return true;
+        }
+
+        var collectionViews = app.windows()[0].collectionViews()[0];
+        var cleanSearchHistory = collectionViews.cells()[1].staticTexts()[0];
+
+        method.checkInstanceExists(cleanSearchHistory);
+        cleanSearchHistory.tap();
+        $.delay(sleep);
+    
+        var determineButton = app.alert().buttons()[1];
+        method.checkInstanceExists(determineButton);
+        determineButton.tap();
+        $.delay(2);
+    
+        var closeButton = app.windows()[0].navigationBar().buttons()[0];
+
+        method.checkInstanceExists(closeButton);
+        closeButton.tap();
+        $.delay(sleep);
+
+        menuButton.tap();
     }
-    var collectionViews = app.windows()[0].collectionViews()[0];
-    var cleanSearchHistory = collectionViews.cells()[1].staticTexts()[0];
-    cleanSearchHistory.tap();
-    $.delay(sleep);
+    else{
+        var menuButton = app.navigationBar().buttons()[1];
+        method.checkInstanceExists(menuButton);
+        menuButton.tap();
+        $.delay(sleep);
     
-    var determineButton = app.alert().buttons()[1];
-    determineButton.tap();
+        var tableViews = app.windows()[0].tableViews()[0];
+        var tableCells = tableViews.cells()["Settings"];
+        method.checkInstanceExists(tableCells);
+        tableCells.tap();
+        $.delay(sleep);
     
-    var closeButton = app.windows()[0].navigationBar().buttons()[1];
-    closeButton.tap();
-    menuButton.tap();
+        UIATarget.onAlert = function onAlert() {
+            return true;
+        }
+        var collectionViews = app.windows()[0].collectionViews()[0];
+        var cleanSearchHistory = collectionViews.cells()[1].staticTexts()[0];
+        method.checkInstanceExists(cleanSearchHistory);
+        cleanSearchHistory.tap();
+        $.delay(sleep);
+    
+        var determineButton = app.alert().buttons()[1];
+        method.checkInstanceExists(determineButton);
+        determineButton.tap();
+        $.delay(sleep);
+    
+        var closeButton = app.windows()[0].navigationBar().buttons()[1];
+        closeButton.tap();
+        $.delay(sleep);
+        
+        menuButton.tap();
+    }
 };
 
 Action.searchBarInputChinese = function (sValue) {
     $.delay(sleep);
     var searchField = app.mainWindow().textFields()[0];
-
-    method.checkInstanceExists(searchField.setValue);
     searchField.setValue(sValue);
 };
 
 Action.tapReturnOnSearchBar = function () {
     $.delay(sleep);
     var tapReturnOnSearchBar = app.mainWindow().buttons()[0];
-    method.checkInstanceExists(app.mainWindow().buttons()[0].tap);
+    method.checkInstanceExists(app.mainWindow().buttons()[0]);
     
     tapReturnOnSearchBar.tap();
 };
@@ -120,7 +178,7 @@ Action.tapReturnOnSearchBar = function () {
 Action.tapIconPlusOnFirstFloorTableView = function () {
     $.delay(sleep);
     var tapIconPlusOnFirstFloorTableView = app.mainWindow().tableViews()[0].cells()[1].buttons()[0];
-    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[1].buttons()[0].tap);
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[1].buttons()[0]);
     tapIconPlusOnFirstFloorTableView.tap();
  };
 
@@ -128,15 +186,23 @@ Action.tapIconPlusOnFirstFloorTableView = function () {
 Action.clickOnTheDifferentIconPlusOnFirstFloorTableView = function () {
     $.delay(sleep);
     var  clickOnTheDifferentIconPlusOnFirstFloorTableView = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
-    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[0].buttons()[0].tap);
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[0].buttons()[0]);
     clickOnTheDifferentIconPlusOnFirstFloorTableView.tap();
 };
 
 Action.goBackOnSearchPage = function () {
     $.delay(sleep);
-    var goBack = app.navigationBar().buttons()[2];
-    method.checkInstanceExists(app.navigationBar().buttons()[2].tap);
-    goBack.tap();
+    if(target.systemVersion() == "6.1.3"){
+        var goBack = app.navigationBar().buttons()[1];
+
+        method.checkInstanceExists(goBack);
+        goBack.tap();
+    }
+    else{
+        var goBack = app.navigationBar().buttons()[2];
+        method.checkInstanceExists(app.navigationBar().buttons()[2]);
+        goBack.tap();
+    }
 };
 
 Action.goApparelCategoryWhenSearchSettingOpen = function (){
@@ -149,44 +215,75 @@ Action.goApparelCategoryWhenSearchSettingOpen = function (){
 
 Action.backToAllCategory = function () {
     $.delay(sleep);
-    //var backToAllCategory = app.mainWindows()[0].navigationBar().buttons()[1];
-    //backToAllCategory.tap();
-    app.navigationBar().tapWithOptions({tapOffset:{x:0.04, y:0.03}});
+    if(target.systemVersion() == "6.1.3"){
+         var backToAllCategory = app.navigationBar().buttons()[0];
+
+        method.checkInstanceExists(backToAllCategory);
+        backToAllCategory.tap();
+    }
+    else{
+        app.navigationBar().tapWithOptions({tapOffset:{x:0.04, y:0.03}});
+    }
 };
 
 Action.tapSearchIconOnApparelCategory = function () {
-    var tapSearchIconOnApparelCategory = app.navigationBar().buttons()[2];
-    method.checkInstanceExists(app.navigationBar().buttons()[2].tap);
-    tapSearchIconOnApparelCategory.tap();
+    $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        var tapSearchIconOnApparelCategory = app.navigationBar().buttons()[1];
+
+        method.checkInstanceExists(tapSearchIconOnApparelCategory);
+        tapSearchIconOnApparelCategory.tap();
+    }
+    else{
+        var tapSearchIconOnApparelCategory = app.navigationBar().buttons()[2];
+        method.checkInstanceExists(app.navigationBar().buttons()[2]);
+        tapSearchIconOnApparelCategory.tap();
+    }
 };
 
 //04-25-2014
 Action.goFashionWomenClothingCategory = function () {
     $.delay(sleep);
     var goFashionWomenClothingCategory = app.mainWindow().collectionViews()[0].cells()[3];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[3].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[3]);
     goFashionWomenClothingCategory.tap();
 };
 
 Action.tapBackSubclassification = function () {
     $.delay(sleep);
-    var tapBackSubclassification = app.navigationBar().buttons()[1];
-    method.checkInstanceExists(app.navigationBar().buttons()[1].tap);
-    tapBackSubclassification.tap();
+    if(target.systemVersion() == "6.1.3"){
+        var tapBackSubclassification = app.navigationBar().buttons()[0];
+
+        method.checkInstanceExists(tapBackSubclassification);
+        tapBackSubclassification.tap();
+    }
+    else{
+        var tapBackSubclassification = app.navigationBar().buttons()[1];
+        method.checkInstanceExists(app.navigationBar().buttons()[1]);
+        tapBackSubclassification.tap();
+    }
 };
 
 Action.goCoatCategory = function () {
     $.delay(sleep);
     var goCoatCategory = app.mainWindow().collectionViews()[0].cells()[1];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1]);
     goCoatCategory.tap();
 };
 
 Action.tapGoodsButton = function () {
     $.delay(sleep);
-    var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].tap);
-    tapGoodsButton.tap();
+    if(target.systemVersion() == "6.1.3"){
+        var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1];
+
+        method.checkInstanceExists(tapGoodsButton.tap);
+        tapGoodsButton.tap();
+    }
+    else{
+        var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[1]);
+        tapGoodsButton.tap();
+    }
 };
 
 Action.englishInputMethod = function () {
@@ -202,17 +299,15 @@ Action.englishInputMethod = function () {
 
 Action.goCategoryWhenSearchSettingOpen = function () {
     $.delay(sleep);
-    if(target.systemVersion == 6.0){
-    var goCategoryWhenSearchSettingOpen = app.tabBar().buttons()[2];
-    method.checkInstanceExists(app.tabBar().buttons()[2].tap);
-    goCategoryWhenSearchSettingOpen.tap();
+    if(target.systemVersion() == "6.1.3"){
+        var goCategoryWhenSearchSettingOpen = app.tabBar().buttons()[2];
+        method.checkInstanceExists(app.tabBar().buttons()[2]);
+        goCategoryWhenSearchSettingOpen.tap();
     }
     else{
-    $.delay(sleep);
-
-    var searchButton = app.tabBar().buttons()[2];
-    method.checkInstanceExists(searchButton.tap);
-    searchButton.tap();
+        var searchButton = app.tabBar().buttons()[2];
+        method.checkInstanceExists(searchButton);
+        searchButton.tap();
     }
 };
 
@@ -227,16 +322,30 @@ Action.repeatInputWhenSearch = function () {
 
 Action.repeatChooseWhenSearch = function () {
     $.delay(sleep);
-    for (var i = 0; i < 10 ; i++) {
-        app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].tap();
-        Action.goBackOnSearchPage();
-    };
+    if(target.systemVersion() == "6.1.3"){
+       for (var i = 0; i < 4 ; i++) {
+           app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].tap();
+           Action.goBackOnSearchPage();
+       };
+    }
+    else{
+        for (var i = 0; i < 10 ; i++) {
+           app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].tap();
+           Action.goBackOnSearchPage();
+       };
+    }
 };
 
 Action.tapStoreTab = function () {
     $.delay(sleep);
-    var tapStoreTab = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].tap);
+    if(target.systemVersion() == "6.1.3"){
+        var tapStoreTab = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1]);
+    }
+    else{
+        var tapStoreTab = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[1]);
+    }
     tapStoreTab.tap();
 };
 
@@ -248,20 +357,20 @@ Action.clickTokyoStore = function () {
 Action.tapShoppingInformationPage = function () {
     $.delay(sleep);
     var tokyoStore = app.navigationBar().buttons()[0];
-    method.checkInstanceExists(app.navigationBar().buttons()[0].tap);
+    method.checkInstanceExists(app.navigationBar().buttons()[0]);
     tokyoStore.tap();
     target.logElementTree();
     $.delay(3);
 
     var tapShoppingInformationPage = app.mainWindow().tableViews()[0].cells()["購物須知"];
-    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()["購物須知"].tap);
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()["購物須知"]);
     tapShoppingInformationPage.tap();
 };
 
 Action.tapGoodsInTokyoStore = function () {
     $.delay(sleep);
     var tapGoodsInTokyoStore = app.mainWindow().collectionViews()[0].cells()[2];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[2].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[2]);
     tapGoodsInTokyoStore.tap();
 };
 /**
@@ -282,16 +391,32 @@ Action.doSearch = function (sKeyWords) {
 **/
 Action.tapClassificationButtonWhenS = function () {
     $.delay(sleep);
-    var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].buttons()[0];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].tap);
-    tapGoodsButton.tap();
+    if(target.systemVersion() == "6.1.3"){
+        var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0]);
+        tapGoodsButton.tap();
+    }
+    else{
+        var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].buttons()[0];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].buttons()[0]);
+        tapGoodsButton.tap();
+    }
 };
 
 //6.9
 Action.tapDetermineInAdvancedBarWhenSRP = function () {
-    var tapDetermineInAdvancedBarWhenSRP = app.navigationBar().buttons()["確定"];
-    method.checkInstanceExists(app.navigationBar().buttons()["確定"].tap);
-    tapDetermineInAdvancedBarWhenSRP.tap();
+    $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        var tapDetermineInAdvancedBarWhenSRP = app.mainWindow().navigationBar().buttons()["確定"];
+        method.checkInstanceExists(app.mainWindow().navigationBar().buttons()["確定"]);
+        tapDetermineInAdvancedBarWhenSRP.tap();
+    }
+    else{
+        var tapDetermineInAdvancedBarWhenSRP = app.navigationBar().buttons()["確定"];
+        method.checkInstanceExists(app.navigationBar().buttons()["確定"]);
+        tapDetermineInAdvancedBarWhenSRP.tap();
+    }
+    
 };
 
 Action.tapClearButtonOnFilterScreenInAdvancedBarWhenSRP = function() {

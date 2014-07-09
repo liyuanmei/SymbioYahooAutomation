@@ -1,31 +1,33 @@
 test("[1900004] verify can browse recent items in「商品」tab ", function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
     $.delay(sleep);
 
     Action.addToRecentBrowse();
 
+    Action.goBack();
+    Action.goBackOnSearchPage();
+    Action.tapReturnOnSearchBar();
+    Action.goDiscoveryStream();
+
     //go to my account
     Action.tapButtonOnTabBar(4);
 
     Action.goRecentBrowse();
-    $.delay(20);
+    $.delay(15);
 
-    //Verify currently should have 20 items in screen
     Assert.commodityItemsShowCount(21);
     $.delay(sleep);
-
     target.logElementTree();
-    $.delay(sleep);
 
     Assert.productPriceShowCorrect(1, 3);
     $.delay(sleep);
 
     Action.tapFavoritesIcon(1);
-    $.delay(3);
-
-    //Assert.favoritesIconShowCorrect(1);
-    Action.tapFavoritesIcon(1);
     $.delay(sleep);
+
+    Assert.favoritesIconShowCorrect(1);
+    Action.tapFavoritesIcon(1);
 
     //Verify the value of rating is less than 10, if not fail.
     Assert.storeRatingShowCorrect(1, 1);
@@ -40,6 +42,7 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
 });
 
 test("[1900011]  verify settings screen." , function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
     Action.cleanBrowsingHistory();
     $.delay(sleep);
@@ -52,7 +55,7 @@ test("[1900011]  verify settings screen." , function () {
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
-    $.delay(10);
+    $.delay(sleep);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -61,7 +64,7 @@ test("[1900011]  verify settings screen." , function () {
     Action.tapButtonOnTabBar(4);
 
     Action.goRecentBrowse();
-    $.delay(10);
+    $.delay(5);
 
     Assert.searchSuggestionsPageDisplayOnRecentHisory();
 

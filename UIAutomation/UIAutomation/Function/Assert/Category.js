@@ -1,8 +1,15 @@
 Assert.commodityHeader = function (){
     $.delay(sleep);
-    method.verifyEquals("服飾", app.navigationBar().name());
-    method.verifyEquals("UINavigationBarBackIndicatorDefault.png", app.navigationBar().buttons()[0].name());
-    method.verifyEquals(1, app.navigationBar().buttons()[2].isEnabled());
+        if(target.systemVersion() == "6.1.3"){
+        $.delay(sleep);
+        method.verifyEquals("服飾", app.navigationBar().name());
+        method.verifyEquals(1, app.navigationBar().buttons()[1].isEnabled());
+        }
+        else{
+        method.verifyEquals("服飾", app.navigationBar().name());
+        method.verifyEquals("UINavigationBarBackIndicatorDefault.png", app.navigationBar().buttons()[0].name());
+        method.verifyEquals(1, app.navigationBar().buttons()[2].isEnabled());
+    }
 };
 
 Assert.categoryScreen = function () {
@@ -12,8 +19,15 @@ Assert.categoryScreen = function () {
 
 Assert.checkTab = function () {
     $.delay(sleep);
-    method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].name());
-    method.verifyEquals("分類",app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].name());
+        if(target.systemVersion() == "6.1.3"){
+        $.delay(sleep);
+        method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1].name());
+        method.verifyEquals("分類",app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0].name());
+        }
+        else{
+        method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].name());
+        method.verifyEquals("分類",app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].name());
+    }
 };
 
 Assert.verifyApparelCategory = function () {
@@ -23,18 +37,35 @@ Assert.verifyApparelCategory = function () {
 
     method.verifyEquals(7, app.mainWindow().collectionViews()[0].cells().length);
     
-    method.verifyEquals("漢神百貨品牌服飾", app.mainWindow().collectionViews()[0].cells()[1].name());
-    method.verifyEquals("漢神百貨內睡衣", app.mainWindow().collectionViews()[0].cells()[2].name());
-    method.verifyEquals("流行女裝", app.mainWindow().collectionViews()[0].cells()[3].name());
-    method.verifyEquals("中大尺碼女裝(M-7L)", app.mainWindow().collectionViews()[0].cells()[4].name());
-    method.verifyEquals("女性內睡衣", app.mainWindow().collectionViews()[0].cells()[5].name());
-    method.verifyEquals("品牌/潮流男裝", app.mainWindow().collectionViews()[0].cells()[6].name());
+    if(target.systemVersion() == "6.1.3"){
+        $.delay(sleep);
+        method.verifyEquals("漢神百貨品牌服飾", app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name());
+        method.verifyEquals("漢神百貨內睡衣", app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0].name());
+        method.verifyEquals("流行女裝", app.mainWindow().collectionViews()[0].cells()[3].staticTexts()[0].name());
+        method.verifyEquals("中大尺碼女裝(M-7L)", app.mainWindow().collectionViews()[0].cells()[4].staticTexts()[0].name());
+        method.verifyEquals("女性內睡衣", app.mainWindow().collectionViews()[0].cells()[5].staticTexts()[0].name());
+        method.verifyEquals("品牌/潮流男裝", app.mainWindow().collectionViews()[0].cells()[6].staticTexts()[0].name());
+        }
+        else{
+        method.verifyEquals("漢神百貨品牌服飾", app.mainWindow().collectionViews()[0].cells()[1].name());
+        method.verifyEquals("漢神百貨內睡衣", app.mainWindow().collectionViews()[0].cells()[2].name());
+        method.verifyEquals("流行女裝", app.mainWindow().collectionViews()[0].cells()[3].name());
+        method.verifyEquals("中大尺碼女裝(M-7L)", app.mainWindow().collectionViews()[0].cells()[4].name());
+        method.verifyEquals("女性內睡衣", app.mainWindow().collectionViews()[0].cells()[5].name());
+        method.verifyEquals("品牌/潮流男裝", app.mainWindow().collectionViews()[0].cells()[6].name());
+    }
 };
 
 Assert.commodityButtonStatus = function () {
     $.delay(sleep);
-    var commodityButtonStatus = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].isEnabled();
-    method.verifyEquals(1, commodityButtonStatus);
+        if(target.systemVersion() == "6.1.3"){
+        var commodityButtonStatus = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1].isEnabled();
+        method.verifyEquals(1, commodityButtonStatus);
+        }
+        else{
+        var commodityButtonStatus = app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].isEnabled();
+        method.verifyEquals(1, commodityButtonStatus);
+    }
 };
 
 Assert.categoryButtonStatus  = function () {
@@ -52,24 +83,45 @@ Assert.commodityItemsShowCount = function (iCount) {
 };
 
 Assert.categoriesList = function () {
-    this.CategoriesName = [
-     "服飾",
-     "美妝",
-     "鞋包配飾",
-     "媽咪寶貝",
-     "電腦/週邊",
-     "家電/視聽",
-     "相機/ 手機/玩具",
-     "美食/ 保健/飲料",
-     "醫療/ 日用品/寵物",
-     "居家/ 寢具/傢俱",
-     "運動/ 戶外/休閒",
-     "圖書/ 文具/影音"
-    ];
-
     $.delay(sleep);
-    for (var i = 0; i < 12; i++) {
+        if(target.systemVersion() == "6.1.3"){
+        this.CategoriesName = [
+        "服飾",
+        "美妝",
+        "鞋包配飾",
+        "媽咪寶貝",
+        "電腦/週邊",
+        "家電/視聽",
+        "相機/\n手機/玩具",
+        "美食/\n保健/飲料",
+        "醫療/\n日用品/寵物",
+        "居家/\n寢具/傢俱",
+        "運動/\n戶外/休閒",
+        "圖書/\n文具/影音"
+        ];
+        for (var i = 0; i < 12; i++) {
+        method.verifyEquals(this.CategoriesName[i], app.mainWindow().tableViews()[0].cells()[i].name());
+        }
+        }
+        else{
+        this.CategoriesName = [
+        "服飾",
+        "美妝",
+        "鞋包配飾",
+        "媽咪寶貝",
+        "電腦/週邊",
+        "家電/視聽",
+        "相機/ 手機/玩具",
+        "美食/ 保健/飲料",
+        "醫療/ 日用品/寵物",
+        "居家/ 寢具/傢俱",
+        "運動/ 戶外/休閒",
+        "圖書/ 文具/影音"
+        ];
+        $.delay(sleep);
+        for (var i = 0; i < 12; i++) {
         method.verifyEquals(this.CategoriesName[i], app.mainWindow().tableViews()[1].cells()[i].name());
+    }
     }
 };
 
@@ -81,14 +133,21 @@ Assert.buttonOnAdvancedIsEnabled = function (i) {
 
 Assert.elementsOrderInSortTab = function () {
     $.delay(sleep);
+        if(target.systemVersion() == "6.1.3"){
+        var sortTabTableView = app.mainWindow().tableViews()[0];
+        }
+        else{
+        var sortTabTableView = app.mainWindow().tableViews()[1];
+    }
 
-    var sortTabTableView = app.mainWindow().tableViews()[1];
     var relevanceValue = sortTabTableView.cells()[0].name();
-    var latestItems = sortTabTableView.cells()[1].name();
-    var priceLowToHigh = sortTabTableView.cells()[2].name();
-    var priceHighToLow = sortTabTableView.cells()[3].name();
+    var popularity = sortTabTableView.cells()[1].name();
+    var latestItems = sortTabTableView.cells()[2].name();
+    var priceLowToHigh = sortTabTableView.cells()[3].name();
+    var priceHighToLow = sortTabTableView.cells()[4].name();
     
     method.verifyEquals("相關度", relevanceValue);
+    method.verifyEquals("最高人氣", popularity);
     method.verifyEquals("最新上架", latestItems);
     method.verifyEquals("價錢低到高", priceLowToHigh);
     method.verifyEquals("價錢高到低", priceHighToLow);
@@ -96,31 +155,59 @@ Assert.elementsOrderInSortTab = function () {
 
 Assert.elementsOnFilterScreen = function () {
     $.delay(sleep);
+        if(target.systemVersion() == "6.1.3"){
+        //Verify "100000 + 元" show correct.
+        var priceNumber100000 = app.mainWindow().staticTexts()[0].name();
+        method.verifyEquals("100000+ 元", priceNumber100000);
 
-    //Verify "100000 + 元" show correct
-    var priceNumber100000 = app.mainWindow().staticTexts()[1].name();
-    method.verifyEquals("100000+ 元", priceNumber100000);
+        //Verify "0 元" show correct.
+        var priceNumber0 = app.mainWindow().staticTexts()[1].name();
+        method.verifyEquals("0 元", priceNumber0);
 
-    //Verify "0 元" show correct.
-    var priceNumber0 = app.mainWindow().staticTexts()[2].name();
-    method.verifyEquals("0 元", priceNumber0);
+        //verify circle image and bar image show correct.
+        var circleImage1 = app.mainWindow().images()[0].name();
+        var circleImage2 = app.mainWindow().images()[1].name();
+        var barImage1 = app.mainWindow().images()[2].name();
+        var barImage2 = app.mainWindow().images()[3].name();
 
-    //verify circle image and bar image show correct.
-    var circleImage1 = app.mainWindow().images()[2].name();
-    var circleImage2 = app.mainWindow().images()[3].name();
-    var barImage1 = app.mainWindow().images()[4].name();
-    var barImage2 = app.mainWindow().images()[5].name();
+        method.verifyEquals("circle.png", circleImage1);
+        method.verifyEquals("circle.png", circleImage2);
+        method.verifyEquals("bar-blu.png", barImage1);
+        method.verifyEquals("bar-grey.png", barImage2);
 
-    method.verifyEquals("circle.png", circleImage1);
-    method.verifyEquals("circle.png", circleImage2);
-    method.verifyEquals("bar-grey.png", barImage1);
-    method.verifyEquals("bar-blu.png", barImage2);
+        //Verify all attribute elements show correct.
+        this.AttributeElements = ["可刷卡", "0利率", "可分期", "超商付款", "超商取貨", "有現貨", "有影音", "有圖片", "優良商店"];
 
-    //Verify all attribute elements show correct.
-    this.AttributeElements = ["可刷卡", "0利率", "可分期", "超商付款", "超商取貨", "有現貨", "有影音", "有圖片", "優良商店"];
+        for (var i = 0; i < 9; i++){
+        method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
+        }
+        }
+        else{
+        //Verify "100000 + 元" show correct
+        var priceNumber100000 = app.mainWindow().staticTexts()[1].name();
+        method.verifyEquals("100000+ 元", priceNumber100000);
 
-    for (var i = 0; i < 9; i++){
-    method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[1].cells()[i].name());
+        //Verify "0 元" show correct.
+        var priceNumber0 = app.mainWindow().staticTexts()[2].name();
+        method.verifyEquals("0 元", priceNumber0);
+
+        //verify circle image and bar image show correct.
+        var circleImage1 = app.mainWindow().images()[2].name();
+        var circleImage2 = app.mainWindow().images()[3].name();
+        var barImage1 = app.mainWindow().images()[4].name();
+        var barImage2 = app.mainWindow().images()[5].name();
+
+        method.verifyEquals("circle.png", circleImage1);
+        method.verifyEquals("circle.png", circleImage2);
+        method.verifyEquals("bar-grey.png", barImage1);
+        method.verifyEquals("bar-blu.png", barImage2);
+
+        //Verify all attribute elements show correct.
+        this.AttributeElements = ["可刷卡", "0利率", "可分期", "超商付款", "超商取貨", "有現貨", "有影音", "有圖片", "優良商店"];
+
+        for (var i = 0; i < 9; i++){
+        method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[1].cells()[i].name());
+    }
     }
 };
 
@@ -133,18 +220,26 @@ Assert.buttonExistOnNavigationBar = function (i, sName) {
 
 Assert.filterAttributeButtonIsTapped = function (i) {
     $.delay(sleep);
-    var attributeButton = app.mainWindow().collectionViews()[1].cells()[i];
-    var buttonStatus = attributeButton.value();
-
-    method.verifyEquals(1, buttonStatus);
+        if(target.systemVersion() == "6.1.3"){
+        var attributeButton = app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0];
+        method.verifyEquals(1, attributeButton.isEnabled());
+        }
+        else{
+        var attributeButton = app.mainWindow().collectionViews()[1].cells()[i];
+        method.verifyEquals(1, attributeButton.isEnabled());
+        }
 };
 
 Assert.filterAttributeButtonIsNotTapped = function (i) {
     $.delay(sleep);
-    var attributeButton = app.mainWindow().collectionViews()[1].cells()[i];
-    var buttonStatus = attributeButton.value();
-
-    method.verifyEquals(0, buttonStatus);
+        if(target.systemVersion() == "6.1.3"){
+        var attributeButton = app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0];
+        method.verifyEquals(1, attributeButton.isEnabled());
+        }
+        else{
+        var attributeButton = app.mainWindow().collectionViews()[1].cells()[i];
+        method.verifyEquals(1, attributeButton.isEnabled());
+        }
 };
 
 Assert.navigationBarName = function (sName) {
@@ -157,20 +252,22 @@ Assert.itemPageShowCorrect = function () {
 
     var collectionViews = app.mainWindow().collectionViews()[0];
 
-    //Assert item title show correct.
-    //var titleName = collectionViews.cells()[1];
-    //assertEquals(sTitle, titleName.name());
-
-    //Assert size selection bar show correct.
-    //var sizeSelectionBar = collectionViews.cells()[4];
-    //assertEquals("請選擇尺寸與規格", sizeSelectionBar.name());
-
-    //Assert buy and add to cart button show correct.
-    var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
-    var butButton = collectionViews.cells()["立即購買"].buttons()[1];
+    $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        var addToCartButton = collectionViews.cells()[5].buttons()[0];
+        var butButton = collectionViews.cells()[5].buttons()[1];
     
-    method.verifyEquals("立即購買", addToCartButton.name());
-    method.verifyEquals("加入購物車", butButton.name());
+        method.verifyEquals("立即購買", addToCartButton.name());
+        method.verifyEquals("加入購物車", butButton.name());
+    }
+    else{
+        //Assert buy and add to cart button show correct.
+        var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
+        var butButton = collectionViews.cells()["立即購買"].buttons()[1];
+    
+        method.verifyEquals("立即購買", addToCartButton.name());
+        method.verifyEquals("加入購物車", butButton.name());
+    }
 };
 
 /**
@@ -252,10 +349,18 @@ Assert.userLoginHistoryScreen = function (sNavBarName, sUserName) {
 
 Assert.productAddedToMyFavoritesScreen = function (productName) {
     $.delay(4);
-    var collectionView = app.mainWindow().collectionViews()[0];
-    var productCell = collectionView.cells()[0];
+    if(target.systemVersion() == "6.1.3"){
+        var collectionView = app.mainWindow().collectionViews()[0];
+        var productCell = collectionView.cells()[0].staticTexts()[0];
 
-    method.verifyEquals(productName, productCell.name());
+        method.verifyEquals(productName, productCell.name());
+    }
+    else{
+        var collectionView = app.mainWindow().collectionViews()[0];
+        var productCell = collectionView.cells()[0];
+
+        method.verifyEquals(productName, productCell.name());
+    }
 };
 
 Assert.productRemovedFromMyFavoritesScreen = function (productName) {
@@ -299,10 +404,18 @@ Assert.itemCellShowCorrectOnCategoryScreen = function (itemName) {
 
 Assert.allCategoryItemShowCorrect = function (i, itemName) {
     $.delay(sleep);
-    var itemCell = app.mainWindow().tableViews()[1].cells()[i];
-    var tabItemName = itemCell.name();
+    if(target.systemVersion() == "6.1.3"){
+        var itemCell = app.mainWindow().tableViews()[0].cells()[i];
+        var tabItemName = itemCell.name();
 
-    method.verifyEquals(itemName, tabItemName);
+        method.verifyEquals(itemName, tabItemName);
+    }
+    else{
+        var itemCell = app.mainWindow().tableViews()[1].cells()[i];
+        var tabItemName = itemCell.name();
+
+        method.verifyEquals(itemName, tabItemName);
+    }
 };
 
 Assert.elementsShouldContainText = function (elements, keyword) {
@@ -340,36 +453,66 @@ Assert.advancedButtonsOrder = function () {
 
 Assert.successfulSwitchToPhotoGridView = function () {
     $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        //Get first cell and second cell X and Y
+        var firstCell = app.mainWindow().collectionViews()[0].cells()[4];
+        var firstCellX = Action.getElementsOriginXString(firstCell);
+        var firstCellY = Action.getElementsOriginYString(firstCell);
 
-    //Get first cell and second cell X and Y
-    var firstCell = app.mainWindow().collectionViews()[0].cells()[1];
-    var firstCellX = Action.getElementsOriginXString(firstCell);
-    var firstCellY = Action.getElementsOriginYString(firstCell);
+        var secondCell = app.mainWindow().collectionViews()[0].cells()[2];
+        var secondCellX = Action.getElementsOriginXString(secondCell);
+        var secondCellY = Action.getElementsOriginYString(secondCell);
 
-    var secondCell = app.mainWindow().collectionViews()[0].cells()[2];
-    var secondCellX = Action.getElementsOriginXString(secondCell);
-    var secondCellY = Action.getElementsOriginYString(secondCell);
+        //if first cellY == secondCellY then these two cell place at same line.
+        //So collectionview successful switch to photo grid view.
+        method.verifyEquals(firstCellY, secondCellY);
+    }
+    else{
+        //Get first cell and second cell X and Y
+        var firstCell = app.mainWindow().collectionViews()[0].cells()[1];
+        var firstCellX = Action.getElementsOriginXString(firstCell);
+        var firstCellY = Action.getElementsOriginYString(firstCell);
 
-    //if first cellY == secondCellY then these two cell place at same line.
-    //So collectionview successful switch to photo grid view.
-    method.verifyEquals(firstCellY, secondCellY);
+        var secondCell = app.mainWindow().collectionViews()[0].cells()[2];
+        var secondCellX = Action.getElementsOriginXString(secondCell);
+        var secondCellY = Action.getElementsOriginYString(secondCell);
+
+        //if first cellY == secondCellY then these two cell place at same line.
+        //So collectionview successful switch to photo grid view.
+        method.verifyEquals(firstCellY, secondCellY);
+    }
 };
 
 Assert.successfulSwitchToListingView = function () {
     $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        //Get first cell and second cell X and height
+        var firstCell = app.mainWindow().collectionViews()[0].cells()[1];
+        var firstCellX = Action.getElementsOriginXString(firstCell);
+        var firstCellHeight = Action.getElementsHeightString(firstCell);
 
-    //Get first cell and second cell X and height
-    var firstCell = app.mainWindow().collectionViews()[0].cells()[1];
-    var firstCellX = Action.getElementsOriginXString(firstCell);
-    var firstCellHeight = Action.getElementsHeightString(firstCell);
+        var secondCell = app.mainWindow().collectionViews()[0].cells()[2];
+        var secondCellX = Action.getElementsOriginXString(secondCell);
+        var secondCellHeight = Action.getElementsHeightString(secondCell);
 
-    var secondCell = app.mainWindow().collectionViews()[0].cells()[2];
-    var secondCellX = Action.getElementsOriginXString(secondCell);
-    var secondCellHeight = Action.getElementsHeightString(secondCell);
+        //verify success switch to listing veiw.
+        method.verifyEquals(firstCellX, secondCellX);
+        method.verifyTrue(firstCellHeight == secondCellHeight && firstCellHeight < 130 && secondCellHeight < 130, "Switch to listing mode failed.");
+    }
+    else{
+        //Get first cell and second cell X and height
+        var firstCell = app.mainWindow().collectionViews()[0].cells()[1];
+        var firstCellX = Action.getElementsOriginXString(firstCell);
+        var firstCellHeight = Action.getElementsHeightString(firstCell);
 
-    //verify success switch to listing veiw.
-    method.verifyEquals(firstCellX, secondCellX);
-    method.verifyTrue(firstCellHeight == secondCellHeight && firstCellHeight < 130 && secondCellHeight < 130, "Switch to listing mode failed.");
+        var secondCell = app.mainWindow().collectionViews()[0].cells()[2];
+        var secondCellX = Action.getElementsOriginXString(secondCell);
+        var secondCellHeight = Action.getElementsHeightString(secondCell);
+
+        //verify success switch to listing veiw.
+        method.verifyEquals(firstCellX, secondCellX);
+        method.verifyTrue(firstCellHeight == secondCellHeight && firstCellHeight < 130 && secondCellHeight < 130, "Switch to listing mode failed.");
+    }
 };
 
 Assert.successfulSwitchToLargeImageView = function () {
@@ -385,10 +528,16 @@ Assert.successfulSwitchToLargeImageView = function () {
 
 Assert.checkPriceBarShowCorrect = function (price) {
     $.delay(sleep);
-
-    //Verify price show correct.
-    var priceNumber = app.mainWindow().staticTexts()[1].name();
-    method.verifyEquals(price, priceNumber);
+    if(target.systemVersion() == "6.1.3"){
+        //Verify price show correct.
+        var priceNumber = app.mainWindow().staticTexts()[0].name();
+        method.verifyEquals(price, priceNumber);
+    }
+    else{
+        //Verify price show correct.
+        var priceNumber = app.mainWindow().staticTexts()[1].name();
+        method.verifyEquals(price, priceNumber);
+    }
 };
 
 Assert.checkPriceValueShowLessThan = function (productIndex, priceIndex, value) {
@@ -407,21 +556,28 @@ Assert.checkPriceValueShowLessThan = function (productIndex, priceIndex, value) 
 
 Assert.check18BanScreenShowCorrect = function () {
     $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        var imageOn18Ban = app.mainWindow().images()[0];
+        var backButtonOn18Ban = app.mainWindow().buttons()[0];
+        var submitButtonOn18Ban = app.mainWindow().buttons()[1];
+        var staticTextsOn18Ban = app.mainWindow().staticTexts()[0];
 
-    var imageOn18Ban = app.mainWindow().images()[1];
-    var backButtonOn18Ban = app.mainWindow().buttons()[1];
-    var submitButtonOn18Ban = app.mainWindow().buttons()[2];
-    var staticTextsOn18Ban = app.mainWindow().staticTexts()[1];
+        //method.verifyEquals(imageOn18Ban.name(), "icon-ticrf.png");
+        method.verifyEquals(backButtonOn18Ban.name(), "未滿18歲離開");
+        method.verifyEquals(submitButtonOn18Ban.name(), "已滿18歲進入");
+        method.verifyEquals(staticTextsOn18Ban.name(), "18歲以上會員始可瀏覽及購買，若您未滿18歲請勿進入");
+    }
+    else{
+        var imageOn18Ban = app.mainWindow().images()[1];
+        var backButtonOn18Ban = app.mainWindow().buttons()[1];
+        var submitButtonOn18Ban = app.mainWindow().buttons()[2];
+        var staticTextsOn18Ban = app.mainWindow().staticTexts()[1];
 
-    method.checkInstanceExists(app.mainWindow().images()[1].name);
-    method.checkInstanceExists(app.mainWindow().buttons()[1].name);
-    method.checkInstanceExists(app.mainWindow().buttons()[2].name);
-    method.checkInstanceExists(app.mainWindow().staticTexts()[1].name);
-
-    method.verifyEquals(imageOn18Ban.name(), "icon-ticrf.png");
-    method.verifyEquals(backButtonOn18Ban.name(), "未滿18歲離開");
-    method.verifyEquals(submitButtonOn18Ban.name(), "已滿18歲進入");
-    method.verifyEquals(staticTextsOn18Ban.name(), "18歲以上會員始可瀏覽及購買，若您未滿18歲請勿進入");
+        //method.verifyEquals(imageOn18Ban.name(), "icon-ticrf.png");
+        method.verifyEquals(backButtonOn18Ban.name(), "未滿18歲離開");
+        method.verifyEquals(submitButtonOn18Ban.name(), "已滿18歲進入");
+        method.verifyEquals(staticTextsOn18Ban.name(), "18歲以上會員始可瀏覽及購買，若您未滿18歲請勿進入");
+    }
 };
 
 //pan
@@ -537,8 +693,14 @@ var favoriteStoreCellsShowCorrectly = app.mainWindow().collectionViews()[0].cell
 
 Assert.checkFavoriteItemButtonIsTapped = function () {
     $.delay(sleep);
-    var favoriteItemButtonIsTapped = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
-    method.verifyEquals(1, favoriteItemButtonIsTapped.value());
+    if(target.systemVersion() == "6.1.3"){
+        var favoriteItemButtonIsTapped = app.mainWindow().collectionViews()[0].cells()[2].buttons()[0];
+        method.verifyEquals(1, favoriteItemButtonIsTapped.isEnabled());
+    }
+    else{
+        var favoriteItemButtonIsTapped = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
+        method.verifyEquals(1, favoriteItemButtonIsTapped.value());
+    }
 };
 
 //6.10
@@ -553,4 +715,19 @@ Assert.checkTextShowCorrectly = function (i,j) {
     $.delay(sleep);
     var checkTextShowCorrectly = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[i];
     method.verifyEquals(j,checkTextShowCorrectly.name());
+};
+
+//6.30
+Assert.checkDefaultBrowserModeIsLargePhoto = function () {
+    var defaultBrowserModeIsList = app.mainWindow().buttons()[3];
+    $.delay(sleep);
+    method.verifyEquals(1, defaultBrowserModeIsList.isEnabled());
+};
+
+//7.1
+Assert.elementsValueShouldContainText = function (elements, keyword) {
+    $.delay(sleep);
+    var elementsName = elements.value();
+    $.delay(sleep);
+    method.verifyTrue(elementsName.indexOf(keyword) >= 0, elementsName + " not contain text: " + keyword);
 };

@@ -1,7 +1,7 @@
 Action.tapChoosePreductCategoryWhenOptions = function (i,j) {
     $.delay(sleep);
     var choosePreductCategory = app.mainWindow().collectionViews()[i].cells()[j];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[i].cells()[j].tap);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[i].cells()[j]);
     choosePreductCategory.tap();
 };
 
@@ -9,7 +9,7 @@ Action.tapItemOnCategoryScreenWhenOptions = function (itemName) {
     $.delay(sleep);
     var categoryItem = app.mainWindow().tableViews()[0].cells()[itemName];
 
-    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[itemName].tap);
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[itemName]);
     categoryItem.tap();
 };
 

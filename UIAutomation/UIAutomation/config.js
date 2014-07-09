@@ -26,6 +26,8 @@ var Assert = {};
 #import "Function/Action/ItemPage.js"
 #import "Function/Action/Options.js"
 #import "Function/Action/Functional.js"
+#import "Function/Action/FavoriteStores.js"
+#import "Function/Action/Checkout.js"
 
 //Assert
 #import "smoke/Assert/FavoriteStores.js"
@@ -51,7 +53,7 @@ var Assert = {};
 #import "Function/Assert/RecentHistory.js"
 #import "Function/Assert/MyAccount.js"
 #import "Function/Assert/ItemPage.js"
-#import "Function/Assert/Functional.js"
+#import "Function/Assert/Checkout.js"
 
 var target = UIATarget.localTarget();
 var app = target.frontMostApp();
@@ -78,19 +80,28 @@ obj.scrollDowns = function (total) {
 };
 
 method.checkInstanceExists = function (instance) {
+    if(target.systemVersion() == "6.1.3"){
+        $.delay(5);
+    };
+
     var errorTimes = 0;
-    if (instance) {
+    if (instance.isVisible() == 1) {
         $.message(instance + " exists");
         return;
     }
-    while (!instance && errorTimes < 50) {
-        errorTimes++;
-        $.delay(1);
-        $.message("instance not exist try: " + errorTimes + " times");
+    else{
+        while (instance.isVisible() === 0 && errorTimes < 50) {
+            errorTimes++;
+            $.delay(1);
+            $.message("instance not exist try: " + errorTimes + " times");
+        }
     }
 };
 
 method.verifyTrue = function (expression, message, endCase) {
+    if(target.systemVersion() == "6.1.3"){
+        $.delay(5);
+    };
 
     if (!expression) {
 
@@ -113,8 +124,18 @@ method.verifyTrue = function (expression, message, endCase) {
 };
 
 method.verifyEquals = function (expected, received, message) {
+    if(target.systemVersion() == "6.1.3"){
+        $.delay(5);
+    };
 
     var defMessage = "Expected <" + expected + "> but received <" + received + ">";
 
     method.verifyTrue(expected == received, message ? message + ": " + defMessage : defMessage);
+};
+
+obj.scrollDownsWhenSettlement = function (total) {
+    for (var j = 0; j < total; j++) {
+        $.delay(sleep);
+        app.mainWindow().scrollViews()[0].scrollDown();
+    }
 };

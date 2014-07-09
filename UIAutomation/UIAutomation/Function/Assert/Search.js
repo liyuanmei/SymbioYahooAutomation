@@ -12,7 +12,13 @@ Assert.textIsEnabled = function (sText) {
 
 Assert.backButtonOnSearchBar = function () {
     $.delay(sleep);
-    method.verifyEquals("icon back", app.mainWindow().buttons()[1].name());
+    if(target.systemVersion() == "6.1.3"){
+        var backButton = app.mainWindow().buttons()[0];
+        method.verifyEquals("icon back", backButton.name());
+    }
+    else{
+        method.verifyEquals("icon back", app.mainWindow().buttons()[1].name());
+    }
 };
 
 Assert.checkReturnPageDisplay =function (text) {
@@ -29,9 +35,16 @@ Assert.autoCompletePageDisplay = function () {
 };
 
 Assert.checkIconPlusDisplay = function () {
-    var mainWindow = app.mainWindow();
     $.delay(sleep);
-    method.verifyEquals("icon plus", app.mainWindow().tableViews()[1].cells()[0].buttons()[0].name());
+    if(target.systemVersion() == "6.1.3"){
+        var plusIcon = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
+        method.verifyEquals("icon plus", plusIcon.name());
+    }
+    else{
+        var mainWindow = app.mainWindow();
+        $.delay(sleep);
+        method.verifyEquals("icon plus", app.mainWindow().tableViews()[1].cells()[0].buttons()[0].name());
+    }
 };
 
 //check whether there is a key
@@ -66,10 +79,16 @@ Assert.searchSuggestionsPageDisplay = function () {
 
 Assert.searchButtonOnApparelCategoryIsEnabled = function () {
     $.delay(sleep);
-    
-    //Search button position
-    var searchButtonValue = app.navigationBar().buttons()[2].isEnabled();
-    method.verifyEquals(1, searchButtonValue);
+    if(target.systemVersion() == "6.1.3"){
+        //Search button position
+        var searchButtonValue = app.navigationBar().buttons()[1].isEnabled();
+        method.verifyEquals(1, searchButtonValue);
+    }
+    else{
+        //Search button position
+        var searchButtonValue = app.navigationBar().buttons()[2].isEnabled();
+        method.verifyEquals(1, searchButtonValue);
+    }
 };
 
 Assert.tapIconPlusOnTableViewCheckTextIsEnabled = function (sKey) {
@@ -95,14 +114,21 @@ Assert.clickOnTheDifferentIconPlusOnFirstFloorTableView = function (dKey) {
 
 Assert.searchResultsPage = function (sKey) {
     $.delay(sleep);
-    //Verify the search page display properly
-    var searchResultsPageName = app.navigationBar().name();
-    method.verifyEquals('"'+sKey+'"',searchResultsPageName);
+    if(target.systemVersion() == "6.1.3"){
+        //Verify the search page display properly
+        var searchResultsPageName = app.navigationBar().staticTexts()[0].name();
+        method.verifyEquals('"'+sKey+'"',searchResultsPageName);
+    }
+    else{
+        //Verify the search page display properly
+        var searchResultsPageName = app.navigationBar().name();
+        method.verifyEquals('"'+sKey+'"',searchResultsPageName);
+    }
 };
 
 Assert.longtextSearchPageDisplay = function () {
     $.delay(sleep);
-    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<=1);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<=2);
 };
 
 Assert.coatCategorySearchResultsPageDisplayedInList = function () {
@@ -118,23 +144,39 @@ Assert.ShoppingInformationPage = function () {
 
 Assert.repeatInputPageDisplay = function () {
     $.delay(sleep);
-    var mainWindow = app.mainWindow();
-    var mycars = new Array()
-    mycars[0] = "11111111111"
-    mycars[1] = "1111111111"
-    mycars[2] = "111111111"
-    mycars[3] = "11111111"
-    mycars[4] = "1111111"
-    mycars[5] = "111111"
-    mycars[6] = "11111"
-    mycars[7] = "1111"
-    mycars[8] = "111"
-    mycars[9] = "11"
+    if(target.systemVersion() == "6.1.3"){
+        var mainWindow = app.mainWindow();
+        var mycars = new Array()
+        mycars[0] = "11111111111"
+        mycars[1] = "1111111111"
+        mycars[2] = "111111111"
+        mycars[3] = "11111111"
+    
+    method.verifyTrue(app.mainWindow().tableViews()[0].cells().length<20);
+    for (var i = 0; i < 4; i++) {
+        method.verifyEquals(mycars[i],app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].name())
+    };
+    }
+    else{
+        var mainWindow = app.mainWindow();
+        var mycars = new Array()
+        mycars[0] = "11111111111"
+        mycars[1] = "1111111111"
+        mycars[2] = "111111111"
+        mycars[3] = "11111111"
+        mycars[4] = "1111111"
+        mycars[5] = "111111"
+        mycars[6] = "11111"
+        mycars[7] = "1111"
+        mycars[8] = "111"
+        mycars[9] = "11"
     
     method.verifyTrue(app.mainWindow().tableViews()[0].cells().length<20);
     for (var i = 0; i < 10; i++) {
         method.verifyEquals(mycars[i],app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].name())
     };
+    }
+    
 };
 
 Assert.checkInRecentMemorySearch = function (sText) {
@@ -145,23 +187,30 @@ Assert.checkInRecentMemorySearch = function (sText) {
 
 Assert.repeatChoosePageDisplay = function () {
     $.delay(sleep);
-    var mainWindow = app.mainWindow();
-    var mycars = new Array()
-    mycars[0] = "11"
-    mycars[1] = "111"
-    mycars[2] = "1111"
-    mycars[3] = "11111"
-    mycars[4] = "111111"
-    mycars[5] = "1111111"
-    mycars[6] = "11111111"
-    mycars[7] = "111111111"
-    mycars[8] = "1111111111"
-    mycars[9] = "11111111111"
+        if(target.systemVersion() == "6.1.3"){
+        var mainWindow = app.mainWindow();
+        $.delay(5);
+        method.verifyTrue(app.mainWindow().tableViews()[0].cells().length<20);
+    }
+        else{
+        var mainWindow = app.mainWindow();
+        var mycars = new Array()
+        mycars[0] = "11"
+        mycars[1] = "111"
+        mycars[2] = "1111"
+        mycars[3] = "11111"
+        mycars[4] = "111111"
+        mycars[5] = "1111111"
+        mycars[6] = "11111111"
+        mycars[7] = "111111111"
+        mycars[8] = "1111111111"
+        mycars[9] = "11111111111"
     
-    method.verifyTrue(app.mainWindow().tableViews()[0].cells().length<20);
-    for (var i = 0; i < 10; i++) {
-        method.verifyEquals(mycars[i],app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].name())
-    };
+        method.verifyTrue(app.mainWindow().tableViews()[0].cells().length<20);
+        for (var i = 0; i < 10; i++) {
+            method.verifyEquals(mycars[i],app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].name())
+        };
+    }
 };
 
 Assert.elementsShouldContainTextWhenSearch = function (elements, keyword) {
@@ -173,7 +222,22 @@ Assert.elementsShouldContainTextWhenSearch = function (elements, keyword) {
 
 //6.9
 Assert.checkFavoriteStoreCellsShowCorrectly = function () {
-    var favoriteStoreCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length>2;
-    $.delay(5);
-    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length>2);
+    $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        var favoriteStoreCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length>2;
+        $.delay(5);
+        method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length>1);
+    }
+    else{
+        var favoriteStoreCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length>2;
+        $.delay(5);
+        method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length>2);
+    } 
+};
+
+//7.2
+Assert.checkVoiceSearchIconDisplay = function () {
+    $.delay(sleep);
+    var checkVoiceSearchIconDisplay = app.keyboard().buttons()[2].name();
+    method.verifyEquals("Dictate",checkVoiceSearchIconDisplay);
 };
