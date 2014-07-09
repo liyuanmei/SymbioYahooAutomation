@@ -31,6 +31,7 @@ import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.robotium.solo.Solo;
@@ -421,7 +422,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickOnView(addon);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.goBack();
-
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.addToShoppingCart(solo);
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
         solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
@@ -460,5 +461,186 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickOnText(ValidationText.ADDITIONAL_GIFT);
         assertTrue("Not enter gift page !",
                 solo.searchText(ValidationText.GIFT));
+    }
+
+    /**
+     * 1959897:Verify user can selecting item size and color from down to up.
+     * @throws Exception if has error
+     */
+    public final void testUserCanSelectingItemSizeAndColor() throws Exception {
+
+        Account.judgementAccountLogin(solo);
+        Action.clickSearchButtonOnScreen(solo);
+        Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+        TextView storeName = (TextView)
+                solo.getView("listitem_productlist_store_name");
+        solo.clickOnView(storeName);
+
+        TestHelper.swipeUp(solo, 1);
+
+        View shopCart;
+        try {
+            shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+            solo.clickOnView(shopCart);
+
+        } catch (AssertionError e) {
+
+            TestHelper.swipeUp2(solo, 2);
+
+            shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+            solo.clickOnView(shopCart);
+
+        }
+
+        // Select product property if it exists.
+        try {
+            View radioButtons = (View) solo.getView(
+                    "product_item_spec_item_selections", 0);
+
+        } catch (AssertionError e) {
+            TestHelper.swipeUp2(solo, 2);
+            // solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            View shopCarts = solo
+                    .getView("productitem_btn_add_to_shopping_cart");
+            solo.clickOnView(shopCarts);
+        }
+        View buddle;
+        View radioButton = (View) solo.getView(
+                "product_item_spec_item_selections", 4);
+
+        RadioButton sizeButton = (RadioButton) solo.getView(
+                "product_item_spec_item_selections",8);
+        if (radioButton.isShown()) {
+
+            solo.clickOnView(radioButton);
+            assertFalse("Item is not dimmed.", sizeButton.isActivated());
+           // solo.clickOnView(sizeButton);
+            solo.searchText(ValidationText.CANCEL);
+            solo.clickOnButton(ValidationText.CANCEL);
+
+        } else {
+            junit.framework.Assert.assertTrue("Add failed.", true);
+        }
+
+        solo.goBack();
+    }
+
+    /**
+     * 1959926:Verify user can not select dimmed item specification.
+     * @throws Exception if has error
+     */
+    public final void testUserCanNOTSelectDimmedItem() throws Exception {
+
+        Account.judgementAccountLogin(solo);
+        Action.clickSearchButtonOnScreen(solo);
+        Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+        TextView storeName = (TextView)
+                solo.getView("listitem_productlist_store_name");
+        solo.clickOnView(storeName);
+
+        TestHelper.swipeUp(solo, 1);
+
+        View shopCart;
+        try {
+            shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+            solo.clickOnView(shopCart);
+
+        } catch (AssertionError e) {
+
+            TestHelper.swipeUp2(solo, 2);
+
+            shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+            solo.clickOnView(shopCart);
+
+        }
+
+        // Select product property if it exists.
+        try {
+            View radioButtons = (View) solo.getView(
+                    "product_item_spec_item_selections", 0);
+
+        } catch (AssertionError e) {
+            TestHelper.swipeUp2(solo, 2);
+            // solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            View shopCarts = solo
+                    .getView("productitem_btn_add_to_shopping_cart");
+            solo.clickOnView(shopCarts);
+        }
+        View buddle;
+        View radioButton = (View) solo.getView(
+                "product_item_spec_item_selections", 4);
+
+        RadioButton sizeButton = (RadioButton) solo.getView(
+                "product_item_spec_item_selections",8);
+        if (radioButton.isShown()) {
+
+            solo.clickOnView(radioButton);
+            assertFalse("Item is not dimmed.", sizeButton.isActivated());
+            solo.clickOnView(sizeButton);
+            assertFalse("Add failed.", sizeButton.isActivated());
+
+        } else {
+            assertTrue("Add failed.", false);
+        }
+
+        solo.goBack();
+    }
+
+    /**
+     * 1953631:Verify share text and icon.
+     * @throws Exception if has error
+     */
+    public final void testVerifyShareTextAndIcon() throws Exception {
+
+        Account.judgementAccountLogin(solo);
+        Action.enterToItemPage(solo);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+        TestHelper.swipeUp(solo, 1);
+
+        //Share button.
+        View shareIcon = (View) solo.getView(
+                "productitem_bt_share_product");
+        assertTrue("Share icon not display." , shareIcon.isShown());
+    }
+
+    /**
+     * 1977508:Verify It cann't show collection info when user
+     *  click 7﹣11 icon or Family  icon in item page.
+     * @throws Exception if has error
+     */
+    public final void testVerifyClickShopIcon() throws Exception {
+
+        Account.judgementAccountLogin(solo);
+        Action.enterToItemPage(solo);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+
+        //7-11 shop icon.
+        View sevenEleven = (View) solo.getView("productitem_seven_store");
+        solo.clickOnView(sevenEleven);
+
+        try {
+            if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)
+               || solo.waitForText(ValidationText.HAS_REMOVED_COLLECTION)) {
+                assertTrue("Collection info pop up.", false);
+            }
+        } catch (AssertionError e) {
+            assertTrue("Collection info pop up.", true);
+        }
+
+        //Family shop icon.
+        View allFamily = (View) solo.getView("productitem_family_mart");
+        solo.clickOnView(allFamily);
+        try {
+            if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)
+               || solo.waitForText(ValidationText.HAS_REMOVED_COLLECTION)) {
+                assertTrue("Collection info pop up.", false);
+            }
+        } catch (AssertionError e) {
+            assertTrue("Collection info pop up.", true);
+        }
     }
 }

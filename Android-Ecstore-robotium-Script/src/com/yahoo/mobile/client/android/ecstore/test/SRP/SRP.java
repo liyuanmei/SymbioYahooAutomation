@@ -339,10 +339,10 @@ public class SRP extends ActivityInstrumentationTestCase2 <Activity> {
 
     }
 
-  /*  *//**
+    /**
      * 1937944:Check the function of "OK" button.
      * @throws Exception if has error
-     *//*
+     */
     public final void testCheckConfirmButtonFunction() throws Exception {
 
         Action.enterToJacketAfterSearch(solo);
@@ -362,7 +362,7 @@ public class SRP extends ActivityInstrumentationTestCase2 <Activity> {
         assertEquals("Go back to search result screen failed", gvList.size(),
                 1);
 
-    }*/
+    }
 
     /**
      * 1937949:Unselected "Credit cards".
@@ -1782,5 +1782,35 @@ ValidationText.PLEASE_LOGIN_ACCOUNT, 1, ValidationText.WAIT_TIME_LONGER)){
         ToggleButton tbs = (ToggleButton) solo.getView("tb_cc");
         assertFalse("'Credit cards accepted'  button  selected.",
                 tbs.isChecked());
+    }
+
+    /**
+     * 1937945:Verify filter by price.
+     * @throws Exception  if has error
+     */
+    public final void testFilterByPrice() throws Exception {
+
+        Action.enterCategoryClothesPage(solo);
+        Action.clickSearchButtonOnScreen(solo);
+        Action.searchAfterPutData(solo, 0, ValidationText.JACKET);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
+        solo.clickOnText(ValidationText.COMMODITY);
+        View ivs = solo.getView("menu_filter");
+        solo.clickOnView(ivs);
+        Action.clickText(solo, ValidationText.FILTER);
+
+        solo.clickOnText(ValidationText.OK);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
+
+        TextView price;
+
+        price = (TextView) solo.getView("listitem_productlist_price", 0);
+
+        String sr = price.getText().toString().replace("$", "");
+
+        Log.i("number", sr);
+        assertTrue(
+                "The product price out of range. ",
+                Integer.valueOf(sr) <= 100000);
     }
 }

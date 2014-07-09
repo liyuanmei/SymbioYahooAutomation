@@ -122,18 +122,21 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
         Action.enterToItemPage(solo);
         Action.addToShoppingCart(solo);
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
         solo.sleep(ValidationText.WAIT_TIME_LONG);
         Action.clickElementsInWebviewByClassname(solo,
                 "goNextBuy updateItemClick");
 
         solo.sleep(ValidationText.WAIT_TIME_LONG);
+
         // Search "Confirm"button on alert window.
         Action.clickElementsInWebviewByText(solo, ValidationText.OK);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
         // Tap "Next Buy" button on web view.
         Action.clickElementsInWebviewByText(solo, ValidationText.NEXT_BUY);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         boolean expected = false;
         for (WebElement webs : solo.getCurrentWebElements()) {
             Log.i("number", webs.getClassName().toString());
@@ -142,7 +145,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
             }
 
         }
-        assertTrue("NextBuy page display incorrect.", expected);
+        assertTrue("Next Buy page display incorrect.", expected);
     }
 
 
@@ -159,15 +162,18 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
             solo.scrollToTop();
             Action.enterToItemPages(solo);
             Action.addToShoppingCart(solo);
+           // TestHelper.swipeUp(solo, 1);
         }
 
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+
         solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
         Action.clickElementsInWebviewByClassname(solo,
                 "goNextBuy updateItemClick");
 
-        solo.sleep(ValidationText.WAIT_TIME_LONG);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         // Search "Confirm"button on alert window.
         Action.clickElementsInWebviewByText(solo, ValidationText.OK);
         solo.sleep(ValidationText.WAIT_TIME_LONG);
@@ -195,16 +201,24 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 
         Account.judgementAccountLogin(solo);
         Action.enterToItemPage(solo);
+        TestHelper.swipeUp(solo, 1);
         Action.addToShoppingCart(solo);
 
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
         solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
         Action.clickElementsInWebviewByClassname(solo, "pimg");
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.goBack();
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
-        View webpage = (View) solo.getView("webpage", 0);
-        assertTrue("This page incorrect.", webpage.isShown());
+        try {
+            View webpage = (View) solo.getView("webpage", 0);
+            assertTrue("This page incorrect.", webpage.isShown());
+        } catch (AssertionError e) {
+            View webpage = (View) solo.getView("webpage", 0);
+            assertTrue("This page incorrect.", webpage.isShown());
+        }
+
 
     }
 
@@ -288,5 +302,43 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
         Account.judgementAccountLogin(solo);
         Action.removeShoppingCart(solo);
 
+    }
+
+    /**
+     * 1959876:Verify the number of bottom bubble on shopping cart.
+     * @throws Exception if has error
+     */
+    public final void testVerifyButtomBubbleOnShoppingCart() throws Exception {
+
+        Account.judgementAccountLogin(solo);
+        Action.removeShoppingCart(solo);
+        Action.enterToItemPage(solo);
+
+        Action.buyNow(solo);
+        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+        TestHelper.swipeDown(solo, 1);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+        TextView number = (TextView)
+                solo.getView("ecshopping_cart_header_count");
+        int now = Integer.valueOf(number.getText()
+                .toString().trim().substring(0, 1));
+
+        View buddle = solo.getView("tab_badge", Action.VIEW_ID_THREE);
+        assertTrue("Number is not increasing. ", now >= 1 && buddle.isShown());
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_TWO));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        TestHelper.swipeUp(solo, 2);
+       // TestHelper.swipeDown2(solo, 10);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        Action.clickElementsInWebviewByText(solo, ValidationText.WANT_CHECKOUT);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
+        TestHelper.swipeUp(solo, 2);
+        Action.clickElementsInWebviewByText(solo, ValidationText.WANT_CHECKOUT);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+        View webPage = (View) solo.getView("webpage", 0);
+        assertTrue("Current page is not check out page.", webPage.isShown());
     }
 }

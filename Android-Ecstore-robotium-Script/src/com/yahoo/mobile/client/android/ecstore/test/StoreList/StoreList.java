@@ -30,11 +30,11 @@ import android.widget.TextView;
 
 import com.robotium.solo.Solo;
 import com.yahoo.mobile.client.android.ecstore.Action.Action;
+import com.yahoo.mobile.client.android.ecstore.test.TestHelper;
 import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
 
 /**
  * @author Administrator
- * 
  */
 @SuppressLint("NewApi")
 public class StoreList extends ActivityInstrumentationTestCase2<Activity> {
@@ -42,7 +42,8 @@ public class StoreList extends ActivityInstrumentationTestCase2<Activity> {
     /**
      * Declare application main activity.
      */
-    private static final String LAUNCHER_ACTIVITY_FULL_CLASSNAME = "com.yahoo.mobile.client.android.ecstore.ui.ECSplashActivity";
+    private static final String LAUNCHER_ACTIVITY_FULL_CLASSNAME
+    = "com.yahoo.mobile.client.android.ecstore.ui.ECSplashActivity";
 
     /**
      * Declare a variable of type Class for start tested program.
@@ -131,5 +132,43 @@ public class StoreList extends ActivityInstrumentationTestCase2<Activity> {
                 one.contains(ValidationText.ESCAPE_CHARACTER)
                         && two.contains(ValidationText.ESCAPE_CHARACTER)
                         && three.contains(ValidationText.ESCAPE_CHARACTER));
+    }
+
+    /**
+     * 1977497:Verify store info after search.
+     * @throws Exception
+     *             if has error
+     */
+    public final void testStoreinfoAfterSearch() throws Exception {
+
+        Action.clickSearchButtonOnScreen(solo);
+        Action.searchAfterPutData(solo, 0, ValidationText.S);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+        solo.clickOnText(ValidationText.SHOP);
+
+
+        TextView productNumber = (TextView) solo.getView(
+                "listitem_storelist_store_item_count");
+
+        TextView productNumbers = (TextView) solo.getView(
+                "listitem_storelist_store_item_count", Action.VIEW_ID_ONE);
+        String one = productNumber.getText().toString().trim();
+        String two = productNumbers.getText().toString().trim();
+        Log.i("number", one);
+        Log.i("number", two);
+
+        try {
+           solo.searchText(ValidationText.ZERO_PRODUCT);
+           solo.clickOnText(ValidationText.ZERO_PRODUCT);
+
+        } catch (AssertionError e) {
+            TestHelper.swipeUp2(solo, 1);
+            solo.clickOnText(ValidationText.ZERO_PRODUCT);
+        }
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.clickOnText(ValidationText.CATEGORIES);
+        solo.goBack();
+        assertTrue("Zero product not found.",
+                solo.searchText(ValidationText.ZERO_PRODUCT));
     }
 }

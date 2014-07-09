@@ -65,10 +65,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
      */
     private Solo solo;
 
-    /**
-     * Declare a boolean variable.
-     */
-    private boolean isNum;
+
     static {
         try {
             launcherActivityClass = Class
@@ -999,12 +996,12 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         Account.judgementAccountLogin(solo);
         Action.enterCategoryClothesPage(solo);
         Action.clickText(solo, ValidationText.COMMODITY);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         Action.clickStarIconNote(solo);
     }
 
     /**
-     *  1938116:Check to click the start icon without login in grid view.
+     * 1938116:Check to click the start icon without login in grid view.
      * @throws Exception if has error
      */
 
@@ -1238,12 +1235,16 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickText(solo, ValidationText.COMMODITY);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         try {
-            TestHelper.swipeUp2(solo, 1);
+            TestHelper.swipeUp(solo, 1);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            Action.clickStarIconNote(solo);
+
         } catch (AssertionError e) {
-            TestHelper.swipeUp2(solo, 1);
+            TestHelper.swipeUp(solo, 1);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            Action.clickStarIconNote(solo);
         }
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        Action.clickStarIconNote(solo);
+
 
         // Restore to list view.
         Action.setListViewStyleAfterSearch(solo);
@@ -1340,6 +1341,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickOnView(solo.getView("tab_image", 2));
         Action.clickText(solo, ValidationText.APPAREL);
         Assert.categoryListShow(solo);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         int size = ValidationText.COSTUMELIST.length;
 
         // Make sure all the item displayed correctly.
@@ -1347,15 +1349,15 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
             boolean textFound = solo.searchText(ValidationText.COSTUMELIST[i]);
             assertTrue(ValidationText.COSTUMELIST[i] + " not found", textFound);
         }
-
-        // Select two item to compare the position.
+        
+      /*  // Select two item to compare the position.
         boolean flag = TestHelper.positionCompare(solo,
                 ValidationText.COSTUMELIST[0], 1,
                 ValidationText.COSTUMELIST[1], 2, 1);
         assertTrue(
                 "Item position is not right,need confirm the"
         + " default browse mode.",
-                flag);
+                flag);*/
 
     }
 
@@ -1672,5 +1674,100 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
 
        assertTrue("Sort function incorrect.", Integer.valueOf(priceOneNumber
                .substring(1)) <= Integer.valueOf(priceTwoNumber.substring(1)));
+    }
+
+    /**
+     * 1953648:Verify My account edit category function.
+     * @throws Exception if has error
+     */
+    public final void testEditFavoriteCategoryInMyAccount()
+            throws Exception {
+
+        Account.judgementAccountLogin(solo);
+        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+        solo.scrollToBottom();
+        solo.clickOnView(solo.getView("profile_bt_edit_favorite_categories"));
+
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        // solo.clickOnText(ValidationText.Edit_Favorite_Category);
+        // Get the grid view count.
+        GridView lv = (GridView) solo.getView("category_editor_grid");
+        Log.i("number", String.valueOf(lv.getCount()));
+
+        for (int i = 0; i < lv.getCount(); i++) {
+            View category = (View) solo.getView("category_editor_grid_button",
+                    i);
+            solo.clickOnView(category);
+            assertTrue("Category item is not selected.", category.isPressed());
+        }
+
+    }
+
+    /**
+     * 1938062:Verify "Cancel" button function.
+     * @throws Exception if has error
+     */
+    public final void testVerifyCancelFunction()
+            throws Exception {
+
+        Account.judgementAccountLogin(solo);
+        Action.enterToItemPage(solo);
+        solo.goBack();
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.clickOnView(solo.getView("menu_filter"));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.clickOnText(ValidationText.FILTER);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+        // solo.clickOnToggleButton("可刷卡");
+        ToggleButton tb = (ToggleButton) solo.getView("tb_cc");
+        solo.clickOnView(tb);
+        solo.clickOnText(ValidationText.CANCEL);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.clickOnView(solo.getView("menu_filter"));
+        assertFalse("credit card is selected.", tb.isSelected());
+    }
+
+    /**
+     * 1953649:Check edit category preferences.
+     * @throws Exception if has error
+     */
+    public final void testEditPreferencesFromAccount() throws Exception {
+
+        Account.judgementAccountLogin(solo);
+        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+        solo.clickOnText(ValidationText.EDIT_FAVORITE_CATEGORY);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+        // Get the grid view count.
+        GridView lv = (GridView) solo.getView("category_editor_grid");
+        Log.i("number", String.valueOf(lv.getCount()));
+
+        for (int i = 0; i < lv.getCount(); i++) {
+            View category = (View) solo.getView("category_editor_grid_button",
+                    i);
+            solo.clickOnView(category);
+
+            assertFalse("Category item is not selected.",
+                    category.isActivated());
+        }
+
+        solo.clickOnText(ValidationText.TO_LATEST_STATUS);
+
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+        // click on up icon
+        Action.clickHomeButtonOnScreen(solo);
+        solo.clickOnText(ValidationText.EDIT_FAVORITE_CATEGORY);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+        for (int i = 0; i < lv.getCount(); i++) {
+            View categorys = (View) solo.getView("category_editor_grid_button",
+                    i);
+            solo.clickOnView(categorys);
+            assertFalse("Category item is selected.", categorys.isActivated());
+        }
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.clickOnText(ValidationText.TO_LATEST_STATUS);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
     }
 }
