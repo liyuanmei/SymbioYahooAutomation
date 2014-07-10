@@ -68,7 +68,7 @@ Action.tapSearchIconOnCategoryList = function () {
     if(target.systemVersion() == "6.1.3"){
         var searchIcon = app.mainWindow().navigationBar().buttons()[1];
 
-        method.checkInstanceExists(searchIcon.tap);
+        method.checkInstanceExists(searchIcon);
         searchIcon.tap();
     }
     else{
@@ -116,7 +116,7 @@ Action.tapButtonOnFilterAttributeScreen = function (i) {
     if(target.systemVersion() == "6.1.3"){
         var buttonOnAttribute = app.mainWindow().collectionViews()[0].cells()[i];
 
-        method.checkInstanceExists(buttonOnAttribute.tap);
+        method.checkInstanceExists(buttonOnAttribute);
         buttonOnAttribute.tap();
     }
     else{
@@ -654,7 +654,7 @@ Action.tapCancelFavoriteStoreIcon = function () {
 
 Action.tapBackOnFavoriteStorePage = function () {
     var backOnFavoriteStorePage = app.navigationBar().buttons()[2];
-    method.checkInstanceExists(app.navigationBar().buttons()[2].tap);
+    method.checkInstanceExists(app.navigationBar().buttons()[2]);
     backOnFavoriteStorePage.tap();
 };
 

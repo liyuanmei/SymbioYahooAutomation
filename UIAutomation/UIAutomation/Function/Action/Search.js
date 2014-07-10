@@ -276,7 +276,7 @@ Action.tapGoodsButton = function () {
     if(target.systemVersion() == "6.1.3"){
         var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1];
 
-        method.checkInstanceExists(tapGoodsButton.tap);
+        method.checkInstanceExists(tapGoodsButton);
         tapGoodsButton.tap();
     }
     else{
