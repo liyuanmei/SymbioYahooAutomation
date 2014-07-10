@@ -528,7 +528,7 @@ test("[1937886] Enter any long keyword search", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("JJHGHKJHHHHHJJJJJJHG");
+    Action.searchBarInput("jjhghkjhhhhhjjjjjjhg");
     Action.tapKeyboardSearch();
     $.delay(5);
      
@@ -604,13 +604,13 @@ test("[1937896] View the search results page", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("JJHG");
+    Action.searchBarInput("jjhg");
     $.delay(10);
     
-    Action.searchBarInput("HKJHHHHH");
+    Action.searchBarInput("hkkkkkhjh");
     $.delay(10);
 
-    Action.searchBarInput("JJJJJJHG");
+    Action.searchBarInput("jjjjjjh");
     $.delay(10);
 
     Action.tapKeyboardSearch();
@@ -644,7 +644,7 @@ test("[1937905] View the search results page", function () {
     Action.englishInputMethod();
     $.delay(sleep);
      
-    Action.searchBarInput("JJHHJHUIUUH");
+    Action.searchBarInput("jjjjjjjjhg");
     $.delay(sleep);
      
     Assert.searchSuggestionsPageDisplay();
