@@ -26,7 +26,7 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     Action.tapFavoritesIcon(1);
     $.delay(sleep);
 
-    Assert.favoritesIconShowCorrect(1);
+    //Assert.favoritesIconShowCorrect(1);
     Action.tapFavoritesIcon(1);
 
     //Verify the value of rating is less than 10, if not fail.
