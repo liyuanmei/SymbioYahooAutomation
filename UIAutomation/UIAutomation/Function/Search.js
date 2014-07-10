@@ -1200,7 +1200,7 @@ test("[1937912] check the search results", function () {
     Action.englishInputMethod();
     $.delay(sleep);
     
-    Action.searchBarInput("iPhone");
+    Action.searchBarInput("iphone");
     Action.tapKeyboardSearch();
     $.delay(5);
 
@@ -1210,7 +1210,7 @@ test("[1937912] check the search results", function () {
     var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
 
     UIALogger.logMessage(productName.name());
-    Assert.elementsShouldContainText(productName, "iPhone");
+    Assert.elementsShouldContainText(productName, "hone");
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
