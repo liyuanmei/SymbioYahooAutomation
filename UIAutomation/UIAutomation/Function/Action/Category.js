@@ -96,8 +96,8 @@ Action.tapButtonsInAdvancedBar = function (i) {
 
 Action.tapCancelButtonInAdvancedBar = function () {
     $.delay(sleep);
-    var cancelButton = app.mainWindow().navigationBar().buttons()[0];
-    method.checkInstanceExists(app.mainWindow().navigationBar().buttons()[0]);
+    var cancelButton = app.mainWindow().navigationBar().buttons()["取消"];
+    method.checkInstanceExists(app.mainWindow().navigationBar().buttons()["取消"]);
     cancelButton.tap();
 };
 /**
