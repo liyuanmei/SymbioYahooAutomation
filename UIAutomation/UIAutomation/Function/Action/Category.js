@@ -318,7 +318,7 @@ Action.tapItemOnCategoryScreen = function (itemName) {
     if(target.systemVersion() == "6.1.3"){
         var categoryItem = app.mainWindow().tableViews()[0].cells()[itemName];
 
-        method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[itemName].tap);
+        method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[itemName]);
         categoryItem.tap();
     }
     else{
