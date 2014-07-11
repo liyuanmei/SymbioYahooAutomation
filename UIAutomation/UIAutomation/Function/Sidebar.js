@@ -15,7 +15,7 @@ test("[1977532] verify settings screen" , function () {
     Action.cleanBrowsingHistory();
     $.delay(sleep);
     
-    //search records
+    //search records.
     Action.tapCleanSearchRecordsOnSidebr(0);
     Action.tapSearchIconOnNavBar();
     Action.searchBarInput("h");
@@ -62,6 +62,10 @@ test("[1977532] verify settings screen" , function () {
     Action.tapButtonOnTabBar(0);
 
     Action.tapCleanSearchOnSidebr(1);
+    $.delay(5);
+
+    Action.tapCleanSearchRecordsOnSidebr(1);
+    $.delay(sleep);
 
     Action.tapButtonOnTabBar(0);
 });
