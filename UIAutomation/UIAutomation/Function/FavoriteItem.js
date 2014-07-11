@@ -1,5 +1,6 @@
 test("[1959923] Verify store rate from items collected", function () {
     target.logDeviceInfo();
+    Action.determineTheLogin();
     Action.cleanSearches();
 
     Action.goCategoryWhenSearchSettingOpen();

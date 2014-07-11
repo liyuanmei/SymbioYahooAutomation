@@ -1,6 +1,7 @@
 //6.12 
 test("[1977448] [notification]turn on/off marketing notifications ", function () {
     target.logDeviceInfo();
+    Action.determineTheLogin();
     Action.cleanSearches();
     Action.tapButtonOnTabBar(0);
     $.delay(sleep);
@@ -24,6 +25,7 @@ test("[1977449] [notification]list of notifications " , function () {
     $.delay(5);
 
     Assert.checkReturnPageDisplay("通知");
+    Action.tapButtonOnTabBar(4);
     Action.tapButtonOnTabBar(0);
     Action.notificationSettings(1);
 });

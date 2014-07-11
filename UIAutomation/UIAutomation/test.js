@@ -42,3 +42,4 @@
 #import "Function/StoreList.js"
 #import "Function/StorePromotion.js"
 #import "Function/CheckOut.js"
+#import "Function/Smoke.js"

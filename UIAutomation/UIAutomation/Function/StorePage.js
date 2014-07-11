@@ -1,5 +1,6 @@
 test("[1959901] Verify stores category show correctly.", function () {
     target.logDeviceInfo();
+    Action.determineTheLogin();
     Action.cleanSearches();
 
     //go to store page

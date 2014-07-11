@@ -1,5 +1,6 @@
 test("[1959876] Verify the number of bottom bubble on shopping cart" , function () {
     target.logDeviceInfo();
+    Action.determineTheLogin();
     Action.cleanSearches();
     $.delay(sleep);
 

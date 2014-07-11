@@ -930,3 +930,40 @@ Action.pageShow = function () {
         method.checkInstanceExists(pageShow);
     }
 };
+
+Action.determineTheLogin = function () {
+    Action.cleanSearches();
+    $.delay(10);
+    Action.tapButtonOnTabBar(4);
+    var logined = app.mainWindow().images()[1].name();
+    if(logined == "img-default-profile.png"){
+        $.delay(5);
+        //go back home page
+        Action.tapButtonOnTabBar(0);
+    }
+    else{
+        $.delay(5);
+        var login = app.mainWindow().tableViews()[0].cells()["Add Account"].staticTexts()[0].name();
+
+        if(login == "Add Account"){
+            //Tap exit button exit login window.
+            Action.exitLoginWindow();
+            $.delay(sleep);
+
+            Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+            $.delay(12);
+
+            Action.tapButtonOnTabBar(0);
+        }
+        else{
+            //Tap exit button exit login window.
+            Action.exitLoginWindow();
+            $.delay(sleep);
+            //Verify login window show correct.
+            Action.doUserLogin("mobileappstore3", "A1234qwer");
+            $.delay(12);
+
+            Action.tapButtonOnTabBar(0);
+        }
+    }
+};

@@ -1,5 +1,6 @@
 test("[1953619] Verify the for piece goods discount", function () {
     target.logDeviceInfo();
+    Action.determineTheLogin();
     Action.cleanSearches();
     $.delay(sleep);
 

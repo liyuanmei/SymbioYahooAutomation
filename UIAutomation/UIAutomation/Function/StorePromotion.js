@@ -9,7 +9,7 @@ test("[1959928] Verify user view promotion item link." , function () {
     Action.tapKeyboardSearch();
     Action.pageShow();
 
-    //Tap item on list to navigate to item page
+    //Tap item on list to navigate to item page.
     Action.tapItemOnProductListScreen();
     $.delay(sleep);
     target.logElementTree();

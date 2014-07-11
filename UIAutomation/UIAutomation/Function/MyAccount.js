@@ -1,5 +1,6 @@
 test("[1959920] Verify the number of e-coupon can count correctly", function () {
     target.logDeviceInfo();
+    Action.determineTheLogin();
     Action.cleanSearches();
     $.delay(sleep);
 

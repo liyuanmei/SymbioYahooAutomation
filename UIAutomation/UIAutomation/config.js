@@ -28,6 +28,7 @@ var Assert = {};
 #import "Function/Action/Functional.js"
 #import "Function/Action/FavoriteStores.js"
 #import "Function/Action/Checkout.js"
+#import "Function/Action/Smoke.js"
 
 //Assert
 #import "smoke/Assert/FavoriteStores.js"
@@ -54,6 +55,7 @@ var Assert = {};
 #import "Function/Assert/MyAccount.js"
 #import "Function/Assert/ItemPage.js"
 #import "Function/Assert/Checkout.js"
+#import "Function/Assert/Smoke.js"
 
 var target = UIATarget.localTarget();
 var app = target.frontMostApp();

@@ -8,7 +8,7 @@ test("[1954564] Verify pull down to refresh.", function () {
     Action.doRefreshFavoriteStorePage();
     $.delay(15);
 
-    //check the page is correct.
+    //check the page is correct
     Assert.checkReturnPageDisplay("最新動態");
 
     //check the cells is not empty

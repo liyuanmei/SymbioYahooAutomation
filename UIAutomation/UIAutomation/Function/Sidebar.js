@@ -1,6 +1,8 @@
 //6.30
 //three
 test("[1959892] Verify user can edit category preferences", function () {
+    target.logDeviceInfo();
+    Action.determineTheLogin();
 	Action.cleanSearches();
     $.delay(sleep);
     
@@ -11,11 +13,12 @@ test("[1959892] Verify user can edit category preferences", function () {
 });
 
 test("[1977532] verify settings screen" , function () {
+    target.logDeviceInfo();
     Action.cleanSearches();
     Action.cleanBrowsingHistory();
     $.delay(sleep);
     
-    //search records.
+    //search records
     Action.tapCleanSearchRecordsOnSidebr(0);
     Action.tapSearchIconOnNavBar();
     Action.searchBarInput("h");
@@ -63,10 +66,8 @@ test("[1977532] verify settings screen" , function () {
 
     Action.tapCleanSearchOnSidebr(1);
     $.delay(5);
-
+    
     Action.tapCleanSearchRecordsOnSidebr(1);
-    $.delay(sleep);
-
     Action.tapButtonOnTabBar(0);
 });
 
