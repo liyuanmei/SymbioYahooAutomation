@@ -1146,43 +1146,14 @@ test("[1938113] check item price show correct.", function () {
     Action.pageShow();
 
     if(target.systemVersion() == "6.1.3"){
-        //get product name and product price X and Y.
-        var productName = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[2];
-        var productNameX = Action.getElementsOriginXString(productName);
-        var productNameY = Action.getElementsOriginYString(productName);
-
-        var productPrice = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[3];
-        var productPriceX = Action.getElementsOriginXString(productPrice);
-        var productPriceY = Action.getElementsOriginYString(productPrice);
-
-        //get product name height
-        var productNameHeight = Action.getElementsHeightString(productName);
-        //verify product price show correct.
-        Assert.productPriceShowCorrect(2, 3);
-
-        //Verify product price place under product name.
-        method.verifyTrue(0 < productPriceY - productNameY - productNameHeight && productPriceY - productNameY - productNameHeight < 5 && productPriceX == productNameX, "Product price not place under product name.");
+    //verify product price show correct.
+    Assert.productPriceShowCorrect(2, 3);
     }
     else{
-        //get product name and product price X and Y.
-        var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
-        var productNameX = Action.getElementsOriginXString(productName);
-        var productNameY = Action.getElementsOriginYString(productName);
-
-        var productPrice = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[3];
-        var productPriceX = Action.getElementsOriginXString(productPrice);
-        var productPriceY = Action.getElementsOriginYString(productPrice);
-
-        //get product name height
-        var productNameHeight = Action.getElementsHeightString(productName);
-        //verify product price show correct.
-        Assert.productPriceShowCorrect("Miu-Star", 3);
-
-        //Verify product price place under product name.
-        method.verifyTrue(0 < productPriceY - productNameY - productNameHeight && productPriceY - productNameY - productNameHeight < 5 && productPriceX == productNameX, "Product price not place under product name.");
+    //verify product price show correct.
+    Assert.productPriceShowCorrect("Miu-Star", 3);
     }
     
-
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
@@ -2321,33 +2292,4 @@ test("[1938149] check 服飾 show correct.", function () {
     //Tap back button and go back to discovery screen.
     Action.goBack();
     Action.goDiscoveryStream();
-});
-
-//favstore
-test("[1954571] verify 18 ban show correct.", function () {
-    //do search.
-    Action.doSearch("充氣娃娃");
-
-    //switch layout to big image
-    Action.tapButtonsInAdvancedBarWhenSRP();
-    Action.tapButtonsInAdvancedBar(1);
-    Action.chooseCategoryBrowseMode("大圖");
-    $.delay(10);
-
-    //Go to item detail screen.
-    Action.tapItemOnProductListScreen();
-    $.delay(5);
-    
-    //Verify 18 ban screen show correct.
-    Assert.check18BanScreenShowCorrect();
-
-    //Tap back button exit 18 ban screen.
-    Action.back18BanScreen();
-
-    //tap discory stream to restore screen to default.
-    Action.goDiscoveryStream();
-    Action.tapButtonOnTabBar(2);
-    Action.tapButtonOnTabBar(2);
-    Action.tapButtonOnTabBar(0);
-    Action.tapButtonOnTabBar(0);
 });

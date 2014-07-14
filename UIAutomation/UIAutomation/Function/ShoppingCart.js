@@ -34,7 +34,7 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" , function 
     $.delay(5);
 
     Action.tapShoppingCartlist(0);
-    $.delay(20);
+    $.delay(25);
 
     Assert.checkbutButtonShoppingCart();
     
@@ -189,7 +189,7 @@ test("[1959885] verify the shopping cart detail" ,function () {
     $.delay(5);
 
     Action.tapShoppingCartlist(0);
-    $.delay(20);
+    $.delay(25);
 
     //check item number is correct
     Assert.checkItemNumberOnShoppingCartIsEnabled();
@@ -239,7 +239,7 @@ test("[1959903] Verify user can view next buy items then view shopping cart item
     $.delay(sleep);
 
     Action.tapShoppingCartlist(0);
-    $.delay(20);
+    $.delay(25);
 
     //tap buy next time tab and back
     Action.tapBuyNextTime();

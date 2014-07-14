@@ -1052,10 +1052,6 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
     Action.cleanSearches();
 });
 
-test("To simulate the home button",function () {
-    UIATarget.localTarget().deactivateAppForDuration(20);
-});
-
 test("[1938008] check log in window show after unregister user tap favorites icon on item listing-Large photo view." , function () {
     target.logDeviceInfo();
     Action.cleanSearches();

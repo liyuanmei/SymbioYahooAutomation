@@ -17,7 +17,7 @@ test("[1977501] verify login and Logout of interaction", function () {
     Action.exitLoginWindow();
     $.delay(sleep);
 
-    Action.tapAddAccountOnLogin("mobileappstore1", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore1", "ecmobiletest");
     $.delay(10);
 
     Assert.checkReturnPageDisplay("我的帳戶");
@@ -25,9 +25,10 @@ test("[1977501] verify login and Logout of interaction", function () {
     //Log out and remove user login history
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
+    $.delay(10);
 
     Action.tapButtonOnTabBar(0);
-    $.delay(sleep);
+    $.delay(5);
     
     Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
 });
