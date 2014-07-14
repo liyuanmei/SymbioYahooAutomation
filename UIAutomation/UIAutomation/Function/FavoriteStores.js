@@ -1,3 +1,36 @@
+test("[1954571] verify 18 ban show correct.", function () {
+    Action.determineTheLogin();
+    Action.cleanSearches();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    
+    Action.searchBarInputChinese("充氣娃娃");
+    Action.tapKeyboardSearch();
+    Action.pageShow();
+
+    //switch layout to big image
+    Action.tapButtonsInAdvancedBarWhenSRP();
+    Action.tapButtonsInAdvancedBar(1);
+    Action.chooseCategoryBrowseMode("大圖");
+    $.delay(10);
+
+    //Go to item detail screen.
+    Action.tapItemOnProductListScreen();
+    $.delay(10);
+    
+    //Verify 18 ban screen show correct.
+    Assert.check18BanScreenShowCorrect();
+
+    //Tap back button exit 18 ban screen.
+    Action.back18BanScreen();
+
+    //tap discory stream to restore screen to default.
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
+});
+
 test("[1959922] Verify user can access correct store page from recommendation.", function () {
     target.logDeviceInfo();
     Action.determineTheLogin();
