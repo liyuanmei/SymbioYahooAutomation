@@ -280,9 +280,10 @@ public final class Action {
     public static void removeFavoriteStore(final Solo solo) throws Exception {
 
         solo.clickOnView(solo.getView("tab_text", 1));
-        solo.sleep(ValidationText.WAIT_TIME_LONG);
+        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+        View storeName;
         try {
-            View storeName = (View) solo
+             storeName = (View) solo
                     .getView("listitem_favoritestore_storename");
             View url = (View) solo.getView("listitem_favoritestore_image1");
             for (int i = 0; i <= 10; i++){
@@ -1086,9 +1087,10 @@ public final class Action {
             throws Exception {
 
         for (WebElement web : solo.getCurrentWebElements()) {
+            Log.i("number", web.getText().toString());
             Log.i("number", web.getClassName().toString());
-
             if (web.getText().toString().equals(text)) {
+
                 actual = true;
                 solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 

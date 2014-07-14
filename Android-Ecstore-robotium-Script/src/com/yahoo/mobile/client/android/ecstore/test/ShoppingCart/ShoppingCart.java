@@ -266,22 +266,13 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
        try {
             Action.clickElementsInWebviewByClassname(solo, "updateItemChange");
             solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        } catch (AssertionError e ) {
+        } catch (AssertionError e) {
             solo.sleep(ValidationText.WAIT_TIME_LONG);
             Action.clickElementsInWebviewByClassname(solo, "updateItemChange");
             solo.sleep(ValidationText.WAIT_TIME_SHORT);
         }
-
-        // Action.searchTextOnWebview(solo, "1");
-        TextView number;
-        try {
-              number = (TextView) solo.getView("text1",0);
-            assertTrue("number is not checked.", number.isActivated());
-        } catch (AssertionError e) {
-            solo.sleep(ValidationText.WAIT_TIME_LONG);
-              number = (TextView) solo.getView("text1",0);
-            assertTrue("number is not checked.", number.isActivated());
-        }
+       boolean actual = solo.searchText("1");
+       assertTrue("number is not displayed!", actual);
 
 
     }

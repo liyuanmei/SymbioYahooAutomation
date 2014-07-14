@@ -123,7 +123,8 @@ public class FavoriteStore extends ActivityInstrumentationTestCase2<Activity> {
 
              noResults = (TextView)
                     solo.getView("no_result_text", 1);
-             if (!noResults.isShown() || solo.searchText(ValidationText.EMPTY)){
+             if (!noResults.isShown() || solo.searchText(ValidationText.EMPTY))
+             {
                  assertTrue("Text not found.", true);
                  solo.sleep(ValidationText.WAIT_TIME_SHORT);
              }
@@ -131,8 +132,7 @@ public class FavoriteStore extends ActivityInstrumentationTestCase2<Activity> {
             solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
             noResults = (TextView)
                     solo.getView("no_result_text", 1);
-            if(!noResults.isShown() || solo.searchText(ValidationText.EMPTY))
-            {
+            if (!noResults.isShown() || solo.searchText(ValidationText.EMPTY)) {
                 assertTrue("Text not found.", true);
                 solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
@@ -326,7 +326,8 @@ public class FavoriteStore extends ActivityInstrumentationTestCase2<Activity> {
         boolean alreadyAdd;
 
         // Get toast text.
-        if (solo.waitForText(ValidationText.HAS_ADDED_COMMODITY)) {
+        if (solo.waitForText(ValidationText.HAS_ADDED_COMMODITY)
+               ) {
 
             alreadyAdd = solo.waitForText(
                     ValidationText.HAS_ADDED_COMMODITY);
@@ -347,7 +348,6 @@ public class FavoriteStore extends ActivityInstrumentationTestCase2<Activity> {
                 "listitem_favoritestore_image1", 0);
         assertTrue("Add to favorite store failed.", shop.isShown());
     }
-    //2014-06-20
 
     /**
      * 1954565:Verify pull down to refresh function.

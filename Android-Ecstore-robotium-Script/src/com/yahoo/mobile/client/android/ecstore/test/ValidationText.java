@@ -32,6 +32,8 @@ public class ValidationText {
 
 	public static final String NEWS = "最新動態";
 	
+	public static final String BECOME_EFFECTIVE = "待生效";
+	
 	public static final String ORDER_INQUIRY  = "訂單查詢";
 
 	public static final String PLUS_PURCHASE = "加購商品";
