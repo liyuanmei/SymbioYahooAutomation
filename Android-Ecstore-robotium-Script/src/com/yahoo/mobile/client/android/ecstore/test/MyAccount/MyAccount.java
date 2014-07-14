@@ -157,10 +157,17 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
         // Click the e-coupon box.
         Action.clickElementsInWebviewByClassname(solo, "filter");
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-
-        TextView defaultText = (TextView)
-                solo.getView("text1", Action.VIEW_ID_FOUR);
-        assertTrue("Default item is incorrect.", defaultText.isActivated());
+        TextView defaultText;
+        try{
+             defaultText = (TextView)
+                    solo.getView("text1", Action.VIEW_ID_FOUR);
+            assertTrue("Default item is incorrect.", defaultText.isActivated());
+        } catch (AssertionError e){
+            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+             defaultText = (TextView)
+                    solo.getView("text1", Action.VIEW_ID_FOUR);
+            assertTrue("Default item is incorrect.", defaultText.isActivated());
+        }
 
     }
 

@@ -128,15 +128,15 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickElementsInWebviewByClassname(solo,
                 "goNextBuy updateItemClick");
 
-        solo.sleep(ValidationText.WAIT_TIME_LONG);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
         // Search "Confirm"button on alert window.
         Action.clickElementsInWebviewByText(solo, ValidationText.OK);
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
 
         // Tap "Next Buy" button on web view.
         Action.clickElementsInWebviewByText(solo, ValidationText.NEXT_BUY);
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
         boolean expected = false;
         for (WebElement webs : solo.getCurrentWebElements()) {
             Log.i("number", webs.getClassName().toString());
@@ -215,6 +215,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
             View webpage = (View) solo.getView("webpage", 0);
             assertTrue("This page incorrect.", webpage.isShown());
         } catch (AssertionError e) {
+            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
             View webpage = (View) solo.getView("webpage", 0);
             assertTrue("This page incorrect.", webpage.isShown());
         }
@@ -248,19 +249,40 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
     public final void testShoppingcartDetail() throws Exception {
 
         Account.judgementAccountLogin(solo);
+        Action.removeShoppingCart(solo);
 
-        // Action.removeShoppingCart(solo);
         Action.enterToItemPage(solo);
 
         Action.addToShoppingCart(solo);
+
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-        Action.clickElementsInWebviewByClassname(solo, "updateItemChange");
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.goBack();
+        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
+
+       try {
+            Action.clickElementsInWebviewByClassname(solo, "updateItemChange");
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        } catch (AssertionError e ) {
+            solo.sleep(ValidationText.WAIT_TIME_LONG);
+            Action.clickElementsInWebviewByClassname(solo, "updateItemChange");
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        }
 
         // Action.searchTextOnWebview(solo, "1");
-        TextView number = (TextView) solo.getView("text1",0);
-        assertTrue("number is not checked.", number.isActivated());
+        TextView number;
+        try {
+              number = (TextView) solo.getView("text1",0);
+            assertTrue("number is not checked.", number.isActivated());
+        } catch (AssertionError e) {
+            solo.sleep(ValidationText.WAIT_TIME_LONG);
+              number = (TextView) solo.getView("text1",0);
+            assertTrue("number is not checked.", number.isActivated());
+        }
+
 
     }
 
@@ -287,7 +309,8 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
         // Search "Confirm"button on alert window.
         Action.clickElementsInWebviewByText(solo, ValidationText.OK);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        solo.clickOnView(solo.getView( "tab_image",3 ) );
+        solo.clickOnView(solo.getView("tab_image", 3));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         assertTrue("No next buy item.", solo.searchText(
                 ValidationText.NEXT_BUY));
 

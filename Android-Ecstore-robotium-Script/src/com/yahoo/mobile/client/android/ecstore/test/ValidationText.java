@@ -9,6 +9,8 @@ public class ValidationText {
 	public static final int WAIT_TIME_LONG = 10000;
 
 	public static final int WAIT_TIME_LONGER = 20000;
+	
+	public static final int WAIT_TIME_LONGEST = 30000;
 
 	public static final String WAIT = "等等";
 
@@ -29,12 +31,16 @@ public class ValidationText {
 	public static final String SEARCH_ALL_CATEGORIES = "搜尋全部分類";
 
 	public static final String NEWS = "最新動態";
+	
+	public static final String ORDER_INQUIRY  = "訂單查詢";
 
 	public static final String PLUS_PURCHASE = "加購商品";
 
 	public static final String ADDITIONAL_GIFT = "附送贈品";
 
 	public static final String YOUR_FAVORITE = "你的最愛";
+	
+	public static final String EMPTY = "你的最愛商店是空的";
 
 	public static final String DONG = "東";
 
@@ -57,6 +63,9 @@ public class ValidationText {
 	public static final String T_SHIRT = "T恤";
 
 	public static final String S = "s";
+	
+	public static final String C = "c";
+	
 	public static final String FAMILY_PICKUP = "全家繳費不取貨";
 
 	public static final String ESCAPE_CHARACTER = "#39";
