@@ -731,3 +731,29 @@ Assert.elementsValueShouldContainText = function (elements, keyword) {
     $.delay(sleep);
     method.verifyTrue(elementsName.indexOf(keyword) >= 0, elementsName + " not contain text: " + keyword);
 };
+
+Assert.check18BanScreenShowCorrectOnFavStore = function () {
+    $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        var imageOn18Ban = app.mainWindow().images()[0];
+        var backButtonOn18Ban = app.mainWindow().buttons()[0];
+        var submitButtonOn18Ban = app.mainWindow().buttons()[1];
+        var staticTextsOn18Ban = app.mainWindow().staticTexts()[0];
+
+        //method.verifyEquals(imageOn18Ban.name(), "icon-ticrf.png");
+        method.verifyEquals(backButtonOn18Ban.name(), "未滿18歲離開");
+        method.verifyEquals(submitButtonOn18Ban.name(), "已滿18歲進入");
+        method.verifyEquals(staticTextsOn18Ban.name(), "18歲以上會員始可瀏覽及購買，若您未滿18歲請勿進入");
+    }
+    else{
+        var imageOn18Ban = app.mainWindow().images()[0];
+        var backButtonOn18Ban = app.mainWindow().buttons()[0];
+        var submitButtonOn18Ban = app.mainWindow().buttons()[1];
+        var staticTextsOn18Ban = app.mainWindow().staticTexts()[0];
+
+        //method.verifyEquals(imageOn18Ban.name(), "icon-ticrf.png");
+        method.verifyEquals(backButtonOn18Ban.name(), "未滿18歲離開");
+        method.verifyEquals(submitButtonOn18Ban.name(), "已滿18歲進入");
+        method.verifyEquals(staticTextsOn18Ban.name(), "18歲以上會員始可瀏覽及購買，若您未滿18歲請勿進入");
+    }
+};

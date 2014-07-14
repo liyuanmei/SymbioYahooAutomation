@@ -16,10 +16,10 @@ test("[1954571] verify 18 ban show correct.", function () {
 
     //Go to item detail screen.
     Action.tapItemOnProductListScreen();
-    $.delay(10);
-    
+    $.delay(15);
+
     //Verify 18 ban screen show correct.
-    Assert.check18BanScreenShowCorrect();
+    Assert.check18BanScreenShowCorrectOnFavStore();
 
     //Tap back button exit 18 ban screen.
     Action.back18BanScreen();

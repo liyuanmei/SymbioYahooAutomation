@@ -2471,7 +2471,7 @@ test("[1938004] view-check click on the name of commodity",function () {
     Action.cleanSearches();
 });
 
-test("[1937997] view-Check the goods price display",function () {
+test("[1937993] view-Check the goods price display",function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();

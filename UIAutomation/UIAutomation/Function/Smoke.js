@@ -63,8 +63,13 @@ test("[1952836] [Web Views]verify user can use web views" , function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(20);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(20);
+    }
+    catch (err) {
+        $.delay(20);
+    }
 
     //check go to shopping cart. And using the webview, users will be able to complete checkout.
     Assert.checkbutButtonShoppingCart();
@@ -301,13 +306,23 @@ test("[1959554] [Shopping cart]Verify user can access shopping cart details page
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(20);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(20);
+    }
+    catch (err) {
+        $.delay(20);
+    }
 
-    //tap buy next time tab and back
-    Action.tapBuyNextTime();
-    $.delay(20);
-
+    try{
+        //tap buy next time tab and back
+        Action.tapBuyNextTime();
+        $.delay(20);
+    }
+    catch (err) {
+        $.delay(10);
+    }
+    
     Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
     Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,"小計:");
     //restore
