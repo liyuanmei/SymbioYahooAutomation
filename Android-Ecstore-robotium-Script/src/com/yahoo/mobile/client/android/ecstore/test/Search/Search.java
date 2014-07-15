@@ -50,7 +50,7 @@ import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
  * @author Administrator
  * 
  */
-
+@SuppressLint("NewApi")
 public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
@@ -239,7 +239,7 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
      * 1937859:Add suggestion into search bar by clicking "+" icon.
-     * 
+     *
      * @throws Exception
      *             if has error
      */
@@ -257,7 +257,7 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
         // value where in front of "+".
         String tvValue = Action.getValuesInTextview(solo,
-                "id/search_suggestion_text", 0);
+                "search_suggestion_text", 0);
 
         // click "+" in list suggestion window.
         Action.clickPlusInOpenWindow(solo, "search_fill_up", 0);
@@ -271,7 +271,7 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
      * 1937860:Change suggestion info if clicking "+" icon again.
-     * 
+     *
      * @throws Exception
      *             if has error
      */
