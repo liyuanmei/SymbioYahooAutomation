@@ -50,7 +50,7 @@ import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
  * @author Administrator
  * 
  */
-@SuppressLint("NewApi")
+
 public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
@@ -923,7 +923,7 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
      * 1937890:Back to layer 2 category list.
-     * 
+     *
      * @throws Exception
      *             if has error
      */
@@ -938,8 +938,12 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
         solo.scrollToTop();
         Action.clickText(solo, ValidationText.APPAREL);
 
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
         // click search button
         Action.clickSearchButtonOnScreen(solo);
+
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
         // click back(home) screen
         Action.clickHomeButtonOnScreen(solo);
@@ -950,7 +954,7 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
      * 1937891:Back to fashion list.
-     * 
+     *
      * @throws Exception
      *             if has error
      */
@@ -1004,7 +1008,7 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
         Action.clickText(solo, ValidationText.APPAREL);
 
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
         try {
             Action.clickText(solo, ValidationText.POPULAR_WOMEN);
         } catch (AssertionError e) {
