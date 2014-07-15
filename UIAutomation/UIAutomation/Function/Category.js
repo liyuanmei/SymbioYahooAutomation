@@ -1146,18 +1146,32 @@ test("[1938113] check item price show correct.", function () {
     Action.pageShow();
 
     if(target.systemVersion() == "6.1.3"){
-    //verify product price show correct.
-    Assert.productPriceShowCorrect(2, 3);
+        Action.tapAdvancedButton();
+        Action.tapButtonsInAdvancedBar(1);
+        Action.chooseCategoryBrowseMode("列表");
+        $.delay(5);
+
+        //verify product price show correct.
+        Assert.productPriceShowCorrect(2, 3);
     }
     else{
-    //verify product price show correct.
-    Assert.productPriceShowCorrect("Miu-Star", 3);
+        //Tap Advanced button.
+        Action.tapAdvancedButton();
+
+        //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+        Action.tapButtonsInAdvancedBar(1);
+
+        Action.chooseCategoryBrowseMode("列表");
+        Action.pageShow();
+        //verify product price show correct.
+        Assert.productPriceShowCorrect("Miu-Star", 3);
     }
     
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
+
 
 test("[1938115] check favorites icon show correct with photo grid view.", function () {
     target.logDeviceInfo();

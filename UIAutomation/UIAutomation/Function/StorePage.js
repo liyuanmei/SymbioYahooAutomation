@@ -56,12 +56,15 @@ test("[1959904] Verify user can check purchasing info from store page" , functio
     Action.tapConfirmOnShoppingCart();
     Action.tapButtonOnTabBar(3);
     
-    Action.tapShoppingCartlist(0);
-    $.delay(20);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(20);
+    }
+    catch (err) {
+        $.delay(20);
+    }
 
     Assert.checkbutButtonShoppingCart();
-
-    app.mainWindow().logElementTree();
     $.delay(3);
     
     Action.tapStoreLogoWhenStorePage();
@@ -70,6 +73,7 @@ test("[1959904] Verify user can check purchasing info from store page" , functio
     
     Action.goBack();
     Action.tapButtonOnTabBar(3);
+    $.delay(sleep);
 
     Action.tapDeleteOnShoppingCart();
     $.delay(sleep);
