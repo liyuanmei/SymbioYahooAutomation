@@ -69,7 +69,7 @@ test("[1937858] Auto complete layout view", function () {
     $.delay(sleep);
 
     Action.searchBarInput("h");
-    $.delay(5);
+    $.delay(10);
      
     Assert.checkIconPlusDisplay();
     Action.tapBackOnSearchBar();
@@ -85,7 +85,7 @@ test("[1937859] Click the auto - complete list right side '+' Icon", function ()
     $.delay(sleep);
 
     Action.searchBarInput("h");
-    $.delay(5);
+    $.delay(10);
      
     if(target.systemVersion() == "6.1.3"){
     //To obtain name
@@ -115,11 +115,11 @@ test("[1937860] Click on the search for 2 times suggest different keyword '+' ic
     $.delay(sleep);
 
     Action.searchBarInput("h");
-    $.delay(5);
+    $.delay(10);
      
     //Click on the different icon plus
     Action.tapIconPlusOnTableView();
-    $.delay(5);
+    $.delay(10);
      
     if(target.systemVersion() == "6.1.3"){
     var plusValue = app.mainWindow().tableViews()[0].cells()[0].staticTexts()[0].name();
@@ -147,7 +147,7 @@ test("[1937861] According to the search Suggestions", function () {
     $.delay(sleep);
 
     Action.searchBarInput("h");
-    $.delay(5);
+    $.delay(10);
      
     //Check the search results page display properly
     if(target.systemVersion() == "6.1.3"){
@@ -235,7 +235,7 @@ test("[1937865] Check the keyboard to remove function", function () {
 
     Action.searchBarInput("1234");
     Action.tapKeyboardDelete();
-    $.delay(sleep);
+    $.delay(5);
      
     //Verify whether the clear one character at a time
     Assert.checkEveryDelete();
