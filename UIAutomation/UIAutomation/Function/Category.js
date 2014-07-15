@@ -843,9 +843,11 @@ test("[1938102] check favorites icon show correct.", function () {
     target.logDeviceInfo();
     Action.goApparelCategory();
     Action.goCommodityTab();
-    $.delay(sleep);
+    Action.pageShow();
 
     if(target.systemVersion() == "6.1.3"){
+        $.delay(15);
+
         obj.scrollDowns(1);
         $.delay(sleep);
 
@@ -1147,7 +1149,11 @@ test("[1938113] check item price show correct.", function () {
 
     if(target.systemVersion() == "6.1.3"){
         Action.tapAdvancedButton();
+        $.delay(sleep);
+
         Action.tapButtonsInAdvancedBar(1);
+        $.delay(sleep);
+
         Action.chooseCategoryBrowseMode("列表");
         $.delay(5);
 
@@ -1155,8 +1161,10 @@ test("[1938113] check item price show correct.", function () {
         Assert.productPriceShowCorrect(2, 3);
     }
     else{
+        $.delay(sleep);
         //Tap Advanced button.
         Action.tapAdvancedButton();
+        $.delay(sleep);
 
         //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
         Action.tapButtonsInAdvancedBar(1);
