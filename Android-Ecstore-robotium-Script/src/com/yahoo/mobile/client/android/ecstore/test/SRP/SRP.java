@@ -1505,9 +1505,6 @@ ValidationText.PLEASE_LOGIN_ACCOUNT, 1, ValidationText.WAIT_TIME_LONGER)){
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         View iv = solo.getView("menu_search");
         solo.clickOnView(iv);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        View ivs = solo.getView("menu_search");
-        solo.clickOnView(ivs);
         View keywords = (View) solo.getView("search_suggestion_text");
         assertTrue("Search component not displayed.", keywords.isShown());
 
