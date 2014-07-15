@@ -1,5 +1,5 @@
 /*
- * This is automated script about "Sidebar".
+ * This is automated script about "Side bar".
  *
  * You can run these test cases either on the emulator or on device.
  *
@@ -109,7 +109,7 @@ public class Sidebar extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickHomeButtonOnScreen(solo);
 
         solo.clickOnText(ValidationText.EDIT_FAVORITE_CATEGORY);
-
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         // Get the grid view count.
         GridView lv = (GridView) solo.getView("category_editor_grid");
         assertTrue("Not enter to edit category screen. ", lv.isShown());
