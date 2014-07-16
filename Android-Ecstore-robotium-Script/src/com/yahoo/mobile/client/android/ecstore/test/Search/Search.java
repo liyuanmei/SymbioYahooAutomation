@@ -1515,8 +1515,9 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
     public final void testEnterSpecialCharactersToSearch() throws Exception {
 
         Account.judgementAccountLogin(solo);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.clickSearchButtonOnScreen(solo);
-
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         // Input test data.
         Action.searchAfterPutData(solo, 0, ValidationText.SPECIAL);
         assertTrue("No result note pop up.",

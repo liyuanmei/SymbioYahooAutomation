@@ -90,7 +90,7 @@ public class SRP extends ActivityInstrumentationTestCase2 <Activity> {
     protected final void setUp() throws Exception {
         super.setUp();
         solo = new Solo(getInstrumentation(), getActivity());
-
+        Assert.testFirstLaunch(solo);
     }
 
     @Override
