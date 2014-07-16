@@ -1,5 +1,5 @@
 test("[1954571] verify 18 ban show correct.", function () {
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();

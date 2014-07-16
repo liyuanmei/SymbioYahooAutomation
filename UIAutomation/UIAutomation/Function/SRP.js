@@ -1,6 +1,6 @@
 test("[1953657] verify edit favorite category if correct on sidebar.", function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenSRP();
     Action.cleanSearches();
     Action.tapButtonOnTabBar(4);
     $.delay(5);

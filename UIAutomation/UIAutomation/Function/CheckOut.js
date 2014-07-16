@@ -1,6 +1,6 @@
 test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
 
     Action.goApparelCategoryWhenShoppingCart();

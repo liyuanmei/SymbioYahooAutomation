@@ -1,6 +1,6 @@
 test("[1952835] [Personalization] verify user can use personalization.", function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     Action.tapButtonOnTabBar(4);
     $.delay(5);
