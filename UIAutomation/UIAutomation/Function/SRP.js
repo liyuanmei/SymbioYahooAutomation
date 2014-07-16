@@ -9,6 +9,7 @@ test("[1953657] verify edit favorite category if correct on sidebar.", function 
     Action.tapButtonOnMyUser(6);
     $.delay(5);
 
+    Assert.checkCategoryEditor();
     Action.selectCategoryOnEditFavorite();
     $.delay(10);
 
@@ -23,6 +24,7 @@ test("[1953657] verify edit favorite category if correct on sidebar.", function 
     Action.tapButtonOnMyUser(6);
     $.delay(5);
 
+    Assert.checkCategoryEditor();
     Action.selectCategoryOnEditFavorite();
     $.delay(10);
 

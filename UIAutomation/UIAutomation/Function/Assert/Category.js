@@ -757,3 +757,42 @@ Assert.check18BanScreenShowCorrectOnFavStore = function () {
         method.verifyEquals(staticTextsOn18Ban.name(), "18歲以上會員始可瀏覽及購買，若您未滿18歲請勿進入");
     }
 };
+
+Assert.checkCategoryEditor = function () {
+    $.delay(sleep);
+        if(target.systemVersion() == "6.1.3"){
+        this.CategoriesName = [
+        "服飾",
+        "美妝",
+        "鞋包配飾",
+        "媽咪寶貝",
+        "電腦/週邊",
+        "家電/視聽",
+        "相機/\n手機/玩具",
+        "美食/\n保健/飲料",
+        "醫療/\n日用品/寵物",
+        "居家/\n寢具/傢俱",
+        ];
+        for (var i = 0; i < 10; i++) {
+        method.verifyEquals(this.CategoriesName[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
+        }
+        }
+        else{
+        this.CategoriesName = [
+        "服飾",
+        "美妝",
+        "鞋包配飾",
+        "媽咪寶貝",
+        "電腦/週邊",
+        "家電/視聽",
+        "相機/ 手機/玩具",
+        "美食/ 保健/飲料",
+        "醫療/ 日用品/寵物",
+        "居家/ 寢具/傢俱",
+        ];
+        $.delay(sleep);
+        for (var i = 0; i < 10; i++) {
+        method.verifyEquals(this.CategoriesName[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
+    }
+    }
+};
