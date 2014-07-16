@@ -151,7 +151,18 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         Action.enterToItemPage(solo);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         TestHelper.swipeUp(solo, 1);
-        solo.clickOnText(ValidationText.SALES_PROMOTION);
+        try {
+          
+            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+            solo.clickOnText(ValidationText.SALES_PROMOTION);
+
+        } catch (AssertionError e) {
+
+            TestHelper.swipeUp(solo, 1);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnText(ValidationText.SALES_PROMOTION);
+
+        }
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         View webpage;
         try {
@@ -180,7 +191,13 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         Action.enterToItemPage(solo);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         TestHelper.swipeUp(solo, 1);
-        solo.clickOnText(ValidationText.SALES_PROMOTION);
+        try {
+            solo.clickOnText(ValidationText.SALES_PROMOTION);
+        } catch (AssertionError e) {
+            TestHelper.swipeUp(solo, 1);
+            solo.clickOnText(ValidationText.SALES_PROMOTION);
+        }
+
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnText(ValidationText.FULL);
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
@@ -268,6 +285,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickText(solo, ValidationText.COMMODITY);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickInList(1);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
         TestHelper.swipeUp(solo, 1);
         try {
             Action.clickText(solo, ValidationText.PAYMENT);
@@ -300,7 +318,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickText(solo, ValidationText.COMMODITY);
         solo.sleep(ValidationText.WAIT_TIME_LONG);
         solo.clickInList(1);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
         TestHelper.swipeUp(solo, 1);
         try {
             Action.clickText(solo, ValidationText.SHOPPING_TIPS);
@@ -474,6 +492,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickOnText(ValidationText.PLUS_PURCHASE);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         TextView addon;
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         try {
              addon = (TextView) solo.getView("addon_title");
         } catch (AssertionError e) {
