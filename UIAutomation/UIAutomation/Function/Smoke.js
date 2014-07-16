@@ -169,6 +169,12 @@ test("[1959541] [Item page]Verify user can click '立即購買' button twice" , 
     $.delay(10);
      
     Action.butButtonShoppingCart();
+    $.delay(5);
+
+    Action.tapCancelOnShoppingCart();
+    $.delay(sleep);
+
+    Action.butButtonShoppingCart();
 
     Action.chooseTheSizeOnShoppingCart();
     Action.tapConfirmOnShoppingCart();
@@ -182,7 +188,6 @@ test("[1959541] [Item page]Verify user can click '立即購買' button twice" , 
     Assert.checkReturnPageDisplay("商品");
     Action.tapButtonOnTabBar(2);
     
-    //Verify user can click  button twice
     Action.tapButtonOnTabBar(3);
     Action.tapButtonOnTabBar(3);
     $.delay(5);
@@ -206,6 +211,16 @@ test("[1959553] [Shopping cart]Verify Item link funtion in shoping cart details 
     $.delay(10);
 
     Action.tapSearchResultOfStore();
+    $.delay(10);
+    
+    //Tap Advanced button
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    Assert.buttonOnAdvancedIsEnabled(1);
+
+    Action.chooseCategoryBrowseMode("列表");
     $.delay(10);
 
     //The first item

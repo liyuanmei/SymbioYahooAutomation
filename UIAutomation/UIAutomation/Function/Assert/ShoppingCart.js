@@ -51,3 +51,8 @@ Assert.checkShoppingCartInformationAndPurchaseInformationDisplay = function (i,j
     var checkShoppingCartInformationAndPurchaseInformationDisplay = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[i].name();
     method.verifyEquals(j,checkShoppingCartInformationAndPurchaseInformationDisplay);
 };
+
+Assert.checkGoodsExist = function () {
+    $.delay(sleep);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<=2);
+};

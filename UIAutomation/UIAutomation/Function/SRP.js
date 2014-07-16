@@ -1,37 +1,20 @@
+//category
 test("[1953657] verify edit favorite category if correct on sidebar.", function () {
     target.logDeviceInfo();
     Action.determineTheLoginWhenSRP();
     Action.cleanSearches();
-    Action.tapButtonOnTabBar(4);
-    $.delay(5);
+    $.delay(sleep);
 
-    //edit favorite categories
-    Action.tapButtonOnMyUser(6);
-    $.delay(5);
+    //go to category
+    Action.tapButtonOnTabBar(2);
 
-    Assert.checkCategoryEditor();
-    Action.selectCategoryOnEditFavorite();
-    $.delay(10);
-
-    Action.goBack();
-    $.delay(10);
-
-    //slect favorite categories and assert them
-    Action.verifyEditingFavoriteCategories();
-    $.delay(10);
-
-    //restore
-    Action.tapButtonOnMyUser(6);
-    $.delay(5);
-
-    Assert.checkCategoryEditor();
-    Action.selectCategoryOnEditFavorite();
-    $.delay(10);
-
-    Action.goBack();
-    $.delay(10);
+    //Verify user can edit category preferences and the case assert contained in action
+    Action.tapButtonOnSidebarWhenCategory();
+    $.delay(sleep);
 
     Action.tapButtonOnTabBar(0);
+
+    Assert.checkReturnPageDisplay("最新動態");
 });
 
 test("[1937918] Check the Tab display" , function () {

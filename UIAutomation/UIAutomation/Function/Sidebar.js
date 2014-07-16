@@ -7,7 +7,7 @@ test("[1959892] Verify user can edit category preferences", function () {
     $.delay(sleep);
     
     //Verify user can edit category preferences and the case assert contained in action
-    Action.verifyEditingFavoriteCategories();
+    Action.tapButtonOnSidebarWhenCategory();
 
     Assert.checkReturnPageDisplay("最新動態");
 });
@@ -75,10 +75,35 @@ test("[1977532] verify settings screen" , function () {
 //category
 test("[1953649] verify edit favorite category if correct on sidebar.", function () {
     target.logDeviceInfo();
+    Action.cleanSearches();
+    Action.tapButtonOnTabBar(4);
+    $.delay(5);
 
-    //the case assert contained in action
+    //edit favorite categories
+    Action.tapButtonOnMyUser(6);
+    $.delay(5);
+
+    Assert.checkCategoryEditor();
+    Action.selectCategoryOnEditFavorite();
+    $.delay(10);
+
+    Action.goBack();
+    $.delay(10);
+
+    //slect favorite categories and assert them
     Action.tapButtonOnSidebarWhenCategory();
     $.delay(10);
 
-    Assert.checkReturnPageDisplay("最新動態");
+    //restore
+    Action.tapButtonOnMyUser(6);
+    $.delay(5);
+
+    Assert.checkCategoryEditor();
+    Action.selectCategoryOnEditFavorite();
+    $.delay(10);
+
+    Action.goBack();
+    $.delay(10);
+
+    Action.tapButtonOnTabBar(0);
 });

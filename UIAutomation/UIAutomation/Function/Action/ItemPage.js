@@ -30,9 +30,18 @@ Action.tapItemOnCategoryScreenWhenItemPage = function (itemName) {
 //6.9
 Action.addToShoppingCartWhenItemPage = function () {
     $.delay(sleep);
-    var addToShoppingCart = app.mainWindow().collectionViews()[0].cells()[2].buttons()[1];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[2].buttons()[1]);
-    addToShoppingCart.tap();
+    if(target.systemVersion() == "6.1.3"){
+        var butButtonShoppingCart = app.mainWindow().collectionViews()[0].cells()[3].buttons()[1];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[3].buttons()[1]);
+        butButtonShoppingCart.tap();
+    }
+    else{
+        var collectionViews = app.mainWindow().collectionViews()[0];
+        var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
+        method.checkInstanceExists(addToCartButton);
+        addToCartButton.tap();
+    }
+    
 };
 
 Action.tapPaymentOnProductPage = function () {

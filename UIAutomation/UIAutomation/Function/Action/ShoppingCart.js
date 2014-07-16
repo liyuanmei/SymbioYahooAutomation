@@ -131,3 +131,24 @@ Action.determineTheLoginWhenShopping = function () {
         }
     }
 };
+
+//Because webservice, using coordinate click
+Action.clickTheBuyButtonsOnPromotionPage = function () {
+    $.delay(5);
+    app.mainWindow().scrollViews()[0].webViews()[0].dragInsideWithOptions({startOffset:{x:0.69, y:0.07}, endOffset:{x:0.89, y:0.04}, duration:1.2});
+
+    //tap choose size
+    app.mainWindow().scrollViews()[0].webViews()[0].elements()[16].tapWithOptions({tapOffset:{x:0.67, y:0.30}});
+    $.delay(sleep);
+
+    //choose size
+    app.windows()[1].pickers()[0].wheels()[0].dragInsideWithOptions({startOffset:{x:0.77, y:0.44}, endOffset:{x:0.81, y:0.12}});
+    $.delay(sleep);
+
+    app.windows()[1].toolbar().buttons()["Done"].tap();
+    $.delay(5);
+
+    //click buy icon
+    app.mainWindow().scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.95, y:0.07}});
+};
+

@@ -41,5 +41,6 @@
 #import "Function/Sidebar.js"
 #import "Function/StoreList.js"
 #import "Function/StorePromotion.js"
+#import "Function/Promotion.js"
 #import "Function/CheckOut.js"
 #import "Function/Smoke.js"

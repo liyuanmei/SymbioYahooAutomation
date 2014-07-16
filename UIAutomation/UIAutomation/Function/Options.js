@@ -32,6 +32,16 @@ test("[1959919] Verify 0 result function on leaf-category", function () {
 
         Assert.elementsOrderInSortTabWhenSRP();
 
+        //tap 篩選 button and verify 篩選 button is enabled. the order of 排序 button is 2.
+        Action.tapButtonsInAdvancedBar(2);
+        Assert.buttonOnAdvancedIsEnabled(2);
+
+        Assert.elementsOnFilterScreenWhenOptions();
+
+        ////tap 浏览模式 button and verify 浏览模式 button is enabled. the order of 排序 button is 1.
+        Action.tapButtonsInAdvancedBar(1);
+        Assert.buttonOnAdvancedIsEnabled(1);
+
         //Tap Cancel button on Navigation Bar.
         Action.tapCancelButtonInAdvancedBar();
     }
@@ -47,6 +57,16 @@ test("[1959919] Verify 0 result function on leaf-category", function () {
         $.delay(5);
 
         Assert.elementsOrderInSortTabWhenSRP();
+
+        //tap 篩選 button and verify 篩選 button is enabled. the order of 排序 button is 2.
+        Action.tapButtonsInAdvancedBar(2);
+        Assert.buttonOnAdvancedIsEnabled(2);
+
+        Assert.elementsOnFilterScreenWhenOptions();
+
+        ////tap 浏览模式 button and verify 浏览模式 button is enabled. the order of 排序 button is 1.
+        Action.tapButtonsInAdvancedBar(1);
+        Assert.buttonOnAdvancedIsEnabled(1);
 
         //Tap Cancel button on Navigation Bar.
         Action.tapCancelButtonInAdvancedBar();

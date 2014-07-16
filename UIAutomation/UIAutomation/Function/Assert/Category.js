@@ -99,7 +99,7 @@ Assert.categoriesList = function () {
         "運動/\n戶外/休閒",
         "圖書/\n文具/影音"
         ];
-        for (var i = 0; i < 12; i++) {
+        for (var i = 0; i < 9; i++) {
         method.verifyEquals(this.CategoriesName[i], app.mainWindow().tableViews()[0].cells()[i].name());
         }
         }

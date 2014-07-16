@@ -36,7 +36,7 @@ test("[1953619] Verify the for piece goods discount", function () {
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1953617] Verify the for full discount activity list", function () {
+test("[1953617] Verify list of activities the for full discount activity list", function () {
     target.logDeviceInfo();
     Action.cleanSearches();
 
@@ -60,11 +60,21 @@ test("[1953617] Verify the for full discount activity list", function () {
 
     Action.tapCancelOnShoppingCart(); 
     Action.tapChooseOnItemPage("促銷活動");
-    $.delay(sleep);
+    $.delay(5);
 
     try{
         var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
         Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
+    }
+    catch (err) {
+        Assert.checkSearchPage("促銷活動");
+    }
+
+    Action.tapChoosePreductCategoryWhenOptions(0,1);
+    $.delay(30);
+
+    try{
+        Assert.checkTextShowCorrectly(2,"活動辦法");
     }
     catch (err) {
         Assert.checkSearchPage("促銷活動");
@@ -101,7 +111,7 @@ test("[1953614] Verify the for full discount activity list", function () {
 
     Action.tapCancelOnShoppingCart(); 
     Action.tapChooseOnItemPage("促銷活動");
-    $.delay(sleep);
+    $.delay(5);
 
     try{
         var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
@@ -464,7 +474,7 @@ test("[1959926] Verify user can not select dimmed item specification" ,function 
     obj.scrollDowns(1);
     $.delay(sleep);
 
-    Action.addToItemPage(3,0);
+    Action.addToShoppingCartWhenItemPage();
     Action.chooseTheSizeOnShoppingCart();
     $.delay(sleep);
 
@@ -516,7 +526,8 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
     $.delay(15);
     
     //buy to goods
-    Action.chooseButtonsOnCollectionViews(0,3,1);
+    Action.addToShoppingCartWhenItemPage();
+    //Action.chooseButtonsOnCollectionViews(0,3,1);
 
     Action.chooseTheSizeOnShoppingCart();
     Action.tapConfirmOnShoppingCart();
@@ -572,7 +583,8 @@ test("[1959897] Verify purchased product in the shopping cart display" ,function
     obj.scrollDowns(1);
     $.delay(5);
 
-    Action.chooseButtonsOnCollectionViews(0,4,1);
+    Action.addToShoppingCartWhenItemPage();
+    //Action.chooseButtonsOnCollectionViews(0,4,1);
     $.delay(5);
 
     Action.tapSizeOnItem();

@@ -32,12 +32,22 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(20);
-
-    Action.tapSettleAccounts();
-    $.delay(20);
-
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(20);
+    }
+    catch (err) {
+        $.delay(20);
+    }
+    
+    try{
+        Action.tapSettleAccounts();
+        $.delay(20);
+    }
+    catch (err) {
+        $.delay(20);
+    }
+    
     Assert.tapSettleAccountsOnShopping(6,"購物車明細 (1)");
     $.delay(10);
 
@@ -111,11 +121,21 @@ test("[1959916] Verify order inquiry details page can show normally" ,function (
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(20);
-
-    Action.tapSettleAccounts();
-    $.delay(20);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(20);
+    }
+    catch (err) {
+        $.delay(20);
+    }
+    
+    try{
+        Action.tapSettleAccounts();
+        $.delay(20);
+    }
+    catch (err) {
+        $.delay(20);
+    }
 
     Assert.tapSettleAccountsOnShopping(6,"購物車明細 (1)");
     $.delay(10);
@@ -169,8 +189,13 @@ test("[1959918] Verify user can change other delivery places." ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(25);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(20);
+    }
+    catch (err) {
+        $.delay(20);
+    }
 
     obj.scrollDownsWhenSettlement(2);
     target.logElementTree();
@@ -182,8 +207,13 @@ test("[1959918] Verify user can change other delivery places." ,function () {
     $.delay(sleep);
     app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()["填寫資料"].tapWithOptions({tapOffset:{x:0.61, y:0.62}});
 
-    Action.tapSettleAccounts();
-    $.delay(20);
+    try{
+        Action.tapSettleAccounts();
+        $.delay(20);
+    }
+    catch (err) {
+        $.delay(20);
+    }
 
     Assert.tapSettleAccountsOnShopping(6,"購物車明細 (1)");
     $.delay(10);

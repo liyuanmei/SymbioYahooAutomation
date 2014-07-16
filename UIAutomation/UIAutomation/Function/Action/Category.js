@@ -596,7 +596,16 @@ Action.verifyEditingFavoriteCategories = function () {
         $.delay(sleep);
     
         Action.tapButtonOnMenu(1);
+        target.logElementTree();
+
+        //var navName = app.navigationBar()[0].staticTexts()[0].name();
+        //method.verifyEquals("編輯喜愛的分類", navName);
+
+        Action.tapButtonOnSidebarWhenCate();
         Assert.buttonOnSidebarIsEnabled();
+
+        Action.tapButtonOnSidebarWhenCate();
+
         Action.goBackWhenBackMenu();
 
         menuButton.tap();
@@ -608,7 +617,16 @@ Action.verifyEditingFavoriteCategories = function () {
         $.delay(sleep);
     
         Action.tapButtonOnMenu(1);
+        target.logElementTree();
+        
+        //var navName = app.navigationBar()[0].staticTexts()[0].name();
+        //method.verifyEquals("編輯喜愛的分類", navName);
+
+        Action.tapButtonOnSidebarWhenCate();
         Assert.buttonOnSidebarIsEnabled();
+
+        Action.tapButtonOnSidebarWhenCate();
+
         Action.goBackWhenBackMenu();
 
         menuButton.tap();
@@ -883,11 +901,20 @@ Action.tapTheFirstCellOnRecommendation = function () {
 //7.1
 Action.tapButtonOnSidebarWhenCate = function () {
     $.delay(sleep);
-    for (var i = 0; i < 12; i++) {
-        var buttonOnSidebar = app.windows()[0].tableViews()[0].cells()[i].staticTexts()[0];
-        method.checkInstanceExists(app.windows()[0].tableViews()[0].cells()[i].staticTexts()[0]);
-        buttonOnSidebar.tap();
-    };  
+    if(target.systemVersion() == "6.1.3"){
+        for (var i = 0; i < 9; i++) {
+            var buttonOnSidebar = app.windows()[0].tableViews()[0].cells()[i].staticTexts()[0];
+            method.checkInstanceExists(app.windows()[0].tableViews()[0].cells()[i].staticTexts()[0]);
+            buttonOnSidebar.tap();
+        }
+    }
+    else{
+        for (var i = 0; i < 12; i++) {
+            var buttonOnSidebar = app.windows()[0].tableViews()[0].cells()[i].staticTexts()[0];
+            method.checkInstanceExists(app.windows()[0].tableViews()[0].cells()[i].staticTexts()[0]);
+            buttonOnSidebar.tap();
+        }
+    }  
 };
 
 Action.tapButtonOnSidebarWhenCategory = function () {
@@ -900,7 +927,12 @@ Action.tapButtonOnSidebarWhenCategory = function () {
     
         Action.tapButtonOnMenu(1);
         Action.tapButtonOnSidebarWhenCate();
+
         Assert.buttonOnSidebarIsEnabled();
+        //Assert.categoriesList();
+
+        Action.tapButtonOnSidebarWhenCate();
+
         Action.goBackWhenBackMenu();
 
         menuButton.tap();
@@ -912,7 +944,12 @@ Action.tapButtonOnSidebarWhenCategory = function () {
     
         Action.tapButtonOnMenu(1);
         Action.tapButtonOnSidebarWhenCate();
+
         Assert.buttonOnSidebarIsEnabled();
+        Assert.categoriesList
+
+        Action.tapButtonOnSidebarWhenCate();
+        
         Action.goBackWhenBackMenu();
 
         menuButton.tap();

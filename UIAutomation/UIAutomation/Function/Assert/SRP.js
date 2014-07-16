@@ -227,3 +227,28 @@ Assert.checkItemName = function (j) {
     var checkItemName = app.mainWindow().collectionViews()[0].cells()[1].name();
     method.verifyEquals(j, checkItemName);
 };
+
+Assert.elementsOnFilterScreenWhenOptions = function () {
+    $.delay(sleep);
+
+    //Verify "100000 + 元" show correct
+    var priceNumber100000 = app.mainWindow().staticTexts()[0].name();
+    method.verifyEquals("100000+ 元", priceNumber100000);
+
+    //Verify "0 元" show correct.
+    var priceNumber0 = app.mainWindow().staticTexts()[1].name();
+    method.verifyEquals("0 元", priceNumber0);
+
+    //Verify all attribute elements show correct
+    this.AttributeElements = ["可刷卡", "0利率", "可分期", "超商付款", "超商取貨", "有現貨", "有影音", "有圖片", "優良商店"];
+
+    for (var i = 0; i < 9; i++){
+        $.delay(sleep);
+        if(target.systemVersion() == "6.1.3"){
+            method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
+        }
+        else{
+            method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[1].cells()[i].name());
+        }
+    }
+};

@@ -326,7 +326,7 @@ test("[1959879] Verify the favorite items number", function () {
     $.delay(5);
 
     Action.tapButtonOnTabBar(0);
-    Action.tapAddAccountOnLogin("mobileappstore1", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobileappstore1", "ecmobiletest");
     $.delay(5);
 
     Action.tapButtonOnTabBar(4);
