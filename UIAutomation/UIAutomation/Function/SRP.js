@@ -1138,7 +1138,7 @@ test("[1938030] check heart icon jump to login screen" , function () {
 test("[1937984] login user able to add product to favorites." , function () {
     target.logDeviceInfo();
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobilestoresymbio", "Aa123456");
     $.delay(10);
 
     Action.goCategoryWhenSearchSettingOpen();

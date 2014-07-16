@@ -70,7 +70,7 @@ test("[1959912] Verify there is an indicator to allow user login in",function ()
     Assert.checkLogInFirstOnFavoritePage();
     Action.goDiscoveryStream();
 
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
     $.delay(10);
 
     Action.tapButtonOnTabBar(0);
@@ -257,7 +257,7 @@ test("[1959875] Verify user logout,then login again,the display of the favorite 
     Assert.checkLogInFirstOnFavoritePage();
     $.delay(sleep);
 
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
 
     Action.tapButtonOnTabBar(1);
     $.delay(20);

@@ -30,7 +30,7 @@ test("[1977501] verify login and Logout of interaction", function () {
     Action.tapButtonOnTabBar(0);
     $.delay(5);
     
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
 
     try{
         $.delay(5);

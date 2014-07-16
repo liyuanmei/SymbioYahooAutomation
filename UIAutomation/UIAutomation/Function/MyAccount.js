@@ -1,6 +1,6 @@
 test("[1959920] Verify the number of e-coupon can count correctly", function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     $.delay(sleep);
 
@@ -288,7 +288,7 @@ test("[1977524] verify user can access to items", function () {
     Action.doUserLogout();
     $.delay(5);
 
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
     $.delay(5);
 
     Action.tapButtonOnTabBar(0);
@@ -312,7 +312,7 @@ test("[1959879] Verify the favorite items number", function () {
     $.delay(10);
 
     Action.tapButtonOnTabBar(0);
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
     $.delay(10);
     Action.tapButtonOnTabBar(4);
 
@@ -349,7 +349,7 @@ test("[1959879] Verify the favorite items number", function () {
     Action.doUserLogout();
     $.delay(5);
 
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
     $.delay(10);
 
     Action.tapButtonOnTabBar(0);

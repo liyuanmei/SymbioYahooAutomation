@@ -1,6 +1,6 @@
 test("[1959901] Verify stores category show correctly.", function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
 
     //go to store page
@@ -139,7 +139,7 @@ test("[1959898] Not log in, click on the add collection list icon ", function ()
     Action.tapButtonOnTabBar(0);
     $.delay(sleep);
 
-    Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
     $.delay(5);
 
     Action.tapButtonOnTabBar(0);
