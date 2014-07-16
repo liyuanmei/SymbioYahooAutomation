@@ -386,7 +386,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickText(solo, ValidationText.COMMODITY);
         solo.sleep(ValidationText.WAIT_TIME_LONG);
         solo.clickInList(1);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
         TestHelper.swipeUp(solo, 1);
         Action.clickText(solo, ValidationText.SEE_ALL_STORE_PRODUCT);
         assertTrue(
