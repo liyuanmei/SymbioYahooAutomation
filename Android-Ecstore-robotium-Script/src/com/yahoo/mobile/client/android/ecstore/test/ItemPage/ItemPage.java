@@ -152,7 +152,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         TestHelper.swipeUp(solo, 1);
         try {
-          
+
             solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
             solo.clickOnText(ValidationText.SALES_PROMOTION);
 
@@ -199,24 +199,9 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         }
 
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.clickOnText(ValidationText.FULL);
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-        View webpage;
-
-        try {
-            solo.sleep(ValidationText.WAIT_TIME_LONG);
-            webpage = (View) solo.getView("webpage", 0);
-            assertTrue("No promotion link displayed. ", webpage.isShown());
-
-        } catch (AssertionError e) {
-            solo.goBack();
-            solo.clickOnText(ValidationText.FULL);
-            solo.sleep(ValidationText.WAIT_TIME_LONG);
-            solo.sleep(ValidationText.WAIT_TIME_LONGER);
-            webpage = (View) solo.getView("webpage", 0);
-            Log.i("number", "123");
-            assertTrue("No promotion link displayed. ", webpage.isShown());
-        }
+       // solo.clickOnText(ValidationText.FULL);
+        assertTrue("No promotion link displayed. ",
+                solo.searchText(ValidationText.FULL));
 
     }
 
