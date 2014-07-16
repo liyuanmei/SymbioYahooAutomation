@@ -232,9 +232,14 @@ test("[1959896] Verify user can clicking promotion item link in store promotion 
 
     Assert.checkSalesPromotionActivityOnStore(1,2);
     Action.tapChoosePreductCategoryWhenOptions(0,1);
-    $.delay(20);
+    $.delay(25);
 
-    //Assert.checkTextShowCorrectly(2,"使用期限")
+    try{
+        Assert.checkTextShowCorrectly(2,"活動辦法");
+    }
+    catch (err) {
+        Assert.checkSearchPage("促銷活動");
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
