@@ -42,12 +42,16 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     $.delay(10);
 
     obj.scrollDownsWhenSettlement(3);
-
-    target.logElementTree();
     $.delay(sleep);
 
-    //var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()["全家繳費不取貨"];
-    //Assert.elementsShouldContainText(convenienceStorePayment,"全家繳費不取貨");
+    try{
+        var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()["全家繳費不取貨"];
+        Assert.elementsShouldContainText(convenienceStorePayment,"全家繳費不取貨");
+    }
+    catch (err) {
+        $.delay(sleep);
+        target.logElementTree();
+    }
 
     Action.tapSettleAccounts();
     Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(0,"本店購物車");

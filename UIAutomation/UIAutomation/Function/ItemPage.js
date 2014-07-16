@@ -62,11 +62,13 @@ test("[1953617] Verify the for full discount activity list", function () {
     Action.tapChooseOnItemPage("促銷活動");
     $.delay(sleep);
 
-    var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
-    //Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
-
-    Assert.checkSearchPage("促銷活動");
-    //Assert.checkSalesPromotionActivity();
+    try{
+        var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+        Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
+    }
+    catch (err) {
+        Assert.checkSearchPage("促銷活動");
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -101,10 +103,14 @@ test("[1953614] Verify the for full discount activity list", function () {
     Action.tapChooseOnItemPage("促銷活動");
     $.delay(sleep);
 
-    //var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
-    //Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
+    try{
+        var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+        Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
+    }
+    catch (err) {
+        Assert.checkSearchPage("促銷活動");
+    }
 
-    Assert.checkSearchPage("促銷活動");
     Assert.checkSalesPromotionActivity();
 
     Action.tapButtonOnTabBar(2);

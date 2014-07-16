@@ -6,7 +6,7 @@ test("[1959892] Verify user can edit category preferences", function () {
 	Action.cleanSearches();
     $.delay(sleep);
     
-    //Verify user can edit category preferences
+    //Verify user can edit category preferences and the case assert contained in action
     Action.verifyEditingFavoriteCategories();
 
     Assert.checkReturnPageDisplay("最新動態");
@@ -76,6 +76,7 @@ test("[1977532] verify settings screen" , function () {
 test("[1953649] verify edit favorite category if correct on sidebar.", function () {
     target.logDeviceInfo();
 
+    //the case assert contained in action
     Action.tapButtonOnSidebarWhenCategory();
     $.delay(10);
 

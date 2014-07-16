@@ -11,7 +11,14 @@ test("[1959920] Verify the number of e-coupon can count correctly", function () 
     Action.goElectronicCoupons();
     $.delay(10);
 
-    Assert.checkElectronicCouponsDisplay("電子折價券");
+    try{
+        var electronic = app.mainWindow().scrollViews()[0].webViews()[0].elements()["待生效+已生效"];
+        Assert.elementsValueShouldContainText(electronic,"待生效+已生效");
+    }
+    catch (err) {
+        Assert.checkElectronicCouponsDisplay("電子折價券");
+    }
+    $.delay(5);
     Action.tapButtonOnTabBar(4);
 
     Action.tapButtonOnTabBar(0);
@@ -93,6 +100,10 @@ test("[1977522] verify recent history from My Account", function () {
     $.delay(5);
 
     Assert.checkReturnPageDisplay("訂單查詢");
+    $.delay(10);
+
+    //Refresh the order page
+    Assert.checkElectronicCouponsDisplay("訂單查詢");
 
     Action.tapButtonOnTabBar(4);
     Action.tapButtonOnMyUser(1);

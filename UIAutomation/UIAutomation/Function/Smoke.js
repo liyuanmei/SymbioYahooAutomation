@@ -55,7 +55,7 @@ test("[1952836] [Web Views]verify user can use web views" , function () {
     
     //go to shopping cart page
     Action.tapButtonOnTabBar(3);
-    $.delay(5);
+    $.delay(10);
 
     Action.tapShoppingCartlist(0);
     $.delay(sleep);
@@ -88,18 +88,35 @@ test("[1952836] [Web Views]verify user can use web views" , function () {
     $.delay(sleep);
 
     Assert.checkReturnPageDisplay("訂單查詢");
+    $.delay(10);
+
+    //Refresh the order page
+    Assert.checkElectronicCouponsDisplay("訂單查詢");
     Action.tapButtonOnTabBar(4);
 
     Action.tapButtonOnMyUser(4);
     $.delay(sleep);
 
     Assert.checkReturnPageDisplay("實體商店優惠");
+    $.delay(3);
+
     Action.tapButtonOnTabBar(4);
 
     Action.tapButtonOnMyUser(5);
     $.delay(sleep);
 
     Assert.checkReturnPageDisplay("電子折價券");
+    $.delay(10);
+
+    try{
+        var electronic = app.mainWindow().scrollViews()[0].webViews()[0].elements()["待生效+已生效"];
+        Assert.elementsValueShouldContainText(electronic,"待生效+已生效");
+    }
+    catch (err) {
+        //Refresh the Electronic page
+        Assert.checkElectronicCouponsDisplay("電子折價券");
+    }
+
     Action.tapButtonOnTabBar(4);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -475,7 +492,7 @@ test("[1952828] [[Store Listings]verfiy user can access the listings page.", fun
     //verify 搜尋全部商店 buttons
     Assert.checkButtonsWhenSmoke(0,"搜尋全部商店");
 
-    //verify 搜尋全部商店 buttons
+    //verify 進階 buttons
     Assert.checkButtonsWhenSmoke(1,"進階");
     $.delay(sleep);
 
