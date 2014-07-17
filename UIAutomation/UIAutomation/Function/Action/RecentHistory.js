@@ -6,7 +6,7 @@ Action.goRecentBrowse = function () {
 };
 
 Action.addToRecentBrowse = function () {
-    for (var i = 0; i <22; i++) {
+    for (var i = 0; i <23; i++) {
     Action.goApparelCategoryWhenShoppingCart();
     Action.goCommodityTab();
     Action.pageShow();
