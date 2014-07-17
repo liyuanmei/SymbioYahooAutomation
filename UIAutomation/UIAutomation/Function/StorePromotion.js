@@ -2,6 +2,7 @@
 //three
 test("[1959928] Verify user view promotion item link." , function () {
     target.logDeviceInfo();
+    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();

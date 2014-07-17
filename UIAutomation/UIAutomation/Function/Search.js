@@ -1273,14 +1273,12 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     target.logDeviceInfo();
     Action.cleanSearches();
     $.delay(sleep);
-    Action.goCategoryWhenSearchSettingOpen();
-    Action.tapSearchIconOnNavBar();
 
-    Action.englishInputMethod();
-    
-    Action.searchBarInputChinese("上衣");
-    Action.tapKeyboardSearch();
-    $.delay(sleep);
+    //go to l1
+    Action.tapButtonOnTabBar(2);
+    Action.tapItemOnCategoryScreenWhenItemPage(0);
+    Action.goCommodityTab();
+    Action.pageShow();
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1303,30 +1301,119 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     Action.tapDetermineInAdvancedBarWhenSRP();
     $.delay(sleep);
 
+    Action.tapSearchResultOfStore();
+    $.delay(15);
+
+    obj.scrollDowns(1);
+    $.delay(10);
+
+    //Verify screen successful navigated to item page.
+    Assert.itemPageShowCorrectOnCoatSearchPage();
+
+    //go to l2
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapItemOnCategoryScreenWhenItemPage(0);
+    $.delay(sleep);
+
+    Action.tapClassificationButtonWhenS();
+    Action.tapChoosePreductCategoryWhenOptions(0,1);
+    Action.goCommodityTab();
+    Action.pageShow();
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
 
     //go to 篩選 tab.
     Action.tapButtonsInAdvancedBar(2);
-    
-    //Tap clear button
-    Action.tapClearButtonOnFilterScreenInAdvancedBarWhenSRP();
-    target.logElementTree();
-    //Verify price bar restore to default value.
 
+    $.delay(sleep);
     if(target.systemVersion() == "6.1.3"){
-        Assert.checkPriceBarShowCorrect("0 元");
-    }
+        //drag price bar to 23 price.
+        app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x:0.00, y:0.37}, duration:12.2});
+        $.delay(sleep);
+    }    
     else{
-        Assert.checkPriceBarShowCorrectWhenSRP("100000+ 元");
+        //drag price bar to 23 price.    
+        app.mainWindow().dragInsideWithOptions({startOffset:{x:0.92, y:0.28}, endOffset:{x:0.00, y:0.31}, duration:1.4});
+        //app.mainWindow().dragInsideWithOptions({startOffset: {x: 0.92, y: 0.29}, endOffset:{x: 0.234, y: 0.29}});
     }
-    
     Action.tapDetermineInAdvancedBarWhenSRP();
+    $.delay(sleep);
 
-    //Tap submit button and restore application to default location.
-    //Action.tapSubmitButtonOnAdvanceScreen();
+    try{
+        Action.tapSearchResultOfStore();
+        $.delay(15);
+
+        obj.scrollDowns(1);
+        $.delay(10);
+
+        //Verify screen successful navigated to item page.
+        Assert.itemPageShowCorrectOnCoatSearchPage();
+    }
+    catch (err) {
+        //There is no data
+        //classification and goods buttons is first cell
+        Assert.checkGoodsExist();
+    }
+
+    //go to l3
     Action.tapButtonOnTabBar(2);
-    Action.goDiscoveryStream();
+    Action.tapButtonOnTabBar(2);
+    Action.tapItemOnCategoryScreenWhenItemPage(0);
+    $.delay(sleep);
+
+    Action.tapClassificationButtonWhenS();
+    Action.tapChoosePreductCategoryWhenOptions(0,1);
+    $.delay(sleep);
+
+    Action.tapClassificationButtonWhenS();
+    $.delay(sleep);
+
+    Action.tapChoosePreductCategoryWhenOptions(0,3);
+    $.delay(sleep);
+
+    Action.goCommodityTab();
+    $.delay(10);
+
+    //Tap Advanced button.
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //go to 篩選 tab.
+    Action.tapButtonsInAdvancedBar(2);
+
+    $.delay(sleep);
+    if(target.systemVersion() == "6.1.3"){
+        //drag price bar to 5 price.
+        app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x:0.00, y:0.37}, duration:12.2});
+        $.delay(sleep);
+    }    
+    else{
+        //drag price bar to 5 price.    
+        app.mainWindow().dragInsideWithOptions({startOffset:{x:0.92, y:0.28}, endOffset:{x:0.00, y:0.31}, duration:1.4});
+        //app.mainWindow().dragInsideWithOptions({startOffset: {x: 0.92, y: 0.29}, endOffset:{x: 0.234, y: 0.29}});
+    }
+    Action.tapDetermineInAdvancedBarWhenSRP();
+    $.delay(sleep);
+
+    try{
+        Action.tapSearchResultOfStore();
+        $.delay(15);
+
+        obj.scrollDowns(1);
+        $.delay(10);
+
+        //Verify screen successful navigated to item page.
+        Assert.itemPageShowCorrectOnCoatSearchPage();
+    }
+    catch (err) {
+        //There is no data
+        //classification and goods buttons is first cell
+        Assert.checkGoodsExist();
+    }
+
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
 });
 
 test("[1959914] Verify user can access store page by tapping store logo", function () {
