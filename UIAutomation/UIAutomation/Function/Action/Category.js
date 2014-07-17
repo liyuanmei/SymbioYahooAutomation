@@ -929,8 +929,6 @@ Action.tapButtonOnSidebarWhenCategory = function () {
         Action.tapButtonOnSidebarWhenCate();
 
         Assert.buttonOnSidebarIsEnabled();
-        //Assert.categoriesList();
-
         Action.tapButtonOnSidebarWhenCate();
 
         Action.goBackWhenBackMenu();
@@ -947,7 +945,6 @@ Action.tapButtonOnSidebarWhenCategory = function () {
 
         Assert.buttonOnSidebarIsEnabled();
         Assert.categoriesList
-
         Action.tapButtonOnSidebarWhenCate();
         
         Action.goBackWhenBackMenu();

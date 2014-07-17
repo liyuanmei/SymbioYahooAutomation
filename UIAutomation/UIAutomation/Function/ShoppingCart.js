@@ -33,13 +33,8 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" , function 
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    try{
-        Action.tapShoppingCartlist(0);
-        $.delay(20);
-    }
-    catch (err) {
-        $.delay(20);
-    }
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
 
     Assert.checkbutButtonShoppingCart();
     
@@ -135,14 +130,9 @@ test("[1977500] verify all delete shopping cart of goods" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    try{
-        Action.tapShoppingCartlist(0);
-        $.delay(20);
-    }
-    catch (err) {
-        $.delay(20);
-    }
-  
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
+
     Action.tapStoreOnShoppingCartPage();
     $.delay(5);
 
@@ -198,13 +188,8 @@ test("[1959885] verify the shopping cart detail" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    try{
-        Action.tapShoppingCartlist(0);
-        $.delay(20);
-    }
-    catch (err) {
-        $.delay(20);
-    }
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
 
     //check item number is correct
     Assert.checkItemNumberOnShoppingCartIsEnabled();
@@ -262,13 +247,8 @@ test("[1959903] Verify user can view next buy items then view shopping cart item
 
     Action.goBack();
 
-    try{
-        Action.tapShoppingCartlist(0);
-        $.delay(20);
-    }
-    catch (err) {
-        $.delay(20);
-    }
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
 
     //check shopping cart list can bi tapped and no issue
     Assert.checkSearchPage("本店購物車");
@@ -317,13 +297,8 @@ test("[1959911] Verify Shopping cart information, purchase information display c
     Action.tapButtonOnTabBar(3);
     $.delay(sleep);
 
-    try{
-        Action.tapShoppingCartlist(0);
-        $.delay(20);
-    }
-    catch (err) {
-        $.delay(20);
-    }
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
 
     if(target.systemVersion() == "6.1.3"){
         Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
@@ -389,13 +364,8 @@ test("[1959908] Verify numbers under shopping$next buy" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(sleep);
 
-    try{
-        Action.tapShoppingCartlist(0);
-        $.delay(20);
-    }
-    catch (err) {
-        $.delay(20);
-    }
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
 
     if(target.systemVersion() == "6.1.3"){
         Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
@@ -465,25 +435,15 @@ test("[1977534] verify delete function" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(sleep);
 
-    try{
-        Action.tapShoppingCartlist(0);
-        $.delay(20);
-    }
-    catch (err) {
-        $.delay(20);
-    }
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
 
     Action.tapAddBuyNextTimeOnShopping();
     $.delay(sleep);
 
-    try{
-        //tap buy next time tab and back
-        Action.tapBuyNextTime();
-        $.delay(20);
-    }
-    catch (err) {
-        $.delay(10);
-    }
+    //tap buy next time tab and back
+    Action.tapBuyNextTime();
+    $.delay(20);
 
     Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
     Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,"小計:");
@@ -528,13 +488,8 @@ test("[1977496] Verify [bug case]「我要結賬」" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    try{
-        Action.tapShoppingCartlist(0);
-        $.delay(20);
-    }
-    catch (err) {
-        $.delay(20);
-    }
+    Action.tapShoppingCartlist(0);
+    $.delay(20);
     
     Action.tapSettleAccounts();
     $.delay(20);

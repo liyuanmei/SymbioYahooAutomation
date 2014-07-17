@@ -1,6 +1,6 @@
 Assert.wheelsWhenCheckOut = function  () {
     $.delay(sleep);
-    var wheelsWhenCheckOut = app.windows()[1].pickers()[0].wheels()[0].value(); 
-    method.verifyEquals("貨運 / 宅配（免運費）".wheelsWhenCheckOut);
-}
+    var wheelsWhenCheckOut = app.mainWindow().scrollViews()[0].webViews()[0].links()[2].staticTexts()[0]; 
+    method.verifyEquals("重選其它門市",wheelsWhenCheckOut.name());
+};
 
