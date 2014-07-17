@@ -57,7 +57,7 @@ test("[1959899] Verify the numbers of collected items can be increasing/decreasi
     Action.tapFavoritesIcon(1);
     $.delay(5)
     target.logElementTree();
-    if(target.systemVersion() == "6.1.3") {
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4") {
         var firstStoreName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].value();
 
     }

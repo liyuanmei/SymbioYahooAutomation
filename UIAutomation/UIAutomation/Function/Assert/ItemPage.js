@@ -6,7 +6,7 @@ Assert.checkSalesPromotionActivity = function () {
 
 Assert.checkPaymentAndDelivery = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var delivery= app.mainWindow().collectionViews()[0].staticTexts()[1].name();
         var payment = app.mainWindow().collectionViews()[0].staticTexts()[0].name();
         method.verifyEquals("交貨方式", delivery);
@@ -50,7 +50,7 @@ Assert.checkShareButtonShowOnItemPage = function () {
 
 Assert.checkTheGrayOptionsIsNotTaped = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var tapConfirmOnShoppingCart = app.navigationBar().buttons()[1];
         assertNotEquals("確定",tapConfirmOnShoppingCart);
     }

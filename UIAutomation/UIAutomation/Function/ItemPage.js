@@ -338,7 +338,7 @@ test("[1953629] Verify the store page, our classification.", function () {
     obj.scrollDowns(2);
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapChooseOnItemPage(3);
     }
     else{
@@ -351,7 +351,7 @@ test("[1953629] Verify the store page, our classification.", function () {
     Action.tapheartIconOnStoreWhenSRP();
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         target.logElementTree();
     }
     else{
@@ -436,7 +436,7 @@ test("[1959917] Verify item link,promotion link,gifi link work well.", function 
 
     Assert.itemPageShowCorrect();
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapChooseOnItemPage(0);
     }
     else{
@@ -510,7 +510,7 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
     obj.scrollDowns(1);
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapChooseOnItemPageWhenBuy(4,0);
     }
     else{
@@ -706,7 +706,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     obj.scrollDowns(1);
     $.delay(10);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapChooseOnItemPageWhenBuy(3,0);
     }
     else{ 
@@ -715,7 +715,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     
     Action.goBack();
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapChooseOnItemPageWhenBuy(3,0);
     }
     else{ 
@@ -723,7 +723,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     }
     Action.goBack();
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapChooseOnItemPageWhenBuy(3,0);
     }
     else{ 
@@ -787,7 +787,7 @@ test("[1953629] Verify the store page, our goods.", function () {
     obj.scrollDowns(2);
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapChooseOnItemPage(3);
     }
     else{

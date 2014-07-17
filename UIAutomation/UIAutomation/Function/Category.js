@@ -31,7 +31,7 @@ test("[1938042] verify category list in Apparel", function() {
     Action.goApparelCategory();
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Check category tab button is enabled, if button enabled then verify all items in list show correct.
         var categoryButtonEnabled = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0].isEnabled();
     }
@@ -58,7 +58,7 @@ test("[1938043] verify screen can switch back to category list", function () {
     Action.goApparelCategory();
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Check category tab button is enabled. If button enabled then switch to Commdity tab.
         var categoryButtonEnabled = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0].isEnabled();
     }
@@ -84,13 +84,13 @@ test("[1938043] verify screen can switch back to category list", function () {
     Assert.commodityButtonStatus();
     
     $.delay(5);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapAdvancedButton();
         Action.tapButtonsInAdvancedBar(1);
         Action.chooseCategoryBrowseMode("列表");
         $.delay(5);
 
-        Assert.commodityItemsShowCount(11);
+        Assert.commodityItemsShowCount(10);
         $.delay(5);
 
         Action.tapAdvancedButton();
@@ -119,7 +119,7 @@ test("[1938047] Check item list default setting is show 20 items", function () {
     Action.pageShow();
 
     //The first cell is tab button bar so the total cells should 20 items + 1 tab button bar.
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapAdvancedButton();
         Action.tapButtonsInAdvancedBar(1);
         Action.chooseCategoryBrowseMode("列表");
@@ -163,7 +163,7 @@ test("[1938048] Scroll screen more items should successful loaded", function () 
     Action.pageShow();
 
     //Verify currently should have 20 items in screen.
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Assert.commodityItemsShowCount(8);
     }
     else{
@@ -175,7 +175,7 @@ test("[1938048] Scroll screen more items should successful loaded", function () 
     obj.scrollDowns(16);
     $.delay(10);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Assert.commodityItemsShowCount(8);
     }
     else{
@@ -313,7 +313,7 @@ test("[1938063] check “確定” button exist on Advanced bar", function () {
     Action.tapButtonsInAdvancedBar(2);
 
     //Verify "確定" button exist on Navigation Bar, the index of this button is 2.
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Assert.buttonExistOnNavigationBar(1, "確定");
     }
     else{
@@ -553,12 +553,12 @@ test("[1938100] check product price show correct.", function () {
     Action.pageShow();
 
     //first parameter is second product, second parameter is the  location of price in product cell.
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         obj.scrollDowns(1);
     }
 
     $.delay(10);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //first parameter is second product, second parameter is the  location of price in product cell.
         Assert.productPriceShowCorrect(1, 3);
     }
@@ -595,7 +595,7 @@ test("[1938039] search name on header should changed after search another keywor
     Action.doSearch("上衣");
     $.delay(15);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         obj.scrollDowns(1);
         $.delay(10);
 
@@ -619,7 +619,7 @@ test("[1938039] search name on header should changed after search another keywor
     Action.tapKeyboardSearch();
     Action.pageShow();
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         obj.scrollDowns(1);
         $.delay(10);
         //Verify search result page contain expect search keyword.
@@ -665,7 +665,7 @@ test("[1938045] check 共xxxx筆結果.", function () {
     $.delay(10);
 
     //verify 共xxxx筆結果 show correct.
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -698,7 +698,7 @@ test("[1938061] check 清除 button show correct on advanced bar.", function (){
     //Tap "優良商店" and verify 清除 button show up.
     Action.tapButtonOnFilterAttributeScreen(8);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var attributeCollectView = app.mainWindow().collectionViews()[0];
         var attributeCollectViewOriginY = Action.getElementsOriginYString(attributeCollectView);
         var attributeCollectViewOriginX = Action.getElementsOriginXString(attributeCollectView);
@@ -742,7 +742,7 @@ test("[1938062] tap clear button can clear to user input.", function () {
     Assert.checkPriceBarShowCorrect("100000+ 元");
     
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //drag price bar to 1020 price.
         app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x: 0.234, y:0.37}, duration:12.2});
         $.delay(sleep);
@@ -845,7 +845,7 @@ test("[1938102] check favorites icon show correct.", function () {
     Action.goCommodityTab();
     Action.pageShow();
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         $.delay(15);
 
         obj.scrollDowns(1);
@@ -869,7 +869,7 @@ test("[1938103] check log in window show after unregister user tap favorites ico
     Action.tapButtonOnTabBar(4);
     $.delay(sleep);
     
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var logined = app.mainWindow().images()[1].name();
     }
     else{
@@ -893,7 +893,7 @@ test("[1938103] check log in window show after unregister user tap favorites ico
     Action.goCommodityTab();
     $.delay(15);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         obj.scrollDowns(1);
         $.delay(10);
     }
@@ -938,7 +938,7 @@ test("[1938116] on photo grid view unregister user tap favorites icon login wind
     Action.chooseCategoryBrowseMode("小圖");
     $.delay(10);
     
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //tap favorites icon, after tapped log in window show up.
         Action.tapFavoritesIcon(4);
         $.delay(10);
@@ -992,7 +992,7 @@ test("[1938128] on item listing-list view unregister user tap favorites icon sho
     Action.chooseCategoryBrowseMode("列表");
     $.delay(10);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Verify favorites icon show correct, this function need passing product index parameters.
         Assert.favoritesIconShowCorrect(2);
         $.delay(5);
@@ -1067,7 +1067,7 @@ test("[1938104] login user able to add product to favorites", function () {
     $.delay(10);
 
     //Tap favorites icon add a production to favorites.
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         $.delay(15);
 
         obj.scrollDowns(1);
@@ -1077,7 +1077,7 @@ test("[1938104] login user able to add product to favorites", function () {
     //Tap favorites icon add a production to favorites.
     Action.tapFavoritesIcon(1);
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var productName = app.mainWindow().collectionViews()[0].cells()[0].name();
     }
     else{
@@ -1147,7 +1147,7 @@ test("[1938113] check item price show correct.", function () {
     Action.goCommodityTab();
     Action.pageShow();
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapAdvancedButton();
         $.delay(sleep);
 
@@ -1203,7 +1203,7 @@ test("[1938115] check favorites icon show correct with photo grid view.", functi
     Assert.successfulSwitchToPhotoGridView();
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //verify favorites icon show on product cell.
         Assert.favoritesIconShowCorrect(4);
 
@@ -1255,7 +1255,7 @@ test("[1938117] On photo grid view register user able to add product to his favo
     Action.pageShow();
 
     //Store product name.
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var productName = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0].name();
     }
     else{
@@ -1271,7 +1271,7 @@ test("[1938117] On photo grid view register user able to add product to his favo
     Action.chooseCategoryBrowseMode("小圖");
 
     $.delay(5);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Tap favorites icon add a production to favorites.
         Action.tapFavoritesIcon(4);
     }
@@ -1295,7 +1295,7 @@ test("[1938117] On photo grid view register user able to add product to his favo
     Action.tapButtonOnTabBar(2);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Tap favorites icon add a production to favorites.
         Action.tapFavoritesIcon(4);
     }
@@ -1344,7 +1344,7 @@ test("[1938124] on item listing-list view tap store name page should navigate to
     Action.chooseCategoryBrowseMode("列表");
 
     $.delay(5);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Tap store name to navigate to item details page.
         var storeNameElement = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0];
         var storeName = storeNameElement.name()
@@ -1383,7 +1383,7 @@ test("[1938124] on item listing-list view tap store name page should navigate to
     Action.chooseCategoryBrowseMode("大圖");
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Back to discovery screen.
         Action.tapButtonOnTabBar(2);
         Action.goDiscoveryStream();
@@ -1416,7 +1416,7 @@ test("[1938125] on item listing-list view check product price show correct.", fu
     Action.chooseCategoryBrowseMode("列表");
 
     $.delay(5);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Get product name X and Y
         var productNameElement = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[2];
         var productNameElementX = Action.getElementsOriginXString(productNameElement);
@@ -1485,7 +1485,7 @@ test("[1938126] on item listing-list view check product rating show correct.", f
     Action.chooseCategoryBrowseMode("列表");
     $.delay(5);
     
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Verify the value of rating is less than 10, if not fail.
         Assert.storeRatingShowCorrect(1, 1);
 
@@ -1566,7 +1566,7 @@ test("[1938127] on item listing-list view check favorites icon show correct.", f
     Action.chooseCategoryBrowseMode("列表");
 
     $.delay(5);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Verify favorites icon show correct, this function need passing product index parameters.
         Assert.favoritesIconShowCorrect(2);
 
@@ -1637,7 +1637,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
     Action.pageShow();
 
     //Store product name.
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var productName = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0].name();
     }
     else{
@@ -1653,7 +1653,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
     Action.chooseCategoryBrowseMode("列表");
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Tap favorites icon add a production to favorites.
         Action.tapFavoritesIcon(2);
         $.delay(sleep);
@@ -1680,7 +1680,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
     Action.tapButtonOnTabBar(2);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.tapFavoritesIcon(2);
     }
     else{
@@ -1958,7 +1958,7 @@ test("[1938046] check the default browser mode", function () {
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //check the default browser mode is list
         Assert.checkDefaultBrowserModeIsLargePhoto();
     }
@@ -2029,7 +2029,7 @@ test("[1938096] click product image", function () {
     Action.tapItemOnProductListScreen();
 
     $.delay(15);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         obj.scrollDowns(1);
     }
     else{
@@ -2063,7 +2063,7 @@ test("[1938109] click product image", function () {
     Action.tapCommodityPictureOnSearchResultsPage();
 
     $.delay(15);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         obj.scrollDowns(1);
     }
     else{
@@ -2102,7 +2102,7 @@ test("[1938121] click product image", function () {
     Action.tapCommodityPictureOnSearchResultsPage();
     
     $.delay(15);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         obj.scrollDowns(1);
     }
     else{
@@ -2133,7 +2133,7 @@ test("[1938160] check 圖書/ 文具/影音 show correct.", function () {
     Action.tapButtonOnTabBar(2);
     $.delay(5);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Assert.allCategoryItemShowCorrect(11, "圖書/\n文具/影音");
     }
     else{
@@ -2177,7 +2177,7 @@ test("[1959882] Verify18 ban prompt.", function () {
     Action.tapItemOnCategoryScreen(10);
 
     $.delay(15);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.slidingCommodityPage();
         $.delay(5);
 
@@ -2221,7 +2221,7 @@ test("[1959881] product items should shorting by price low to high after user se
     Action.selectOptionOnSortingTab("價錢低到高");
 
     $.delay(5);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //verify price value show correct.
         //the first parameter is product index and the second parameter is price index in product cell.
         Assert.checkPriceValueShowLessThan(2, 3, "1");
@@ -2247,7 +2247,7 @@ test("[1954573] verify user under the age of 18  never seen 18 ban screen functi
     Action.tapItemOnCategoryScreen(10);
 
     $.delay(15);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Action.slidingCommodityPage();
         $.delay(10);
 

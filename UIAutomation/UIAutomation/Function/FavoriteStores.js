@@ -138,7 +138,7 @@ test("[1959907] verify the number of store items,collected number with my favori
     $.delay(15);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var storeItem = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[4];
         var collection = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[6];
     }

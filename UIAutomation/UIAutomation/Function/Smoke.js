@@ -477,7 +477,7 @@ test("[1952828] [[Store Listings]verfiy user can access the listings page.", fun
     $.delay(10);
     
     //verify 共xxxx筆結果 show correct.
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{

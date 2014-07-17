@@ -25,7 +25,7 @@ test("[1959923] Verify store rate from items collected", function () {
 
     //Tap favorites icon add a production to favorites.
     Action.tapFavoritesIcon(1);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
     }
     else{
@@ -72,7 +72,7 @@ test("[1959929] verify user can add favorite item.", function () {
     Action.goCommodityTab();
     Action.pageShow();
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var storeNameElement = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0];
         $.delay(4);
 

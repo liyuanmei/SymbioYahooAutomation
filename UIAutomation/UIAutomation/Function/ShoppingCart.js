@@ -300,7 +300,7 @@ test("[1959911] Verify Shopping cart information, purchase information display c
     Action.tapShoppingCartlist(0);
     $.delay(20);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
     }
     else{
@@ -367,7 +367,7 @@ test("[1959908] Verify numbers under shopping$next buy" ,function () {
     Action.tapShoppingCartlist(0);
     $.delay(20);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
     }
     else{

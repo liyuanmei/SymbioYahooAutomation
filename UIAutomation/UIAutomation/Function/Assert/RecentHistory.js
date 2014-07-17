@@ -6,7 +6,7 @@ Assert.checkSearchRecordPageOnRecentHisory = function () {
 Assert.searchSuggestionsPageDisplayOnRecentHisory = function () {
     var mainWindow = app.mainWindow();
     $.delay(5);
-    if (target.systemVersion() == "6.1.3") {
+    if (target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4") {
         method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<=2);
     }
     else{

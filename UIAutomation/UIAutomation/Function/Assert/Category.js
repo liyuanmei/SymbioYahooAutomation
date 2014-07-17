@@ -1,6 +1,6 @@
 Assert.commodityHeader = function (){
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         $.delay(sleep);
         method.verifyEquals("服飾", app.navigationBar().name());
         method.verifyEquals(1, app.navigationBar().buttons()[1].isEnabled());
@@ -19,7 +19,7 @@ Assert.categoryScreen = function () {
 
 Assert.checkTab = function () {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         $.delay(sleep);
         method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1].name());
         method.verifyEquals("分類",app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0].name());
@@ -37,7 +37,7 @@ Assert.verifyApparelCategory = function () {
 
     method.verifyEquals(7, app.mainWindow().collectionViews()[0].cells().length);
     
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         $.delay(sleep);
         method.verifyEquals("漢神百貨品牌服飾", app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name());
         method.verifyEquals("漢神百貨內睡衣", app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0].name());
@@ -58,7 +58,7 @@ Assert.verifyApparelCategory = function () {
 
 Assert.commodityButtonStatus = function () {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var commodityButtonStatus = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1].isEnabled();
         method.verifyEquals(1, commodityButtonStatus);
         }
@@ -84,7 +84,7 @@ Assert.commodityItemsShowCount = function (iCount) {
 
 Assert.categoriesList = function () {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         this.CategoriesName = [
         "服飾",
         "美妝",
@@ -133,7 +133,7 @@ Assert.buttonOnAdvancedIsEnabled = function (i) {
 
 Assert.elementsOrderInSortTab = function () {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var sortTabTableView = app.mainWindow().tableViews()[0];
         }
         else{
@@ -155,7 +155,7 @@ Assert.elementsOrderInSortTab = function () {
 
 Assert.elementsOnFilterScreen = function () {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Verify "100000 + 元" show correct.
         var priceNumber100000 = app.mainWindow().staticTexts()[0].name();
         method.verifyEquals("100000+ 元", priceNumber100000);
@@ -220,7 +220,7 @@ Assert.buttonExistOnNavigationBar = function (i, sName) {
 
 Assert.filterAttributeButtonIsTapped = function (i) {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var attributeButton = app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0];
         method.verifyEquals(1, attributeButton.isEnabled());
         }
@@ -232,7 +232,7 @@ Assert.filterAttributeButtonIsTapped = function (i) {
 
 Assert.filterAttributeButtonIsNotTapped = function (i) {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var attributeButton = app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0];
         method.verifyEquals(1, attributeButton.isEnabled());
         }
@@ -253,7 +253,7 @@ Assert.itemPageShowCorrect = function () {
     var collectionViews = app.mainWindow().collectionViews()[0];
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var addToCartButton = collectionViews.cells()[5].buttons()[0];
         var butButton = collectionViews.cells()[5].buttons()[1];
     
@@ -349,7 +349,7 @@ Assert.userLoginHistoryScreen = function (sNavBarName, sUserName) {
 
 Assert.productAddedToMyFavoritesScreen = function (productName) {
     $.delay(4);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var collectionView = app.mainWindow().collectionViews()[0];
         var productCell = collectionView.cells()[0].staticTexts()[0];
 
@@ -404,7 +404,7 @@ Assert.itemCellShowCorrectOnCategoryScreen = function (itemName) {
 
 Assert.allCategoryItemShowCorrect = function (i, itemName) {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var itemCell = app.mainWindow().tableViews()[0].cells()[i];
         var tabItemName = itemCell.name();
 
@@ -453,7 +453,7 @@ Assert.advancedButtonsOrder = function () {
 
 Assert.successfulSwitchToPhotoGridView = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Get first cell and second cell X and Y
         var firstCell = app.mainWindow().collectionViews()[0].cells()[4];
         var firstCellX = Action.getElementsOriginXString(firstCell);
@@ -485,7 +485,7 @@ Assert.successfulSwitchToPhotoGridView = function () {
 
 Assert.successfulSwitchToListingView = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Get first cell and second cell X and height
         var firstCell = app.mainWindow().collectionViews()[0].cells()[1];
         var firstCellX = Action.getElementsOriginXString(firstCell);
@@ -528,7 +528,7 @@ Assert.successfulSwitchToLargeImageView = function () {
 
 Assert.checkPriceBarShowCorrect = function (price) {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Verify price show correct.
         var priceNumber = app.mainWindow().staticTexts()[0].name();
         method.verifyEquals(price, priceNumber);
@@ -556,7 +556,7 @@ Assert.checkPriceValueShowLessThan = function (productIndex, priceIndex, value) 
 
 Assert.check18BanScreenShowCorrect = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var imageOn18Ban = app.mainWindow().images()[0];
         var backButtonOn18Ban = app.mainWindow().buttons()[0];
         var submitButtonOn18Ban = app.mainWindow().buttons()[1];
@@ -693,7 +693,7 @@ var favoriteStoreCellsShowCorrectly = app.mainWindow().collectionViews()[0].cell
 
 Assert.checkFavoriteItemButtonIsTapped = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var favoriteItemButtonIsTapped = app.mainWindow().collectionViews()[0].cells()[2].buttons()[0];
         method.verifyEquals(1, favoriteItemButtonIsTapped.isEnabled());
     }
@@ -734,7 +734,7 @@ Assert.elementsValueShouldContainText = function (elements, keyword) {
 
 Assert.check18BanScreenShowCorrectOnFavStore = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var imageOn18Ban = app.mainWindow().images()[0];
         var backButtonOn18Ban = app.mainWindow().buttons()[0];
         var submitButtonOn18Ban = app.mainWindow().buttons()[1];
@@ -760,7 +760,7 @@ Assert.check18BanScreenShowCorrectOnFavStore = function () {
 
 Assert.checkCategoryEditor = function () {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         this.CategoriesName = [
         "服飾",
         "美妝",

@@ -30,7 +30,7 @@ Action.tapItemOnCategoryScreenWhenItemPage = function (itemName) {
 //6.9
 Action.addToShoppingCartWhenItemPage = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var butButtonShoppingCart = app.mainWindow().collectionViews()[0].cells()[3].buttons()[1];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[3].buttons()[1]);
         butButtonShoppingCart.tap();
@@ -48,7 +48,7 @@ Action.tapPaymentOnProductPage = function () {
     //$.delay(sleep);
     //var slideTheScreen = app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.51, y:0.86}, endOffset:{x:0.98, y:0.04}, duration:1.7});
     $.delay(10);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var paymentOnProductPage = app.mainWindow().collectionViews()[0].cells()[6].tableViews()[0].cells()[2];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[6].tableViews()[0].cells()[2]);
         paymentOnProductPage.tap();
@@ -80,7 +80,7 @@ Action.tapAllProductOfThisStoreOnProductPage = function () {
 
 Action.tapClassificationButtonWhenItemPage = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[0]);
         tapGoodsButton.tap();
@@ -101,7 +101,7 @@ Action.tapSearchResultOfStore = function () {
 
 Action.tapChooseOnItemPage = function (i) {
     $.delay(5);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var sale = app.mainWindow().collectionViews()[0].cells()[6].tableViews()[0].cells()[i].staticTexts()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[6].tableViews()[0].cells()[i].staticTexts()[0]);
         sale.tap();
@@ -116,7 +116,7 @@ Action.tapChooseOnItemPage = function (i) {
 //6.30
 Action.tapActivityLink = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         app.mainWindow().collectionViews()[0].cells()[1].staticTexts()["活動價"].tapWithOptions({tapOffset:{x:0.55, y:0.38}});
     }
     else{
@@ -149,7 +149,7 @@ Action.chooseButtonsOnCollectionViews = function (i,j,k) {
 
 Action.tapSizeOnItem = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var tapSizeOnItem = app.mainWindow().collectionViews()[0].cells()[8];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[8]);
         tapSizeOnItem.tap();

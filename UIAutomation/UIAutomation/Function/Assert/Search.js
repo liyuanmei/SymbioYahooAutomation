@@ -12,7 +12,7 @@ Assert.textIsEnabled = function (sText) {
 
 Assert.backButtonOnSearchBar = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var backButton = app.mainWindow().buttons()[0];
         method.verifyEquals("icon back", backButton.name());
     }
@@ -36,7 +36,7 @@ Assert.autoCompletePageDisplay = function () {
 
 Assert.checkIconPlusDisplay = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var plusIcon = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
         method.verifyEquals("icon plus", plusIcon.name());
     }
@@ -79,7 +79,7 @@ Assert.searchSuggestionsPageDisplay = function () {
 
 Assert.searchButtonOnApparelCategoryIsEnabled = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Search button position
         var searchButtonValue = app.navigationBar().buttons()[1].isEnabled();
         method.verifyEquals(1, searchButtonValue);
@@ -114,7 +114,7 @@ Assert.clickOnTheDifferentIconPlusOnFirstFloorTableView = function (dKey) {
 
 Assert.searchResultsPage = function (sKey) {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //Verify the search page display properly
         var searchResultsPageName = app.navigationBar().staticTexts()[0].name();
         method.verifyEquals('"'+sKey+'"',searchResultsPageName);
@@ -144,7 +144,7 @@ Assert.ShoppingInformationPage = function () {
 
 Assert.repeatInputPageDisplay = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var mainWindow = app.mainWindow();
         var mycars = new Array()
         mycars[0] = "11111111111"
@@ -187,7 +187,7 @@ Assert.checkInRecentMemorySearch = function (sText) {
 
 Assert.repeatChoosePageDisplay = function () {
     $.delay(sleep);
-        if(target.systemVersion() == "6.1.3"){
+        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var mainWindow = app.mainWindow();
         $.delay(5);
         method.verifyTrue(app.mainWindow().tableViews()[0].cells().length<20);
@@ -223,7 +223,7 @@ Assert.elementsShouldContainTextWhenSearch = function (elements, keyword) {
 //6.9
 Assert.checkFavoriteStoreCellsShowCorrectly = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         var favoriteStoreCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells().length>2;
         $.delay(5);
         method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length>1);

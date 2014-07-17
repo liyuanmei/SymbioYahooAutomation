@@ -18,7 +18,7 @@ test("[1959901] Verify stores category show correctly.", function () {
     Action.tapStoreCategoryTab();
     $.delay(5);
 
-    if(target.systemVersion() == "6.1.3"){
+    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
         //assert stores category show correctly
         Assert.checkStoreCategoryCellsShowCorrectly();
     }
