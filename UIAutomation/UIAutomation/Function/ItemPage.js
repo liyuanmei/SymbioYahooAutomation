@@ -747,7 +747,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
 
-    //search item page with purchased
+    //search item page with purchased.
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese("《Fun sport》《拳擊專用》美式尼龍沙包袋");
