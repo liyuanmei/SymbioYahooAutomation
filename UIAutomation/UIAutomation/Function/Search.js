@@ -87,7 +87,9 @@ test("[1937859] Click the auto - complete list right side '+' Icon", function ()
     Action.searchBarInput("h");
     $.delay(10);
      
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
     //To obtain name
     var plusValue = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
     }
@@ -121,7 +123,9 @@ test("[1937860] Click on the search for 2 times suggest different keyword '+' ic
     Action.tapIconPlusOnTableView();
     $.delay(10);
      
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
     var plusValue = app.mainWindow().tableViews()[0].cells()[0].staticTexts()[0].name();
     }
     else{
@@ -150,7 +154,9 @@ test("[1937861] According to the search Suggestions", function () {
     $.delay(10);
      
     //Check the search results page display properly
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
     var plusValue = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
     }
     else{
@@ -1287,7 +1293,9 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     Action.tapButtonsInAdvancedBar(2);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //drag price bar to 253 price.
         app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x:0.00, y:0.37}, duration:12.2});
         $.delay(sleep);
@@ -1327,7 +1335,9 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     Action.tapButtonsInAdvancedBar(2);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //drag price bar to 23 price.
         app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x:0.00, y:0.37}, duration:12.2});
         $.delay(sleep);
@@ -1382,7 +1392,9 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     Action.tapButtonsInAdvancedBar(2);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //drag price bar to 5 price.
         app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x:0.00, y:0.37}, duration:12.2});
         $.delay(sleep);
@@ -1521,7 +1533,9 @@ test("[1937880] Verify voice search icon display" , function () {
     Action.cleanSearches();
     Action.tapSearchIconOnNavBar();
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         target.logElementTree();
     }
     else{

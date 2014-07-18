@@ -13,7 +13,9 @@ test("[1959919] Verify 0 result function on leaf-category", function () {
     Action.tapClassificationButtonWhenS();
     $.delay(5);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         obj.scrollDowns(1);
         $.delay(sleep);
         

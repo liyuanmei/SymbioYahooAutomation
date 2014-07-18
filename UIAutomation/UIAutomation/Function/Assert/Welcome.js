@@ -20,7 +20,9 @@ Assert.verifyWelcomeScreen = function () {
 
 Assert.personalCategoryScreen = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         this.CategoriesName = [
         "服飾",
         "美妝",

@@ -25,7 +25,9 @@ test("[1959923] Verify store rate from items collected", function () {
 
     //Tap favorites icon add a production to favorites.
     Action.tapFavoritesIcon(1);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
     }
     else{
@@ -72,7 +74,9 @@ test("[1959929] verify user can add favorite item.", function () {
     Action.goCommodityTab();
     Action.pageShow();
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var storeNameElement = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0];
         $.delay(4);
 
@@ -100,6 +104,41 @@ test("[1959929] verify user can add favorite item.", function () {
     //restore
     Action.tapFavoritesIcon(1);
     Action.tapButtonOnTabBar(2);
+
+    //favstore
+    Action.tapButtonOnTabBar(1);
+    $.delay(5);
+
+    var firstStoreName = app.windows()[0].collectionViews()[0].cells()[1].staticTexts()[0].name();
+    Action.tapFavoriteStoreIcon();
+    $.delay(10);
+
+    //do refresh
+    Action.doRefreshFavoriteStorePage();
+    $.delay(20);
+
     Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(1);
+    $.delay(15);
+
+    //check favorite store can be displayed on my favorite stores tab
+    Assert.checkStoreName(firstStoreName);
+    $.delay(sleep);
+
+    //restore settings
+    Action.tapFirstViewsOnFavoriteStorePage();
+    $.delay(5);
+
+    Assert.ckeckHeartIconOnNavigationBarIsTapped();
+
+    Action.tapCancelFavoriteStoreIcon();
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(1);
+
+    //do refresh
+    Action.doRefreshFavoriteStorePage();
+    $.delay(10);
+
     Action.tapButtonOnTabBar(0);
 });

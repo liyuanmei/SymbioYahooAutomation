@@ -57,7 +57,9 @@ test("[1959899] Verify the numbers of collected items can be increasing/decreasi
     Action.tapFavoritesIcon(1);
     $.delay(5)
     target.logElementTree();
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4") {
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var firstStoreName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].value();
 
     }
@@ -147,7 +149,9 @@ test("[1977527] verify remove an item from recently browsed", function () {
     Action.cleanBrowsingHistory();
     $.delay(5);
 
-    if(target.systemVersion() == "6.1.3"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
         Action.searchBarInputChinese("上衣");
@@ -336,7 +340,9 @@ test("[1959879] Verify the favorite items number", function () {
 
     target.logElementTree();
 
-    if(target.systemVersion() == "6.1.3"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var GoodsCollection = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{

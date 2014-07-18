@@ -14,7 +14,9 @@ Action.butButtonShoppingCart = function () {
 
 Action.chooseTheSizeOnShoppingCart = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var chooseTheSizeOnShoppingCart = app.mainWindow().collectionViews()[0].cells()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0]);
         chooseTheSizeOnShoppingCart.tap();
@@ -28,7 +30,9 @@ Action.chooseTheSizeOnShoppingCart = function () {
 
 Action.tapConfirmOnShoppingCart = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapConfirmOnShoppingCart = app.navigationBar().buttons()[1];
         method.checkInstanceExists(app.navigationBar().buttons()[1]);
         tapConfirmOnShoppingCart.tap();
@@ -49,7 +53,9 @@ Action.tapShoppingCartlist = function (i) {
 
 Action.tapDeleteOnShoppingCart = function () {
     $.delay(5);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         app.mainWindow().tableViews()[0].dragInsideWithOptions({startOffset:{x:0.99, y:0.19}, endOffset:{x:0.75, y:0.18}});
         $.delay(5);
         app.mainWindow().tableViews()[0].cells()[0].buttons()[0].tap();
@@ -135,7 +141,9 @@ Action.determineTheLoginWhenShopping = function () {
 //Because webservice, using coordinate click
 Action.clickTheBuyButtonsOnPromotionPage = function () {
     $.delay(5);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         app.mainWindow().scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.94, y:0.99}});
     }
     else{
@@ -148,7 +156,9 @@ Action.clickTheBuyButtonsOnPromotionPage = function () {
 
 Action.tapChooseOnItemPageWhenPromotion = function (i,j) {
     $.delay(5);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var sale = app.mainWindow().collectionViews()[0].cells()[i].tableViews()[0].cells()[j].staticTexts()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[i].tableViews()[0].cells()[j].staticTexts()[0]);
         sale.tap();

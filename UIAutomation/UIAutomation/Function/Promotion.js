@@ -14,7 +14,9 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
     obj.scrollDowns(1);
     $.delay(5);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Action.tapChooseOnItemPageWhenPromotion(4,0);
     }
     else{
@@ -42,7 +44,9 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
     }
     //If the promotion page 50 seconds didn't break out
     catch (err) {
-        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
             $.delay(15);
            Assert.checkSearchPage("促銷活動");
         }
@@ -89,7 +93,9 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
 
     //If the promotion page 50 seconds didn't break out
     catch (err) {
-        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
             $.delay(15);
             Assert.checkSearchPage("促銷活動");
         }

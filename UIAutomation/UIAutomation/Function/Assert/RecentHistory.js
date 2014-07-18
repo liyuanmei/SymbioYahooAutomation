@@ -6,7 +6,9 @@ Assert.checkSearchRecordPageOnRecentHisory = function () {
 Assert.searchSuggestionsPageDisplayOnRecentHisory = function () {
     var mainWindow = app.mainWindow();
     $.delay(5);
-    if (target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4") {
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<=2);
     }
     else{
@@ -18,4 +20,9 @@ Assert.searchSuggestionsPageDisplayOnRecentHisory = function () {
 Assert.autoCompletePageDisplayWhenRecentHisory = function () {
     $.delay(5);
     method.verifyTrue(app.mainWindow().tableViews()[0].cells().length<1);
+};
+
+Assert.checkGoodsTextExistOnRecentBrowse =function (i,j) {
+    $.delay(sleep);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[j].isEnabled());
 };

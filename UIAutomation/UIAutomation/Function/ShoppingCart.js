@@ -1,4 +1,4 @@
-test("[1959876] Verify the number of bottom bubble on shopping cart" , function () {
+test("[1959883] verify all delete shopping cart of goods" , function () {
     target.logDeviceInfo();
     Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
@@ -52,7 +52,7 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" , function 
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1959883] verify all delete shopping cart of goods" ,function () {
+test("[1959876] Verify the number of bottom bubble on shopping cart" ,function () {
     Action.cleanSearches();
     $.delay(5);
 
@@ -82,13 +82,40 @@ test("[1959883] verify all delete shopping cart of goods" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapSearchIconOnNavBar();
+    
+    Action.searchBarInputChinese("LULUS【03100054】L- 韓製-薄棉連帽外套-６色 現+預");
+    Action.tapKeyboardSearch();
+    Action.pageShow();
+
+    Action.tapSearchResultOfStore();
+    $.delay(sleep);
+
+    obj.scrollDowns(1);
+    $.delay(15);
+
+    Action.addToShoppingCartWhenItemPage();
+    Action.chooseTheSizeOnShoppingCart();
+    Action.tapConfirmOnShoppingCart();
+
+    //go to shopping cart page
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
     Action.tapDeleteOnShoppingCart();
-    //Action.tapConfirmOnDeleteShoppingCart();
 
     Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
+    //the remaining a product
+    Assert.checkShoppingCartListExistGoodsNum(2);
+
+    Action.tapButtonOnTabBar(3);
+    Action.tapDeleteOnShoppingCart();
 
     Assert.ShoppingCartDisplayCorrectly();
-
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -300,7 +327,9 @@ test("[1959911] Verify Shopping cart information, purchase information display c
     Action.tapShoppingCartlist(0);
     $.delay(20);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
     }
     else{
@@ -367,7 +396,9 @@ test("[1959908] Verify numbers under shopping$next buy" ,function () {
     Action.tapShoppingCartlist(0);
     $.delay(20);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
     }
     else{

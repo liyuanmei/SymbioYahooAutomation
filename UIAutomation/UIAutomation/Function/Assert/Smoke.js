@@ -17,3 +17,21 @@ Assert.checkButtonsWhenSmoke = function (i,j) {
    var checkButtonsWhenSmoke = app.mainWindow().collectionViews()[0].buttons()[i];
    method.verifyEquals(j,checkButtonsWhenSmoke.name());
 };
+
+Assert.pageDisplaysBlank = function () {
+    $.delay(sleep);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<2);
+    }
+    else{
+        method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<1);
+    } 
+};
+
+Assert.pageExistText = function (i,j) {
+    $.delay(sleep);
+    var checkSalesPromotionActivity = app.mainWindow().collectionViews()[0].staticTexts()[i];
+    method.verifyEquals(j,checkSalesPromotionActivity.name());
+};

@@ -93,7 +93,9 @@ test("[1937921] Check the switch back to the Item list" , function () {
 
     //Check store List Display
     $.delay(5);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //Check store List Display
         Assert.commodityItemsShowCount(5);
         }
@@ -116,7 +118,9 @@ test("[1937927] Check the default show 20 items",function () {
     Action.tapKeyboardSearch();
     Action.pageShow();
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //Check the default show 4 items
         Assert.commodityItemsShowCount(4);
     }
@@ -139,7 +143,9 @@ test("[1937928] Scroll screen more items should successful loaded", function () 
     Action.tapKeyboardSearch();
     Action.pageShow();
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //Check the default show 4 items
         Assert.commodityItemsShowCount(4);
         Action.pageShow();
@@ -325,7 +331,9 @@ test("[1937942] tap clear button can clear to user input.", function () {
     //go to 篩選 tab.
     Action.tapButtonsInAdvancedBar(2);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //verify the default price is 100000 +
         Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions("100000+ 元");
 
@@ -413,7 +421,9 @@ test("[1937943] check “確定” button exist on Advanced bar", function () {
     Action.tapButtonsInAdvancedBar(2);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //Verify "確定" button exist on Navigation Bar, the index of this button is 1.
         Assert.buttonExistOnNavigationBar(1, "確定");
     }
@@ -446,7 +456,9 @@ test("[1937944] Check the '確定' button" , function (){
     Action.tapButtonsInAdvancedBar(2);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Action.tapbuttonExistOnNavigationBar(1);
     }
     else{
@@ -482,7 +494,9 @@ test("[1937945] product items in list should show correct after user adjust pric
     Action.selectOptionOnSortingTabWhenSRP("價錢高到低");
     $.delay(15);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         obj.scrollDowns(1);
     }
     $.delay(10);
@@ -500,7 +514,9 @@ test("[1937945] product items in list should show correct after user adjust pric
     Action.tapButtonsInAdvancedBar(2);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //verify the default price is 100000 +
         Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions("100000+ 元");
 
@@ -525,7 +541,9 @@ test("[1937945] product items in list should show correct after user adjust pric
     Action.tapSubmitButtonOnAdvanceScreen();
     $.delay(15);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         obj.scrollDowns(1);
     }
     $.delay(10);
@@ -1007,7 +1025,9 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
     Action.chooseCategoryBrowseMode("小圖");
     $.delay(10);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //tap favorites icon, after tapped log in window show up.
         Action.tapFavoritesIcon(2);
     }
@@ -1059,7 +1079,9 @@ test("[1938008] check log in window show after unregister user tap favorites ico
     Action.chooseCategoryBrowseMode("大圖");
     $.delay(20);    
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         obj.scrollDowns(1);
     }
     else{
@@ -1146,7 +1168,9 @@ test("[1937984] login user able to add product to favorites." , function () {
     Action.tapFavoritesIcon(1);
     $.delay(10);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
     }
     else{
@@ -1201,7 +1225,9 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
     Assert.favoritesIconShowCorrect(1);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //get product price X and Y.
         var productPrice = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0];
         var productPriceX = Action.getElementsOriginXString(productPrice);
@@ -1261,7 +1287,9 @@ test("[1937997] On photo grid view register user able to add product to his favo
     Action.chooseCategoryBrowseMode("小圖");
 
     //Tap favorites icon add a production to favorites.
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Action.tapFavoritesIcon(2);
     }
     else{
@@ -1270,7 +1298,9 @@ test("[1937997] On photo grid view register user able to add product to his favo
 
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
     }
     else{
@@ -1291,7 +1321,9 @@ test("[1937997] On photo grid view register user able to add product to his favo
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Action.tapFavoritesIcon(2);
     }
     else{
@@ -1506,7 +1538,9 @@ test("[1938013] check 共xxxx筆結果." , function () {
     $.delay(5);
 
     //verify 共xxxx筆結果 show correct.
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1536,7 +1570,9 @@ test("[1938024] store Logo below store name" , function () {
     $.delay(5);
 
     //verify 共xxxx筆結果 show correct.
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1723,7 +1759,9 @@ test("[1937941] Check the 'remove' button shows ", function () {
     //Tap "可刷卡" and verify 清除 button show up.
     Action.tapButtonOnFilterAttributeScreen(0);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var attributeCollectView = app.mainWindow().collectionViews()[0];
     }
     else{
@@ -1934,7 +1972,9 @@ test("[1938019] Check the default show 20 stores", function () {
     Action.tapStoreTab();
     $.delay(10);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Assert.commodityItemsShowCount(8);
     }
     else{
@@ -2034,7 +2074,9 @@ test("[1937989] Click the commodity pictures", function () {
     Action.tapItemOnProductListScreen();
     $.delay(15);
     target.logElementTree();
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){   
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {   
         obj.scrollDowns(1);
         $.delay(sleep);
 
@@ -2244,7 +2286,9 @@ test("[1937925] Switch to a shop List, check 'total XXX pen results' ", function
 
     //verify 共xxxx筆結果 show correct.
     target.logElementTree();
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
 
     }
@@ -2336,7 +2380,9 @@ test("[1937950] check have a video display options", function () {
     $.delay(sleep);
     target.logElementTree();
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Assert.chooseButtonsOnAdvanced(0,6,"有影音");
 
     }
@@ -2476,7 +2522,9 @@ test("[1937993] view-Check the goods price display",function () {
     target.logElementTree();
 
     //first parameter is second product, second parameter is the  location of price in product cell.
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Assert.productPriceShowCorrect(2,0);
 
     }
@@ -2590,7 +2638,9 @@ test("[1937924] item－list check 共xxxx筆結果." , function () {
     Action.pageShow();
 
     //verify 共xxxx筆結果 show correct.
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
 
     }
@@ -2620,7 +2670,9 @@ test("[1937974] Check the goods pictures showed." , function () {
 
     Assert.checkItemName(cellItems);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
 
     }

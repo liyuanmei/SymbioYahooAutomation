@@ -24,3 +24,13 @@ Action.tapStoreNameOnNavigationBar = function (){
     method.checkInstanceExists(app.navigationBar().buttons()[0]);
     tapStoreName.tap();
 };
+
+Action.slidingDeleteGoodsCollection = function () {
+    $.delay(sleep);
+    app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.99, y:0.23}, endOffset:{x:0.59, y:0.23}, duration:2.2});
+
+    $.delay(sleep);
+    var tapDeleteGoodsCollection = app.mainWindow().collectionViews()[0].cells()[0].buttons()["刪除"];
+    method.checkInstanceExists(tapDeleteGoodsCollection);
+    tapDeleteGoodsCollection.tap();
+};

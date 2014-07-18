@@ -46,7 +46,9 @@ test("[1977478] [barcode]Discovery Stream root view " , function () {
     Action.tapCancelButtonInAdvancedBar();
     $.delay(sleep);
 
-    if (target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4") {
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Action.tapBackOnSearchBar();
     };
 
@@ -69,7 +71,9 @@ test("[1977479] [barcode]Favorite Stores root view " , function () {
 
     Action.tapCancelButtonInAdvancedBar();
 
-    if (target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4") {
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         $.delay(sleep);
         Action.tapBackOnSearchBar();
     };
@@ -94,7 +98,9 @@ test("[1977480] [barcode]Categories root view " , function () {
 
     Action.tapCancelButtonInAdvancedBar();
 
-    if (target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4") {
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         $.delay(sleep);
         Action.tapBackOnSearchBar();
     };

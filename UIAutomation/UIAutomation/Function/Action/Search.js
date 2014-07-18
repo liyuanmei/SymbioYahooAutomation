@@ -1,6 +1,8 @@
 Action.tapSearchIconOnNavBar = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapSearchIconOnNavBar = app.navigationBar().buttons()[1];
 
         method.checkInstanceExists(tapSearchIconOnNavBar);
@@ -15,7 +17,9 @@ Action.tapSearchIconOnNavBar = function () {
 
 Action.tapBackOnSearchBar = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapBackOnSearchBar = app.mainWindow().buttons()[0];
 
         method.checkInstanceExists(tapBackOnSearchBar);
@@ -36,7 +40,9 @@ Action.searchBarInput = function (skey) {
 
 Action.tapIconPlusOnTableView = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapIconPlusOnTableView = app.mainWindow().tableViews()[0].cells()[1].buttons()[0];
 
         method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[1].buttons()[0]);
@@ -52,7 +58,9 @@ Action.tapIconPlusOnTableView = function () {
 //Click the icon plue different twice.
 Action.clickOnTheDifferentIconPlus = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
 
         method.checkInstanceExists(clickOnTheDifferentIconPlus);
@@ -89,7 +97,9 @@ Action.tapKeyboardDelete = function () {
 //clean Searches
 Action.cleanSearches = function () {
     $.delay(3);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var menuButton = app.navigationBar().buttons()[0];
 
         method.checkInstanceExists(menuButton);
@@ -192,7 +202,9 @@ Action.clickOnTheDifferentIconPlusOnFirstFloorTableView = function () {
 
 Action.goBackOnSearchPage = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var goBack = app.navigationBar().buttons()[1];
 
         method.checkInstanceExists(goBack);
@@ -215,7 +227,9 @@ Action.goApparelCategoryWhenSearchSettingOpen = function (){
 
 Action.backToAllCategory = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
          var backToAllCategory = app.navigationBar().buttons()[0];
 
         method.checkInstanceExists(backToAllCategory);
@@ -228,7 +242,9 @@ Action.backToAllCategory = function () {
 
 Action.tapSearchIconOnApparelCategory = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapSearchIconOnApparelCategory = app.navigationBar().buttons()[1];
 
         method.checkInstanceExists(tapSearchIconOnApparelCategory);
@@ -251,7 +267,9 @@ Action.goFashionWomenClothingCategory = function () {
 
 Action.tapBackSubclassification = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapBackSubclassification = app.navigationBar().buttons()[0];
 
         method.checkInstanceExists(tapBackSubclassification);
@@ -273,7 +291,9 @@ Action.goCoatCategory = function () {
 
 Action.tapGoodsButton = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1];
 
         method.checkInstanceExists(tapGoodsButton);
@@ -299,7 +319,9 @@ Action.englishInputMethod = function () {
 
 Action.goCategoryWhenSearchSettingOpen = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var goCategoryWhenSearchSettingOpen = app.tabBar().buttons()[2];
         method.checkInstanceExists(app.tabBar().buttons()[2]);
         goCategoryWhenSearchSettingOpen.tap();
@@ -322,7 +344,9 @@ Action.repeatInputWhenSearch = function () {
 
 Action.repeatChooseWhenSearch = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
        for (var i = 0; i < 4 ; i++) {
            app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].tap();
            Action.goBackOnSearchPage();
@@ -338,7 +362,9 @@ Action.repeatChooseWhenSearch = function () {
 
 Action.tapStoreTab = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapStoreTab = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1]);
     }
@@ -391,7 +417,9 @@ Action.doSearch = function (sKeyWords) {
 **/
 Action.tapClassificationButtonWhenS = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0]);
         tapGoodsButton.tap();
@@ -406,7 +434,9 @@ Action.tapClassificationButtonWhenS = function () {
 //6.9
 Action.tapDetermineInAdvancedBarWhenSRP = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapDetermineInAdvancedBarWhenSRP = app.mainWindow().navigationBar().buttons()["確定"];
         method.checkInstanceExists(app.mainWindow().navigationBar().buttons()["確定"]);
         tapDetermineInAdvancedBarWhenSRP.tap();

@@ -2,22 +2,26 @@
 //three
 test("[1959928] Verify user view promotion item link." , function () {
     target.logDeviceInfo();
-    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("預購");
+    Action.searchBarInputChinese("Messa 米莎");
     Action.tapKeyboardSearch();
-    Action.pageShow();
-
-    //Tap item on list to navigate to item page.
-    Action.tapItemOnProductListScreen();
     $.delay(sleep);
-    target.logElementTree();
 
-    var purchase = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
+    Action.tapStoreTab();
+    $.delay(10);
 
-    Assert.elementsValueShouldContainText(purchase,"預購");
+    Action.tapSearchResultOfStore();
+    $.delay(sleep);
+
+    Action.tapStoreNameLinkOnFavoriteStores();
+    $.delay(15);
+
+    Assert.checkSalesPromotionActivityOnStore(1,2);
+
+    //check exist links
+    Assert.checkLinkCellsDisplay();
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);

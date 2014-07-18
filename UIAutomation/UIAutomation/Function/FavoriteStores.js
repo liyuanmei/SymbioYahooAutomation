@@ -1,4 +1,5 @@
 test("[1954571] verify 18 ban show correct.", function () {
+    target.logDeviceInfo();
     Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
@@ -138,7 +139,9 @@ test("[1959907] verify the number of store items,collected number with my favori
     $.delay(15);
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var storeItem = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[4];
         var collection = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[6];
     }

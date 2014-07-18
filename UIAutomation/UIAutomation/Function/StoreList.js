@@ -7,6 +7,8 @@ test("[1977497] [bug case]search后查看store list然後在返回再查看store
     Action.searchBarInputChinese("S.DIAMOND鑽石糖甜點");
     Action.tapKeyboardSearch();
     Action.pageShow();
+
+    //check list view
     Assert.longtextSearchPageDisplay();
 
     Action.tapStoreTab();
@@ -15,6 +17,7 @@ test("[1977497] [bug case]search后查看store list然後在返回再查看store
     Action.tapSearchResultOfStore();
     $.delay(3);
 
+    //check list view
     Assert.longtextSearchPageDisplay();
 
     Action.tapButtonOnTabBar(2);

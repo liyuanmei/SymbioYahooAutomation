@@ -1,6 +1,8 @@
 Assert.checkGoodsAndStoreTabDisplay = function  () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0].name());
         method.verifyEquals("商店",app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1].name());
     }
@@ -51,7 +53,9 @@ Assert.elementsOnFilterScreenWhenSRP = function () {
     var circleImage1 = app.mainWindow().images()[0].name();
     var circleImage2 = app.mainWindow().images()[1].name();
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var barImage1 = app.mainWindow().images()[3].name();
         var barImage2 = app.mainWindow().images()[2].name();
     }
@@ -70,7 +74,9 @@ Assert.elementsOnFilterScreenWhenSRP = function () {
 
     for (var i = 0; i < 9; i++){
         $.delay(sleep);
-        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+        var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
     }
         else{
@@ -84,7 +90,9 @@ Assert.itemPageShowCorrectOnCoatSearchPage = function (sTitle) {
     var collectionViews = app.mainWindow().collectionViews()[0];
 
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //Assert buy and add to cart button show correct.
         var addToCartButton = collectionViews.cells()[4].buttons()[0];
         var butButton = collectionViews.cells()[4].buttons()[1];
@@ -101,7 +109,9 @@ Assert.itemPageShowCorrectOnCoatSearchPage = function (sTitle) {
 
 Assert.productAddedToMyFavoritesScreenWhenSRP = function (productName) {
     $.delay(4);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var collectionView = app.mainWindow().collectionViews()[0];
         var productCell = collectionView.cells()[0].staticTexts()[0];
 
@@ -126,7 +136,9 @@ Assert.productRemovedFromMyFavoritesScreenWhenSRP = function (productName) {
 
 Assert.checkButtonOnStore = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var storeClassify = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[0];
         var storeCommodity = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[1];
 
@@ -161,7 +173,9 @@ Assert.heartIconShowCorrect = function (productIndex) {
 
 Assert.checkPriceBarShowCorrectWhenSRP = function (price) {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //Verify price show correct.
         var priceNumber = app.mainWindow().staticTexts()[1].name();
         method.verifyEquals(price, priceNumber);
@@ -244,7 +258,9 @@ Assert.elementsOnFilterScreenWhenOptions = function () {
 
     for (var i = 0; i < 9; i++){
         $.delay(sleep);
-        if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+        var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
             method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
         }
         else{

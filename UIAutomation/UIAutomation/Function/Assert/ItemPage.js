@@ -6,7 +6,9 @@ Assert.checkSalesPromotionActivity = function () {
 
 Assert.checkPaymentAndDelivery = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var delivery= app.mainWindow().collectionViews()[0].staticTexts()[1].name();
         var payment = app.mainWindow().collectionViews()[0].staticTexts()[0].name();
         method.verifyEquals("交貨方式", delivery);
@@ -22,8 +24,16 @@ Assert.checkPaymentAndDelivery = function () {
 
 Assert.checkClassificationButtonIsEnabled = function (i) {
     $.delay(sleep);
-    var classificationButtonIsEnabled = app.mainWindow().collectionViews()[0].cells()[1].buttons()[i];
-    method.verifyEquals(1, classificationButtonIsEnabled.isEnabled());
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var classificationButtonIsEnabled = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[i];
+        method.verifyEquals(1, classificationButtonIsEnabled.isEnabled());
+    }
+    else{
+        var classificationButtonIsEnabled = app.mainWindow().collectionViews()[0].cells()[1].buttons()[i];
+        method.verifyEquals(1, classificationButtonIsEnabled.isEnabled());
+    }
 };
 
 //6.9
@@ -50,7 +60,9 @@ Assert.checkShareButtonShowOnItemPage = function () {
 
 Assert.checkTheGrayOptionsIsNotTaped = function () {
     $.delay(sleep);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         var tapConfirmOnShoppingCart = app.navigationBar().buttons()[1];
         assertNotEquals("確定",tapConfirmOnShoppingCart);
     }
@@ -64,4 +76,9 @@ Assert.checkSalesPromotionActivityOnStore = function (j,i) {
     $.delay(sleep);
     var checkSalesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[j].staticTexts()[i];
     method.verifyEquals("內容",checkSalesPromotionActivity.name());
+};
+
+Assert.checkLinkCellsDisplay = function () {
+    $.delay(sleep);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length>1);
 };

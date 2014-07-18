@@ -346,26 +346,22 @@ test("[1953629] Verify the store page, our classification.", function () {
     obj.scrollDowns(2);
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Action.tapChooseOnItemPage(3);
     }
     else{
         Action.tapChooseOnItemPage("看本店家全部商品");
     }
     
-    $.delay(5);
+    $.delay(10);
 
     //tap  store classification
     Action.tapheartIconOnStoreWhenSRP();
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
-        target.logElementTree();
-    }
-    else{
-        Assert.checkClassificationButtonIsEnabled(1);
-    }
-
+    Assert.checkClassificationButtonIsEnabled(1);
     Assert.checkClassificationShowListOnItemPage();
 
     //restore
@@ -445,7 +441,9 @@ test("[1959917] Verify item link,promotion link,gifi link work well.", function 
 
     Assert.itemPageShowCorrect();
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Action.tapChooseOnItemPage(0);
     }
     else{
@@ -520,7 +518,9 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
     obj.scrollDowns(1);
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Action.tapChooseOnItemPageWhenBuy(4,0);
     }
     else{
@@ -696,7 +696,6 @@ test("[1953636] verify favorite items", function () {
 
 test("[1959931] Verify repeatedly into the item page to see the gifts and add the number of goods.", function () {
     target.logDeviceInfo();
-    //login the app
     Action.cleanSearches();
     $.delay(sleep);
 
@@ -714,8 +713,10 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     obj.scrollDowns(1);
     $.delay(10);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
-        Action.tapChooseOnItemPageWhenBuy(3,0);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapChooseOnItemPageWhenBuy(4,0);
     }
     else{ 
         Action.tapChooseOnItemPage("附送贈品");
@@ -723,22 +724,66 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     
     Action.goBack();
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
-        Action.tapChooseOnItemPageWhenBuy(3,0);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapChooseOnItemPageWhenBuy(4,0);
     }
     else{ 
         Action.tapChooseOnItemPage("附送贈品");
     }
     Action.goBack();
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
-        Action.tapChooseOnItemPageWhenBuy(3,0);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapChooseOnItemPageWhenBuy(4,0);
     }
     else{ 
         Action.tapChooseOnItemPage("附送贈品");
     }
     Assert.checkSearchPage("贈品");
 
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+
+    //search item page with purchased
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese("《Fun sport》《拳擊專用》美式尼龍沙包袋");
+    Action.tapKeyboardSearch();
+    $.delay(10);
+
+    Action.tapSearchResultOfStore();
+    $.delay(15);
+    
+    obj.scrollDowns(1);
+    $.delay(sleep);
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapChooseOnItemPageWhenBuy(4,0);
+    }
+    else{
+        Action.tapChooseOnItemPage("加購商品");
+    }
+    Assert.checkSearchPage("加購商品");
+    Action.goBack();
+
+    $.delay(sleep);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapChooseOnItemPageWhenBuy(4,0);
+    }
+    else{
+        Action.tapChooseOnItemPage("加購商品");
+    }
+    Assert.checkSearchPage("加購商品");
+    Action.goBack();
+
+    $.delay(5);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -795,7 +840,9 @@ test("[1953629] Verify the store page, our goods.", function () {
     obj.scrollDowns(2);
     $.delay(sleep);
 
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         Action.tapChooseOnItemPage(3);
     }
     else{

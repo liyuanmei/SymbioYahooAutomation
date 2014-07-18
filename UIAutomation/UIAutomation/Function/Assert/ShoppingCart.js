@@ -23,7 +23,9 @@ Assert.textExistOnShoppingCart = function (elements) {
 
 Assert.checkCollectionScreenCorrect = function(){
     $.delay(5);
-    if(target.systemVersion() == "6.1.3" || target.systemVersion() == "6.1.4"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         method.verifyEquals("你的最愛商店",app.mainWindow().collectionViews()[0].staticTexts()[1].name());
         method.verifyEquals("你可能會喜歡的商店",app.mainWindow().collectionViews()[0].staticTexts()[2].name());
     }
@@ -55,4 +57,9 @@ Assert.checkShoppingCartInformationAndPurchaseInformationDisplay = function (i,j
 Assert.checkGoodsExist = function () {
     $.delay(sleep);
     method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<=2);
+};
+
+Assert.checkShoppingCartListExistGoodsNum = function (i) {
+    $.delay(sleep);
+    method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<i);
 };
