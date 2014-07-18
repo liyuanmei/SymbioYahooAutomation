@@ -27,7 +27,10 @@ test("[1953619] Verify the for piece goods discount", function () {
 
     $.delay(10);
 
+    //check go to "促銷活動"" page
     Assert.checkSearchPage("促銷活動");
+
+    //check "促銷活動"  content exist
     Assert.checkSalesPromotionActivity();
 
     Action.tapButtonOnTabBar(2);
@@ -63,10 +66,12 @@ test("[1953617] Verify list of activities the for full discount activity list", 
     $.delay(5);
 
     try{
+        //check full discount
         var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
         Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
     }
     catch (err) {
+        //Without access to relevant data, so the check go to "促銷活動" page
         Assert.checkSearchPage("促銷活動");
     }
 
@@ -74,9 +79,11 @@ test("[1953617] Verify list of activities the for full discount activity list", 
     $.delay(30);
 
     try{
+        //tap link ,check link page
         Assert.checkTextShowCorrectly(2,"活動辦法");
     }
     catch (err) {
+        //30 seconds without display, so the check go to "促銷活動" page
         Assert.checkSearchPage("促銷活動");
     }
 
@@ -114,6 +121,7 @@ test("[1953614] Verify the for full discount activity list", function () {
     $.delay(5);
 
     try{
+        //check full discount
         var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
         Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
     }
@@ -427,6 +435,7 @@ test("[1959917] Verify item link,promotion link,gifi link work well.", function 
     Action.tapActivityLink();
     $.delay(sleep);
 
+    //check go to "促銷活動"" page
     Assert.checkSearchPage("促銷活動");
     Action.goBack();
     $.delay(10);
@@ -445,6 +454,7 @@ test("[1959917] Verify item link,promotion link,gifi link work well.", function 
     
     $.delay(sleep);
 
+    //check go to "促銷活動"" page
     Assert.checkSearchPage("促銷活動");
 
     //restore
@@ -527,7 +537,6 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
     
     //buy to goods
     Action.addToShoppingCartWhenItemPage();
-    //Action.chooseButtonsOnCollectionViews(0,3,1);
 
     Action.chooseTheSizeOnShoppingCart();
     Action.tapConfirmOnShoppingCart();
@@ -584,7 +593,6 @@ test("[1959897] Verify purchased product in the shopping cart display" ,function
     $.delay(5);
 
     Action.addToShoppingCartWhenItemPage();
-    //Action.chooseButtonsOnCollectionViews(0,4,1);
     $.delay(5);
 
     Action.tapSizeOnItem();
@@ -795,7 +803,6 @@ test("[1953629] Verify the store page, our goods.", function () {
     }
     
     $.delay(5);
-
     Assert.checkStorelistShowCorrect();
 
     //restore

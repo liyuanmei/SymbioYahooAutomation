@@ -1,27 +1,25 @@
 test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     target.logDeviceInfo();
-    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
-
-    Action.goApparelCategoryWhenShoppingCart();
     $.delay(sleep);
 
-    Action.goCommodityTab();
+    Action.goCategoryWhenSearchSettingOpen();
+    Action.tapSearchIconOnNavBar();
+     
+    Action.searchBarInputChinese("LULUS【03100054】L- 韓製-薄棉連帽外套-６色 現+預");
+    Action.tapKeyboardSearch();
     Action.pageShow();
 
-    //Tap item on list to navigate to item page.
-    Action.tapItemOnProductListScreen();
-    $.delay(15);
+    Action.tapSearchResultOfStore();
+    $.delay(sleep);
 
     obj.scrollDowns(1);
-    
-    $.delay(10);
-     
-    Action.butButtonShoppingCart();
+    $.delay(15);
 
+    Action.addToShoppingCartWhenItemPage();
     Action.chooseTheSizeOnShoppingCart();
     Action.tapConfirmOnShoppingCart();
-    
+
     //go to shopping cart page
     Action.tapButtonOnTabBar(3);
     $.delay(5);
@@ -33,11 +31,12 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     $.delay(5);
 
     Action.tapShoppingCartlist(0);
-    $.delay(20);
+    $.delay(25);
 
     Action.tapSettleAccounts();
     $.delay(20);
     
+    //Verify to enter information page
     Assert.tapSettleAccountsOnShopping(6,"購物車明細 (1)");
     $.delay(10);
 
@@ -45,16 +44,22 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     $.delay(sleep);
 
     try{
+        //Verify "全家繳費不取貨" exist
         var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()["全家繳費不取貨"];
         Assert.elementsShouldContainText(convenienceStorePayment,"全家繳費不取貨");
+
+        Action.tapFamilyPaymentNotPickup();
     }
     catch (err) {
-        //No data
+        //No data and Verify "超商付款" display
         $.delay(sleep);
-        target.logElementTree();
+        var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()["超商付款"];
+        Assert.elementsShouldContainText(convenienceStorePayment,"超商付款");
     }
 
     Action.tapSettleAccounts();
+
+    //Verify into the complete order page
     Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(0,"本店購物車");
     Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(2,"完成訂購");
 
@@ -117,11 +122,14 @@ test("[1959916] Verify order inquiry details page can show normally" ,function (
 
     Action.tapSettleAccounts();
     $.delay(20);
-
+    
+    //Verify to enter information page
     Assert.tapSettleAccountsOnShopping(6,"購物車明細 (1)");
     $.delay(10);
 
     Action.tapSettleAccounts();
+
+    //Verify into the complete order page
     Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(0,"本店購物車");
     Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(2,"完成訂購");
     //restore
@@ -144,6 +152,7 @@ test("[1959918] Verify user can change other delivery places." ,function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     
+    //Choose to have family mart or 711 convenience stores 
     Action.searchBarInputChinese("SunShine 防水鏤空果凍平底包鞋");
     Action.tapKeyboardSearch();
     Action.pageShow();
@@ -176,7 +185,8 @@ test("[1959918] Verify user can change other delivery places." ,function () {
 
     Action.tapSettleAccounts();
     $.delay(20);
-
+    
+    //Verify to enter information page
     Assert.tapSettleAccountsOnShopping(6,"購物車明細 (1)");
     $.delay(10);
 
