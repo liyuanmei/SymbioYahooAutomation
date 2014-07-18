@@ -113,9 +113,11 @@ public class StorePage extends ActivityInstrumentationTestCase2<Activity> {
         solo.sleep(ValidationText.WAIT_TIME_LONG);
         TestHelper.swipeUp(solo, 1);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        try{
+        try
+        {
             solo.clickOnText(ValidationText.SHOPPING_TIPS);
-        } catch (AssertionError e ){
+        } catch (AssertionError e)
+        {
             TestHelper.swipeUp(solo, 1);
             solo.clickOnText(ValidationText.SHOPPING_TIPS);
         }

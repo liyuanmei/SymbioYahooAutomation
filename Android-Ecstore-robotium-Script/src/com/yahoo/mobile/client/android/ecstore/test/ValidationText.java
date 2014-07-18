@@ -35,6 +35,8 @@ public class ValidationText {
     public static final String SEARCH_ALL_CATEGORIES = "搜尋全部分類";
 
     public static final String NEWS = "最新動態";
+    
+    public static final String PRE_ORDER = "預購";
 
     public static final String BECOME_EFFECTIVE = "待生效";
 
@@ -101,6 +103,8 @@ public class ValidationText {
     public static final String ALL_CATEGORIES = "全部分類";
 
     public static final String CATEGORIES = "分類";
+    
+    public static final String SUB_TOTAL = "小計";
 
     public static final String OK = "確定";
 

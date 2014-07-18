@@ -1108,6 +1108,38 @@ public final class Action {
     }
 
     /**
+     * Set the default value is false.
+     */
+    private static boolean actuals = false;
+
+    /**
+     * Search text on web view.
+     *
+     * @param solo
+     *            the Solo instance
+     * @param text
+     *            the text will be searched on the web view
+     * @throws Exception
+     *             if has error
+     */
+    public static void searchClassNameOnWebview(final Solo solo, final String text)
+            throws Exception {
+
+        for (WebElement web : solo.getCurrentWebElements()) {
+            Log.i("number", web.getText().toString());
+            Log.i("number", web.getClassName().toString());
+            if (web.getClassName().toString().trim().equals(text)) {
+
+                actual = true;
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+
+            }
+
+        }
+        junit.framework.Assert.assertTrue("Class name not found", actuals);
+    }
+
+    /**
      * Enter jacket page.
      *
      * @param solo

@@ -110,7 +110,7 @@ public class SRP extends ActivityInstrumentationTestCase2 <Activity> {
         assertTrue(
                 "Goods or stores is not display.",
                 solo.searchText(ValidationText.COMMODITY)
-                        && solo.searchText(ValidationText.COMMODITY));
+                        && solo.searchText(ValidationText.SHOP));
 
     }
 
@@ -1087,7 +1087,7 @@ ValidationText.PLEASE_LOGIN_ACCOUNT, 1, ValidationText.WAIT_TIME_LONGER)){
     }
 
     /**
-     * 1938025:Store name blew store count.
+     * 1938025:Verify store count displays.
      * @throws Exception  if has error
      */
     public final void testStoreCountDisplay() throws Exception {
@@ -1097,14 +1097,9 @@ ValidationText.PLEASE_LOGIN_ACCOUNT, 1, ValidationText.WAIT_TIME_LONGER)){
         // click on store tab
         Action.clickView(solo, "category_tab_primary_title", 1);
 
-        // compare the position of two views
-        boolean flag = TestHelper.positionCompare(solo,
-                "listitem_storelist_store_namerow", 0,
-                "listitem_storelist_store_item_count", 0, 1);
-
-        if (!flag) {
-            assertTrue("Store name is not below store count.", false);
-        }
+        TextView count = (TextView)
+                solo.getView("listitem_storelist_store_item_count");
+        assertTrue("Product count not displayed.", count.isShown());
 
     }
 
