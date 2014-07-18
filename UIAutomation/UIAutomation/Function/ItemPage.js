@@ -521,7 +521,7 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Action.tapChooseOnItemPageWhenBuy(4,0);
+        Action.tapChooseOnItemPageWhenBuy(5,0);
     }
     else{
         Action.tapChooseOnItemPage("加購商品");
@@ -763,7 +763,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Action.tapChooseOnItemPageWhenBuy(4,0);
+        Action.tapChooseOnItemPageWhenBuy(5,0);
     }
     else{
         Action.tapChooseOnItemPage("加購商品");
@@ -775,7 +775,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Action.tapChooseOnItemPageWhenBuy(4,0);
+        Action.tapChooseOnItemPageWhenBuy(5,0);
     }
     else{
         Action.tapChooseOnItemPage("加購商品");
