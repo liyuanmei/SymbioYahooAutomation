@@ -127,6 +127,8 @@ public class ValidationText {
     public static final String HAS_ADDED_COLLECTION = "已加入商品收藏";
 
     public static final String HAS_REMOVED_COLLECTION = "此商品收藏已移除";
+    
+    public static final String CANNOT_ADD_NOW = "目前無法移除商品收藏";
 
     public static final String HAS_ADDED_COMMODITY = "已加入最愛商店";
 

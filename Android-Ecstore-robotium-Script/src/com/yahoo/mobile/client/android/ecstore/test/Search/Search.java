@@ -782,7 +782,7 @@ public class Search extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
      * 1937878:Clear into the recent search keyword.
-     * 
+     *
      * @throws Exception
      *             if has error
      */

@@ -521,25 +521,6 @@ public class SRP extends ActivityInstrumentationTestCase2 <Activity> {
 
     }
 
-    /**
-     * 1937965:HasStock option display.
-     * @throws Exception if has error
-     */
-    public final void testHasStockOptionDisplay() throws Exception {
-
-        Action.enterToJacketAfterSearch(solo);
-
-        // navigate to Filter screen
-        Action.enterAdvancedSortPage(solo);
-
-        // Action.closeSoftKeyBoard(solo);
-
-        String view_id = "tb_hasstock";
-        Action.clickView(solo, view_id);
-        assertTrue("Has stock button is not selected.",
-                ((ToggleButton) solo.getView(view_id)).isChecked());
-
-    }
 
     /**
      * 1937967:Unselected "Has Stock".

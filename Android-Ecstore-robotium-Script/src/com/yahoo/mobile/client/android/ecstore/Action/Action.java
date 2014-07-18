@@ -672,7 +672,7 @@ public final class Action {
         boolean alreadyAdd;
 
         // Get toast text.
-        if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)) {
+        if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)){
             alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
             junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
         } else {

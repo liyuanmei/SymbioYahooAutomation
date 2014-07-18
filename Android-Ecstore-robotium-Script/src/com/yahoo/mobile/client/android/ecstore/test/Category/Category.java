@@ -1368,7 +1368,7 @@ public class Category extends ActivityInstrumentationTestCase2<Activity> {
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         TextView btnSort = (TextView) solo.getView("indicator_sort");
 
-        assertTrue("The default tab is incorrect.", btnSort.isShown());
+        assertTrue("The default tab is incorrect.", btnSort.isEnabled());
 
     }
 
