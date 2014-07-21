@@ -1,10 +1,11 @@
 test("[1937852] click on the search", function () {
     target.logDeviceInfo();
+    Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    target.logElementTree();
+
     Assert.keyboardIsEnabled();
-    Action.tapBackOnSearchBar();
+    Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
 });
 
@@ -13,7 +14,7 @@ test("[1937854] look at the search bar tooltip text display", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Assert.textIsEnabled("搜尋全部商品");
-    Action.tapBackOnSearchBar();
+    Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
 });
 
@@ -25,7 +26,7 @@ test("[1937855] Check return icon display", function () {
      
     //Check return icon display
     Assert.backButtonOnSearchBar();
-    Action.tapBackOnSearchBar();
+    Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
 });
 
@@ -33,7 +34,7 @@ test("[1937856] Click to return to the icon", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.tapBackOnSearchBar();
+    Action.tapReturnOnSearchBar();
     $.delay(sleep);
      
     //Check return page display
@@ -50,13 +51,13 @@ test("[1937857] Auto complete function", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInputChinese("h");
     $.delay(5);
      
     //check autoComplete page display
     Assert.autoCompletePageDisplay();
     $.delay(sleep);
-    Action.tapBackOnSearchBar();
+    Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
 });
 
@@ -72,7 +73,7 @@ test("[1937858] Auto complete layout view", function () {
     $.delay(10);
      
     Assert.checkIconPlusDisplay();
-    Action.tapBackOnSearchBar();
+    Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
 });
 
@@ -87,16 +88,9 @@ test("[1937859] Click the auto - complete list right side '+' Icon", function ()
     Action.searchBarInput("h");
     $.delay(10);
      
-    var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
     //To obtain name
     var plusValue = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
-    }
-    else{
-    //To obtain name
-    var plusValue = app.mainWindow().tableViews()[1].cells()[1].staticTexts()[0].name();
-    }
+
     //tap plus
     Action.tapIconPlusOnTableView();
     $.delay(sleep);
@@ -104,7 +98,7 @@ test("[1937859] Click the auto - complete list right side '+' Icon", function ()
     //check the auto - complete list right side '+' Icon
     Assert.tapIconPlusOnTableViewCheckTextIsEnabled(plusValue);
     $.delay(sleep);
-    Action.tapBackOnSearchBar();
+    Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
 });
 
@@ -123,14 +117,7 @@ test("[1937860] Click on the search for 2 times suggest different keyword '+' ic
     Action.tapIconPlusOnTableView();
     $.delay(10);
      
-    var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
     var plusValue = app.mainWindow().tableViews()[0].cells()[0].staticTexts()[0].name();
-    }
-    else{
-    var plusValue = app.mainWindow().tableViews()[1].cells()[0].staticTexts()[0].name();
-    }
     
     Action.clickOnTheDifferentIconPlus();
     $.delay(sleep);
@@ -138,7 +125,7 @@ test("[1937860] Click on the search for 2 times suggest different keyword '+' ic
     // check different keyword '+' icon on the right
     Assert.clickOnTheDifferentIconPlusCheckTextIsEnabled(plusValue);
     $.delay(sleep);
-    Action.tapBackOnSearchBar();
+    Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
 });
 
@@ -154,14 +141,7 @@ test("[1937861] According to the search Suggestions", function () {
     $.delay(10);
      
     //Check the search results page display properly
-    var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
     var plusValue = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
-    }
-    else{
-    var plusValue = app.mainWindow().tableViews()[1].cells()[1].staticTexts()[0].name();
-    }
     
     Action.tapIconPlusOnTableView();
     $.delay(5);
@@ -172,9 +152,10 @@ test("[1937861] According to the search Suggestions", function () {
     $.delay(sleep);
      
     //go back
-    Action.goBackOnSearchPage();
-    Action.tapBackOnSearchBar();
-    Action.goDiscoveryStream();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
      
     //clean Searches
     Action.cleanSearches();
@@ -1263,11 +1244,10 @@ test("[1977507] [bug case]verify search result when enter special characters in 
     $.delay(sleep);
 
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInput(",");
+    Action.searchBarInputChinese("'");
     Action.tapKeyboardSearch();
-    $.delay(5);
+    Action.pageShow();
   
-    target.logElementTree();
     //verify exist to goods
     Assert.checkFavoriteStoreCellsShowCorrectly();
      

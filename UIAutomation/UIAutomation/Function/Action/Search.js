@@ -40,37 +40,19 @@ Action.searchBarInput = function (skey) {
 
 Action.tapIconPlusOnTableView = function () {
     $.delay(sleep);
-    var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
-        var tapIconPlusOnTableView = app.mainWindow().tableViews()[0].cells()[1].buttons()[0];
+    var tapIconPlusOnTableView = app.mainWindow().tableViews()[0].cells()[1].buttons()[0];
 
-        method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[1].buttons()[0]);
-        tapIconPlusOnTableView.tap();
-    }
-    else{
-        var tapIconPlusOnTableView = app.mainWindow().tableViews()[1].cells()[1].buttons()[0];
-        method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[1].buttons()[0]);
-        tapIconPlusOnTableView.tap();
-    }
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[1].buttons()[0]);
+    tapIconPlusOnTableView.tap();
 };
 
 //Click the icon plue different twice.
 Action.clickOnTheDifferentIconPlus = function () {
     $.delay(sleep);
-    var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
-        var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
+    var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
 
-        method.checkInstanceExists(clickOnTheDifferentIconPlus);
-        clickOnTheDifferentIconPlus.tap();
-    }
-    else{
-        var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[1].cells()[0].buttons()[0];
-        method.checkInstanceExists(app.mainWindow().tableViews()[1].cells()[0].buttons()[0]);
-        clickOnTheDifferentIconPlus.tap();
-    }
+    method.checkInstanceExists(clickOnTheDifferentIconPlus);
+    clickOnTheDifferentIconPlus.tap();
 };
 
 Action.tapKeyboardSearch = function () {

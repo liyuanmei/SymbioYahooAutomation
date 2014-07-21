@@ -1,6 +1,6 @@
 test("[1900004] verify can browse recent items in「商品」tab ", function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     $.delay(sleep);
 

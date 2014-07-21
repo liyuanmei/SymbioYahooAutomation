@@ -244,7 +244,7 @@ test("[1953620] verify the gifts are displayed in the shopping cart.", function 
     //search item page with gifts
     Action.tapButtonOnTabBar(2);
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("送贈品220130");
+    Action.searchBarInputChinese("贈品");
     Action.tapKeyboardSearch();
     $.delay(5);
 
@@ -426,7 +426,6 @@ test("[1959917] Verify item link,promotion link,gifi link work well.", function 
 
     Action.tapItemOnProductListScreen();
     $.delay(15);
-    target.logElementTree();
 
     Action.tapActivityLink();
     $.delay(sleep);

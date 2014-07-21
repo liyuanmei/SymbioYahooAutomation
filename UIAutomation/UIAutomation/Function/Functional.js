@@ -1,7 +1,7 @@
 //6.12 
 test("[1977448] [notification]turn on/off marketing notifications ", function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     Action.tapButtonOnTabBar(0);
     $.delay(sleep);

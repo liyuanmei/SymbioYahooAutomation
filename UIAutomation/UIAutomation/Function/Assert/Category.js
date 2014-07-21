@@ -796,7 +796,7 @@ Assert.check18BanScreenShowCorrectOnFavStore = function () {
 
 Assert.checkCategoryEditor = function () {
     $.delay(sleep);
-        var version = target.systemVersion();
+    var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
         this.CategoriesName = [
@@ -839,4 +839,16 @@ Assert.ckeckHeartIconOnNavigationBarIsTapped = function () {
     $.delay(5);
     var ckeckHeartIconOnNavigationBar = app.navigationBar().buttons()[3].value();
     method.verifyEquals(1,ckeckHeartIconOnNavigationBar);
+};
+
+Assert.checkGoodsCollectionSuccessful = function () {
+    $.delay(sleep);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length>2);
+    }
+    else{
+        method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length>1);
+    }
 };

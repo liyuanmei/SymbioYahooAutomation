@@ -19,7 +19,7 @@ Assert.backButtonOnSearchBar = function () {
         method.verifyEquals("icon back", backButton.name());
     }
     else{
-        method.verifyEquals("icon back", app.mainWindow().buttons()[1].name());
+        method.verifyEquals("icon back", app.mainWindow().buttons()[0].name());
     }
 };
 
@@ -33,7 +33,7 @@ Assert.autoCompletePageDisplay = function () {
     $.delay(sleep);
     var mainWindow = app.mainWindow();
     $.delay(5);
-    method.verifyTrue(app.mainWindow().tableViews()[1].cells().length<21);
+    method.verifyTrue(app.mainWindow().tableViews()[0].cells().length<21);
 };
 
 Assert.checkIconPlusDisplay = function () {
@@ -47,7 +47,7 @@ Assert.checkIconPlusDisplay = function () {
     else{
         var mainWindow = app.mainWindow();
         $.delay(sleep);
-        method.verifyEquals("icon plus", app.mainWindow().tableViews()[1].cells()[0].buttons()[0].name());
+        method.verifyEquals("icon plus", app.mainWindow().tableViews()[0].cells()[0].buttons()[0].name());
     }
 };
 

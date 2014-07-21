@@ -1,6 +1,6 @@
 test("[1977501] verify login and Logout of interaction", function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenShopping();
     //Log out and remove user login history
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();

@@ -2,7 +2,7 @@
 //three
 test("[1959892] Verify user can edit category preferences", function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenShopping();
 	Action.cleanSearches();
     $.delay(sleep);
     
@@ -68,42 +68,5 @@ test("[1977532] verify settings screen" , function () {
     $.delay(5);
     
     Action.tapCleanSearchRecordsOnSidebr(1);
-    Action.tapButtonOnTabBar(0);
-});
-
-//7.1
-//category
-test("[1953649] verify edit favorite category if correct on sidebar.", function () {
-    target.logDeviceInfo();
-    Action.cleanSearches();
-    Action.tapButtonOnTabBar(4);
-    $.delay(5);
-
-    //edit favorite categories
-    Action.tapButtonOnMyUser(6);
-    $.delay(5);
-
-    Assert.checkCategoryEditor();
-    Action.selectCategoryOnEditFavorite();
-    $.delay(10);
-
-    Action.goBack();
-    $.delay(10);
-
-    //slect favorite categories and assert them
-    Action.tapButtonOnSidebarWhenCategory();
-    $.delay(10);
-
-    //restore
-    Action.tapButtonOnMyUser(6);
-    $.delay(5);
-
-    Assert.checkCategoryEditor();
-    Action.selectCategoryOnEditFavorite();
-    $.delay(10);
-
-    Action.goBack();
-    $.delay(10);
-
     Action.tapButtonOnTabBar(0);
 });

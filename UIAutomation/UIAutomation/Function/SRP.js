@@ -1,22 +1,3 @@
-//category
-test("[1953657] verify edit favorite category if correct on sidebar.", function () {
-    target.logDeviceInfo();
-    Action.determineTheLoginWhenSRP();
-    Action.cleanSearches();
-    $.delay(sleep);
-
-    //go to category
-    Action.tapButtonOnTabBar(2);
-
-    //Verify user can edit category preferences and the case assert contained in action
-    Action.tapButtonOnSidebarWhenCategory();
-    $.delay(sleep);
-
-    Action.tapButtonOnTabBar(0);
-
-    Assert.checkReturnPageDisplay("最新動態");
-});
-
 test("[1937918] Check the Tab display" , function () {
     target.logDeviceInfo();
     $.delay(sleep);
@@ -50,7 +31,6 @@ test("[1937918] Check the Tab display" , function () {
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
-    Action.cleanSearches();
 });
 
 test("[1937920] Click store Tab" , function () {
@@ -121,6 +101,29 @@ test("[1937927] Check the default show 20 items",function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         //Check the default show 4 items
         Assert.commodityItemsShowCount(4);
     }
@@ -142,6 +145,29 @@ test("[1937928] Scroll screen more items should successful loaded", function () 
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     Action.pageShow();
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
 
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
@@ -256,6 +282,29 @@ test("[1937938] check according to the 'low price to dealer' sort" , function ()
     Action.tapKeyboardSearch();
     Action.pageShow();
 
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
+
     Action.tapGoodsTab();
     $.delay(5);
 
@@ -290,6 +339,29 @@ test("[1937939] product items should sorting by price high to low after user sel
     Action.tapKeyboardSearch();
     Action.pageShow();
 
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
+
     Action.tapGoodsTab();
     $.delay(5);
 
@@ -323,6 +395,29 @@ test("[1937942] tap clear button can clear to user input.", function () {
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     Action.pageShow();
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
 
     //tap advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -414,6 +509,29 @@ test("[1937943] check “確定” button exist on Advanced bar", function () {
     Action.tapKeyboardSearch();
     Action.pageShow();
 
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
+
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
 
@@ -449,6 +567,29 @@ test("[1937944] Check the '確定' button" , function (){
     Action.tapKeyboardSearch();
     Action.pageShow();
 
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
+
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
 
@@ -482,6 +623,29 @@ test("[1937945] product items in list should show correct after user adjust pric
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     Action.pageShow();
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
 
     //tap advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -807,6 +971,29 @@ test("[1937976] check click on the picture of commodity",function () {
     Action.tapKeyboardSearch();
     Action.pageShow();
 
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
+
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
 
@@ -823,16 +1010,41 @@ test("[1937976] check click on the picture of commodity",function () {
     obj.scrollDowns(1);
     $.delay(10);
 
-    var tapCommodityPictureShowPage = app.mainWindow().collectionViews()[0].cells()[1].name();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        //Assert products have been sold out.
+        var productsExist = app.mainWindow().collectionViews()[0].cells()[4].buttons()[0];
+    }
+    else{
+        //Assert products goods have not sold out.
+        var productsExist = app.mainWindow().collectionViews()[0].cells()["立即購買"].buttons()[0];
+    }
+    
+    if (productsExist.isVisible() == 1) {
+        //Verify screen successful navigated to item page.
+        var tapCommodityPictureShowPage = app.mainWindow().collectionViews()[0].cells()[1].name();
 
-    //Verify screen successful navigated to item page.
-    Assert.itemPageShowCorrectOnCoatSearchPage(tapCommodityPictureShowPage);
+        //Verify screen successful navigated to item page.
+        Assert.itemPageShowCorrectOnCoatSearchPage(tapCommodityPictureShowPage);
+    }
+    else{
+        $.delay(3);
+        //Verify screen successful navigated to item page when products have been sold out.
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
+        }
+        else{
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut("尚未開賣");
+        }    
+    }
 
-    Action.goBack();
-    Action.goBackOnSearchPage();
-    Action.tapReturnOnSearchBar();
-    Action.goDiscoveryStream();
-    Action.cleanSearches();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
 });
 
 test("[1937979] check click on the name of commodity" , function () {
@@ -842,6 +1054,29 @@ test("[1937979] check click on the name of commodity" , function () {
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     Action.pageShow();
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -860,16 +1095,41 @@ test("[1937979] check click on the name of commodity" , function () {
     obj.scrollDowns(1);
     $.delay(10);
 
-    var tapCommodityNameShowPage = app.mainWindow().collectionViews()[0].cells()[1].name();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        //Assert products have been sold out.
+        var productsExist = app.mainWindow().collectionViews()[0].cells()[4].buttons()[0];
+    }
+    else{
+        //Assert products goods have not sold out.
+        var productsExist = app.mainWindow().collectionViews()[0].cells()["立即購買"].buttons()[0];
+    }
+    
+    if (productsExist.isVisible() == 1) {
+        //Verify screen successful navigated to item page.
+        var tapCommodityPictureShowPage = app.mainWindow().collectionViews()[0].cells()[1].name();
 
-    //Verify screen successful navigated to item page.
-    Assert.itemPageShowCorrectOnCoatSearchPage(tapCommodityNameShowPage);
+        //Verify screen successful navigated to item page.
+        Assert.itemPageShowCorrectOnCoatSearchPage(tapCommodityPictureShowPage);
+    }
+    else{
+        $.delay(3);
+        //Verify screen successful navigated to item page when products have been sold out.
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
+        }
+        else{
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut("尚未開賣");
+        }    
+    }
 
-    Action.goBack();
-    Action.goBackOnSearchPage();
-    Action.tapReturnOnSearchBar();
-    Action.goDiscoveryStream();
-    Action.cleanSearches();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
 });
 
 test("[1937980] check the commodity prices", function () {
@@ -1014,6 +1274,29 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
     Action.tapKeyboardSearch();
     Action.pageShow();
 
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
+
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
     $.delay(sleep);
@@ -1067,6 +1350,29 @@ test("[1938008] check log in window show after unregister user tap favorites ico
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     $.delay(10);
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1154,6 +1460,29 @@ test("[1937984] login user able to add product to favorites." , function () {
     Action.tapKeyboardSearch();
     Action.pageShow();
 
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
+
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
 
@@ -1211,6 +1540,29 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     Action.pageShow();
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1275,6 +1627,29 @@ test("[1937997] On photo grid view register user able to add product to his favo
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     $.delay(10);
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1360,6 +1735,29 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
     Action.tapKeyboardSearch();
     $.delay(10);
 
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
+
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
 
@@ -1375,8 +1773,36 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
     obj.scrollDowns(1);
     $.delay(10);
 
-    //Verify screen successful navigated to item page.
-    Assert.itemPageShowCorrectOnCoatSearchPage();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        //Assert products have been sold out.
+        var productsExist = app.mainWindow().collectionViews()[0].cells()[4].buttons()[0];
+    }
+    else{
+        //Assert products goods have not sold out.
+        var productsExist = app.mainWindow().collectionViews()[0].cells()["立即購買"].buttons()[0];
+    }
+    
+    if (productsExist.isVisible() == 1) {
+        //Verify screen successful navigated to item page.
+        var tapCommodityPictureShowPage = app.mainWindow().collectionViews()[0].cells()[1].name();
+
+        //Verify screen successful navigated to item page.
+        Assert.itemPageShowCorrectOnCoatSearchPage(tapCommodityPictureShowPage);
+    }
+    else{
+        $.delay(3);
+        //Verify screen successful navigated to item page when products have been sold out.
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
+        }
+        else{
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut("尚未開賣");
+        }    
+    }
 
     Action.goBack();
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1384,9 +1810,10 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
 
     Action.chooseCategoryBrowseMode("列表");
 
-    Action.goBackOnSearchPage();
-    Action.tapReturnOnSearchBar();
-    Action.goDiscoveryStream();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
 });
 
 test("[1938005] check the commodity prices on item listing-Large photo view" , function () {
@@ -1431,6 +1858,29 @@ test("[1938006] check the rating show correct on item listing-Large photo view" 
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     $.delay(10);
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1485,6 +1935,29 @@ test("[1938007] check favorites icon show correct on item listing-Large photo vi
     Action.searchBarInputChinese("上衣");
     Action.tapKeyboardSearch();
     $.delay(10);
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
+    }
+    else{
+        var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[0];
+    }
+    if(pageShow.isVisible() == 1){
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(0);
+        $.delay(sleep);
+        
+        Action.goCategoryWhenSearchSettingOpen();
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInputChinese("上衣");
+        Action.tapKeyboardSearch();
+        Action.pageShow();
+    }
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -2073,21 +2546,38 @@ test("[1937989] Click the commodity pictures", function () {
 
     Action.tapItemOnProductListScreen();
     $.delay(15);
-    target.logElementTree();
+
+    obj.scrollDowns(1);
+    $.delay(10);
+
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {   
-        obj.scrollDowns(1);
-        $.delay(sleep);
-
+    if(version == "6.1") {
+        //Assert products have been sold out.
+        var productsExist = app.mainWindow().collectionViews()[0].cells()[4].buttons()[0];
+    }
+    else{
+        //Assert products goods have not sold out.
+        var productsExist = app.mainWindow().collectionViews()[0].cells()["立即購買"].buttons()[0];
+    }
+    
+    if (productsExist.isVisible() == 1) {
+        //Verify screen successful navigated to item page.
         Assert.itemPageShowCorrectOnCoatSearchPage();
     }
-    else{   
-        Action.slidingCommodityPage();
-        $.delay(sleep);
-
-        Assert.itemPageShowCorrect();
+    else{
+        $.delay(3);
+        //Verify screen successful navigated to item page when products have been sold out.
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
+        }
+        else{
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut("尚未開賣");
+        }    
     }
+
     $.delay(sleep);
 
     Action.tapButtonOnTabBar(2);
@@ -2488,18 +2978,40 @@ test("[1938004] view-check click on the name of commodity",function () {
     $.delay(sleep);
 
     obj.scrollDowns(1);
-    $.delay(sleep);
+    $.delay(10);
 
-    var tapCommodityPictureShowPage = app.mainWindow().collectionViews()[0].cells()[1].name();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        //Assert products have been sold out.
+        var productsExist = app.mainWindow().collectionViews()[0].cells()[4].buttons()[0];
+    }
+    else{
+        //Assert products goods have not sold out.
+        var productsExist = app.mainWindow().collectionViews()[0].cells()["立即購買"].buttons()[0];
+    }
+    
+    if (productsExist.isVisible() == 1) {
+        //Verify screen successful navigated to item page.
+        Assert.itemPageShowCorrectOnCoatSearchPage();
+    }
+    else{
+        $.delay(3);
+        //Verify screen successful navigated to item page when products have been sold out.
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
+        }
+        else{
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut("尚未開賣");
+        }    
+    }
 
-    //Verify screen successful navigated to item page.
-    Assert.itemPageShowCorrectOnCoatSearchPage(tapCommodityPictureShowPage);
-
-    Action.goBack();
-    Action.goBackOnSearchPage();
-    Action.tapReturnOnSearchBar();
-    Action.goDiscoveryStream();
-    Action.cleanSearches();
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(2);
+    Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
 });
 
 test("[1937993] view-Check the goods price display",function () {

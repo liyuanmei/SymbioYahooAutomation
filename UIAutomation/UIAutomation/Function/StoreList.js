@@ -1,6 +1,6 @@
 test("[1977497] [bug case]search后查看store list然後在返回再查看store info." , function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
+    Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();

@@ -50,6 +50,7 @@ test("[1959883] verify all delete shopping cart of goods" , function () {
     Action.tapButtonOnTabBar(3);
     Action.tapButtonOnTabBar(3);
     Action.tapButtonOnTabBar(0);
+    Action.tapButtonOnTabBar(0);
 });
 
 test("[1959876] Verify the number of bottom bubble on shopping cart" ,function () {

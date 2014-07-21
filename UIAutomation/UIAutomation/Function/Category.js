@@ -1117,6 +1117,7 @@ test("[1938104] login user able to add product to favorites", function () {
     //Tap favorites icon add a production to favorites.
     Action.tapFavoritesIcon(1);
     $.delay(sleep);
+
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
@@ -1131,23 +1132,36 @@ test("[1938104] login user able to add product to favorites", function () {
     Action.goMayFavoritesScreen();
     $.delay(5);
 
-    //Assert product show in My favorites screen.
-    Assert.productAddedToMyFavoritesScreen(productName);
+    var checkWhetherThereAreRedundantData = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    
+    if(checkWhetherThereAreRedundantData.isVisible() == 1){
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
+            var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[1];
+        }
+        else{
+            var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[0];
+        }
+    
+        Assert.elementsShouldContainText(goodsNum,"你已收藏");
+
+        Assert.checkGoodsCollectionSuccessful();
+    }
+    else{
+        //Assert product show in My favorites screen.
+        Assert.productAddedToMyFavoritesScreen(productName);
+    }
 
     //Remove favorites item.
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
 
-    var product = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
-    $.delay(sleep);
-
+    //cancel goods collection
     Action.tapFavoritesIcon(1);
 
-    //Verify favorites item successful removed.
     Action.tapButtonOnTabBar(4);
     $.delay(5);
-
-    Assert.productRemovedFromMyFavoritesScreen(product);
     
     //Restore app to default screen.
     Action.goBack();
@@ -1333,13 +1347,32 @@ test("[1938117] On photo grid view register user able to add product to his favo
         Action.tapFavoritesIcon(1);
     }
     
+    $.delay(sleep);
     //got my favorites screen.
     Action.tapButtonOnTabBar(4);
     Action.goMayFavoritesScreen();
     $.delay(5);
 
-    //Assert product show in My favorites screen.
-    Assert.productAddedToMyFavoritesScreen(productName);
+    var checkWhetherThereAreRedundantData = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    
+    if(checkWhetherThereAreRedundantData.isVisible() == 1){
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
+            var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[1];
+        }
+        else{
+            var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[0];
+        }
+    
+        Assert.elementsShouldContainText(goodsNum,"你已收藏");
+
+        Assert.checkGoodsCollectionSuccessful();
+    }
+    else{
+        //Assert product show in My favorites screen.
+        Assert.productAddedToMyFavoritesScreen(productName);
+    }
 
     //Remove favorites item.
     Action.tapButtonOnTabBar(2);
@@ -1348,19 +1381,17 @@ test("[1938117] On photo grid view register user able to add product to his favo
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        //Tap favorites icon add a production to favorites.
+        //cancel goods collection
         Action.tapFavoritesIcon(4);
     }
     else{
-        //Tap favorites icon add a production to favorites.
+        //cancel goods collection
         Action.tapFavoritesIcon(1);
     }
 
     //Verify favorites item successful removed.
     Action.tapButtonOnTabBar(4);
     $.delay(5);
-
-    Assert.productRemovedFromMyFavoritesScreen(productName);
      
     //Restore app to default screen.
     Action.goBack();
@@ -1734,13 +1765,32 @@ test("[1938129] on item listing-list view register should able to add item to hi
         $.delay(sleep);
     }
     
+    $.delay(sleep);
     //got my favorites screen.
     Action.tapButtonOnTabBar(4);
     Action.goMayFavoritesScreen();
-    $.delay(sleep);
+    $.delay(5);
 
-    //Assert product show in My favorites screen.
-    Assert.productAddedToMyFavoritesScreen(productName);
+    var checkWhetherThereAreRedundantData = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+    
+    if(checkWhetherThereAreRedundantData.isVisible() == 1){
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
+            var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[1];
+        }
+        else{
+            var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[0];
+        }
+    
+        Assert.elementsShouldContainText(goodsNum,"你已收藏");
+
+        Assert.checkGoodsCollectionSuccessful();
+    }
+    else{
+        //Assert product show in My favorites screen.
+        Assert.productAddedToMyFavoritesScreen(productName);
+    }
 
     //Remove favorites item.
     Action.tapButtonOnTabBar(2);
@@ -1749,16 +1799,17 @@ test("[1938129] on item listing-list view register should able to add item to hi
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
+        //cancel goods collection
         Action.tapFavoritesIcon(2);
     }
     else{
+        //cancel goods collection
         Action.tapFavoritesIcon(1);
     }
     
     //Verify favorites item successful removed.
     Action.tapButtonOnTabBar(4);
     $.delay(3);
-    Assert.productRemovedFromMyFavoritesScreen(productName);
      
     //Restore app to default screen.
     Action.goBack();
@@ -2098,7 +2149,7 @@ test("[1938064] check 確定 button is effective", function () {
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1938096] click product image", function () {
+test("[1938096] click product image On listing list view", function () {
     target.logDeviceInfo();
     //go to production item list.
     Action.goApparelCategory();
@@ -2128,12 +2179,13 @@ test("[1938096] click product image", function () {
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1938109] click product image", function () {
+test("[1938109] click product image On grid View", function () {
     target.logDeviceInfo();
     //go to production item list.
     Action.goApparelCategory();
     Action.goCommodityTab();
     Action.pageShow();
+    $.delay(sleep);
     
     //tap advanced button
     Action.tapAdvancedButton();
@@ -2169,12 +2221,13 @@ test("[1938109] click product image", function () {
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1938121] click product image", function () {
+test("[1938121] click product image On large photo View", function () {
     target.logDeviceInfo();
     //go to production item list.
     Action.goApparelCategory();
     Action.goCommodityTab();
     Action.pageShow();
+    $.delay(sleep);
     
     //tap advanced button
     Action.tapAdvancedButton();
@@ -2199,9 +2252,6 @@ test("[1938121] click product image", function () {
     //check product page is correct
     Assert.itemPageShowCorrect();
     $.delay(5);
-
-    //check product page is correct
-    Assert.itemPageShowCorrect();
 
     //restore
     Action.tapButtonOnTabBar(2);
@@ -2408,4 +2458,56 @@ test("[1938149] check 服飾 show correct.", function () {
     //Tap back button and go back to discovery screen.
     Action.goBack();
     Action.goDiscoveryStream();
+});
+
+test("[1953657] verify edit favorite category if correct on sidebar.", function () {
+    target.logDeviceInfo();
+    Action.cleanSearches();
+    $.delay(sleep);
+
+    //go to category
+    Action.tapButtonOnTabBar(2);
+
+    //Verify user can edit category preferences and the case assert contained in action
+    Action.tapButtonOnSidebarWhenCategory();
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(0);
+
+    Assert.checkReturnPageDisplay("最新動態");
+});
+
+test("[1953649] verify edit favorite category if correct on sidebar.", function () {
+    target.logDeviceInfo();
+    Action.cleanSearches();
+    Action.tapButtonOnTabBar(4);
+    $.delay(5);
+
+    //edit favorite categories
+    Action.tapButtonOnMyUser(6);
+    $.delay(5);
+
+    Assert.checkCategoryEditor();
+    Action.selectCategoryOnEditFavorite();
+    $.delay(10);
+
+    Action.goBack();
+    $.delay(10);
+
+    //slect favorite categories and assert them
+    Action.tapButtonOnSidebarWhenCategory();
+    $.delay(10);
+
+    //restore
+    Action.tapButtonOnMyUser(6);
+    $.delay(5);
+
+    Assert.checkCategoryEditor();
+    Action.selectCategoryOnEditFavorite();
+    $.delay(10);
+
+    Action.goBack();
+    $.delay(10);
+
+    Action.tapButtonOnTabBar(0);
 });

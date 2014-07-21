@@ -1053,3 +1053,50 @@ Action.determineTheLogin = function () {
         }
     }
 };
+/**
+Action.determineGoosCollection = function (i) {
+    $.delay(sleep);
+    Action.cleanSearches();
+    Action.tapButtonOnTabBar(4);
+    $.delay(sleep);
+
+    Action.tapButtonOnMyUser(3);
+    $.delay(10);
+
+    var determineGoosCollection = app.mainWindow().collectionViews()[0].cells()[0].staticTexts()[0];
+
+    while(determineGoosCollection.isEnabled() === 1){
+        $.delay(3);
+        Action.slidingDeleteGoodsCollection();
+    }
+    $.delay(sleep);
+
+    Action.tapButtonOnTabBar(4);
+    $.delay(5);
+
+    Action.tapButtonOnTabBar(0);
+};
+
+Action.determineGoosCollectionOnCategory = function (i) {
+    $.delay(sleep);
+    Action.tapButtonOnTabBar(4);
+    $.delay(sleep);
+
+    Action.goMayFavoritesScreen();
+    $.delay(10);
+
+    var determineGoosCollection = app.mainWindow().collectionViews()[0].cells()[0].staticTexts()[0];
+
+    while(determineGoosCollection.isEnabled() == 1){
+        $.delay(sleep);
+        Action.slidingDeleteGoodsCollection();
+    }
+    $.delay(sleep);
+    target.logElementTree();
+
+    Action.tapButtonOnTabBar(4);
+    $.delay(5);
+
+    Action.tapButtonOnTabBar(0);
+};
+**/

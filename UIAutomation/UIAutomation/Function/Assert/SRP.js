@@ -259,12 +259,19 @@ Assert.elementsOnFilterScreenWhenOptions = function () {
     for (var i = 0; i < 9; i++){
         $.delay(sleep);
         var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
             method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
         }
         else{
             method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[1].cells()[i].name());
         }
     }
+};
+
+Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut =function (i) {
+    $.delay(sleep);
+
+    var itemPageTxt = app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0];
+    method.verifyEquals("尚未開賣",itemPageTxt.name());
 };

@@ -5,7 +5,7 @@ test("[1959901] Verify stores category show correctly.", function () {
 
     //go to store page
     Action.tapButtonOnTabBar(1);
-    $.delay(5);
+    $.delay(15);
 
     Action.tapFirstViewsOnFavoriteStorePageWithOutLogin();
     $.delay(5);
@@ -58,13 +58,8 @@ test("[1959904] Verify user can check purchasing info from store page" , functio
     Action.tapConfirmOnShoppingCart();
     Action.tapButtonOnTabBar(3);
     
-    try{
-        Action.tapShoppingCartlist(0);
-        $.delay(20);
-    }
-    catch (err) {
-        $.delay(20);
-    }
+    Action.tapShoppingCartlist(0);
+    $.delay(25);
 
     Assert.checkbutButtonShoppingCart();
     $.delay(3);
@@ -153,8 +148,34 @@ test("[1959925] Verify user can search funtion in store page ", function () {
     Action.tapButtonOnTabBar(2);
 
     Action.tapItemOnCategoryScreenWhenOptions(0);
+
+    //go to 漢神百貨品牌服飾
     Action.tapChoosePreductCategoryWhenOptions(0,1);
-    Action.tapSearchIconOnNavBar();
+    $.delay(5);
+
+    //go to 漢神百貨品牌
+    Action.tapChoosePreductCategoryWhenOptions(0,1);
+    $.delay(10);
+
+    Action.tapCommodityPictureOnSearchResultsPage();
+    $.delay(10);
+
+    obj.scrollDowns(2);
+    $.delay(sleep);
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapChooseOnItemPage(3);
+    }
+    else{
+        Action.tapChooseOnItemPage("看本店家全部商品");
+    }
+    $.delay(5);
+
+    Action.tapSearchIconOnNavBarWhenSRP();
+    $.delay(sleep);
+
     Action.searchBarInputChinese("東京");
     Action.tapKeyboardSearch();
     $.delay(10);

@@ -82,9 +82,11 @@ obj.scrollDowns = function (total) {
 };
 
 method.checkInstanceExists = function (instance) {
-    if(target.systemVersion() == "6.1.3"){
-        $.delay(5);
-    };
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        $.delay(sleep);
+    }
 
     var errorTimes = 0;
     if (instance.isVisible() == 1) {
@@ -101,9 +103,11 @@ method.checkInstanceExists = function (instance) {
 };
 
 method.verifyTrue = function (expression, message, endCase) {
-    if(target.systemVersion() == "6.1.3"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         $.delay(5);
-    };
+    }
 
     if (!expression) {
 
@@ -126,9 +130,11 @@ method.verifyTrue = function (expression, message, endCase) {
 };
 
 method.verifyEquals = function (expected, received, message) {
-    if(target.systemVersion() == "6.1.3"){
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
         $.delay(5);
-    };
+    }
 
     var defMessage = "Expected <" + expected + "> but received <" + received + ">";
 
