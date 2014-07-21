@@ -125,7 +125,9 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 
         /* Check from my account to edit */
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
-        solo.scrollToBottom();
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        TestHelper.swipeUp(solo, 1);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(solo.getView("profile_bt_edit_favorite_categories"));
 
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
@@ -311,10 +313,10 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
 
         Action.clickElementsInWebviewByClassname(solo, "title");
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
         solo.goBack();
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
 
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
         //click "next buy" button on web view.
         Action.clickElementsInWebviewByClassname(solo,
                 "goNextBuy updateItemClick");
@@ -326,10 +328,12 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 
         //click product title class name on web view.
         Action.clickElementsInWebviewByClassname(solo, "title");
-        solo.sleep(ValidationText.WAIT_TIME_LONG);
-
-        View productName = (View) solo.getView("productitem_store_name");
-        assertTrue("Not back to item page.", productName.isShown());
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        TestHelper.swipeUp(solo, 1);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        TestHelper.swipeUp(solo, 1);
+        assertTrue("Not back to item page.",
+                solo.searchText(ValidationText.SHARE_PRODUCT));
     }
 
     /**

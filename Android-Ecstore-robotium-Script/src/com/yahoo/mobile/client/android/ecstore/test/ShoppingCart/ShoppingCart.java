@@ -189,7 +189,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
                 "Total number displayed incorrect",
                 Integer.valueOf(shoppingCart.getText().toString())
                         + Integer.valueOf(nextBuy.getText().toString())
-                        == Action.VIEW_ID_TWO);
+                        == Action.VIEW_ID_THREE);
     }
 
 

@@ -110,11 +110,12 @@ public class StorePage extends ActivityInstrumentationTestCase2<Activity> {
 
         // click store LOGO.
         Action.clickElementsInWebviewByClassname(solo, "pimg");
-        solo.sleep(ValidationText.WAIT_TIME_LONG);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         TestHelper.swipeUp(solo, 1);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         try
         {
+            TestHelper.swipeUp(solo, 1);
             solo.clickOnText(ValidationText.SHOPPING_TIPS);
         } catch (AssertionError e)
         {
