@@ -255,3 +255,9 @@ Assert.checkVoiceSearchIconDisplay = function () {
     var checkVoiceSearchIconDisplay = app.keyboard().buttons()[2].name();
     method.verifyEquals("Dictate",checkVoiceSearchIconDisplay);
 };
+
+Assert.tapBarcodeSearch = function () {
+    $.delay(sleep);
+    var tapBarcodeSearch = app.mainWindow().buttons()[1];
+    method.verifyEquals(1,tapBarcodeSearch.isEnabled());
+};
