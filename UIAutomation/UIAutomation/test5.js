@@ -22,6 +22,7 @@
 //#import "smoke/shoppingCartlist.js"
 
 //functional.
+#import "Function/welcome.js"
 #import "Function/shoppingCart.js"
 #import "Function/Smoke.js"
 #import "Function/StorePage.js"

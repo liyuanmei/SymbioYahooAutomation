@@ -28,4 +28,5 @@ test("Welcomen page test script, need run this script before all other scripts" 
 
     //Verify screen successful navigate to &quot;最新動態&quot; screen.
     Assert.discoveryScreenShowCorrect();
+    $.delay(20);
 });
