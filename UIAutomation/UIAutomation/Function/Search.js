@@ -1508,19 +1508,27 @@ test("[1959884] Verify ‘購物須知’,when the store has no promotion" , fun
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1937880] Verify voice search icon display" , function () {
+test("[1937880] Verify search icon display" , function () {
     target.logDeviceInfo();
     Action.cleanSearches();
     Action.tapSearchIconOnNavBar();
     $.delay(sleep);
-    var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
-        target.logElementTree();
-    }
-    else{
-        Assert.checkVoiceSearchIconDisplay();
-    }
+    
+    //verify keyboard is exist
+    Assert.keyboardIsEnabled();
+    $.delay(sleep);
+
+    //verify the search box display
+    Assert.textIsEnabled("搜尋全部商品");
+    $.delay(sleep);
+
+    //Check return icon display
+    Assert.backButtonOnSearchBar();
+    $.delay(sleep);
+
+    //Check barcode search
+    Assert.tapBarcodeSearch();
+    $.delay(sleep);
 
     Action.tapReturnOnSearchBar();  
 });
