@@ -26,6 +26,7 @@
 package com.yahoo.mobile.client.android.ecstore.test.test4.ItemPage;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
@@ -45,6 +46,7 @@ import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
  *
  */
 
+@SuppressLint("NewApi")
 public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
@@ -475,13 +477,13 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
         solo.clickOnView(storeName);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 1);
+        TestHelper.swipeUp(solo, 2);
         try {
         	//TestHelper.swipeUp2(solo, Action.VIEW_ID_TEN);
             solo.sleep(ValidationText.WAIT_TIME_SHORT);
             solo.clickOnText(ValidationText.PLUS_PURCHASE);
         } catch (AssertionError e) {
-            TestHelper.swipeUp2(solo, Action.VIEW_ID_TEN);
+            TestHelper.swipeUp2(solo, Action.VIEW_ID_FOUR);
             solo.clickOnText(ValidationText.PLUS_PURCHASE);
         }
 

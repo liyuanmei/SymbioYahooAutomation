@@ -25,6 +25,7 @@
 
 package com.yahoo.mobile.client.android.ecstore.test.test5.Smoke;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
@@ -39,6 +40,7 @@ import com.yahoo.mobile.client.android.ecstore.Assert.Assert;
 import com.yahoo.mobile.client.android.ecstore.test.TestHelper;
 import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
 
+@SuppressLint("NewApi")
 public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
@@ -209,6 +211,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 
         //Click "Check out" button on web view.
         Action.clickElementsInWebviewByText(solo, ValidationText.WANT_CHECKOUT);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         Action.searchTextOnWebview(solo, ValidationText.BUY_INFO);
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
 
