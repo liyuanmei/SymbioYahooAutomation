@@ -94,9 +94,9 @@ test("[1938043] verify screen can switch back to category list", function () {
         Action.tapAdvancedButton();
         Action.tapButtonsInAdvancedBar(1);
         Action.chooseCategoryBrowseMode("列表");
-        $.delay(5);
+        $.delay(8);
 
-        Assert.commodityItemsShowCount(10);
+        Assert.commodityItemsShowCount(11);
         $.delay(5);
 
         Action.tapAdvancedButton();
