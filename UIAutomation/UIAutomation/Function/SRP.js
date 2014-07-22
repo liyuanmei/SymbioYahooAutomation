@@ -1,5 +1,6 @@
 test("[1937918] Check the Tab display" , function () {
     target.logDeviceInfo();
+    Action.determineTheLoginWhenSRP();
     $.delay(sleep);
 
     Action.cleanSearches();
