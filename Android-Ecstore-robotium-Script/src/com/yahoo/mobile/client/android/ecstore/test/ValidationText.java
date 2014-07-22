@@ -226,6 +226,8 @@ public class ValidationText {
     
     public static final String SALES_PROMOTION = "促銷活動";
     
+    public static final String MESSA = "Messa 米莎";
+    
     public static final String FULL = "購物滿";
     
     public static final String MODEL = "造造";
