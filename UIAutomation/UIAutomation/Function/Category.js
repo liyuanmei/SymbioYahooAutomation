@@ -93,17 +93,18 @@ test("[1938043] verify screen can switch back to category list", function () {
     if(version == "6.1") {
         Action.tapAdvancedButton();
         Action.tapButtonsInAdvancedBar(1);
-        Action.chooseCategoryBrowseMode("列表");
-        $.delay(8);
+        Action.chooseCategoryBrowseMode(varTestsListInBrowse);
+        $.delay(10);
 
         Assert.commodityItemsShowCount(11);
         $.delay(5);
 
         Action.tapAdvancedButton();
         Action.tapButtonsInAdvancedBar(1);
-        Action.chooseCategoryBrowseMode("大圖");
+        Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     }
     else{
+        $.delay(sleep);
         Assert.commodityItemsShowCount(21);
     }
     
@@ -130,7 +131,7 @@ test("[1938047] Check item list default setting is show 20 items", function () {
     if(version == "6.1") {
         Action.tapAdvancedButton();
         Action.tapButtonsInAdvancedBar(1);
-        Action.chooseCategoryBrowseMode("列表");
+        Action.chooseCategoryBrowseMode(varTestsListInBrowse);
         $.delay(5);
 
         Assert.commodityItemsShowCount(11);
@@ -138,7 +139,7 @@ test("[1938047] Check item list default setting is show 20 items", function () {
 
         Action.tapAdvancedButton();
         Action.tapButtonsInAdvancedBar(1);
-        Action.chooseCategoryBrowseMode("大圖");
+        Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     }
     else{
         Assert.commodityItemsShowCount(21);
@@ -167,7 +168,7 @@ test("[1938048] Scroll screen more items should successful loaded", function () 
 
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     Action.pageShow();
 
     //Verify currently should have 20 items in screen.
@@ -208,7 +209,7 @@ test("[1938052] check 搜尋服飾 show in search bar", function () {
     $.delay(sleep);
 
     //Verify "搜尋服飾" show in sarch bar.
-    Assert.textIsEnabled("搜尋服飾");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhenGoApparelCategory);
 
     Action.tapBackOnSearchBar();
     Action.goBack();
@@ -328,10 +329,10 @@ test("[1938063] check “確定” button exist on Advanced bar", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.buttonExistOnNavigationBar(1, "確定");
+        Assert.buttonExistOnNavigationBar(1, varTestConfirmbuttonExistOnNavigationBarInAdvancedBar);
     }
     else{
-        Assert.buttonExistOnNavigationBar(2, "確定");
+        Assert.buttonExistOnNavigationBar(2, varTestConfirmbuttonExistOnNavigationBarInAdvancedBar);
     }
 
     //Tap cancel button and navigate back to discovery screen.
@@ -610,7 +611,7 @@ test("[1938039] search name on header should changed after search another keywor
     Action.goApparelCategory();
 
     //do search
-    Action.doSearch("上衣");
+    Action.doSearch(varTestsSearchBoxInputDataCoat);
     $.delay(15);
 
     var version = target.systemVersion();
@@ -630,12 +631,12 @@ test("[1938039] search name on header should changed after search another keywor
     }
 
     //verify search result page contain expect search keyword.
-    Assert.elementsShouldContainText(itemSummary, "上衣");
+    Assert.elementsShouldContainText(itemSummary, varTestsSearchBoxInputDataCoat);
     $.delay(5);
     
     //Do search again.
     Action.tapSearchButtonOnSRP();
-    Action.searchBarInputChinese("iphone");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataIphone);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -655,7 +656,7 @@ test("[1938039] search name on header should changed after search another keywor
     }
     $.delay(5);
 
-    Assert.elementsShouldContainText(productSummary, "hone");
+    Assert.elementsShouldContainText(productSummary,varTestsCheckTheKeyword1);
 
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
@@ -765,7 +766,7 @@ test("[1938062] tap clear button can clear to user input.", function () {
     Action.tapButtonsInAdvancedBar(2);
 
     //verify the default price is 100000 +
-    Assert.checkPriceBarShowCorrect("100000+ 元");
+    Assert.checkPriceBarShowCorrect(varTestsPriceNumber100000);
     
     $.delay(sleep);
     var version = target.systemVersion();
@@ -777,14 +778,14 @@ test("[1938062] tap clear button can clear to user input.", function () {
 
         target.logElementTree();
         //Verify price show correct after dragging.
-        Assert.checkPriceBarShowCorrect("1020 元");
+        Assert.checkPriceBarShowCorrect(varTestsSlidingPricesData1);
 
         //Tap clear button
         Action.tapClearButtonOnFilterScreen();
         $.delay(sleep);
 
         //Verify price bar restore to default value.
-        Assert.checkPriceBarShowCorrect("100000+ 元");
+        Assert.checkPriceBarShowCorrect(varTestsPriceNumber100000);
     }
     else{
         //drag price bar to 1020 price.    
@@ -793,14 +794,14 @@ test("[1938062] tap clear button can clear to user input.", function () {
         target.logElementTree();
 
         //Verify price show correct after dragging.
-        Assert.checkPriceBarShowCorrect("1020 元");
+        Assert.checkPriceBarShowCorrect(varTestsSlidingPricesData1);
 
         //Tap clear button
         Action.tapClearButtonOnFilterScreen();
         $.delay(sleep);
 
         //Verify price bar restore to default value.
-        Assert.checkPriceBarShowCorrect("100000+ 元");
+        Assert.checkPriceBarShowCorrect(varTestsPriceNumber100000);
     }
     
     //Tap submit button and restore application to default location.
@@ -945,7 +946,7 @@ test("[1938103] check log in window show after unregister user tap favorites ico
     }
     else{
         //Verify login window show correct.
-        Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+        Assert.logInWindowShowCorrect(varTestsSignButtonsOnlogInWindow, varTestsTextOnlogInWindow, varTestsCreateButtonsOnlogInWindow);
     }
 
     //Tap exit button exit login window.
@@ -969,7 +970,7 @@ test("[1938116] on photo grid view unregister user tap favorites icon login wind
     //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("小圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
     $.delay(10);
     
     var version = target.systemVersion();
@@ -994,7 +995,7 @@ test("[1938116] on photo grid view unregister user tap favorites icon login wind
     }
     else{
         //Verify login window show correct.
-        Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+        Assert.logInWindowShowCorrect(varTestsSignButtonsOnlogInWindow, varTestsTextOnlogInWindow, varTestsCreateButtonsOnlogInWindow);
     }
 
     //Tap exit button exit login window.
@@ -1004,7 +1005,7 @@ test("[1938116] on photo grid view unregister user tap favorites icon login wind
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
 
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
@@ -1025,7 +1026,7 @@ test("[1938128] on item listing-list view unregister user tap favorites icon sho
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     $.delay(10);
 
     var version = target.systemVersion();
@@ -1058,7 +1059,7 @@ test("[1938128] on item listing-list view unregister user tap favorites icon sho
     }
     else{
         //Verify login window show correct.
-        Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+        Assert.logInWindowShowCorrect(varTestsSignButtonsOnlogInWindow, varTestsTextOnlogInWindow, varTestsCreateButtonsOnlogInWindow);
     }
 
     //Tap exit button exit login window.
@@ -1068,7 +1069,7 @@ test("[1938128] on item listing-list view unregister user tap favorites icon sho
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
 
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
@@ -1091,11 +1092,11 @@ test("[1938104] login user able to add product to favorites", function () {
     $.delay(3);
 
     if(login == "Add Account"){
-        Action.tapAddAccountOnLogin("mobileappstore3", "A1234qwer");
+        Action.tapAddAccountOnLogin(varTestsSignInAccountMobileappstore3, varTestsSignInPasswordMobileappstore3);
     }
     else{
         //Verify login window show correct.
-        Action.doUserLogin("mobileappstore3", "A1234qwer");
+        Action.doUserLogin(varTestsSignInAccountMobileappstore3, varTestsSignInPasswordMobileappstore3);
     }
     $.delay(10);
     
@@ -1121,7 +1122,7 @@ test("[1938104] login user able to add product to favorites", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        var productName = app.mainWindow().collectionViews()[0].cells()[0].name();
+        var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
     }
     else{
         var productName = app.mainWindow().collectionViews()[0].cells()[1].name();
@@ -1132,7 +1133,10 @@ test("[1938104] login user able to add product to favorites", function () {
     Action.goMayFavoritesScreen();
     $.delay(5);
 
+    target.logElementTree();
+
     var checkWhetherThereAreRedundantData = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+
     
     if(checkWhetherThereAreRedundantData.isVisible() == 1){
         var version = target.systemVersion();
@@ -1144,7 +1148,7 @@ test("[1938104] login user able to add product to favorites", function () {
             var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[0];
         }
     
-        Assert.elementsShouldContainText(goodsNum,"你已收藏");
+        Assert.elementsShouldContainText(goodsNum,varTestsCheckTheKeyword2);
 
         Assert.checkGoodsCollectionSuccessful();
     }
@@ -1183,7 +1187,7 @@ test("[1938049] check advanced buttons order.", function () {
     //tap Advance button
     Action.tapAdvancedButton();
     $.delay(sleep);
-
+    target.logElementTree();
     //Verify advance buttons order.
     Assert.advancedButtonsOrder();
 
@@ -1212,8 +1216,8 @@ test("[1938113] check item price show correct.", function () {
         Action.tapButtonsInAdvancedBar(1);
         $.delay(sleep);
 
-        Action.chooseCategoryBrowseMode("列表");
-        $.delay(5);
+        Action.chooseCategoryBrowseMode(varTestsListInBrowse);
+        $.delay(10);
 
         //verify product price show correct.
         Assert.productPriceShowCorrect(2, 3);
@@ -1227,17 +1231,17 @@ test("[1938113] check item price show correct.", function () {
         //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
         Action.tapButtonsInAdvancedBar(1);
 
-        Action.chooseCategoryBrowseMode("列表");
+        Action.chooseCategoryBrowseMode(varTestsListInBrowse);
         Action.pageShow();
+        target.logElementTree();
         //verify product price show correct.
-        Assert.productPriceShowCorrect("Miu-Star", 3);
+        Assert.productPriceShowCorrect(1, 3);
     }
     
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
     Action.goDiscoveryStream();
 });
-
 
 test("[1938115] check favorites icon show correct with photo grid view.", function () {
     target.logDeviceInfo();
@@ -1254,7 +1258,7 @@ test("[1938115] check favorites icon show correct with photo grid view.", functi
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("小圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
     $.delay(5);
     
     //Verify successful switch to photo grid view.
@@ -1299,7 +1303,7 @@ test("[1938115] check favorites icon show correct with photo grid view.", functi
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
 
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
@@ -1330,7 +1334,7 @@ test("[1938117] On photo grid view register user able to add product to his favo
     //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("小圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
 
     $.delay(5);
     var version = target.systemVersion();
@@ -1365,7 +1369,7 @@ test("[1938117] On photo grid view register user able to add product to his favo
             var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[0];
         }
     
-        Assert.elementsShouldContainText(goodsNum,"你已收藏");
+        Assert.elementsShouldContainText(goodsNum,varTestsCheckTheKeyword2);
 
         Assert.checkGoodsCollectionSuccessful();
     }
@@ -1401,7 +1405,7 @@ test("[1938117] On photo grid view register user able to add product to his favo
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
 
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
@@ -1424,7 +1428,7 @@ test("[1938124] on item listing-list view tap store name page should navigate to
     $.delay(5);
 
     Assert.buttonOnAdvancedIsEnabled(1);
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     $.delay(5);
     var version = target.systemVersion();
@@ -1465,7 +1469,7 @@ test("[1938124] on item listing-list view tap store name page should navigate to
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     $.delay(sleep);
 
     var version = target.systemVersion();
@@ -1500,7 +1504,7 @@ test("[1938125] on item listing-list view check product price show correct.", fu
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     $.delay(5);
     var version = target.systemVersion();
@@ -1549,7 +1553,7 @@ test("[1938125] on item listing-list view check product price show correct.", fu
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
 
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
@@ -1571,7 +1575,7 @@ test("[1938126] on item listing-list view check product rating show correct.", f
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     $.delay(5);
     
     var version = target.systemVersion();
@@ -1630,7 +1634,7 @@ test("[1938126] on item listing-list view check product rating show correct.", f
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     $.delay(5);
 
     //Back to discovery screen.
@@ -1654,7 +1658,7 @@ test("[1938127] on item listing-list view check favorites icon show correct.", f
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     $.delay(5);
     var version = target.systemVersion();
@@ -1712,7 +1716,7 @@ test("[1938127] on item listing-list view check favorites icon show correct.", f
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
 
     $.delay(5);
     //Back to discovery screen.
@@ -1745,7 +1749,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
     //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     $.delay(sleep);
     var version = target.systemVersion();
@@ -1783,7 +1787,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
             var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[0];
         }
     
-        Assert.elementsShouldContainText(goodsNum,"你已收藏");
+        Assert.elementsShouldContainText(goodsNum,varTestsCheckTheKeyword2);
 
         Assert.checkGoodsCollectionSuccessful();
     }
@@ -1820,7 +1824,7 @@ test("[1938129] on item listing-list view register should able to add item to hi
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
 
     //Back to discovery screen.
     Action.tapButtonOnTabBar(2);
@@ -1833,7 +1837,7 @@ test("[1938130] check 全部分類 tab button show correct", function () {
     Action.tapButtonOnTabBar(0);
     $.delay(sleep);
 
-    Assert.buttonOnTabBarShowCorrect("全部分類");
+    Assert.buttonOnTabBarShowCorrect(varTestCategoryName);
     Action.goDiscoveryStream();
 });
 
@@ -1849,7 +1853,7 @@ test("[1938131] check 全部分類 tab show correct.", function () {
 test("[1938133] check 全部分類 show on screen top", function () {
     target.logDeviceInfo();
     Action.tapButtonOnTabBar(2);
-    Assert.navigationBarName("全部分類");
+    Assert.navigationBarName(varTestCategoryName);
     $.delay(sleep);
 
     Action.goDiscoveryStream();
@@ -1860,14 +1864,14 @@ test("[1938150] check 美妝 show correct.", function () {
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
 
-    Assert.allCategoryItemShowCorrect(1, "美妝");
+    Assert.allCategoryItemShowCorrect(1, varTestCategoryBeautyMakeup);
 
     //Go to item list screen.
     Action.tapItemOnCategoryScreen(1);
     $.delay(sleep);
 
     //verify screen successful navigate to 美妝 screen.
-    Assert.navigationBarName("美妝");
+    Assert.navigationBarName(varTestCategoryBeautyMakeup);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -1879,14 +1883,14 @@ test("[1938151] check 鞋包配飾 show correct.", function () {
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
 
-    Assert.allCategoryItemShowCorrect(2, "鞋包配飾");
+    Assert.allCategoryItemShowCorrect(2, varTestCategoryShoeAndBag);
 
     //Go to item list screen.
     Action.tapItemOnCategoryScreen(2);
     $.delay(sleep);
 
     //verify screen successful navigate to 鞋包配飾 screen.
-    Assert.navigationBarName("鞋包配飾");
+    Assert.navigationBarName(varTestCategoryShoeAndBag);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -1898,14 +1902,14 @@ test("[1938152] check 媽咪寶貝 show correct.", function () {
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
 
-    Assert.allCategoryItemShowCorrect(3, "媽咪寶貝");
+    Assert.allCategoryItemShowCorrect(3, varTestCategoryMom);
 
     //Go to item list screen.
     Action.tapItemOnCategoryScreen(3);
     $.delay(sleep);
 
     //verify screen successful navigate to 媽咪寶貝 screen.
-    Assert.navigationBarName("媽咪寶貝");
+    Assert.navigationBarName(varTestCategoryMom);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -1917,14 +1921,14 @@ test("[1938153] check 電腦/週邊 show correct.", function () {
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
 
-    Assert.allCategoryItemShowCorrect(4, "電腦/週邊");
+    Assert.allCategoryItemShowCorrect(4, varTestCategoryComputer);
 
     //Go to item list screen.
     Action.tapItemOnCategoryScreen(4);
     $.delay(sleep);
 
     //verify screen successful navigate to 電腦/週邊 screen.
-    Assert.navigationBarName("電腦/週邊");
+    Assert.navigationBarName(varTestCategoryComputer);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -1936,14 +1940,14 @@ test("[1938154] check 家電/視聽 show correct.", function () {
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
 
-    Assert.allCategoryItemShowCorrect(5, "家電/視聽");
+    Assert.allCategoryItemShowCorrect(5, varTestCategoryHomeAppliance);
 
     //Go to item list screen.
     Action.tapItemOnCategoryScreen(5);
     $.delay(sleep);
 
     //verify screen successful navigate to 家電/視聽 screen.
-    Assert.navigationBarName("家電/視聽");
+    Assert.navigationBarName(varTestCategoryHomeAppliance);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -1957,10 +1961,10 @@ test("[1938155] check 相機/ 手機/玩具 show correct.", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.allCategoryItemShowCorrect(6, "相機/\n手機/玩具");
+        Assert.allCategoryItemShowCorrect(6, varTestCategoryCameraCompatible);
     }
     else{
-        Assert.allCategoryItemShowCorrect(6, "相機/ 手機/玩具");
+        Assert.allCategoryItemShowCorrect(6, varTestCategoryCamera);
     }
    
     //Go to item list screen.
@@ -1968,7 +1972,7 @@ test("[1938155] check 相機/ 手機/玩具 show correct.", function () {
     $.delay(sleep);
 
     //verify screen successful navigate to 相機/ 手機/玩具 screen.
-    Assert.navigationBarName("相機/手機/玩具");
+    Assert.navigationBarName(varTestCategoryCameraName);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -1982,10 +1986,10 @@ test("[1938156] check 美食/ 保健/飲料 show correct.", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.allCategoryItemShowCorrect(7, "美食/\n保健/飲料");
+        Assert.allCategoryItemShowCorrect(7, varTestCategoryFoodCompatible);
     }
     else{
-        Assert.allCategoryItemShowCorrect(7, "美食/ 保健/飲料");
+        Assert.allCategoryItemShowCorrect(7, varTestCategoryFood);
     }
     
     //Go to item list screen.
@@ -1993,7 +1997,7 @@ test("[1938156] check 美食/ 保健/飲料 show correct.", function () {
     $.delay(sleep);
 
     //verify screen successful navigate to 美食/ 保健/飲料 screen.
-    Assert.navigationBarName("美食/保健/飲料");
+    Assert.navigationBarName(varTestCategoryFoodName);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -2007,10 +2011,10 @@ test("[1938157] check 日用品/ 清潔/寵物 show correct.", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.allCategoryItemShowCorrect(8, "醫療/\n日用品/寵物");
+        Assert.allCategoryItemShowCorrect(8, varTestCategoryMedicalCompatible);
     }
     else{
-        Assert.allCategoryItemShowCorrect(8, "醫療/ 日用品/寵物");
+        Assert.allCategoryItemShowCorrect(8, varTestCategoryMedical);
     }
    
     //Go to item list screen.
@@ -2018,7 +2022,7 @@ test("[1938157] check 日用品/ 清潔/寵物 show correct.", function () {
     $.delay(sleep);
 
     //verify screen successful navigate to 醫療/ 日用品/寵物 screen.
-    Assert.navigationBarName("醫療/日用品/寵物");
+    Assert.navigationBarName(varTestCategoryMedicalName);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -2032,18 +2036,18 @@ test("[1938158] check 居家/ 寢具/傢俱 show correct.", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.allCategoryItemShowCorrect(9, "居家/\n寢具/傢俱");
+        Assert.allCategoryItemShowCorrect(9, varTestCategoryHouseholdLifeCompatible);
     }
     else{
-        Assert.allCategoryItemShowCorrect(9, "居家/ 寢具/傢俱");
+        Assert.allCategoryItemShowCorrect(9, varTestCategoryHouseholdLife);
     }
     
     //Go to item list screen.
     Action.tapItemOnCategoryScreen(9);
     $.delay(sleep);
 
-    //verify screen successful navigate to 日用品/ 清潔/寵物 screen.
-    Assert.navigationBarName("居家/寢具/傢俱");
+    //verify screen successful navigate to 居家/ 寢具/傢俱 screen.
+    Assert.navigationBarName(varTestCategoryHouseholdLifeName);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -2057,18 +2061,18 @@ test("[1938159] check 運動/ 戶外/休閒 show correct.", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.allCategoryItemShowCorrect(10, "運動/\n戶外/休閒");
+        Assert.allCategoryItemShowCorrect(10, varTestCategoryActionCompatible);
     }
     else{
-        Assert.allCategoryItemShowCorrect(10, "運動/ 戶外/休閒");
+        Assert.allCategoryItemShowCorrect(10, varTestCategoryAction);
     }
 
     //Go to item list screen.
     Action.tapItemOnCategoryScreen(10);
     $.delay(sleep);
 
-    //verify screen successful navigate to 日用品/ 清潔/寵物 screen.
-    Assert.navigationBarName("運動/戶外/休閒");
+    //verify screen successful navigate to 運動/ 戶外/休閒 screen.
+    Assert.navigationBarName(varTestCategoryActionName);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -2138,7 +2142,7 @@ test("[1938064] check 確定 button is effective", function () {
     $.delay(5);
 
     //check filter is effective
-    Assert.checkReturnPageDisplay("服飾");
+    Assert.checkReturnPageDisplay(varTestApparel);
 
     //restore
     Action.tapAdvancedButton();
@@ -2190,7 +2194,7 @@ test("[1938109] click product image On grid View", function () {
     //tap advanced button
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
-    Action.chooseCategoryBrowseMode("小圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
     $.delay(sleep);
 
     //go to item page
@@ -2216,7 +2220,7 @@ test("[1938109] click product image On grid View", function () {
     Action.goCommodityTab();
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
 });
@@ -2232,7 +2236,7 @@ test("[1938121] click product image On large photo View", function () {
     //tap advanced button
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     $.delay(sleep);
 
     //go to item page
@@ -2259,7 +2263,7 @@ test("[1938121] click product image On large photo View", function () {
     Action.goCommodityTab();
     Action.tapAdvancedButton();
     Action.tapButtonsInAdvancedBar(1);
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
 });
@@ -2272,18 +2276,18 @@ test("[1938160] check 圖書/ 文具/影音 show correct.", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.allCategoryItemShowCorrect(11, "圖書/\n文具/影音");
+        Assert.allCategoryItemShowCorrect(11, varTestCategoryBooksCompatible);
     }
     else{
-        Assert.allCategoryItemShowCorrect(11, "圖書/ 文具/影音");
+        Assert.allCategoryItemShowCorrect(11, varTestCategoryBooks);
     }
     
     //Go to item list screen.
     Action.tapItemOnCategoryScreen(11);
     $.delay(5);
 
-    //verify screen successful navigate to 日用品/ 清潔/寵物 screen.
-    Assert.navigationBarName("圖書/文具/影音");
+    //verify screen successful navigate to 圖書/ 文具/影音 screen.
+    Assert.navigationBarName(varTestCategoryBooksName);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -2293,6 +2297,8 @@ test("[1938160] check 圖書/ 文具/影音 show correct.", function () {
 test("[1953648] verify edit favorite category if correct", function () {
     target.logDeviceInfo();
     Action.tapButtonOnTabBar(4);
+    $.delay(10);
+
     //edit favorite categories
     Action.tapButtonOnMyUserWhenCategory(6);
 
@@ -2336,7 +2342,7 @@ test("[1959882] Verify18 ban prompt.", function () {
     $.delay(5);
 
     //check back to "運動／戶外／休閒" page after user tap cancel on 18 ban page
-    Assert.navigationBarName("運動/戶外/休閒");
+    Assert.navigationBarName(varTestCategoryActionName);
 
     //restore
     Action.tapButtonOnTabBar(2);
@@ -2355,10 +2361,10 @@ test("[1959881] product items should shorting by price low to high after user se
     Action.tapAdvancedButton();
 
     //go to soring tab.
-    Action.tapButtonsInAdvancedBar("排序");
+    Action.tapButtonsInAdvancedBar(varTestsSortingInAdvancedBar);
 
     //select price from high to low.
-    Action.selectOptionOnSortingTab("價錢低到高");
+    Action.selectOptionOnSortingTab(varTestsPriceLowToHighInSorting);
 
     $.delay(5);
     var version = target.systemVersion();
@@ -2407,7 +2413,7 @@ test("[1954573] verify user under the age of 18  never seen 18 ban screen functi
     $.delay(sleep);
 
     //check back to "運動／戶外／休閒" page after user tap cancel on 18 ban page
-    Assert.navigationBarName("運動/戶外/休閒");
+    Assert.navigationBarName(varTestCategoryActionName);
 
     //restore
     Action.tapButtonOnTabBar(2);
@@ -2419,41 +2425,41 @@ test("[1954573] verify user under the age of 18  never seen 18 ban screen functi
 test("[1938141] check 最新動態 button exist", function () {
     target.logDeviceInfo();
     Action.tapButtonOnTabBar(2);
-    Assert.buttonOnTabBarShowCorrect("最新動態");
+    Assert.buttonOnTabBarShowCorrect(varTestDiscoveryStreamName);
     Action.goDiscoveryStream();
 });
 
 test("[1938143] check 最愛商店 button exist.", function () {
     target.logDeviceInfo();
     Action.tapButtonOnTabBar(2);
-    Assert.buttonOnTabBarShowCorrect("最愛商店");
+    Assert.buttonOnTabBarShowCorrect(varTestFavoriteStoreName);
     Action.goDiscoveryStream();
 });
 
 test("[1938145] check 購物車 button exist.", function () {
     target.logDeviceInfo();
     Action.tapButtonOnTabBar(2);
-    Assert.buttonOnTabBarShowCorrect("購物車");
+    Assert.buttonOnTabBarShowCorrect(varTestShoppingCartName);
     Action.goDiscoveryStream();
 });
 
 test("[1938147] check 我的帳戶 button exist.", function () {
     target.logDeviceInfo();
     Action.tapButtonOnTabBar(2);
-    Assert.buttonOnTabBarShowCorrect("我的帳戶");
+    Assert.buttonOnTabBarShowCorrect(varTestMyAccountName);
     Action.goDiscoveryStream();
 });
 
 test("[1938149] check 服飾 show correct.", function () {
     target.logDeviceInfo();
     Action.tapButtonOnTabBar(2);
-    Assert.allCategoryItemShowCorrect(0, "服飾");
+    Assert.allCategoryItemShowCorrect(0, varTestApparel);
 
     //Go to item list screen.
     Action.tapItemOnCategoryScreen(0);
 
     //verify screen successful navigate to 服飾 screen.
-    Assert.navigationBarName("服飾");
+    Assert.navigationBarName(varTestApparel);
 
     //Tap back button and go back to discovery screen.
     Action.goBack();
@@ -2474,7 +2480,7 @@ test("[1953657] verify edit favorite category if correct on sidebar.", function 
 
     Action.tapButtonOnTabBar(0);
 
-    Assert.checkReturnPageDisplay("最新動態");
+    Assert.checkReturnPageDisplay(varTestDiscoveryStreamName);
 });
 
 test("[1953649] verify edit favorite category if correct on sidebar.", function () {

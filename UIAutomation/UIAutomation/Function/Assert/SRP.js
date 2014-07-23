@@ -3,12 +3,12 @@ Assert.checkGoodsAndStoreTabDisplay = function  () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0].name());
-        method.verifyEquals("商店",app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1].name());
+        method.verifyEquals(varTestCategoryCommodityTab,app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0].name());
+        method.verifyEquals(varTestCategoryStoreTab,app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1].name());
     }
     else{
-        method.verifyEquals("商品",app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].name());
-        method.verifyEquals("商店",app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].name());
+        method.verifyEquals(varTestCategoryCommodityTab,app.mainWindow().collectionViews()[0].cells()[0].buttons()[0].name());
+        method.verifyEquals(varTestCategoryStoreTab,app.mainWindow().collectionViews()[0].cells()[0].buttons()[1].name());
     }
 };
 
@@ -31,11 +31,11 @@ Assert.elementsOrderInSortTabWhenSRP = function () {
     var priceLowToHigh = app.mainWindow().tableViews()[0].cells()[3].staticTexts()[0].name();
     var priceHighToLow = app.mainWindow().tableViews()[0].cells()[4].staticTexts()[0].name();
     
-    method.verifyEquals("相關度", relevanceValue);
-    method.verifyEquals("最高人氣", popularity);
-    method.verifyEquals("最新上架", latestItems);
-    method.verifyEquals("價錢低到高", priceLowToHigh);
-    method.verifyEquals("價錢高到低", priceHighToLow);
+    method.verifyEquals(varTestsRelevanceValueInSorting, relevanceValue);
+    method.verifyEquals(varTestsPopularityInSorting, popularity);
+    method.verifyEquals(varTestsLatestItemsInSorting, latestItems);
+    method.verifyEquals(varTestsPriceLowToHighInSorting, priceLowToHigh);
+    method.verifyEquals(varTestsPriceHighToLowInSorting, priceHighToLow);
 };
 
 Assert.elementsOnFilterScreenWhenSRP = function () {
@@ -43,11 +43,11 @@ Assert.elementsOnFilterScreenWhenSRP = function () {
 
     //Verify "100000 + 元" show correct
     var priceNumber100000 = app.mainWindow().staticTexts()[0].name();
-    method.verifyEquals("100000+ 元", priceNumber100000);
+    method.verifyEquals(varTestsPriceNumber100000, priceNumber100000);
 
     //Verify "0 元" show correct.
     var priceNumber0 = app.mainWindow().staticTexts()[1].name();
-    method.verifyEquals("0 元", priceNumber0);
+    method.verifyEquals(varTestsPriceNumber0, priceNumber0);
 
     //verify circle image and bar image show correct.
     var circleImage1 = app.mainWindow().images()[0].name();
@@ -64,13 +64,22 @@ Assert.elementsOnFilterScreenWhenSRP = function () {
         var barImage2 = app.mainWindow().images()[3].name();
     }
     
-    method.verifyEquals("circle.png", circleImage1);
-    method.verifyEquals("circle.png", circleImage2);
-    method.verifyEquals("bar-grey.png", barImage1);
-    method.verifyEquals("bar-blu.png", barImage2);
+    method.verifyEquals(varTestscircleImage1, circleImage1);
+    method.verifyEquals(varTestscircleImage2, circleImage2);
+    method.verifyEquals(varTestsbarImage2, barImage1);
+    method.verifyEquals(varTestsbarImage1, barImage2);
 
     //Verify all attribute elements show correct
-    this.AttributeElements = ["可刷卡", "0利率", "可分期", "超商付款", "超商取貨", "有現貨", "有影音", "有圖片", "優良商店"];
+    this.AttributeElements = [
+        varTestsItemInAdvancedBarChoose1,
+        varTestsItemInAdvancedBarChoose2,
+        varTestsItemInAdvancedBarChoose3,
+        varTestsItemInAdvancedBarChoose4,
+        varTestsItemInAdvancedBarChoose5,
+        varTestsItemInAdvancedBarChoose6,
+        varTestsItemInAdvancedBarChoose7,
+        varTestsItemInAdvancedBarChoose8,
+        varTestsItemInAdvancedBarChoose9];
 
     for (var i = 0; i < 9; i++){
         $.delay(sleep);
@@ -103,8 +112,8 @@ Assert.itemPageShowCorrectOnCoatSearchPage = function (sTitle) {
         var butButton = collectionViews.cells()["立即購買"].buttons()[1];
     }
     
-    method.verifyEquals("立即購買", addToCartButton.name());
-    method.verifyEquals("加入購物車", butButton.name());
+    method.verifyEquals(varTestsBuyButtons, addToCartButton.name());
+    method.verifyEquals(varTestsAddButtons, butButton.name());
 };
 
 Assert.productAddedToMyFavoritesScreenWhenSRP = function (productName) {
@@ -142,15 +151,15 @@ Assert.checkButtonOnStore = function () {
         var storeClassify = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[0];
         var storeCommodity = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[1];
 
-        method.verifyEquals("本店分類", storeClassify.name());
-        method.verifyEquals("本店商品", storeCommodity.name());
+        method.verifyEquals(varTestCategoryOurShopClassificationTab, storeClassify.name());
+        method.verifyEquals(varTestCategoryOurShopCommodityTab, storeCommodity.name());
     }
     else{
         var storeClassify = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
         var storeCommodity = app.mainWindow().collectionViews()[0].cells()[1].buttons()[1];
 
-        method.verifyEquals("本店分類", storeClassify.name());
-        method.verifyEquals("本店商品", storeCommodity.name());
+        method.verifyEquals(varTestCategoryOurShopClassificationTab, storeClassify.name());
+        method.verifyEquals(varTestCategoryOurShopCommodityTab, storeCommodity.name());
     } 
     
 };
@@ -168,7 +177,7 @@ Assert.heartIconShowCorrect = function (productIndex) {
     var heartIcon = itemCell.buttons()[0];
     var heartIconName = heartIcon.name();
 
-    method.verifyEquals("icon heart empty", heartIconName);
+    method.verifyEquals(varTestsHeartIconDisplay, heartIconName);
 };
 
 Assert.checkPriceBarShowCorrectWhenSRP = function (price) {
@@ -247,14 +256,23 @@ Assert.elementsOnFilterScreenWhenOptions = function () {
 
     //Verify "100000 + 元" show correct
     var priceNumber100000 = app.mainWindow().staticTexts()[0].name();
-    method.verifyEquals("100000+ 元", priceNumber100000);
+    method.verifyEquals(varTestsPriceNumber100000, priceNumber100000);
 
     //Verify "0 元" show correct.
     var priceNumber0 = app.mainWindow().staticTexts()[1].name();
-    method.verifyEquals("0 元", priceNumber0);
+    method.verifyEquals(varTestsPriceNumber0, priceNumber0);
 
     //Verify all attribute elements show correct
-    this.AttributeElements = ["可刷卡", "0利率", "可分期", "超商付款", "超商取貨", "有現貨", "有影音", "有圖片", "優良商店"];
+    this.AttributeElements = [
+        varTestsItemInAdvancedBarChoose1,
+        varTestsItemInAdvancedBarChoose2,
+        varTestsItemInAdvancedBarChoose3,
+        varTestsItemInAdvancedBarChoose4,
+        varTestsItemInAdvancedBarChoose5,
+        varTestsItemInAdvancedBarChoose6,
+        varTestsItemInAdvancedBarChoose7,
+        varTestsItemInAdvancedBarChoose8,
+        varTestsItemInAdvancedBarChoose9];
 
     for (var i = 0; i < 9; i++){
         $.delay(sleep);
@@ -273,5 +291,5 @@ Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut =function (i) {
     $.delay(sleep);
 
     var itemPageTxt = app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0];
-    method.verifyEquals("尚未開賣",itemPageTxt.name());
+    method.verifyEquals(varTestsItemPageTextWhenProductsHaveBeenSoldOut,itemPageTxt.name());
 };

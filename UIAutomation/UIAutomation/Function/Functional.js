@@ -10,7 +10,7 @@ test("[1977448] [notification]turn on/off marketing notifications ", function ()
     Action.notificationSettings(1);
     $.delay(5);
 
-    Assert.checkReturnPageDisplay("最新動態");
+    Assert.checkReturnPageDisplay(varTestDiscoveryStreamName);
 });
 
 test("[1977449] [notification]list of notifications " , function () {
@@ -24,7 +24,7 @@ test("[1977449] [notification]list of notifications " , function () {
     Action.tapButtonOnMyUser(0);
     $.delay(5);
 
-    Assert.checkReturnPageDisplay("通知");
+    Assert.checkReturnPageDisplay(varTestsPageNameNotice);
     Action.tapButtonOnTabBar(4);
     Action.tapButtonOnTabBar(0);
     Action.notificationSettings(1);
@@ -40,7 +40,7 @@ test("[1977478] [barcode]Discovery Stream root view " , function () {
     Action.tapBarcodeSearch();
     $.delay(5);
 
-    Assert.checkReturnPageDisplay("請掃條碼/QR Code");
+    Assert.checkReturnPageDisplay(varTestsPageNameQrcode);
     $.delay(sleep);
 
     Action.tapCancelButtonInAdvancedBar();
@@ -66,7 +66,7 @@ test("[1977479] [barcode]Favorite Stores root view " , function () {
     Action.tapBarcodeSearch();
     $.delay(10);
 
-    Assert.checkReturnPageDisplay("請掃條碼/QR Code");
+    Assert.checkReturnPageDisplay(varTestsPageNameQrcode);
     $.delay(sleep);
 
     Action.tapCancelButtonInAdvancedBar();
@@ -93,7 +93,7 @@ test("[1977480] [barcode]Categories root view " , function () {
     Action.tapBarcodeSearch();
     $.delay(10);
 
-    Assert.checkReturnPageDisplay("請掃條碼/QR Code");
+    Assert.checkReturnPageDisplay(varTestsPageNameQrcode);
     $.delay(sleep);
 
     Action.tapCancelButtonInAdvancedBar();

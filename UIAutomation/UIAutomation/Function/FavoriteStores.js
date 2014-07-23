@@ -5,14 +5,14 @@ test("[1954571] verify 18 ban show correct.", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     
-    Action.searchBarInputChinese("充氣娃娃");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName3);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
     //switch layout to big image
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     $.delay(10);
 
     //Go to item detail screen.
@@ -71,7 +71,7 @@ test("[1959912] Verify there is an indicator to allow user login in",function ()
     Assert.checkLogInFirstOnFavoritePage();
     Action.goDiscoveryStream();
 
-    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2 , varTestsSignInPasswordMobilestoresymbio2);
     $.delay(10);
 
     Action.tapButtonOnTabBar(0);
@@ -151,8 +151,8 @@ test("[1959907] verify the number of store items,collected number with my favori
     }
 
     //check store items and collect
-    Assert.elementsShouldContainText(storeItem, "件商品");
-    Assert.elementsShouldContainText(collection, "人收藏");
+    Assert.elementsShouldContainText(storeItem, varTestsElementsShouldContainTextStoreItem);
+    Assert.elementsShouldContainText(collection, varTestsElementsShouldContainTextCollection);
     Action.tapButtonOnTabBar(0);
 });
 
@@ -170,7 +170,7 @@ test("[1954565] Verify pull down to refresh when favorite store is empty.",funct
     $.delay(15);
 
     //check the page is correct
-    Assert.checkReturnPageDisplay("最愛商店");
+    Assert.checkReturnPageDisplay(varTestFavoriteStoreName);
 
     //check the cells is not empty
     Assert.checkFavoriteStoreCellsShowCorrectly();
@@ -197,7 +197,7 @@ test("[1954610] Verify pull down to refresh when favorite store is exist.",funct
     $.delay(10);
 
     //check the page is correct
-    Assert.checkReturnPageDisplay("最愛商店");
+    Assert.checkReturnPageDisplay(varTestFavoriteStoreName);
 
     //check the cells is not empty
     Assert.checkFavoriteStoreCellsShowCorrectly();
@@ -220,7 +220,7 @@ test("[1959896] Verify user can clicking promotion item link in store promotion 
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("Messa 米莎");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore2);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -238,10 +238,10 @@ test("[1959896] Verify user can clicking promotion item link in store promotion 
     $.delay(25);
 
     try{
-        Assert.checkTextShowCorrectly(2,"活動辦法");
+        Assert.checkTextShowCorrectly(2,varTestsCheckTextShowCorrectlyOnSalesPromotion);
     }
     catch (err) {
-        Assert.checkSearchPage("促銷活動");
+        Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
     }
 
     Action.tapButtonOnTabBar(2);
@@ -265,7 +265,7 @@ test("[1959875] Verify user logout,then login again,the display of the favorite 
     Assert.checkLogInFirstOnFavoritePage();
     $.delay(sleep);
 
-    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2 , varTestsSignInPasswordMobilestoresymbio2);
 
     Action.tapButtonOnTabBar(1);
     $.delay(20);

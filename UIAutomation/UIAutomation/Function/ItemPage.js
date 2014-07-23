@@ -23,14 +23,14 @@ test("[1953619] Verify the for piece goods discount", function () {
     $.delay(5);
 
     Action.tapCancelOnShoppingCart(); 
-    Action.tapChooseOnItemPage("促銷活動");
+    Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
 
     $.delay(10);
 
-    //check go to "促銷活動"" page
-    Assert.checkSearchPage("促銷活動");
+    //check go to 促銷活動 page
+    Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
 
-    //check "促銷活動"  content exist
+    //check 促銷活動  content exist
     Assert.checkSalesPromotionActivity();
 
     Action.tapButtonOnTabBar(2);
@@ -62,17 +62,17 @@ test("[1953617] Verify list of activities the for full discount activity list", 
     $.delay(sleep);
 
     Action.tapCancelOnShoppingCart(); 
-    Action.tapChooseOnItemPage("促銷活動");
+    Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
     $.delay(5);
 
     try{
         //check full discount
         var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
-        Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
+        Assert.elementsShouldContainText(salesPromotionActivity,varTestsSalesPromotionActivity);
     }
     catch (err) {
-        //Without access to relevant data, so the check go to "促銷活動" page
-        Assert.checkSearchPage("促銷活動");
+        //Without access to relevant data, so the check go to varTestsPageNameOnSalesPromotion page
+        Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
     }
 
     Action.tapChoosePreductCategoryWhenOptions(0,1);
@@ -80,11 +80,11 @@ test("[1953617] Verify list of activities the for full discount activity list", 
 
     try{
         //tap link ,check link page
-        Assert.checkTextShowCorrectly(2,"活動辦法");
+        Assert.checkTextShowCorrectly(2,varTestsCheckTextShowCorrectlyOnSalesPromotion);
     }
     catch (err) {
-        //30 seconds without display, so the check go to "促銷活動" page
-        Assert.checkSearchPage("促銷活動");
+        //30 seconds without display, so the check go to varTestsPageNameOnSalesPromotion page
+        Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
     }
 
     Action.tapButtonOnTabBar(2);
@@ -117,16 +117,16 @@ test("[1953614] Verify the for full discount activity list", function () {
     $.delay(sleep);
 
     Action.tapCancelOnShoppingCart(); 
-    Action.tapChooseOnItemPage("促銷活動");
+    Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
     $.delay(5);
 
     try{
         //check full discount
         var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
-        Assert.elementsShouldContainText(salesPromotionActivity,"滿千");
+        Assert.elementsShouldContainText(salesPromotionActivity,varTestsSalesPromotionActivity);
     }
     catch (err) {
-        Assert.checkSearchPage("促銷活動");
+        Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
     }
 
     Assert.checkSalesPromotionActivity();
@@ -244,7 +244,7 @@ test("[1953620] verify the gifts are displayed in the shopping cart.", function 
     //search item page with gifts
     Action.tapButtonOnTabBar(2);
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("贈品");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataGift);
     Action.tapKeyboardSearch();
     $.delay(5);
 
@@ -275,7 +275,7 @@ test("[1953620] verify the gifts are displayed in the shopping cart.", function 
     var gift = app.mainWindow().scrollViews()[0].webViews()[0].links()[4].staticTexts()[0];
     $.delay(5);
 
-    Assert.elementsShouldContainText(gift, "贈品");
+    Assert.elementsShouldContainText(gift, varTestsSearchBoxInputDataGift);
     $.delay(sleep);
 
     //restore
@@ -352,7 +352,7 @@ test("[1953629] Verify the store page, our classification.", function () {
         Action.tapChooseOnItemPage(3);
     }
     else{
-        Action.tapChooseOnItemPage("看本店家全部商品");
+        Action.tapChooseOnItemPage(varTestsItemPageLinksLookGoods);
     }
     
     $.delay(10);
@@ -430,8 +430,8 @@ test("[1959917] Verify item link,promotion link,gifi link work well.", function 
     Action.tapActivityLink();
     $.delay(sleep);
 
-    //check go to "促銷活動"" page
-    Assert.checkSearchPage("促銷活動");
+    //check go to varTestsPageNameOnSalesPromotion" page
+    Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
     Action.goBack();
     $.delay(10);
 
@@ -446,13 +446,13 @@ test("[1959917] Verify item link,promotion link,gifi link work well.", function 
         Action.tapChooseOnItemPage(0);
     }
     else{
-        Action.tapChooseOnItemPage("促銷活動");
+        Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
     }
     
     $.delay(sleep);
 
-    //check go to "促銷活動"" page
-    Assert.checkSearchPage("促銷活動");
+    //check go to varTestsPageNameOnSalesPromotion" page
+    Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
 
     //restore
     Action.tapButtonOnTabBar(2);
@@ -471,7 +471,7 @@ test("[1959926] Verify user can not select dimmed item specification" ,function 
 
     Action.englishInputMethod();
     
-    Action.searchBarInputChinese("洞洞涼爽內衣*無鋼圈内衣*");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName6);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -507,7 +507,7 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
 
     Action.englishInputMethod();
     
-    Action.searchBarInputChinese("《Fun sport》《拳擊專用》美式尼龍沙包袋");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName4);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -523,7 +523,7 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
         Action.tapChooseOnItemPageWhenBuy(5,0);
     }
     else{
-        Action.tapChooseOnItemPage("加購商品");
+        Action.tapChooseOnItemPage(varTestsItemPageLinksPurchaseOfGoods);
     }
  
     $.delay(5);
@@ -557,7 +557,7 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
     $.delay(sleep);
     target.logElementTree();
 
-    Assert.tapSettleAccountsOnShopping(12,"加購商品");
+    Assert.tapSettleAccountsOnShopping(12,varTestsItemPageLinksPurchaseOfGoods);
     Action.goBack();
     $.delay(5);
 
@@ -581,7 +581,7 @@ test("[1959897] Verify purchased product in the shopping cart display" ,function
 
     Action.englishInputMethod();
     
-    Action.searchBarInputChinese("◇方妮FaNi◇女人我最大【鯨魚胸貼隱形胸罩】金魚胸貼提胸貼可搭洋裝比基尼泳裝");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName5);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -617,7 +617,7 @@ test("[1977508] [bug case]verify It cann't show collection info when user click 
 
     Action.englishInputMethod();
     
-    Action.searchBarInputChinese("東京著衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore1);
     Action.tapKeyboardSearch();
     $.delay(5);
 
@@ -701,7 +701,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     //search item page with gifts
     Action.tapButtonOnTabBar(2);
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("送贈品220130");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataGift);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -718,7 +718,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
         Action.tapChooseOnItemPageWhenBuy(4,0);
     }
     else{ 
-        Action.tapChooseOnItemPage("附送贈品");
+        Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
     }
     
     Action.goBack();
@@ -729,7 +729,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
         Action.tapChooseOnItemPageWhenBuy(4,0);
     }
     else{ 
-        Action.tapChooseOnItemPage("附送贈品");
+        Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
     }
     Action.goBack();
 
@@ -739,7 +739,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
         Action.tapChooseOnItemPageWhenBuy(4,0);
     }
     else{ 
-        Action.tapChooseOnItemPage("附送贈品");
+        Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
     }
     Assert.checkSearchPage("贈品");
 
@@ -749,7 +749,7 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     //search item page with purchased.
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("《Fun sport》《拳擊專用》美式尼龍沙包袋");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName4);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -765,9 +765,9 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
         Action.tapChooseOnItemPageWhenBuy(5,0);
     }
     else{
-        Action.tapChooseOnItemPage("加購商品");
+        Action.tapChooseOnItemPage(varTestsItemPageLinksPurchaseOfGoods);
     }
-    Assert.checkSearchPage("加購商品");
+    Assert.checkSearchPage(varTestsItemPageLinksPurchaseOfGoods);
     Action.goBack();
 
     $.delay(sleep);
@@ -777,9 +777,9 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
         Action.tapChooseOnItemPageWhenBuy(5,0);
     }
     else{
-        Action.tapChooseOnItemPage("加購商品");
+        Action.tapChooseOnItemPage(varTestsItemPageLinksPurchaseOfGoods);
     }
-    Assert.checkSearchPage("加購商品");
+    Assert.checkSearchPage(varTestsItemPageLinksPurchaseOfGoods);
     Action.goBack();
 
     $.delay(5);
@@ -809,7 +809,7 @@ test("[1953627] verify Shopping methods.", function () {
     obj.scrollDowns(2);
     $.delay(10);
 
-    Action.tapChooseOnItemPage("購物須知");
+    Action.tapChooseOnItemPage(varTestsShoppingInformationPage);
     $.delay(5);
 
     Assert.ShoppingInformationPage();
@@ -845,7 +845,7 @@ test("[1953629] Verify the store page, our goods.", function () {
         Action.tapChooseOnItemPage(3);
     }
     else{
-        Action.tapChooseOnItemPage("看本店家全部商品");
+        Action.tapChooseOnItemPage(varTestsItemPageLinksLookGoods);
     }
     
     $.delay(5);
