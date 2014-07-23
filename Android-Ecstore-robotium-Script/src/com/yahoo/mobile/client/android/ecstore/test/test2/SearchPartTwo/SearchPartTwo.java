@@ -655,11 +655,13 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickOnView(dongjing);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-        View iv = solo.getView("menu_search");
+     /*   View iv = solo.getView("menu_search");
         solo.clickOnView(iv);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);*/
+        Action.clickSearchButtonOnScreen(solo);
         Action.searchAfterPutData(solo, 0, ValidationText.MODEL);
-
+        
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnText(ValidationText.SEARCH_ALL_STORE);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         assertFalse("Search all store button still exist.",
@@ -752,6 +754,8 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 
         // fill in null keyword then click search button
         Action.searchAfterPutData(solo, 0, "");
+        
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
         View top = (View) solo.getView("listitem_discoverylist_top10_image",
                 Action.VIEW_ID_ZERO);

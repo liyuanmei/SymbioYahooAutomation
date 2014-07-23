@@ -340,6 +340,7 @@ public class CategoryPartTwo extends ActivityInstrumentationTestCase2<Activity> 
             throws Exception {
 
         Account.judgementAccountLogin(solo);
+        Action.removeFavoriteItem(solo);
         Action.enterCategoryClothesPage(solo);
 
         // Change the item view to photo large photo view
@@ -348,14 +349,30 @@ public class CategoryPartTwo extends ActivityInstrumentationTestCase2<Activity> 
         Action.clickText(solo, ValidationText.COMMODITY);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         try {
-            Action.clickStarIconNote(solo);
+        	solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            View star = (View) solo.getView("star_button", 0);
+            solo.clickOnView(star);
+            boolean alreadyAdd;
+
+            // Get toast text.
+            if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)){
+                alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+                junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+            } else {
+                solo.sleep(ValidationText.WAIT_TIME_SHORT);
+                solo.clickOnView(star);
+                alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+                junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+
+            }
 
         } catch (AssertionError e) {
             solo.sleep(ValidationText.WAIT_TIME_SHORT);
-            Action.clickStarIconNote(solo);
+            View star = (View) solo.getView("star_button", 0);
+            solo.clickOnView(star);
         }
 
-
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         // Restore to list view.
         Action.setListViewStyleAfterSearch(solo);
 
