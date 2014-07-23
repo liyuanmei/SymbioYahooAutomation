@@ -757,7 +757,7 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
         // fill in null keyword then click search button
         Action.searchAfterPutData(solo, 0, "");
         
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
         View top = (View) solo.getView("listitem_discoverylist_top10_image",
                 Action.VIEW_ID_ZERO);

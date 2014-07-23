@@ -233,6 +233,7 @@ public final class Action {
             final int textviewId, final String data) throws Exception {
 
         addInitializeData(solo, textviewId, data);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.pressSoftKeyboardSearchButton();
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
     }
