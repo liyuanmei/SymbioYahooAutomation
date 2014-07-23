@@ -344,6 +344,7 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 
         Action.clickText(solo, ValidationText.ALL_CATEGORIES);
         Action.clickText(solo, ValidationText.APPAREL);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.clickText(solo, ValidationText.COMMODITY);
         solo.goBack();
         Action.navigateToCategoryScreen(solo);
@@ -362,6 +363,7 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 
         solo.clickOnView(solo.getView("tab_text", 2));
         Action.clickText(solo, ValidationText.APPAREL);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.clickText(solo, ValidationText.POPULAR_WOMEN);
         Action.clickText(solo, ValidationText.CATEGORIES);
         solo.goBack();
