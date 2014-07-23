@@ -6,7 +6,7 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
      
-    Action.searchBarInputChinese("LULUS【03100054】L- 韓製-薄棉連帽外套-６色 現+預");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName1);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -37,7 +37,7 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     $.delay(20);
     
     //Verify to enter information page
-    Assert.tapSettleAccountsOnShopping(6,"購物車明細 (1)");
+    Assert.tapSettleAccountsOnShopping(6,varTestsSettleAccountsOnShopping);
     $.delay(10);
 
     obj.scrollDownsWhenSettlement(3);
@@ -45,23 +45,23 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
 
     try{
         //Verify "全家繳費不取貨" exist
-        var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()["全家繳費不取貨"];
-        Assert.elementsShouldContainText(convenienceStorePayment,"全家繳費不取貨");
+        var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[varTestsConvenienceStorePayment];
+        Assert.elementsShouldContainText(convenienceStorePayment,varTestsConvenienceStorePayment);
 
         Action.tapFamilyPaymentNotPickup();
     }
     catch (err) {
         //No data and Verify "超商付款" display
         $.delay(sleep);
-        var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()["超商付款"];
-        Assert.elementsShouldContainText(convenienceStorePayment,"超商付款");
+        var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[varTestsItemInAdvancedBarChoose4];
+        Assert.elementsShouldContainText(convenienceStorePayment,varTestsItemInAdvancedBarChoose4);
     }
 
     Action.tapSettleAccounts();
 
     //Verify into the complete order page
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(0,"本店購物車");
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(2,"完成訂購");
+    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(0,varTestsTheOrderPageElements1);
+    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(2,varTestsTheOrderPageElements2);
 
     //restore
     Action.tapButtonOnTabBar(3);
@@ -86,7 +86,7 @@ test("[1959916] Verify order inquiry details page can show normally" ,function (
 
     Action.englishInputMethod();
     
-    Action.searchBarInputChinese("東京著衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore1);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -124,14 +124,14 @@ test("[1959916] Verify order inquiry details page can show normally" ,function (
     $.delay(20);
     
     //Verify to enter information page
-    Assert.tapSettleAccountsOnShopping(6,"購物車明細 (1)");
+    Assert.tapSettleAccountsOnShopping(6,varTestsSettleAccountsOnShopping);
     $.delay(10);
 
     Action.tapSettleAccounts();
 
     //Verify into the complete order page
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(0,"本店購物車");
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(2,"完成訂購");
+    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(0,varTestsTheOrderPageElements1);
+    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(2,varTestsTheOrderPageElements2);
     //restore
     Action.tapButtonOnTabBar(3);
     $.delay(5);
@@ -153,7 +153,7 @@ test("[1959918] Verify user can change other delivery places." ,function () {
     Action.tapSearchIconOnNavBar();
     
     //Choose to have family mart or 711 convenience stores 
-    Action.searchBarInputChinese("SunShine 防水鏤空果凍平底包鞋");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName2);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -187,7 +187,7 @@ test("[1959918] Verify user can change other delivery places." ,function () {
     $.delay(20);
     
     //Verify to enter information page
-    Assert.tapSettleAccountsOnShopping(6,"購物車明細 (1)");
+    Assert.tapSettleAccountsOnShopping(6,varTestsSettleAccountsOnShopping);
     $.delay(10);
 
     obj.scrollDownsWhenSettlement(2);

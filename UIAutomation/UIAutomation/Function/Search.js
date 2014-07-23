@@ -13,7 +13,7 @@ test("[1937854] look at the search bar tooltip text display", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Assert.textIsEnabled("搜尋全部商品");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhengoCategoryWhenSearchSettingOpen);
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
 });
@@ -38,7 +38,7 @@ test("[1937856] Click to return to the icon", function () {
     $.delay(sleep);
      
     //Check return page display
-    Assert.checkReturnPageDisplay("全部分類");
+    Assert.checkReturnPageDisplay(varTestCategoryName);
     $.delay(sleep);
     Action.goDiscoveryStream();
 });
@@ -51,7 +51,7 @@ test("[1937857] Auto complete function", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInputChinese("h");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDatah);
     $.delay(5);
      
     //check autoComplete page display
@@ -69,7 +69,7 @@ test("[1937858] Auto complete layout view", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     $.delay(10);
      
     Assert.checkIconPlusDisplay();
@@ -85,7 +85,7 @@ test("[1937859] Click the auto - complete list right side '+' Icon", function ()
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     $.delay(10);
      
     //To obtain name
@@ -110,7 +110,7 @@ test("[1937860] Click on the search for 2 times suggest different keyword '+' ic
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     $.delay(10);
      
     //Click on the different icon plus
@@ -137,7 +137,7 @@ test("[1937861] According to the search Suggestions", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     $.delay(10);
      
     //Check the search results page display properly
@@ -183,7 +183,7 @@ test("[1937863] Have a keyword, see clear input icon display", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     $.delay(sleep);
      
     //Verify whether the clean button
@@ -201,12 +201,12 @@ test("[1937864] Click remove input icon", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     Action.tapClean();
     $.delay(sleep);
      
     //Verify whether to remove the search box
-    Assert.textIsEnabled("搜尋全部商品");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhengoCategoryWhenSearchSettingOpen);
     $.delay(sleep);
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
@@ -220,7 +220,7 @@ test("[1937865] Check the keyboard to remove function", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("1234");
+    Action.searchBarInput(varTestsSearchBoxInputDataForCheckEveryDeleteData);
     Action.tapKeyboardDelete();
     $.delay(5);
      
@@ -238,11 +238,11 @@ test("[1937866] Enter a keyword search", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     Action.tapKeyboardSearch();
     $.delay(sleep);
      
-    Assert.checkSearchPage("\"h\"");
+    Assert.checkSearchPage(varTestsSearchPageWhenInputH);
     $.delay(sleep);
      
     Action.goBackOnSearchPage();
@@ -259,7 +259,7 @@ test("[1937867] Type in Chinese to check auto complete", function () {
     Action.tapSearchIconOnNavBar();
      
     //In the search bar type in Chinese
-    Action.searchBarInputChinese("東");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataEast);
      
     //Check the search Suggestions have been displayed in the list
     Assert.autoCompletePageDisplay();
@@ -270,19 +270,19 @@ test("[1937867] Type in Chinese to check auto complete", function () {
 test("[1937873] Check list recent search for '+' icon on the right side", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
-    //Click on search and input “h” and "hp" for search record
+    //Click on search and input “h” and hp for search record
     Action.tapSearchIconOnNavBar();
 
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     Action.tapKeyboardSearch();
     $.delay(sleep);
      
     Action.goBackOnSearchPage();
      
-    Action.searchBarInput("hp");
+    Action.searchBarInput(varTestsSearchBoxInputDatahp);
     Action.tapKeyboardSearch();
     $.delay(sleep);
      
@@ -292,7 +292,7 @@ test("[1937873] Check list recent search for '+' icon on the right side", functi
     //Click on the plus to validate recent search record is added to the right
     Action.tapSearchIconOnNavBar();
     Action.tapIconPlusOnFirstFloorTableView();
-    Assert.textIsEnabled("h")
+    Assert.textIsEnabled(varTestsSearchBoxInputDatah)
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
      
@@ -303,19 +303,19 @@ test("[1937873] Check list recent search for '+' icon on the right side", functi
 test("[1937874] At the most recent search keyword search", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
-    //Click on search and input “h” and "hp" for search record
+    //Click on search and input “h” and hp for search record
     Action.tapSearchIconOnNavBar();
 
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     Action.tapKeyboardSearch();
     $.delay(sleep);
      
     Action.goBackOnSearchPage();
      
-    Action.searchBarInput("hp");
+    Action.searchBarInput(varTestsSearchBoxInputDatahp);
     Action.tapKeyboardSearch();
     $.delay(sleep);
      
@@ -328,7 +328,7 @@ test("[1937874] At the most recent search keyword search", function () {
     Action.tapIconPlusOnFirstFloorTableView();
     Action.tapKeyboardSearch();
     $.delay(sleep);
-    Assert.checkSearchPage("\"h\"");
+    Assert.checkSearchPage(varTestsSearchPageWhenInputH);
      
     //Clean searches
     Action.goBackOnSearchPage();
@@ -345,7 +345,7 @@ test("[1937875] No search Suggestions according to look at it", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("yeruieujeueu");
+    Action.searchBarInput(varTestsSearchBoxInputLongData1);
      
     //Validate the input “yeruieujeueu” , no search Suggestions
     Assert.searchSuggestionsPageDisplay();
@@ -367,19 +367,19 @@ test("[1937876] No recent search shows that view", function () {
 test("[1937877] Click on the recent twice different keyword search for the right '+'", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
-    //Click on search and input “h” and "hp" for search record
+    //Click on search and input “h” and varTestsSearchBoxInputDatahp for search record
     Action.tapSearchIconOnNavBar();
 
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     Action.tapKeyboardSearch();
     $.delay(sleep);
      
     Action.goBackOnSearchPage();
      
-    Action.searchBarInput("hp");
+    Action.searchBarInput(varTestsSearchBoxInputDatahp);
     Action.tapKeyboardSearch();
     $.delay(sleep);
      
@@ -410,19 +410,19 @@ test("[1937877] Click on the recent twice different keyword search for the right
 test("[1937878] Clean up into recent search keyword", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
-    //Click on search and input “h” and "hp" for search record
+    //Click on search and input “h” and varTestsSearchBoxInputDatahp for search record
     Action.tapSearchIconOnNavBar();
 
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     Action.tapKeyboardSearch();
     $.delay(sleep);
      
     Action.goBackOnSearchPage();
      
-    Action.searchBarInput("hp");
+    Action.searchBarInput(varTestsSearchBoxInputDatahp);
     Action.tapKeyboardSearch();
     $.delay(sleep);
      
@@ -437,7 +437,7 @@ test("[1937878] Clean up into recent search keyword", function () {
     $.delay(sleep);
      
     //Verify the success of a cleanup
-    Assert.textIsEnabled("搜尋全部商品");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhengoCategoryWhenSearchSettingOpen);
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
     Action.cleanSearches();
@@ -452,7 +452,7 @@ test("[1937879] Clean up into the keyword search proposal", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("h");
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
     $.delay(sleep);
     Action.tapIconPlusOnFirstFloorTableView();
      
@@ -461,7 +461,7 @@ test("[1937879] Clean up into the keyword search proposal", function () {
     $.delay(sleep);
      
     //Verify the success of a cleanup
-    Assert.textIsEnabled("搜尋全部商品");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhengoCategoryWhenSearchSettingOpen);
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
 });
@@ -486,7 +486,7 @@ test("[1937888] click search icon", function () {
     Action.tapSearchIconOnApparelCategory();
      
     //Check into the search page
-    Assert.textIsEnabled("搜尋服飾");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhenGoApparelCategory);
     Action.tapReturnOnSearchBar();
     Action.backToAllCategory();
     Action.goDiscoveryStream();
@@ -502,7 +502,7 @@ test("[1937890] Click to return to the icon L2 layer classification", function (
     Action.tapReturnOnSearchBar();
      
     //check Return "服飾" Page Display
-    Assert.checkReturnPageDisplay("服飾");
+    Assert.checkReturnPageDisplay(varTestApparel);
     Action.backToAllCategory();
     Action.goDiscoveryStream();
 });
@@ -515,7 +515,7 @@ test("[1937886] Enter any long keyword search", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("jjhghkjhhhhhjjjjjjhg");
+    Action.searchBarInput(varTestsSearchBoxInputLongData2);
     Action.tapKeyboardSearch();
     $.delay(5);
      
@@ -539,7 +539,7 @@ test("[1937891] Click to return to the icon L3 layer classification", function (
     Action.tapSearchIconOnNavBar();
     Action.tapReturnOnSearchBar();
     
-    Assert.checkReturnPageDisplay("流行女裝");
+    Assert.checkReturnPageDisplay(varTestsPageNameFashionWomenClothing);
      
     //return fashion women's clothing category
     Action.tapBackSubclassification();
@@ -564,7 +564,7 @@ test("[1937892] Click to return to the icon L4 layer classification", function (
     Action.tapSearchIconOnNavBar();
     Action.tapReturnOnSearchBar();
      
-    Assert.checkReturnPageDisplay("上衣");
+    Assert.checkReturnPageDisplay(varTestsSearchBoxInputDataCoat);
     $.delay(sleep);
      
     //go back coat category
@@ -591,13 +591,13 @@ test("[1937896] View the search results page", function () {
     Action.englishInputMethod();
     $.delay(sleep);
 
-    Action.searchBarInput("jjhg");
+    Action.searchBarInput(varTestsSearchBoxInputLongData4);
     $.delay(10);
     
-    Action.searchBarInput("hkkkkkhjh");
+    Action.searchBarInput(varTestsSearchBoxInputLongData5);
     $.delay(10);
 
-    Action.searchBarInput("jjjjjjh");
+    Action.searchBarInput(varTestsSearchBoxInputLongData6);
     $.delay(10);
 
     Action.tapKeyboardSearch();
@@ -619,7 +619,7 @@ test("[1937896] View the search results page", function () {
     Action.goDiscoveryStream();
 });
 
-test("[1937905] View the search results page", function () {
+test("[1937905] Enter no search results page，check search results page", function () {
     target.logDeviceInfo();
     Action.goApparelCategoryWhenSearchSettingOpen();
     $.delay(sleep);
@@ -631,7 +631,7 @@ test("[1937905] View the search results page", function () {
     Action.englishInputMethod();
     $.delay(sleep);
      
-    Action.searchBarInput("jjjjjjjjhg");
+    Action.searchBarInput(varTestsSearchBoxInputLongData3);
     $.delay(sleep);
      
     Assert.searchSuggestionsPageDisplay();
@@ -652,7 +652,7 @@ test("[1937868] check not enter search directly" , function () {
 
     Action.tapKeyboardSearch();
     $.delay(3);
-    Assert.checkSearchPage("全部分類");
+    Assert.checkSearchPage(varTestCategoryName);
     Action.goDiscoveryStream();
 });
 
@@ -661,8 +661,9 @@ test("[1937869] check in recent memory search function" , function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
-    Action.searchBarInput("h");
-    $.delay(4);
+    Action.searchBarInput(varTestsSearchBoxInputDatah);
+    $.delay(5);
+
     Action.tapIconPlusOnFirstFloorTableView();
     var IconPlusValue = app.mainWindow().textFields()[0].value();
 
@@ -684,7 +685,7 @@ test("[1937870] direct input keyword - check in recent memory search function" ,
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInput("keyword");
+    Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
 
     var directInput = app.mainWindow().textFields()[0].value();
     Action.tapKeyboardSearch();
@@ -746,7 +747,7 @@ test("[1937889] click to return to the icon L1 layer classification" , function 
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.tapReturnOnSearchBar();
-    Assert.checkSearchPage("全部分類");
+    Assert.checkSearchPage(varTestCategoryName);
     $.delay(sleep);
     Action.goDiscoveryStream();
 });
@@ -778,7 +779,7 @@ test("[1937893] Click to return to the icon L5 layer classification", function (
     Action.tapSearchIconOnNavBar();
     Action.tapReturnOnSearchBar();
     
-    Assert.checkReturnPageDisplay("T恤");
+    Assert.checkReturnPageDisplay(varTestsPageNameTShirt);
      
     //return fashion women's clothing category
     Action.tapButtonOnTabBar(2);
@@ -818,7 +819,7 @@ test("[1937894] Click to return to the icon L6 layer classification", function (
     Action.tapSearchIconOnNavBar();
     Action.tapReturnOnSearchBar();
     
-    Assert.checkReturnPageDisplay("無袖T恤");
+    Assert.checkReturnPageDisplay(varTestsPageNameSleevelessTShirt);
      
     //return fashion women's clothing category
     Action.tapButtonOnTabBar(2);
@@ -835,7 +836,7 @@ test("[1937898] Click on the search icon", function () {
     $.delay(sleep);
    
     Action.tapSearchIconOnNavBar();    
-    Assert.textIsEnabled("搜尋服飾");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhenGoApparelCategory);
     Action.tapReturnOnSearchBar();
      
     Action.tapButtonOnTabBar(2);
@@ -857,12 +858,12 @@ test("[1937909] Click to return to the icon L4 layer classification", function (
     Action.goCoatCategory();
      
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInput("keyword");
+    Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
     Action.tapKeyboardSearch();
     $.delay(sleep);
     
     target.logElementTree();
-    Assert.searchResultsPage("keyword");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataKeyword);
      
     //return fashion women's clothing category
     Action.tapButtonOnTabBar(2);
@@ -882,7 +883,7 @@ test("[1937899] L2 Itemlist click on the 'back' icon", function () {
     Action.goBack();
     $.delay(sleep);
 
-    Assert.checkReturnPageDisplay("全部分類");
+    Assert.checkReturnPageDisplay(varTestCategoryName);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -903,7 +904,7 @@ test("[1937900] L3 Itemlist click on the 'back' icon", function () {
     Action.tapGoodsButton();
 
     Action.goBack();
-    Assert.checkReturnPageDisplay("服飾");
+    Assert.checkReturnPageDisplay(varTestApparel);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -928,7 +929,7 @@ test("[1937901] L4 Itemlist click on the 'back' icon", function () {
     Action.tapGoodsButton();
 
     Action.goBack();
-    Assert.checkReturnPageDisplay("流行女裝");
+    Assert.checkReturnPageDisplay(varTestsPageNameFashionWomenClothing);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -960,7 +961,7 @@ test("[1937902] L5 Itemlist click on the 'back' icon", function () {
     Action.tapGoodsButton();
 
     Action.goBack();
-    Assert.checkReturnPageDisplay("上衣");
+    Assert.checkReturnPageDisplay(varTestsSearchBoxInputDataCoat);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -996,7 +997,7 @@ test("[1937903] L6 Itemlist click on the 'back' icon", function () {
     $.delay(sleep);
 
     Action.goBack();
-    Assert.checkReturnPageDisplay("T恤");
+    Assert.checkReturnPageDisplay(varTestsPageNameTShirt);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -1012,11 +1013,11 @@ test("[1937904] Enter a keyword search", function () {
 
     Action.tapGoodsButton();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInput("keyword");
+    Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
     Action.tapKeyboardSearch();
     $.delay(sleep);
     
-    Assert.searchResultsPage("keyword");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataKeyword);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -1032,14 +1033,14 @@ test("[1937906] Classification of L1 in search", function () {
 
     Action.tapSearchIconOnNavBar();
 
-    Assert.textIsEnabled("搜尋全部商品");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhengoCategoryWhenSearchSettingOpen);
     $.delay(sleep);
 
-    Action.searchBarInput("keyword");
+    Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
     Action.tapKeyboardSearch();
     $.delay(sleep);
     
-    Assert.searchResultsPage("keyword");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataKeyword);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -1057,14 +1058,14 @@ test("[1937907] Classification of L2 in search", function () {
     Action.tapGoodsButton();
     Action.tapSearchIconOnNavBar();
 
-    Assert.textIsEnabled("搜尋服飾");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhenGoApparelCategory);
     $.delay(sleep);
     
-    Action.searchBarInput("keyword");
+    Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
     Action.tapKeyboardSearch();
     $.delay(sleep);
     
-    Assert.searchResultsPage("keyword");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataKeyword);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -1084,14 +1085,14 @@ test("[1937908] Classification of L3 in search", function () {
     Action.tapGoodsButton();
     Action.tapSearchIconOnNavBar();
 
-    Assert.textIsEnabled("搜尋流行女裝");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhenGoToFashionWomenClothing);
     $.delay(sleep);
     
-    Action.searchBarInput("keyword");
+    Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
     Action.tapKeyboardSearch();
     $.delay(sleep);
     
-    Assert.searchResultsPage("keyword");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataKeyword);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -1122,14 +1123,14 @@ test("[1937910] Classification of L5 in search", function () {
     Action.tapGoodsButton();
     Action.tapSearchIconOnNavBar();
 
-    Assert.textIsEnabled("搜尋T恤");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhenGoToTShirt);
     $.delay(sleep);
     
-    Action.searchBarInput("keyword");
+    Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
     Action.tapKeyboardSearch();
     $.delay(sleep);
     
-    Assert.searchResultsPage("keyword");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataKeyword);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -1155,7 +1156,7 @@ test("[1937911] Classification of L6 in search", function () {
 
     Action.goCoatCategory();
 
-    //go to  sleeveless T-Shirt
+    //go to sleeveless T-Shirt
     Action.tapClassificationButtonWhenS();
     $.delay(sleep);
 
@@ -1165,14 +1166,14 @@ test("[1937911] Classification of L6 in search", function () {
     Action.tapSearchIconOnNavBar();
     $.delay(sleep);
 
-    Assert.textIsEnabled("搜尋無袖T恤");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhenGoToSleevelessTShirt);
     $.delay(sleep);
     
-    Action.searchBarInput("keyword");
+    Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
     Action.tapKeyboardSearch();
     $.delay(sleep);
     
-    Assert.searchResultsPage("keyword");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataKeyword);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -1181,15 +1182,16 @@ test("[1937911] Classification of L6 in search", function () {
 //the search result of "iphone" is not correct
 test("[1937912] check the search results", function () {
     target.logDeviceInfo();
+    Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
     Action.englishInputMethod();
     $.delay(sleep);
     
-    Action.searchBarInput("iphone");
+    Action.searchBarInput(varTestsSearchBoxInputDataIphone);
     Action.tapKeyboardSearch();
-    $.delay(5);
+    Action.pageShow();
 
     //verify type "iphone" show the correct
     target.logElementTree();
@@ -1197,7 +1199,7 @@ test("[1937912] check the search results", function () {
     var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
 
     UIALogger.logMessage(productName.name());
-    Assert.elementsShouldContainText(productName, "hone");
+    Assert.elementsShouldContainText(productName, varTestsCheckTheKeyword1);
      
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -1214,16 +1216,16 @@ test("[1959905] Verify '搜索全部商店'function" , function () {
     $.delay(sleep);
 
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("東京著衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore1);
     Action.tapKeyboardSearch();
     $.delay(5);
 
     Action.tapStoreTab();
-    $.delay(8);
+    $.delay(10);
 
     Action.tapSearchResultOfStore();
     Action.tapSearchIconOnNavBarWhenSRP();
-    Action.searchBarInputChinese("造型");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataModelling);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -1244,7 +1246,7 @@ test("[1977507] [bug case]verify search result when enter special characters in 
     $.delay(sleep);
 
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("'");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataSpecialCharacters);
     Action.tapKeyboardSearch();
     Action.pageShow();
   
@@ -1265,6 +1267,16 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     Action.tapItemOnCategoryScreenWhenItemPage(0);
     Action.goCommodityTab();
     Action.pageShow();
+
+    //Tap Advanced button
+    Action.tapButtonsInAdvancedBarWhenSRP();
+
+    //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
+    Action.tapButtonsInAdvancedBar(1);
+    $.delay(sleep);
+
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
+    $.delay(5);
 
     //Tap Advanced button.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1287,19 +1299,30 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     }
     
     Action.tapDetermineInAdvancedBarWhenSRP();
-    $.delay(sleep);
+    $.delay(5);
 
-    Action.tapSearchResultOfStore();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapItemOnProductListScreen();
+    }
+    else{
+        Action.tapSearchResultOfStore();
+    }
+    
     $.delay(15);
 
     obj.scrollDowns(1);
     $.delay(10);
 
+    target.logElementTree();
     //Verify screen successful navigated to item page.
-    Assert.itemPageShowCorrectOnCoatSearchPage();
+    Assert.itemPageShowCorrect();
 
     //go to l2
     Action.tapButtonOnTabBar(2);
+    $.delay(10);
+
     Action.tapButtonOnTabBar(2);
     Action.tapItemOnCategoryScreenWhenItemPage(0);
     $.delay(sleep);
@@ -1337,13 +1360,22 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
         obj.scrollDowns(1);
         $.delay(10);
 
+        target.logElementTree();
         //Verify screen successful navigated to item page.
-        Assert.itemPageShowCorrectOnCoatSearchPage();
+        Assert.itemPageShowCorrect();
     }
     catch (err) {
         //There is no data
         //classification and goods buttons is first cell
-        Assert.checkGoodsExist();
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
+            var noData = app.mainWindow().collectionViews()[0].staticTexts()[1];
+            Assert.elementsValueShouldContainText(noData,varTestsNoData);
+        }
+        else{
+            Assert.checkGoodsExist();
+        }
     }
 
     //go to l3
@@ -1394,14 +1426,25 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
         obj.scrollDowns(1);
         $.delay(10);
 
+        target.logElementTree();
         //Verify screen successful navigated to item page.
-        Assert.itemPageShowCorrectOnCoatSearchPage();
+        Assert.itemPageShowCorrect();
     }
     catch (err) {
         //There is no data
         //classification and goods buttons is first cell
-        Assert.checkGoodsExist();
+        var version = target.systemVersion();
+        version = version.substring(0, version.lastIndexOf("."));
+        if(version == "6.1") {
+            var noData = app.mainWindow().collectionViews()[0].staticTexts()[1];
+            Assert.elementsValueShouldContainText(noData,varTestsNoData);
+        }
+        else{
+            Assert.checkGoodsExist();
+        }
+        
     }
+    $.delay(10);
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -1413,17 +1456,17 @@ test("[1959914] Verify user can access store page by tapping store logo", functi
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("東京");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataTokyo);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
     Action.tapStoreTab();
-    $.delay(5);
+    $.delay(10);
 
     Action.tapSearchResultOfStore();
-    $.delay(sleep);
 
-    target.logElementTree();
+    $.delay(5);
+
     Assert.checkButtonOnStore();
 
     Action.tapButtonOnTabBar(2);
@@ -1437,7 +1480,7 @@ test("[1977510] [bug case]verify「搜尋全部分類」button can work in categ
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -1488,7 +1531,7 @@ test("[1959884] Verify ‘購物須知’,when the store has no promotion" , fun
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("東京");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataTokyo);
     Action.tapKeyboardSearch();
     $.delay(5);
 
@@ -1519,7 +1562,7 @@ test("[1937880] Verify search icon display" , function () {
     $.delay(sleep);
 
     //verify the search box display
-    Assert.textIsEnabled("搜尋全部商品");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhengoCategoryWhenSearchSettingOpen);
     $.delay(sleep);
 
     //Check return icon display

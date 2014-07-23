@@ -11,10 +11,9 @@ test("[1937918] Check the Tab display" , function () {
 
     Action.englishInputMethod();
     
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
-    target.logElementTree();
 
     //Tap Advanced button
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -23,7 +22,7 @@ test("[1937918] Check the Tab display" , function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     $.delay(10);
 
     //Check the Tab display
@@ -38,7 +37,7 @@ test("[1937920] Click store Tab" , function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -46,7 +45,7 @@ test("[1937920] Click store Tab" , function () {
     $.delay(5);
 
     //Check into a store page，verify icon heart on store list
-    Assert.checkButtonOnList("icon heart empty");
+    Assert.checkButtonOnList(varTestsHeartIconDisplay);
 
     //Check store List Display
     Assert.tapTabCheckSListDisplay();
@@ -61,7 +60,7 @@ test("[1937921] Check the switch back to the Item list" , function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -70,7 +69,7 @@ test("[1937921] Check the switch back to the Item list" , function () {
     $.delay(5);
 
     //Check into a store page，verify icon heart on store list.
-    Assert.checkButtonOnList("icon star");
+    Assert.checkButtonOnList(varTestsStarIconDisplay);
 
     //Check store List Display
     $.delay(5);
@@ -95,7 +94,7 @@ test("[1937927] Check the default show 20 items",function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -117,7 +116,7 @@ test("[1937927] Check the default show 20 items",function () {
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -143,7 +142,7 @@ test("[1937928] Scroll screen more items should successful loaded", function () 
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -165,7 +164,7 @@ test("[1937928] Scroll screen more items should successful loaded", function () 
 
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -204,7 +203,7 @@ test("[1937933] can switch to 排序 tab after click 排序 button", function ()
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -228,7 +227,7 @@ test("[1937934] can switch to 篩選 tab after click 篩選 button", function ()
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -252,7 +251,7 @@ test("[1937935] verify the elements order in 排序 tab", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -279,7 +278,7 @@ test("[1937938] check according to the 'low price to dealer' sort" , function ()
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -301,7 +300,7 @@ test("[1937938] check according to the 'low price to dealer' sort" , function ()
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -321,7 +320,7 @@ test("[1937938] check according to the 'low price to dealer' sort" , function ()
 
     //verify 價錢低到高 price value show correct.
     //the first parameter is product index and the second parameter is price index in product cell.
-    Assert.checkPriceValueShowLessThan(1, 3, "1");
+    Assert.checkPriceValueShowLessThan(1, 3, varTestsGoodsMinPrice);
 
     //Restore application to default loaction.
     Action.tapButtonOnTabBar(2);
@@ -336,7 +335,7 @@ test("[1937939] product items should sorting by price high to low after user sel
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -358,7 +357,7 @@ test("[1937939] product items should sorting by price high to low after user sel
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -378,7 +377,7 @@ test("[1937939] product items should sorting by price high to low after user sel
 
     //verify 價錢高到低 price value show correct.
     //the first parameter is product index and the second parameter is price index in product cell.
-    Assert.checkPriceValueShowLessThan(1, 3, "100000000");
+    Assert.checkPriceValueShowLessThan(1, 3, varTestsGoodsMaxPrice);
 
     //Restore application to default loaction.
     Action.tapButtonOnTabBar(2);
@@ -393,7 +392,7 @@ test("[1937942] tap clear button can clear to user input.", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -415,7 +414,7 @@ test("[1937942] tap clear button can clear to user input.", function () {
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -431,36 +430,36 @@ test("[1937942] tap clear button can clear to user input.", function () {
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
         //verify the default price is 100000 +
-        Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions("100000+ 元");
+        Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions(varTestsPriceNumber100000);
 
         //drag price bar to 1020 price.
         app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x:0.234, y:0.37}, duration:12.2});
         $.delay(sleep);
 
         //Verify price show correct after dragging.
-        Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions("1020 元");
+        Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions(varTestsSlidingPricesData1);
 
         //Tap clear button
         Action.tapClearButtonOnFilterScreenWhenSRP();
 
         //Verify price bar restore to default value.
-        Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions("100000+ 元");
+        Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions(varTestsPriceNumber100000);
     }
     else{
         //verify the default price is 100000 +
-        Assert.checkPriceBarShowCorrectWhenSRP("100000+ 元");
+        Assert.checkPriceBarShowCorrectWhenSRP(varTestsPriceNumber100000);
 
         //drag price bar to 1020 price.    
         app.mainWindow().dragInsideWithOptions({startOffset: {x: 0.92, y: 0.29}, endOffset:{x: 0.234, y: 0.29}});
     
         //Verify price show correct after dragging.
-        Assert.checkPriceBarShowCorrectWhenSRP("1020 元");
+        Assert.checkPriceBarShowCorrectWhenSRP(varTestsSlidingPricesData1);
 
         //Tap clear button
         Action.tapClearButtonOnFilterScreenWhenSRP();
 
         //Verify price bar restore to default value.
-        Assert.checkPriceBarShowCorrectWhenSRP("100000+ 元");
+        Assert.checkPriceBarShowCorrectWhenSRP(varTestsPriceNumber100000);
     }
     
     //Tap submit button and restore application to default location.
@@ -479,7 +478,7 @@ test("[1937940] check the elements on 篩選 screen", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -506,7 +505,7 @@ test("[1937943] check “確定” button exist on Advanced bar", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -528,7 +527,7 @@ test("[1937943] check “確定” button exist on Advanced bar", function () {
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -544,11 +543,11 @@ test("[1937943] check “確定” button exist on Advanced bar", function () {
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
         //Verify "確定" button exist on Navigation Bar, the index of this button is 1.
-        Assert.buttonExistOnNavigationBar(1, "確定");
+        Assert.buttonExistOnNavigationBar(1, varTestConfirmbuttonExistOnNavigationBarInAdvancedBar);
     }
     else{
         //Verify "確定" button exist on Navigation Bar, the index of this button is 1.
-        Assert.buttonExistOnNavigationBar(2, "確定");
+        Assert.buttonExistOnNavigationBar(2, varTestConfirmbuttonExistOnNavigationBarInAdvancedBar);
     }
 
     //Tap cancel button and navigate back to discovery screen.
@@ -564,7 +563,7 @@ test("[1937944] Check the '確定' button" , function (){
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -586,7 +585,7 @@ test("[1937944] Check the '確定' button" , function (){
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -608,7 +607,7 @@ test("[1937944] Check the '確定' button" , function (){
     }
 
     //Verify tap "確定" button ,search results page show the correct 
-    Assert.searchResultsPage("上衣");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataCoat);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -621,7 +620,7 @@ test("[1937945] product items in list should show correct after user adjust pric
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -643,7 +642,7 @@ test("[1937945] product items in list should show correct after user adjust pric
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -656,7 +655,7 @@ test("[1937945] product items in list should show correct after user adjust pric
     Action.tapButtonsInAdvancedBar(0);
 
     //select price from high to low.
-    Action.selectOptionOnSortingTabWhenSRP("價錢高到低");
+    Action.selectOptionOnSortingTabWhenSRP(varTestsPriceHighToLowInSorting);
     $.delay(15);
 
     var version = target.systemVersion();
@@ -668,7 +667,7 @@ test("[1937945] product items in list should show correct after user adjust pric
 
     //verify price value show correct.
     //the first parameter is product index and the second parameter is price index in product cell.
-    Assert.checkPriceValueShowLessThan(1, 3, "100000000");
+    Assert.checkPriceValueShowLessThan(1, 3, varTestsGoodsMaxPrice);
 
     //go to advanced screen and drag price bar to 1020.
     //tap advanced button.
@@ -683,23 +682,23 @@ test("[1937945] product items in list should show correct after user adjust pric
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
         //verify the default price is 100000 +
-        Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions("100000+ 元");
+        Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions(varTestsPriceNumber100000);
 
         //drag price bar to 1020 price.    
         app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x: 0.234, y:0.37}, duration:12.2});
     
         //Verify price show correct after dragging.
-        Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions("1020 元");
+        Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions(varTestsSlidingPricesData1);
     }
     else{
         //verify the default price is 100000 +
-        Assert.checkPriceBarShowCorrectWhenSRP("100000+ 元");
+        Assert.checkPriceBarShowCorrectWhenSRP(varTestsPriceNumber100000);
 
         //drag price bar to 1020 price.    
         app.mainWindow().dragInsideWithOptions({startOffset: {x: 0.92, y: 0.29}, endOffset:{x: 0.234, y: 0.29}});
     
         //Verify price show correct after dragging.
-        Assert.checkPriceBarShowCorrectWhenSRP("1020 元");
+        Assert.checkPriceBarShowCorrectWhenSRP(varTestsSlidingPricesData1);
     }
     
     //Tap submit button.
@@ -714,7 +713,7 @@ test("[1937945] product items in list should show correct after user adjust pric
     $.delay(10);
 
     //verify price value show correct.
-    Assert.checkPriceValueShowLessThan(1, 3, "100000000");
+    Assert.checkPriceValueShowLessThan(1, 3, varTestsGoodsMaxPrice);
 
     //Restore application to default loaction.
     Action.tapButtonOnTabBar(2);
@@ -728,7 +727,7 @@ test("[1937949] check able to tap '可刷卡' and untap '可刷卡' button", fun
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -759,7 +758,7 @@ test("[1937952] check able to tap '有影音' and untap '有影音' button", fun
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -790,7 +789,7 @@ test("[1937955] check able to tap '0利率' and untap '0利率' button", functio
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -821,7 +820,7 @@ test("[1937958] check able to tap '可分期' and untap '可分期' button", fun
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -852,7 +851,7 @@ test("[1937961] check able to tap '超商付款' and untap '超商付款' button
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -883,7 +882,7 @@ test("[1937967] check able to tap '有現貨' and untap '有現貨' button", fun
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -914,7 +913,7 @@ test("[1937973] check able to tap '優良商店' and untap '優良商店' button
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -945,7 +944,7 @@ test("[1977511] verify shouldn't duplicate keyword in search box" , function () 
     target.logDeviceInfo();
     Action.cleanSearches();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("一一二");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataChinese1);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -953,11 +952,11 @@ test("[1977511] verify shouldn't duplicate keyword in search box" , function () 
     Action.tapReturnOnSearchBar();
     
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("一一一二");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataChinese2);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
-    Assert.searchResultsPage("一一一二");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataChinese2);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -968,7 +967,7 @@ test("[1937976] check click on the picture of commodity",function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -990,7 +989,7 @@ test("[1937976] check click on the picture of commodity",function () {
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -1002,7 +1001,7 @@ test("[1937976] check click on the picture of commodity",function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     
     //tap commodity picture
     Action.tapCommodityPictureOnSearchResultsPage();
@@ -1038,7 +1037,7 @@ test("[1937976] check click on the picture of commodity",function () {
             Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
         }
         else{
-            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut("尚未開賣");
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(varTestsItemPageTextWhenProductsHaveBeenSoldOut);
         }    
     }
 
@@ -1052,7 +1051,7 @@ test("[1937979] check click on the name of commodity" , function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -1074,7 +1073,7 @@ test("[1937979] check click on the name of commodity" , function () {
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -1086,7 +1085,7 @@ test("[1937979] check click on the name of commodity" , function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     $.delay(10);
 
     //tap commodity Name
@@ -1123,7 +1122,7 @@ test("[1937979] check click on the name of commodity" , function () {
             Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
         }
         else{
-            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut("尚未開賣");
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(varTestsItemPageTextWhenProductsHaveBeenSoldOut);
         }    
     }
 
@@ -1137,7 +1136,7 @@ test("[1937980] check the commodity prices", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -1148,7 +1147,7 @@ test("[1937980] check the commodity prices", function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     //first parameter is second product, second parameter is the  location of price in product cell.
     Assert.productPriceShowCorrect(2,3);
@@ -1163,7 +1162,7 @@ test("[1937981] check the rating show correct." ,function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -1174,7 +1173,7 @@ test("[1937981] check the rating show correct." ,function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     //Verify the value of rating is less than 10, if not fail.
     Assert.storeRatingShowCorrect(1, 1);
@@ -1190,7 +1189,7 @@ test("[1937982] check favorites icon show correct." , function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -1201,7 +1200,7 @@ test("[1937982] check favorites icon show correct." , function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     $.delay(10);
 
     //Verify favorites icon show correct, this function need passing product index parameters.
@@ -1237,7 +1236,7 @@ test("[1937983] check log in window show after unregister user tap favorites ico
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -1248,7 +1247,7 @@ test("[1937983] check log in window show after unregister user tap favorites ico
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     $.delay(10);
      
     //tap favorites icon, after tapped log in window show up.
@@ -1271,7 +1270,7 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -1293,7 +1292,7 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -1306,7 +1305,7 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("小圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
     $.delay(10);
 
     var version = target.systemVersion();
@@ -1333,7 +1332,7 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
     Action.tapButtonsInAdvancedBar(1);
     $.delay(sleep);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -1348,7 +1347,7 @@ test("[1938008] check log in window show after unregister user tap favorites ico
 
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -1370,7 +1369,7 @@ test("[1938008] check log in window show after unregister user tap favorites ico
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -1383,7 +1382,7 @@ test("[1938008] check log in window show after unregister user tap favorites ico
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     $.delay(20);    
 
     var version = target.systemVersion();
@@ -1412,7 +1411,7 @@ test("[1938008] check log in window show after unregister user tap favorites ico
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -1427,7 +1426,7 @@ test("[1938030] check heart icon jump to login screen" , function () {
 
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -1452,12 +1451,12 @@ test("[1938030] check heart icon jump to login screen" , function () {
 test("[1937984] login user able to add product to favorites." , function () {
     target.logDeviceInfo();
     Action.cleanSearches();
-    Action.tapAddAccountOnLogin("mobilestoresymbio", "Aa123456");
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio4, varTestsSignInPasswordMobilestoresymbio4);
     $.delay(10);
 
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -1479,7 +1478,7 @@ test("[1937984] login user able to add product to favorites." , function () {
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -1491,7 +1490,7 @@ test("[1937984] login user able to add product to favorites." , function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     $.delay(10);
 
     //Tap favorites icon add a production to favorites.
@@ -1538,7 +1537,7 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -1560,7 +1559,7 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -1571,7 +1570,7 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("小圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
     $.delay(10);
 
     //verify favorites icon show on product cell.
@@ -1610,7 +1609,7 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -1625,7 +1624,7 @@ test("[1937997] On photo grid view register user able to add product to his favo
 
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -1647,7 +1646,7 @@ test("[1937997] On photo grid view register user able to add product to his favo
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -1660,7 +1659,7 @@ test("[1937997] On photo grid view register user able to add product to his favo
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("小圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
 
     //Tap favorites icon add a production to favorites.
     var version = target.systemVersion();
@@ -1720,7 +1719,7 @@ test("[1937997] On photo grid view register user able to add product to his favo
     $.delay(sleep);
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -1732,7 +1731,7 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -1754,7 +1753,7 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -1766,7 +1765,7 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
 
     Action.tapCommodityPictureOnLargePhotoView();
     $.delay(15);
@@ -1801,7 +1800,7 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
             Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
         }
         else{
-            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut("尚未開賣");
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(varTestsItemPageTextWhenProductsHaveBeenSoldOut);
         }    
     }
 
@@ -1809,7 +1808,7 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -1821,7 +1820,7 @@ test("[1938005] check the commodity prices on item listing-Large photo view" , f
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -1832,7 +1831,7 @@ test("[1938005] check the commodity prices on item listing-Large photo view" , f
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     $.delay(10);
 
     Action.slidingCommodityPage();
@@ -1843,7 +1842,7 @@ test("[1938005] check the commodity prices on item listing-Large photo view" , f
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -1856,7 +1855,7 @@ test("[1938006] check the rating show correct on item listing-Large photo view" 
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -1878,7 +1877,7 @@ test("[1938006] check the rating show correct on item listing-Large photo view" 
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -1890,7 +1889,7 @@ test("[1938006] check the rating show correct on item listing-Large photo view" 
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     $.delay(15);
 
     Action.slidingCommodityPage();
@@ -1921,7 +1920,7 @@ test("[1938006] check the rating show correct on item listing-Large photo view" 
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -1933,7 +1932,7 @@ test("[1938007] check favorites icon show correct on item listing-Large photo vi
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -1955,7 +1954,7 @@ test("[1938007] check favorites icon show correct on item listing-Large photo vi
         
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         Action.pageShow();
     }
@@ -1967,7 +1966,7 @@ test("[1938007] check favorites icon show correct on item listing-Large photo vi
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("大圖");
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     $.delay(15);
 
     Action.slidingCommodityPage();
@@ -1992,7 +1991,7 @@ test("[1938007] check favorites icon show correct on item listing-Large photo vi
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -2004,7 +2003,7 @@ test("[1938013] check 共xxxx筆結果." , function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -2033,7 +2032,7 @@ test("[1938024] store Logo below store name" , function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -2071,7 +2070,7 @@ test("[1938025] check  commodity quantity" , function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -2093,7 +2092,7 @@ test("[1938026] click the shop commodity" , function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -2118,7 +2117,7 @@ test("[1938027] check store evaluation shows" , function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -2138,7 +2137,7 @@ test("[1938029] view to join wish list icon display." , function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -2172,7 +2171,7 @@ test("[1937929] Click 'all categories' button" , function () {
     Action.cleanSearches();
     Action.goApparelCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
     
@@ -2181,7 +2180,7 @@ test("[1937929] Click 'all categories' button" , function () {
 
     Action.tapAllCoatgoryWhenSRP();
 
-    Assert.searchResultsPage("上衣");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataCoat);
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -2202,13 +2201,13 @@ test("[1937930] Browse by specific classification search results" , function () 
     Assert.textIsEnabled("搜尋漢神百貨品牌服飾");
     $.delay(sleep);
 
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
 
     $.delay(5);
     
     //verify ”漢神百貨品牌服飾“
-    Assert.searchResultsPage("上衣");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataCoat);
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -2220,7 +2219,7 @@ test("[1937941] Check the 'remove' button shows ", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
     
@@ -2265,7 +2264,7 @@ test("[1937964] check able to tap 超商取貨 and untap 超商取貨", function
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2297,7 +2296,7 @@ test("[1938011] check ‘Store’ TAB list shows", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2323,7 +2322,7 @@ test("[1938012] check ‘Store’ TAB on '漢神百貨品牌服飾'' list shows"
     $.delay(sleep);
 
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -2342,7 +2341,7 @@ test("[1938014] check header" , function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2370,7 +2369,7 @@ test("[1938015] Check the 'return' icon", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2378,7 +2377,7 @@ test("[1938015] Check the 'return' icon", function () {
     Action.goBackOnSearchPage();
     $.delay(5);
 
-    Assert.textIsEnabled("上衣");
+    Assert.textIsEnabled(varTestsSearchBoxInputDataCoat);
     Action.tapReturnOnSearchBar();
 
     Action.tapButtonOnTabBar(2);
@@ -2391,7 +2390,7 @@ test("[1938016] Click on the search icon", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2415,7 +2414,7 @@ test("[1938018] check a search bar, and then close the search bar", function () 
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2427,7 +2426,7 @@ test("[1938018] check a search bar, and then close the search bar", function () 
     Action.tapReturnOnSearchBarWhenSRP();
     $.delay(sleep);
 
-    Assert.checkReturnPageDisplay("Line-up線上衣飾");
+    Assert.checkReturnPageDisplay(varTestStorePageName1);
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -2465,7 +2464,7 @@ test("[1938032] Click ‘advanced’ button", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2495,7 +2494,7 @@ test("[1938017] Enter a keyword search", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2505,11 +2504,11 @@ test("[1938017] Enter a keyword search", function () {
     Action.tapSearchResultOfStore();
 
     Action.tapSearchIconOnNavBarWhenSRP();
-    Action.searchBarInputChinese("iphone");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataIphone);
     Action.tapKeyboardSearch();
     $.delay(10);
 
-    Assert.searchResultsPage("iphone");
+    Assert.searchResultsPage(varTestsSearchBoxInputDataIphone);
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -2523,14 +2522,14 @@ test("[1937914] Check the 'return' icon" , function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
-    Action.searchBarInput("keyword");
+    Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
     Action.goBackOnSearchPage();
 
     Action.tapReturnOnSearchBar();
-    Assert.checkSearchPage("全部分類");
+    Assert.checkSearchPage(varTestCategoryName);
     $.delay(sleep);
     Action.goDiscoveryStream();
 });
@@ -2541,7 +2540,7 @@ test("[1937989] Click the commodity pictures", function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2575,7 +2574,7 @@ test("[1937989] Click the commodity pictures", function () {
             Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
         }
         else{
-            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut("尚未開賣");
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(varTestsItemPageTextWhenProductsHaveBeenSoldOut);
         }    
     }
 
@@ -2592,7 +2591,7 @@ test("[1938009] Login - click join collection after listing of stars." , functio
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2604,7 +2603,7 @@ test("[1938009] Login - click join collection after listing of stars." , functio
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("小圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
     $.delay(5);
 
     //Tap favorites icon add a production to favorites.
@@ -2629,7 +2628,7 @@ test("[1938009] Login - click join collection after listing of stars." , functio
     $.delay(sleep);
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -2644,7 +2643,7 @@ test("[1938031] After login, click on add collection list icon ", function () {
     //$.delay(sleep);
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2668,7 +2667,7 @@ test("[1938033] check according to the 'low price to dealer' sort" , function ()
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2686,7 +2685,7 @@ test("[1938033] check according to the 'low price to dealer' sort" , function ()
 
     //verify 價錢低到高 price value show correct.
     //the first parameter is product index and the second parameter is price index in product cell.
-    Assert.checkPriceValueShowLessThan(1, 3, "1");
+    Assert.checkPriceValueShowLessThan(1, 3, varTestsGoodsMinPrice);
 
     //Restore application to default loaction.
     Action.tapButtonOnTabBar(2);
@@ -2701,7 +2700,7 @@ test("[1938034] product items should sorting by price high to low after user sel
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2719,7 +2718,7 @@ test("[1938034] product items should sorting by price high to low after user sel
 
     //verify 價錢高到低 price value show correct.
     //the first parameter is product index and the second parameter is price index in product cell.
-    Assert.checkPriceValueShowLessThan(1, 3, "100000000");
+    Assert.checkPriceValueShowLessThan(1, 3, varTestsGoodsMaxPrice);
 
     //Restore application to default loaction.
     Action.tapButtonOnTabBar(2);
@@ -2735,7 +2734,7 @@ test("[1937970] check able to tap 有圖片 and untap 有圖片", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2768,7 +2767,7 @@ test("[1937925] Switch to a shop List, check 'total XXX pen results' ", function
 
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2801,7 +2800,7 @@ test("[1937931] Check the advanced page", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2827,7 +2826,7 @@ test("[1937932] Check the default to 'browse mode' Tab", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2841,9 +2840,9 @@ test("[1937932] Check the default to 'browse mode' Tab", function () {
     target.logElementTree();
     $.delay(sleep);
 
-    Assert.buttonOnAdvancedIsEnabledShow(0,"列表");
-    Assert.buttonOnAdvancedIsEnabledShow(1,"小圖");
-    Assert.buttonOnAdvancedIsEnabledShow(2,"大圖");
+    Assert.buttonOnAdvancedIsEnabledShow(0,varTestsListInBrowse);
+    Assert.buttonOnAdvancedIsEnabledShow(1,varTestsSmallPictureInBrowse);
+    Assert.buttonOnAdvancedIsEnabledShow(2,varTestsLargePictureInBrowse);
 
     //Tap cancel button exit advanced bar.
     Action.tapCancelButtonInAdvancedBar();
@@ -2858,7 +2857,7 @@ test("[1937950] check have a video display options", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2874,11 +2873,11 @@ test("[1937950] check have a video display options", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.chooseButtonsOnAdvanced(0,6,"有影音");
+        Assert.chooseButtonsOnAdvanced(0,6,varTestsItemInAdvancedBarChoose7);
 
     }
     else{
-        Assert.chooseButtonsOnAdvanced(1,6,"有影音");
+        Assert.chooseButtonsOnAdvanced(1,6,varTestsItemInAdvancedBarChoose7);
     }
     
     //Tap cancel button and navigate back to discovery screen.
@@ -2894,7 +2893,7 @@ test("[1937985] Check the browse mode icon display", function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2904,7 +2903,7 @@ test("[1937985] Check the browse mode icon display", function () {
     //Tap browse mode button on advanced bar. And verify this button would enabled after tapped.
     Action.tapButtonsInAdvancedBar(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     $.delay(5);
 
     //Tap Advanced button.
@@ -2928,7 +2927,7 @@ test("[1937986] view－check the browse mode icon display-'小圖'", function ()
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2940,8 +2939,8 @@ test("[1937986] view－check the browse mode icon display-'小圖'", function ()
     Assert.buttonOnAdvancedIsEnabled(1);
     $.delay(sleep);
 
-    Assert.buttonOnAdvancedIsEnabledShow(1,"小圖");
-    Action.chooseCategoryBrowseMode("小圖");
+    Assert.buttonOnAdvancedIsEnabledShow(1,varTestsSmallPictureInBrowse);
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
     $.delay(sleep);
 
     //Go back to advanced bar switch browse mode to list view.
@@ -2949,7 +2948,7 @@ test("[1937986] view－check the browse mode icon display-'小圖'", function ()
     Action.tapButtonsInAdvancedBar(1);
     $.delay(sleep);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -2961,7 +2960,7 @@ test("[1938004] view-check click on the name of commodity",function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -2972,7 +2971,7 @@ test("[1938004] view-check click on the name of commodity",function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     
     //tap commodity name
     Action.tapCommodityNameOnSearchResultsPage();
@@ -3005,7 +3004,7 @@ test("[1938004] view-check click on the name of commodity",function () {
             Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
         }
         else{
-            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut("尚未開賣");
+            Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(varTestsItemPageTextWhenProductsHaveBeenSoldOut);
         }    
     }
 
@@ -3019,7 +3018,7 @@ test("[1937993] view-Check the goods price display",function () {
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -3030,7 +3029,7 @@ test("[1937993] view-Check the goods price display",function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("小圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
     $.delay(10);
     target.logElementTree();
 
@@ -3052,7 +3051,7 @@ test("[1937993] view-Check the goods price display",function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("小圖");
+    Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -3064,7 +3063,7 @@ test("[1937998] view－check the browse mode icon display－'大圖'", function 
     target.logDeviceInfo();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -3076,8 +3075,8 @@ test("[1937998] view－check the browse mode icon display－'大圖'", function 
     Assert.buttonOnAdvancedIsEnabled(1);
     $.delay(sleep);
 
-    Assert.buttonOnAdvancedIsEnabledShow(2,"大圖");
-    Action.chooseCategoryBrowseMode("大圖");
+    Assert.buttonOnAdvancedIsEnabledShow(2,varTestsLargePictureInBrowse);
+    Action.chooseCategoryBrowseMode(varTestsLargePictureInBrowse);
     $.delay(sleep);
 
     //Go back to advanced bar switch browse mode to list view.
@@ -3085,7 +3084,7 @@ test("[1937998] view－check the browse mode icon display－'大圖'", function 
     Action.tapButtonsInAdvancedBar(1);
     $.delay(sleep);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
@@ -3098,7 +3097,7 @@ test("[1938010] To view the tab display ", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -3119,7 +3118,7 @@ test("[1937926] item list－Check the default browser mode" , function () {
     $.delay(sleep);
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();   
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -3130,7 +3129,7 @@ test("[1937926] item list－Check the default browser mode" , function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
 
     //Check the item-list display
     Assert.checkStorelistShowCorrect();
@@ -3146,7 +3145,7 @@ test("[1937924] item－list check 共xxxx筆結果." , function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -3174,7 +3173,7 @@ test("[1937974] Check the goods pictures showed." , function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 

@@ -1,6 +1,6 @@
 Assert.checkSearchRecordPageOnRecentHisory = function () {
     $.delay(3);
-    method.verifyEquals("搜尋",app.mainWindow().collectionViews()[1].staticTexts()[1].name());
+    method.verifyEquals(varTestsSearchRecordPageOnRecentHisory,app.mainWindow().collectionViews()[1].staticTexts()[1].name());
 };
 
 Assert.searchSuggestionsPageDisplayOnRecentHisory = function () {

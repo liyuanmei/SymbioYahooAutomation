@@ -9,7 +9,7 @@ test("[1959923] Verify store rate from items collected", function () {
     Action.tapSearchIconOnNavBar();
     $.delay(sleep);
 
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -20,7 +20,7 @@ test("[1959923] Verify store rate from items collected", function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     $.delay(5);
 
     //Tap favorites icon add a production to favorites.

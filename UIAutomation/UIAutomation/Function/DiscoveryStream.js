@@ -9,7 +9,7 @@ test("[1954564] Verify pull down to refresh.", function () {
     $.delay(20);
 
     //check the page is correct
-    Assert.checkReturnPageDisplay("最新動態");
+    Assert.checkReturnPageDisplay(varTestDiscoveryStreamName);
 
     //check the cells is not empty
     Assert.checkFavoriteStoreCellsShowCorrectly();
