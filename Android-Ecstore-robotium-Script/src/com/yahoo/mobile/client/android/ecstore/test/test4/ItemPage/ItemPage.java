@@ -236,7 +236,21 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickInList(1);
         solo.goBack();
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        Action.clickStarIconNote(solo);
+        View star = (View) solo.getView("star_button", 0);
+        solo.clickOnView(star);
+        boolean alreadyAdd;
+
+        // Get toast text.
+        if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)){
+            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+            assertTrue("Add failed.", alreadyAdd);
+        } else {
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(star);
+            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+            assertTrue("Add failed.", alreadyAdd);
+
+        }
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
         //Get store name.

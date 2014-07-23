@@ -127,7 +127,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
         try {
         Action.clickElementsInWebviewByText(solo,
                 ValidationText.RESELECT_OTHER_STORE);
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+        solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
         } catch (AssertionError e) {
             solo.sleep(ValidationText.WAIT_TIME_MIDDLE);

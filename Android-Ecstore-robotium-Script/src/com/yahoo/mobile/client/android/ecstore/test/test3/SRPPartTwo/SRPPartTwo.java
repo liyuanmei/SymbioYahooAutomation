@@ -647,6 +647,7 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
 
         Action.enterToJacketAfterSearch(solo);
         Action.clickText(solo, ValidationText.SHOP);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         ImageView storeListImage = (ImageView) solo.getView(
                 "listitem_storelist_image", 0);
         solo.clickOnView(storeListImage);
@@ -676,6 +677,7 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
 
         Action.enterToJacketAfterSearch(solo);
         Action.clickText(solo, ValidationText.SHOP);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         ImageView storeListImage = (ImageView) solo.getView(
                 "listitem_storelist_image", 0);
         solo.clickOnView(storeListImage);
