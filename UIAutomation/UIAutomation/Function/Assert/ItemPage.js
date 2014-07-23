@@ -1,7 +1,7 @@
 Assert.checkSalesPromotionActivity = function () {
     $.delay(sleep);
     var checkSalesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[0].staticTexts()[2];
-    method.verifyEquals("內容",checkSalesPromotionActivity.name());
+    method.verifyEquals(varTestsContent,checkSalesPromotionActivity.name());
 };
 
 Assert.checkPaymentAndDelivery = function () {
@@ -11,14 +11,14 @@ Assert.checkPaymentAndDelivery = function () {
     if(version == "6.1") {
         var delivery= app.mainWindow().collectionViews()[0].staticTexts()[1].name();
         var payment = app.mainWindow().collectionViews()[0].staticTexts()[0].name();
-        method.verifyEquals("交貨方式", delivery);
-        method.verifyEquals("付款方式", payment);
+        method.verifyEquals(varTestsDeliveryWays, delivery);
+        method.verifyEquals(varTestsPaymentWays, payment);
     }
     else{
         var delivery= app.mainWindow().collectionViews()[0].staticTexts()[0].name();
         var payment = app.mainWindow().collectionViews()[0].staticTexts()[1].name();
-        method.verifyEquals("交貨方式", delivery);
-        method.verifyEquals("付款方式", payment);
+        method.verifyEquals(varTestsDeliveryWays, delivery);
+        method.verifyEquals(varTestsPaymentWays, payment);
     }
 };
 
@@ -40,7 +40,7 @@ Assert.checkClassificationButtonIsEnabled = function (i) {
 Assert.checkButtonsNotExistOnStoreSearchPage = function (i) {
     $.delay(sleep);
     var checkButtonsNotExistOnStoreSearchPage = app.mainWindow().collectionViews()[0].buttons()[i].name();
-    assertNotEquals("搜尋全部商店",checkButtonsNotExistOnStoreSearchPage)
+    assertNotEquals(varTestsNoInputTheSearchBoxgWhengoCategoryWhenStore,checkButtonsNotExistOnStoreSearchPage)
 }
 
 //6.30
@@ -53,9 +53,9 @@ Assert.checkShareButtonShowOnItemPage = function () {
     $.delay(5);
     var mail = app.mainWindow().scrollViews()[0].buttons()[0];
     var fackBook = app.mainWindow().scrollViews()[0].buttons()[1];
-    method.verifyEquals("郵件", mail.name());
+    method.verifyEquals(varTestsMail, mail.name());
     $.delay(sleep);
-    method.verifyEquals("Facebook", fackBook.name()); 
+    method.verifyEquals(varTestsFacebook, fackBook.name()); 
 };
 
 Assert.checkTheGrayOptionsIsNotTaped = function () {
@@ -64,18 +64,18 @@ Assert.checkTheGrayOptionsIsNotTaped = function () {
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
         var tapConfirmOnShoppingCart = app.navigationBar().buttons()[1];
-        assertNotEquals("確定",tapConfirmOnShoppingCart);
+        assertNotEquals(varTestConfirmbuttonExistOnNavigationBarInAdvancedBar,tapConfirmOnShoppingCart);
     }
     else{
         var tapConfirmOnShoppingCart = app.navigationBar().buttons()[2];
-        assertNotEquals("確定",tapConfirmOnShoppingCart);
+        assertNotEquals(varTestConfirmbuttonExistOnNavigationBarInAdvancedBar,tapConfirmOnShoppingCart);
     }
 };
         
 Assert.checkSalesPromotionActivityOnStore = function (j,i) {
     $.delay(sleep);
     var checkSalesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[j].staticTexts()[i];
-    method.verifyEquals("內容",checkSalesPromotionActivity.name());
+    method.verifyEquals(varTestsContent,checkSalesPromotionActivity.name());
 };
 
 Assert.checkLinkCellsDisplay = function () {

@@ -67,10 +67,10 @@ Assert.discoveryScreenShowCorrect = function () {
     $.delay(sleep);
 
     var navName = app.navigationBar().name();
-    method.verifyEquals("最新動態", navName);
+    method.verifyEquals(varTestDiscoveryStreamName, navName);
 
     var discoveryButton = app.tabBar().buttons()[0];
-    method.verifyEquals("最新動態", discoveryButton.name());
+    method.verifyEquals(varTestDiscoveryStreamName, discoveryButton.name());
     method.verifyEquals(1, discoveryButton.isEnabled());
 };
 

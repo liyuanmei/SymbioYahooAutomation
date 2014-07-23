@@ -16,10 +16,10 @@ Assert.backButtonOnSearchBar = function () {
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
         var backButton = app.mainWindow().buttons()[0];
-        method.verifyEquals("icon back", backButton.name());
+        method.verifyEquals(varTestsBackButtonOnSearchBar, backButton.name());
     }
     else{
-        method.verifyEquals("icon back", app.mainWindow().buttons()[0].name());
+        method.verifyEquals(varTestsBackButtonOnSearchBar, app.mainWindow().buttons()[0].name());
     }
 };
 
@@ -42,12 +42,12 @@ Assert.checkIconPlusDisplay = function () {
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
         var plusIcon = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
-        method.verifyEquals("icon plus", plusIcon.name());
+        method.verifyEquals(varTestsIconPlusDisplay, plusIcon.name());
     }
     else{
         var mainWindow = app.mainWindow();
         $.delay(sleep);
-        method.verifyEquals("icon plus", app.mainWindow().tableViews()[0].cells()[0].buttons()[0].name());
+        method.verifyEquals(varTestsIconPlusDisplay, app.mainWindow().tableViews()[0].cells()[0].buttons()[0].name());
     }
 };
 
@@ -56,18 +56,18 @@ Assert.checkCleanIconDisplay = function () {
     $.delay(sleep);
     var mainWindow = app.mainWindow();
     var cleanIcon = app.mainWindow().textFields()[0].buttons()[0].isEnabled();
-    assertNotEquals(1,cleanIcon,"clean icon still present");
+    assertNotEquals(1,cleanIcon,varTestsDisplayAboutClean);
 };
 
 Assert.checkCleanIcon = function () {
     $.delay(sleep);
-    method.verifyEquals("Clear text",app.mainWindow().textFields()[0].buttons()[0].name());
+    method.verifyEquals(varTestsCleanIconDisplay,app.mainWindow().textFields()[0].buttons()[0].name());
 };
 
 //Verify whether the clear one character at a time
 Assert.checkEveryDelete = function () {
     $.delay(sleep);
-    method.verifyEquals("123",app.mainWindow().textFields()[0].value());
+    method.verifyEquals(varTestsCheckEveryDeleteData,app.mainWindow().textFields()[0].value());
 };
 
 Assert.checkSearchPage = function (skey) {
@@ -142,12 +142,12 @@ Assert.longtextSearchPageDisplay = function () {
 Assert.coatCategorySearchResultsPageDisplayedInList = function () {
     $.delay(sleep);
     var coatCategorySearchResultsPageDisplayedInList = app.mainWindow().navigationBar().staticTexts()[1].name();
-    method.verifyEquals("搜尋上衣",coatCategorySearchResultsPageDisplayedInList);
+    method.verifyEquals(varTestsSearchResultsPageDisplayedInList,coatCategorySearchResultsPageDisplayedInList);
 };
 
 Assert.ShoppingInformationPage = function () {
     $.delay(sleep);
-    method.verifyEquals("購物須知",app.mainWindow().collectionViews()[0].staticTexts()[0].name());
+    method.verifyEquals(varTestsShoppingInformationPage,app.mainWindow().collectionViews()[0].staticTexts()[0].name());
 };
 
 Assert.repeatInputPageDisplay = function () {
