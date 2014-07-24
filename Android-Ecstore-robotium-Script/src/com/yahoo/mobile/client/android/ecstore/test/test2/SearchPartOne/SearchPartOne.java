@@ -292,7 +292,7 @@ public class SearchPartOne extends ActivityInstrumentationTestCase2<Activity> {
             // value where in front of "+"
             solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
             tvValue = Action.getValuesInTextview(solo,
-                    "id/search_suggestion_text", 0);
+                    "search_suggestion_text", 0);
             Action.clickPlusInOpenWindow(solo, "search_fill_up", 0);
         }
         // get the value in search bar
@@ -493,7 +493,7 @@ public class SearchPartOne extends ActivityInstrumentationTestCase2<Activity> {
 
         // value in the first line
         String suggestionRecord = Action.getValuesInTextview(solo,
-                "id/search_suggestion_text", 0);
+                "search_suggestion_text", 0);
 
         // click "+" in list suggestion window
         Action.clickPlusInOpenWindow(solo, "search_fill_up", 0);
@@ -507,7 +507,7 @@ public class SearchPartOne extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickSearchButtonOnScreen(solo);
 
         String historyRecord = Action.getValuesInTextview(solo,
-                "id/search_suggestion_text", 0);
+                "search_suggestion_text", 0);
 
         assertEquals("Keyword is not on the first line", suggestionRecord,
                 historyRecord);
@@ -535,7 +535,7 @@ public class SearchPartOne extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickSearchButtonOnScreen(solo);
 
         String historyRecord = Action.getValuesInTextview(solo,
-                "id/search_suggestion_text", 0);
+                "search_suggestion_text", 0);
         assertEquals("Keyword is not on the first line", searchKeys[0],
                 historyRecord);
 
@@ -592,7 +592,7 @@ public class SearchPartOne extends ActivityInstrumentationTestCase2<Activity> {
 
             // get the text in the first line of suggestion list
             String suggestionRecord = Action.getValuesInTextview(solo,
-                    "id/search_suggestion_text", 0);
+                    "search_suggestion_text", 0);
             String searchKey = searchKeys[1 + j];
             assertEquals("The order of suggestion list is not" + " correct.",
                     suggestionRecord, searchKey);
@@ -638,7 +638,7 @@ public class SearchPartOne extends ActivityInstrumentationTestCase2<Activity> {
 
         for (int j = 0; j < 10; j++) {
             String suggestionRecord = Action.getValuesInTextview(solo,
-                    "id/search_suggestion_text", j);
+                    "search_suggestion_text", j);
             String searchKey = searchKeys[searchKeys.length - 1 - j];
             assertEquals("The order of suggestion list" + " is not correct.",
                     suggestionRecord, searchKey);
@@ -769,7 +769,7 @@ public class SearchPartOne extends ActivityInstrumentationTestCase2<Activity> {
         for (int i = 0; i < 2; i++) {
             // value where in front of "+"
             tvValue = Action.getValuesInTextview(solo,
-                    "id/search_suggestion_text", 0);
+                    "search_suggestion_text", 0);
             Action.clickPlusInOpenWindow(solo, "search_fill_up", 0);
             solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         }

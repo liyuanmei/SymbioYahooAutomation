@@ -438,7 +438,22 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
         Account.judgementAccountLogin(solo);
         solo.clickOnView(solo.getView("tab_image", 2));
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        Action.clickStarIconNote(solo);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        View star = (View) solo.getView("star_button", 0);
+        solo.clickOnView(star);
+        boolean alreadyAdd;
+
+        // Get toast text.
+        if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)){
+            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+            junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+        } else {
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(star);
+            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+            junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+
+        }
     }
 
     /**

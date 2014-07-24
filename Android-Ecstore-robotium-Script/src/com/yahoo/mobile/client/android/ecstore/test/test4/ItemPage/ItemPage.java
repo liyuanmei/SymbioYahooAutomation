@@ -479,9 +479,9 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
     public final void testPlusPurchaseProductDisplayedInTheShoppingcart()
             throws Exception {
 
-        Account.judgementAccountLogin(solo);
+      /*  Account.judgementAccountLogin(solo);
         Action.removeShoppingCart(solo);
-        solo.goBack();
+        solo.goBack();*/
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
         Action.clickSearchButtonOnScreen(solo);
         Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
@@ -491,7 +491,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
         solo.clickOnView(storeName);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 2);
+        TestHelper.swipeUp(solo, 1);
         try {
         	//TestHelper.swipeUp2(solo, Action.VIEW_ID_TEN);
             solo.sleep(ValidationText.WAIT_TIME_SHORT);
@@ -514,8 +514,11 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickOnView(addon);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.goBack();
+      //  solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        TestHelper.swipeUp(solo, 1);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
-      //  TestHelper.swipeDown(solo, 1);
+       TestHelper.swipeDown(solo, 40);
+      
         Action.addToShoppingCartForSmallScreen(solo);
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
         solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
@@ -543,7 +546,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickOnView(storeName);
        // solo.sleep(ValidationText.WAIT_TIME_SHORT);
         TestHelper.swipeUp(solo, 1);
-
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.addToShoppingCart(solo);
         TextView storeNamee = (TextView) solo.getView(
                 "listitem_productlist_store_name", 0);

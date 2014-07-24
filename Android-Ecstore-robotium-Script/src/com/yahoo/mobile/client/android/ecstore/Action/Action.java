@@ -767,7 +767,7 @@ public final class Action {
             solo.sleep(ValidationText.WAIT_TIME_SHORT);
         } catch (AssertionError e) {
 
-            TestHelper.swipeUp2(solo, 2);
+            TestHelper.swipeUp2(solo, 4);
 
             shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
             solo.clickOnView(shopCart);

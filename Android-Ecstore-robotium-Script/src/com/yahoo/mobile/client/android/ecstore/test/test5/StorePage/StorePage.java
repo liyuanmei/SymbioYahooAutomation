@@ -328,7 +328,7 @@ public class StorePage extends ActivityInstrumentationTestCase2<Activity> {
                 "productitem_promotion_name", Action.VIEW_ID_ZERO);
         solo.clickOnView(promotion);
 
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+        solo.sleep(ValidationText.WAIT_TIME_LONGEST);
         try {
             assertTrue("Promotion page cannot be opened.",
                     solo.getView("webpage", Action.VIEW_ID_ZERO).isShown());

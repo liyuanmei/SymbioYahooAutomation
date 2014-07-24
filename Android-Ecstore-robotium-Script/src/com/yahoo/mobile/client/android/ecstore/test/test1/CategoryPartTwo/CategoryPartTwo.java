@@ -860,6 +860,9 @@ public class CategoryPartTwo extends ActivityInstrumentationTestCase2<Activity> 
 
         Account.judgementAccountLogin(solo);
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        TestHelper.swipeUp(solo, 1);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnText(ValidationText.EDIT_FAVORITE_CATEGORY);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         // Get the grid view count.
