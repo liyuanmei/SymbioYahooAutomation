@@ -40,7 +40,7 @@ Assert.personalCategoryScreen = function () {
       }
       method.verifyEquals(varTestlogPagePersonalizedSettings, app.mainWindow().buttons()[0].name());
     }
-      else{
+    else{
         this.CategoriesName = [
         varTestApparel,
         varTestCategoryBeautyMakeup,
