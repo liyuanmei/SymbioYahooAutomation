@@ -322,7 +322,7 @@ const varTestsSignInAccountMobileappstore3 = "mobileappstore3"
 const varTestsSignInPasswordMobileappstore3 = "A1234qwer"
 
 const varTestsSignInAccountMobilestoresymbio4 = "mobilestoresymbio4";
-const varTestsSignInPasswordMobilestoresymbio = "Aa123456";
+const varTestsSignInPasswordMobilestoresymbio4 = "Aa123456";
 
 const varTestsSignInAccountMobilestoresymbio2 = "mobilestoresymbio2"; 
 const varTestsSignInPasswordMobilestoresymbio2 = "Aa123456";
