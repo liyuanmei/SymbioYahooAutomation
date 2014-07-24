@@ -56,7 +56,7 @@ test("[1959899] Verify the numbers of collected items can be increasing/decreasi
     //target.logElementTree();
     Action.tapFavoritesIcon(1);
     $.delay(5)
-    target.logElementTree();
+
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
