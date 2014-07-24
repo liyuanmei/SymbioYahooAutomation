@@ -87,7 +87,7 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" ,function (
     Action.tapButtonOnTabBar(2);
     Action.tapSearchIconOnNavBar();
     
-    Action.searchBarInputChinese("LULUS【03100054】L- 韓製-薄棉連帽外套-６色 現+預");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName8);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -279,7 +279,7 @@ test("[1959903] Verify user can view next buy items then view shopping cart item
     $.delay(20);
 
     //check shopping cart list can bi tapped and no issue
-    Assert.checkSearchPage("本店購物車");
+    Assert.checkSearchPage(varTestsTheOrderPageElements1);
 
     //restore
     Action.tapButtonOnTabBar(3);
@@ -331,18 +331,18 @@ test("[1959911] Verify Shopping cart information, purchase information display c
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
     }
     else{
-        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
-        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,"數量:");
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,varTestsElementsShouldContainTextOnShoppingCartPage2);
     }
 
     //tap buy next time tab and back
     Action.tapBuyNextTime();
     $.delay(10);
 
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"沒有商品在下次購買清單中");
+    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage3);
 
     //restore
     Action.tapButtonOnTabBar(3);
@@ -372,7 +372,7 @@ test("[1959908] Verify numbers under shopping$next buy" ,function () {
 
     Action.englishInputMethod();
     
-    Action.searchBarInputChinese("精選短袖上衣MIUSTAR 居家舒適感軟棉圓領短袖素T(共18色) 預購");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName9);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -400,11 +400,11 @@ test("[1959908] Verify numbers under shopping$next buy" ,function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
     }
     else{
-        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
-        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,"數量:");
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,varTestsElementsShouldContainTextOnShoppingCartPage2);
     }
 
     Action.tapAddBuyNextTimeOnShopping();
@@ -414,8 +414,8 @@ test("[1959908] Verify numbers under shopping$next buy" ,function () {
     Action.tapBuyNextTime();
     $.delay(20);
 
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,"小計:");
+    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
+    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,varTestsElementsShouldContainTextOnShoppingCartPage4);
 
     //restore
     Action.tapButtonOnTabBar(3);
@@ -445,7 +445,7 @@ test("[1977534] verify delete function" ,function () {
 
     Action.englishInputMethod();
     
-    Action.searchBarInputChinese("精選短袖上衣MIUSTAR 居家舒適感軟棉圓領短袖素T(共18色) 預購");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName9);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -477,8 +477,8 @@ test("[1977534] verify delete function" ,function () {
     Action.tapBuyNextTime();
     $.delay(20);
 
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,"小計:");
+    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
+    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,varTestsElementsShouldContainTextOnShoppingCartPage4);
 
     //restore
     Action.tapButtonOnTabBar(3);
@@ -527,7 +527,7 @@ test("[1977496] Verify [bug case]「我要結賬」" ,function () {
     $.delay(20);
     target.logElementTree();
 
-    Assert.tapSettleAccountsOnShopping(6,"購物車明細 (1)");
+    Assert.tapSettleAccountsOnShopping(6,varTestsSettleAccountsOnShopping);
 
     //restore
     Action.tapButtonOnTabBar(3);

@@ -256,6 +256,13 @@ test("[1953620] verify the gifts are displayed in the shopping cart.", function 
     $.delay(10);
 
     Action.addToShoppingCartWhenItemPage();
+    try{
+        Action.chooseTheSizeOnShoppingCart();
+        Action.tapConfirmOnShoppingCart();
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(3);
+    }
     $.delay(5);
 
     //go to shopping cart page
@@ -275,7 +282,7 @@ test("[1953620] verify the gifts are displayed in the shopping cart.", function 
     var gift = app.mainWindow().scrollViews()[0].webViews()[0].links()[4].staticTexts()[0];
     $.delay(5);
 
-    Assert.elementsShouldContainText(gift, varTestsSearchBoxInputDataGift);
+    Assert.elementsShouldContainText(gift, varTestsSearchBoxInputDataAssertGift);
     $.delay(sleep);
 
     //restore

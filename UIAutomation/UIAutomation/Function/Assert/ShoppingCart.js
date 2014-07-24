@@ -5,9 +5,9 @@ Assert.ShoppingCartDisplayCorrectly = function  () {
 
 Assert.checkbutButtonShoppingCart = function () {
     $.delay(5);
-    method.verifyEquals("本店購物車",app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[0].name());
-    method.verifyEquals("填寫資料",app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[1].name());
-    method.verifyEquals("完成訂購",app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[2].name());
+    method.verifyEquals(varTestsTheOrderPageElements1,app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[0].name());
+    method.verifyEquals(varTestsFillTheInformationOnShoppingCartPage,app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[1].name());
+    method.verifyEquals(varTestsToCompLeteTheOrderOnShoppingCartPage,app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[2].name());
 };
 
 Assert.textExistOnShoppingCart = function (elements) {
@@ -26,19 +26,19 @@ Assert.checkCollectionScreenCorrect = function(){
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        method.verifyEquals("你的最愛商店",app.mainWindow().collectionViews()[0].staticTexts()[1].name());
-        method.verifyEquals("你可能會喜歡的商店",app.mainWindow().collectionViews()[0].staticTexts()[2].name());
+        method.verifyEquals(varTestsCollectionScreenCorrectLike,app.mainWindow().collectionViews()[0].staticTexts()[1].name());
+        method.verifyEquals(varTestsCollectionScreenCorrectAbleLike,app.mainWindow().collectionViews()[0].staticTexts()[2].name());
     }
     else{
-        method.verifyEquals("你的最愛商店",app.mainWindow().collectionViews()[0].staticTexts()[0].name());
-        method.verifyEquals("你可能會喜歡的商店",app.mainWindow().collectionViews()[0].staticTexts()[1].name());
+        method.verifyEquals(varTestsCollectionScreenCorrectLike,app.mainWindow().collectionViews()[0].staticTexts()[0].name());
+        method.verifyEquals(varTestsCollectionScreenCorrectAbleLike,app.mainWindow().collectionViews()[0].staticTexts()[1].name());
     }
 };
 
 Assert.checkLogInFirstOnFavoritePage = function(){
     $.delay(sleep);
     var clogInFirstOnFavoritePage = app.windows()[0].collectionViews()[0].cells()[0].buttons()[0].name();
-    method.verifyEquals("請先登入", clogInFirstOnFavoritePage);
+    method.verifyEquals(varTestsLogInFirstOnFavoritePage, clogInFirstOnFavoritePage);
 };
 
 //6.30

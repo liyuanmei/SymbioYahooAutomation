@@ -4,7 +4,7 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("挑戰最殺★英式鮮奶茶(減糖)");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName7);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -20,7 +20,7 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
         Action.tapChooseOnItemPageWhenPromotion(4,0);
     }
     else{
-        Action.tapChooseOnItemPage("促銷活動");
+        Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
     }
 
     Action.tapChoosePreductCategoryWhenOptions(0,0);
@@ -48,11 +48,11 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
         version = version.substring(0, version.lastIndexOf("."));
         if(version == "6.1") {
             $.delay(15);
-           Assert.checkSearchPage("促銷活動");
+           Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
         }
         else{
             $.delay(5);
-            Assert.checkSearchPage("促銷活動");
+            Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
         }
     }   
     try{
@@ -62,7 +62,7 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
         $.delay(5);
 
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("歐可茶葉");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataStore3);
         Action.tapKeyboardSearch();
         Action.pageShow();
 
@@ -97,11 +97,11 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
         version = version.substring(0, version.lastIndexOf("."));
         if(version == "6.1") {
             $.delay(15);
-            Assert.checkSearchPage("促銷活動");
+            Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
         }
         else{
             $.delay(5);
-            Assert.checkSearchPage("促銷活動");
+            Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
         }
     }
     Action.tapButtonOnTabBar(1);

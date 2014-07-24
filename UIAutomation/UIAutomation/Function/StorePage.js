@@ -88,7 +88,7 @@ test("[1959890] Verify the store custom categories is show correct", function ()
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -136,7 +136,7 @@ test("[1959898] Not log in, click on the add collection list icon ", function ()
     Action.tapButtonOnTabBar(0);
     $.delay(sleep);
 
-    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2 , varTestsSignInPasswordMobilestoresymbio2);
     $.delay(5);
 
     Action.tapButtonOnTabBar(0);
@@ -169,14 +169,14 @@ test("[1959925] Verify user can search funtion in store page ", function () {
         Action.tapChooseOnItemPage(3);
     }
     else{
-        Action.tapChooseOnItemPage("看本店家全部商品");
+        Action.tapChooseOnItemPage(varTestsItemPageLinksLookGoods);
     }
     $.delay(5);
 
     Action.tapSearchIconOnNavBarWhenSRP();
     $.delay(sleep);
 
-    Action.searchBarInputChinese("東京");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataTokyo);
     Action.tapKeyboardSearch();
     $.delay(10);
  
@@ -215,15 +215,15 @@ test("[1959906] Verify store promotion item's display", function () {
     $.delay(5);
 
     Action.tapCancelOnShoppingCart(); 
-    Action.tapChooseOnItemPage("促銷活動");
+    Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
     $.delay(5);
 
-    Assert.checkSearchPage("促銷活動");
+    Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
     Assert.checkSalesPromotionActivity();
     Action.tapChoosePreductCategoryWhenOptions(0,0);
     $.delay(15);
 
-    Assert.checkTextShowCorrectly(2,"活動辦法")
+    Assert.checkTextShowCorrectly(2,varTestsCheckTextShowCorrectlyOnSalesPromotion)
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -236,7 +236,7 @@ test("[1959913] Verify user can access store page by tapping store logo ", funct
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -277,10 +277,10 @@ test("[1959924] Verify store promotion item's display", function () {
     Action.tapCancelOnShoppingCart();
     $.delay(sleep);
      
-    Action.tapChooseOnItemPage("促銷活動");
+    Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
     $.delay(15);
 
-    Assert.checkSearchPage("促銷活動");
+    Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
     Assert.checkSalesPromotionActivity();
 
     Action.tapButtonOnTabBar(2);
@@ -295,7 +295,7 @@ test("[1959887] Verify '購買人次' display", function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("東京著衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore1);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -306,7 +306,7 @@ test("[1959887] Verify '購買人次' display", function () {
     $.delay(5);
 
     var buyNum = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[1];
-    Assert.elementsShouldContainText(buyNum,"人購買");
+    Assert.elementsShouldContainText(buyNum,varTestsElementsShouldContainTextBuy);
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);

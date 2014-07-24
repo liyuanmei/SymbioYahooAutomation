@@ -4,7 +4,7 @@ test("[1977497] [bug case]search后查看store list然後在返回再查看store
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("S.DIAMOND鑽石糖甜點");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore5);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
@@ -31,7 +31,7 @@ test("[1977503] [bug case]verify escape character shouldn’t show in store list
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("s");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDatas);
     Action.tapKeyboardSearch();
     $.delay(5);
 

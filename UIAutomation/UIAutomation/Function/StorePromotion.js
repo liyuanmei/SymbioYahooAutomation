@@ -5,7 +5,7 @@ test("[1959928] Verify user view promotion item link." , function () {
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("Messa 米莎");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore2);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 

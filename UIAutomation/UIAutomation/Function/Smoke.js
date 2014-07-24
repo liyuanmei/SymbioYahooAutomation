@@ -15,7 +15,7 @@ test("[1952835] [Personalization] verify user can use personalization.", functio
     Action.tapGoToEditFavoriteButton();
     $.delay(10);
 
-    Assert.checkReturnPageDisplay("最新動態");
+    Assert.checkReturnPageDisplay(varTestDiscoveryStreamName);
 
     Action.tapButtonOnTabBar(4);
     $.delay(5);
@@ -82,17 +82,17 @@ test("[1952836] [Web Views]verify user can use web views" , function () {
     Action.tapButtonOnMyUser(2);
     $.delay(sleep);
 
-    Assert.checkReturnPageDisplay("訂單查詢");
+    Assert.checkReturnPageDisplay(varTestsOrderQueryOnMyAccount);
     $.delay(10);
 
     //Refresh the order page
-    Assert.checkElectronicCouponsDisplay("訂單查詢");
+    Assert.checkElectronicCouponsDisplay(varTestsOrderQueryOnMyAccount);
     Action.tapButtonOnTabBar(4);
 
     Action.tapButtonOnMyUser(4);
     $.delay(sleep);
 
-    Assert.checkReturnPageDisplay("實體商店優惠");
+    Assert.checkReturnPageDisplay(varTestsStoreThePreferential);
     $.delay(3);
 
     Action.tapButtonOnTabBar(4);
@@ -100,16 +100,16 @@ test("[1952836] [Web Views]verify user can use web views" , function () {
     Action.tapButtonOnMyUser(5);
     $.delay(sleep);
 
-    Assert.checkReturnPageDisplay("電子折價券");
+    Assert.checkReturnPageDisplay(varTestsElectronicCouponsOnMyAccount);
     $.delay(10);
 
     try{
-        var electronic = app.mainWindow().scrollViews()[0].webViews()[0].elements()["待生效+已生效"];
-        Assert.elementsValueShouldContainText(electronic,"待生效+已生效");
+        var electronic = app.mainWindow().scrollViews()[0].webViews()[0].elements()[varTestsToBeEffectiveOnElectronicCoupons];
+        Assert.elementsValueShouldContainText(electronic,varTestsToBeEffectiveOnElectronicCoupons);
     }
     catch (err) {
         //Refresh the Electronic page
-        Assert.checkElectronicCouponsDisplay("電子折價券");
+        Assert.checkElectronicCouponsDisplay(varTestsElectronicCouponsOnMyAccount);
     }
 
     Action.tapButtonOnTabBar(4);
@@ -180,7 +180,7 @@ test("[1959541] [Item page]Verify user can click '立即購買' button twice" , 
     Action.goBack();
     $.delay(5);
 
-    Assert.checkReturnPageDisplay("商品");
+    Assert.checkReturnPageDisplay(varTestCategoryCommodityTab);
     Action.tapButtonOnTabBar(2);
     
     Action.tapButtonOnTabBar(3);
@@ -198,7 +198,7 @@ test("[1959553] [Shopping cart]Verify Item link funtion in shoping cart details 
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("miu star");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore4);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -215,7 +215,7 @@ test("[1959553] [Shopping cart]Verify Item link funtion in shoping cart details 
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
 
-    Action.chooseCategoryBrowseMode("列表");
+    Action.chooseCategoryBrowseMode(varTestsListInBrowse);
     $.delay(10);
 
     //The first item
@@ -238,7 +238,7 @@ test("[1959553] [Shopping cart]Verify Item link funtion in shoping cart details 
 
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("miu star");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore4);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -263,7 +263,7 @@ test("[1959553] [Shopping cart]Verify Item link funtion in shoping cart details 
     Action.tapStoreNameOnShoppingCart(4);
     $.delay(10);
 
-    Assert.checkReturnPageDisplay("商品");
+    Assert.checkReturnPageDisplay(varTestCategoryCommodityTab);
     Action.goBack();
     $.delay(25);
 
@@ -274,7 +274,7 @@ test("[1959553] [Shopping cart]Verify Item link funtion in shoping cart details 
     app.mainWindow().scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.22, y:0.42}});
     $.delay(sleep);
 
-    Assert.checkReturnPageDisplay("商品");
+    Assert.checkReturnPageDisplay(varTestCategoryCommodityTab);
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
@@ -298,7 +298,7 @@ test("[1959554] [Shopping cart]Verify user can access shopping cart details page
 
     Action.englishInputMethod();
     
-    Action.searchBarInputChinese("精選短袖上衣MIUSTAR 居家舒適感軟棉圓領短袖素T(共18色) 預購");
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName9);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -340,8 +340,8 @@ test("[1959554] [Shopping cart]Verify user can access shopping cart details page
     Action.tapBuyNextTime();
     $.delay(20);
   
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,"規格:");
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,"小計:");
+    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,varTestsElementsShouldContainTextOnShoppingCartPage4);
     //restore
     Action.tapButtonOnTabBar(3);
     $.delay(5);
@@ -413,7 +413,7 @@ test("[1977445] [Store Listings]Verify user can see some basic information about
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("Messa 米莎");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore2);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -461,7 +461,7 @@ test("[1952828] [[Store Listings]verfiy user can access the listings page.", fun
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("東京著衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore1);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -472,7 +472,7 @@ test("[1952828] [[Store Listings]verfiy user can access the listings page.", fun
     $.delay(5);
     
     Action.tapSearchIconOnNavBarWhenSRP();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
     
@@ -492,10 +492,10 @@ test("[1952828] [[Store Listings]verfiy user can access the listings page.", fun
     Assert.tapTabCheckSListDisplay();
 
     //verify 搜尋全部商店 buttons
-    Assert.checkButtonsWhenSmoke(0,"搜尋全部商店");
+    Assert.checkButtonsWhenSmoke(0,varTestsNoInputTheSearchBoxgWhengoCategoryWhenStore);
 
     //verify 進階 buttons
-    Assert.checkButtonsWhenSmoke(1,"進階");
+    Assert.checkButtonsWhenSmoke(1,varTestAdvancedBar);
     $.delay(sleep);
 
     //tap commodity picture

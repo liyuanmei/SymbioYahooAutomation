@@ -9,7 +9,7 @@ test("[1959892] Verify user can edit category preferences", function () {
     //Verify user can edit category preferences and the case assert contained in action
     Action.tapButtonOnSidebarWhenCategory();
 
-    Assert.checkReturnPageDisplay("最新動態");
+    Assert.checkReturnPageDisplay(varTestDiscoveryStreamName);
 });
 
 test("[1977532] verify settings screen" , function () {
@@ -41,7 +41,7 @@ test("[1977532] verify settings screen" , function () {
     Action.tapButtonOnTabBar(0);
 
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 

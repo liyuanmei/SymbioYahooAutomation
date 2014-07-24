@@ -3,19 +3,19 @@ Assert.verifyWelcomeScreen = function () {
 
     //Verify "歡迎" show correct.
     var sWelcomeName = app.mainWindow().staticTexts()[0].name();
-    method.verifyEquals("歡迎", sWelcomeName);
+    method.verifyEquals(varTestlogPageWelcome, sWelcomeName);
 
     //Verify Log in button show correct.
     var logInButtonName = app.mainWindow().buttons()[0].name();
     var logInButtonStatus = app.mainWindow().buttons()[0].isEnabled();
     method.verifyEquals(1, logInButtonStatus);
-    method.verifyEquals("登入", logInButtonName);
+    method.verifyEquals(varTestlogPage, logInButtonName);
 
     //Verify "略過，前往下一步" button show correct.
     var nextButtonName = app.mainWindow().buttons()[1].name();
     var nextButtonStatus = app.mainWindow().buttons()[1].isEnabled();
     method.verifyEquals(1, nextButtonStatus);
-    method.verifyEquals("略過，前往下一步", nextButtonName);
+    method.verifyEquals(varTestlogPageIgnore, nextButtonName);
 };
 
 Assert.personalCategoryScreen = function () {
@@ -24,42 +24,42 @@ Assert.personalCategoryScreen = function () {
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
         this.CategoriesName = [
-        "服飾",
-        "美妝",
-        "鞋包配飾",
-        "媽咪寶貝",
-        "電腦/週邊",
-        "家電/視聽",
-        "相機/\n手機/玩具",
-        "美食/\n保健/飲料",
-        "醫療/\n日用品/寵物"
+        varTestApparel,
+        varTestCategoryBeautyMakeup,
+        varTestCategoryShoeAndBag,
+        varTestCategoryMom,
+        varTestCategoryComputer,
+        varTestCategoryHomeAppliance,
+        varTestCategoryCameraCompatible,
+        varTestCategoryFoodCompatible,
+        varTestCategoryMedicalCompatible
       ];
       $.delay(sleep);
       for (var i = 0; i < 12; i++) {
           method.verifyEquals(this.CategoriesName[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
       }
-      method.verifyEquals("建立個人化的購物體驗", app.mainWindow().buttons()[0].name());
+      method.verifyEquals(varTestlogPagePersonalizedSettings, app.mainWindow().buttons()[0].name());
     }
       else{
         this.CategoriesName = [
-        "服飾",
-        "美妝",
-        "鞋包配飾",
-        "媽咪寶貝",
-        "電腦/週邊",
-        "家電/視聽",
-        "相機/ 手機/玩具",
-        "美食/ 保健/飲料",
-        "醫療/ 日用品/寵物",
-        "居家/ 寢具/傢俱",
-        "運動/ 戶外/休閒",
-        "圖書/ 文具/影音"
-      ];
+        varTestApparel,
+        varTestCategoryBeautyMakeup,
+        varTestCategoryShoeAndBag,
+        varTestCategoryMom,
+        varTestCategoryComputer,
+        varTestCategoryHomeAppliance,
+        varTestCategoryCamera,
+        varTestCategoryFood,
+        varTestCategoryMedical,
+        varTestCategoryHouseholdLife,
+        varTestCategoryAction,
+        varTestCategoryBooks
+        ];
       $.delay(sleep);
       for (var i = 0; i < 12; i++) {
           method.verifyEquals(this.CategoriesName[i], app.mainWindow().collectionViews()[0].cells()[i].name());
       }
-      method.verifyEquals("建立個人化的購物體驗", app.mainWindow().buttons()[0].name());
+      method.verifyEquals(varTestlogPagePersonalizedSettings, app.mainWindow().buttons()[0].name());
     }
 };
 
@@ -79,8 +79,8 @@ Assert.checkStartUsing = function () {
 
     //Verify "歡迎" show correct.
     var sWelcomeName = app.mainWindow().staticTexts()[0].name();
-    method.verifyEquals("歡迎", sWelcomeName);
+    method.verifyEquals(varTestlogPageWelcome, sWelcomeName);
 
     var startUsing = app.mainWindow().buttons()[0].name();
-    method.verifyEquals("開始使用", startUsing);
+    method.verifyEquals(varTestlogPageUsing, startUsing);
 };

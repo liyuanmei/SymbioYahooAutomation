@@ -54,7 +54,7 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
         var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[0];
     }
     
-    Assert.elementsShouldContainText(goodsNum,"你已收藏 1 樣商品");
+    Assert.elementsShouldContainText(goodsNum,varTestsElementsShouldContainTextOneGoods);
 
     //goods collection
     Assert.checkGoodsExist();
@@ -84,7 +84,7 @@ test("[1900011]  verify settings screen." , function () {
     Action.tapButtonOnTabBar(0);
 
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 

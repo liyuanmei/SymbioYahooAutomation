@@ -12,11 +12,11 @@ test("[1959920] Verify the number of e-coupon can count correctly", function () 
     $.delay(10);
 
     try{
-        var electronic = app.mainWindow().scrollViews()[0].webViews()[0].elements()["待生效+已生效"];
-        Assert.elementsValueShouldContainText(electronic,"待生效+已生效");
+        var electronic = app.mainWindow().scrollViews()[0].webViews()[0].elements()[varTestsToBeEffectiveOnElectronicCoupons];
+        Assert.elementsValueShouldContainText(electronic,varTestsToBeEffectiveOnElectronicCoupons);
     }
     catch (err) {
-        Assert.checkElectronicCouponsDisplay("電子折價券");
+        Assert.checkElectronicCouponsDisplay(varTestsElectronicCouponsOnMyAccount);
     }
     $.delay(5);
     Action.tapButtonOnTabBar(4);
@@ -33,7 +33,7 @@ test("[1977495] Verify Super gift points", function () {
     Action.tapButtonOnTabBar(4);
     $.delay(sleep);
 
-    Assert.checkSuperGiftPoints("超贈點 · 可用 0 、待發放 0",2);
+    Assert.checkSuperGiftPoints(varTestsCheckSuperGiftPoints,2);
  
     Action.tapButtonOnTabBar(0);
 });
@@ -101,11 +101,11 @@ test("[1977522] verify recent history from My Account", function () {
     Action.tapButtonOnMyUser(2);
     $.delay(5);
 
-    Assert.checkReturnPageDisplay("訂單查詢");
+    Assert.checkReturnPageDisplay(varTestsOrderQueryOnMyAccount);
     $.delay(10);
 
     //Refresh the order page
-    Assert.checkElectronicCouponsDisplay("訂單查詢");
+    Assert.checkElectronicCouponsDisplay(varTestsOrderQueryOnMyAccount);
 
     Action.tapButtonOnTabBar(4);
     Action.tapButtonOnMyUser(1);
@@ -154,7 +154,7 @@ test("[1977527] verify remove an item from recently browsed", function () {
     if(version == "6.1") {
         Action.goCategoryWhenSearchSettingOpen();
         Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese("上衣");
+        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
         Action.tapKeyboardSearch();
         $.delay(10);
 
@@ -192,7 +192,7 @@ test("[1977531] verify remove a store from recently browsed", function () {
 
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -237,7 +237,7 @@ test("[1977524] verify user can access to items", function () {
     Action.doUserLogout();
     $.delay(5);
 
-    Action.tapAddAccountOnLogin("mobileappstore1", "ecmobiletest");
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobileappstore1, varTestsSignInPasswordMobileappstore1);
     $.delay(5);
 
     Action.tapButtonOnTabBar(0);
@@ -246,7 +246,7 @@ test("[1977524] verify user can access to items", function () {
     $.delay(10);
     //add to goods history 
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("上衣");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(10);
 
@@ -260,7 +260,7 @@ test("[1977524] verify user can access to items", function () {
 
     //add to store history
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese("東京");
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataTokyo);
     Action.tapKeyboardSearch();
     $.delay(sleep);
 
@@ -292,7 +292,7 @@ test("[1977524] verify user can access to items", function () {
     Action.doUserLogout();
     $.delay(5);
 
-    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2, varTestsSignInPasswordMobilestoresymbio2);
     $.delay(5);
 
     Action.tapButtonOnTabBar(0);
@@ -316,7 +316,7 @@ test("[1959879] Verify the favorite items number", function () {
     $.delay(10);
 
     Action.tapButtonOnTabBar(0);
-    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2, varTestsSignInPasswordMobilestoresymbio2);
     $.delay(10);
     Action.tapButtonOnTabBar(4);
 
@@ -330,7 +330,7 @@ test("[1959879] Verify the favorite items number", function () {
     $.delay(5);
 
     Action.tapButtonOnTabBar(0);
-    Action.tapAddAccountOnLogin("mobileappstore1", "ecmobiletest");
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobileappstore1, varTestsSignInPasswordMobileappstore1);
     $.delay(5);
 
     Action.tapButtonOnTabBar(4);
@@ -349,13 +349,13 @@ test("[1959879] Verify the favorite items number", function () {
         var GoodsCollection = app.mainWindow().collectionViews()[0].staticTexts()[0];
     }
     
-    Assert.elementsShouldContainText(GoodsCollection,"樣商品");
+    Assert.elementsShouldContainText(GoodsCollection,varTestsElementsShouldContainTextGoods);
 
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
     $.delay(5);
 
-    Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2, varTestsSignInPasswordMobilestoresymbio2);
     $.delay(10);
 
     Action.tapButtonOnTabBar(0);
@@ -372,7 +372,7 @@ test("[1977535] verify offline coupons from My Account", function () {
     Action.tapButtonOnMyUser(4);
     $.delay(10);
 
-    Assert.checkReturnPageDisplay("實體商店優惠");
+    Assert.checkReturnPageDisplay(varTestsStoreThePreferential);
     Action.tapButtonOnTabBar(4);
 
     Action.tapButtonOnTabBar(0);

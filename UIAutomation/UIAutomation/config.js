@@ -149,13 +149,21 @@ obj.scrollDownsWhenSettlement = function (total) {
 };
 
 //const
-//category module
+//welcome
+const varTestlogPage = "登入";
+const varTestlogPageWelcome = "歡迎";
+const varTestlogPageIgnore = "略過，前往下一步";
+const varTestlogPageUsing = "開始使用";
+const varTestlogPagePersonalizedSettings = "建立個人化的購物體驗";
+
+//tab
 const varTestCategoryName = "全部分類";
 const varTestDiscoveryStreamName = "最新動態";
 const varTestFavoriteStoreName = "最愛商店";
 const varTestShoppingCartName = "購物車";
 const varTestMyAccountName = "我的帳戶";
 
+//category tab
 const varTestApparel = "服飾";
 const varTestApparelPicture = "UINavigationBarBackIndicatorDefault.png";
 const varTestCategoryBeautyMakeupName = "美妝";
@@ -233,6 +241,7 @@ const varTestscircleImage2 = "circle.png";
 const varTestsbarImage1 = "bar-blu.png";
 const varTestsbarImage2 = "bar-grey.png";
 
+//Screening-item
 const varTestsItemInAdvancedBarChoose1 = "可刷卡";
 const varTestsItemInAdvancedBarChoose2 = "0利率";
 const varTestsItemInAdvancedBarChoose3 = "可分期";
@@ -243,7 +252,7 @@ const varTestsItemInAdvancedBarChoose7 = "有影音";
 const varTestsItemInAdvancedBarChoose8 = "有圖片";
 const varTestsItemInAdvancedBarChoose9 = "優良商店";
 
-//item page
+//item page buttons
 const varTestsBuyButtons = "立即購買";
 const varTestsAddButtons = "加入購物車";
 
@@ -252,18 +261,17 @@ const varTestBackButtonOn18Ban = "未滿18歲離開";
 const varTestSubmitButtonOn18Ban = "已滿18歲進入";
 const varTestStaticTextsOn18Ban = "18歲以上會員始可瀏覽及購買，若您未滿18歲請勿進入";
 
-//search input
+//search input character
 const varTestsSearchBoxInputDataCoat = "上衣";
 const varTestsSearchBoxInputDataIphone = "iphone"
 const varTestsCheckTheKeyword1 = "hone";
 const varTestsCheckTheKeyword2 = "你已收藏"
 const varTestsSearchBoxInputDatah = "h";
+const varTestsSearchBoxInputDatas ="s";
 const varTestsSearchBoxInputDatahp = "hp";
 const varTestsSearchBoxInputDataForCheckEveryDeleteData = "1234";
 const varTestsSearchBoxInputDataEast = "東";
 const varTestsSearchBoxInputDataTokyo = "東京";
-const varTestsSearchBoxInputDataStore1 = "東京著衣";
-const varTestsSearchBoxInputDataStore2 = "Messa 米莎";
 const varTestsSearchBoxInputDataModelling = "造型";
 const varTestsSearchBoxInputDataSpecialCharacters = "'";
 const varTestsSearchBoxInputLongData1 = "yeruieujeueu";
@@ -275,13 +283,26 @@ const varTestsSearchBoxInputLongData6 = "jjjjjjh";
 const varTestsSearchBoxInputDataKeyword = "keyword";
 const varTestsSearchBoxInputDataChinese1 = "一一二";
 const varTestsSearchBoxInputDataChinese2 = "一一一二";
+const varTestsSearchBoxInputDataGift = "贈品";
+const varTestsSearchBoxInputDataAssertGift = "贈";
+
+//search input store name
+const varTestsSearchBoxInputDataStore1 = "東京著衣";
+const varTestsSearchBoxInputDataStore2 = "Messa 米莎";
+const varTestsSearchBoxInputDataStore3 = "歐可茶葉";
+const varTestsSearchBoxInputDataStore4 = "miu star";
+const varTestsSearchBoxInputDataStore5 = "S.DIAMOND鑽石糖甜點";
+
+//search input goods name
 const varTestsSearchBoxInputGoodsName1 = "LULUS【03100054】L- 韓製-薄棉連帽外套-６色 現+預";
 const varTestsSearchBoxInputGoodsName2 = "SunShine 防水鏤空果凍平底包鞋";
 const varTestsSearchBoxInputGoodsName3 = "充氣娃娃";
 const varTestsSearchBoxInputGoodsName4 = "《Fun sport》《拳擊專用》美式尼龍沙包袋";
 const varTestsSearchBoxInputGoodsName5 = "◇方妮FaNi◇女人我最大【鯨魚胸貼隱形胸罩】金魚胸貼提胸貼可搭洋裝比基尼泳裝";
 const varTestsSearchBoxInputGoodsName6 = "洞洞涼爽內衣*無鋼圈内衣*";
-const varTestsSearchBoxInputDataGift = "贈品";
+const varTestsSearchBoxInputGoodsName7 = "挑戰最殺★英式鮮奶茶(減糖)";
+const varTestsSearchBoxInputGoodsName8 = "LULUS【03100054】L- 韓製-薄棉連帽外套-６色 現+預";
+const varTestsSearchBoxInputGoodsName9 = "精選短袖上衣MIUSTAR 居家舒適感軟棉圓領短袖素T(共18色) 預購";
 
 //Sliding Prices Data
 const varTestsSlidingPricesData1 = "1020 元";
@@ -337,6 +358,9 @@ const varTestsTheOrderPageElements2 = "完成訂購";
 const varTestsWheelsWhenCheckOut = "重選其它門市";
 const varTestsElementsShouldContainTextStoreItem = "件商品"; 
 const varTestsElementsShouldContainTextCollection = "人收藏";
+const varTestsElementsShouldContainTextGoods = "樣商品";
+const varTestsElementsShouldContainTextBuy = "人購買";
+const varTestsElementsShouldContainTextOneGoods = "你已收藏 1 樣商品";
 const varTestsCheckTextShowCorrectlyOnSalesPromotion = "活動辦法";
 const varTestsSalesPromotionActivity = "滿千";
 const varTestsPaymentWays = "付款方式";
@@ -346,6 +370,19 @@ const varTestsMail = "郵件";
 const varTestsFacebook = "Facebook";
 const varTestsSearchRecordPageOnRecentHisory = "搜尋";
 const varTestsNoData = "很抱歉，沒有符合的商品";
+const varTestsToBeEffectiveOnElectronicCoupons = "待生效+已生效";
+const varTestsCheckSuperGiftPoints = "超贈點 · 可用 0 、待發放 0";
+const varTestsCollectionScreenCorrectAbleLike = "你可能會喜歡的商店"
+const varTestsCollectionScreenCorrectLike = "你的最愛商店";
+const varTestsLogInFirstOnFavoritePage = "請先登入";
+
+//On shopping cart page
+const varTestsElementsShouldContainTextOnShoppingCartPage1 = "規格:";
+const varTestsElementsShouldContainTextOnShoppingCartPage2 = "數量:";
+const varTestsElementsShouldContainTextOnShoppingCartPage3 = "沒有商品在下次購買清單中";
+const varTestsElementsShouldContainTextOnShoppingCartPage4 = "小計:";
+const varTestsFillTheInformationOnShoppingCartPage = "填寫資料";
+const varTestsToCompLeteTheOrderOnShoppingCartPage = "完成訂購";
 
 //Page name
 const varTestsSearchPageWhenInputH = "\"h\""
@@ -361,3 +398,8 @@ const varTestsPageNameQrcode = "請掃條碼/QR Code";
 const varTestsItemPageLinksLookGoods = "看本店家全部商品";
 const varTestsItemPageLinksAttachedToTheGift = "附送贈品";
 const varTestsItemPageLinksPurchaseOfGoods = "加購商品";
+
+//My account page
+const varTestsElectronicCouponsOnMyAccount = "電子折價券";
+const varTestsOrderQueryOnMyAccount = "訂單查詢";
+const varTestsStoreThePreferential = "實體商店優惠";
