@@ -1315,7 +1315,6 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     obj.scrollDowns(1);
     $.delay(10);
 
-    target.logElementTree();
     //Verify screen successful navigated to item page.
     Assert.itemPageShowCorrect();
 
@@ -1360,7 +1359,6 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
         obj.scrollDowns(1);
         $.delay(10);
 
-        target.logElementTree();
         //Verify screen successful navigated to item page.
         Assert.itemPageShowCorrect();
     }
@@ -1426,7 +1424,6 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
         obj.scrollDowns(1);
         $.delay(10);
 
-        target.logElementTree();
         //Verify screen successful navigated to item page.
         Assert.itemPageShowCorrect();
     }
