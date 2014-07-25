@@ -5,6 +5,8 @@ package com.yahoo.mobile.client.android.ecstore.test;
  *
  */
 public class ValidationText {
+	
+	public static final int WAIT_TIME_MIN_SHORT = 400;
 
     public static final int WAIT_TIME_SHORT = 2000;
     
