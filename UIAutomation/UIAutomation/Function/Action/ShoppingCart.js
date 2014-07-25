@@ -1,8 +1,18 @@
 Action.addToShoppingCart = function () {
     $.delay(sleep);
-    var addToShoppingCart = app.mainWindow().collectionViews()[0].cells()[5].buttons()[1];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[5].buttons()[1]);
-    addToShoppingCart.tap();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var addToShoppingCart = app.mainWindow().collectionViews()[0].cells()[5].buttons()[1];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[5].buttons()[1]);
+        addToShoppingCart.tap();
+    }
+    else{
+        var collectionViews = app.mainWindow().collectionViews()[0];
+        var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
+        method.checkInstanceExists(addToCartButton);
+        addToCartButton.tap();
+    }
 };
 
 Action.butButtonShoppingCart = function () {
