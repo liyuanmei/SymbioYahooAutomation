@@ -63,16 +63,27 @@ test("[1937857] Auto complete function", function () {
 
 test("[1937858] Auto complete layout view", function () {
     target.logDeviceInfo();
+    Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
-    Action.englishInputMethod();
-    $.delay(sleep);
-
     Action.searchBarInput(varTestsSearchBoxInputDatah);
     $.delay(10);
-     
-    Assert.checkIconPlusDisplay();
+    var plus = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
+    if(plus.isEnabled() == 1){
+        Assert.checkIconPlusDisplay();
+    }
+    else{
+        Action.tapReturnOnSearchBar();
+        $.delay(sleep);
+
+        Action.tapSearchIconOnNavBar();
+
+        Action.searchBarInput(varTestsSearchBoxInputDatah);
+        $.delay(10);
+        Assert.checkIconPlusDisplay();
+    }
+    
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
 });
@@ -87,16 +98,37 @@ test("[1937859] Click the auto - complete list right side '+' Icon", function ()
 
     Action.searchBarInput(varTestsSearchBoxInputDatah);
     $.delay(10);
-     
-    //To obtain name
-    var plusValue = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
 
-    //tap plus
-    Action.tapIconPlusOnTableView();
-    $.delay(sleep);
+    var plus = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
+    if(plus.isEnabled() == 1){
+        //To obtain name
+        var plusValue = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
+
+        //tap plus
+        Action.tapIconPlusOnTableView();
+        $.delay(sleep);
      
-    //check the auto - complete list right side '+' Icon
-    Assert.tapIconPlusOnTableViewCheckTextIsEnabled(plusValue);
+        //check the auto - complete list right side '+' Icon
+        Assert.tapIconPlusOnTableViewCheckTextIsEnabled(plusValue);
+    }
+    else{
+        Action.tapReturnOnSearchBar();
+        $.delay(5);
+
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInput(varTestsSearchBoxInputDatah);
+        $.delay(10);
+
+        //To obtain name
+        var plusValue = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
+
+        //tap plus
+        Action.tapIconPlusOnTableView();
+        $.delay(sleep);
+     
+        //check the auto - complete list right side '+' Icon
+        Assert.tapIconPlusOnTableViewCheckTextIsEnabled(plusValue);
+    }
     $.delay(sleep);
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
@@ -112,18 +144,41 @@ test("[1937860] Click on the search for 2 times suggest different keyword '+' ic
 
     Action.searchBarInput(varTestsSearchBoxInputDatah);
     $.delay(10);
+
+    var plus = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
+    if(plus.isEnabled() == 1){
+        //Click on the different icon plus
+        Action.tapIconPlusOnTableView();
+        $.delay(10);
      
-    //Click on the different icon plus
-    Action.tapIconPlusOnTableView();
-    $.delay(10);
-     
-    var plusValue = app.mainWindow().tableViews()[0].cells()[0].staticTexts()[0].name();
+        var plusValue = app.mainWindow().tableViews()[0].cells()[0].staticTexts()[0].name();
     
-    Action.clickOnTheDifferentIconPlus();
-    $.delay(sleep);
+        Action.clickOnTheDifferentIconPlus();
+        $.delay(sleep);
      
-    // check different keyword '+' icon on the right
-    Assert.clickOnTheDifferentIconPlusCheckTextIsEnabled(plusValue);
+        // check different keyword '+' icon on the right
+        Assert.clickOnTheDifferentIconPlusCheckTextIsEnabled(plusValue);
+    }
+    else{
+        Action.tapReturnOnSearchBar();
+        $.delay(sleep);
+
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInput(varTestsSearchBoxInputDatah);
+        $.delay(10);
+
+        //Click on the different icon plus
+        Action.tapIconPlusOnTableView();
+        $.delay(10);
+     
+        var plusValue = app.mainWindow().tableViews()[0].cells()[0].staticTexts()[0].name();
+    
+        Action.clickOnTheDifferentIconPlus();
+        $.delay(sleep);
+     
+        // check different keyword '+' icon on the right
+        Assert.clickOnTheDifferentIconPlusCheckTextIsEnabled(plusValue);
+    }
     $.delay(sleep);
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
@@ -139,17 +194,35 @@ test("[1937861] According to the search Suggestions", function () {
 
     Action.searchBarInput(varTestsSearchBoxInputDatah);
     $.delay(10);
-     
-    //Check the search results page display properly
-    var plusValue = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
+    var plus = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
+    if(plus.isEnabled() == 1){
+        //Check the search results page display properly
+        var plusValue = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
     
-    Action.tapIconPlusOnTableView();
-    $.delay(5);
+        Action.tapIconPlusOnTableView();
+        $.delay(5);
      
-    Action.tapKeyboardSearch();
+        Action.tapKeyboardSearch();
      
-    Assert.searchResultsPage(plusValue);
-    $.delay(sleep);
+        Assert.searchResultsPage(plusValue);
+        $.delay(sleep);
+    }
+    else{
+        Action.tapButtonOnTabBar(2);
+        $.delay(sleep);
+        Action.tapSearchIconOnNavBar();
+        Action.searchBarInput(varTestsSearchBoxInputDatah);
+        $.delay(10);
+
+        //Check the search results page display properly
+        var plusValue = app.mainWindow().tableViews()[0].cells()[1].staticTexts()[0].name();
+        Action.tapIconPlusOnTableView();
+        $.delay(5);
+     
+        Action.tapKeyboardSearch();
+        Assert.searchResultsPage(plusValue);
+        $.delay(sleep);
+    }
      
     //go back
     Action.tapButtonOnTabBar(2);
