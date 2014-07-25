@@ -51,10 +51,10 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
         Action.tapFamilyPaymentNotPickup();
     }
     catch (err) {
-        //No data and Verify "超商付款" display
+        //No data "全家繳費不取貨" but Verify "全家" display
         $.delay(sleep);
-        var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[varTestsItemInAdvancedBarChoose4];
-        Assert.elementsShouldContainText(convenienceStorePayment,varTestsItemInAdvancedBarChoose4);
+        var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[varTestsConveniencePayment];
+        Assert.elementsShouldContainText(convenienceStorePayment,varTestsConveniencePaymentName);
     }
 
     Action.tapSettleAccounts();
