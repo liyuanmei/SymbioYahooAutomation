@@ -2483,7 +2483,7 @@ test("[1953657] verify edit favorite category if correct on sidebar.", function 
     Assert.checkReturnPageDisplay(varTestDiscoveryStreamName);
 });
 
-test("[1953649] verify edit favorite category if correct on sidebar.", function () {
+test("[1953649] verify edit favorite category on my user.", function () {
     target.logDeviceInfo();
     Action.cleanSearches();
     Action.tapButtonOnTabBar(4);
