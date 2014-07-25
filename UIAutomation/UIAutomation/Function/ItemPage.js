@@ -577,7 +577,7 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1959897] Verify purchased product in the shopping cart display" ,function () {
+test("[1959897] Verify after selecting item color,item size which the store does not have to match the color should be dimmed, can not be selected" ,function () {
     target.logDeviceInfo();
     Action.cleanSearches();
 
