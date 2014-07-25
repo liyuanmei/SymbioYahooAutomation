@@ -20,7 +20,7 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     Action.chooseTheSizeOnShoppingCart();
     Action.tapConfirmOnShoppingCart();
 
-    //go to shopping cart page
+    //go to shopping cart page.
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 

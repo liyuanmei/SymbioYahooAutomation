@@ -163,7 +163,7 @@ const varTestFavoriteStoreName = "最愛商店";
 const varTestShoppingCartName = "購物車";
 const varTestMyAccountName = "我的帳戶";
 
-//category tab
+//category tab.
 const varTestApparel = "服飾";
 const varTestApparelPicture = "UINavigationBarBackIndicatorDefault.png";
 const varTestCategoryBeautyMakeupName = "美妝";
@@ -353,6 +353,8 @@ const varTestsItemPageTextWhenProductsHaveBeenSoldOut = "尚未開賣";
 const varTestsGoodsMinPrice = "1";
 const varTestsSettleAccountsOnShopping = "購物車明細 (1)";
 const varTestsConvenienceStorePayment = "全家繳費不取貨";
+const varTestsConveniencePayment = "全家便利店";
+const varTestsConveniencePaymentName = "全家";
 const varTestsTheOrderPageElements1 = "本店購物車";
 const varTestsTheOrderPageElements2 = "完成訂購";
 const varTestsWheelsWhenCheckOut = "重選其它門市";
