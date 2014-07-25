@@ -89,7 +89,7 @@ test("[1959899] Verify the numbers of collected items can be increasing/decreasi
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1977522] verify recent history from My Account", function () {
+test("[1977522] verify order query from My Account", function () {
     target.logDeviceInfo();
     Action.cleanSearches();
     $.delay(sleep);
@@ -99,7 +99,7 @@ test("[1977522] verify recent history from My Account", function () {
 
     //go to order query called browse recently
     Action.tapButtonOnMyUser(2);
-    $.delay(5);
+    $.delay(15);
 
     Assert.checkReturnPageDisplay(varTestsOrderQueryOnMyAccount);
     $.delay(10);
