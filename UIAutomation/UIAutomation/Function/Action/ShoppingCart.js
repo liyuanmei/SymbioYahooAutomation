@@ -136,7 +136,7 @@ Action.determineTheLoginWhenShopping = function () {
             Action.tapButtonOnTabBar(0);
         }
         else{
-            //Tap exit button exit login window.
+            //Tap exit button exit login window
             Action.exitLoginWindow();
             $.delay(sleep);
             //Verify login window show correct
