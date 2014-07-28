@@ -130,7 +130,7 @@ Action.determineTheLoginWhenShopping = function () {
             Action.exitLoginWindow();
             $.delay(sleep);
 
-            Action.tapAddAccountOnLogin("mobilestoresymbio2", "Aa123456");
+            Action.tapAddAccountOnLogin("mobilestoresymbio4", "Aa123456");
             $.delay(12);
 
             Action.tapButtonOnTabBar(0);
@@ -140,7 +140,7 @@ Action.determineTheLoginWhenShopping = function () {
             Action.exitLoginWindow();
             $.delay(sleep);
             //Verify login window show correct.
-            Action.doUserLogin("mobilestoresymbio2", "Aa123456");
+            Action.doUserLogin("mobilestoresymbio4", "Aa123456");
             $.delay(12);
 
             Action.tapButtonOnTabBar(0);
