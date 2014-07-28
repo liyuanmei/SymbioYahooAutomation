@@ -292,7 +292,7 @@ test("[1977524] verify user can access to items", function () {
     Action.doUserLogout();
     $.delay(5);
 
-    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2, varTestsSignInPasswordMobilestoresymbio2);
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio4, varTestsSignInPasswordMobilestoresymbio4);
     $.delay(5);
 
     Action.tapButtonOnTabBar(0);
@@ -316,7 +316,7 @@ test("[1959879] Verify the favorite items number", function () {
     $.delay(10);
 
     Action.tapButtonOnTabBar(0);
-    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2, varTestsSignInPasswordMobilestoresymbio2);
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio4, varTestsSignInPasswordMobilestoresymbio4);
     $.delay(10);
     Action.tapButtonOnTabBar(4);
 
@@ -355,7 +355,7 @@ test("[1959879] Verify the favorite items number", function () {
     Action.doUserLogout();
     $.delay(5);
 
-    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2, varTestsSignInPasswordMobilestoresymbio2);
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio4, varTestsSignInPasswordMobilestoresymbio4);
     $.delay(10);
 
     Action.tapButtonOnTabBar(0);
