@@ -1268,6 +1268,7 @@ test("[1937983] check log in window show after unregister user tap favorites ico
 
 test("[1937996] on photo grid view unregister user tap favorites icon login window should open." , function () {
     target.logDeviceInfo();
+    Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
@@ -1325,7 +1326,7 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
 
     //Tap exit button exit login window.
     Action.exitLoginWindow();
-    $.delay(sleep);
+    $.delay(5);
 
     //Go back to advanced bar switch browse mode to list view.
     Action.tapButtonsInAdvancedBarWhenSRP();
@@ -1336,8 +1337,7 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
-    Action.tapButtonOnTabBar(0); 
-    Action.cleanSearches();
+    Action.tapButtonOnTabBar(0);  
 });
 
 test("[1938008] check log in window show after unregister user tap favorites icon on item listing-Large photo view." , function () {
@@ -1394,11 +1394,19 @@ test("[1938008] check log in window show after unregister user tap favorites ico
         Action.slidingCommodityPage();
     }
     $.delay(15);
-    
     target.logElementTree();
-     
+
     //tap favorites icon, after tapped log in window show up.
-    Action.tapFavoritesIcon(1);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        //tap favorites icon, after tapped log in window show up.
+        Action.tapFavoritesIcon(0);
+    }
+    else{
+        //tap favorites icon, after tapped log in window show up.
+        Action.tapFavoritesIcon(1);
+    }
     $.delay(5);
 
     //Verify login window show correct.
@@ -1406,7 +1414,7 @@ test("[1938008] check log in window show after unregister user tap favorites ico
 
     //Tap exit button exit login window.
     Action.exitLoginWindow();
-    $.delay(sleep);
+    $.delay(5);
 
     Action.tapButtonsInAdvancedBarWhenSRP();
     Action.tapButtonsInAdvancedBar(1);
@@ -1416,7 +1424,6 @@ test("[1938008] check log in window show after unregister user tap favorites ico
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
-    Action.cleanSearches();
 });
 
 test("[1938030] check heart icon jump to login screen" , function () {
@@ -1687,7 +1694,6 @@ test("[1937997] On photo grid view register user able to add product to his favo
     Action.goMayFavoritesScreenWhenSRP();
 
     $.delay(sleep);
-    target.logElementTree();
 
     //Assert product show in My favorites screen.
     Assert.productAddedToMyFavoritesScreenWhenSRP(productName);
@@ -2078,7 +2084,6 @@ test("[1938025] check  commodity quantity" , function () {
     $.delay(5);
 
     //verify xxx件商品 show correct.
-    target.logElementTree();
     var numberOfItems = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
     Assert.numberOfItemsShowCorrect(numberOfItems);
 
@@ -2242,8 +2247,6 @@ test("[1937941] Check the 'remove' button shows ", function () {
     }
     
     var attributeCollectViewOriginY = Action.getElementsOriginYString(attributeCollectView);
-
-    target.logElementTree();
     $.delay(sleep);
 
     var clearButton = app.mainWindow().buttons()["清除"];
@@ -2469,7 +2472,7 @@ test("[1938032] Click ‘advanced’ button", function () {
     Action.pageShow();
 
     Action.tapStoreTab();
-    $.delay(5);
+    $.delay(10);
 
     Action.tapSearchResultOfStore();
 
@@ -2499,7 +2502,7 @@ test("[1938017] Enter a keyword search", function () {
     Action.pageShow();
 
     Action.tapStoreTab();
-    $.delay(5);
+    $.delay(10);
 
     Action.tapSearchResultOfStore();
 
@@ -2654,9 +2657,17 @@ test("[1938031] After login, click on add collection list icon ", function () {
     Assert.heartIconShowCorrect(1);
     Action.tapheartIconOnStoreWhenSRP();
 
-    Action.tapFavoriteStoreIcon();
-    $.delay(sleep);
-   
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapheartIconOnStoreWhenSRP();
+        $.delay(sleep);
+    }
+    else{
+        Action.tapFavoriteStoreIcon();
+        $.delay(sleep);
+    }
+
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -2775,7 +2786,6 @@ test("[1937925] Switch to a shop List, check 'total XXX pen results' ", function
     $.delay(15);
 
     //verify 共xxxx筆結果 show correct.
-    target.logElementTree();
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
@@ -2837,8 +2847,6 @@ test("[1937932] Check the default to 'browse mode' Tab", function () {
     Action.tapButtonsInAdvancedBar(1);
     Assert.buttonOnAdvancedIsEnabled(1);
     $.delay(sleep);
-    target.logElementTree();
-    $.delay(sleep);
 
     Assert.buttonOnAdvancedIsEnabledShow(0,varTestsListInBrowse);
     Assert.buttonOnAdvancedIsEnabledShow(1,varTestsSmallPictureInBrowse);
@@ -2868,7 +2876,6 @@ test("[1937950] check have a video display options", function () {
     //Tap 篩選 button
     Action.tapButtonsInAdvancedBar(2);
     $.delay(sleep);
-    target.logElementTree();
 
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
@@ -3031,7 +3038,6 @@ test("[1937993] view-Check the goods price display",function () {
 
     Action.chooseCategoryBrowseMode(varTestsSmallPictureInBrowse);
     $.delay(10);
-    target.logElementTree();
 
     //first parameter is second product, second parameter is the  location of price in product cell.
     var version = target.systemVersion();
