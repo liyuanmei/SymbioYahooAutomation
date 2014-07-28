@@ -139,7 +139,7 @@ Action.determineTheLoginWhenShopping = function () {
             //Tap exit button exit login window.
             Action.exitLoginWindow();
             $.delay(sleep);
-            //Verify login window show correct.
+            //Verify login window show correct
             Action.doUserLogin("mobilestoresymbio4", "Aa123456");
             $.delay(12);
 
