@@ -671,6 +671,7 @@ public final class Action {
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         View star = (View) solo.getView("star_button", counts);
         solo.clickOnView(star);
+        solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
         boolean alreadyAdd;
 
         // Get toast text.

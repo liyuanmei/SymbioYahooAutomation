@@ -229,7 +229,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 
         View buddle;
         View radioButton = (View) solo.getView(
-                "product_item_spec_item_selections", 0);
+                "product_item_spec_item_selections", 3);
         if (radioButton.isShown()) {
 
             solo.clickOnView(radioButton);
