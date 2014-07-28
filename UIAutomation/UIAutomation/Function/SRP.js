@@ -2168,7 +2168,7 @@ test("[1938029] view to join wish list icon display." , function () {
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
     Action.cleanSearches();
- });
+});
 
 //6.9
 test("[1937929] Click 'all categories' button" , function () {
@@ -2190,7 +2190,7 @@ test("[1937929] Click 'all categories' button" , function () {
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);
- });
+});
 
 test("[1937930] Browse by specific classification search results" , function () {
     target.logDeviceInfo();
@@ -2203,21 +2203,27 @@ test("[1937930] Browse by specific classification search results" , function () 
     $.delay(5);
 
     Action.tapSearchIconOnNavBar();
-    Assert.textIsEnabled("搜尋漢神百貨品牌服飾");
+    Assert.textIsEnabled(varTestsNoInputTheSearchBoxgWhengoCategoryWhenHanShen);
     $.delay(sleep);
 
     Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
-
     $.delay(5);
+
+    target.logElementTree();
     
     //verify ”漢神百貨品牌服飾“
     Assert.searchResultsPage(varTestsSearchBoxInputDataCoat);
 
+    Action.tapToSearchAllCategories();
+    $.delay(5);
+    
+    Assert.checkToSearchAllCategories();
+
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);
- });
+});
 
 test("[1937941] Check the 'remove' button shows ", function () {
     target.logDeviceInfo();
@@ -2676,6 +2682,7 @@ test("[1938031] After login, click on add collection list icon ", function () {
 
 test("[1938033] check according to the 'low price to dealer' sort" , function () {
     target.logDeviceInfo();
+    Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
     Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);

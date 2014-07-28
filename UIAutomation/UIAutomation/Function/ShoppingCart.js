@@ -27,8 +27,17 @@ test("[1959883] verify all delete shopping cart of goods" , function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(sleep);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.doRefreshFavoriteStorePage();
+        $.delay(10);
+
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
 
     Action.tapButtonOnTabBar(3);
     $.delay(5);
@@ -152,8 +161,17 @@ test("[1977500] verify all delete shopping cart of goods" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(sleep);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.doRefreshFavoriteStorePage();
+        $.delay(10);
+
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
 
     Action.tapButtonOnTabBar(3);
     $.delay(5);
@@ -210,8 +228,17 @@ test("[1959885] verify the shopping cart detail" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(sleep);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.doRefreshFavoriteStorePage();
+        $.delay(10);
+
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
 
     Action.tapButtonOnTabBar(3);
     $.delay(5);
@@ -260,8 +287,17 @@ test("[1959903] Verify user can view next buy items then view shopping cart item
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(sleep);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.doRefreshFavoriteStorePage();
+        $.delay(10);
+
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
 
     Action.tapButtonOnTabBar(3);
     $.delay(sleep);
@@ -321,7 +357,17 @@ test("[1959911] Verify Shopping cart information, purchase information display c
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.doRefreshFavoriteStorePage();
+        $.delay(10);
+
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
     Action.tapButtonOnTabBar(3);
     $.delay(sleep);
 
@@ -390,7 +436,17 @@ test("[1959908] Verify numbers under shopping$next buy" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.doRefreshFavoriteStorePage();
+        $.delay(10);
+
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
     Action.tapButtonOnTabBar(3);
     $.delay(sleep);
 
@@ -463,7 +519,17 @@ test("[1977534] verify delete function" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.doRefreshFavoriteStorePage();
+        $.delay(10);
+
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
     Action.tapButtonOnTabBar(3);
     $.delay(sleep);
 
@@ -520,7 +586,17 @@ test("[1977496] Verify [bug case]「我要結賬」" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapShoppingCartlist(0);
+    try{
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.doRefreshFavoriteStorePage();
+        $.delay(10);
+
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
+    }
     $.delay(20);
     
     Action.tapSettleAccounts();

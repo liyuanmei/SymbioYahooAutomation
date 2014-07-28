@@ -1,8 +1,4 @@
 Action.notificationSettings = function (i) {
-    //UIAtarget.logDeviceInfo();
-    $.delay(sleep);
-    //if(target.systemVersion == 6.0){
-    
     $.delay(sleep);
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
