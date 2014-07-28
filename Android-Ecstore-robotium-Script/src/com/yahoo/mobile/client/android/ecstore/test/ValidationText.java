@@ -230,6 +230,8 @@ public class ValidationText {
     
     public static final String MESSA = "Messa 米莎";
     
+    public static final String PLAY = "好動網";
+    
     public static final String FULL = "購物滿";
     
     public static final String MODEL = "造造";

@@ -49,7 +49,7 @@ public final class Account {
 
         // Input YAHOO account in account text field.
         //solo.typeText(0, "mobileappstore3");
-          solo.typeText(0, "mobilestoresymbio2@yahoo.com.tw");
+          solo.typeText(0, "mobilestoresymbio6@yahoo.com.tw");
         // Input YAHOO password in password text field.
         //solo.typeText(1, "A1234qwer");
           solo.typeText(1, "Aa123456");

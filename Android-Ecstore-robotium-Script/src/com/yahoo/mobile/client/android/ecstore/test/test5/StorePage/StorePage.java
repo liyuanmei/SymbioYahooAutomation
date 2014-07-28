@@ -275,7 +275,7 @@ public class StorePage extends ActivityInstrumentationTestCase2<Activity> {
         View recommend = (View) solo.getView(
                 "listitem_recommended_image1", 0);
         solo.clickOnView(recommend);
-
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         // Checks whether the product image is show.
         View image = (View) solo.getView("listitem_productlist_image", 0);
         assertTrue("Not enter recommended page.", image.isShown());

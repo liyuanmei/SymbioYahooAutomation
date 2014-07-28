@@ -545,8 +545,8 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
         solo.clickOnView(storeName);
        // solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 1);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+       // TestHelper.swipeUp(solo, 1);
+       // solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.addToShoppingCart(solo);
         TextView storeNamee = (TextView) solo.getView(
                 "listitem_productlist_store_name", 0);

@@ -107,7 +107,7 @@ public class StorePromotion extends ActivityInstrumentationTestCase2<Activity> {
     public final void testViewPromotionItemLink() throws Exception {
 
         Action.clickSearchButtonOnScreen(solo);
-        Action.searchAfterPutData(solo, 0, ValidationText.MESSA);
+        Action.searchAfterPutData(solo, 0, ValidationText.PLAY);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         solo.clickInList(Action.VIEW_ID_ZERO);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
