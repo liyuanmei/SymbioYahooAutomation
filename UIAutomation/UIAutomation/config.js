@@ -193,7 +193,7 @@ const varTestCategoryItemName4 = "中大尺碼女裝(M-7L)";
 const varTestCategoryItemName5 = "女性內睡衣";
 const varTestCategoryItemName6 = "品牌/潮流男裝";
 
-//Category list 
+//Category list.
 const varTestCategoryBeautyMakeup = "美妝";
 const varTestCategoryShoeAndBag = "鞋包配飾";
 const varTestCategoryMom = "媽咪寶貝";

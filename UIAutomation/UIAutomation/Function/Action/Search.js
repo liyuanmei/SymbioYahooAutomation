@@ -46,7 +46,7 @@ Action.tapIconPlusOnTableView = function () {
     tapIconPlusOnTableView.tap();
 };
 
-//Click the icon plue different twice.
+//Click the icon plue different twice
 Action.clickOnTheDifferentIconPlus = function () {
     $.delay(sleep);
     var clickOnTheDifferentIconPlus = app.mainWindow().tableViews()[0].cells()[0].buttons()[0];
@@ -441,4 +441,11 @@ Action.tapClearButtonOnFilterScreenInAdvancedBarWhenSRP = function() {
 
     //tap clear button.
     clearButton.tap();
+};
+
+Action.tapToSearchAllCategories = function () {
+    $.delay(sleep);
+    var tapToSearchAllCategories = app.mainWindow().collectionViews()[0].buttons()["搜尋全部分類"];
+    method.checkInstanceExists(tapToSearchAllCategories);
+    tapToSearchAllCategories.tap();
 };

@@ -249,7 +249,7 @@ Assert.checkFavoriteStoreCellsShowCorrectly = function () {
     } 
 };
 
-//7.2
+//7.2.
 Assert.checkVoiceSearchIconDisplay = function () {
     $.delay(sleep);
     var checkVoiceSearchIconDisplay = app.keyboard().buttons()[2].name();
@@ -260,4 +260,10 @@ Assert.tapBarcodeSearch = function () {
     $.delay(sleep);
     var tapBarcodeSearch = app.mainWindow().buttons()[1];
     method.verifyEquals(1,tapBarcodeSearch.isEnabled());
+};
+
+Assert.checkToSearchAllCategories = function () {
+    $.delay(sleep);
+    var checkToSearchAllCategories = app.mainWindow().collectionViews()[0].buttons()[varTestsNoInputTheSearchBoxgWhengoCategoryWhenClass];
+    assertNotEquals(varTestsNoInputTheSearchBoxgWhengoCategoryWhenClass,checkToSearchAllCategories.isEnabled());
 };

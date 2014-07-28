@@ -10,7 +10,7 @@ test("[1959883] verify all delete shopping cart of goods" , function () {
     Action.goCommodityTab();
     Action.pageShow();
 
-    //Tap item on list to navigate to item page.
+    //Tap item on list to navigate to item page
     Action.tapItemOnProductListScreen();
     $.delay(15);
 

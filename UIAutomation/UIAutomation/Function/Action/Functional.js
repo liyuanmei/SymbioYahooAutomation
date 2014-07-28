@@ -35,7 +35,7 @@ Action.notificationSettings = function (i) {
         menuButton.tap();
     }
 };
-
+//
 Action.tapBarcodeSearch = function () {
     $.delay(sleep);
     var tapBarcodeSearch = app.mainWindow().buttons()[1];
