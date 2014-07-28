@@ -361,7 +361,7 @@ test("[1953629] Verify the store page, our classification.", function () {
     $.delay(10);
 
     //tap  store classification
-    Action.tapheartIconOnStoreWhenSRP();
+    Action.tapClassificationButtonWhenItemPage();
     $.delay(sleep);
 
     Assert.checkClassificationButtonIsEnabled(1);

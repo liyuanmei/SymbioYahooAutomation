@@ -82,7 +82,7 @@ Action.tapheartIconOnStoreWhenSRP = function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") { 
-        var tapheartIconOnStoreWhenSRP = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[0];
+        var tapheartIconOnStoreWhenSRP = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].buttons()[0]);
         tapheartIconOnStoreWhenSRP.tap();
     }
