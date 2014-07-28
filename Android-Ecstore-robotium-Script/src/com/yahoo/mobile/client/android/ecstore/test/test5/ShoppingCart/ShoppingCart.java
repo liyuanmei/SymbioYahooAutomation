@@ -237,6 +237,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
         TestHelper.swipeUp(solo, 2);
         Action.clickElementsInWebviewByText(solo, ValidationText.WANT_CHECKOUT);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.searchTextOnWebview(solo, ValidationText.BUY_INFO);
 
     }
@@ -363,7 +364,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
         solo.sleep(ValidationText.WAIT_TIME_LONG);
         TestHelper.swipeUp(solo, 2);
         Action.clickElementsInWebviewByText(solo, ValidationText.WANT_CHECKOUT);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_LONG);
 
         View webPage = (View) solo.getView("webpage", 0);
         assertTrue("Current page is not check out page.", webPage.isShown());

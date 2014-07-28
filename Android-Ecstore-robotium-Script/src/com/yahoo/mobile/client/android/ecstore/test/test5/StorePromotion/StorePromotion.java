@@ -111,9 +111,9 @@ public class StorePromotion extends ActivityInstrumentationTestCase2<Activity> {
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         solo.clickInList(Action.VIEW_ID_ZERO);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 1);
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+        TestHelper.swipeUp(solo, 1);   
         solo.clickOnText(ValidationText.SALES_PROMOTION);
+       
         //Get the promotion header view.
         TextView header = (TextView)
                 solo.getView("product_item_promotion_header");
