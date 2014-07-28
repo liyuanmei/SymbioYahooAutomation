@@ -823,7 +823,7 @@ test("[1953627] verify Shopping methods.", function () {
     Action.tapButtonOnTabBar(0);
 });
 
-test("[1953629] Verify the store page, our goods.", function () {
+test("[1953630] Verify the store page, our goods.", function () {
     target.logDeviceInfo();
     Action.cleanSearches();
     $.delay(sleep);
