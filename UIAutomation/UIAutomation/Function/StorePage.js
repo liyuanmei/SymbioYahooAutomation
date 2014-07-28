@@ -154,7 +154,7 @@ test("[1959925] Verify user can search funtion in store page ", function () {
     $.delay(5);
 
     //go to 漢神百貨品牌
-    Action.tapChoosePreductCategoryWhenOptions(0,1);
+    Action.tapChoosePreductCategoryWhenOptions(0,3);
     $.delay(10);
 
     Action.tapCommodityPictureOnSearchResultsPage();
