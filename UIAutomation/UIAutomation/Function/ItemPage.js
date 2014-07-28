@@ -299,8 +299,6 @@ test("[1953620] verify the gifts are displayed in the shopping cart.", function 
 
 test("[1953626] verify Payment.", function () {
     target.logDeviceInfo();
-
-    //login the app
     Action.cleanSearches();
     $.delay(sleep);
 
@@ -320,8 +318,6 @@ test("[1953626] verify Payment.", function () {
 
     Action.tapPaymentOnProductPage();
     $.delay(10);
-
-    target.logElementTree();
 
     //check the payment displayed correctly
     Assert.checkPaymentAndDelivery();
