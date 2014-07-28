@@ -828,7 +828,7 @@ test("[1953630] Verify the store page, our goods.", function () {
     Action.cleanSearches();
     $.delay(sleep);
 
-    //go to itme page
+    //go to itme page.
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
 
