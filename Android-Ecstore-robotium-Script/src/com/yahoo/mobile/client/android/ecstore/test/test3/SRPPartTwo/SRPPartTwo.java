@@ -768,9 +768,14 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
        Action.clickSearchButtonOnScreen(solo);
        Action.searchAfterPutData(solo, 0, ValidationText.JACKET);
        solo.sleep(ValidationText.WAIT_TIME_LONG);
-       solo.clickOnView(solo.getView("tab_image",
-               Action.VIEW_ID_TWO));
-       Action.navigateToCategoryScreen(solo);
+       
+       //Get search all classification button.
+       View searchAll = (View) solo.getView("option_button",2);
+   
+       solo.clickOnText(ValidationText.SEARCH_ALL_CATEGORIES);
+       solo.sleep(ValidationText.WAIT_TIME_SHORT);
+       
+       assertFalse("Search result is null.",searchAll.isShown());
     }
 
     /**

@@ -101,11 +101,27 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
     public final void testFavoriteItemNumber() throws Exception {
 
         Account.judgementAccountLogin(solo);
+        Action.removeFavoriteItem(solo);
         solo.clickOnText(ValidationText.ALL_CATEGORIES);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         Action.clickText(solo, ValidationText.APPAREL);
         solo.clickOnText(ValidationText.COMMODITY);
-        Action.clickStarIconNote(solo);
+        View star = (View) solo.getView("star_button", 0);
+        solo.clickOnView(star);
+        solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+        boolean alreadyAdd;
+
+        // Get toast text.
+        if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)){
+            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+            junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+        } else {
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(star);
+            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+            junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+
+        }
 
         // "Add to favorite" operation will take for a period of time.
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
@@ -395,7 +411,22 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
         Action.removeFavoriteItem(solo);
         Action.enterToItemPage(solo);
         solo.goBack();
-        Action.clickStarIconNote(solo);
+        View star = (View) solo.getView("star_button", 0);
+        solo.clickOnView(star);
+        solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+        boolean alreadyAdd;
+
+        // Get toast text.
+        if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)){
+            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+            junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+        } else {
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(star);
+            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+            junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+
+        }
         solo.sleep(ValidationText.WAIT_TIME_LONG);
        // solo.goBack();
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
