@@ -103,7 +103,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
         solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+        solo.sleep(ValidationText.WAIT_TIME_LONGEST);
         TestHelper.swipeUp(solo, 2);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
@@ -192,14 +192,14 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickElementsInWebviewByText(solo,
                 ValidationText.WANT_CHECKOUT);
 
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+        solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
         //solo.goBack();
         TestHelper.swipeUp(solo, 2);
 
         TestHelper.swipeUp(solo, 1);
         Log.i("number", "ME");
-        solo.sleep(ValidationText.WAIT_TIME_LONG);
+        solo.sleep(ValidationText.WAIT_TIME_LONGER);
         Action.clickElementsInWebviewByText(solo, ValidationText.FAMILY_PICKUP);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 

@@ -753,10 +753,7 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
         Account.judgementAccountLogin(solo);
         
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        TextView before = (TextView) solo.getView("listitem_discoverylist_top10_title",
-                0);
-        String beforeProductName = before.getText().toString();
-        Log.i("number", beforeProductName);
+ 
         // click on search button on home screen
         Action.clickSearchButtonOnScreen(solo);
 
@@ -765,11 +762,20 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         //solo.sleep(ValidationText.WAIT_TIME_SHORT);
         
-        TextView after = (TextView) solo.getView("listitem_discoverylist_top10_title",
-                0);
-        String afterProductName = after.getText().toString();
-        Log.i("number", afterProductName); 
-        assertTrue("Not in latest page.", beforeProductName.equals(afterProductName));
+        try{
+        	 TextView after = (TextView) solo.getView("listitem_discoverylist_top10_title",
+                     0);
+             assertTrue("Not in latest page.", after.isShown());
+        } catch (AssertionError e) {
+        	TestHelper.swipeDown(solo, 1);
+        	solo.sleep(ValidationText.WAIT_TIME_LONG);
+        	TextView after = (TextView) solo.getView("listitem_discoverylist_top10_title",
+                    0);
+            assertTrue("Not in latest page.", after.isShown());
+        }
+       
+       // String afterProductName = after.getText().toString();
+        
 
     }
 
