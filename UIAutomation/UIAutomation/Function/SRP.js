@@ -2616,7 +2616,14 @@ test("[1938009] Login - click join collection after listing of stars." , functio
     $.delay(5);
 
     //Tap favorites icon add a production to favorites.
-    Action.tapFavoritesIcon(1);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapFavoritesIcon(2);
+    }
+    else{
+        Action.tapFavoritesIcon(1);
+    }
 
     //got my favorites screen.
     Action.tapButtonOnTabBar(4);
