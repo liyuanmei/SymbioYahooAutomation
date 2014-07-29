@@ -199,7 +199,7 @@ Action.determineTheLoginWhenSRP = function () {
             Action.exitLoginWindow();
             $.delay(sleep);
 
-            Action.tapAddAccountOnLogin("mobilestoresymbio4", "Aa123456");
+            Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2, varTestsSignInPasswordMobilestoresymbio2);
             $.delay(12);
 
             Action.tapButtonOnTabBar(0);
@@ -209,7 +209,7 @@ Action.determineTheLoginWhenSRP = function () {
             Action.exitLoginWindow();
             $.delay(sleep);
             //Verify login window show correct.
-            Action.doUserLogin("mobilestoresymbio4", "Aa123456");
+            Action.doUserLogin(varTestsSignInAccountMobilestoresymbio2, varTestsSignInPasswordMobilestoresymbio2);
             $.delay(12);
 
             Action.tapButtonOnTabBar(0);
