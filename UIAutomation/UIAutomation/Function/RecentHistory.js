@@ -54,7 +54,7 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
         var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[0];
     }
     
-    Assert.elementsShouldContainText(goodsNum,varTestsElementsShouldContainTextOneGoods);
+    Assert.elementsShouldContainText(goodsNum,varTestsCheckTheKeyword2);
 
     //goods collection
     Assert.checkGoodsExist();
