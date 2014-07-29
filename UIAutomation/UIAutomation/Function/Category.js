@@ -720,8 +720,8 @@ test("[1938061] check 清除 button show correct on advanced bar.", function (){
     //Tap 篩選 button.
     Action.tapButtonsInAdvancedBar(2);
 
-    //Tap "優良商店" and verify 清除 button show up.
-    Action.tapButtonOnFilterAttributeScreen(8);
+    //Tap "可刷卡" and verify 清除 button show up.
+    Action.tapButtonOnFilterAttributeScreen(0);
 
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
