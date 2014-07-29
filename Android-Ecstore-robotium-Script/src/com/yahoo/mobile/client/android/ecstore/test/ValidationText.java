@@ -162,9 +162,9 @@ public class ValidationText {
 
     public static final String HOMEAPPLIANCES_AV = "家電/視聽";
 
-    public static final String GOURMET_HEALTH_BEVERAGE = "美食/\n保健/飲料";
+    public static final String GOURMET_HEALTH_BEVERAGE = "美食/\n纖體/保健";
 
-    public static final String GOURMET_HEALTH_BEVERAGE2 = "美食/保健/飲料";
+    public static final String GOURMET_HEALTH_BEVERAGE2 = "美食/纖體/保健";
 
     public static final String CAMERA_MOBILE_TOYS = "相機/\n手機/玩具";
 
@@ -178,9 +178,9 @@ public class ValidationText {
 
     public static final String HOME_BEDDING_FURNITURE2 = "居家/寢具/傢俱";
 
-    public static final String SPORTS_OUTDOOR_RECREATION = "運動/\n戶外/休閒";
+    public static final String SPORTS_OUTDOOR_RECREATION = "運動/\n戶外/票券";
 
-    public static final String SPORTS_OUTDOOR_RECREATION2 = "運動/戶外/休閒";
+    public static final String SPORTS_OUTDOOR_RECREATION2 = "運動/戶外/票券";
 
     public static final String BOOKS_STATIONERY_VIDEO = "圖書/\n文具/影音";
 
