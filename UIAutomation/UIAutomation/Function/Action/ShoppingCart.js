@@ -73,7 +73,7 @@ Action.tapDeleteOnShoppingCart = function () {
     else{
         app.mainWindow().tableViews()[0].dragInsideWithOptions({startOffset:{x:0.99, y:0.19}, endOffset:{x:0.75, y:0.18}});
         $.delay(5);
-        var tapDeleteOnShoppingCart = app.mainWindow().tableViews()[0].cells()[0].buttons()["Delete"];
+        var tapDeleteOnShoppingCart = app.mainWindow().tableViews()[0].cells()[0].buttons()[varTestsKeyboardDelete];
         method.checkInstanceExists(tapDeleteOnShoppingCart);
         tapDeleteOnShoppingCart.tap();
     }
@@ -81,8 +81,8 @@ Action.tapDeleteOnShoppingCart = function () {
 
 Action.tapConfirmOnDeleteShoppingCart = function () {
     $.delay(sleep);
-    var tapConfirmOnDeleteShoppingCart = app.mainWindow().scrollViews()[0].webViews()[0].links()["確定"];
-    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].links()["確定"]);
+    var tapConfirmOnDeleteShoppingCart = app.mainWindow().scrollViews()[0].webViews()[0].links()[varTestsDetermine];
+    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].links()[varTestsDetermine]);
     tapConfirmOnDeleteShoppingCart.tap();
 };
 
@@ -99,15 +99,15 @@ Action.tapAddBuyNextTimeOnShopping = function () {
     app.mainWindow().scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.80, y:0.32}});
 
     $.delay(sleep);
-    var AddBuyNextTimeOnShopping = app.mainWindow().scrollViews()[0].webViews()[0].links()["確定"];
-    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].links()["確定"]);
+    var AddBuyNextTimeOnShopping = app.mainWindow().scrollViews()[0].webViews()[0].links()[varTestsDetermine];
+    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].links()[varTestsDetermine]);
     AddBuyNextTimeOnShopping.tap();
 };
 
 Action.tapSettleAccounts = function () {
     $.delay(sleep);
-    var tapSettleAccounts = app.mainWindow().scrollViews()[0].webViews()[0].buttons()["我要結帳"];
-    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].buttons()["我要結帳"]);
+    var tapSettleAccounts = app.mainWindow().scrollViews()[0].webViews()[0].buttons()[varTestsTheInvoicing];
+    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].buttons()[varTestsTheInvoicing]);
     tapSettleAccounts.tap();
 };
 

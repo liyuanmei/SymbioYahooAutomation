@@ -1,7 +1,7 @@
 Action.tapConvenienceStorePayment = function () {
     $.delay(sleep);
-    var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()["全家繳費不取貨"];
-    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()["全家繳費不取貨"]);
+    var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[varTestsConvenienceStorePayment];
+    method.checkInstanceExists(app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[varTestsConvenienceStorePayment]);
     convenienceStorePayment.tap();
 };
 

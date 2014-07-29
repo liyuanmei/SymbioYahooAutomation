@@ -1,6 +1,6 @@
 Action.tapGoToEditFavoriteButton = function  () {
     $.delay(sleep);
-    var goToEditFavoriteButton = app.mainWindow().buttons()["前往最新動態"];
+    var goToEditFavoriteButton = app.mainWindow().buttons()[varTestsGoToDiscoveryStreamName];
     method.checkInstanceExists(goToEditFavoriteButton);
     goToEditFavoriteButton.tap();
 };
@@ -30,7 +30,7 @@ Action.slidingDeleteGoodsCollection = function () {
     app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.99, y:0.23}, endOffset:{x:0.59, y:0.23}, duration:2.2});
 
     $.delay(sleep);
-    var tapDeleteGoodsCollection = app.mainWindow().collectionViews()[0].cells()[0].buttons()["刪除"];
+    var tapDeleteGoodsCollection = app.mainWindow().collectionViews()[0].cells()[0].buttons()[varTestsShoppingCartDelete];
     method.checkInstanceExists(tapDeleteGoodsCollection);
     tapDeleteGoodsCollection.tap();
 };

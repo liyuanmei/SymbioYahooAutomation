@@ -31,7 +31,7 @@ Action.tapCleanSearchOnSidebr = function (i) {
         $.delay(sleep);
     
         var tableViews = app.windows()[0].tableViews()[0];
-        var tableCells = tableViews.cells()["Settings"];
+        var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
         target.logElementTree();
@@ -49,7 +49,7 @@ Action.tapCleanSearchOnSidebr = function (i) {
         $.delay(sleep);
     
         var tableViews = app.windows()[0].tableViews()[0];
-        var tableCells = tableViews.cells()["Settings"];
+        var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
         target.logElementTree();
@@ -74,7 +74,7 @@ Action.cleanBrowsingHistory = function () {
         $.delay(sleep);
     
         var tableViews = app.windows()[0].tableViews()[0];
-        var tableCells = tableViews.cells()["Settings"];
+        var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
     
@@ -104,7 +104,7 @@ Action.cleanBrowsingHistory = function () {
         $.delay(sleep);
     
         var tableViews = app.windows()[0].tableViews()[0];
-        var tableCells = tableViews.cells()["Settings"];
+        var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
     
@@ -139,7 +139,7 @@ Action.tapCleanSearchRecordsOnSidebr = function (i) {
         $.delay(sleep);
     
         var tableViews = app.windows()[0].tableViews()[0];
-        var tableCells = tableViews.cells()["Settings"];
+        var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
         target.logElementTree();
@@ -157,7 +157,7 @@ Action.tapCleanSearchRecordsOnSidebr = function (i) {
         $.delay(sleep);
     
         var tableViews = app.windows()[0].tableViews()[0];
-        var tableCells = tableViews.cells()["Settings"];
+        var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
         target.logElementTree();

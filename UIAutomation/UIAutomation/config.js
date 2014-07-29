@@ -200,18 +200,18 @@ const varTestCategoryMom = "媽咪寶貝";
 const varTestCategoryComputer = "電腦/週邊";
 const varTestCategoryHomeAppliance = "家電/視聽";
 const varTestCategoryCamera = "相機/ 手機/玩具";
-const varTestCategoryFood = "美食/ 保健/飲料";
+const varTestCategoryFood = "美食/ 纖體/保健";
 const varTestCategoryMedical = "醫療/ 日用品/寵物";
 const varTestCategoryHouseholdLife = "居家/ 寢具/傢俱";
-const varTestCategoryAction = "運動/ 戶外/休閒";
+const varTestCategoryAction = "運動/ 戶外/票券";
 const varTestCategoryBooks = "圖書/ 文具/影音";
 
 //Category list on OS 6.1
 const varTestCategoryCameraCompatible = "相機/\n手機/玩具";
-const varTestCategoryFoodCompatible = "美食/\n保健/飲料";
+const varTestCategoryFoodCompatible = "美食/\n纖體/保健";
 const varTestCategoryMedicalCompatible = "醫療/\n日用品/寵物";
 const varTestCategoryHouseholdLifeCompatible = "居家/\n寢具/傢俱";
-const varTestCategoryActionCompatible = "運動/\n戶外/休閒";
+const varTestCategoryActionCompatible = "運動/\n戶外/票券";
 const varTestCategoryBooksCompatible = "圖書/\n文具/影音";
 
 //AdvancedBar
@@ -255,6 +255,16 @@ const varTestsItemInAdvancedBarChoose9 = "優良商店";
 //item page buttons
 const varTestsBuyButtons = "立即購買";
 const varTestsAddButtons = "加入購物車";
+const varTestsSettings = "Settings";
+const varTestsDetermine = "確定";
+const varTestsKeyboardSearch = "Search";
+const varTestsKeyboardDelete = "Delete";
+const varTestsTheInvoicing = "我要結帳";
+const varTestsGoToDiscoveryStreamName = "前往最新動態";
+const varTestsShoppingCartDelete = "刪除";
+const varTestsCleanButtons = "清除";
+const varTestsActivityLink = "活動價";
+const varTestsEmptyList = "Empty list";
 
 //18check18BanScreen
 const varTestBackButtonOn18Ban = "未滿18歲離開";

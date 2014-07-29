@@ -57,8 +57,8 @@ Action.clickOnTheDifferentIconPlus = function () {
 
 Action.tapKeyboardSearch = function () {
     $.delay(sleep);
-    var tapKeyboardSearch = app.keyboard().buttons()["Search"];
-    method.checkInstanceExists(app.keyboard().buttons()["Search"]);
+    var tapKeyboardSearch = app.keyboard().buttons()[varTestsKeyboardSearch];
+    method.checkInstanceExists(app.keyboard().buttons()[varTestsKeyboardSearch]);
     tapKeyboardSearch.tap();
 };
 
@@ -72,7 +72,7 @@ Action.tapClean = function () {
 Action.tapKeyboardDelete = function () {
     $.delay(sleep);
     var app = target.frontMostApp();
-    var tapKeyboardDelete = app.keyboard().keys()["Delete"];
+    var tapKeyboardDelete = app.keyboard().keys()[varTestsKeyboardDelete];
     tapKeyboardDelete.tap();
 };
 
@@ -89,7 +89,7 @@ Action.cleanSearches = function () {
         $.delay(2);
     
         var tableViews = app.windows()[0].tableViews()[0];
-        var tableCells = tableViews.cells()["Settings"];
+        var tableCells = tableViews.cells()[varTestsSettings];
 
         method.checkInstanceExists(tableCells);
         tableCells.tap();
@@ -126,7 +126,7 @@ Action.cleanSearches = function () {
         $.delay(sleep);
     
         var tableViews = app.windows()[0].tableViews()[0];
-        var tableCells = tableViews.cells()["Settings"];
+        var tableCells = tableViews.cells()[varTestsSettings];
         method.checkInstanceExists(tableCells);
         tableCells.tap();
         $.delay(sleep);
@@ -370,8 +370,8 @@ Action.tapShoppingInformationPage = function () {
     target.logElementTree();
     $.delay(3);
 
-    var tapShoppingInformationPage = app.mainWindow().tableViews()[0].cells()["購物須知"];
-    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()["購物須知"]);
+    var tapShoppingInformationPage = app.mainWindow().tableViews()[0].cells()[varTestsShoppingInformationPage];
+    method.checkInstanceExists(app.mainWindow().tableViews()[0].cells()[varTestsShoppingInformationPage]);
     tapShoppingInformationPage.tap();
 };
 
@@ -419,13 +419,13 @@ Action.tapDetermineInAdvancedBarWhenSRP = function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        var tapDetermineInAdvancedBarWhenSRP = app.mainWindow().navigationBar().buttons()["確定"];
-        method.checkInstanceExists(app.mainWindow().navigationBar().buttons()["確定"]);
+        var tapDetermineInAdvancedBarWhenSRP = app.mainWindow().navigationBar().buttons()[varTestsDetermine];
+        method.checkInstanceExists(app.mainWindow().navigationBar().buttons()[varTestsDetermine]);
         tapDetermineInAdvancedBarWhenSRP.tap();
     }
     else{
-        var tapDetermineInAdvancedBarWhenSRP = app.navigationBar().buttons()["確定"];
-        method.checkInstanceExists(app.navigationBar().buttons()["確定"]);
+        var tapDetermineInAdvancedBarWhenSRP = app.navigationBar().buttons()[varTestsDetermine];
+        method.checkInstanceExists(app.navigationBar().buttons()[varTestsDetermine]);
         tapDetermineInAdvancedBarWhenSRP.tap();
     }
     
@@ -445,7 +445,7 @@ Action.tapClearButtonOnFilterScreenInAdvancedBarWhenSRP = function() {
 
 Action.tapToSearchAllCategories = function () {
     $.delay(sleep);
-    var tapToSearchAllCategories = app.mainWindow().collectionViews()[0].buttons()["搜尋全部分類"];
+    var tapToSearchAllCategories = app.mainWindow().collectionViews()[0].buttons()[varTestsNoInputTheSearchBoxgWhengoCategoryWhenClass];
     method.checkInstanceExists(tapToSearchAllCategories);
     tapToSearchAllCategories.tap();
 };

@@ -8,7 +8,7 @@ Action.notificationSettings = function (i) {
         $.delay(sleep);
 
         var tableViews = app.windows()[0].tableViews()[0];
-        var tableCells = tableViews.cells()["Settings"];
+        var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
     
@@ -24,7 +24,7 @@ Action.notificationSettings = function (i) {
         $.delay(sleep);
 
         var tableViews = app.windows()[0].tableViews()[0];
-        var tableCells = tableViews.cells()["Settings"];
+        var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
     

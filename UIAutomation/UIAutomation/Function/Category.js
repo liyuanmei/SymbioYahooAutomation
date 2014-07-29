@@ -1459,9 +1459,6 @@ test("[1938124] on item listing-list view tap store name page should navigate to
     //Verify screen successful navigate to item details.
     Assert.itemPageShowCorrect();
 
-    //Verify screen successful navigate to item details.
-    Assert.itemPageShowCorrect(storeName);
-
     //Back to list screen.
     Action.goBack();
 
@@ -1841,7 +1838,7 @@ test("[1938130] check 全部分類 tab button show correct", function () {
     Action.goDiscoveryStream();
 });
 
-test("[1938131] check 全部分類 tab show correct.", function () {
+test("[1938133] check 全部分類 tab show correct.", function () {
     target.logDeviceInfo();
     Action.tapButtonOnTabBar(2);
     $.delay(sleep);
@@ -1850,7 +1847,7 @@ test("[1938131] check 全部分類 tab show correct.", function () {
     Action.goDiscoveryStream();
 });
 
-test("[1938133] check 全部分類 show on screen top", function () {
+test("[1938131] check 全部分類 show on screen top", function () {
     target.logDeviceInfo();
     Action.tapButtonOnTabBar(2);
     Assert.navigationBarName(varTestCategoryName);

@@ -23,9 +23,9 @@ Action.tapGoodsTab = function () {
 
 Action.tapButtonsInAdvancedBarWhenSRP = function () {
     $.delay(sleep);
-    var tapButtonsInAdvancedBarWhenSRP = app.mainWindow().collectionViews()[0].buttons()["進階"];
+    var tapButtonsInAdvancedBarWhenSRP = app.mainWindow().collectionViews()[0].buttons()[varTestAdvancedBar];
 
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()["進階"]);
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].buttons()[varTestAdvancedBar]);
     tapButtonsInAdvancedBarWhenSRP.tap();
 };
 
@@ -110,8 +110,8 @@ Action.selectOptionOnSortingTabWhenSRP = function (option) {
 
 Action.tapClearButtonOnFilterScreenWhenSRP = function() {
     $.delay(sleep);
-    var clearButton = app.mainWindow().buttons()["清除"];
-    method.checkInstanceExists(app.mainWindow().buttons()["清除"]);
+    var clearButton = app.mainWindow().buttons()[varTestsCleanButtons];
+    method.checkInstanceExists(app.mainWindow().buttons()[varTestsCleanButtons]);
 
     //tap clear button.
     clearButton.tap();

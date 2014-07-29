@@ -2457,7 +2457,13 @@ test("[1938019] Check the default show 20 stores", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.commodityItemsShowCount(7);
+        var itemListCount = app.mainWindow().collectionViews()[0].cells().length;
+        if(itemListCount == "7"){
+            Assert.commodityItemsShowCount(7);
+        }
+        else{
+            Assert.commodityItemsShowCount(8);
+        }  
     }
     else{
         Assert.commodityItemsShowCount(21);
@@ -2636,7 +2642,6 @@ test("[1938009] Login - click join collection after listing of stars." , functio
 
     //Remove favorites item.
     Action.tapButtonOnTabBar(2);
-    
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {

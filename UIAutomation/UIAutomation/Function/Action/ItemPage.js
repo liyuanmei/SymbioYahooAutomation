@@ -7,8 +7,8 @@ Action.tapGoodsOnList = function (i) {
 
 Action.tapSalesPromotionActivity = function () {
     $.delay(sleep);
-    var tapSalesPromotionActivity = app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["促銷活動, 2"];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["促銷活動, 2"]);
+    var tapSalesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[varTestsEmptyList].tableViews()[varTestsEmptyList].cells()["促銷活動, 2"];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[varTestsEmptyList].tableViews()[varTestsEmptyList].cells()["促銷活動, 2"]);
     tapSalesPromotionActivity.tap();
 };
 
@@ -39,7 +39,7 @@ Action.addToShoppingCartWhenItemPage = function () {
     }
     else{
         var collectionViews = app.mainWindow().collectionViews()[0];
-        var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
+        var addToCartButton = collectionViews.cells()[varTestsBuyButtons].buttons()[0];
         method.checkInstanceExists(addToCartButton);
         addToCartButton.tap();
     }
@@ -58,8 +58,8 @@ Action.tapPaymentOnProductPage = function () {
         paymentOnProductPage.tap();
     }
     else{
-        var paymentOnProductPage = app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["付款及交貨方式"];
-        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["付款及交貨方式"]);
+        var paymentOnProductPage = app.mainWindow().collectionViews()[0].cells()[varTestsEmptyList].tableViews()[varTestsEmptyList].cells()["付款及交貨方式"];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[varTestsEmptyList].tableViews()[varTestsEmptyList].cells()["付款及交貨方式"]);
         paymentOnProductPage.tap();
     }
 };
@@ -68,8 +68,8 @@ Action.tapShoppingMethodsOnProductPage = function () {
     //$.delay(sleep);
     //var slideTheScreen = app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.51, y:0.86}, endOffset:{x:0.98, y:0.04}, duration:1.7});
     $.delay(10);
-    var shoppingMethodsOnProductPage = app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["購物須知"];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["購物須知"]);
+    var shoppingMethodsOnProductPage = app.mainWindow().collectionViews()[0].cells()[varTestsEmptyList].tableViews()[varTestsEmptyList].cells()["購物須知"];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[varTestsEmptyList].tableViews()[varTestsEmptyList].cells()["購物須知"]);
     shoppingMethodsOnProductPage.tap();
 };
 
@@ -77,8 +77,8 @@ Action.tapAllProductOfThisStoreOnProductPage = function () {
     //$.delay(sleep);
     //var slideTheScreen = app.mainWindow().collectionViews()[0].dragInsideWithOptions({startOffset:{x:0.51, y:0.86}, endOffset:{x:0.98, y:0.04}, duration:1.7});
     $.delay(10);
-    var allProductOfThisStoreOnProductPage = app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["看本店家全部商品"];
-    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()["看本店家全部商品"]);
+    var allProductOfThisStoreOnProductPage = app.mainWindow().collectionViews()[0].cells()[varTestsEmptyList].tableViews()[varTestsEmptyList].cells()[varTestsItemPageLinksLookGoods];
+    method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[varTestsEmptyList].tableViews()[varTestsEmptyList].cells()[varTestsItemPageLinksLookGoods]);
     allProductOfThisStoreOnProductPage.tap();
 };
 
@@ -115,8 +115,8 @@ Action.tapChooseOnItemPage = function (i) {
         sale.tap();
     }
     else{
-        var allProductOfThisStoreOnProductPage = app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()[i];
-        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()["Empty list"].tableViews()["Empty list"].cells()[i]);
+        var allProductOfThisStoreOnProductPage = app.mainWindow().collectionViews()[0].cells()[varTestsEmptyList].tableViews()[varTestsEmptyList].cells()[i];
+        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[varTestsEmptyList].tableViews()[varTestsEmptyList].cells()[i]);
         allProductOfThisStoreOnProductPage.tap();
     }
 };
@@ -127,7 +127,7 @@ Action.tapActivityLink = function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        app.mainWindow().collectionViews()[0].cells()[1].staticTexts()["活動價"].tapWithOptions({tapOffset:{x:0.55, y:0.38}});
+        app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[varTestsActivityLink].tapWithOptions({tapOffset:{x:0.55, y:0.38}});
     }
     else{
         var tapActivityLink = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[4];
