@@ -31,6 +31,7 @@ import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -373,7 +374,21 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
 
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
-
+        InputMethodManager imm = (InputMethodManager) solo.getCurrentActivity().getSystemService(solo.getCurrentActivity().INPUT_METHOD_SERVICE);
+        if(imm.isActive()){
+        	imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
+        		     InputMethodManager.HIDE_NOT_ALWAYS);
+        	solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        	imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
+       		     InputMethodManager.HIDE_NOT_ALWAYS);
+        }else {
+        	assertTrue("fad",true);
+        }
+        	
+        
+      //  imm.hideSoftInputFromWindow(solo.getView(solo.getCurrentViews()).getWindowToken(), 0);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        
         String viewId = "tb_cc";
         Action.clickView(solo, viewId);
         assertTrue("Can_Swipe button is not selected.",

@@ -31,6 +31,7 @@ import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -893,6 +894,9 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         assertTrue(" 'Credit cards accepted'  button unselected.",
                 tb.isChecked());
+        InputMethodManager imm = (InputMethodManager) solo.getCurrentActivity().getSystemService(solo.getCurrentActivity().INPUT_METHOD_SERVICE);  
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnText(ValidationText.CANCEL);
         View iv = solo.getView("menu_filter");
         solo.clickOnView(iv);
