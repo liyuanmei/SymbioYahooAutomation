@@ -289,8 +289,8 @@ public class ValidationText {
     public static final String RESELECT_OTHER_STORE = "重選其它門市" ;
     
     public static final String[] CATEGORYLIST = { "服飾", "美妝", "鞋包配飾", "媽咪寶貝",
-            "電腦/週邊", "家電/視聽", "相機/\n手機/玩具", "美食/\n保健/飲料", "醫療/\n日用品/寵物",
-            "居家/\n寢具/傢俱", "運動/\n戶外/休閒", "圖書/\n文具/影音" };
+            "電腦/週邊", "家電/視聽", "相機/\n手機/玩具", "美食/\n纖體/保健", "醫療/\n日用品/寵物",
+            "居家/\n寢具/傢俱", "運動/\n戶外/票券", "圖書/\n文具/影音" };
 
     public static final String[] COSTUMELIST = { "漢神百貨品牌服飾", "漢神百貨內睡衣", "流行女裝",
             "中大尺碼女裝", "女性內睡衣", "品牌/潮流男裝" };
