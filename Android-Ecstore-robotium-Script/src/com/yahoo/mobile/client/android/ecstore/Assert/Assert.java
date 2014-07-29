@@ -36,61 +36,41 @@ public final class Assert {
                 .getDefaultSharedPreferences(solo.getCurrentActivity());
         boolean flag = prefs.getBoolean("Time", false);
 
-        if (!flag) {
-            View versionAlert;
-            try {
-                versionAlert = (View) solo.getView("alertTitle");
-                if (versionAlert.isShown()) {
-                    solo.goBack();
-                }
-            } catch (final AssertionError e) {
-                System.err.println(e.toString());
-                junit.framework.Assert.assertTrue(
-                        "Not the first time launch app", true);
-            }
-            try {
-                View skip = (View) solo.getView("welcome_skip");
-                if (skip.isShown()) {
-                    solo.sleep(ValidationText.WAIT_TIME_SHORT);
-                    solo.clickOnView(skip);
-                } else {
-                    solo.sleep(ValidationText.WAIT_TIME_SHORT);
-                    solo.clickOnView(solo.getView("welcome_btn"));
-                }
-                View personal = (View) solo
-                        .getView("category_editor_ok_btn", 0);
-                solo.sleep(ValidationText.WAIT_TIME_SHORT);
-                solo.clickOnView(personal);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("Time", true);
-                editor.commit();
-                junit.framework.Assert.assertTrue(
-                        "Not the first time launch app", true);
-            } catch (final AssertionError e) {
-                System.err.println(e.toString());
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("Time", true);
-                editor.commit();
-                junit.framework.Assert.assertTrue(
-                        "Not the first time launch app", true);
-            }
-
-        } else {
-
-            try {
-                View versionAlert = (View) solo.getView("alertTitle");
-                if (versionAlert.isShown()) {
-                    solo.goBack();
-                }
-            } catch (final AssertionError e) {
-                System.err.println(e.toString());
-                junit.framework.Assert.assertTrue(
-                        "Not the first time launch app", true);
-            }
-            junit.framework.Assert.assertTrue("Not the first time launch app",
-                    true);
-
-        }
+        	if (!flag) {
+	           
+	            try {
+	                View skip = (View) solo.getView("welcome_skip");
+	                if (skip.isShown()) {
+	                    solo.sleep(ValidationText.WAIT_TIME_SHORT);
+	                    solo.clickOnView(skip);
+	                } else {
+	                    solo.sleep(ValidationText.WAIT_TIME_SHORT);
+	                    solo.clickOnView(solo.getView("welcome_btn"));
+	                }
+	                View personal = (View) solo
+	                        .getView("category_editor_ok_btn", 0);
+	                solo.sleep(ValidationText.WAIT_TIME_SHORT);
+	                solo.clickOnView(personal);
+	                SharedPreferences.Editor editor = prefs.edit();
+	                editor.putBoolean("Time", true);
+	                editor.commit();
+	                junit.framework.Assert.assertTrue(
+	                        "Not the first time launch app", true);
+	            } catch (final AssertionError e) {
+	                System.err.println(e.toString());
+	                SharedPreferences.Editor editor = prefs.edit();
+	                editor.putBoolean("Time", true);
+	                editor.commit();
+	                junit.framework.Assert.assertTrue(
+	                        "Not the first time launch app", true);
+	            }
+	
+	        } else {	
+	        	   
+	            junit.framework.Assert.assertTrue("Not the first time launch app",
+	                    true);
+	        }
+      
     }
 
 
