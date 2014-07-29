@@ -2457,7 +2457,7 @@ test("[1938019] Check the default show 20 stores", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Assert.commodityItemsShowCount(8);
+        Assert.commodityItemsShowCount(7);
     }
     else{
         Assert.commodityItemsShowCount(21);
