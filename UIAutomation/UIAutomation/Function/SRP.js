@@ -2636,7 +2636,15 @@ test("[1938009] Login - click join collection after listing of stars." , functio
 
     //Remove favorites item.
     Action.tapButtonOnTabBar(2);
-    Action.tapFavoritesIcon(1);
+    
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapFavoritesIcon(2);
+    }
+    else{
+        Action.tapFavoritesIcon(1);
+    }
     $.delay(5);
 
     //Go back to advanced bar switch browse mode to list view.
