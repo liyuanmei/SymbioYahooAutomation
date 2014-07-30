@@ -104,7 +104,7 @@ Assert.itemPageShowCorrectOnCoatSearchPage = function (sTitle) {
     if(version == "6.1") {
         $.delay(sleep);
         var butButton = app.mainWindow().collectionViews()[0].cells()[4].buttons()[1].name();
-        if(butButton == "立即購買"){
+        if(butButton == varTestsBuyButtons){
             //Assert buy and add to cart button show correct.
             var addToCartButton = collectionViews.cells()[4].buttons()[0];
             var butButton = collectionViews.cells()[4].buttons()[1];
@@ -116,8 +116,8 @@ Assert.itemPageShowCorrectOnCoatSearchPage = function (sTitle) {
     }
     else{
         //Assert buy and add to cart button show correct.
-        var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
-        var butButton = collectionViews.cells()["立即購買"].buttons()[1];
+        var addToCartButton = collectionViews.cells()[varTestsBuyButtons].buttons()[0];
+        var butButton = collectionViews.cells()[varTestsBuyButtons].buttons()[1];
     }
     
     method.verifyEquals(varTestsBuyButtons, addToCartButton.name());

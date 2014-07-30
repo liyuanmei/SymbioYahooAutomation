@@ -866,3 +866,13 @@ Assert.checkGoodsCollectionSuccessful = function () {
         method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length>1);
     }
 };
+
+Assert.checkStoreCategoryCellsShowCorrectlyWhenStorePage = function () {
+    $.delay(sleep);
+
+    for (var i = 2; i < 4; i++) {
+        $.delay(1);
+        var checkStoreCategoryCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0];
+        method.verifyEquals(1, checkStoreCategoryCellsShowCorrectly.isEnabled());
+    }
+};

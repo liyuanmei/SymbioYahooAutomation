@@ -1,15 +1,32 @@
 Action.addToShoppingCart = function () {
     $.delay(sleep);
+    var collectionViews = app.mainWindow().collectionViews()[0];
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        var addToShoppingCart = app.mainWindow().collectionViews()[0].cells()[5].buttons()[1];
-        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[5].buttons()[1]);
-        addToShoppingCart.tap();
+        $.delay(sleep);
+        try{
+            var butButton = app.mainWindow().collectionViews()[0].cells()[4].buttons()[1].name();
+            if(butButton == varTestsBuyButtons){
+                var butButtonShoppingCart = app.mainWindow().collectionViews()[0].cells()[4].buttons()[1];
+                method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[4].buttons()[1]);
+                butButtonShoppingCart.tap();
+            }
+            else{
+                var butButtonShoppingCart = app.mainWindow().collectionViews()[0].cells()[5].buttons()[1];
+                method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[5].buttons()[1]);
+                butButtonShoppingCart.tap();
+            }
+        }
+        catch(err){
+            var butButtonShoppingCart = app.mainWindow().collectionViews()[0].cells()[3].buttons()[1];
+            method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[3].buttons()[1]);
+            butButtonShoppingCart.tap();
+        }
     }
     else{
         var collectionViews = app.mainWindow().collectionViews()[0];
-        var addToCartButton = collectionViews.cells()["立即購買"].buttons()[0];
+        var addToCartButton = collectionViews.cells()[varTestsBuyButtons].buttons()[0];
         method.checkInstanceExists(addToCartButton);
         addToCartButton.tap();
     }

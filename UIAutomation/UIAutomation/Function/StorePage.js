@@ -21,12 +21,12 @@ test("[1959901] Verify stores category show correctly.", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        //assert stores category show correctly
-        Assert.checkStoreCategoryCellsShowCorrectly();
+        //assert stores category show correctly eg:exist category options
+        Assert.checkStoreCategoryCellsShowCorrectlyWhenStorePage();
     }
     else{
-        //assert stores category show correctly
-        Assert.checkStoreCategoryCellsShowCorrectly();
+        //assert stores category show correctly eg:exist category options
+        Assert.checkStoreCategoryCellsShowCorrectlyWhenStorePage();
         Assert.checkStoreCategoryTabIsEnabled();
     }
     $.delay(sleep);
