@@ -4,12 +4,18 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
     Action.cleanSearches();
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
-    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName7);
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore3);
     Action.tapKeyboardSearch();
+    $.delay(10);
+
+    Action.tapStoreTab();
     $.delay(10);
 
     Action.tapSearchResultOfStore();
     $.delay(sleep);
+
+    Action.tapItemOnProductListScreen();
+    $.delay(10);
 
     obj.scrollDowns(1);
     $.delay(5);
@@ -26,84 +32,79 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
     Action.tapChoosePreductCategoryWhenOptions(0,0);
     $.delay(50);
 
-    try{
-        obj.scrollDownsWhenSettlement(13);
-        $.delay(5);
+    obj.scrollDownsWhenSettlement(13);
+    $.delay(5);
 
-        Action.clickTheBuyButtonsOnPromotionPage();
-        $.delay(5);
+    Action.clickTheBuyButtonsOnPromotionPage();
+    $.delay(5);
 
-        Action.tapButtonOnTabBar(3);
-        $.delay(5);
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
 
-        Assert.checkGoodsExist();
-        $.delay(5);
+    Assert.checkGoodsExist();
+    $.delay(5);
 
-        Action.tapDeleteOnShoppingCart();
-        $.delay(5);
+    Action.tapDeleteOnShoppingCart();
+    $.delay(5);
+
+    //go to favorite store
+    Action.tapButtonOnTabBar(1);
+    Action.tapButtonOnTabBar(1);
+    $.delay(5);
+
+    Action.tapSearchIconOnNavBar();
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataStore3);
+    Action.tapKeyboardSearch();
+    $.delay(10);
+
+    Action.tapStoreTab();
+    $.delay(10);
+
+    Action.tapSearchResultOfStore();
+    $.delay(sleep);
+
+    Action.tapItemOnProductListScreen();
+    $.delay(10);
+
+    obj.scrollDowns(1);
+    $.delay(5);
+
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapChooseOnItemPageWhenPromotion(4,0);
     }
-    //If the promotion page 50 seconds didn't break out
-    catch (err) {
-        var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
-            $.delay(15);
-           Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
-        }
-        else{
-            $.delay(5);
-            Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
-        }
-    }   
-    try{
-        //go to favorite store
-        Action.tapButtonOnTabBar(1);
-        Action.tapButtonOnTabBar(1);
-        $.delay(5);
-
-        Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese(varTestsSearchBoxInputDataStore3);
-        Action.tapKeyboardSearch();
-        Action.pageShow();
-
-        Action.tapStoreTab();
-        $.delay(10);
-
-        Action.tapSearchResultOfStore();
-        Action.tapStoreNameLinkOnFavoriteStores();
-        $.delay(15);
-
-        Action.tapChoosePreductCategoryWhenOptions(0,1);
-        $.delay(50);
-
-        obj.scrollDownsWhenSettlement(13);
-        $.delay(5);
-
-        Action.clickTheBuyButtonsOnPromotionPage();
-        $.delay(5);
-
-        Action.tapButtonOnTabBar(3);
-        $.delay(5);
-
-        Assert.checkGoodsExist();
-        $.delay(5);
-
-        Action.tapDeleteOnShoppingCart();
+    else{
+        Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
     }
 
-    //If the promotion page 50 seconds didn't break out
-    catch (err) {
-        var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
-            $.delay(15);
-            Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
-        }
-        else{
-            $.delay(5);
-            Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
-        }
-    }
+    Action.tapChoosePreductCategoryWhenOptions(0,0);
+    $.delay(50);
+
+    obj.scrollDownsWhenSettlement(13);
+    $.delay(5);
+
+    Action.clickTheBuyButtonsOnPromotionPage();
+    $.delay(5);
+
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
+    //go back favstore page
+    Action.tapButtonOnTabBar(1);
+    $.delay(5);
+
+    Assert.checkReturnPageDisplay(varTestsPageNameOnSalesPromotion);
+
+    Action.tapButtonOnTabBar(3);
+    $.delay(5);
+
+    Assert.checkGoodsExist();
+    $.delay(5);
+
+    Action.tapDeleteOnShoppingCart();
+    $.delay(5);
+    
     Action.tapButtonOnTabBar(1);
     Action.tapButtonOnTabBar(1);
     Action.tapButtonOnTabBar(2);

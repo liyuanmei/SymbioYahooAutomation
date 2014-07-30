@@ -174,7 +174,7 @@ Action.doUserLogin = function (sUserName, sPassword) {
         $.delay(sleep);
 
         //Verify login window show.
-        Assert.logInWindowShowCorrect("Sign In", "Forgot password or ID?", "Create Account");
+        Assert.logInWindowShowCorrect(varTestsSignButtonsOnlogInWindow, varTestsTextOnlogInWindow, varTestsCreateButtonsOnlogInWindow);
     }
     catch (err) {
         UIALogger.logError("Login window could not open due to: " + err);

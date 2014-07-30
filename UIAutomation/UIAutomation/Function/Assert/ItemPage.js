@@ -53,9 +53,9 @@ Assert.checkShareButtonShowOnItemPage = function () {
     $.delay(5);
     var mail = app.mainWindow().scrollViews()[0].buttons()[0];
     var fackBook = app.mainWindow().scrollViews()[0].buttons()[1];
-    method.verifyEquals(varTestsMail, mail.name());
+    method.verifyEquals(1, mail.isEnabled());
     $.delay(sleep);
-    method.verifyEquals(varTestsFacebook, fackBook.name()); 
+    method.verifyEquals(1, fackBook.isEnabled()); 
 };
 
 Assert.checkTheGrayOptionsIsNotTaped = function () {
