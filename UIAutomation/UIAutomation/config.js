@@ -172,10 +172,10 @@ const varTestCategoryMomName = "媽咪寶貝";
 const varTestCategoryComputerName = "電腦/週邊";
 const varTestCategoryHomeApplianceName = "家電/視聽";
 const varTestCategoryCameraName = "相機/手機/玩具";
-const varTestCategoryFoodName = "美食/保健/飲料";
+const varTestCategoryFoodName = "美食/纖體/保健";
 const varTestCategoryMedicalName = "醫療/日用品/寵物";
 const varTestCategoryHouseholdLifeName = "居家/寢具/傢俱";
-const varTestCategoryActionName = "運動/戶外/休閒";
+const varTestCategoryActionName = "運動/戶外/票券";
 const varTestCategoryBooksName = "圖書/文具/影音";
 
 //ClassificationTab and CommodityTab
