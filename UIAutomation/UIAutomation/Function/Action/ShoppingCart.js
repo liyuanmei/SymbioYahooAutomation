@@ -171,11 +171,12 @@ Action.clickTheBuyButtonsOnPromotionPage = function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        app.mainWindow().scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.94, y:0.99}});
+        $.delay(sleep);
+        app.mainWindow().scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.93, y:0.97}});
+
     }
     else{
         $.delay(sleep);
-
         //tap shopping cart icon
         app.mainWindow().scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.94, y:0.97}});
     }
@@ -187,7 +188,7 @@ Action.clickTheBuyButtonsOnPromotionPageWhenFavstore = function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        app.mainWindow().scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.94, y:0.99}});
+        app.windows()[0].scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.93, y:0.07}});
     }
     else{
         $.delay(sleep);
