@@ -3,6 +3,7 @@ package com.yahoo.mobile.client.android.ecstore.Assert;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.robotium.solo.Solo;
@@ -250,4 +251,24 @@ public final class Assert {
                     textFound);
         }
     }
+    
+    /**
+     * @param solo the Solo instance
+     * @throws Exception if has error
+     */
+    public static void hideSoftKeyboard(final Solo solo) throws Exception {
+    	
+	    if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+	    	Log.i("number", android.os.Build.VERSION.RELEASE)  ;
+	    	InputMethodManager imm = (InputMethodManager) solo.getCurrentActivity().getSystemService(solo.getCurrentActivity().INPUT_METHOD_SERVICE);
+	    	 if(imm.isActive()){
+	         	imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
+	         		     InputMethodManager.HIDE_NOT_ALWAYS);
+	         	solo.sleep(ValidationText.WAIT_TIME_SHORT); 
+	         }else {
+	        	 junit.framework.Assert.assertTrue("Please check the device version.",true);
+	         }
+	    }
+    }
+    
 }

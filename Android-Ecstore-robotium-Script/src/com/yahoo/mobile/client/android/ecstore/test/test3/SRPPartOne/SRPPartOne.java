@@ -350,7 +350,8 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
 
-        // Action.closeSoftKeyBoard(solo);
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
 
         // Click on confirm button
         solo.clickOnView(solo.getView("btn_ok"));
@@ -368,25 +369,15 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
      * 1937949:Unselected "Credit cards".
      * @throws Exception if has error
      */
-    public final void testUnselectedCanSwipeFunction() throws Exception {
+	public final void testUnselectedCanSwipeFunction() throws Exception {
 
         Action.enterToJacketAfterSearch(solo);
-
-        // navigate to Filter screen
-        Action.enterAdvancedSortPage(solo);
-        InputMethodManager imm = (InputMethodManager) solo.getCurrentActivity().getSystemService(solo.getCurrentActivity().INPUT_METHOD_SERVICE);
-        if(imm.isActive()){
-        	imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
-        		     InputMethodManager.HIDE_NOT_ALWAYS);
-        	solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        	imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
-       		     InputMethodManager.HIDE_NOT_ALWAYS);
-        }else {
-        	assertTrue("fad",true);
-        }
-        	
         
-      //  imm.hideSoftInputFromWindow(solo.getView(solo.getCurrentViews()).getWindowToken(), 0);
+       solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            
+        Action.enterAdvancedSortPage(solo);
+        Assert.hideSoftKeyboard(solo);
+     
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         
         String viewId = "tb_cc";
@@ -409,7 +400,10 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
 
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
-
+        
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
+        
         // Get "hasVideo" button.
         ToggleButton tb = (ToggleButton) solo.getView("tb_hasvideo");
         solo.clickOnView(tb);
@@ -431,7 +425,8 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
 
-        // Action.closeSoftKeyBoard(solo);
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
 
         String viewId = "tb_hasvideo";
         Action.clickView(solo, viewId);
@@ -455,6 +450,9 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
 
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
+        
         String viewId = "tb_cczeroint";
         Action.clickView(solo, viewId);
         assertTrue("CC zero button is not selected.",
@@ -477,6 +475,9 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
 
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
+        
         String viewId = "tb_ccinstall";
         Action.clickView(solo, viewId);
         assertTrue("CC install button is not selected.",
@@ -499,7 +500,8 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
 
-        // Action.closeSoftKeyBoard(solo);
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
 
         String viewId = "tb_cvs_pay";
         Action.clickView(solo, viewId);
@@ -523,7 +525,8 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
 
-        // Action.closeSoftKeyBoard(solo);
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
 
         String viewId = "tb_cvs_pick";
         Action.clickView(solo, viewId);
@@ -548,7 +551,8 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
 
-        // Action.closeSoftKeyBoard(solo);
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
 
         String viewId = "tb_hasstock";
         Action.clickView(solo, viewId);
@@ -572,7 +576,8 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
 
-        // Action.closeSoftKeyBoard(solo);
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
 
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
 
@@ -597,7 +602,10 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2 <Activity> {
 
         // navigate to Filter screen
         Action.enterAdvancedSortPage(solo);
-
+        
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
+        
         String viewId = "tb_issuperior";
         Action.clickView(solo, viewId);
 
@@ -928,7 +936,10 @@ ValidationText.PLEASE_LOGIN_ACCOUNT, 1, ValidationText.WAIT_TIME_LONGER)){
     public final void testNavigateToItemPageInLargeStyle() throws Exception {
 
         Action.enterToJacketAfterSearch(solo);
-
+        
+        //Check soft keyboard status.
+        Assert.hideSoftKeyboard(solo);
+        
         Action.setLargePhotoViewStyleAfterSearch(solo);
 
         Action.clickView(solo, "listitem_productlist_image", 0);
