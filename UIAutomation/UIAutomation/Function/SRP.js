@@ -2537,7 +2537,7 @@ test("[1937914] Check the 'return' icon" , function () {
     Action.goCategoryWhenSearchSettingOpen();
     Action.tapSearchIconOnNavBar();
 
-    Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataKeyword);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
