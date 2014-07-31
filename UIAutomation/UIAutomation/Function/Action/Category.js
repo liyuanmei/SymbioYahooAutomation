@@ -675,7 +675,7 @@ Action.tapFavoriteStoreIcon = function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        var storeIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[0];
+        var storeIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[varTestsHeartIconDisplay];
         if(storeIcon.isEnabled() == 1){
             var FavoriteStoreIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[0];
             method.checkInstanceExists(app.windows()[0].collectionViews()[0].cells()[1].buttons()[0]);

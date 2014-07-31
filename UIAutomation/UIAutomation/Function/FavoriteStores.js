@@ -104,7 +104,20 @@ test("[1959888] Verify Just added favorite store can be displayed on my favorite
     Action.tapFavoriteStoreIcon();
     $.delay(10);
     
-    var firstStoreName = app.windows()[0].collectionViews()[0].cells()[1].staticTexts()[0].name();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        var storeIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[varTestsHeartIconDisplay];
+        if(storeIcon.isEnabled() == 1){
+            var firstStoreName = app.windows()[0].collectionViews()[0].cells()[1].staticTexts()[0].name();
+        }
+        else{
+            var firstStoreName = app.windows()[0].collectionViews()[0].cells()[2].staticTexts()[0].name();
+        }
+    }
+    else{
+        var firstStoreName = app.windows()[0].collectionViews()[0].cells()[1].staticTexts()[0].name();
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(1);
