@@ -266,6 +266,12 @@ test("[1959875] Verify user logout,then login again,the display of the favorite 
     target.logDeviceInfo();
     //Log out and remove user login history
     Action.tapButtonOnTabBar(4);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        $.delay(10);
+    }
+
     Action.doUserLogout();
 
     Action.cleanSearches();
@@ -278,6 +284,11 @@ test("[1959875] Verify user logout,then login again,the display of the favorite 
     $.delay(sleep);
 
     Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio4 , varTestsSignInPasswordMobilestoresymbio4);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        $.delay(10);
+    }
 
     Action.tapButtonOnTabBar(1);
     $.delay(20);
