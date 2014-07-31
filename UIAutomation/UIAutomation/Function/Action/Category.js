@@ -556,9 +556,16 @@ Action.tapStoreNameOnCategory =  function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        var tapStoreNameOnCategory = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0];
-        method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0]);
-        tapStoreNameOnCategory.tap();
+        try{
+            var tapStoreNameOnCategory = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0];
+            method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0]);
+            tapStoreNameOnCategory.tap();
+        }
+        catch(err){
+            var tapStoreNameOnCategory = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+            method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0]);
+            tapStoreNameOnCategory.tap();
+        }
     }
     else{
         var tapStoreNameOnCategory = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];

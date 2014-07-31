@@ -34,7 +34,6 @@ test("[1954571] verify 18 ban show correct.", function () {
 
 test("[1959922] Verify user can access correct store page from recommendation.", function () {
     target.logDeviceInfo();
-    Action.determineTheLogin();
     Action.cleanSearches();
 
     Action.tapButtonOnTabBar(1);
