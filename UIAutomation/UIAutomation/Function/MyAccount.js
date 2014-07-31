@@ -152,17 +152,20 @@ test("[1977527] verify remove an item from recently browsed", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Action.goCategoryWhenSearchSettingOpen();
-        Action.tapSearchIconOnNavBar();
-        Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
-        Action.tapKeyboardSearch();
+        Action.tapButtonOnTabBar(2);
+        $.delay(sleep);
+
+        Action.tapItemOnCategoryScreenWhenItemPage(0);
+        $.delay(sleep);
+
+        Action.goCommodityTab();
+        Action.pageShow();
+        $.delay(3);
+
+        Action.tapItemOnProductListScreen();
         $.delay(10);
 
-        Action.tapCommodityPictureOnSearchResultsPage();
-        Action.goBack();
-        Action.goBackOnSearchPage();
-        Action.tapReturnOnSearchBar();
-        Action.goDiscoveryStream();
+        Action.tapButtonOnTabBar(2);
     }
     else{
         Action.addToRecentBrowseOnce();
