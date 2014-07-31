@@ -77,7 +77,7 @@ test("[1959929] verify user can add favorite item.", function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        var storeNameElement = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+        var storeNameElement = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0];
         $.delay(4);
 
         Action.tapElementsOnScreen(storeNameElement);
