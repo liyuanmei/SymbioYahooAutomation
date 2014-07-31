@@ -220,6 +220,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
     	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
     		 Account.judgementAccountLogin(solo);
     		 Action.enterToItemPage(solo);
+    		 solo.sleep(ValidationText.WAIT_TIME_ONESEC);
     		 TestHelper.swipeUp(solo, 1);
     		 Action.addToShoppingCart(solo);
     	  }else{
@@ -491,53 +492,101 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
      */
     public final void testPlusPurchaseProductDisplayedInTheShoppingcart()
             throws Exception {
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		 Account.judgementAccountLogin(solo);
+    	        Action.removeShoppingCart(solo);
+    	        solo.goBack();
+    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
+    	        Action.clickSearchButtonOnScreen(solo);
+    	        Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
+    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	        TextView storeName = (TextView) solo.getView(
+    	                "listitem_productlist_store_name", 0);
 
-      /*  Account.judgementAccountLogin(solo);
-        Action.removeShoppingCart(solo);
-        solo.goBack();*/
-        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
-        Action.clickSearchButtonOnScreen(solo);
-        Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        TextView storeName = (TextView) solo.getView(
-                "listitem_productlist_store_name", 0);
+    	        solo.clickOnView(storeName);
+    	        solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+    	        TestHelper.swipeUp(solo, 1);
+    	        try {
+    	        	//TestHelper.swipeUp2(solo, Action.VIEW_ID_TEN);
+    	            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	            solo.clickOnText(ValidationText.PLUS_PURCHASE);
+    	        } catch (AssertionError e) {
+    	            TestHelper.swipeUp2(solo, Action.VIEW_ID_FOUR);
+    	            solo.clickOnText(ValidationText.PLUS_PURCHASE);
+    	        }
 
-        solo.clickOnView(storeName);
-        solo.sleep(ValidationText.WAIT_TIME_ONESEC);
-        TestHelper.swipeUp(solo, 1);
-        try {
-        	//TestHelper.swipeUp2(solo, Action.VIEW_ID_TEN);
-            solo.sleep(ValidationText.WAIT_TIME_SHORT);
-            solo.clickOnText(ValidationText.PLUS_PURCHASE);
-        } catch (AssertionError e) {
-            TestHelper.swipeUp2(solo, Action.VIEW_ID_FOUR);
-            solo.clickOnText(ValidationText.PLUS_PURCHASE);
-        }
+    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	        TextView addon;
+    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	        try {
+    	             addon = (TextView) solo.getView("addon_title");
+    	        } catch (AssertionError e) {
+    	            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	            addon = (TextView) solo.getView("addon_title");
+    	        }
 
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        TextView addon;
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        try {
-             addon = (TextView) solo.getView("addon_title");
-        } catch (AssertionError e) {
-            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-             addon = (TextView) solo.getView("addon_title");
-        }
+    	        solo.clickOnView(addon);
+    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	        solo.goBack();
+    	      //  solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	       // TestHelper.swipeUp(solo, 1);
+    	       
+    	      
+    	        Action.addToShoppingCartForSmallScreen(solo);
+    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+    	        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+    	        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+    	        Action.searchTextOnWebview(solo, ValidationText.PLUS_PURCHASE);
 
-        solo.clickOnView(addon);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.goBack();
-      //  solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 1);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-       TestHelper.swipeDown(solo, 40);
-      
-        Action.addToShoppingCartForSmallScreen(solo);
-        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-        Action.searchTextOnWebview(solo, ValidationText.PLUS_PURCHASE);
+    	} else {
+    		 Account.judgementAccountLogin(solo);
+    	        Action.removeShoppingCart(solo);
+    	        solo.goBack();
+    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
+    	        Action.clickSearchButtonOnScreen(solo);
+    	        Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
+    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	        TextView storeName = (TextView) solo.getView(
+    	                "listitem_productlist_store_name", 0);
 
+    	        solo.clickOnView(storeName);
+    	        solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+    	        TestHelper.swipeUp(solo, 1);
+    	        try {
+    	        	//TestHelper.swipeUp2(solo, Action.VIEW_ID_TEN);
+    	            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	            solo.clickOnText(ValidationText.PLUS_PURCHASE);
+    	        } catch (AssertionError e) {
+    	            TestHelper.swipeUp2(solo, Action.VIEW_ID_FOUR);
+    	            solo.clickOnText(ValidationText.PLUS_PURCHASE);
+    	        }
+
+    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	        TextView addon;
+    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	        try {
+    	             addon = (TextView) solo.getView("addon_title");
+    	        } catch (AssertionError e) {
+    	            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	             addon = (TextView) solo.getView("addon_title");
+    	        }
+
+    	        solo.clickOnView(addon);
+    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	        solo.goBack();
+    	      //  solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	        TestHelper.swipeUp(solo, 1);
+    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	       TestHelper.swipeDown(solo, 50);
+    	      
+    	        Action.addToShoppingCartForSmallScreen(solo);
+    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+    	        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+    	        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+    	        Action.searchTextOnWebview(solo, ValidationText.PLUS_PURCHASE);
+
+    	}
+       
     }
 
     /**
@@ -580,50 +629,98 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
      */
     public final void testUserCanSelectingItemSizeAndColor() throws Exception {
 
-        Account.judgementAccountLogin(solo);
-        Action.clickSearchButtonOnScreen(solo);
-        Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
-        Assert.hideSoftKeyboard(solo);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		
+    		Account.judgementAccountLogin(solo);
+            Action.clickSearchButtonOnScreen(solo);
+            Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
+            Assert.hideSoftKeyboard(solo);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-        TextView storeName = (TextView)
-                solo.getView("listitem_productlist_store_name");
-        solo.clickOnView(storeName);
+            TextView storeName = (TextView)
+                    solo.getView("listitem_productlist_store_name");
+            solo.clickOnView(storeName);
+            solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+            TestHelper.swipeUp(solo, 1);
+            View shopCart;
+            try {
+                shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+                solo.clickOnView(shopCart);
 
-        TestHelper.swipeUp(solo, 1);
+            } catch (AssertionError e) {
 
-        View shopCart;
-        try {
-            shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
-            solo.clickOnView(shopCart);
+                TestHelper.swipeUp2(solo, 2);
 
-        } catch (AssertionError e) {
+                shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+                solo.clickOnView(shopCart);
 
-            TestHelper.swipeUp2(solo, 2);
+            }
 
-            shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
-            solo.clickOnView(shopCart);
+            View radioButton = (View) solo.getView(
+                    "product_item_spec_item_selections", Action.VIEW_ID_FOUR);
 
-        }
+            RadioButton sizeButton = (RadioButton) solo.getView(
+                    "product_item_spec_item_selections", Action.VIEW_ID_EIGHT);
+            if (radioButton.isShown()) {
+
+                solo.clickOnView(radioButton);
+                assertFalse("Item is not dimmed.", sizeButton.isActivated());
+                solo.searchText(ValidationText.CANCEL);
+                solo.clickOnButton(ValidationText.CANCEL);
+
+            } else {
+                junit.framework.Assert.assertTrue("Add failed.", true);
+            }
+
+            solo.goBack();
+    		
+    	}else {
+    		Account.judgementAccountLogin(solo);
+            Action.clickSearchButtonOnScreen(solo);
+            Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
+            Assert.hideSoftKeyboard(solo);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+            TextView storeName = (TextView)
+                    solo.getView("listitem_productlist_store_name");
+            solo.clickOnView(storeName);
+
+            TestHelper.swipeUp(solo, 1);
+
+            View shopCart;
+            try {
+                shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+                solo.clickOnView(shopCart);
+
+            } catch (AssertionError e) {
+
+                TestHelper.swipeUp2(solo, 2);
+
+                shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+                solo.clickOnView(shopCart);
+
+            }
 
 
-        View radioButton = (View) solo.getView(
-                "product_item_spec_item_selections", Action.VIEW_ID_FOUR);
+            View radioButton = (View) solo.getView(
+                    "product_item_spec_item_selections", Action.VIEW_ID_FOUR);
 
-        RadioButton sizeButton = (RadioButton) solo.getView(
-                "product_item_spec_item_selections", Action.VIEW_ID_EIGHT);
-        if (radioButton.isShown()) {
+            RadioButton sizeButton = (RadioButton) solo.getView(
+                    "product_item_spec_item_selections", Action.VIEW_ID_EIGHT);
+            if (radioButton.isShown()) {
 
-            solo.clickOnView(radioButton);
-            assertFalse("Item is not dimmed.", sizeButton.isActivated());
-            solo.searchText(ValidationText.CANCEL);
-            solo.clickOnButton(ValidationText.CANCEL);
+                solo.clickOnView(radioButton);
+                assertFalse("Item is not dimmed.", sizeButton.isActivated());
+                solo.searchText(ValidationText.CANCEL);
+                solo.clickOnButton(ValidationText.CANCEL);
 
-        } else {
-            junit.framework.Assert.assertTrue("Add failed.", true);
-        }
+            } else {
+                junit.framework.Assert.assertTrue("Add failed.", true);
+            }
 
-        solo.goBack();
+            solo.goBack();
+    	}
+        
     }
 
     /**
@@ -632,49 +729,96 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
      */
     public final void testUserCanNOTSelectDimmedItem() throws Exception {
 
-        Account.judgementAccountLogin(solo);
-        Action.clickSearchButtonOnScreen(solo);
-        Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
-        Assert.hideSoftKeyboard(solo);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		Account.judgementAccountLogin(solo);
+            Action.clickSearchButtonOnScreen(solo);
+            Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
+            Assert.hideSoftKeyboard(solo);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+           
+            TextView storeName = (TextView)
+                    solo.getView("listitem_productlist_store_name");
+            solo.clickOnView(storeName);
+            solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+            TestHelper.swipeUp(solo, 1);
 
-        TextView storeName = (TextView)
-                solo.getView("listitem_productlist_store_name");
-        solo.clickOnView(storeName);
+            View shopCart;
+            try {
+                shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+                solo.clickOnView(shopCart);
 
-        TestHelper.swipeUp(solo, 1);
+            } catch (AssertionError e) {
 
-        View shopCart;
-        try {
-            shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
-            solo.clickOnView(shopCart);
+                TestHelper.swipeUp2(solo, 2);
 
-        } catch (AssertionError e) {
+                shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+                solo.clickOnView(shopCart);
 
-            TestHelper.swipeUp2(solo, 2);
+            }
 
-            shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
-            solo.clickOnView(shopCart);
+            View radioButton = (View) solo.getView(
+                    "product_item_spec_item_selections", Action.VIEW_ID_FOUR);
 
-        }
+            RadioButton sizeButton = (RadioButton) solo.getView(
+                    "product_item_spec_item_selections", Action.VIEW_ID_EIGHT);
+            if (radioButton.isShown()) {
 
-        View radioButton = (View) solo.getView(
-                "product_item_spec_item_selections", Action.VIEW_ID_FOUR);
+                solo.clickOnView(radioButton);
+                assertFalse("Item is not dimmed.", sizeButton.isActivated());
+                solo.clickOnView(sizeButton);
+                assertFalse("Add failed.", sizeButton.isActivated());
 
-        RadioButton sizeButton = (RadioButton) solo.getView(
-                "product_item_spec_item_selections", Action.VIEW_ID_EIGHT);
-        if (radioButton.isShown()) {
+            } else {
+                assertTrue("Add failed.", false);
+            }
 
-            solo.clickOnView(radioButton);
-            assertFalse("Item is not dimmed.", sizeButton.isActivated());
-            solo.clickOnView(sizeButton);
-            assertFalse("Add failed.", sizeButton.isActivated());
+            solo.goBack();
+    	} else {
+    		Account.judgementAccountLogin(solo);
+            Action.clickSearchButtonOnScreen(solo);
+            Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
+            Assert.hideSoftKeyboard(solo);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-        } else {
-            assertTrue("Add failed.", false);
-        }
+            TextView storeName = (TextView)
+                    solo.getView("listitem_productlist_store_name");
+            solo.clickOnView(storeName);
 
-        solo.goBack();
+            TestHelper.swipeUp(solo, 1);
+
+            View shopCart;
+            try {
+                shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+                solo.clickOnView(shopCart);
+
+            } catch (AssertionError e) {
+
+                TestHelper.swipeUp2(solo, 2);
+
+                shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
+                solo.clickOnView(shopCart);
+
+            }
+
+            View radioButton = (View) solo.getView(
+                    "product_item_spec_item_selections", Action.VIEW_ID_FOUR);
+
+            RadioButton sizeButton = (RadioButton) solo.getView(
+                    "product_item_spec_item_selections", Action.VIEW_ID_EIGHT);
+            if (radioButton.isShown()) {
+
+                solo.clickOnView(radioButton);
+                assertFalse("Item is not dimmed.", sizeButton.isActivated());
+                solo.clickOnView(sizeButton);
+                assertFalse("Add failed.", sizeButton.isActivated());
+
+            } else {
+                assertTrue("Add failed.", false);
+            }
+
+            solo.goBack();
+    	}
+        
     }
 
     /**

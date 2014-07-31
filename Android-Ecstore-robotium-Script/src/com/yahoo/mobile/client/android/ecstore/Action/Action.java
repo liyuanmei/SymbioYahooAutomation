@@ -763,7 +763,7 @@ public final class Action {
     	
         // Swipe the screen until the buy button display.
         solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
-        TestHelper.swipeUp(solo, 1);
+        //TestHelper.swipeUp(solo, 20);
         View shopCart;
         try {
             shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
