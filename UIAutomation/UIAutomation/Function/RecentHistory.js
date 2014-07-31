@@ -23,7 +23,13 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     //item name text
     Assert.checkGoodsTextExistOnRecentBrowse(1,2);
 
-    Assert.commodityItemsShowCount(21);
+    var commodityItemListCount = app.mainWindow().collectionViews()[0].cells().length;
+    if(commodityItemListCount == "21"){
+        Assert.commodityItemsShowCount(21);
+    }
+    else{
+        Assert.commodityItemsShowCount(20);
+    }
 
     //Verify the value of rating is less than 10, if not fail.
     Assert.storeRatingShowCorrect(1, 1);

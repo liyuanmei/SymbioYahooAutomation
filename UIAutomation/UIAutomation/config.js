@@ -85,7 +85,7 @@ method.checkInstanceExists = function (instance) {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        $.delay(1);
+        $.delay(3);
     }
 
     var errorTimes = 0;
@@ -106,7 +106,7 @@ method.verifyTrue = function (expression, message, endCase) {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        $.delay(sleep);
+        $.delay(5);
     }
 
     if (!expression) {
@@ -133,7 +133,7 @@ method.verifyEquals = function (expected, received, message) {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        $.delay(sleep);
+        $.delay(5);
     }
 
     var defMessage = "Expected <" + expected + "> but received <" + received + ">";
