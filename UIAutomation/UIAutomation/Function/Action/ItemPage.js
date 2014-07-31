@@ -37,7 +37,7 @@ Action.addToShoppingCartWhenItemPage = function () {
         $.delay(sleep);
         try{
             var butButton = app.mainWindow().collectionViews()[0].cells()[4].buttons()[1].name();
-            if(butButton == varTestsBuyButtons){
+            if(butButton == varTestsAddButtons){
                 var butButtonShoppingCart = app.mainWindow().collectionViews()[0].cells()[4].buttons()[1];
                 method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[4].buttons()[1]);
                 butButtonShoppingCart.tap();

@@ -104,7 +104,7 @@ Assert.itemPageShowCorrectOnCoatSearchPage = function (sTitle) {
     if(version == "6.1") {
         $.delay(sleep);
         var butButton = app.mainWindow().collectionViews()[0].cells()[4].buttons()[1].name();
-        if(butButton == varTestsBuyButtons){
+        if(butButton == varTestsAddButtons){
             //Assert buy and add to cart button show correct.
             var addToCartButton = collectionViews.cells()[4].buttons()[0];
             var butButton = collectionViews.cells()[4].buttons()[1];
