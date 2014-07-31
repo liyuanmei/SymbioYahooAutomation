@@ -718,7 +718,12 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Action.tapChooseOnItemPageWhenBuy(4,0);
+        try{
+            Action.tapChooseOnItemPageWhenBuy(5,0);
+        }
+        catch(err){
+            Action.tapChooseOnItemPageWhenBuy(4,0);
+        }
     }
     else{ 
         Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
@@ -729,7 +734,12 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Action.tapChooseOnItemPageWhenBuy(4,0);
+        try{
+            Action.tapChooseOnItemPageWhenBuy(5,0);
+        }
+        catch(err){
+            Action.tapChooseOnItemPageWhenBuy(4,0);
+        }
     }
     else{ 
         Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
@@ -739,7 +749,12 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Action.tapChooseOnItemPageWhenBuy(4,0);
+        try{
+            Action.tapChooseOnItemPageWhenBuy(5,0);
+        }
+        catch(err){
+            Action.tapChooseOnItemPageWhenBuy(4,0);
+        }
     }
     else{ 
         Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
@@ -765,7 +780,12 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Action.tapChooseOnItemPageWhenBuy(5,0);
+        try{
+            Action.tapChooseOnItemPageWhenBuy(5,0);
+        }
+        catch(err){
+            Action.tapChooseOnItemPageWhenBuy(4,0);
+        }
     }
     else{
         Action.tapChooseOnItemPage(varTestsItemPageLinksPurchaseOfGoods);
@@ -777,7 +797,12 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        Action.tapChooseOnItemPageWhenBuy(5,0);
+        try{
+            Action.tapChooseOnItemPageWhenBuy(5,0);
+        }
+        catch(err){
+            Action.tapChooseOnItemPageWhenBuy(4,0);
+        }
     }
     else{
         Action.tapChooseOnItemPage(varTestsItemPageLinksPurchaseOfGoods);
