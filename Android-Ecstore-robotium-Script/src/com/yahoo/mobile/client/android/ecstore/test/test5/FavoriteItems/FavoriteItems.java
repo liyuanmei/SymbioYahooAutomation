@@ -1,5 +1,5 @@
 /*
- * This is automated script about "FavoriteItems".
+s * This is automated script about "FavoriteItems".
  *
  * You can run these test cases either on the emulator or on device.
  * By Eclipse:

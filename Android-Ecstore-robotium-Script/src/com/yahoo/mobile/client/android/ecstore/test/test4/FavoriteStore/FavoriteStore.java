@@ -25,9 +25,12 @@
 
 package com.yahoo.mobile.client.android.ecstore.test.test4.FavoriteStore;
 
+import junit.framework.AssertionFailedError;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -148,7 +151,40 @@ public class FavoriteStore extends ActivityInstrumentationTestCase2<Activity> {
     public final void testNoFavoriteStoreWhenLogin() throws Exception {
 
         Account.judgementAccountLogin(solo);
-        Action.removeFavoriteStore(solo);
+        solo.clickOnView(solo.getView("tab_text", 1));
+        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+        if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+        View storeName = null;
+        Button ok ;
+             try {
+                  storeName = (View) solo
+                         .getView("listitem_favoritestore_storename");
+                  if(storeName.isShown()){
+                       for (int i = 0; i <= 10; i++){
+                          solo.clickLongOnView(storeName);
+                          solo.sleep(ValidationText.WAIT_TIME_SHORT);
+                          try {
+                        	  ok = (Button) solo.getView("button1");
+                              solo.clickOnView(ok);
+                              solo.sleep(ValidationText.WAIT_TIME_LONG);
+                          } catch (ClassCastException e) {
+                              assertTrue("Not fully deleted.", solo.searchText(ValidationText.EMPTY));
+                         
+                          }
+
+                      }
+                  } else {
+                	  junit.framework.Assert.assertTrue("Not fully deleted.", solo.searchText(ValidationText.EMPTY));
+                  }
+                
+             } catch (AssertionFailedError e) {
+                 assertTrue("Not fully deleted.", solo.searchText(ValidationText.EMPTY));
+             }
+	    	 assertTrue("Favorite store list not empty.",solo.searchText(ValidationText.EMPTY));
+	    }else{
+	    	 Action.removeFavoriteStore(solo);
+	    }
+       
     }
 
     /**

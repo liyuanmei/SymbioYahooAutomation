@@ -349,9 +349,9 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
         // Confirm remove it.
         solo.clickOnView(solo.getView("button1"));
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
-
+        TextView results;
         try {
-            TextView results = (TextView) solo.getView("tx_header", 1);
+             results = (TextView) solo.getView("tx_header", 1);
             String counts = results.getText().toString().trim().substring(6,7);
             Log.i("number", "counts:" + counts);
 

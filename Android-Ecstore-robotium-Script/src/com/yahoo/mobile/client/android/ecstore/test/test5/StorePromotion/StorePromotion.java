@@ -108,10 +108,12 @@ public class StorePromotion extends ActivityInstrumentationTestCase2<Activity> {
 
         Action.clickSearchButtonOnScreen(solo);
         Action.searchAfterPutData(solo, 0, ValidationText.PLAY);
+        Assert.hideSoftKeyboard(solo);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         solo.clickInList(Action.VIEW_ID_ZERO);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 1);   
+        solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+        TestHelper.swipeUp(solo, 1);  
+        solo.searchText(ValidationText.SALES_PROMOTION);
         solo.clickOnText(ValidationText.SALES_PROMOTION);
        
         //Get the promotion header view.

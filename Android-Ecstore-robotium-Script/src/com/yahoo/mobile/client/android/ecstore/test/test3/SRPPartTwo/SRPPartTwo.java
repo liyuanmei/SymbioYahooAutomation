@@ -402,6 +402,7 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
         TextView introduct = (TextView) solo
                 .getView("productitem_product_name");
         assertTrue("Not enter to product page.", introduct.isShown());
+        solo.goBack();
         Action.setListViewStyleAfterSearch(solo);
     }
 
@@ -418,13 +419,14 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
         Action.clickSearchButtonOnScreen(solo);
         // input keyword and search
         Action.searchAfterPutData(solo, 0, ValidationText.JACKET);
-
+        
+        Assert.hideSoftKeyboard(solo);
         TextView productName = (TextView) solo
                 .getView("listitem_productlist_title");
         Log.i("number", productName.getText().toString());
         solo.clickOnView(productName);
         assertTrue("Not enter to product page.", productName.isShown());
-
+        solo.goBack();
         Action.setListViewStyleAfterSearch(solo);
     }
 
@@ -439,8 +441,8 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
         Account.judgementAccountLogin(solo);
         solo.clickOnView(solo.getView("tab_image", 2));
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        View star = (View) solo.getView("star_button", 0);
+ 
+        View star = (View) solo.getView("star_button", 1);
         solo.clickOnView(star);
         boolean alreadyAdd;
 
@@ -767,9 +769,10 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
        solo.sleep(ValidationText.WAIT_TIME_SHORT);
        solo.clickOnText(ValidationText.HANSHEN_BRAND);
        Action.clickSearchButtonOnScreen(solo);
-       Action.searchAfterPutData(solo, 0, ValidationText.JACKET);
+       Action.searchAfterPutData(solo, 0, ValidationText.DONG_JING);
        solo.sleep(ValidationText.WAIT_TIME_LONG);
        
+       Assert.hideSoftKeyboard(solo);
        //Get search all classification button.
        View searchAll = (View) solo.getView("option_button",2);
    
@@ -786,6 +789,7 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
     public final void testPriceOrderByIncrease() throws Exception {
 
         Action.enterToJacketAfterSearch(solo);
+        Assert.hideSoftKeyboard(solo);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(solo.getView("menu_filter"));
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
@@ -813,6 +817,7 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
     public final void testPriceOrderByDecrease() throws Exception {
 
         Action.enterToJacketAfterSearch(solo);
+        Assert.hideSoftKeyboard(solo);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(solo.getView("menu_filter"));
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
@@ -916,6 +921,7 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2 <Activity> {
         Action.clickSearchButtonOnScreen(solo);
         Action.searchAfterPutData(solo, 0, ValidationText.JACKET);
         solo.sleep(ValidationText.WAIT_TIME_LONG);
+        Assert.hideSoftKeyboard(solo);
         solo.clickOnText(ValidationText.COMMODITY);
         View ivs = solo.getView("menu_filter");
         solo.clickOnView(ivs);

@@ -7,6 +7,8 @@ package com.yahoo.mobile.client.android.ecstore.test;
 public class ValidationText {
 	
 	public static final int WAIT_TIME_MIN_SHORT = 400;
+	
+	public static final int WAIT_TIME_ONESEC = 1000;
 
     public static final int WAIT_TIME_SHORT = 2000;
     
@@ -37,6 +39,8 @@ public class ValidationText {
     public static final String SEARCH_ALL_CATEGORIES = "搜尋全部分類";
 
     public static final String NEWS = "最新動態";
+    
+    public static final String PRODUCT_DETAIL = "商品詳細說明";
     
     public static final String PRE_ORDER = "預購";
 
@@ -69,6 +73,8 @@ public class ValidationText {
     public static final String POPULAR_WOMEN = "流行女裝";
 
     public static final String JACKET = "上衣";
+    
+    public static final String CAR = "汽車";
 
     public static final String T_SHIRT = "T恤";
 

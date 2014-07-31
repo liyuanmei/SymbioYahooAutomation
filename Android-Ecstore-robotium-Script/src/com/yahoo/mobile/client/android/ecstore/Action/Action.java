@@ -2,6 +2,8 @@ package com.yahoo.mobile.client.android.ecstore.Action;
 
 import java.util.ArrayList;
 
+import junit.framework.AssertionFailedError;
+
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
@@ -758,9 +760,10 @@ public final class Action {
     public static void addToShoppingCartForSmallScreen(final Solo solo)
             throws Exception {
 
-
+    	
         // Swipe the screen until the buy button display.
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+        TestHelper.swipeUp(solo, 1);
         View shopCart;
         try {
             shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
@@ -853,7 +856,7 @@ public final class Action {
             solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
             junit.framework.Assert.assertFalse("Buddle is displayed on tab.",
                     buddle.isShown());
-        } catch (AssertionError e) {
+        }  catch (AssertionFailedError se) {
             junit.framework.Assert.assertTrue("Buddle is displayed on tab.",
                     true);
         }
@@ -930,6 +933,8 @@ public final class Action {
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(solo.getView("tab_image", 2));
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.scrollToTop();
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.clickText(solo, ValidationText.APPAREL);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.clickText(solo, ValidationText.COMMODITY);
@@ -955,6 +960,8 @@ public final class Action {
 
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         solo.clickOnView(solo.getView("tab_image", 2));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.scrollToTop();
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         Action.clickText(solo, ValidationText.APPAREL);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);

@@ -112,11 +112,12 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         Action.clickText(solo, ValidationText.COMMODITY);
         solo.sleep(ValidationText.WAIT_TIME_LONG);
         solo.clickInList(1);
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+      //  solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
         try {
+        	solo.sleep(ValidationText.WAIT_TIME_ONESEC);
             TestHelper.swipeUp(solo, 1);
-            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+            
             solo.clickOnText(ValidationText.SALES_PROMOTION);
 
         } catch (AssertionError e) {
@@ -150,7 +151,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
         Account.judgementAccountLogin(solo);
         Action.enterToItemPage(solo);
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+        solo.sleep(ValidationText.WAIT_TIME_ONESEC);
         TestHelper.swipeUp(solo, 1);
         try {
 
@@ -190,16 +191,21 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
         Account.judgementAccountLogin(solo);
         Action.enterToItemPage(solo);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        
         TestHelper.swipeUp(solo, 1);
+    
         try {
+        	solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+        	TestHelper.swipeUp(solo, 5);
+        	solo.searchText(ValidationText.PRODUCT_DETAIL);
             solo.clickOnText(ValidationText.SALES_PROMOTION);
         } catch (AssertionError e) {
-            TestHelper.swipeUp(solo, 1);
+            TestHelper.swipeUp2(solo, 5);
+            solo.searchText(ValidationText.PRODUCT_DETAIL);
             solo.clickOnText(ValidationText.SALES_PROMOTION);
         }
 
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
        // solo.clickOnText(ValidationText.FULL);
         assertTrue("No promotion link displayed. ",
                 solo.searchText(ValidationText.FULL));
@@ -211,10 +217,17 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
      * @throws Exception if has error
      */
     public final void testAddItemToShoppingCart() throws Exception {
-
-        Account.judgementAccountLogin(solo);
-        Action.enterToItemPage(solo);
-        Action.addToShoppingCart(solo);
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		 Account.judgementAccountLogin(solo);
+    		 Action.enterToItemPage(solo);
+    		 TestHelper.swipeUp(solo, 1);
+    		 Action.addToShoppingCart(solo);
+    	  }else{
+    		  Account.judgementAccountLogin(solo);
+    	      Action.enterToItemPage(solo);
+    	      Action.addToShoppingCart(solo);
+    	  }
+       
     }
 
 
@@ -413,7 +426,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
                 "listitem_productlist_store_name", 0);
 
         solo.clickOnView(storeName);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
         TestHelper.swipeUp(solo, 1);
 
         //Additional gift
@@ -490,7 +503,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
                 "listitem_productlist_store_name", 0);
 
         solo.clickOnView(storeName);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_ONESEC);
         TestHelper.swipeUp(solo, 1);
         try {
         	//TestHelper.swipeUp2(solo, Action.VIEW_ID_TEN);
@@ -539,22 +552,23 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
         Action.clickSearchButtonOnScreen(solo);
         Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_ONESEC);
         TextView storeName = (TextView) solo.getView(
                 "listitem_productlist_store_name", 0);
-
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(storeName);
-       // solo.sleep(ValidationText.WAIT_TIME_SHORT);
-       // TestHelper.swipeUp(solo, 1);
-       // solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+       	TestHelper.swipeUp(solo, 1);
         Action.addToShoppingCart(solo);
         TextView storeNamee = (TextView) solo.getView(
                 "listitem_productlist_store_name", 0);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(storeNamee);
+      	solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
        // solo.sleep(ValidationText.WAIT_TIME_SHORT);
         TestHelper.swipeUp(solo, 1);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp2(solo, 3);
+       // TestHelper.swipeUp2(solo, 3);
         solo.clickOnText(ValidationText.ADDITIONAL_GIFT);
         assertTrue("Not enter gift page !",
                 solo.searchText(ValidationText.GIFT));
@@ -569,6 +583,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         Account.judgementAccountLogin(solo);
         Action.clickSearchButtonOnScreen(solo);
         Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
+        Assert.hideSoftKeyboard(solo);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
         TextView storeName = (TextView)
@@ -620,6 +635,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         Account.judgementAccountLogin(solo);
         Action.clickSearchButtonOnScreen(solo);
         Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
+        Assert.hideSoftKeyboard(solo);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
         TextView storeName = (TextView)

@@ -42,7 +42,18 @@ public class TestHelper {
 		float yEnd = (height / 2) + (height / 3);
 		solo.drag(width / 2, width / 2, yStart, yEnd, stepCount);
 	}
-
+	@SuppressWarnings("deprecation")
+	public static void swipeDownLowPixle(Solo solo, int stepCount) {
+		Display display = solo.getCurrentActivity().getWindowManager()
+				.getDefaultDisplay();
+		int width = display.getWidth();
+		int height = display.getHeight();
+		float yStart = (height / 2)  ;
+		Log.i("number", String.valueOf(yStart));
+		float yEnd = (height )  ;
+		Log.i("number", String.valueOf(yEnd));
+		solo.drag(width / 2, width / 2, 470, 701, stepCount);
+	}
 	@SuppressWarnings("deprecation")
 	public static void swipeUp(Solo solo, int stepCount) {
 		Display display = solo.getCurrentActivity().getWindowManager()

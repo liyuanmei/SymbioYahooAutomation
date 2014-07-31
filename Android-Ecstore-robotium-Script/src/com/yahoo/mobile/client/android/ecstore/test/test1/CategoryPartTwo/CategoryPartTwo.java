@@ -781,7 +781,7 @@ public class CategoryPartTwo extends ActivityInstrumentationTestCase2<Activity> 
         View imageView = (View) solo.getView("productitem_images");
         assertTrue("Not enter the item page in large view.",
                 imageView.isShown());
-
+        solo.goBack();
         // Restore to list view.
         Action.setListViewStyleAfterSearch(solo);
 
@@ -823,7 +823,10 @@ public class CategoryPartTwo extends ActivityInstrumentationTestCase2<Activity> 
 
         Account.judgementAccountLogin(solo);
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
-        TestHelper.swipeUp(solo, 1);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        TestHelper.swipeDownLowPixle(solo, 1);
+      
+        TestHelper.swipeUp(solo, 5);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnView(solo.getView("profile_bt_edit_favorite_categories"));
 
@@ -876,7 +879,9 @@ public class CategoryPartTwo extends ActivityInstrumentationTestCase2<Activity> 
         Account.judgementAccountLogin(solo);
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 1);
+        TestHelper.swipeDownLowPixle(solo, 1);
+        
+        TestHelper.swipeUp(solo, 5);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         solo.clickOnText(ValidationText.EDIT_FAVORITE_CATEGORY);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);

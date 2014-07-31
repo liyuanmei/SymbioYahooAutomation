@@ -946,6 +946,7 @@ ValidationText.PLEASE_LOGIN_ACCOUNT, 1, ValidationText.WAIT_TIME_LONGER)){
 
         assertTrue("Navigate to item page failed.",
                 solo.getView("productitem_btn_purchase_now", 0).isShown());
+        solo.goBack();
         Action.setListViewStyleAfterSearch(solo);
     }
 
