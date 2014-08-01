@@ -112,8 +112,8 @@ public class Promotion extends ActivityInstrumentationTestCase2<Activity> {
             throws Exception {
     	
     	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
-    		   /* Account.judgementAccountLogin(solo);
-    	        Action.removeShoppingCart(solo);*/
+    		    Account.judgementAccountLogin(solo);
+    	        Action.removeShoppingCart(solo);
     	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
     	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
     	        solo.clickOnText(ValidationText.MAYBE_LIKE);

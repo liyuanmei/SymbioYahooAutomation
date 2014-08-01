@@ -25,6 +25,7 @@
 
 package com.yahoo.mobile.client.android.ecstore.test.test5.Smoke;
 
+import junit.framework.AssertionFailedError;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
@@ -99,57 +100,111 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
      *             if has error
      */
     public final void testUsePersonalization() throws Exception {
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		 Account.judgementAccountLogin(solo);
+    		 	// click on up icon
+    	        Action.clickHomeButtonOnScreen(solo);
+    	        solo.clickOnText(ValidationText.EDIT_FAVORITE_CATEGORY);
+    	        // Get the grid view count.
+    	        GridView lv = (GridView) solo.getView("category_editor_grid");
+    	        Log.i("number", String.valueOf(lv.getCount()));
 
-        Account.judgementAccountLogin(solo);
+    	        for (int i = 0; i < lv.getCount(); i++) {
+    	            View category = (View) solo.getView("category_editor_grid_button",
+    	                    i);
+    	            solo.clickOnView(category);
+    	            assertTrue("Category item is not selected.", category.isPressed());
+    	        }
 
-        /* Check from side bar to edit */
+    	        solo.clickOnText(ValidationText.TO_LATEST_STATUS);
+    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	        TextView titleBar = (TextView) solo.getView("action_bar_title", 0);
+    	        Log.i("number", titleBar.getText().toString().trim());
+    	        assertTrue("Action bar title is wrong.", titleBar.getText().toString()
+    	                .trim().equals(ValidationText.NEWS));
 
-        // click on up icon
-        Action.clickHomeButtonOnScreen(solo);
-        solo.clickOnText(ValidationText.EDIT_FAVORITE_CATEGORY);
-        // Get the grid view count.
-        GridView lv = (GridView) solo.getView("category_editor_grid");
-        Log.i("number", String.valueOf(lv.getCount()));
+    	        /* Check from my account to edit */
+    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	  
+    	        TestHelper.swipeDownLowPixle(solo, 1);
+    	      
+    	        TestHelper.swipeUp(solo, 5);
+    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	        solo.clickOnView(solo.getView("profile_bt_edit_favorite_categories"));
 
-        for (int i = 0; i < lv.getCount(); i++) {
-            View category = (View) solo.getView("category_editor_grid_button",
-                    i);
-            solo.clickOnView(category);
-            assertTrue("Category item is not selected.", category.isPressed());
-        }
+    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-        solo.clickOnText(ValidationText.TO_LATEST_STATUS);
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        TextView titleBar = (TextView) solo.getView("action_bar_title", 0);
-        Log.i("number", titleBar.getText().toString().trim());
-        assertTrue("Action bar title is wrong.", titleBar.getText().toString()
-                .trim().equals(ValidationText.NEWS));
+    	        // Get the grid view count.
+    	        GridView lvs = (GridView) solo.getView("category_editor_grid");
+    	        Log.i("number", String.valueOf(lvs.getCount()));
 
-        /* Check from my account to edit */
-        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 1);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.clickOnView(solo.getView("profile_bt_edit_favorite_categories"));
+    	        for (int i = 0; i < lvs.getCount(); i++) {
+    	            View category = (View) solo.getView("category_editor_grid_button",
+    	                    i);
+    	            solo.clickOnView(category);
+    	            assertTrue("Category item is not selected.", category.isPressed());
+    	        }
 
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	        solo.clickOnText(ValidationText.TO_LATEST_STATUS);
+    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	        TextView titleBars = (TextView) solo.getView("action_bar_title");
+    	        assertTrue("Action bar title is wrong.", titleBars.getText().toString()
+    	                .trim().equals(ValidationText.NEWS));
+    	} else {
+    		 Account.judgementAccountLogin(solo);
 
-        // Get the grid view count.
-        GridView lvs = (GridView) solo.getView("category_editor_grid");
-        Log.i("number", String.valueOf(lvs.getCount()));
+    	        /* Check from side bar to edit */
 
-        for (int i = 0; i < lvs.getCount(); i++) {
-            View category = (View) solo.getView("category_editor_grid_button",
-                    i);
-            solo.clickOnView(category);
-            assertTrue("Category item is not selected.", category.isPressed());
-        }
+    	        // click on up icon
+    	        Action.clickHomeButtonOnScreen(solo);
+    	        solo.clickOnText(ValidationText.EDIT_FAVORITE_CATEGORY);
+    	        // Get the grid view count.
+    	        GridView lv = (GridView) solo.getView("category_editor_grid");
+    	        Log.i("number", String.valueOf(lv.getCount()));
 
-        solo.clickOnText(ValidationText.TO_LATEST_STATUS);
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        TextView titleBars = (TextView) solo.getView("action_bar_title");
-        assertTrue("Action bar title is wrong.", titleBars.getText().toString()
-                .trim().equals(ValidationText.NEWS));
+    	        for (int i = 0; i < lv.getCount(); i++) {
+    	            View category = (View) solo.getView("category_editor_grid_button",
+    	                    i);
+    	            solo.clickOnView(category);
+    	            assertTrue("Category item is not selected.", category.isPressed());
+    	        }
+
+    	        solo.clickOnText(ValidationText.TO_LATEST_STATUS);
+    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	        TextView titleBar = (TextView) solo.getView("action_bar_title", 0);
+    	        Log.i("number", titleBar.getText().toString().trim());
+    	        assertTrue("Action bar title is wrong.", titleBar.getText().toString()
+    	                .trim().equals(ValidationText.NEWS));
+
+    	        /* Check from my account to edit */
+    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	        TestHelper.swipeUp(solo, 1);
+    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    	        solo.clickOnView(solo.getView("profile_bt_edit_favorite_categories"));
+
+    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+    	        // Get the grid view count.
+    	        GridView lvs = (GridView) solo.getView("category_editor_grid");
+    	        Log.i("number", String.valueOf(lvs.getCount()));
+
+    	        for (int i = 0; i < lvs.getCount(); i++) {
+    	            View category = (View) solo.getView("category_editor_grid_button",
+    	                    i);
+    	            solo.clickOnView(category);
+    	            assertTrue("Category item is not selected.", category.isPressed());
+    	        }
+
+    	        solo.clickOnText(ValidationText.TO_LATEST_STATUS);
+    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+    	        TextView titleBars = (TextView) solo.getView("action_bar_title");
+    	        assertTrue("Action bar title is wrong.", titleBars.getText().toString()
+    	                .trim().equals(ValidationText.NEWS));
+    	}
+       
     }
 
     /**
@@ -166,7 +221,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
         // input keyword and search
         Action.searchAfterPutData(solo, 0, ValidationText.C);
         solo.sleep(ValidationText.WAIT_TIME_LONG);
-
+        Assert.hideSoftKeyboard(solo);
         // Advanced button view.
         View advanced = (View) solo.getView("menu_filter");
         solo.clickOnView(advanced);
@@ -191,53 +246,105 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
      *             if has error
      */
     public final void testUserCanUseWebviews() throws Exception {
+    	
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		Account.judgementAccountLogin(solo);
+            Action.enterToItemPage(solo);
+            solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+            TestHelper.swipeUp(solo, 1);
+            Action.addToShoppingCart(solo);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionFailedError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+            TestHelper.swipeUp(solo, 1);
 
-        Account.judgementAccountLogin(solo);
-        Action.enterToItemPage(solo);
-        Action.addToShoppingCart(solo);
-        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-        try {
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        } catch (AssertionError e) {
+            //Click "Check out" button on web view.
+            Action.clickElementsInWebviewByText(solo, ValidationText.WANT_CHECKOUT);
             solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        }
-        TestHelper.swipeUp(solo, 2);
+            Action.searchTextOnWebview(solo, ValidationText.BUY_INFO);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
 
-        //Click "Check out" button on web view.
-        Action.clickElementsInWebviewByText(solo, ValidationText.WANT_CHECKOUT);
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        Action.searchTextOnWebview(solo, ValidationText.BUY_INFO);
-        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+            solo.clickOnText(ValidationText.ORDER_INQUIRY);
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionFailedError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+            solo.goBack();
+            solo.clickOnText(ValidationText.ECOUPON);
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionFailedError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+    	} else {
+    		Account.judgementAccountLogin(solo);
+            Action.enterToItemPage(solo);
+            Action.addToShoppingCart(solo);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+            TestHelper.swipeUp(solo, 2);
 
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
-        solo.clickOnText(ValidationText.ORDER_INQUIRY);
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-        try {
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        } catch (AssertionError e) {
+            //Click "Check out" button on web view.
+            Action.clickElementsInWebviewByText(solo, ValidationText.WANT_CHECKOUT);
             solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        }
-        solo.goBack();
-        solo.clickOnText(ValidationText.ECOUPON);
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-        try {
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        } catch (AssertionError e) {
-            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        }
+            Action.searchTextOnWebview(solo, ValidationText.BUY_INFO);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+            solo.clickOnText(ValidationText.ORDER_INQUIRY);
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+            solo.goBack();
+            solo.clickOnText(ValidationText.ECOUPON);
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+    	}
+        
     }
 
     /**
@@ -247,33 +354,64 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
      *             if has error
      */
     public final void testClickBuyButtonTwice() throws Exception {
+    	
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		Account.judgementAccountLogin(solo);
+            Action.enterToItemPage(solo);
+            solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+            TestHelper.swipeUp(solo, 1);
+            solo.clickOnText(ValidationText.BUY_NOW);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
+            solo.clickOnText(ValidationText.BUY_NOW);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
+            solo.clickOnText(ValidationText.BUY_NOW);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-        Account.judgementAccountLogin(solo);
-        Action.enterToItemPage(solo);
-        TestHelper.swipeUp(solo, 2);
-        solo.clickOnText(ValidationText.BUY_NOW);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.goBack();
-        solo.clickOnText(ValidationText.BUY_NOW);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.goBack();
-        solo.clickOnText(ValidationText.BUY_NOW);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            View radioButton = (View) solo.getView(
+                    "product_item_spec_item_selections", 0);
 
-        View radioButton = (View) solo.getView(
-                "product_item_spec_item_selections", 0);
+            solo.clickOnView(radioButton);
+            solo.clickOnText(ValidationText.OK);
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionFailedError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+    	} else {
+    		Account.judgementAccountLogin(solo);
+            Action.enterToItemPage(solo);
+            TestHelper.swipeUp(solo, 2);
+            solo.clickOnText(ValidationText.BUY_NOW);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
+            solo.clickOnText(ValidationText.BUY_NOW);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
+            solo.clickOnText(ValidationText.BUY_NOW);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-        solo.clickOnView(radioButton);
-        solo.clickOnText(ValidationText.OK);
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-        try {
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        } catch (AssertionError e) {
-            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        }
+            View radioButton = (View) solo.getView(
+                    "product_item_spec_item_selections", 0);
+
+            solo.clickOnView(radioButton);
+            solo.clickOnText(ValidationText.OK);
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+    	}
+        
 
     }
 
@@ -285,65 +423,139 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
      *             if has error
      */
     public final void testItemLinkFunctionInDetailPage() throws Exception {
+    	
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		
+    		Account.judgementAccountLogin(solo);
+            Action.removeShoppingCart(solo);
+            Action.enterToItemPage(solo);
+            solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+            //TestHelper.swipeUp(solo, 2);
+            Action.addToShoppingCart(solo);
+            solo.clickInList(1);
+   
+            solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+            TestHelper.swipeUp(solo, 3);
+            solo.clickOnText(ValidationText.ADD_SHOPPING_CART);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            //Get product selection view.
+            View radioButton = (View) solo.getView(
+                    "product_item_spec_item_selections", 1);
+            if (radioButton.isShown()) {
 
-        Account.judgementAccountLogin(solo);
-        Action.removeShoppingCart(solo);
-        Action.enterToItemPage(solo);
-        Action.addToShoppingCart(solo);
-        solo.clickInList(1);
-        TestHelper.swipeUp(solo, 1);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.clickOnText(ValidationText.ADD_SHOPPING_CART);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        //Get product selection view.
-        View radioButton = (View) solo.getView(
-                "product_item_spec_item_selections", 1);
-        if (radioButton.isShown()) {
+                solo.clickOnView(radioButton);
+                solo.searchText(ValidationText.OK);
+                solo.clickOnButton(ValidationText.OK);
+                solo.waitForText(ValidationText.ALREADY_ADD_SHOPPING_CART, 1,
+                        ValidationText.WAIT_TIME_MIDDLE);
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View buddle = solo.getView("tab_badge", Action.VIEW_ID_THREE);
+                junit.framework.Assert.assertTrue("No items in shopping cart.",
+                        buddle.isShown());
+            }
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
 
-            solo.clickOnView(radioButton);
-            solo.searchText(ValidationText.OK);
-            solo.clickOnButton(ValidationText.OK);
-            solo.waitForText(ValidationText.ALREADY_ADD_SHOPPING_CART, 1,
-                    ValidationText.WAIT_TIME_MIDDLE);
-            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-            View buddle = solo.getView("tab_badge", Action.VIEW_ID_THREE);
-            junit.framework.Assert.assertTrue("No items in shopping cart.",
-                    buddle.isShown());
-        }
-        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            Action.clickElementsInWebviewByClassnameByLowVersion(solo, "title");
+            solo.sleep(ValidationText.WAIT_TIME_LONG);
+         /*  // solo.goBack();
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            //click "next buy" button on web view.
+            Action.clickElementsInWebviewByClassname(solo,
+                    "goNextBuy updateItemClick");
 
-        Action.clickElementsInWebviewByClassname(solo, "title");
-        solo.sleep(ValidationText.WAIT_TIME_LONG);
-        solo.goBack();
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            // Search "Confirm"button on alert window.
+            
+            Action.clickElementsInWebviewByClassname(solo, ValidationText.OK);
+            Action.clickElementsInWebviewByText(solo, ValidationText.OK);
+            Action.clickElementsInWebviewByText(solo, ValidationText.OK);
+            //solo.clickOnText(ValidationText.OK);
+            solo.sleep(ValidationText.WAIT_TIME_LONG);
 
-        solo.sleep(ValidationText.WAIT_TIME_LONG);
-        //click "next buy" button on web view.
-        Action.clickElementsInWebviewByClassname(solo,
-                "goNextBuy updateItemClick");
+            //click product title class name on web view.
+            Action.clickElementsInWebviewByClassname(solo, "title");
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+           // solo.scrollToBottom();
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);*/
+            TestHelper.swipeUp(solo, 1);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            TestHelper.swipeUp(solo, 1);
+            try {
+            	assertTrue("Not back to item page.",
+                        solo.searchText(ValidationText.SHARE_PRODUCT));
+            } catch(AssertionFailedError e) {
+            	//In note2,Sometimes will jump to sales promotion page.
+            	assertTrue("Not back to item page.",
+                        solo.searchText(ValidationText.SALES_PROMOTION));
+            }
+    	} else {
+    		Account.judgementAccountLogin(solo);
+            Action.removeShoppingCart(solo);
+            Action.enterToItemPage(solo);
+            Action.addToShoppingCart(solo);
+            solo.clickInList(1);
+            TestHelper.swipeUp(solo, 1);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnText(ValidationText.ADD_SHOPPING_CART);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            //Get product selection view.
+            View radioButton = (View) solo.getView(
+                    "product_item_spec_item_selections", 1);
+            if (radioButton.isShown()) {
 
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        // Search "Confirm"button on alert window.
-        Action.clickElementsInWebviewByText(solo, ValidationText.OK);
-        solo.sleep(ValidationText.WAIT_TIME_LONG);
+                solo.clickOnView(radioButton);
+                solo.searchText(ValidationText.OK);
+                solo.clickOnButton(ValidationText.OK);
+                solo.waitForText(ValidationText.ALREADY_ADD_SHOPPING_CART, 1,
+                        ValidationText.WAIT_TIME_MIDDLE);
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View buddle = solo.getView("tab_badge", Action.VIEW_ID_THREE);
+                junit.framework.Assert.assertTrue("No items in shopping cart.",
+                        buddle.isShown());
+            }
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
 
-        //click product title class name on web view.
-        Action.clickElementsInWebviewByClassname(solo, "title");
-        solo.scrollToBottom();
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 1);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 1);
-        try {
-        	assertTrue("Not back to item page.",
-                    solo.searchText(ValidationText.SHARE_PRODUCT));
-        } catch(AssertionError e) {
-        	//In note2,Sometimes will jump to sales promotion page.
-        	assertTrue("Not back to item page.",
-                    solo.searchText(ValidationText.SALES_PROMOTION));
-        }
+            Action.clickElementsInWebviewByClassname(solo, "title");
+            solo.sleep(ValidationText.WAIT_TIME_LONG);
+            solo.goBack();
+
+            solo.sleep(ValidationText.WAIT_TIME_LONG);
+            //click "next buy" button on web view.
+            Action.clickElementsInWebviewByClassname(solo,
+                    "goNextBuy updateItemClick");
+
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            // Search "Confirm"button on alert window.
+            Action.clickElementsInWebviewByText(solo, ValidationText.OK);
+            solo.sleep(ValidationText.WAIT_TIME_LONG);
+
+            //click product title class name on web view.
+            Action.clickElementsInWebviewByClassname(solo, "title");
+            solo.scrollToBottom();
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            TestHelper.swipeUp(solo, 1);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            TestHelper.swipeUp(solo, 1);
+            try {
+            	assertTrue("Not back to item page.",
+                        solo.searchText(ValidationText.SHARE_PRODUCT));
+            } catch(AssertionError e) {
+            	//In note2,Sometimes will jump to sales promotion page.
+            	assertTrue("Not back to item page.",
+                        solo.searchText(ValidationText.SALES_PROMOTION));
+            }
+    	}
+        
         
     }
 
@@ -355,29 +567,57 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
      *             if has error
      */
     public final void testAccessShoppingCartQuickly() throws Exception {
+    	
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		Account.judgementAccountLogin(solo);
+            Action.removeShoppingCart(solo);
+            Action.enterToItemPage(solo);
+            solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+            //TestHelper.swipeUp(solo, 1);
+            Action.addToShoppingCart(solo);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-        Account.judgementAccountLogin(solo);
-        Action.removeShoppingCart(solo);
-        Action.enterToItemPage(solo);
-        Action.addToShoppingCart(solo);
-        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            //click store name on shopping cart.
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionFailedError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+    	} else {
+    		Account.judgementAccountLogin(solo);
+            Action.removeShoppingCart(solo);
+            Action.enterToItemPage(solo);
+            Action.addToShoppingCart(solo);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-        //click store name on shopping cart.
-        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.goBack();
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-        try {
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        } catch (AssertionError e) {
-            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        }
+            //click store name on shopping cart.
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+    	}
+        
     }
 
     /**
@@ -388,32 +628,63 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
      *             if has error
      */
     public final void testAccessShoppingCartRepeatedly() throws Exception {
+    	
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		Account.judgementAccountLogin(solo);
+            Action.removeShoppingCart(solo);
+            Action.enterToItemPage(solo);
+            solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+            //TestHelper.swipeUp(solo, 1);
+            Action.addToShoppingCart(solo);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
 
-        Account.judgementAccountLogin(solo);
-        Action.removeShoppingCart(solo);
-        Action.enterToItemPage(solo);
-        Action.addToShoppingCart(solo);
-        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.goBack();
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            solo.goBack();
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionFailedError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+    	} else {
+    		Account.judgementAccountLogin(solo);
+            Action.removeShoppingCart(solo);
+            Action.enterToItemPage(solo);
+            Action.addToShoppingCart(solo);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
 
-        solo.goBack();
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-        try {
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        } catch (AssertionError e) {
-            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-            View webpage = (View) solo.getView("webpage", 0);
-            assertTrue("This page incorrect.", webpage.isShown());
-        }
+            solo.goBack();
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            try {
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            } catch (AssertionError e) {
+                solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+                View webpage = (View) solo.getView("webpage", 0);
+                assertTrue("This page incorrect.", webpage.isShown());
+            }
+    	}
+        
     }
 
     /**

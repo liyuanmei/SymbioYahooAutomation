@@ -1119,6 +1119,31 @@ public final class Action {
         }
 
     }
+    
+    /**
+     * Click elements from web view by ClassName.
+     *
+     * @param solo
+     *            the Solo instance
+     * @param text
+     *            the class name text will be clicked on the web view
+     * @throws Exception
+     *             if has error
+     */
+    public static void clickElementsInWebviewByClassnameByLowVersion(final Solo solo,
+            final String text) throws Exception {
+
+        for (WebElement web : solo.getCurrentWebElements()) {
+            Log.i("number", "ClassNme:" + web.getClassName().toString());
+            Log.i("number", "Text:" + web.getText().toString());
+
+            if (web.getClassName().toString().equals(text)) {
+                solo.clickOnWebElement(web);
+               // solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            }
+        }
+
+    }
 
     // Click elements from web view by text
     /**
