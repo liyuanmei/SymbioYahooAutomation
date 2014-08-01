@@ -137,12 +137,19 @@ test("[1959929] verify user can add favorite item.", function () {
     //check favorite store can be displayed on my favorite stores tab
     Assert.checkStoreName(firstStoreName);
     $.delay(sleep);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        //restore settings
+        Action.tapFirstViewsOnFavoriteStorePage();
+        $.delay(5);
+    }
+    else{
+        Action.tapFirstViewsOnFavoriteStorePage();
+        $.delay(5);
 
-    //restore settings
-    Action.tapFirstViewsOnFavoriteStorePage();
-    $.delay(5);
-
-    Assert.ckeckHeartIconOnNavigationBarIsTapped();
+        Assert.ckeckHeartIconOnNavigationBarIsTapped();
+    }
 
     Action.tapCancelFavoriteStoreIcon();
     $.delay(sleep);
