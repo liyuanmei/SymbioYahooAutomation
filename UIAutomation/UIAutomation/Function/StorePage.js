@@ -128,17 +128,25 @@ test("[1959898] Not log in, click on the add collection list icon ", function ()
     Action.tapButtonOnTabBar(1);
     Action.doRefreshFavoriteStorePage();
     $.delay(15);
-    //verify the heart icon display
-    Assert.heartIconShowCorrect(1);
-    $.delay(5);
+    try{
+        //verify the heart icon display
+        Assert.heartIconShowCorrect(1);
+        $.delay(5);
     
-    Action.tapFavoriteStoreIcon();
-    $.delay(10);
+        Action.tapFavoriteStoreIcon();
+        $.delay(10);
 
-    Assert.logInWindowShowCorrectOnAddAccount();
+        Assert.logInWindowShowCorrectOnAddAccount();
 
-    //Tap exit button exit login window.
-    Action.exitLoginWindow();
+        //Tap exit button exit login window.
+        Action.exitLoginWindow();
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(1);
+        Action.tapButtonOnTabBar(1);
+        Action.doRefreshFavoriteStorePage();
+        $.delay(10);
+    }
     Action.tapButtonOnTabBar(0);
     $.delay(sleep);
 
