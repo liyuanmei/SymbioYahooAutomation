@@ -1,5 +1,11 @@
 test("[1938036] Check Header", function () {
     target.logDeviceInfo();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        $.delay(10);
+    }
+
     Action.goApparelCategory();
     Action.goCommodityTab();
     target.logElementTree();

@@ -1,4 +1,11 @@
 test("[1959919] Verify 0 result function on leaf-category", function () {
+    target.logDeviceInfo();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        $.delay(10);
+    }
+
     Action.cleanSearches();
     Action.tapButtonOnTabBar(2);
 

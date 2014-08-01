@@ -1,6 +1,12 @@
 //6.12
 test("[1954564] Verify pull down to refresh.", function () {
     target.logDeviceInfo();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        $.delay(10);
+    }
+    
     Action.cleanSearches();
     $.delay(5);
 

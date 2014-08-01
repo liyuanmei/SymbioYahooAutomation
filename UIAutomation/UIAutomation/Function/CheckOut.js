@@ -1,5 +1,11 @@
 test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     target.logDeviceInfo();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        $.delay(10);
+    }
+
     Action.cleanSearches();
     $.delay(sleep);
 

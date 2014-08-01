@@ -1,6 +1,12 @@
 //6.12 
 test("[1977448] [notification]turn on/off marketing notifications ", function () {
     target.logDeviceInfo();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        $.delay(10);
+    }
+    
     Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     Action.tapButtonOnTabBar(0);

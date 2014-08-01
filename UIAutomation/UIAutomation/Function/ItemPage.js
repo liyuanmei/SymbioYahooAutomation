@@ -1,5 +1,11 @@
 test("[1953619] Verify the for piece goods discount", function () {
     target.logDeviceInfo();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        $.delay(10);
+    }
+    
     Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
     $.delay(sleep);

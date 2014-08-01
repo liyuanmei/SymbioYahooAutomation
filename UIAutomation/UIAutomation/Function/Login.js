@@ -1,5 +1,10 @@
 test("[1977501] verify login and Logout of interaction", function () {
     target.logDeviceInfo();
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        $.delay(10);
+    }
     Action.determineTheLoginWhenShopping();
     //Log out and remove user login history
     Action.tapButtonOnTabBar(4);

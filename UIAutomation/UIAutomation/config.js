@@ -85,7 +85,7 @@ method.checkInstanceExists = function (instance) {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        $.delay(3);
+        $.delay(4);
     }
 
     var errorTimes = 0;
