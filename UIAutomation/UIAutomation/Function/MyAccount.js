@@ -296,7 +296,7 @@ test("[1977524] verify user can access to items", function () {
     $.delay(5);
 
     Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio4, varTestsSignInPasswordMobilestoresymbio4);
-    $.delay(5);
+    $.delay(10);
 
     Action.tapButtonOnTabBar(0);
     Action.tapButtonOnTabBar(0);
