@@ -164,7 +164,7 @@ test("[1959918] Verify user can change other delivery places." ,function () {
     Action.pageShow();
 
     Action.tapSearchResultOfStore();
-    $.delay(sleep);
+    $.delay(10);
 
     obj.scrollDowns(1);
     $.delay(15);
