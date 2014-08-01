@@ -108,7 +108,14 @@ test("[1959929] verify user can add favorite item.", function () {
     Assert.checkFavoriteItemButtonIsTapped();
 
     //restore
-    Action.tapFavoritesIcon(1);
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Action.tapFavoritesIcon(2);
+    }
+    else{
+        Action.tapFavoritesIcon(1);
+    }
     Action.tapButtonOnTabBar(2);
 
     //favstore
