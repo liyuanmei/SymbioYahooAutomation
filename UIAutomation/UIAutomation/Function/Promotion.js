@@ -49,16 +49,6 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
         $.delay(5);
     }
     catch(err){
-        var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
-            //May be due to data reasons not click shopping cart icon.
-            Assert.checkReturnPageDisplay(varTestsPageNameOnSalesPromotion);
-        }
-        else{
-            Assert.checkReturnPageDisplay(varTestCategoryCommodityTab);
-        }
-
         Action.tapButtonOnTabBar(2);
     }
     
@@ -123,16 +113,6 @@ test("[1977505] [bug case]verify user can add goods to shopping cart in「促銷
         $.delay(5);
     }
     catch(err){
-        var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
-            //May be due to data reasons not click shopping cart icon.
-            Assert.checkReturnPageDisplay(varTestsPageNameOnSalesPromotion);
-        }
-        else{
-            Assert.checkReturnPageDisplay(varTestCategoryCommodityTab);
-        }
-
         Action.tapButtonOnTabBar(1);
     }
     
