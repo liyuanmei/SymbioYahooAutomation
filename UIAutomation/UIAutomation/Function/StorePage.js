@@ -122,11 +122,12 @@ test("[1959898] Not log in, click on the add collection list icon ", function ()
     //Log out and remove user login history
     Action.tapButtonOnTabBar(4);
     Action.doUserLogout();
-    $.delay(sleep);
+    $.delay(5);
 
     Action.tapButtonOnTabBar(1);
-    $.delay(10);
-
+    Action.tapButtonOnTabBar(1);
+    Action.doRefreshFavoriteStorePage();
+    $.delay(15);
     //verify the heart icon display
     Assert.heartIconShowCorrect(1);
     $.delay(5);
