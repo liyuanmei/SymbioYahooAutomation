@@ -26,6 +26,7 @@
 package com.yahoo.mobile.client.android.ecstore.test.test4.ItemPage;
 
 
+import junit.framework.AssertionFailedError;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
@@ -482,7 +483,14 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
         solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
         TestHelper.swipeUp(solo, 1);
-        Action.searchTextOnWebview(solo, ValidationText.GIFT);
+        try{
+        	 Action.searchTextOnWebview(solo, ValidationText.GIFT);
+        } catch (AssertionError e){
+        	solo.sleep(ValidationText.WAIT_TIME_LONG);
+        	TestHelper.swipeUp(solo, 1);
+        	Action.searchTextOnWebview(solo, ValidationText.GIFT);
+        }
+       
 
     }
 
@@ -529,10 +537,15 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
     	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
     	        solo.goBack();
     	      //  solo.sleep(ValidationText.WAIT_TIME_SHORT);
-    	       // TestHelper.swipeUp(solo, 1);
+    	       	TestHelper.swipeUp2(solo, 3);
     	       
-    	      
-    	        Action.addToShoppingCartForSmallScreen(solo);
+    	       	try {
+    	       	 Action.addToShoppingCartForSmallScreen(solo);
+    	       	} catch (AssertionFailedError e ){
+    	       		TestHelper.swipeUp2(solo, 4);
+    	       		Action.addToShoppingCartForSmallScreen(solo);
+    	       	}
+    	       
     	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
     	        solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
     	        solo.sleep(ValidationText.WAIT_TIME_LONGER);

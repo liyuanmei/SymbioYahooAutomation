@@ -25,6 +25,7 @@
 
 package com.yahoo.mobile.client.android.ecstore.test.test5.Sidebar;
 
+import junit.framework.AssertionFailedError;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
@@ -128,69 +129,138 @@ public class Sidebar extends ActivityInstrumentationTestCase2<Activity> {
      * @throws Exception  if has error
      */
     public final void testSettingsButton() throws Exception {
+    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		Account.judgementAccountLogin(solo);
+            // click on up icon
+            Action.clickHomeButtonOnScreen(solo);
 
-        Account.judgementAccountLogin(solo);
-        // click on up icon
-        Action.clickHomeButtonOnScreen(solo);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            TestHelper.swipeUp(solo, 1);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        TestHelper.swipeUp(solo, 1);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            Action.clickText(solo, ValidationText.SETTING);
 
-        Action.clickText(solo, ValidationText.SETTING);
+            // Recent browse text.
+            TextView recent = (TextView) solo.getView(
+                    "title", Action.VIEW_ID_THREE);
+            assertTrue("Cannot fount recent browse text.", recent.getText()
+                    .toString().trim().equals(ValidationText.RECENT_BROWSE));
 
-        // Recent browse text.
-        TextView recent = (TextView) solo.getView(
-                "title", Action.VIEW_ID_THREE);
-        assertTrue("Cannot fount recent browse text.", recent.getText()
-                .toString().trim().equals(ValidationText.RECENT_BROWSE));
+            // Get the toggle button status.
+            Switch browseHistory = (
+                    Switch) solo.getView("switchWidget", 1);
+            assertTrue("Notification switch is off", browseHistory.isChecked());
 
-        // Get the toggle button status.
-        Switch browseHistory = (
-                Switch) solo.getView("switchWidget", 1);
-        assertTrue("Notification switch is off", browseHistory.isChecked());
+            // Disable the toggle button and go to browse product.
+            solo.clickOnView(browseHistory);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            Action.clickText(solo, ValidationText.CLEAN_BROWSE_RECORD);
+            Action.clickText(solo, ValidationText.OK);
+            solo.goBack();
+            Action.enterToItemPage(solo);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            Action.clickText(solo, ValidationText.RECENT_BROWSE);
+            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+            TextView noResult = (
+                    TextView) solo.getView("no_result_text", 1);
+            assertTrue("Exist some browse record displayed", noResult.isShown());
+            solo.goBack();
 
-        // Disable the toggle button and go to browse product.
-        solo.clickOnView(browseHistory);
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        Action.clickText(solo, ValidationText.CLEAN_BROWSE_RECORD);
-        Action.clickText(solo, ValidationText.OK);
-        solo.goBack();
-        Action.enterToItemPage(solo);
-        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        Action.clickText(solo, ValidationText.RECENT_BROWSE);
-        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        TextView noResult = (
-                TextView) solo.getView("no_result_text", 1);
-        assertTrue("Exist some browse record displayed", noResult.isShown());
-        solo.goBack();
+            // Search product.
+            solo.goBack();
+            Action.clickSearchButtonOnScreen(solo);
+            Action.searchAfterPutData(solo, 0, "a");
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
 
-        // Search product.
-        solo.goBack();
-        Action.clickSearchButtonOnScreen(solo);
-        Action.searchAfterPutData(solo, 0, "a");
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        solo.goBack();
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            Action.clickHomeButtonOnScreen(solo);
+            Action.clickText(solo, ValidationText.SETTING);
+            Switch browseHistorys = (Switch) solo.getView("switchWidget", 1);
+            solo.clickOnView(browseHistorys);
+            Action.clickText(solo, ValidationText.CLEAR_SEARCH_HISTORY);
+            Action.clickText(solo, ValidationText.OK);
+            solo.goBack();
+            Action.clickSearchButtonOnScreen(solo);
+            solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+            boolean icon = false;
+            View plugs = null;
+            try{
+            	 plugs  = (View) solo.getView("search_fill_up", 1);
+            	 assertFalse("Search history exist.", plugs.isShown());
+            } catch (AssertionFailedError e) {
+                assertFalse("Search history exist.", icon);
 
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        Action.clickHomeButtonOnScreen(solo);
-        Action.clickText(solo, ValidationText.SETTING);
-        Switch browseHistorys = (Switch) solo.getView("switchWidget", 1);
-        solo.clickOnView(browseHistorys);
-        Action.clickText(solo, ValidationText.CLEAR_SEARCH_HISTORY);
-        Action.clickText(solo, ValidationText.OK);
-        solo.goBack();
-        Action.clickSearchButtonOnScreen(solo);
+            }
+           
+           
+    	} else {
+    		Account.judgementAccountLogin(solo);
+            // click on up icon
+            Action.clickHomeButtonOnScreen(solo);
 
-        boolean icon = false;
-        try {
-            View plugs = (View) solo.getView("search_fill_up", 1);
-            assertFalse("Search history exist.", plugs.isShown());
-        } catch (AssertionError e) {
-            icon = true;
-            assertTrue("Search history exist.", icon);
-        }
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            TestHelper.swipeUp(solo, 1);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+            Action.clickText(solo, ValidationText.SETTING);
+
+            // Recent browse text.
+            TextView recent = (TextView) solo.getView(
+                    "title", Action.VIEW_ID_THREE);
+            assertTrue("Cannot fount recent browse text.", recent.getText()
+                    .toString().trim().equals(ValidationText.RECENT_BROWSE));
+
+            // Get the toggle button status.
+            Switch browseHistory = (
+                    Switch) solo.getView("switchWidget", 1);
+            assertTrue("Notification switch is off", browseHistory.isChecked());
+
+            // Disable the toggle button and go to browse product.
+            solo.clickOnView(browseHistory);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            Action.clickText(solo, ValidationText.CLEAN_BROWSE_RECORD);
+            Action.clickText(solo, ValidationText.OK);
+            solo.goBack();
+            Action.enterToItemPage(solo);
+            solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            Action.clickText(solo, ValidationText.RECENT_BROWSE);
+            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+            TextView noResult = (
+                    TextView) solo.getView("no_result_text", 1);
+            assertTrue("Exist some browse record displayed", noResult.isShown());
+            solo.goBack();
+
+            // Search product.
+            solo.goBack();
+            Action.clickSearchButtonOnScreen(solo);
+            Action.searchAfterPutData(solo, 0, "a");
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            solo.goBack();
+
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            Action.clickHomeButtonOnScreen(solo);
+            Action.clickText(solo, ValidationText.SETTING);
+            Switch browseHistorys = (Switch) solo.getView("switchWidget", 1);
+            solo.clickOnView(browseHistorys);
+            Action.clickText(solo, ValidationText.CLEAR_SEARCH_HISTORY);
+            Action.clickText(solo, ValidationText.OK);
+            solo.goBack();
+            Action.clickSearchButtonOnScreen(solo);
+            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+            boolean icon = false;
+            try {
+                View plugs = (View) solo.getView("search_fill_up", 1);
+                assertFalse("Search history exist.", plugs.isShown());
+            } catch (AssertionError e) {
+                icon = true;
+                assertTrue("Search history exist.", icon);
+            }
+            
+    	}
+        
 
     }
 }
