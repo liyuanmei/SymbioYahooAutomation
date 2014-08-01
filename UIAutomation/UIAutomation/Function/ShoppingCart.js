@@ -50,9 +50,17 @@ test("[1959883] verify all delete shopping cart of goods" , function () {
     Action.goBack();
     $.delay(5);
 
-    Action.tapDeleteOnShoppingCart();
-    $.delay(sleep);
+    try{
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
 
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
     Action.tapButtonOnTabBar(3);
 
     Assert.ShoppingCartDisplayCorrectly();
@@ -114,7 +122,17 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" ,function (
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapDeleteOnShoppingCart();
+    try{
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
+
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
 
     Action.tapButtonOnTabBar(3);
     $.delay(5);
@@ -191,7 +209,17 @@ test("[1977500] verify all delete shopping cart of goods" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapDeleteOnShoppingCart();
+    try{
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
+
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
 
     //restore settings
     Action.tapButtonOnTabBar(2);
@@ -253,8 +281,17 @@ test("[1959885] verify the shopping cart detail" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapDeleteOnShoppingCart();
-    $.delay(sleep);
+    try{
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
+
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -321,8 +358,17 @@ test("[1959903] Verify user can view next buy items then view shopping cart item
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapDeleteOnShoppingCart();
-    $.delay(sleep);
+    try{
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
+
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -394,8 +440,17 @@ test("[1959911] Verify Shopping cart information, purchase information display c
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapDeleteOnShoppingCart();
-    $.delay(sleep);
+    try{
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
+
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -408,7 +463,6 @@ test("[1959911] Verify Shopping cart information, purchase information display c
 
 test("[1959908] Verify numbers under shopping$next buy" ,function () {
     target.logDeviceInfo();
-    //login the app
     Action.cleanSearches();
 
     //add item to shopping cart
@@ -463,22 +517,36 @@ test("[1959908] Verify numbers under shopping$next buy" ,function () {
         Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,varTestsElementsShouldContainTextOnShoppingCartPage2);
     }
 
-    Action.tapAddBuyNextTimeOnShopping();
-    $.delay(5);
+    try{
+        Action.tapAddBuyNextTimeOnShopping();
+        $.delay(5);
 
-    //tap buy next time tab and back
-    Action.tapBuyNextTime();
-    $.delay(20);
+        //tap buy next time tab and back
+        Action.tapBuyNextTime();
+        $.delay(20);
 
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,varTestsElementsShouldContainTextOnShoppingCartPage4);
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,varTestsElementsShouldContainTextOnShoppingCartPage4);
+    }
+    catch(err){
+        Assert.checkSearchPage(varTestsTheOrderPageElements1);
+    }
 
     //restore
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapDeleteOnShoppingCart();
-    $.delay(sleep);
+    try{
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
+
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -550,8 +618,17 @@ test("[1977534] verify delete function" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapDeleteOnShoppingCart();
-    $.delay(sleep);
+    try{
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
+
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
 
     Assert.ShoppingCartDisplayCorrectly();
 
@@ -609,8 +686,17 @@ test("[1977496] Verify [bug case]「我要結賬」" ,function () {
     Action.tapButtonOnTabBar(3);
     $.delay(5);
 
-    Action.tapDeleteOnShoppingCart();
-    $.delay(sleep);
+    try{
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
+
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
