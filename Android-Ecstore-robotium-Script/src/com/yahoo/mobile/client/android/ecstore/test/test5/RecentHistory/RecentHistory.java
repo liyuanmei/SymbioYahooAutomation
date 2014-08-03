@@ -106,7 +106,7 @@ public class RecentHistory extends ActivityInstrumentationTestCase2<Activity> {
         solo.waitForActivity("ECStoreActivity", ValidationText.WAIT_TIME_SHORT);
         solo.waitForText(ValidationText.NEWS, 1,
                 ValidationText.WAIT_TIME_SHORT);
-        junit.framework.Assert.assertTrue("Navigate to main screen failed.",
+        assertTrue("Navigate to main screen failed.",
                 solo.searchText(ValidationText.NEWS));
 
         // click "up" icon
@@ -141,7 +141,7 @@ public class RecentHistory extends ActivityInstrumentationTestCase2<Activity> {
     }
 
     /**
-     * 1900004: Verify can browse recent items in「Product」tab .
+     * 1900004: Verify can browse recent items in[Product]tab .
      * @throws Exception
      *             if has error
      */
@@ -161,6 +161,8 @@ public class RecentHistory extends ActivityInstrumentationTestCase2<Activity> {
 
         TextView headerNumber = (TextView) solo.getView("tx_header",
                 Action.VIEW_ID_ZERO);
+        
+        //Get the number of the header number.
         int count = Integer.valueOf(headerNumber.getText().toString().trim()
                 .substring(6, 8));
         Log.i("number", headerNumber.getText().toString().trim());

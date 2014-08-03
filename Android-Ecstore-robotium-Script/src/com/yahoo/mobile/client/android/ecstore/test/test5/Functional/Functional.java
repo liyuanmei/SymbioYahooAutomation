@@ -25,6 +25,7 @@
 
 package com.yahoo.mobile.client.android.ecstore.test.test5.Functional;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
@@ -44,6 +45,7 @@ import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
  *
  */
 
+@SuppressLint("NewApi")
 public class Functional extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
@@ -159,6 +161,7 @@ public class Functional extends ActivityInstrumentationTestCase2<Activity> {
 
     public final void testDiscoveryStreamFromDiscoveryStream()
             throws Exception {
+    	
         Account.judgementAccountLogin(solo);
         Action.clickSearchButtonOnScreen(solo);
         ImageView barcode = (ImageView) solo.getView("search_barcode_scan");
@@ -175,6 +178,7 @@ public class Functional extends ActivityInstrumentationTestCase2<Activity> {
      */
     public final void testDiscoveryStreamFromFavoriteStore()
             throws Exception {
+    	
         Account.judgementAccountLogin(solo);
         solo.clickOnView(solo.getView("tab_image", 1));
         Action.clickSearchButtonOnScreen(solo);
@@ -192,6 +196,7 @@ public class Functional extends ActivityInstrumentationTestCase2<Activity> {
      */
     public final void testDiscoveryStreamFromCategory()
             throws Exception {
+    	
         Account.judgementAccountLogin(solo);
         solo.clickOnView(solo.getView("tab_image", 2));
         Action.clickSearchButtonOnScreen(solo);

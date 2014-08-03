@@ -114,7 +114,7 @@ public class StoreList extends ActivityInstrumentationTestCase2<Activity> {
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         solo.clickOnText(ValidationText.SHOP);
 
-        //
+        //Get three shop name,verify if it include escape character.
         TextView shopOne = (TextView) solo.getView(
                 "listitem_storelist_store_name", Action.VIEW_ID_ZERO);
         String one = shopOne.getText().toString().trim();

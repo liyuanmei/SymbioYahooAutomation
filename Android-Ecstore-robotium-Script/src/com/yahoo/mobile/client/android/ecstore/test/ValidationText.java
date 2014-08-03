@@ -282,6 +282,10 @@ public class ValidationText {
     
     public static final String FILTER = "篩選";
     
+    public static final String TWO_COMMODITY = "2件商品";
+    
+    public static final String ONE_COMMODITY = "1件商品";
+    
     public static final String STORE_OFFERS = "實體商店優惠";
     
     public static final String[] STORE_TITLE = { "分類", "商品" };

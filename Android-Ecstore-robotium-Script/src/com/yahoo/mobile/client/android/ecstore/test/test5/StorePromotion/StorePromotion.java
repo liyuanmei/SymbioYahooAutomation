@@ -23,6 +23,7 @@
  */
 package com.yahoo.mobile.client.android.ecstore.test.test5.StorePromotion;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
 /**
  * @author Administrator
  */
+@SuppressLint("NewApi")
 public class StorePromotion extends ActivityInstrumentationTestCase2<Activity> {
 
     /**
@@ -108,7 +110,10 @@ public class StorePromotion extends ActivityInstrumentationTestCase2<Activity> {
 
         Action.clickSearchButtonOnScreen(solo);
         Action.searchAfterPutData(solo, 0, ValidationText.PLAY);
+        
+        //Hide soft keyboard if the keyboard not hide automatically.
         Assert.hideSoftKeyboard(solo);
+        
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         solo.clickInList(Action.VIEW_ID_ZERO);
         solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);

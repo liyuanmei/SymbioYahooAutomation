@@ -23,6 +23,7 @@
  */
 package com.yahoo.mobile.client.android.ecstore.test.test5.Promotion;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
@@ -38,177 +39,185 @@ import com.yahoo.mobile.client.android.ecstore.test.ValidationText;
 /**
  * @author Administrator
  */
+@SuppressLint("NewApi")
 public class Promotion extends ActivityInstrumentationTestCase2<Activity> {
 
-    /**
-     * Declare application main activity.
-     */
-    private static final String LAUNCHER_ACTIVITY_FULL_CLASSNAME
-    = "com.yahoo.mobile.client.android.ecstore.ui.ECSplashActivity";
+	/**
+	 * Declare application main activity.
+	 */
+	private static final String LAUNCHER_ACTIVITY_FULL_CLASSNAME = "com.yahoo.mobile.client.android.ecstore.ui.ECSplashActivity";
 
-    /**
-     * Declare a variable of type Class for start tested program.
-     */
-    private static Class<?> launcherActivityClass;
+	/**
+	 * Declare a variable of type Class for start tested program.
+	 */
+	private static Class<?> launcherActivityClass;
 
-    /**
-     * Declare a Solo object.
-     */
-    private Solo solo;
-    static {
+	/**
+	 * Declare a Solo object.
+	 */
+	private Solo solo;
+	static {
 
-        try {
-            launcherActivityClass = Class
-                    .forName(LAUNCHER_ACTIVITY_FULL_CLASSNAME);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+		try {
+			launcherActivityClass = Class
+					.forName(LAUNCHER_ACTIVITY_FULL_CLASSNAME);
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		}
 
-    }
+	}
 
-    /**
-     * @throws ClassNotFoundException
-     *             if has error
-     */
-    @SuppressWarnings("unchecked")
-    public Promotion() throws ClassNotFoundException {
-        super((Class<Activity>) launcherActivityClass);
-    }
+	/**
+	 * @throws ClassNotFoundException
+	 *             if has error
+	 */
+	@SuppressWarnings("unchecked")
+	public Promotion() throws ClassNotFoundException {
+		super((Class<Activity>) launcherActivityClass);
+	}
 
-    @Override
-    protected final void setUp() throws Exception {
+	@Override
+	protected final void setUp() throws Exception {
 
-        /*
-         * setUp() is run before a test case is started. This is where the solo
-         * object is created.
-         */
+		/*
+		 * setUp() is run before a test case is started. This is where the solo
+		 * object is created.
+		 */
 
-        super.setUp();
-        solo = new Solo(getInstrumentation(), getActivity());
-      	Assert.testFirstLaunch(solo);
-    }
+		super.setUp();
+		solo = new Solo(getInstrumentation(), getActivity());
+		Assert.testFirstLaunch(solo);
+	}
 
-    @Override
-    public final void tearDown() throws Exception {
+	@Override
+	public final void tearDown() throws Exception {
 
-        /*
-         * tearDown() is run after a test case has finished.
-         * finishOpenedActivities() will finish all the activities that have
-         * been opened during the test execution.
-         */
+		/*
+		 * tearDown() is run after a test case has finished.
+		 * finishOpenedActivities() will finish all the activities that have
+		 * been opened during the test execution.
+		 */
 
-        solo.finishOpenedActivities();
-        super.tearDown();
-    }
+		solo.finishOpenedActivities();
+		super.tearDown();
+	}
 
-    /**
-     * 1977505:Verify user can add goods to shopping cart in「Promotion」page
-     * after user logout then login..
-     *
-     * @throws Exception
-     *             if has error
-     */
-    public final void testAddProductToShoppingcartInPromotion()
-            throws Exception {
-    	
-    	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
-    		    Account.judgementAccountLogin(solo);
-    	        Action.removeShoppingCart(solo);
-    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
-    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-    	        solo.clickOnText(ValidationText.MAYBE_LIKE);
-    	        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-    	        View recommend = (View) solo.getView("listitem_recommended_image1", 0);
-    	        solo.clickOnView(recommend);
+	/**
+	 * 1977505:Verify user can add goods to shopping cart in「Promotion」page
+	 * after user logout then login..
+	 * 
+	 * @throws Exception
+	 *             if has error
+	 */
+	public final void testAddProductToShoppingcartInPromotion()
+			throws Exception {
 
-    	        // Checks if the banner is show.
-    	        View banner = (View) solo.getView("img_store_banner", 0);
-    	        assertTrue("Not enter recommended page.", banner.isShown());
+		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
 
-    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			Account.judgementAccountLogin(solo);
+			Action.removeShoppingCart(solo);
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.clickOnText(ValidationText.MAYBE_LIKE);
+			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			View recommend = (View) solo.getView("listitem_recommended_image1",
+					0);
+			solo.clickOnView(recommend);
 
-    	        View more = (View) solo.getView("menu_storeinfo");
-    	        solo.clickOnView(more);
-    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-    	        solo.clickOnText(ValidationText.SALES_PROMOTION);
+			// Checks if the banner is show.
+			View banner = (View) solo.getView("img_store_banner", 0);
+			assertTrue("Not enter recommended page.", banner.isShown());
 
-    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-    	        assertTrue("Account has login.",
-    	                solo.searchText(ValidationText.SALES_PROMOTION));
-    	        //Log out account.
-    	        Account.judgementAccountWithoutLogin(solo);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
-    	        //Log in account.
-    	        Account.judgementAccountLogin(solo);
-    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
-    	        solo.clickOnView(solo.getView("productitem_promotion_name",
-    	                Action.VIEW_ID_ONE));
+			View more = (View) solo.getView("menu_storeinfo");
+			solo.clickOnView(more);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			solo.clickOnText(ValidationText.SALES_PROMOTION);
 
-    	        solo.sleep(ValidationText.WAIT_TIME_LONGEST);
-    	        for(int i = 0 ; i <3 ; i ++ ){
-    	        	  TestHelper.swipeUp(solo, 10);
-    	    	        
-    	        }
-    	        solo.scrollToBottom();
-    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-    	        //Click shopping cart icon from class name.
-    	        Action.clickElementsInWebviewByClassname(solo, "shoppingCart");
-    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-    	        TextView shoppingCart = (TextView) solo.getView(
-    	                "ecshopping_cart_store_count", 0);
-    	        assertTrue("Not add to shopping cart.",
-    	                Integer.valueOf(shoppingCart.getText().toString()) >= 1);
-    	} else {
-    		 Account.judgementAccountLogin(solo);
-    	        Action.removeShoppingCart(solo);
-    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
-    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-    	        solo.clickOnText(ValidationText.MAYBE_LIKE);
-    	        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-    	        View recommend = (View) solo.getView("listitem_recommended_image1", 0);
-    	        solo.clickOnView(recommend);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			assertTrue("Account has login.",
+					solo.searchText(ValidationText.SALES_PROMOTION));
 
-    	        // Checks if the banner is show.
-    	        View banner = (View) solo.getView("img_store_banner", 0);
-    	        assertTrue("Not enter recommended page.", banner.isShown());
+			// Log out account.
+			Account.judgementAccountWithoutLogin(solo);
 
-    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			// Log in account.
+			Account.judgementAccountLogin(solo);
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
+			solo.clickOnView(solo.getView("productitem_promotion_name",
+					Action.VIEW_ID_ONE));
 
-    	        View more = (View) solo.getView("menu_storeinfo");
-    	        solo.clickOnView(more);
-    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-    	        solo.clickOnText(ValidationText.SALES_PROMOTION);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
+			for (int i = 0; i < 3; i++) {
+				TestHelper.swipeUp(solo, 10);
 
-    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-    	        assertTrue("Account has login.",
-    	                solo.searchText(ValidationText.SALES_PROMOTION));
-    	        //Log out account.
-    	        Account.judgementAccountWithoutLogin(solo);
+			}
+			solo.scrollToBottom();
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
-    	        //Log in account.
-    	        Account.judgementAccountLogin(solo);
-    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
-    	        solo.clickOnView(solo.getView("productitem_promotion_name",
-    	                Action.VIEW_ID_ONE));
+			// Click shopping cart icon from class name.
+			Action.clickElementsInWebviewByClassname(solo, "shoppingCart");
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-    	        solo.sleep(ValidationText.WAIT_TIME_LONGEST);
-    	        TestHelper.swipeUp2(solo, 1);
-    	        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			TextView shoppingCart = (TextView) solo.getView(
+					"ecshopping_cart_store_count", 0);
+			assertTrue("Not add to shopping cart.",
+					Integer.valueOf(shoppingCart.getText().toString()) >= 1);
+		} else {
+			Account.judgementAccountLogin(solo);
+			Action.removeShoppingCart(solo);
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.clickOnText(ValidationText.MAYBE_LIKE);
+			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			View recommend = (View) solo.getView("listitem_recommended_image1",
+					0);
+			solo.clickOnView(recommend);
 
-    	        //Click shopping cart icon from class name.
-    	        Action.clickElementsInWebviewByClassname(solo, "shoppingCart");
-    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-    	        solo.sleep(ValidationText.WAIT_TIME_SHORT);
-    	        solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-    	        TextView shoppingCart = (TextView) solo.getView(
-    	                "ecshopping_cart_store_count", 0);
-    	        assertTrue("Not add to shopping cart.",
-    	                Integer.valueOf(shoppingCart.getText().toString()) >= 1);
-    	}
-       
-    }
+			// Checks if the banner is show.
+			View banner = (View) solo.getView("img_store_banner", 0);
+			assertTrue("Not enter recommended page.", banner.isShown());
+
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+			View more = (View) solo.getView("menu_storeinfo");
+			solo.clickOnView(more);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			solo.clickOnText(ValidationText.SALES_PROMOTION);
+
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			assertTrue("Account has login.",
+					solo.searchText(ValidationText.SALES_PROMOTION));
+
+			// Log out account.
+			Account.judgementAccountWithoutLogin(solo);
+
+			// Log in account.
+			Account.judgementAccountLogin(solo);
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
+			solo.clickOnView(solo.getView("productitem_promotion_name",
+					Action.VIEW_ID_ONE));
+
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
+			TestHelper.swipeUp2(solo, 1);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+
+			// Click shopping cart icon from class name.
+			Action.clickElementsInWebviewByClassname(solo, "shoppingCart");
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			TextView shoppingCart = (TextView) solo.getView(
+					"ecshopping_cart_store_count", 0);
+			assertTrue("Not add to shopping cart.",
+					Integer.valueOf(shoppingCart.getText().toString()) >= 1);
+		}
+
+	}
 }

@@ -106,11 +106,13 @@ public class Sidebar extends ActivityInstrumentationTestCase2<Activity> {
     public final void testEditCategorypreferences() throws Exception {
 
         Account.judgementAccountLogin(solo);
+
         // click on up icon
         Action.clickHomeButtonOnScreen(solo);
 
         solo.clickOnText(ValidationText.EDIT_FAVORITE_CATEGORY);
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
         // Get the grid view count.
         GridView lv = (GridView) solo.getView("category_editor_grid");
         assertTrue("Not enter to edit category screen. ", lv.isShown());
@@ -129,8 +131,11 @@ public class Sidebar extends ActivityInstrumentationTestCase2<Activity> {
      * @throws Exception  if has error
      */
     public final void testSettingsButton() throws Exception {
+
     	if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+    		
     		Account.judgementAccountLogin(solo);
+
             // click on up icon
             Action.clickHomeButtonOnScreen(solo);
 
@@ -153,6 +158,7 @@ public class Sidebar extends ActivityInstrumentationTestCase2<Activity> {
 
             // Disable the toggle button and go to browse product.
             solo.clickOnView(browseHistory);
+
             solo.sleep(ValidationText.WAIT_TIME_SHORT);
             Action.clickText(solo, ValidationText.CLEAN_BROWSE_RECORD);
             Action.clickText(solo, ValidationText.OK);
@@ -177,8 +183,11 @@ public class Sidebar extends ActivityInstrumentationTestCase2<Activity> {
             solo.sleep(ValidationText.WAIT_TIME_SHORT);
             Action.clickHomeButtonOnScreen(solo);
             Action.clickText(solo, ValidationText.SETTING);
+            
+            //Get "browser history" switch view.
             Switch browseHistorys = (Switch) solo.getView("switchWidget", 1);
             solo.clickOnView(browseHistorys);
+
             Action.clickText(solo, ValidationText.CLEAR_SEARCH_HISTORY);
             Action.clickText(solo, ValidationText.OK);
             solo.goBack();
