@@ -259,6 +259,7 @@ public final class Assert {
     public static void hideSoftKeyboard(final Solo solo) throws Exception {
     	
 	    if(android.os.Build.VERSION.RELEASE .matches("4.0."+"[0-9]+")){
+	    	
 	    	Log.i("number", android.os.Build.VERSION.RELEASE)  ;
 	    	InputMethodManager imm = (InputMethodManager) solo.getCurrentActivity().getSystemService(solo.getCurrentActivity().INPUT_METHOD_SERVICE);
 	    	 if(imm.isActive()){
