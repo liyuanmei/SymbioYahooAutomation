@@ -582,7 +582,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 				TestHelper.swipeUp2(solo, 4);
 				Action.addToShoppingCartForSmallScreen(solo);
 			}
-
+ 
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
