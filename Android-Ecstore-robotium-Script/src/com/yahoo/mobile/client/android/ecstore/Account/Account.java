@@ -50,7 +50,7 @@ public final class Account {
         try {
         	
 	        // Input YAHOO account in account text field.
-	          solo.typeText(0, "mobilestoresymbio6");
+	          solo.typeText(0, "mobilestoresymbio2");
 	          
 	        // Input YAHOO password in password text field.
 	          solo.typeText(1, "Aa123456");

@@ -55,7 +55,7 @@ public class TestHelper {
 		Log.i("number", String.valueOf(yEnd));
 		solo.drag(width / 2, width / 2, 470, 701, stepCount);
 	}
-	
+ 
 	@SuppressWarnings("deprecation")
 	public static void swipeUp(Solo solo, int stepCount) {
 		Display display = solo.getCurrentActivity().getWindowManager()

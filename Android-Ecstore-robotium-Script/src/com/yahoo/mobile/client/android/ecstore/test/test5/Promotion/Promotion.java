@@ -112,7 +112,7 @@ public class Promotion extends ActivityInstrumentationTestCase2<Activity> {
 	public final void testAddProductToShoppingcartInPromotion()
 			throws Exception {
 
-		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
+		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+") || android.os.Build.VERSION.RELEASE.matches("4.1." + "[0-9]+")) {
 
 			Account.judgementAccountLogin(solo);
 			Action.removeShoppingCart(solo);
@@ -146,10 +146,10 @@ public class Promotion extends ActivityInstrumentationTestCase2<Activity> {
 			Account.judgementAccountLogin(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
 			solo.clickOnView(solo.getView("productitem_promotion_name",
-					Action.VIEW_ID_ONE));
+					Action.VIEW_ID_ZERO));
 
 			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 2; i++) {
 				TestHelper.swipeUp(solo, 10);
 
 			}
@@ -167,7 +167,9 @@ public class Promotion extends ActivityInstrumentationTestCase2<Activity> {
 					"ecshopping_cart_store_count", 0);
 			assertTrue("Not add to shopping cart.",
 					Integer.valueOf(shoppingCart.getText().toString()) >= 1);
-		} else {
+			
+		}  else {
+			
 			Account.judgementAccountLogin(solo);
 			Action.removeShoppingCart(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
@@ -200,12 +202,12 @@ public class Promotion extends ActivityInstrumentationTestCase2<Activity> {
 			Account.judgementAccountLogin(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ONE));
 			solo.clickOnView(solo.getView("productitem_promotion_name",
-					Action.VIEW_ID_ONE));
+					Action.VIEW_ID_ZERO));
 
 			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
-			TestHelper.swipeUp2(solo, 1);
-			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-
+			TestHelper.swipeUp(solo, 1);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+  
 			// Click shopping cart icon from class name.
 			Action.clickElementsInWebviewByClassname(solo, "shoppingCart");
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
