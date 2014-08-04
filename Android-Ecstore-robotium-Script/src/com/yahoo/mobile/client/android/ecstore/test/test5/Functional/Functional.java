@@ -141,6 +141,7 @@ public class Functional extends ActivityInstrumentationTestCase2<Activity> {
 
         Account.judgementAccountLogin(solo);
         solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+        TestHelper.swipeDownLowPixle(solo, 1);
         solo.clickOnText(ValidationText.NOTIFICATION);
         solo.sleep(ValidationText.WAIT_TIME_LONG);
         TextView notificationBar;

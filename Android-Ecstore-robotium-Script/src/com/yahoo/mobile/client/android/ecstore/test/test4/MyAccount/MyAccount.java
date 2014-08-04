@@ -272,7 +272,7 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
 		solo.sleep(ValidationText.WAIT_TIME_SHORT);
 		solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
 		Action.clickText(solo, ValidationText.RECENT_BROWSE);
-		solo.sleep(ValidationText.WAIT_TIME_LONG);
+		solo.sleep(ValidationText.WAIT_TIME_LONGER);
 		TextView noResult = (TextView) solo.getView("no_result_text", 1);
 		assertTrue("There are some product info displayed. ",
 				noResult.isShown());
