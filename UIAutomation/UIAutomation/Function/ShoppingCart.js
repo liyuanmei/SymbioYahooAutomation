@@ -115,7 +115,7 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" ,function (
     Action.pageShow();
 
     Action.tapSearchResultOfStore();
-    $.delay(sleep);
+    $.delay(15);
 
     obj.scrollDowns(1);
     $.delay(15);
@@ -171,7 +171,7 @@ test("[1977500] verify all delete shopping cart of goods" ,function () {
     $.delay(10);
 
     Action.tapItemOnProductListScreen();
-    $.delay(15);
+    $.delay(20);
 
     obj.scrollDowns(1);
     $.delay(10);
@@ -609,16 +609,21 @@ test("[1977534] verify delete function" ,function () {
 
     Action.tapShoppingCartlist(0);
     $.delay(20);
+    try{
+        Action.tapAddBuyNextTimeOnShopping();
+        $.delay(sleep);
 
-    Action.tapAddBuyNextTimeOnShopping();
-    $.delay(sleep);
+        //tap buy next time tab and back
+        Action.tapBuyNextTime();
+        $.delay(20);
 
-    //tap buy next time tab and back
-    Action.tapBuyNextTime();
-    $.delay(20);
-
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
-    Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,varTestsElementsShouldContainTextOnShoppingCartPage4);
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
+        Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(8,varTestsElementsShouldContainTextOnShoppingCartPage4);
+    }
+    catch(err){
+        $.delay(10);
+        Action.tapButtonOnTabBar(3);
+    }
 
     //restore
     Action.tapButtonOnTabBar(3);

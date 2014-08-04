@@ -76,7 +76,7 @@ var tabBarMyAccount = tabBar.buttons()[4];
 
 obj.scrollDowns = function (total) {
     for (var j = 0; j < total; j++) {
-        $.delay(sleep);
+        $.delay(5);
         app.mainWindow().collectionViews()[0].scrollDown();
     }
 };
@@ -143,7 +143,7 @@ method.verifyEquals = function (expected, received, message) {
 
 obj.scrollDownsWhenSettlement = function (total) {
     for (var j = 0; j < total; j++) {
-        $.delay(sleep);
+        $.delay(5);
         app.mainWindow().scrollViews()[0].scrollDown();
     }
 };

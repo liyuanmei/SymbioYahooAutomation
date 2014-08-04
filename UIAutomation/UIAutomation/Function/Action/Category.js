@@ -148,6 +148,7 @@ Action.tapItemOnProductListScreen = function () {
 
 Action.tapFavoritesIcon = function (productIndex) {
     $.delay(sleep);
+
     var collectionViews = app.mainWindow().collectionViews()[0];
 
     var itemCell = collectionViews.cells()[productIndex];
@@ -675,9 +676,17 @@ Action.tapFavoriteStoreIcon = function () {
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        var FavoriteStoreIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[0];
-        method.checkInstanceExists(app.windows()[0].collectionViews()[0].cells()[1].buttons()[0]);
-        FavoriteStoreIcon.tap();   
+        var FavoriteIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[0].name();
+        if(FavoriteIcon = varTestsHeartIconDisplay){
+            var FavoriteStoreIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[0];
+            method.checkInstanceExists(app.windows()[0].collectionViews()[0].cells()[1].buttons()[0]);
+            FavoriteStoreIcon.tap();
+        }
+        else{
+            var FavoriteStoreIcon = app.windows()[0].collectionViews()[0].cells()[2].buttons()[0];
+            method.checkInstanceExists(app.windows()[0].collectionViews()[0].cells()[2].buttons()[0]);
+            FavoriteStoreIcon.tap();
+        }
     }
     else{
         var FavoriteStoreIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[0];

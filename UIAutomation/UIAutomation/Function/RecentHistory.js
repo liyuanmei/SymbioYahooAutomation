@@ -7,7 +7,7 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     }
     Action.determineTheLoginWhenShopping();
     Action.cleanSearches();
-    $.delay(sleep);
+    $.delay(5);
 
     Action.addToRecentBrowse();
 
@@ -15,6 +15,7 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
     Action.goDiscoveryStream();
+    $.delay(5);
 
     //go to my account
     Action.tapButtonOnTabBar(4);
@@ -27,15 +28,22 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
 
     //item name text
     Assert.checkGoodsTextExistOnRecentBrowse(1,2);
-
-    var commodityItemListCount = app.mainWindow().collectionViews()[0].cells().length;
-    if(commodityItemListCount == "21"){
-        Assert.commodityItemsShowCount(21);
+    //Verify the first favorites item successful removed.
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
+        Assert.commodityItemsShowCount(4);
     }
     else{
-        Assert.commodityItemsShowCount(20);
+        var commodityItemListCount = app.mainWindow().collectionViews()[0].cells().length;
+        if(commodityItemListCount == "21"){
+            Assert.commodityItemsShowCount(21);
+        }
+        else{
+            Assert.commodityItemsShowCount(20);
+        }
     }
-
+        
     //Verify the value of rating is less than 10, if not fail.
     Assert.storeRatingShowCorrect(1, 1);
 
@@ -44,19 +52,19 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
 
     //check using FavoritesIcon
     Action.tapFavoritesIcon(1);
-    $.delay(sleep);
+    $.delay(5);
 
     Action.tapButtonOnTabBar(4);
 
     //go to goods collection
     Action.goMayFavoritesScreenWhenSRP();
-    $.delay(5);
+    $.delay(10);
 
     //Verify the first favorites item successful removed.
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
-        $.delay(10);
+        $.delay(5);
         var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -67,7 +75,7 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
 
     //sliding delete goods collection
     Action.slidingDeleteGoodsCollection();
-    $.delay(sleep);
+    $.delay(5);
 
     Action.goBack();
 
@@ -82,10 +90,10 @@ test("[1900011]  verify settings screen." , function () {
     target.logDeviceInfo();
     Action.cleanSearches();
     Action.cleanBrowsingHistory();
-    $.delay(sleep);
+    $.delay(5);
 
     Action.tapCleanSearchOnSidebr(0);
-    $.delay(sleep);
+    $.delay(5);
 
     Action.tapButtonOnTabBar(0);
 
@@ -96,9 +104,11 @@ test("[1900011]  verify settings screen." , function () {
 
     Action.goBackOnSearchPage();
     Action.tapReturnOnSearchBar();
+    $.delay(5);
 
     //go to my account
     Action.tapButtonOnTabBar(4);
+    $.delay(5);
 
     Action.goRecentBrowse();
     $.delay(5);
