@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,13 +47,14 @@ public final class Account {
             solo.goBack();
             removeAccount(solo);
         }
-
+        try {
+        	
         // Input YAHOO account in account text field.
-        //solo.typeText(0, "mobileappstore3");
           solo.typeText(0, "mobilestoresymbio6@yahoo.com.tw");
+          
         // Input YAHOO password in password text field.
-        //solo.typeText(1, "A1234qwer");
           solo.typeText(1, "Aa123456");
+          
         // Click sign button
         solo.clickOnButton(ValidationText.LOG_IN);
         solo.sleep(ValidationText.WAIT_TIME_LONGER);
@@ -64,6 +66,34 @@ public final class Account {
         junit.framework.Assert.assertTrue("Log in failed.",
             accountProfile.isShown());
 
+        } catch (AssertionError e) {
+ 
+        	EditText accountView = (EditText) solo.getView("ldialog_box_id");
+        	ImageView clear = (ImageView) solo.getView("ldialog_clear_id"); 
+        	EditText accountPWD = (EditText) solo.getView("ldialog_box_pwd");
+        	ImageView clear_pwd = (ImageView) solo.getView("ldialog_clear_pwd");
+        	solo.clickOnView(accountView);
+        	solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+        	solo.clickOnView(clear);
+        	solo.typeText(0, "mobilestoresymbio6@yahoo.com.tw");
+        	 
+        	solo.clickOnView(accountPWD);
+        	solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+        	solo.clickOnView(clear_pwd);
+            solo.typeText(1, "Aa123456");
+            
+            // Click sign button
+            solo.clickOnButton(ValidationText.LOG_IN);
+            solo.sleep(ValidationText.WAIT_TIME_LONGER);
+            solo.waitForView(solo.getView("tab_image", VIEW_ID));
+            solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+
+            // Assert if the accountProfile is visible,then login successfully.
+            View accountProfile = (View) solo.getView("profile_photo_image", 0);
+            junit.framework.Assert.assertTrue("Log in failed.",
+                accountProfile.isShown());
+        	 
+        }
     }
 
     /**

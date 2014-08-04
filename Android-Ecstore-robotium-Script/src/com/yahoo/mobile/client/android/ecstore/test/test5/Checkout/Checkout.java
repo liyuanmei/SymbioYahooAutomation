@@ -160,7 +160,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			Account.judgementAccountLogin(solo);
 			Action.removeShoppingCart(solo);
 			Action.enterToItemPage(solo);
-			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			Action.addToShoppingCart(solo);
 
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
