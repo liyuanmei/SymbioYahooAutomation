@@ -46,9 +46,6 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     Action.tapFavoritesIcon(1);
     $.delay(sleep);
 
-    Action.tapFavoritesIcon(1);   
-    $.delay(sleep);
-
     Action.tapButtonOnTabBar(4);
 
     //go to goods collection
@@ -59,6 +56,7 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
     if(version == "6.1") {
+        $.delay(10);
         var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -66,9 +64,6 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     }
     
     Assert.elementsShouldContainText(goodsNum,varTestsCheckTheKeyword2);
-
-    //goods collection
-    Assert.checkGoodsExist();
 
     //sliding delete goods collection
     Action.slidingDeleteGoodsCollection();
