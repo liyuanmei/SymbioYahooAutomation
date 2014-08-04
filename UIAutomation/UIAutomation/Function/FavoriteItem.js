@@ -155,10 +155,7 @@ test("[1959929] verify user can add favorite item.", function () {
     $.delay(sleep);
 
     Action.tapButtonOnTabBar(1);
-
-    //do refresh
-    Action.doRefreshFavoriteStorePage();
-    $.delay(10);
+    $.delay(15);
 
     Action.tapButtonOnTabBar(0);
 });
