@@ -50,9 +50,19 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     Assert.productPriceShowCorrect(1, 3);
     $.delay(sleep);
 
+    var version = target.systemVersion();
+    version = version.substring(0, version.lastIndexOf("."));
+    if(version == "6.1") {
     //check using FavoritesIcon
-    Action.tapFavoritesIcon(1);
-    $.delay(5);
+        Action.tapFavoritesIcon(1);
+        $.delay(5);
+    }
+    else{
+        Action.tapFavoritesIcon(1);
+        $.delay(5);
+
+        Action.tapFavoritesIcon(1);
+    }
 
     Action.tapButtonOnTabBar(4);
 
