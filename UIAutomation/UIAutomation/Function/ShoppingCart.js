@@ -1,4 +1,5 @@
 test("[1959883] verify all delete shopping cart of goods" , function () {
+    $.delay(5);
     target.logDeviceInfo();
     var version = target.systemVersion();
     version = version.substring(0, version.lastIndexOf("."));
