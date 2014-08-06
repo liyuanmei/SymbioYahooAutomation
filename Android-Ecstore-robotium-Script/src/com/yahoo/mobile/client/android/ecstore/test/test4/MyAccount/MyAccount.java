@@ -114,14 +114,16 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
 		boolean alreadyAdd;
 
 		// Get toast text.
-		if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)) {
+		try{
+			
+			solo.waitForText(ValidationText.HAS_ADDED_COLLECTION) ;
 			alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
-			junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
-		} else {
+			assertTrue("Add failed.", alreadyAdd);
+		} catch (AssertionError e) {
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickOnView(star);
 			alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
-			junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+			assertTrue("Add failed.", alreadyAdd);
 
 		}
 
@@ -227,6 +229,7 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
 	public final void testOfflineCoupons() throws Exception {
 
 		Account.judgementAccountLogin(solo);
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
 		solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
 		assertTrue("Cannot found ",
 				solo.searchText(ValidationText.STORE_OFFERS));
@@ -242,8 +245,10 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
 	public final void testRecentHistory() throws Exception {
 
 		Account.judgementAccountLogin(solo);
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
 		solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
 		Action.clickText(solo, ValidationText.RECENT_BROWSE);
+		solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 		TextView actionBar = (TextView) solo.getView("action_bar_title", 0);
 		assertTrue("Cannot enter recent history page. ", actionBar.isShown());
 
@@ -432,10 +437,14 @@ public class MyAccount extends ActivityInstrumentationTestCase2<Activity> {
 		boolean alreadyAdd;
 
 		// Get toast text.
-		if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)) {
+		try {
+			
+			solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
 			alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
-			junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
-		} else {
+			assertTrue("Add failed.", alreadyAdd);
+			
+		}  catch (AssertionError e){
+			
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickOnView(star);
 			alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);

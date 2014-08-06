@@ -498,6 +498,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
 		Account.judgementAccountLogin(solo);
 		Action.removeShoppingCart(solo);
+		
 		solo.goBack();
 		solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
 		Action.clickSearchButtonOnScreen(solo);
@@ -512,9 +513,16 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 		Action.addToShoppingCart(solo);
 		solo.sleep(ValidationText.WAIT_TIME_SHORT);
 		solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+		
+		solo.sleep(ValidationText.WAIT_TIME_LONG);
+		
 		solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 		solo.sleep(ValidationText.WAIT_TIME_LONGER);
-		TestHelper.swipeUp(solo, 1);
+		
+		for (int i = 0; i < 2; i++) {
+			TestHelper.swipeUp(solo, 10);
+
+		}
 		try {
 			Action.searchTextOnWebview(solo, ValidationText.GIFT);
 		} catch (AssertionError e) {

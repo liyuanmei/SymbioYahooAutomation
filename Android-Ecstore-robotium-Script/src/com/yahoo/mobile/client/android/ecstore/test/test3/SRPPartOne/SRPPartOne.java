@@ -124,7 +124,9 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2<Activity> {
 	public final void testStoreTab() throws Exception {
 
 		Action.enterToJacketAfterSearch(solo);
-
+		
+		solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+		
 		// click on store tab
 		Action.clickView(solo, "category_tab_primary_title", 1);
 
@@ -676,7 +678,9 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2<Activity> {
 		Action.setListViewStyleAfterSearch(solo);
 
 		Action.clickView(solo, "listitem_productlist_image", 0);
-
+		
+		solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+		
 		assertTrue("Navigate to item page failed.",
 				solo.getView("productitem_btn_purchase_now", 0).isShown());
 
@@ -1011,10 +1015,13 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2<Activity> {
 		Action.setLargePhotoViewStyleAfterSearch(solo);
 
 		Action.clickView(solo, "listitem_productlist_image", 0);
-
+		
+		solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+		
 		assertTrue("Navigate to item page failed.",
 				solo.getView("productitem_btn_purchase_now", 0).isShown());
 		solo.goBack();
+		
 		Action.setListViewStyleAfterSearch(solo);
 	}
 

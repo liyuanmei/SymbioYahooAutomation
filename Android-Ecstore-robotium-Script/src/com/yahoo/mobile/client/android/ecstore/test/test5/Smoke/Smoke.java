@@ -311,6 +311,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 				assertTrue("This page incorrect.", webpage.isShown());
 			}
 		} else {
+
 			Account.judgementAccountLogin(solo);
 			Action.enterToItemPage(solo);
 			Action.addToShoppingCart(solo);

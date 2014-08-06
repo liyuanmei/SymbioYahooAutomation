@@ -345,7 +345,8 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 		solo.clickOnView(solo.getView("heart_button", 0));
 
 		boolean alreadyAdd;
-
+		solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+		
 		// Get toast text.
 		if (solo.waitForText(ValidationText.HAS_ADDED_COMMODITY)) {
 			alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COMMODITY);

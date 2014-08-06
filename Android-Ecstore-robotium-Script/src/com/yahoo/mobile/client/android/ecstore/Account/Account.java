@@ -50,19 +50,30 @@ public final class Account {
         try {
         	
 	        // Input YAHOO account in account text field.
-	          solo.typeText(0, "mobilestoresymbio2");
+	        solo.typeText(0, "mobilestoresymbio2");
 	          
 	        // Input YAHOO password in password text field.
-	          solo.typeText(1, "Aa123456");
+	        solo.typeText(1, "Aa123456");
 	          
 	        // Click sign button
 	        solo.clickOnButton(ValidationText.LOG_IN);
 	        solo.sleep(ValidationText.WAIT_TIME_LONGER);
-	        solo.waitForView(solo.getView("tab_image", VIEW_ID));
-	        solo.clickOnView(solo.getView("tab_image", VIEW_ID));
-	
+	        
+	        try {
+            	solo.waitForView(solo.getView("tab_image", VIEW_ID));
+                solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+            } catch( AssertionError e ) {
+            	
+            	solo.sleep(ValidationText.WAIT_TIME_LONG);
+            	solo.waitForView(solo.getView("tab_image", VIEW_ID));
+                solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+                
+            }
+	        solo.sleep(ValidationText.WAIT_TIME_LONG);
 	        // Assert if the accountProfile is visible,then login successfully.
 	        View accountProfile = (View) solo.getView("profile_photo_image", 0);
+	        
+	        solo.sleep(ValidationText.WAIT_TIME_LONG);
 	        junit.framework.Assert.assertTrue("Log in failed.",
 	            accountProfile.isShown());
 
@@ -85,9 +96,17 @@ public final class Account {
             // Click sign button
             solo.clickOnButton(ValidationText.LOG_IN);
             solo.sleep(ValidationText.WAIT_TIME_LONGER);
-            solo.waitForView(solo.getView("tab_image", VIEW_ID));
-            solo.clickOnView(solo.getView("tab_image", VIEW_ID));
-
+            try {
+            	solo.waitForView(solo.getView("tab_image", VIEW_ID));
+                solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+            } catch( AssertionError w ) {
+            	solo.sleep(ValidationText.WAIT_TIME_LONG);
+            	solo.waitForView(solo.getView("tab_image", VIEW_ID));
+                solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+            }
+            
+            
+            
             // Assert if the accountProfile is visible,then login successfully.
             View accountProfile = (View) solo.getView("profile_photo_image", 0);
             junit.framework.Assert.assertTrue("Log in failed.",
@@ -238,7 +257,7 @@ public final class Account {
      */
     public static void judgementAccountLogin(final Solo solo) throws Exception {
 
-        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         solo.clickOnView(solo.getView("tab_image", 4));
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
@@ -258,8 +277,11 @@ public final class Account {
         if (createAccount) {
 
             solo.goBack();
+            
             try {
+            	
                 overAccountLogIn(solo);
+                
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -268,7 +290,7 @@ public final class Account {
         } else if (newAccount) {
             ImageView profile = (ImageView) solo.getView("imageProfile");
             solo.clickOnView(profile);
-            solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+            solo.sleep(ValidationText.WAIT_TIME_LONG);
         } else {
             solo.goBack();
         }
