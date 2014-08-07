@@ -194,7 +194,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 
 			// Tap "Next Buy" button on web view.
 			Action.clickElementsInWebviewByText(solo, ValidationText.NEXT_BUY);
-			solo.sleep(ValidationText.WAIT_TIME_LONG);
+			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			boolean expected = false;
 			for (WebElement webs : solo.getCurrentWebElements()) {
 				Log.i("number", webs.getClassName().toString());
@@ -222,6 +222,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			Action.removeShoppingCart(solo);
 
 			for (int i = 0; i < Action.VIEW_ID_THREE; i++) {
+				
 				solo.scrollToTop();
 				Action.enterToItemPages(solo);
 				TestHelper.swipeUp(solo, 1);

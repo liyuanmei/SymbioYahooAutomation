@@ -97,6 +97,7 @@ public class Options extends ActivityInstrumentationTestCase2<Activity> {
     public final void testZeroResultDisplayed() throws Exception {
 
         Account.judgementAccountLogin(solo);
+
         solo.clickOnView(solo.getView("tab_image", 2));
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
         android.widget.ListView listView = (android.widget.ListView) solo

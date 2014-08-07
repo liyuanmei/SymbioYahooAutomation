@@ -163,6 +163,7 @@ public class Promotion extends ActivityInstrumentationTestCase2<Activity> {
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			TextView shoppingCart = (TextView) solo.getView(
 					"ecshopping_cart_store_count", 0);
 			assertTrue("Not add to shopping cart.",

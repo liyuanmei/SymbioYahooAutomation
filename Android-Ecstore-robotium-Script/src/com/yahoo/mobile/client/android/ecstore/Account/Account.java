@@ -225,6 +225,7 @@ public final class Account {
             throws Exception {
 
         solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
         // Search "Set up account" aims to verify that not any account log in.

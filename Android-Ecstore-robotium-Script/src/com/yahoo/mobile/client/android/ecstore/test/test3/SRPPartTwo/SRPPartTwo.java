@@ -473,8 +473,10 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 
 		View star = (View) solo.getView("star_button", 1);
 		solo.clickOnView(star);
-		boolean alreadyAdd;
 
+		boolean alreadyAdd;
+		solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+		
 		// Get toast text.
 		if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)) {
 			alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);

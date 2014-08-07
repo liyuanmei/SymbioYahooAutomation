@@ -225,8 +225,12 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2<Activity> {
 	 *             if has error
 	 */
 	public final void testLoadMoreItems() throws Exception {
-
+		
+		
+		
 		Action.enterToJacketAfterSearch(solo);
+		
+		Action.setListViewStyleAfterSearch(solo);
 		
 		Assert.hideSoftKeyboard(solo);
 
@@ -825,7 +829,7 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clickView(solo, "tab_image", 2);
 
 		Action.clickView(solo, "star_button", 0);
-
+		solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
 		if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION, 1,
 				ValidationText.WAIT_TIME_LONG)
 				|| solo.waitForText(ValidationText.HAS_REMOVED_COLLECTION, 1,

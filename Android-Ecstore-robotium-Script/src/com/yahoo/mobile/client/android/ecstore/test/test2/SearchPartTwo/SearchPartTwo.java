@@ -774,21 +774,24 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 
 		// click on search button on home screen
 		Action.clickSearchButtonOnScreen(solo);
-
+		
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+		
 		// fill in null keyword then click search button
 		Action.searchAfterPutData(solo, 0, "");
-		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+		solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 		// solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
 		try {
 			TextView after = (TextView) solo.getView(
-					"listitem_discoverylist_top10_title", 0);
+					"listitem_discoverylist_top10_title");
 			assertTrue("Not in latest page.", after.isShown());
 		} catch (AssertionError e) {
 			TestHelper.swipeDown(solo, 1);
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
 			TextView after = (TextView) solo.getView(
-					"listitem_discoverylist_top10_title", 0);
+					"listitem_discoverylist_top10_title");
 			assertTrue("Not in latest page.", after.isShown());
 		}
 
