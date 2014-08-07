@@ -168,7 +168,7 @@ test("[1959898] Not log in, click on the add collection list icon ", function ()
     Action.tapButtonOnTabBar(0);
     $.delay(5);
 
-    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio2 , varTestsSignInPasswordMobilestoresymbio2);
+    Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio4 , varTestsSignInPasswordMobilestoresymbio4);
     $.delay(10);
 
     Action.tapButtonOnTabBar(0);
