@@ -1445,8 +1445,8 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
         //There is no data
         //classification and goods buttons is first cell
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
             var noData = app.mainWindow().collectionViews()[0].staticTexts()[1];
             Assert.elementsValueShouldContainText(noData,varTestsNoData);
         }
@@ -1510,8 +1510,8 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
         //There is no data
         //classification and goods buttons is first cell
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
             var noData = app.mainWindow().collectionViews()[0].staticTexts()[1];
             Assert.elementsValueShouldContainText(noData,varTestsNoData);
         }

@@ -1152,8 +1152,8 @@ test("[1938104] login user able to add product to favorites", function () {
     
     if(checkWhetherThereAreRedundantData.isVisible() == 1){
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
             var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[1];
         }
         else{
@@ -1373,8 +1373,8 @@ test("[1938117] On photo grid view register user able to add product to his favo
     
     if(checkWhetherThereAreRedundantData.isVisible() == 1){
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
             var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[1];
         }
         else{
@@ -1788,8 +1788,8 @@ test("[1938129] on item listing-list view register should able to add item to hi
     
     if(checkWhetherThereAreRedundantData.isVisible() == 1){
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
             var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[1];
         }
         else{

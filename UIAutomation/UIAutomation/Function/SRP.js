@@ -1038,8 +1038,8 @@ test("[1937976] check click on the picture of commodity",function () {
         $.delay(3);
         //Verify screen successful navigated to item page when products have been sold out.
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
             Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
         }
         else{
@@ -1123,8 +1123,8 @@ test("[1937979] check click on the name of commodity" , function () {
         $.delay(3);
         //Verify screen successful navigated to item page when products have been sold out.
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
             Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
         }
         else{
@@ -1807,8 +1807,8 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
         $.delay(3);
         //Verify screen successful navigated to item page when products have been sold out.
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
             Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
         }
         else{
@@ -2590,8 +2590,8 @@ test("[1937989] Click the commodity pictures", function () {
         $.delay(3);
         //Verify screen successful navigated to item page when products have been sold out.
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
             Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
         }
         else{
@@ -3039,8 +3039,8 @@ test("[1938004] view-check click on the name of commodity",function () {
         $.delay(3);
         //Verify screen successful navigated to item page when products have been sold out.
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
             Assert.itemPageShowCorrectWhenProductsHaveBeenSoldOut(4);
         }
         else{

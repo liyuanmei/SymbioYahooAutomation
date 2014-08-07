@@ -197,8 +197,8 @@ test("[1959925] Verify user can search funtion in store page ", function () {
     $.delay(sleep);
     try{
         var version = target.systemVersion();
-        version = version.substring(0, version.lastIndexOf("."));
-        if(version == "6.1") {
+        version = version.substring(0,1);
+        if(version == "6") {
            Action.tapChooseOnItemPage(3);
         }
         else{
