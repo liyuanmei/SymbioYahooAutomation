@@ -141,7 +141,8 @@ public class StoreList extends ActivityInstrumentationTestCase2<Activity> {
      *             if has error
      */
     public final void testStoreinfoAfterSearch() throws Exception {
-
+    	
+    	solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         Action.clickSearchButtonOnScreen(solo);
         Action.searchAfterPutData(solo, 0, ValidationText.S);
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
