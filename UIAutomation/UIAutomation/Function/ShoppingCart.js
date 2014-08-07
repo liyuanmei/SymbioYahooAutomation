@@ -111,7 +111,7 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" ,function (
     Action.tapButtonOnTabBar(2);
     Action.tapSearchIconOnNavBar();
     
-    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName5);
+    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName2);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
