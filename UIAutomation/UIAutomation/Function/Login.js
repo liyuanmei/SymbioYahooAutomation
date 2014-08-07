@@ -37,12 +37,6 @@ test("[1977501] verify login and Logout of interaction", function () {
     
     Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio4 , varTestsSignInPasswordMobilestoresymbio4);
 
-    try{
-        $.delay(5);
-        Action.tapButtonOnTabBar(0);
-    }
-    catch (err) {
-        $.delay(15);
-        Action.tapButtonOnTabBar(0);
-    }
+    $.delay(15);
+    Action.tapButtonOnTabBar(0);
 });
