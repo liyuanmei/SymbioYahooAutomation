@@ -304,14 +304,14 @@ const varTestsSearchBoxInputDataStore4 = "miu star";
 const varTestsSearchBoxInputDataStore5 = "S.DIAMOND鑽石糖甜點";
 
 //search input goods name
-const varTestsSearchBoxInputGoodsName1 = "LULUS【03100054】L- 韓製-薄棉連帽外套-６色 現+預";
+const varTestsSearchBoxInputGoodsName1 = "LULUS";
 const varTestsSearchBoxInputGoodsName2 = "SunShine 防水鏤空果凍平底包鞋";
 const varTestsSearchBoxInputGoodsName3 = "充氣娃娃";
 const varTestsSearchBoxInputGoodsName4 = "《Fun sport》《拳擊專用》美式尼龍沙包袋";
 const varTestsSearchBoxInputGoodsName5 = "◇方妮FaNi◇女人我最大【鯨魚胸貼隱形胸罩】金魚胸貼提胸貼可搭洋裝比基尼泳裝";
 const varTestsSearchBoxInputGoodsName6 = "洞洞涼爽內衣*無鋼圈内衣*";
 const varTestsSearchBoxInputGoodsName7 = "歐可茶葉 OK TEA真奶茶 紫薯纖奶茶";
-const varTestsSearchBoxInputGoodsName8 = "LULUS【03100054】L- 韓製-薄棉連帽外套-６色 現+預";
+const varTestsSearchBoxInputGoodsName8 = "LULUS";
 const varTestsSearchBoxInputGoodsName9 = "精選短袖上衣MIUSTAR 居家舒適感軟棉圓領短袖素T(共18色) 預購";
 
 //Sliding Prices Data

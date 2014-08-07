@@ -105,17 +105,17 @@ test("[1959876] Verify the number of bottom bubble on shopping cart" ,function (
     Action.tapConfirmOnShoppingCart();
 
     Action.tapButtonOnTabBar(3);
-    $.delay(5);
+    $.delay(10);
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.tapSearchIconOnNavBar();
     
-    Action.searchBarInputChinese(varTestsSearchBoxInputGoodsName8);
+    Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     Action.pageShow();
 
-    Action.tapSearchResultOfStore();
+    Action.tapItemOnProductListScreen();
     $.delay(15);
 
     obj.scrollDowns(1);
