@@ -2,8 +2,8 @@ Action.addToShoppingCart = function () {
     $.delay(sleep);
     var collectionViews = app.mainWindow().collectionViews()[0];
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(sleep);
         try{
             var butButton = app.mainWindow().collectionViews()[0].cells()[4].buttons()[1].name();
@@ -42,8 +42,8 @@ Action.butButtonShoppingCart = function () {
 Action.chooseTheSizeOnShoppingCart = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var chooseTheSizeOnShoppingCart = app.mainWindow().collectionViews()[0].cells()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0]);
         chooseTheSizeOnShoppingCart.tap();
@@ -58,8 +58,8 @@ Action.chooseTheSizeOnShoppingCart = function () {
 Action.tapConfirmOnShoppingCart = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapConfirmOnShoppingCart = app.navigationBar().buttons()[1];
         method.checkInstanceExists(app.navigationBar().buttons()[1]);
         tapConfirmOnShoppingCart.tap();
@@ -81,8 +81,8 @@ Action.tapShoppingCartlist = function (i) {
 Action.tapDeleteOnShoppingCart = function () {
     $.delay(5);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         app.mainWindow().tableViews()[0].dragInsideWithOptions({startOffset:{x:0.99, y:0.19}, endOffset:{x:0.75, y:0.18}});
         $.delay(5);
         app.mainWindow().tableViews()[0].cells()[0].buttons()[0].tap();
@@ -169,8 +169,8 @@ Action.determineTheLoginWhenShopping = function () {
 Action.clickTheBuyButtonsOnPromotionPage = function () {
     $.delay(5);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(sleep);
         app.mainWindow().scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.93, y:0.97}});
 
@@ -186,8 +186,8 @@ Action.clickTheBuyButtonsOnPromotionPage = function () {
 Action.clickTheBuyButtonsOnPromotionPageWhenFavstore = function () {
     $.delay(5);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         app.windows()[0].scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.93, y:0.07}});
     }
     else{
@@ -201,8 +201,8 @@ Action.clickTheBuyButtonsOnPromotionPageWhenFavstore = function () {
 Action.tapChooseOnItemPageWhenPromotion = function (i,j) {
     $.delay(5);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var sale = app.mainWindow().collectionViews()[0].cells()[i].tableViews()[0].cells()[j].staticTexts()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[i].tableViews()[0].cells()[j].staticTexts()[0]);
         sale.tap();

@@ -1,8 +1,8 @@
 test("[1959901] Verify stores category show correctly.", function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     Action.determineTheLoginWhenShopping();
@@ -24,8 +24,8 @@ test("[1959901] Verify stores category show correctly.", function () {
     $.delay(5);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //assert stores category show correctly eg:exist category options
         Assert.checkStoreCategoryCellsShowCorrectlyWhenStorePage();
     }
@@ -63,8 +63,8 @@ test("[1959904] Verify user can check purchasing info from store page" , functio
     Action.tapConfirmOnShoppingCart();
     Action.tapButtonOnTabBar(3);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     else{

@@ -1,8 +1,8 @@
 test("[1954571] verify 18 ban show correct.", function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     
@@ -111,8 +111,8 @@ test("[1959888] Verify Just added favorite store can be displayed on my favorite
     $.delay(10);
     
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var storeIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[varTestsHeartIconDisplay];
         if(storeIcon.isEnabled() == 1){
             var firstStoreName = app.windows()[0].collectionViews()[0].cells()[1].staticTexts()[0].name();
@@ -158,8 +158,8 @@ test("[1959907] verify the number of store items,collected number with my favori
 
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var storeItem = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[4];
         var collection = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[6];
     }
@@ -273,8 +273,8 @@ test("[1959875] Verify user logout,then login again,the display of the favorite 
     //Log out and remove user login history
     Action.tapButtonOnTabBar(4);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
 
@@ -291,8 +291,8 @@ test("[1959875] Verify user logout,then login again,the display of the favorite 
 
     Action.tapAddAccountOnLogin(varTestsSignInAccountMobilestoresymbio4 , varTestsSignInPasswordMobilestoresymbio4);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
 

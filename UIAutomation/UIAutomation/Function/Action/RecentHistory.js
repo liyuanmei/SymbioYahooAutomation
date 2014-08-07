@@ -24,8 +24,8 @@ Action.addToRecentBrowse = function () {
 Action.tapCleanSearchOnSidebr = function (i) {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var menuButton = app.navigationBar().buttons()[0];
         menuButton.tap();
         $.delay(sleep);
@@ -66,8 +66,8 @@ Action.tapCleanSearchOnSidebr = function (i) {
 //clean Searches
 Action.cleanBrowsingHistory = function () {
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(sleep);
         var menuButton = app.navigationBar().buttons()[0];
         menuButton.tap();
@@ -132,8 +132,8 @@ Action.cleanBrowsingHistory = function () {
 Action.tapCleanSearchRecordsOnSidebr = function (i) {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var menuButton = app.navigationBar().buttons()[0];
         menuButton.tap();
         $.delay(sleep);

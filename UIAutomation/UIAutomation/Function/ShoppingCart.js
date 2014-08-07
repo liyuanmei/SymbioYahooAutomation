@@ -2,8 +2,8 @@ test("[1959883] verify all delete shopping cart of goods" , function () {
     $.delay(5);
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     
@@ -428,8 +428,8 @@ test("[1959911] Verify Shopping cart information, purchase information display c
     $.delay(20);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
     }
     else{
@@ -515,8 +515,8 @@ test("[1959908] Verify numbers under shopping$next buy" ,function () {
     $.delay(20);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Assert.checkShoppingCartInformationAndPurchaseInformationDisplay(6,varTestsElementsShouldContainTextOnShoppingCartPage1);
     }
     else{

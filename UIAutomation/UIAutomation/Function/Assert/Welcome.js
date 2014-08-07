@@ -21,8 +21,8 @@ Assert.verifyWelcomeScreen = function () {
 Assert.personalCategoryScreen = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         this.CategoriesName = [
         varTestApparel,
         varTestCategoryBeautyMakeup,

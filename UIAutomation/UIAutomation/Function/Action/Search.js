@@ -1,8 +1,8 @@
 Action.tapSearchIconOnNavBar = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapSearchIconOnNavBar = app.navigationBar().buttons()[1];
 
         method.checkInstanceExists(tapSearchIconOnNavBar);
@@ -18,8 +18,8 @@ Action.tapSearchIconOnNavBar = function () {
 Action.tapBackOnSearchBar = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapBackOnSearchBar = app.mainWindow().buttons()[0];
 
         method.checkInstanceExists(tapBackOnSearchBar);
@@ -80,8 +80,8 @@ Action.tapKeyboardDelete = function () {
 Action.cleanSearches = function () {
     $.delay(3);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var menuButton = app.navigationBar().buttons()[0];
 
         method.checkInstanceExists(menuButton);
@@ -185,8 +185,8 @@ Action.clickOnTheDifferentIconPlusOnFirstFloorTableView = function () {
 Action.goBackOnSearchPage = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var goBack = app.navigationBar().buttons()[1];
 
         method.checkInstanceExists(goBack);
@@ -210,8 +210,8 @@ Action.goApparelCategoryWhenSearchSettingOpen = function (){
 Action.backToAllCategory = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
          var backToAllCategory = app.navigationBar().buttons()[0];
 
         method.checkInstanceExists(backToAllCategory);
@@ -225,8 +225,8 @@ Action.backToAllCategory = function () {
 Action.tapSearchIconOnApparelCategory = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapSearchIconOnApparelCategory = app.navigationBar().buttons()[1];
 
         method.checkInstanceExists(tapSearchIconOnApparelCategory);
@@ -250,8 +250,8 @@ Action.goFashionWomenClothingCategory = function () {
 Action.tapBackSubclassification = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapBackSubclassification = app.navigationBar().buttons()[0];
 
         method.checkInstanceExists(tapBackSubclassification);
@@ -274,8 +274,8 @@ Action.goCoatCategory = function () {
 Action.tapGoodsButton = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1];
 
         method.checkInstanceExists(tapGoodsButton);
@@ -302,8 +302,8 @@ Action.englishInputMethod = function () {
 Action.goCategoryWhenSearchSettingOpen = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var goCategoryWhenSearchSettingOpen = app.tabBar().buttons()[2];
         method.checkInstanceExists(app.tabBar().buttons()[2]);
         goCategoryWhenSearchSettingOpen.tap();
@@ -327,8 +327,8 @@ Action.repeatInputWhenSearch = function () {
 Action.repeatChooseWhenSearch = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
        for (var i = 0; i < 4 ; i++) {
            app.mainWindow().tableViews()[0].cells()[i].staticTexts()[0].tap();
            Action.goBackOnSearchPage();
@@ -345,8 +345,8 @@ Action.repeatChooseWhenSearch = function () {
 Action.tapStoreTab = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapStoreTab = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1]);
     }
@@ -400,8 +400,8 @@ Action.doSearch = function (sKeyWords) {
 Action.tapClassificationButtonWhenS = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapGoodsButton = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0]);
         tapGoodsButton.tap();
@@ -417,8 +417,8 @@ Action.tapClassificationButtonWhenS = function () {
 Action.tapDetermineInAdvancedBarWhenSRP = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapDetermineInAdvancedBarWhenSRP = app.mainWindow().navigationBar().buttons()[varTestsDetermine];
         method.checkInstanceExists(app.mainWindow().navigationBar().buttons()[varTestsDetermine]);
         tapDetermineInAdvancedBarWhenSRP.tap();

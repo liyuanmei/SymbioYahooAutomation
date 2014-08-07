@@ -2,8 +2,8 @@
 test("[1977448] [notification]turn on/off marketing notifications ", function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     
@@ -53,8 +53,8 @@ test("[1977478] [barcode]Discovery Stream root view " , function () {
     $.delay(sleep);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapBackOnSearchBar();
     };
 
@@ -78,8 +78,8 @@ test("[1977479] [barcode]Favorite Stores root view " , function () {
     Action.tapCancelButtonInAdvancedBar();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(sleep);
         Action.tapBackOnSearchBar();
     };
@@ -105,8 +105,8 @@ test("[1977480] [barcode]Categories root view " , function () {
     Action.tapCancelButtonInAdvancedBar();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(sleep);
         Action.tapBackOnSearchBar();
     };

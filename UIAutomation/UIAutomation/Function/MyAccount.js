@@ -1,8 +1,8 @@
 test("[1959920] Verify the number of e-coupon can count correctly", function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     
@@ -64,8 +64,8 @@ test("[1959899] Verify the numbers of collected items can be increasing/decreasi
     $.delay(5)
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var firstStoreName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].value();
 
     }
@@ -156,8 +156,8 @@ test("[1977527] verify remove an item from recently browsed", function () {
     $.delay(5);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapButtonOnTabBar(2);
         $.delay(sleep);
 
@@ -350,8 +350,8 @@ test("[1959879] Verify the favorite items number", function () {
     target.logElementTree();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var GoodsCollection = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{

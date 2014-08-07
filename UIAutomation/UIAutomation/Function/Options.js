@@ -1,8 +1,8 @@
 test("[1959919] Verify 0 result function on leaf-category", function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
 
@@ -21,8 +21,8 @@ test("[1959919] Verify 0 result function on leaf-category", function () {
     $.delay(5);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         obj.scrollDowns(1);
         $.delay(sleep);
         

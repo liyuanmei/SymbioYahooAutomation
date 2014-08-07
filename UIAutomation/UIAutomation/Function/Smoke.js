@@ -1,8 +1,8 @@
 test("[1952835] [Personalization] verify user can use personalization.", function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     
@@ -484,8 +484,8 @@ test("[1952828] [[Store Listings]verfiy user can access the listings page.", fun
     
     //verify 共xxxx筆結果 show correct.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{

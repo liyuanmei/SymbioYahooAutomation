@@ -83,8 +83,8 @@ obj.scrollDowns = function (total) {
 
 method.checkInstanceExists = function (instance) {
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(5);
     }
 
@@ -104,8 +104,8 @@ method.checkInstanceExists = function (instance) {
 
 method.verifyTrue = function (expression, message, endCase) {
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(5);
     }
 
@@ -131,8 +131,8 @@ method.verifyTrue = function (expression, message, endCase) {
 
 method.verifyEquals = function (expected, received, message) {
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(5);
     }
 

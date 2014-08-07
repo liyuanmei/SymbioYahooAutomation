@@ -1,8 +1,8 @@
 Action.notificationSettings = function (i) {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var menuButton = app.navigationBar().buttons()[0];
         menuButton.tap();
         $.delay(sleep);

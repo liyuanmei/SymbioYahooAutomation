@@ -1,8 +1,8 @@
 test("[1937918] Check the Tab display" , function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     
@@ -80,8 +80,8 @@ test("[1937921] Check the switch back to the Item list" , function () {
     //Check store List Display
     $.delay(5);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //Check store List Display
         Assert.commodityItemsShowCount(5);
         }
@@ -105,8 +105,8 @@ test("[1937927] Check the default show 20 items",function () {
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -128,8 +128,8 @@ test("[1937927] Check the default show 20 items",function () {
     }
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //Check the default show 4 items
         Assert.commodityItemsShowCount(4);
     }
@@ -153,8 +153,8 @@ test("[1937928] Scroll screen more items should successful loaded", function () 
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -176,8 +176,8 @@ test("[1937928] Scroll screen more items should successful loaded", function () 
     }
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //Check the default show 4 items
         Assert.commodityItemsShowCount(4);
         Action.pageShow();
@@ -289,8 +289,8 @@ test("[1937938] check according to the 'low price to dealer' sort" , function ()
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -346,8 +346,8 @@ test("[1937939] product items should sorting by price high to low after user sel
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -403,8 +403,8 @@ test("[1937942] tap clear button can clear to user input.", function () {
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -433,8 +433,8 @@ test("[1937942] tap clear button can clear to user input.", function () {
     Action.tapButtonsInAdvancedBar(2);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //verify the default price is 100000 +
         Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions(varTestsPriceNumber100000);
 
@@ -516,8 +516,8 @@ test("[1937943] check “確定” button exist on Advanced bar", function () {
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -546,8 +546,8 @@ test("[1937943] check “確定” button exist on Advanced bar", function () {
 
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //Verify "確定" button exist on Navigation Bar, the index of this button is 1.
         Assert.buttonExistOnNavigationBar(1, varTestConfirmbuttonExistOnNavigationBarInAdvancedBar);
     }
@@ -574,8 +574,8 @@ test("[1937944] Check the '確定' button" , function (){
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -604,8 +604,8 @@ test("[1937944] Check the '確定' button" , function (){
 
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapbuttonExistOnNavigationBar(1);
     }
     else{
@@ -631,8 +631,8 @@ test("[1937945] product items in list should show correct after user adjust pric
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -665,8 +665,8 @@ test("[1937945] product items in list should show correct after user adjust pric
     $.delay(15);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         obj.scrollDowns(1);
     }
     $.delay(10);
@@ -685,8 +685,8 @@ test("[1937945] product items in list should show correct after user adjust pric
 
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //verify the default price is 100000 +
         Assert.checkPriceBarShowCorrectWhenSRPOnDifferentversions(varTestsPriceNumber100000);
 
@@ -712,8 +712,8 @@ test("[1937945] product items in list should show correct after user adjust pric
     $.delay(15);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         obj.scrollDowns(1);
     }
     $.delay(10);
@@ -978,8 +978,8 @@ test("[1937976] check click on the picture of commodity",function () {
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1017,8 +1017,8 @@ test("[1937976] check click on the picture of commodity",function () {
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //Assert products have been sold out.
         var productsExist = app.mainWindow().collectionViews()[0].cells()[4].buttons()[0];
     }
@@ -1062,8 +1062,8 @@ test("[1937979] check click on the name of commodity" , function () {
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1102,8 +1102,8 @@ test("[1937979] check click on the name of commodity" , function () {
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //Assert products have been sold out.
         var productsExist = app.mainWindow().collectionViews()[0].cells()[4].buttons()[0];
     }
@@ -1282,8 +1282,8 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1316,8 +1316,8 @@ test("[1937996] on photo grid view unregister user tap favorites icon login wind
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //tap favorites icon, after tapped log in window show up.
         Action.tapFavoritesIcon(2);
     }
@@ -1358,8 +1358,8 @@ test("[1938008] check log in window show after unregister user tap favorites ico
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1392,8 +1392,8 @@ test("[1938008] check log in window show after unregister user tap favorites ico
     $.delay(20);    
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         obj.scrollDowns(1);
     }
     else{
@@ -1404,8 +1404,8 @@ test("[1938008] check log in window show after unregister user tap favorites ico
 
     //tap favorites icon, after tapped log in window show up.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //tap favorites icon, after tapped log in window show up.
         Action.tapFavoritesIcon(0);
     }
@@ -1474,8 +1474,8 @@ test("[1937984] login user able to add product to favorites." , function () {
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1511,8 +1511,8 @@ test("[1937984] login user able to add product to favorites." , function () {
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
     }
     else{
@@ -1555,8 +1555,8 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1591,8 +1591,8 @@ test("[1937995] check favorites icon show correct with photo grid view" ,functio
 
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //get product price X and Y.
         var productPrice = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0];
         var productPriceX = Action.getElementsOriginXString(productPrice);
@@ -1642,8 +1642,8 @@ test("[1937997] On photo grid view register user able to add product to his favo
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1676,8 +1676,8 @@ test("[1937997] On photo grid view register user able to add product to his favo
 
     //Tap favorites icon add a production to favorites.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapFavoritesIcon(2);
     }
     else{
@@ -1687,8 +1687,8 @@ test("[1937997] On photo grid view register user able to add product to his favo
     $.delay(sleep);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
     }
     else{
@@ -1709,8 +1709,8 @@ test("[1937997] On photo grid view register user able to add product to his favo
     $.delay(sleep);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapFavoritesIcon(2);
     }
     else{
@@ -1748,8 +1748,8 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1786,8 +1786,8 @@ test("[1938001] on item listing-Large photo view tap commodity picture  should n
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //Assert products have been sold out.
         var productsExist = app.mainWindow().collectionViews()[0].cells()[4].buttons()[0];
     }
@@ -1872,8 +1872,8 @@ test("[1938006] check the rating show correct on item listing-Large photo view" 
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -1949,8 +1949,8 @@ test("[1938007] check favorites icon show correct on item listing-Large photo vi
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var pageShow = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -2024,8 +2024,8 @@ test("[1938013] check 共xxxx筆結果." , function () {
 
     //verify 共xxxx筆結果 show correct.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -2056,8 +2056,8 @@ test("[1938024] store Logo below store name" , function () {
 
     //verify 共xxxx筆結果 show correct.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }
     else{
@@ -2250,8 +2250,8 @@ test("[1937941] Check the 'remove' button shows ", function () {
     Action.tapButtonOnFilterAttributeScreen(0);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var attributeCollectView = app.mainWindow().collectionViews()[0];
     }
     else{
@@ -2461,8 +2461,8 @@ test("[1938019] Check the default show 20 stores", function () {
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var itemListCount = app.mainWindow().collectionViews()[0].cells().length;
         if(itemListCount == "7"){
             Assert.commodityItemsShowCount(7);
@@ -2572,8 +2572,8 @@ test("[1937989] Click the commodity pictures", function () {
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //Assert products have been sold out.
         var productsExist = app.mainWindow().collectionViews()[0].cells()[4].buttons()[0];
     }
@@ -2629,8 +2629,8 @@ test("[1938009] Login - click join collection after listing of stars." , functio
 
     //Tap favorites icon add a production to favorites.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapFavoritesIcon(2);
     }
     else{
@@ -2649,8 +2649,8 @@ test("[1938009] Login - click join collection after listing of stars." , functio
     //Remove favorites item.
     Action.tapButtonOnTabBar(2);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapFavoritesIcon(2);
     }
     else{
@@ -2690,8 +2690,8 @@ test("[1938031] After login, click on add collection list icon ", function () {
     Action.tapheartIconOnStoreWhenSRP();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapheartIconOnStoreWhenSRP();
         $.delay(sleep);
     }
@@ -2820,8 +2820,8 @@ test("[1937925] Switch to a shop List, check 'total XXX pen results' ", function
 
     //verify 共xxxx筆結果 show correct.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
 
     }
@@ -2911,8 +2911,8 @@ test("[1937950] check have a video display options", function () {
     $.delay(sleep);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Assert.chooseButtonsOnAdvanced(0,6,varTestsItemInAdvancedBarChoose7);
 
     }
@@ -3021,8 +3021,8 @@ test("[1938004] view-check click on the name of commodity",function () {
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //Assert products have been sold out.
         var productsExist = app.mainWindow().collectionViews()[0].cells()[4].buttons()[0];
     }
@@ -3074,8 +3074,8 @@ test("[1937993] view-Check the goods price display",function () {
 
     //first parameter is second product, second parameter is the  location of price in product cell.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Assert.productPriceShowCorrect(2,0);
 
     }
@@ -3190,8 +3190,8 @@ test("[1937924] item－list check 共xxxx筆結果." , function () {
 
     //verify 共xxxx筆結果 show correct.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
 
     }
@@ -3222,8 +3222,8 @@ test("[1937974] Check the goods pictures showed." , function () {
     Assert.checkItemName(cellItems);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var numberOfItems = app.mainWindow().collectionViews()[0].staticTexts()[1];
 
     }

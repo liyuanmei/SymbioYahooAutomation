@@ -1,8 +1,8 @@
 test("[1953619] Verify the for piece goods discount", function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     
@@ -356,8 +356,8 @@ test("[1953629] Verify the store page, our classification.", function () {
     $.delay(sleep);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapChooseOnItemPage(3);
     }
     else{
@@ -450,8 +450,8 @@ test("[1959917] Verify item link,promotion link,gifi link work well.", function 
     Assert.itemPageShowCorrect();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapChooseOnItemPage(0);
     }
     else{
@@ -534,8 +534,8 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
     $.delay(sleep);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapChooseOnItemPageWhenBuy(5,0);
     }
     else{
@@ -729,8 +729,8 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     $.delay(10);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         try{
             Action.tapChooseOnItemPageWhenBuy(5,0);
         }
@@ -745,8 +745,8 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     Action.goBack();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         try{
             Action.tapChooseOnItemPageWhenBuy(5,0);
         }
@@ -760,8 +760,8 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     Action.goBack();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         try{
             Action.tapChooseOnItemPageWhenBuy(5,0);
         }
@@ -791,8 +791,8 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     $.delay(sleep);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         try{
             Action.tapChooseOnItemPageWhenBuy(5,0);
         }
@@ -808,8 +808,8 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
 
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         try{
             Action.tapChooseOnItemPageWhenBuy(5,0);
         }
@@ -881,8 +881,8 @@ test("[1953630] Verify the store page, our goods.", function () {
     $.delay(sleep);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapChooseOnItemPage(3);
     }
     else{

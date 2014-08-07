@@ -1,8 +1,8 @@
 test("[1977497] [bug case]search后查看store list然後在返回再查看store info." , function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     

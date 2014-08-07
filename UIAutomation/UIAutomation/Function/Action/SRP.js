@@ -8,8 +8,8 @@ Action.searchBarInputChinese = function (sValue) {
 Action.tapGoodsTab = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapGoodsTab = app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0]);
         tapGoodsTab.tap();
@@ -80,8 +80,8 @@ Action.tapCommodityNumber = function () {
 Action.tapheartIconOnStoreWhenSRP = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") { 
+    version = version.substring(0,1);
+    if(version == "6") { 
         var tapheartIconOnStoreWhenSRP = app.mainWindow().collectionViews()[0].cells()[1].buttons()[0];
         method.checkInstanceExists(app.mainWindow().collectionViews()[0].cells()[1].buttons()[0]);
         tapheartIconOnStoreWhenSRP.tap();
@@ -135,8 +135,8 @@ Action.tapSearchResultOfStore = function () {
 Action.tapSearchIconOnNavBarWhenSRP = function() {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") { 
+    version = version.substring(0,1);
+    if(version == "6") { 
         var tapSearchIconOnNavBar = app.navigationBar().buttons()[3];
         method.checkInstanceExists(app.navigationBar().buttons()[3]);
         tapSearchIconOnNavBar.tap();

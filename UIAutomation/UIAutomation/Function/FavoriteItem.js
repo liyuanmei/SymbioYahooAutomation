@@ -1,8 +1,8 @@
 test("[1959923] Verify store rate from items collected", function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     
@@ -32,8 +32,8 @@ test("[1959923] Verify store rate from items collected", function () {
     //Tap favorites icon add a production to favorites.
     Action.tapFavoritesIcon(1);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0].name();
     }
     else{
@@ -81,8 +81,8 @@ test("[1959929] verify user can add favorite item.", function () {
     Action.pageShow();
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var storeNameElement = app.mainWindow().collectionViews()[0].cells()[2].staticTexts()[0];
         $.delay(4);
 
@@ -109,8 +109,8 @@ test("[1959929] verify user can add favorite item.", function () {
 
     //restore
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapFavoritesIcon(2);
     }
     else{
@@ -138,8 +138,8 @@ test("[1959929] verify user can add favorite item.", function () {
     Assert.checkStoreName(firstStoreName);
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //restore settings
         Action.tapFirstViewsOnFavoriteStorePage();
         $.delay(5);

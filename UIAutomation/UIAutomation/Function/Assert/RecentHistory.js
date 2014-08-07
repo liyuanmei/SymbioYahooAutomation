@@ -7,8 +7,8 @@ Assert.searchSuggestionsPageDisplayOnRecentHisory = function () {
     var mainWindow = app.mainWindow();
     $.delay(5);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         method.verifyTrue(app.mainWindow().collectionViews()[0].cells().length<=2);
     }
     else{

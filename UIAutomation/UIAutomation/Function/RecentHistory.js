@@ -1,8 +1,8 @@
 test("[1900004] verify can browse recent items in「商品」tab ", function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     Action.determineTheLoginWhenShopping();
@@ -30,8 +30,8 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     Assert.checkGoodsTextExistOnRecentBrowse(1,2);
     //Verify the first favorites item successful removed.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Assert.commodityItemsShowCount(4);
     }
     else{
@@ -51,8 +51,8 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
     $.delay(sleep);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
     //check using FavoritesIcon
         Action.tapFavoritesIcon(1);
         $.delay(5);
@@ -72,8 +72,8 @@ test("[1900004] verify can browse recent items in「商品」tab ", function () 
 
     //Verify the first favorites item successful removed.
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(5);
         var goodsNum = app.mainWindow().collectionViews()[0].staticTexts()[1];
     }

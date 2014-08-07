@@ -24,8 +24,8 @@ Assert.textExistOnShoppingCart = function (elements) {
 Assert.checkCollectionScreenCorrect = function(){
     $.delay(5);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         method.verifyEquals(varTestsCollectionScreenCorrectLike,app.mainWindow().collectionViews()[0].staticTexts()[1].name());
         method.verifyEquals(varTestsCollectionScreenCorrectAbleLike,app.mainWindow().collectionViews()[0].staticTexts()[2].name());
     }

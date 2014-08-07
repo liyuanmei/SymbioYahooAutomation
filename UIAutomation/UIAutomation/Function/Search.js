@@ -1,8 +1,8 @@
 test("[1937852] click on the search", function () {
     target.logDeviceInfo();
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(10);
     }
     
@@ -1365,8 +1365,8 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
 
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //drag price bar to 253 price.
         app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x:0.00, y:0.37}, duration:12.2});
         $.delay(sleep);
@@ -1381,8 +1381,8 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
     $.delay(5);
 
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         Action.tapItemOnProductListScreen();
     }
     else{
@@ -1417,8 +1417,8 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
 
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //drag price bar to 23 price.
         app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x:0.00, y:0.37}, duration:12.2});
         $.delay(sleep);
@@ -1482,8 +1482,8 @@ test("[1977509] [bug case]verify It cann't show blank when the price is 0 in 「
 
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //drag price bar to 5 price.
         app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x:0.00, y:0.37}, duration:12.2});
         $.delay(sleep);

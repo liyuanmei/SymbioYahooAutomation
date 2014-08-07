@@ -7,8 +7,8 @@ Assert.checkSalesPromotionActivity = function () {
 Assert.checkPaymentAndDelivery = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var delivery= app.mainWindow().collectionViews()[0].staticTexts()[1].name();
         var payment = app.mainWindow().collectionViews()[0].staticTexts()[0].name();
         method.verifyEquals(varTestsDeliveryWays, delivery);
@@ -25,8 +25,8 @@ Assert.checkPaymentAndDelivery = function () {
 Assert.checkClassificationButtonIsEnabled = function (i) {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var classificationButtonIsEnabled = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[i];
         method.verifyEquals(1, classificationButtonIsEnabled.isEnabled());
     }
@@ -61,8 +61,8 @@ Assert.checkShareButtonShowOnItemPage = function () {
 Assert.checkTheGrayOptionsIsNotTaped = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var tapConfirmOnShoppingCart = app.navigationBar().buttons()[1];
         assertNotEquals(varTestConfirmbuttonExistOnNavigationBarInAdvancedBar,tapConfirmOnShoppingCart);
     }

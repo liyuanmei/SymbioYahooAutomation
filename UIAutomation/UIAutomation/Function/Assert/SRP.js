@@ -1,8 +1,8 @@
 Assert.checkGoodsAndStoreTabDisplay = function  () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         method.verifyEquals(varTestCategoryCommodityTab,app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[0].name());
         method.verifyEquals(varTestCategoryStoreTab,app.mainWindow().collectionViews()[0].cells()[0].segmentedControls()[0].buttons()[1].name());
     }
@@ -54,8 +54,8 @@ Assert.elementsOnFilterScreenWhenSRP = function () {
     var circleImage2 = app.mainWindow().images()[1].name();
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var barImage1 = app.mainWindow().images()[3].name();
         var barImage2 = app.mainWindow().images()[2].name();
     }
@@ -84,8 +84,8 @@ Assert.elementsOnFilterScreenWhenSRP = function () {
     for (var i = 0; i < 9; i++){
         $.delay(sleep);
         var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         method.verifyEquals(this.AttributeElements[i], app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0].name());
     }
         else{
@@ -100,8 +100,8 @@ Assert.itemPageShowCorrectOnCoatSearchPage = function (sTitle) {
 
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         $.delay(sleep);
         var butButton = app.mainWindow().collectionViews()[0].cells()[4].buttons()[1].name();
         if(butButton == varTestsAddButtons){
@@ -127,8 +127,8 @@ Assert.itemPageShowCorrectOnCoatSearchPage = function (sTitle) {
 Assert.productAddedToMyFavoritesScreenWhenSRP = function (productName) {
     $.delay(4);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var collectionView = app.mainWindow().collectionViews()[0];
         var productCell = collectionView.cells()[0].staticTexts()[0];
 
@@ -154,8 +154,8 @@ Assert.productRemovedFromMyFavoritesScreenWhenSRP = function (productName) {
 Assert.checkButtonOnStore = function () {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         var storeClassify = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[0];
         var storeCommodity = app.mainWindow().collectionViews()[0].cells()[1].segmentedControls()[0].buttons()[1];
 
@@ -191,8 +191,8 @@ Assert.heartIconShowCorrect = function (productIndex) {
 Assert.checkPriceBarShowCorrectWhenSRP = function (price) {
     $.delay(sleep);
     var version = target.systemVersion();
-    version = version.substring(0, version.lastIndexOf("."));
-    if(version == "6.1") {
+    version = version.substring(0,1);
+    if(version == "6") {
         //Verify price show correct.
         var priceNumber = app.mainWindow().staticTexts()[1].name();
         method.verifyEquals(price, priceNumber);
