@@ -1244,9 +1244,13 @@ public final class Action {
     public static void enterToJacket(final Solo solo) throws Exception {
 
         solo.clickOnView(solo.getView("tab_text", VIEW_ID_TWO));
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         Action.clickText(solo, ValidationText.APPAREL);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         Action.clickText(solo, ValidationText.POPULAR_WOMEN);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         Action.clickText(solo, ValidationText.JACKET);
+        solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
         Action.clickText(solo, ValidationText.CATEGORIES);
 
     }

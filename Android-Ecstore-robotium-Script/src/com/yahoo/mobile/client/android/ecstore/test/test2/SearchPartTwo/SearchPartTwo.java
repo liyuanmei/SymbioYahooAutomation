@@ -304,9 +304,16 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clearHistoryInfomation(solo);
 
 		Action.enterToJacket(solo);
-		Action.clickText(solo, ValidationText.T_SHIRT);
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+		
+		//Click "T-shirt" in list
+		solo.clickInList(1);
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+		
 		Action.clickText(solo, ValidationText.CATEGORIES);
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
 		Action.clickText(solo, ValidationText.NO_SLEEVE_SHIRT);
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
 		Action.clickSearchButtonOnScreen(solo);
 		solo.goBack();
 		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
@@ -437,8 +444,11 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clearHistoryInfomation(solo);
 
 		Action.enterToJacket(solo);
-		Action.clickText(solo, ValidationText.T_SHIRT);
+		solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+		solo.clickInList(1);
+		solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 		Action.clickText(solo, ValidationText.CATEGORIES);
+		
 		Action.clickText(solo, ValidationText.NO_SLEEVE_SHIRT);
 		solo.goBack();
 		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
@@ -625,9 +635,15 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clearHistoryInfomation(solo);
 
 		Action.enterToJacket(solo);
-		Action.clickText(solo, ValidationText.T_SHIRT);
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+		
+		//Click "T shirt" in list
+		solo.clickInList(1);
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
 		Action.clickText(solo, ValidationText.CATEGORIES);
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
 		Action.clickText(solo, ValidationText.NO_SLEEVE_SHIRT);
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
 		Action.clickSearchButtonOnScreen(solo);
 
 		// Input test data.
@@ -697,6 +713,9 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clearHistoryInfomation(solo);
 
 		Account.judgementAccountLogin(solo);
+		
+		solo.clickOnView(solo.getView("tab_image",Action.VIEW_ID_ZERO));
+		
 		solo.sleep(ValidationText.WAIT_TIME_SHORT);
 		Action.clickSearchButtonOnScreen(solo);
 		solo.sleep(ValidationText.WAIT_TIME_SHORT);
@@ -769,6 +788,8 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clearHistoryInfomation(solo);
 
 		Account.judgementAccountLogin(solo);
+		
+		solo.clickOnView(solo.getView("tab_image",Action.VIEW_ID_ZERO));
 
 		solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
