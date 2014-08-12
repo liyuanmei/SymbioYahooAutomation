@@ -100,7 +100,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 	 */
 	public final void testUsePersonalization() throws Exception {
 
-		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
+		if  (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
 
 			Account.judgementAccountLogin(solo);
 

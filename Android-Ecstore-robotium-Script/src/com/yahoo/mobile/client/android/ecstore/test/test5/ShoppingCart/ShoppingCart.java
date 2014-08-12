@@ -279,7 +279,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			assertTrue(
 					"Total number displayed incorrect",
 					solo.searchText(ValidationText.ONE_COMMODITY)
-							&& solo.searchText(ValidationText.TWO_COMMODITY));
+							|| solo.searchText(ValidationText.TWO_COMMODITY));
 		}
 
 	}
@@ -629,6 +629,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
 			TestHelper.swipeUp(solo, 2);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 			solo.sleep(ValidationText.WAIT_TIME_LONG);

@@ -282,7 +282,10 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clearHistoryInfomation(solo);
 
 		Action.enterToJacket(solo);
-		Action.clickText(solo, ValidationText.T_SHIRT);
+		//Action.clickText(solo, ValidationText.T_SHIRT);
+		
+		//click T-shirt text.
+		solo.clickInList(1);
 		Action.clickSearchButtonOnScreen(solo);
 		solo.goBack();
 		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
@@ -422,7 +425,9 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clearHistoryInfomation(solo);
 
 		Action.enterToJacket(solo);
-		Action.clickText(solo, ValidationText.T_SHIRT);
+		//Action.clickText(solo, ValidationText.T_SHIRT);
+		solo.clickInList(1);
+		
 		Action.clickText(solo, ValidationText.COMMODITY);
 		solo.goBack();
 		TextView searchText = (TextView) solo.getView("action_bar_title", 0);
@@ -596,7 +601,11 @@ public class SearchPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clearHistoryInfomation(solo);
 
 		Action.enterToJacket(solo);
-		Action.clickText(solo, ValidationText.T_SHIRT);
+		//Action.clickText(solo, ValidationText.T_SHIRT);
+		
+		// click T-shirt text.
+		solo.clickInList(1);
+		
 		Action.clickSearchButtonOnScreen(solo);
 
 		// Input test data.
