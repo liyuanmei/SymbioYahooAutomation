@@ -403,8 +403,6 @@ test("[1953631] verify '分享商品' Layer.", function () {
 
     Action.tapShareOnProductPage();
     $.delay(5);
-    target.logElementTree();
-    $.delay(sleep);
 
     //check share is enable
     Assert.checkShareButtonIsEnabled();
@@ -571,7 +569,6 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
 
     obj.scrollDownsWhenSettlement(1);
     $.delay(sleep);
-    target.logElementTree();
 
     Assert.tapSettleAccountsOnShopping(12,varTestsItemPageLinksPurchaseOfGoods);
     Action.goBack();

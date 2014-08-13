@@ -1400,7 +1400,6 @@ test("[1938008] check log in window show after unregister user tap favorites ico
         Action.slidingCommodityPage();
     }
     $.delay(15);
-    target.logElementTree();
 
     //tap favorites icon, after tapped log in window show up.
     var version = target.systemVersion();
@@ -2215,8 +2214,6 @@ test("[1937930] Browse by specific classification search results" , function () 
     Action.searchBarInputChinese(varTestsSearchBoxInputDataCoat);
     Action.tapKeyboardSearch();
     $.delay(5);
-
-    target.logElementTree();
     
     //verify ”漢神百貨品牌服飾“
     Assert.searchResultsPage(varTestsSearchBoxInputDataCoat);

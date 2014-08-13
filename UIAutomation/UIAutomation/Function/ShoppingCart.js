@@ -690,7 +690,6 @@ test("[1977496] Verify [bug case]「我要結賬」" ,function () {
     
     Action.tapSettleAccounts();
     $.delay(20);
-    target.logElementTree();
 
     Assert.tapSettleAccountsOnShopping(6,varTestsSettleAccountsOnShopping);
 

@@ -428,7 +428,6 @@ test("[1977445] [Store Listings]Verify user can see some basic information about
 
     Action.tapSearchResultOfStore();
     $.delay(5);
-    target.logElementTree();
 
     Assert.ckeckHeartIconOnNavigationBar();
 

@@ -11,11 +11,9 @@ test("[1959919] Verify 0 result function on leaf-category", function () {
 
     Action.tapItemOnCategoryScreenWhenOptions(9);
     $.delay(sleep);
-    target.logElementTree();
 
     Action.tapChoosePreductCategoryWhenOptions(0,1);
     $.delay(sleep);
-    target.logElementTree();
 
     Action.tapClassificationButtonWhenS();
     $.delay(5);
@@ -34,7 +32,6 @@ test("[1959919] Verify 0 result function on leaf-category", function () {
         
         Action.tapChoosePreductCategoryWhenOptions(0,3);
         $.delay(5);
-        target.logElementTree();
 
         Action.tapButtonsInAdvancedBarWhenOp();
         $.delay(5);

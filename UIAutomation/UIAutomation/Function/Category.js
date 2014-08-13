@@ -8,7 +8,7 @@ test("[1938036] Check Header", function () {
 
     Action.goApparelCategory();
     Action.goCommodityTab();
-    target.logElementTree();
+    
     Action.pageShow();
 
     Assert.commodityHeader();
@@ -286,7 +286,7 @@ test("[1938055] verify the elements order in 排序 tab", function () {
     Action.tapButtonsInAdvancedBar(0);
     Assert.buttonOnAdvancedIsEnabled(0);
     $.delay(5);
-    target.logElementTree();
+    
 
     Assert.elementsOrderInSortTab();
 
@@ -788,7 +788,7 @@ test("[1938062] tap clear button can clear to user input.", function () {
         app.mainWindow().dragInsideWithOptions({startOffset: {x:0.92, y:0.34}, endOffset:{x: 0.234, y:0.37}, duration:12.2});
         $.delay(sleep);
 
-        target.logElementTree();
+        
         //Verify price show correct after dragging.
         Assert.checkPriceBarShowCorrect(varTestsSlidingPricesData1);
 
@@ -803,7 +803,6 @@ test("[1938062] tap clear button can clear to user input.", function () {
         //drag price bar to 1020 price.    
         app.mainWindow().dragInsideWithOptions({startOffset: {x: 0.92, y: 0.29}, endOffset:{x: 0.234, y: 0.29}});
         $.delay(sleep);
-        target.logElementTree();
 
         //Verify price show correct after dragging.
         Assert.checkPriceBarShowCorrect(varTestsSlidingPricesData1);
@@ -1145,8 +1144,6 @@ test("[1938104] login user able to add product to favorites", function () {
     Action.goMayFavoritesScreen();
     $.delay(5);
 
-    target.logElementTree();
-
     var checkWhetherThereAreRedundantData = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
 
     
@@ -1199,7 +1196,6 @@ test("[1938049] check advanced buttons order.", function () {
     //tap Advance button
     Action.tapAdvancedButton();
     $.delay(sleep);
-    target.logElementTree();
     //Verify advance buttons order.
     Assert.advancedButtonsOrder();
 
@@ -1245,7 +1241,7 @@ test("[1938113] check item price show correct.", function () {
 
         Action.chooseCategoryBrowseMode(varTestsListInBrowse);
         Action.pageShow();
-        target.logElementTree();
+    
         //verify product price show correct.
         Assert.productPriceShowCorrect(1, 3);
     }

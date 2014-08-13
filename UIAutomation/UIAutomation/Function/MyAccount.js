@@ -58,8 +58,6 @@ test("[1959899] Verify the numbers of collected items can be increasing/decreasi
 
     Action.tapItemOnProductListScreen();
     $.delay(5);
-
-    //target.logElementTree();
     Action.tapFavoritesIcon(1);
     $.delay(5)
 
@@ -226,7 +224,6 @@ test("[1977531] verify remove a store from recently browsed", function () {
 
     Action.deleteRecordsRecently();
     $.delay(sleep);
-    target.logElementTree();
     
     Assert.searchSuggestionsPageDisplayOnRecentHisory();
     Action.tapButtonOnTabBar(4);
@@ -346,8 +343,6 @@ test("[1959879] Verify the favorite items number", function () {
 
     Action.tapButtonOnMyUser(3);
     $.delay(20);
-
-    target.logElementTree();
 
     var version = target.systemVersion();
     version = version.substring(0,1);

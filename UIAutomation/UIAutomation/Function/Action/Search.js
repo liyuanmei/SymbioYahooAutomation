@@ -367,7 +367,6 @@ Action.tapShoppingInformationPage = function () {
     var tokyoStore = app.navigationBar().buttons()[0];
     method.checkInstanceExists(app.navigationBar().buttons()[0]);
     tokyoStore.tap();
-    target.logElementTree();
     $.delay(3);
 
     var tapShoppingInformationPage = app.mainWindow().tableViews()[0].cells()[varTestsShoppingInformationPage];

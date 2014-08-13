@@ -634,11 +634,6 @@ Action.verifyEditingFavoriteCategories = function () {
         $.delay(sleep);
     
         Action.tapButtonOnMenu(1);
-        target.logElementTree();
-
-        //var navName = app.navigationBar()[0].staticTexts()[0].name();
-        //method.verifyEquals("編輯喜愛的分類", navName);
-
         Action.tapButtonOnSidebarWhenCate();
         Assert.buttonOnSidebarIsEnabled();
 
@@ -655,11 +650,6 @@ Action.verifyEditingFavoriteCategories = function () {
         $.delay(sleep);
     
         Action.tapButtonOnMenu(1);
-        target.logElementTree();
-        
-        //var navName = app.navigationBar()[0].staticTexts()[0].name();
-        //method.verifyEquals("編輯喜愛的分類", navName);
-
         Action.tapButtonOnSidebarWhenCate();
         Assert.buttonOnSidebarIsEnabled();
 

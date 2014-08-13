@@ -34,7 +34,6 @@ Action.tapCleanSearchOnSidebr = function (i) {
         var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
-        target.logElementTree();
         app.windows()[0].collectionViews()[0].cells()[2].switches()[0].setValue(i);
     
         var closeButton = app.windows()[0].navigationBar().buttons()[0];
@@ -52,7 +51,6 @@ Action.tapCleanSearchOnSidebr = function (i) {
         var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
-        target.logElementTree();
         app.windows()[0].collectionViews()[0].cells()[2].switches()[0].setValue(i);
     
         var closeButton = app.windows()[0].navigationBar().buttons()[1];
@@ -142,7 +140,6 @@ Action.tapCleanSearchRecordsOnSidebr = function (i) {
         var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
-        target.logElementTree();
         app.windows()[0].collectionViews()[0].cells()[0].switches()[0].setValue(i);
     
         var closeButton = app.windows()[0].navigationBar().buttons()[0];
@@ -160,7 +157,7 @@ Action.tapCleanSearchRecordsOnSidebr = function (i) {
         var tableCells = tableViews.cells()[varTestsSettings];
         tableCells.tap();
         $.delay(sleep);
-        target.logElementTree();
+
         app.windows()[0].collectionViews()[0].cells()[0].switches()[0].setValue(i);
     
         var closeButton = app.windows()[0].navigationBar().buttons()[1];

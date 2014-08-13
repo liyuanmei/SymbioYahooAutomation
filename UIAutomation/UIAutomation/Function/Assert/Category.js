@@ -870,7 +870,6 @@ Assert.checkGoodsCollectionSuccessful = function () {
 Assert.checkStoreCategoryCellsShowCorrectlyWhenStorePage = function () {
     $.delay(sleep);
     for (var i = 2; i < 4; i++) {
-            target.logElementTree();
             $.delay(1);
             var checkStoreCategoryCellsShowCorrectly = app.mainWindow().collectionViews()[0].cells()[i].staticTexts()[0];
             method.verifyEquals(1, checkStoreCategoryCellsShowCorrectly.isEnabled());

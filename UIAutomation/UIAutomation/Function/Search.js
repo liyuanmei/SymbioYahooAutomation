@@ -940,8 +940,7 @@ test("[1937909] Click to return to the icon L4 layer classification", function (
     Action.searchBarInput(varTestsSearchBoxInputDataKeyword);
     Action.tapKeyboardSearch();
     $.delay(sleep);
-    
-    target.logElementTree();
+
     Assert.searchResultsPage(varTestsSearchBoxInputDataKeyword);
      
     //return fashion women's clothing category
@@ -1273,7 +1272,6 @@ test("[1937912] check the search results", function () {
     Action.pageShow();
 
     //verify type "iphone" show the correct
-    target.logElementTree();
     $.delay(sleep);
     var productName = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[2];
 
