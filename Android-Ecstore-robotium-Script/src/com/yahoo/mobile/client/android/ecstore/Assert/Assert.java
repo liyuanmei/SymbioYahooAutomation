@@ -1,5 +1,6 @@
 package com.yahoo.mobile.client.android.ecstore.Assert;
 
+import junit.framework.AssertionFailedError;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -36,9 +37,18 @@ public final class Assert {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(solo.getCurrentActivity());
         boolean flag = prefs.getBoolean("Time", false);
-
+        View versionAlert;
         	if (!flag) {
-	           
+        		try {
+    				versionAlert = (View) solo.getView("alertTitle");
+    				if (versionAlert.isShown() || android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+"))
+    					solo.goBack();
+    			} catch (AssertionFailedError e) {
+    			 
+    				System.err.println(e.toString());
+    				junit.framework.Assert.assertTrue(
+    						"Not the first time launch app", true);
+    			}
 	            try {
 	                View skip = (View) solo.getView("welcome_skip");
 	                if (skip.isShown()) {

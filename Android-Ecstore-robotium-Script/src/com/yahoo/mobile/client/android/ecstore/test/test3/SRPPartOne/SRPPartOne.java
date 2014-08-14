@@ -721,7 +721,9 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2<Activity> {
 
 		// list style
 		Action.setListViewStyleAfterSearch(solo);
-
+		
+		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+		
 		String sr = Action.getValuesInTextview(solo,
 				"listitem_productlist_price", 0);
 
@@ -817,7 +819,7 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2<Activity> {
 
 		// Account.accountLogIn(solo);
 		Account.judgementAccountWithoutLogin(solo);
-
+		
 		Action.enterToJacketAfterSearch(solo);
 
 		Action.setListViewStyleAfterSearch(solo);
@@ -831,10 +833,10 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clickView(solo, "star_button", 0);
 		solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
 		if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION, 1,
-				ValidationText.WAIT_TIME_LONG)
+				ValidationText.WAIT_TIME_MIDDLE)
 				|| solo.waitForText(ValidationText.HAS_REMOVED_COLLECTION, 1,
-						ValidationText.WAIT_TIME_LONGER)) {
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+						ValidationText.WAIT_TIME_MIDDLE)) {
+			 
 		} else {
 			assertTrue("Add failed.", false);
 		}
@@ -971,10 +973,10 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2<Activity> {
 		Action.clickView(solo, "star_button", 0);
 
 		if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION, 1,
-				ValidationText.WAIT_TIME_LONG)
+				ValidationText.WAIT_TIME_MIDDLE)
 				|| solo.waitForText(ValidationText.HAS_REMOVED_COLLECTION, 1,
-						ValidationText.WAIT_TIME_LONGER)) {
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+						ValidationText.WAIT_TIME_MIDDLE)) {
+	 
 		} else {
 			assertTrue("Add failed.", false);
 		}
