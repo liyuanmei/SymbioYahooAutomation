@@ -163,7 +163,7 @@ const varTestFavoriteStoreName = "最愛商店";
 const varTestShoppingCartName = "購物車";
 const varTestMyAccountName = "我的帳戶";
 
-//category tab.
+//category tab
 const varTestApparel = "服飾";
 const varTestApparelPicture = "UINavigationBarBackIndicatorDefault.png";
 const varTestCategoryBeautyMakeupName = "美妝";
