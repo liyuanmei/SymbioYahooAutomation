@@ -304,7 +304,7 @@ const varTestsSearchBoxInputDataStore4 = "miu star";
 const varTestsSearchBoxInputDataStore5 = "S.DIAMOND鑽石糖甜點";
 
 //search input goods name
-const varTestsSearchBoxInputGoodsName1 = "LULUS";
+const varTestsSearchBoxInputGoodsName1 = "LULUS【01090009】G-兩件式-細橫紋肩帶可拆無痕內衣+小褲褲";
 const varTestsSearchBoxInputGoodsName2 = "SunShine 防水鏤空果凍平底包鞋";
 const varTestsSearchBoxInputGoodsName3 = "充氣娃娃";
 const varTestsSearchBoxInputGoodsName4 = "《Fun sport》《拳擊專用》美式尼龍沙包袋";

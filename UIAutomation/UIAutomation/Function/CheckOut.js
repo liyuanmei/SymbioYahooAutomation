@@ -47,7 +47,7 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
     $.delay(10);
 
     obj.scrollDownsWhenSettlement(3);
-    $.delay(sleep);
+    $.delay(5);
 
     try{
         //Verify "全家繳費不取貨" exist
@@ -57,10 +57,9 @@ test("[1959915] Verfiy check out conmponent on step 3" ,function () {
         Action.tapFamilyPaymentNotPickup();
     }
     catch (err) {
-        //No data "全家繳費不取貨" but Verify "全家" display
+        //No data "全家繳費不取貨" but Verify go to shopping cart page 
         $.delay(sleep);
-        var convenienceStorePayment = app.mainWindow().scrollViews()[0].webViews()[0].staticTexts()[varTestsConveniencePayment];
-        Assert.elementsShouldContainText(convenienceStorePayment,varTestsConveniencePaymentName);
+        Assert.checkSearchPage(varTestsTheOrderPageElements1);
     }
 
     Action.tapSettleAccounts();
