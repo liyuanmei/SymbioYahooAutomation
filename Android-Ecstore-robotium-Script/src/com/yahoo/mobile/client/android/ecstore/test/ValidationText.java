@@ -262,6 +262,8 @@ public class ValidationText {
     
     public static final String NO_DATA_SHOP = "你沒有最近瀏覽的商店";
     
+    public static final String NO_DATA_IN_SHOPPING_LIST = "沒有商品在下次購買清單中";
+    
     public static final String EDIT_FAVORITE_CATEGORY = "編輯喜愛的分類";
     
     public static final String HANSHEN_HOME_LIFE = "漢神百貨居家生活";

@@ -198,7 +198,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			boolean expected = false;
 			for (WebElement webs : solo.getCurrentWebElements()) {
 				Log.i("number", webs.getClassName().toString());
-				if (webs.getClassName().toString().equals("price")) {
+				if (webs.getClassName().toString().equals("price") || solo.searchText(ValidationText.NO_DATA_IN_SHOPPING_LIST)) {
 					expected = true;
 				}
 
@@ -488,7 +488,9 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			Action.searchTextOnWebview(solo, ValidationText.SUB_TOTAL);
+
 		} else {
+
 			Account.judgementAccountLogin(solo);
 			Action.removeShoppingCart(solo);
 
@@ -511,7 +513,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			
 			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			assertTrue("No next buy item.",
 					solo.searchText(ValidationText.NEXT_BUY));
 			
@@ -519,7 +521,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			Action.searchTextOnWebview(solo, ValidationText.NEXT_BUY);
 			solo.goBack();
-			
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			Action.searchTextOnWebview(solo, ValidationText.SUB_TOTAL);

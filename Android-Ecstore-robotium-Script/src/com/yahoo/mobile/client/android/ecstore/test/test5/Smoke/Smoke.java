@@ -299,6 +299,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 				assertTrue("This page incorrect.", webpage.isShown());
 			}
 			solo.goBack();
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
 			solo.clickOnText(ValidationText.ECOUPON);
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			
@@ -339,6 +340,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_FOUR));
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
 			solo.clickOnText(ValidationText.ORDER_INQUIRY);
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			
@@ -351,6 +353,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 				assertTrue("This page incorrect.", webpage.isShown());
 			}
 			solo.goBack();
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
 			solo.clickOnText(ValidationText.ECOUPON);
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			
