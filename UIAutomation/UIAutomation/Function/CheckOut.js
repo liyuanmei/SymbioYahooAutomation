@@ -109,7 +109,15 @@ test("[1959916] Verify order inquiry details page can show normally" ,function (
     obj.scrollDowns(1);
     $.delay(5);
 
-    Action.chooseButtonsOnCollectionViews(0,4,1);
+    Action.addToShoppingCartWhenItemPage();
+    try{
+        Action.chooseTheSizeOnShoppingCart();
+        Action.tapConfirmOnShoppingCart();
+    }
+    catch(err){
+        $.delay(10);
+        Action.tapButtonOnTabBar(3);
+    }
     $.delay(5);
     
     //go to shopping cart page
