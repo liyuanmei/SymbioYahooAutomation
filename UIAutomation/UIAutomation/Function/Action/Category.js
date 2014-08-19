@@ -666,13 +666,12 @@ Action.tapFavoriteStoreIcon = function () {
     var version = target.systemVersion();
     version = version.substring(0,1);
     if(version == "6") {
-        var FavoriteIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[0].name();
-        if(FavoriteIcon = varTestsHeartIconDisplay){
+        try{
             var FavoriteStoreIcon = app.windows()[0].collectionViews()[0].cells()[1].buttons()[0];
             method.checkInstanceExists(app.windows()[0].collectionViews()[0].cells()[1].buttons()[0]);
             FavoriteStoreIcon.tap();
         }
-        else{
+        catch(err){
             var FavoriteStoreIcon = app.windows()[0].collectionViews()[0].cells()[2].buttons()[0];
             method.checkInstanceExists(app.windows()[0].collectionViews()[0].cells()[2].buttons()[0]);
             FavoriteStoreIcon.tap();
