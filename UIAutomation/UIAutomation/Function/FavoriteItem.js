@@ -120,22 +120,44 @@ test("[1959929] verify user can add favorite item.", function () {
 
     //favstore
     Action.tapButtonOnTabBar(1);
-    $.delay(5);
-
-    var firstStoreName = app.windows()[0].collectionViews()[0].cells()[1].staticTexts()[0].name();
-    Action.tapFavoriteStoreIcon();
-    $.delay(10);
-
-    //do refresh
-    Action.doRefreshFavoriteStorePage();
     $.delay(20);
+    var version = target.systemVersion();
+    version = version.substring(0,1);
+    if(version == "6") {
+        var firstStoreName = app.windows()[0].collectionViews()[0].cells()[0].staticTexts()[0];
 
-    Action.tapButtonOnTabBar(2);
-    Action.tapButtonOnTabBar(1);
-    $.delay(15);
+        Action.tapFavoriteStoreIcon();
+        $.delay(10);
 
-    //check favorite store can be displayed on my favorite stores tab
-    Assert.checkStoreName(firstStoreName);
+        //do refresh
+        Action.doRefreshFavoriteStorePage();
+        $.delay(20);
+
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(1);
+        $.delay(15);
+
+        //check favorite store can be displayed on my favorite stores tab
+        Assert.elementsShouldContainTextWhenSearch(firstStoreName,varTestsFavstoreNameOnItem);
+    }
+    else{
+        var firstStoreName = app.windows()[0].collectionViews()[0].cells()[1].staticTexts()[0].name();
+
+        Action.tapFavoriteStoreIcon();
+        $.delay(10);
+
+        //do refresh
+        Action.doRefreshFavoriteStorePage();
+        $.delay(20);
+
+        Action.tapButtonOnTabBar(2);
+        Action.tapButtonOnTabBar(1);
+        $.delay(15);
+
+        //check favorite store can be displayed on my favorite stores tab
+        Assert.checkStoreName(firstStoreName);
+    }
+    
     $.delay(sleep);
     var version = target.systemVersion();
     version = version.substring(0,1);

@@ -14,17 +14,32 @@ test("[1977497] [bug case]search后查看store list然後在返回再查看store
     Action.tapKeyboardSearch();
     Action.pageShow();
 
-    //check list view
-    Assert.longtextSearchPageDisplay();
+    var checkStoreListHaveData = app.mainWindow().collectionViews()[0].cells().length;
+    if(checkStoreListHaveData<=2){
+        //check list view
+        Assert.longtextSearchPageDisplay();
+    }
+    else{
+        //Changes in the data
+        Assert.checkFavoriteStoreCellsShowCorrectly 
+    }
 
     Action.tapStoreTab();
-    $.delay(sleep);
+    $.delay(5);
 
     Action.tapSearchResultOfStore();
-    $.delay(3);
+    $.delay(10);
 
     //check list view
-    Assert.longtextSearchPageDisplay();
+    var checkStoreListHaveData = app.mainWindow().collectionViews()[0].cells().length;
+    if(checkStoreListHaveData<=2){
+        //check list view
+        Assert.longtextSearchPageDisplay();
+    }
+    else{
+        //Changes in the data
+        Assert.checkFavoriteStoreCellsShowCorrectly 
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);

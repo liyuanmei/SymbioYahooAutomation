@@ -389,6 +389,7 @@ const varTestsCheckSuperGiftPoints = "超贈點 · 可用 0 、待發放 0";
 const varTestsCollectionScreenCorrectAbleLike = "你可能會喜歡的商店"
 const varTestsCollectionScreenCorrectLike = "你的最愛商店";
 const varTestsLogInFirstOnFavoritePage = "請先登入";
+const varTestsFavstoreNameOnItem = "要加入最愛商店";
 
 //On shopping cart page
 const varTestsElementsShouldContainTextOnShoppingCartPage1 = "規格:";
