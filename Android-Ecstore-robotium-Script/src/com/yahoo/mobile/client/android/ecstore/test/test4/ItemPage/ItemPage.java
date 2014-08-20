@@ -121,7 +121,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
 			solo.clickOnText(ValidationText.SALES_PROMOTION);
 
-		} catch (AssertionError e) {
+		} catch (AssertionError e)  {
 			
 			TestHelper.swipeUp(solo, 1);
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
@@ -612,6 +612,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			TestHelper.swipeUp(solo, 1);
 			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+
 			try {
 				// TestHelper.swipeUp2(solo, Action.VIEW_ID_TEN);
 				TestHelper.swipeUp(solo, 1);

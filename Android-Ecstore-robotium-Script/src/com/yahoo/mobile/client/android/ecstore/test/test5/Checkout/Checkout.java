@@ -168,7 +168,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			TestHelper.swipeUp(solo, 2);
 			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-
+			TestHelper.swipeUp(solo, 2);
 			// Select "7-11"
 			Action.clickElementsInWebviewByClassname(solo, "shippingList");
 			solo.sleep(ValidationText.WAIT_TIME_LONG);

@@ -484,7 +484,7 @@ public class SRPPartTwo extends ActivityInstrumentationTestCase2<Activity> {
 		} else {
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickOnView(star);
-			alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+			alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION) || solo.waitForText(ValidationText.HAS_REMOVED_COLLECTION);
 			junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
 
 		}
