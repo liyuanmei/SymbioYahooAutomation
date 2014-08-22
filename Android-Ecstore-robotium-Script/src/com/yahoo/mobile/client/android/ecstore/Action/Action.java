@@ -722,13 +722,14 @@ public final class Action {
         try {
             radioButtons = (View) solo.getView(
                     "product_item_spec_item_selections", 0);
-        } catch (AssertionError e) {
-            TestHelper.swipeUp2(solo, 2);
+        } catch (AssertionFailedError e) {
+           /* TestHelper.swipeUp2(solo, 2);
             // solo.sleep(ValidationText.WAIT_TIME_SHORT);
             View shopCarts = solo
                     .getView("productitem_btn_add_to_shopping_cart");
-            solo.clickOnView(shopCarts);
-        }
+            solo.clickOnView(shopCarts);*/
+        	junit.framework.Assert.assertTrue("Add failed.", true);
+        }  
         View buddle;
         View radioButton = null;
         try {
@@ -743,7 +744,7 @@ public final class Action {
             buddle = solo.getView("tab_badge", VIEW_ID_THREE);
             junit.framework.Assert.assertTrue("No items in shopping cart.",
                     buddle.isShown());
-        } catch (AssertionError e) {
+        } catch (AssertionFailedError e) {
             junit.framework.Assert.assertTrue("Add failed.", true);
         }
 
@@ -769,7 +770,7 @@ public final class Action {
             shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
             solo.clickOnView(shopCart);
             solo.sleep(ValidationText.WAIT_TIME_SHORT);
-        } catch (AssertionError e) {
+        } catch (AssertionFailedError e) {
 
             TestHelper.swipeUp2(solo, 4);
 
@@ -782,7 +783,7 @@ public final class Action {
         try {
             radioButtons = (View) solo.getView(
                     "product_item_spec_item_selections", 0);
-        } catch (AssertionError e) {
+        } catch (AssertionFailedError e) {
             TestHelper.swipeUp2(solo, 2);
             // solo.sleep(ValidationText.WAIT_TIME_SHORT);
             View shopCarts = solo
@@ -803,7 +804,7 @@ public final class Action {
             buddle = solo.getView("tab_badge", VIEW_ID_THREE);
             junit.framework.Assert.assertTrue("No items in shopping cart.",
                     buddle.isShown());
-        } catch (AssertionError e) {
+        } catch (AssertionFailedError e) {
             junit.framework.Assert.assertTrue("Add failed.", true);
         }
 

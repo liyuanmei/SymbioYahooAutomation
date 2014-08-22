@@ -246,7 +246,8 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			assertTrue(
-					"Total number displayed incorrect",
+					"Total number displayed incorrect",solo.searchText(ValidationText.ONE_COMMODITY)
+					&& solo.searchText(ValidationText.TWO_COMMODITY)||
 					solo.searchText(ValidationText.THREE_COMMODITY)
 							);
 		} else {

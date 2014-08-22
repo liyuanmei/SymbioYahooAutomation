@@ -496,6 +496,43 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 	 */
 	public final void testGiftsDisplayedInTheShoppingcart() throws Exception {
 
+		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
+			
+			Account.judgementAccountLogin(solo);
+			Action.removeShoppingCart(solo);
+			
+			solo.goBack();
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
+			Action.clickSearchButtonOnScreen(solo);
+			Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			TextView storeName = (TextView) solo.getView(
+					"listitem_productlist_store_name", 1);
+
+			solo.clickOnView(storeName);
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			TestHelper.swipeUp(solo, 1);
+			Action.addToShoppingCart(solo);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			
+			solo.sleep(ValidationText.WAIT_TIME_LONG);
+			
+			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
+			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			
+			for (int i = 0; i < 2; i++) {
+				TestHelper.swipeUp(solo, 10);
+
+			}
+			try {
+				Action.searchTextOnWebview(solo, ValidationText.GIFT);
+			} catch (AssertionError e) {
+				solo.sleep(ValidationText.WAIT_TIME_LONG);
+				TestHelper.swipeUp(solo, 1);
+				Action.searchTextOnWebview(solo, ValidationText.GIFT);
+				}
+		} else {
 		Account.judgementAccountLogin(solo);
 		Action.removeShoppingCart(solo);
 		
@@ -529,8 +566,8 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
 			TestHelper.swipeUp(solo, 1);
 			Action.searchTextOnWebview(solo, ValidationText.GIFT);
+			}
 		}
-
 	}
 
 	/**
@@ -659,32 +696,68 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 	 */
 	public final void testItemPromotionGiftlinkWorkWell() throws Exception {
 
-		Account.judgementAccountLogin(solo);
-		Action.removeShoppingCart(solo);
-		solo.goBack();
-		solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
-		Action.clickSearchButtonOnScreen(solo);
-		Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
-		solo.sleep(ValidationText.WAIT_TIME_ONESEC);
-		TextView storeName = (TextView) solo.getView(
-				"listitem_productlist_store_name", 1);
-		solo.sleep(ValidationText.WAIT_TIME_SHORT);
-		solo.clickOnView(storeName);
-		solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
-		TestHelper.swipeUp(solo, 1);
-		Action.addToShoppingCart(solo);
-		TextView storeNamee = (TextView) solo.getView(
-				"listitem_productlist_store_name", 1);
-		solo.sleep(ValidationText.WAIT_TIME_SHORT);
-		solo.clickOnView(storeNamee);
-		solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
+			Account.judgementAccountLogin(solo);
+			Action.removeShoppingCart(solo);
+			solo.goBack();
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
+			Action.clickSearchButtonOnScreen(solo);
+			Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
+			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+			
+			//Click on store name
+			TextView storeName = (TextView) solo.getView(
+					"listitem_productlist_store_name", 1);
+			
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.clickOnView(storeName);
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			TestHelper.swipeUp(solo, 1);
+			Action.addToShoppingCart(solo);
+			
+			//Click on store name
+			TextView storeNamee = (TextView) solo.getView(
+					"listitem_productlist_store_name", 1);
+			
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.clickOnView(storeNamee);
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
 
-		TestHelper.swipeUp(solo, 1);
-		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			TestHelper.swipeUp(solo, 1);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
-		solo.clickOnText(ValidationText.ADDITIONAL_GIFT);
-		assertTrue("Not enter gift page !",
-				solo.searchText(ValidationText.GIFT));
+			solo.clickOnText(ValidationText.ADDITIONAL_GIFT);
+			assertTrue("Not enter gift page !",
+					solo.searchText(ValidationText.GIFT));
+		} else {
+			Account.judgementAccountLogin(solo);
+			Action.removeShoppingCart(solo);
+			solo.goBack();
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
+			Action.clickSearchButtonOnScreen(solo);
+			Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
+			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+			TextView storeName = (TextView) solo.getView(
+					"listitem_productlist_store_name", 1);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.clickOnView(storeName);
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			TestHelper.swipeUp(solo, 1);
+			Action.addToShoppingCart(solo);
+			TextView storeNamee = (TextView) solo.getView(
+					"listitem_productlist_store_name", 1);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.clickOnView(storeNamee);
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+
+			TestHelper.swipeUp(solo, 1);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+			solo.clickOnText(ValidationText.ADDITIONAL_GIFT);
+			assertTrue("Not enter gift page !",
+					solo.searchText(ValidationText.GIFT));
+		}
+		
 	}
 
 	/**
