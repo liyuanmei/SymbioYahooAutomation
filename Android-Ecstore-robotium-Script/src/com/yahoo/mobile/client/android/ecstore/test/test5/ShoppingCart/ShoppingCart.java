@@ -335,7 +335,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			TestHelper.swipeUp(solo, 1);
-
+ 
 			// Click "check out" button on web view.
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);

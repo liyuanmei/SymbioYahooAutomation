@@ -105,42 +105,82 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 	 */
 	public final void testSingleCommodityDiscount() throws Exception {
 
-		Account.judgementAccountLogin(solo);
-		solo.sleep(ValidationText.WAIT_TIME_SHORT);
-		solo.clickOnView(solo.getView("tab_image", 2));
-		solo.sleep(ValidationText.WAIT_TIME_SHORT);
-		Action.clickText(solo, ValidationText.APPAREL);
-		solo.sleep(ValidationText.WAIT_TIME_SHORT);
-		Action.clickText(solo, ValidationText.COMMODITY);
-		solo.sleep(ValidationText.WAIT_TIME_LONG);
-		solo.clickInList(1);
-
-		try {
-			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
-			TestHelper.swipeUp(solo, 1);
-
-			solo.clickOnText(ValidationText.SALES_PROMOTION);
-
-		} catch (AssertionError e)  {
-			
-			TestHelper.swipeUp(solo, 1);
+		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
+			Account.judgementAccountLogin(solo);
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
-			solo.clickOnText(ValidationText.SALES_PROMOTION);
-
-		}
-		solo.clickOnText(ValidationText.DISCOUNT);
-		solo.sleep(ValidationText.WAIT_TIME_LONGER);
-		View webpage;
-
-		try {
-			webpage = (View) solo.getView("webpage", 0);
-			assertTrue("No promotion link displayed. ", webpage.isShown());
-		} catch (AssertionError e) {
+			solo.clickOnView(solo.getView("tab_image", 2));
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			Action.clickText(solo, ValidationText.APPAREL);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			Action.clickText(solo, ValidationText.COMMODITY);
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
-			webpage = (View) solo.getView("webpage", 0);
-			assertTrue("No promotion link displayed. ", webpage.isShown());
-		}
+			solo.clickInList(1);
 
+			try {
+				solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+				TestHelper.swipeUp(solo, 1);
+
+				solo.clickOnText(ValidationText.SALES_PROMOTION);
+
+			} catch (AssertionFailedError e)  {
+				
+				TestHelper.swipeUp2(solo, 5);
+				solo.sleep(ValidationText.WAIT_TIME_SHORT);
+				solo.clickOnText(ValidationText.SALES_PROMOTION);
+
+			}
+			solo.clickOnText(ValidationText.DISCOUNT);
+			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			View webpage;
+
+			try {
+				webpage = (View) solo.getView("webpage", 0);
+				assertTrue("No promotion link displayed. ", webpage.isShown());
+			} catch (AssertionFailedError e) {
+				solo.sleep(ValidationText.WAIT_TIME_LONG);
+				webpage = (View) solo.getView("webpage", 0);
+				assertTrue("No promotion link displayed. ", webpage.isShown());
+			}
+
+		} else {
+			Account.judgementAccountLogin(solo);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.clickOnView(solo.getView("tab_image", 2));
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			Action.clickText(solo, ValidationText.APPAREL);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			Action.clickText(solo, ValidationText.COMMODITY);
+			solo.sleep(ValidationText.WAIT_TIME_LONG);
+			solo.clickInList(1);
+
+			try {
+				solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+				TestHelper.swipeUp(solo, 1);
+
+				solo.clickOnText(ValidationText.SALES_PROMOTION);
+
+			} catch (AssertionError e)  {
+				
+				TestHelper.swipeUp(solo, 1);
+				solo.sleep(ValidationText.WAIT_TIME_SHORT);
+				solo.clickOnText(ValidationText.SALES_PROMOTION);
+
+			}
+			solo.clickOnText(ValidationText.DISCOUNT);
+			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			View webpage;
+
+			try {
+				webpage = (View) solo.getView("webpage", 0);
+				assertTrue("No promotion link displayed. ", webpage.isShown());
+			} catch (AssertionError e) {
+				solo.sleep(ValidationText.WAIT_TIME_LONG);
+				webpage = (View) solo.getView("webpage", 0);
+				assertTrue("No promotion link displayed. ", webpage.isShown());
+			}
+
+		}
+		
 	}
 
 	/**
@@ -151,35 +191,68 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 	 */
 	public final void testFullDiscount() throws Exception {
 
-		Account.judgementAccountLogin(solo);
-		Action.enterToItemPage(solo);
-		solo.sleep(ValidationText.WAIT_TIME_ONESEC);
-		TestHelper.swipeUp(solo, 1);
-		try {
-
-			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-			solo.clickOnText(ValidationText.SALES_PROMOTION);
-
-		} catch (AssertionError e) {
-
+		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
+			Account.judgementAccountLogin(solo);
+			Action.enterToItemPage(solo);
+			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			TestHelper.swipeUp(solo, 1);
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
-			solo.clickOnText(ValidationText.SALES_PROMOTION);
+			try {
 
-		}
-		solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-		View webpage;
-		try {
-			solo.clickOnText(ValidationText.FULL);
-			solo.sleep(ValidationText.WAIT_TIME_LONGER);
-			webpage = (View) solo.getView("webpage", 0);
-			assertTrue("No promotion link displayed. ", webpage.isShown());
-		} catch (AssertionError e) {
+				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+				solo.clickOnText(ValidationText.SALES_PROMOTION);
 
-			solo.sleep(ValidationText.WAIT_TIME_LONGER);
-			webpage = (View) solo.getView("webpage", 0);
-			assertTrue("No promotion link displayed. ", webpage.isShown());
+			} catch (AssertionFailedError e) {
+
+				TestHelper.swipeDownLowPixle(solo, 6);
+				solo.sleep(ValidationText.WAIT_TIME_SHORT);
+				solo.clickOnText(ValidationText.SALES_PROMOTION);
+
+			}
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			View webpage;
+			try {
+				solo.clickOnText(ValidationText.FULL);
+				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				webpage = (View) solo.getView("webpage", 0);
+				assertTrue("No promotion link displayed. ", webpage.isShown());
+			} catch (AssertionFailedError e) {
+
+				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				webpage = (View) solo.getView("webpage", 0);
+				assertTrue("No promotion link displayed. ", webpage.isShown());
+			}
+		} else {
+			Account.judgementAccountLogin(solo);
+			Action.enterToItemPage(solo);
+			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
+			TestHelper.swipeUp(solo, 1);
+			try {
+
+				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+				solo.clickOnText(ValidationText.SALES_PROMOTION);
+
+			} catch (AssertionFailedError e) {
+
+				TestHelper.swipeDownLowPixle(solo, 1);
+				solo.sleep(ValidationText.WAIT_TIME_SHORT);
+				solo.clickOnText(ValidationText.SALES_PROMOTION);
+
+			}
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			View webpage;
+			try {
+				solo.clickOnText(ValidationText.FULL);
+				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				webpage = (View) solo.getView("webpage", 0);
+				assertTrue("No promotion link displayed. ", webpage.isShown());
+			} catch (AssertionError e) {
+
+				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				webpage = (View) solo.getView("webpage", 0);
+				assertTrue("No promotion link displayed. ", webpage.isShown());
+			}
 		}
+		
 
 	}
 
@@ -588,8 +661,10 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			Action.clickSearchButtonOnScreen(solo);
 			Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
 			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			Assert.hideSoftKeyboard(solo);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			TextView storeName = (TextView) solo.getView(
-					"listitem_productlist_store_name", 1);
+					"listitem_productlist_store_name", 2);
 
 			solo.clickOnView(storeName);
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
@@ -618,13 +693,13 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			solo.clickOnView(addon);
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.goBack();
-			// solo.sleep(ValidationText.WAIT_TIME_SHORT);
-			TestHelper.swipeUp2(solo, 3);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			TestHelper.swipeUp2(solo, 5);
 
 			try {
 				Action.addToShoppingCartForSmallScreen(solo);
 			} catch (AssertionFailedError e) {
-				TestHelper.swipeUp2(solo, 4);
+				TestHelper.swipeUp2(solo, 5);
 				Action.addToShoppingCartForSmallScreen(solo);
 			}
  

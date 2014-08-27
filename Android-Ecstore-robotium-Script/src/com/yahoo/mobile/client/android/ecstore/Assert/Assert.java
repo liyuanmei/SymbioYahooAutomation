@@ -82,7 +82,7 @@ public final class Assert {
 			}
 
 		} else {
-
+			//Dismiss the upgrade dialog during execute script.
 			try {
 				versionAlert = (View) solo.getView("alertTitle");
 				if (versionAlert.isShown()) {
