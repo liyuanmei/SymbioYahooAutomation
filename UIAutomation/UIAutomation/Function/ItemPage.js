@@ -72,25 +72,31 @@ test("[1953617] Verify list of activities the for full discount activity list", 
     $.delay(5);
 
     try{
-        //check full discount
-        var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
-        Assert.elementsShouldContainText(salesPromotionActivity,varTestsSalesPromotionActivity);
-    }
-    catch (err) {
-        //Without access to relevant data, so the check go to varTestsPageNameOnSalesPromotion page
-        Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
-    }
+        try{
+            //check full discount
+            var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+            Assert.elementsShouldContainText(salesPromotionActivity,varTestsSalesPromotionActivity);
+        }
+        catch (err) {
+            //Without access to relevant data, so the check go to varTestsPageNameOnSalesPromotion page
+            Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
+        }
 
-    Action.tapChoosePreductCategoryWhenOptions(0,1);
-    $.delay(30);
+        Action.tapChoosePreductCategoryWhenOptions(0,1);
+        $.delay(30);
 
-    try{
-        //tap link ,check link page
-        Assert.checkTextShowCorrectly(2,varTestsCheckTextShowCorrectlyOnSalesPromotion);
+        try{
+            //tap link ,check link page
+            Assert.checkTextShowCorrectly(2,varTestsCheckTextShowCorrectlyOnSalesPromotion);
+        }
+        catch (err) {
+            //30 seconds without display, so the check go to varTestsPageNameOnSalesPromotion page
+            Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
+        }
     }
-    catch (err) {
-        //30 seconds without display, so the check go to varTestsPageNameOnSalesPromotion page
-        Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
+    catch(err){
+        $.delay(5);
+        Action.tapButtonOnTabBar(2);
     }
 
     Action.tapButtonOnTabBar(2);
