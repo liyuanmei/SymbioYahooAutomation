@@ -63,6 +63,8 @@ public class ValidationText {
     public static final String BIKINI = "金魚胸貼提胸貼可搭洋裝比基";
 
     public static final String DONG_JING = "東京著衣";
+    
+    public static final String SHOPPINGCART_DETAIL = "購物車明細";
 
     public static final String DONG_JING_AUTHENTIC = "東京正宗";
 

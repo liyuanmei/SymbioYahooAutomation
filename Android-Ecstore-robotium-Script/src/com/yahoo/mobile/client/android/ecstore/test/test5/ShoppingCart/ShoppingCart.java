@@ -164,15 +164,9 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			// Tap "Next Buy" button on web view.
 			Action.clickElementsInWebviewByText(solo, ValidationText.NEXT_BUY);
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
-			boolean expected = false;
-			for (WebElement webs : solo.getCurrentWebElements()) {
-				Log.i("number", webs.getClassName().toString());
-				if (webs.getClassName().toString().equals("price")) {
-					expected = true;
-				}
-
-			}
-			assertTrue("Next Buy page display incorrect.", expected);
+			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			assertTrue("Next buy operation failed",solo.searchText(ValidationText.NEXT_BUY));
+		
 		} else {
 
 			Account.judgementAccountLogin(solo);
@@ -195,15 +189,36 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			// Tap "Next Buy" button on web view.
 			Action.clickElementsInWebviewByText(solo, ValidationText.NEXT_BUY);
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
-			boolean expected = false;
-			for (WebElement webs : solo.getCurrentWebElements()) {
-				Log.i("number", webs.getClassName().toString());
-				if (webs.getClassName().toString().equals("price") || solo.searchText(ValidationText.NO_DATA_IN_SHOPPING_LIST)) {
-					expected = true;
-				}
 
+			try{
+				
+				//Action.searchClassNameOnWebview(solo, "price");
+				solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+				assertTrue("Next buy operation failed",solo.searchText(ValidationText.NEXT_BUY));
+				
+			} catch(AssertionFailedError e){
+				
+				/*Some times the product cannot added to next buy page,
+				so we need repeat add product again.*/
+				
+				Action.clickElementsInWebviewByText(solo, ValidationText.SHOPPINGCART_DETAIL);
+				solo.sleep(ValidationText.WAIT_TIME_LONG);
+				Action.clickElementsInWebviewByClassname(solo,
+						"goNextBuy updateItemClick");
+
+				solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+				// Search "Confirm"button on alert window.
+				Action.clickElementsInWebviewByText(solo, ValidationText.OK);
+				solo.sleep(ValidationText.WAIT_TIME_LONG);
+
+				// Tap "Next Buy" button on web view.
+				Action.clickElementsInWebviewByText(solo, ValidationText.NEXT_BUY);
+				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+				assertTrue("Next buy operation failed",solo.searchText(ValidationText.NEXT_BUY));
 			}
-			assertTrue("Next Buy page display incorrect.", expected);
+			
 		}
 
 	}

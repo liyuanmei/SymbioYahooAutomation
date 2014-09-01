@@ -1,6 +1,7 @@
 package com.yahoo.mobile.client.android.ecstore.Account;
 
 
+import junit.framework.AssertionFailedError;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +40,15 @@ public final class Account {
      * @throws Exception if has error
      */
     public static void overAccountLogIn(final Solo solo) throws Exception {
-        solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+
+    	try{
+    		 solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    		 solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+    	} catch(AssertionFailedError e){
+    		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+   		 solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+    	}
+       
 
         boolean newAccount = solo.searchText(ValidationText.NEW_ADD_ACCOUNT);
         if (newAccount) {
@@ -224,7 +233,17 @@ public final class Account {
     public static void judgementAccountWithoutLogin(final Solo solo)
             throws Exception {
 
-        solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+    	try {
+    		
+    		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    		solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+    		
+    	} catch(AssertionFailedError e){
+    		
+    		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+    		solo.clickOnView(solo.getView("tab_image", VIEW_ID));
+    	}
+       
 
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
@@ -259,7 +278,15 @@ public final class Account {
     public static void judgementAccountLogin(final Solo solo) throws Exception {
 
         solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-        solo.clickOnView(solo.getView("tab_image", 4));
+        try{
+        	
+        	solo.clickOnView(solo.getView("tab_image", 4));
+        	
+        } catch(AssertionFailedError e ){
+        	solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+        	solo.clickOnView(solo.getView("tab_image", 4));
+        }
+        
         solo.sleep(ValidationText.WAIT_TIME_SHORT);
 
         // Search "Set up account" aims to verify that not any account log in.

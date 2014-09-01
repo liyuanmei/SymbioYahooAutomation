@@ -106,6 +106,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 	public final void testSingleCommodityDiscount() throws Exception {
 
 		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
+			
 			Account.judgementAccountLogin(solo);
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickOnView(solo.getView("tab_image", 2));
@@ -129,6 +130,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 				solo.clickOnText(ValidationText.SALES_PROMOTION);
 
 			}
+			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			solo.clickOnText(ValidationText.DISCOUNT);
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			View webpage;

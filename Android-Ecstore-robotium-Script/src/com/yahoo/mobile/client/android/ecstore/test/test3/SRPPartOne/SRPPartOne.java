@@ -980,6 +980,7 @@ public class SRPPartOne extends ActivityInstrumentationTestCase2<Activity> {
 		} else {
 			assertTrue("Add failed.", false);
 		}
+		Action.setListViewStyleAfterSearch(solo);
 	}
 
 	/**
