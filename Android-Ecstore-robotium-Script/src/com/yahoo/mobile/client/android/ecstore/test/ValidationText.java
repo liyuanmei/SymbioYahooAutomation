@@ -71,6 +71,10 @@ public class ValidationText {
     public static final String APPAREL = "服飾";
 
     public static final String GIFT = "贈品";
+    
+    public static final String PLUS_ORANGE_WATER = "橘子水";
+    
+    public static final String PLUS_SHOP = "胖嬡的店";
 
     public static final String POPULAR_WOMEN = "流行女裝";
 

@@ -360,7 +360,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 
 			View buddle;
 			View radioButton = (View) solo.getView(
-					"product_item_spec_item_selections", 3);
+					"product_item_spec_item_selections", 4);
 			if (radioButton.isShown()) {
 
 				solo.clickOnView(radioButton);
@@ -369,9 +369,26 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 				solo.waitForText(ValidationText.ALREADY_ADD_SHOPPING_CART, 1,
 						ValidationText.WAIT_TIME_MIDDLE);
 				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-				buddle = solo.getView("tab_badge", Action.VIEW_ID_THREE);
-				junit.framework.Assert.assertTrue("No items in shopping cart.",
-						buddle.isShown());
+				try{
+					buddle = solo.getView("tab_badge", Action.VIEW_ID_THREE);
+					junit.framework.Assert.assertTrue("No items in shopping cart.",
+							buddle.isShown());
+				} catch(AssertionFailedError e){
+					
+					//Reselected the  property of product if its sold out.
+					View radioButtons = (View) solo.getView(
+							"product_item_spec_item_selections", 5);
+					solo.clickOnView(radioButtons);
+					solo.searchText(ValidationText.OK);
+					solo.clickOnButton(ValidationText.OK);
+					solo.waitForText(ValidationText.ALREADY_ADD_SHOPPING_CART, 1,
+							ValidationText.WAIT_TIME_MIDDLE);
+					solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+					buddle = solo.getView("tab_badge", Action.VIEW_ID_THREE);
+					junit.framework.Assert.assertTrue("No items in shopping cart.",
+							buddle.isShown());
+				}
+				
 			} else {
 				junit.framework.Assert.assertTrue("Add failed.", true);
 			}
@@ -415,7 +432,8 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 
 			View buddle;
 			View radioButton = (View) solo.getView(
-					"product_item_spec_item_selections", 3);
+					"product_item_spec_item_selections", 4);
+			 
 			if (radioButton.isShown()) {
 
 				solo.clickOnView(radioButton);
@@ -424,9 +442,26 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 				solo.waitForText(ValidationText.ALREADY_ADD_SHOPPING_CART, 1,
 						ValidationText.WAIT_TIME_MIDDLE);
 				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+				try{
+					
 				buddle = solo.getView("tab_badge", Action.VIEW_ID_THREE);
 				junit.framework.Assert.assertTrue("No items in shopping cart.",
 						buddle.isShown());
+				}catch(AssertionFailedError e){
+
+				 //Reselected the  property of product if its sold out.
+					View radioButtons = (View) solo.getView(
+							"product_item_spec_item_selections", 5);
+					solo.clickOnView(radioButtons);
+					solo.searchText(ValidationText.OK);
+					solo.clickOnButton(ValidationText.OK);
+					solo.waitForText(ValidationText.ALREADY_ADD_SHOPPING_CART, 1,
+							ValidationText.WAIT_TIME_MIDDLE);
+					solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+					buddle = solo.getView("tab_badge", Action.VIEW_ID_THREE);
+					junit.framework.Assert.assertTrue("No items in shopping cart.",
+							buddle.isShown());
+				}
 			} else {
 				junit.framework.Assert.assertTrue("Add failed.", true);
 			}

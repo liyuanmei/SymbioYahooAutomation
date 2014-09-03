@@ -661,12 +661,12 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			solo.goBack();
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
 			Action.clickSearchButtonOnScreen(solo);
-			Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
+			Action.searchAfterPutData(solo, 0, ValidationText.PLUS_ORANGE_WATER);
 			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			Assert.hideSoftKeyboard(solo);
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			TextView storeName = (TextView) solo.getView(
-					"listitem_productlist_store_name", 2);
+					"listitem_productlist_store_name", 1);
 
 			solo.clickOnView(storeName);
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
@@ -717,7 +717,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			solo.goBack();
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_ZERO));
 			Action.clickSearchButtonOnScreen(solo);
-			Action.searchAfterPutData(solo, 0, ValidationText.GIFT);
+			Action.searchAfterPutData(solo, 0, ValidationText.PLUS_ORANGE_WATER);
 			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			TextView storeName = (TextView) solo.getView(
 					"listitem_productlist_store_name", 1);
