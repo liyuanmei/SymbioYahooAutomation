@@ -202,7 +202,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 				Action.clickElementsInWebviewByText(solo,
 						ValidationText.RESELECT_OTHER_STORE);
-				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				 solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			}
 			View storePage;
 			try {
