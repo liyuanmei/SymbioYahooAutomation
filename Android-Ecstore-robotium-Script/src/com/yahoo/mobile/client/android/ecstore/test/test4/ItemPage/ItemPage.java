@@ -108,14 +108,10 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
 			
 			Account.judgementAccountLogin(solo);
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
-			solo.clickOnView(solo.getView("tab_image", 2));
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
-			Action.clickText(solo, ValidationText.APPAREL);
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
-			Action.clickText(solo, ValidationText.COMMODITY);
-			solo.sleep(ValidationText.WAIT_TIME_LONG);
-			solo.clickInList(1);
+
+			Action.enterToJacketAfterSearch(solo);
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			solo.clickInList(0);
 
 			try {
 				solo.sleep(ValidationText.WAIT_TIME_ONESEC);
@@ -146,14 +142,9 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
 		} else {
 			Account.judgementAccountLogin(solo);
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
-			solo.clickOnView(solo.getView("tab_image", 2));
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
-			Action.clickText(solo, ValidationText.APPAREL);
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
-			Action.clickText(solo, ValidationText.COMMODITY);
-			solo.sleep(ValidationText.WAIT_TIME_LONG);
-			solo.clickInList(1);
+			Action.enterToJacketAfterSearch(solo);
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			solo.clickInList(0);
 
 			try {
 				solo.sleep(ValidationText.WAIT_TIME_ONESEC);
@@ -195,7 +186,11 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
 		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
 			Account.judgementAccountLogin(solo);
-			Action.enterToItemPage(solo);
+
+			Action.enterToJacketAfterSearch(solo);
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			solo.clickInList(0);
+			
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			TestHelper.swipeUp(solo, 1);
 			try {
@@ -225,7 +220,11 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			}
 		} else {
 			Account.judgementAccountLogin(solo);
-			Action.enterToItemPage(solo);
+
+			Action.enterToJacketAfterSearch(solo);
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			solo.clickInList(0);
+
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			TestHelper.swipeUp(solo, 1);
 			try {
@@ -267,8 +266,11 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 	public final void testAllCustomersDiscount() throws Exception {
 
 		Account.judgementAccountLogin(solo);
-		Action.enterToItemPage(solo);
 
+		//Action.enterToItemPage(solo);
+		Action.enterToJacketAfterSearch(solo);
+		solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+		solo.clickInList(0);
 		TestHelper.swipeUp(solo, 1);
 
 		try {

@@ -119,7 +119,14 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			// Select "7-11"
 			Action.clickElementsInWebviewByClassname(solo, "shippingList");
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
-			solo.clickOnText("7-11");
+			try{
+				solo.clickOnText("7-11");
+			} catch(AssertionFailedError e){
+				Action.clickElementsInWebviewByClassname(solo, "shippingList");
+				solo.sleep(ValidationText.WAIT_TIME_LONG);
+				solo.clickOnText("7-11");
+			}
+			
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			TestHelper.swipeUp(solo, 1);
 

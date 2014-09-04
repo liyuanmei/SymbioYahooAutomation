@@ -300,8 +300,16 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 			}
 			solo.goBack();
 			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
-			solo.clickOnText(ValidationText.ECOUPON);
-			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			try{
+				solo.clickOnText(ValidationText.ECOUPON);
+				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+
+			} catch(AssertionFailedError e){
+
+				solo.sleep(ValidationText.WAIT_TIME_LONG);
+				solo.clickOnText(ValidationText.ECOUPON);
+				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			}
 			
 			try {
 				View webpage = (View) solo.getView("webpage", 0);
@@ -354,8 +362,17 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 			}
 			solo.goBack();
 			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
-			solo.clickOnText(ValidationText.ECOUPON);
-			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			try{
+				solo.clickOnText(ValidationText.ECOUPON);
+				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+
+			} catch(AssertionError e){
+
+				solo.sleep(ValidationText.WAIT_TIME_LONG);
+				solo.clickOnText(ValidationText.ECOUPON);
+				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			}
+			
 			
 			try {
 				View webpage = (View) solo.getView("webpage", 0);

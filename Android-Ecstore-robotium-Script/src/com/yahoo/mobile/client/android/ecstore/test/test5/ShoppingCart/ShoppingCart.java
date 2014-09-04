@@ -621,8 +621,14 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 					ValidationText.WANT_CHECKOUT);
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
 
-			View webPage = (View) solo.getView("webpage", 0);
-			assertTrue("Current page is not check out page.", webPage.isShown());
+			try{
+				View webPage = (View) solo.getView("webpage", 0);
+				assertTrue("Current page is not check out page.", webPage.isShown());
+			} catch(AssertionError e){
+				solo.sleep(ValidationText.WAIT_TIME_LONG);
+				View webPage = (View) solo.getView("webpage", 0);
+				assertTrue("Current page is not check out page.", webPage.isShown());
+			}
 		} else {
 
 			Account.judgementAccountLogin(solo);
@@ -661,9 +667,15 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
-
-			View webPage = (View) solo.getView("webpage", 0);
-			assertTrue("Current page is not check out page.", webPage.isShown());
+			try{
+				View webPage = (View) solo.getView("webpage", 0);
+				assertTrue("Current page is not check out page.", webPage.isShown());
+			} catch(AssertionError e){
+				solo.sleep(ValidationText.WAIT_TIME_LONG);
+				View webPage = (View) solo.getView("webpage", 0);
+				assertTrue("Current page is not check out page.", webPage.isShown());
+			}
+			
 		}
 
 	}
