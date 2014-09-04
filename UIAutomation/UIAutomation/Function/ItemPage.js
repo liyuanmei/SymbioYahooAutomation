@@ -25,19 +25,26 @@ test("[1953619] Verify the for piece goods discount", function () {
     obj.scrollDowns(1);
     $.delay(10);
 
-    Action.addToShoppingCart();
-    $.delay(5);
+    try{
+        Action.addToShoppingCart();
+        $.delay(5);
 
-    Action.tapCancelOnShoppingCart(); 
-    Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
+        Action.tapCancelOnShoppingCart(); 
+        Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
 
-    $.delay(10);
+        $.delay(10);
 
-    //check go to 促銷活動 page
-    Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
+        //check go to 促銷活動 page
+        Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
 
-    //check 促銷活動  content exist
-    Assert.checkSalesPromotionActivity();
+        //check 促銷活動  content exist
+        Assert.checkSalesPromotionActivity();
+    }
+    catch(err){
+        $.delay(5);
+        //No sales promotion activity
+        Action.tapButtonOnTabBar(2);
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -64,14 +71,14 @@ test("[1953617] Verify list of activities the for full discount activity list", 
     obj.scrollDowns(1);
     $.delay(10);
 
-    Action.addToShoppingCart();
-    $.delay(sleep);
-
-    Action.tapCancelOnShoppingCart(); 
-    Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
-    $.delay(5);
-
     try{
+        Action.addToShoppingCart();
+        $.delay(sleep);
+
+        Action.tapCancelOnShoppingCart(); 
+        Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
+        $.delay(5);
+
         try{
             //check full discount
             var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
@@ -88,14 +95,14 @@ test("[1953617] Verify list of activities the for full discount activity list", 
         try{
             //tap link ,check link page
             Assert.checkTextShowCorrectly(2,varTestsCheckTextShowCorrectlyOnSalesPromotion);
-        }
+        }   
         catch (err) {
             //30 seconds without display, so the check go to varTestsPageNameOnSalesPromotion page
             Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
         }
     }
     catch(err){
-        $.delay(5);
+        //No sales promotion activity
         Action.tapButtonOnTabBar(2);
     }
 
@@ -129,19 +136,26 @@ test("[1953614] Verify the for full discount activity list", function () {
     $.delay(sleep);
 
     Action.tapCancelOnShoppingCart(); 
-    Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
-    $.delay(5);
-
     try{
-        //check full discount
-        var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
-        Assert.elementsShouldContainText(salesPromotionActivity,varTestsSalesPromotionActivity);
-    }
-    catch (err) {
-        Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
-    }
+        Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
+        $.delay(5);
 
-    Assert.checkSalesPromotionActivity();
+        try{
+            //check full discount
+            var salesPromotionActivity = app.mainWindow().collectionViews()[0].cells()[1].staticTexts()[0];
+            Assert.elementsShouldContainText(salesPromotionActivity,varTestsSalesPromotionActivity);
+        }
+        catch (err) {
+            Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
+        }
+
+        Assert.checkSalesPromotionActivity();
+    }
+    catch(err){
+        $.delay(5);
+        //No sales promotion activity
+        Action.tapButtonOnTabBar(2);
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -231,16 +245,20 @@ test("[1959893] Verify Sharing method can be shown.", function () {
 
     obj.scrollDowns(2);
     $.delay(10);
+    try{
+        Action.tapShareOnProductPage();
+        $.delay(5);
 
-    Action.tapShareOnProductPage();
-    $.delay(5);
+        //check share is enable
+        Assert.checkShareButtonIsEnabled();
 
-    //check share is enable
-    Assert.checkShareButtonIsEnabled();
-
-    //restore
-    $.delay(sleep);
-    Action.tapCancelButtonOnShareViews();
+        //restore
+        $.delay(sleep);
+        Action.tapCancelButtonOnShareViews();
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(2);
+    }
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -327,12 +345,16 @@ test("[1953626] verify Payment.", function () {
 
     obj.scrollDowns(2);
     $.delay(10);
+    try{
+        Action.tapPaymentOnProductPage();
+        $.delay(10);
 
-    Action.tapPaymentOnProductPage();
-    $.delay(10);
-
-    //check the payment displayed correctly
-    Assert.checkPaymentAndDelivery();
+        //check the payment displayed correctly
+        Assert.checkPaymentAndDelivery();
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(2);
+    }
 
     //restore
     Action.tapButtonOnTabBar(2);
@@ -360,24 +382,28 @@ test("[1953629] Verify the store page, our classification.", function () {
 
     obj.scrollDowns(2);
     $.delay(sleep);
-
-    var version = target.systemVersion();
-    version = version.substring(0,1);
-    if(version == "6") {
-        Action.tapChooseOnItemPage(3);
-    }
-    else{
-        Action.tapChooseOnItemPage(varTestsItemPageLinksLookGoods);
-    }
+    try{
+        var version = target.systemVersion();
+        version = version.substring(0,1);
+        if(version == "6") {
+            Action.tapChooseOnItemPage(3);
+        }
+        else{
+            Action.tapChooseOnItemPage(varTestsItemPageLinksLookGoods);
+        }
     
-    $.delay(10);
+        $.delay(10);
 
-    //tap  store classification
-    Action.tapClassificationButtonWhenItemPage();
-    $.delay(sleep);
+        //tap  store classification
+        Action.tapClassificationButtonWhenItemPage();
+        $.delay(sleep);
 
-    Assert.checkClassificationButtonIsEnabled(1);
-    Assert.checkClassificationShowListOnItemPage();
+        Assert.checkClassificationButtonIsEnabled(1);
+        Assert.checkClassificationShowListOnItemPage();
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(2);
+    }
 
     //restore
     Action.tapButtonOnTabBar(2);
@@ -407,16 +433,21 @@ test("[1953631] verify '分享商品' Layer.", function () {
     obj.scrollDowns(2);
     $.delay(sleep);
 
-    Action.tapShareOnProductPage();
-    $.delay(5);
+    try{
+        Action.tapShareOnProductPage();
+        $.delay(5);
 
-    //check share is enable
-    Assert.checkShareButtonIsEnabled();
-    Assert.checkShareButtonShowOnItemPage();
+        //check share is enable
+        Assert.checkShareButtonIsEnabled();
+        Assert.checkShareButtonShowOnItemPage();
 
-    //restore
-    $.delay(sleep);
-    Action.tapCancelButtonOnShareViews();
+        //restore
+        $.delay(sleep);
+        Action.tapCancelButtonOnShareViews();
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(2);
+    }
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(0);
@@ -439,33 +470,40 @@ test("[1959917] Verify item link,promotion link,gifi link work well.", function 
 
     Action.tapItemOnProductListScreen();
     $.delay(15);
+    try{
+        Action.tapActivityLink();
+        $.delay(sleep);
 
-    Action.tapActivityLink();
-    $.delay(sleep);
+        Action.goBack();
+        $.delay(15);
 
-    //check go to varTestsPageNameOnSalesPromotion" page
-    Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
-    Action.goBack();
-    $.delay(10);
+        var navName = app.mainWindow().navigationBar().name()
+        if(navName == varTestApparel){
+            Action.tapItemOnProductListScreen();
+            $.delay(15);
+        }
 
-    obj.scrollDowns(1);
-    $.delay(sleep);
+        obj.scrollDowns(1);
+        $.delay(sleep);
 
-    Assert.itemPageShowCorrect();
-
-    var version = target.systemVersion();
-    version = version.substring(0,1);
-    if(version == "6") {
-        Action.tapChooseOnItemPage(0);
-    }
-    else{
-        Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
-    }
+        Assert.itemPageShowCorrectOnCoatSearchPage();
+        var version = target.systemVersion();
+        version = version.substring(0,1);
+        if(version == "6") {
+            Action.tapChooseOnItemPage(0);
+        }
+        else{
+            Action.tapChooseOnItemPage(varTestsPageNameOnSalesPromotion);
+        }
     
-    $.delay(sleep);
+        $.delay(sleep);
 
-    //check go to varTestsPageNameOnSalesPromotion" page
-    Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
+        //check go to varTestsPageNameOnSalesPromotion" page
+        Assert.checkSearchPage(varTestsPageNameOnSalesPromotion);
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(2);
+    }
 
     //restore
     Action.tapButtonOnTabBar(2);
@@ -537,51 +575,57 @@ test("[1953623] Verify purchased product in the shopping cart display" ,function
     obj.scrollDowns(1);
     $.delay(sleep);
 
-    var version = target.systemVersion();
-    version = version.substring(0,1);
-    if(version == "6") {
-        Action.tapChooseOnItemPageWhenBuy(5,0);
-    }
-    else{
-        Action.tapChooseOnItemPage(varTestsItemPageLinksPurchaseOfGoods);
-    }
+    try{
+        var version = target.systemVersion();
+        version = version.substring(0,1);
+        if(version == "6") {
+            Action.tapChooseOnItemPageWhenBuy(5,0);
+        }
+        else{
+            Action.tapChooseOnItemPage(varTestsItemPageLinksPurchaseOfGoods);
+        }
  
-    $.delay(5);
+        $.delay(5);
 
-    Action.chooseItemOnCollectionViews(0,0,0);
-    $.delay(sleep);
+        Action.chooseItemOnCollectionViews(0,0,0);
+        $.delay(sleep);
 
-    Action.goBack();
-    $.delay(15);
+        Action.goBack();
+        $.delay(15);
     
-    //buy to goods
-    Action.addToShoppingCartWhenItemPage();
+        //buy to goods
+        Action.addToShoppingCartWhenItemPage();
 
-    Action.chooseTheSizeOnShoppingCart();
-    Action.tapConfirmOnShoppingCart();
+        Action.chooseTheSizeOnShoppingCart();
+        Action.tapConfirmOnShoppingCart();
     
-    //go to shopping cart page
-    Action.tapButtonOnTabBar(3);
-    $.delay(5);
+        //go to shopping cart page
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(sleep);
+        Action.tapShoppingCartlist(0);
+        $.delay(sleep);
 
-    Action.tapButtonOnTabBar(3);
-    $.delay(5);
+        Action.tapButtonOnTabBar(3);
+        $.delay(5);
 
-    Action.tapShoppingCartlist(0);
-    $.delay(20);
+        Action.tapShoppingCartlist(0);
+        $.delay(20);
 
-    obj.scrollDownsWhenSettlement(1);
-    $.delay(sleep);
+        obj.scrollDownsWhenSettlement(1);
+        $.delay(sleep);
 
-    Assert.tapSettleAccountsOnShopping(12,varTestsItemPageLinksPurchaseOfGoods);
-    Action.goBack();
-    $.delay(5);
+        Assert.tapSettleAccountsOnShopping(12,varTestsItemPageLinksPurchaseOfGoods);
+        Action.goBack();
+        $.delay(5);
 
-    Action.tapDeleteOnShoppingCart();
-    $.delay(sleep);
+        Action.tapDeleteOnShoppingCart();
+        $.delay(sleep);
+    }
+    catch(err){
+        $.delay(5);
+        Action.tapButtonOnTabBar(2);
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -731,51 +775,56 @@ test("[1959931] Verify repeatedly into the item page to see the gifts and add th
     obj.scrollDowns(1);
     $.delay(10);
 
-    var version = target.systemVersion();
-    version = version.substring(0,1);
-    if(version == "6") {
-        try{
-            Action.tapChooseOnItemPageWhenBuy(5,0);
+    try{
+        var version = target.systemVersion();
+        version = version.substring(0,1);
+        if(version == "6") {
+            try{
+                Action.tapChooseOnItemPageWhenBuy(5,0);
+            }
+            catch(err){
+                Action.tapChooseOnItemPageWhenBuy(4,0);
+            }
         }
-        catch(err){
-            Action.tapChooseOnItemPageWhenBuy(4,0);
+        else{ 
+            Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
         }
-    }
-    else{ 
-        Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
-    }
     
-    Action.goBack();
+        Action.goBack();
 
-    var version = target.systemVersion();
-    version = version.substring(0,1);
-    if(version == "6") {
-        try{
-            Action.tapChooseOnItemPageWhenBuy(5,0);
+        var version = target.systemVersion();
+        version = version.substring(0,1);
+        if(version == "6") {
+            try{
+                Action.tapChooseOnItemPageWhenBuy(5,0);
+            }
+            catch(err){
+                Action.tapChooseOnItemPageWhenBuy(4,0);
+            }
         }
-        catch(err){
-            Action.tapChooseOnItemPageWhenBuy(4,0);
+        else{ 
+            Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
         }
-    }
-    else{ 
-        Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
-    }
-    Action.goBack();
+        Action.goBack();
 
-    var version = target.systemVersion();
-    version = version.substring(0,1);
-    if(version == "6") {
-        try{
-            Action.tapChooseOnItemPageWhenBuy(5,0);
+        var version = target.systemVersion();
+        version = version.substring(0,1);
+        if(version == "6") {
+            try{
+                Action.tapChooseOnItemPageWhenBuy(5,0);
+            }   
+            catch(err){
+                Action.tapChooseOnItemPageWhenBuy(4,0);
+            }
         }
-        catch(err){
-            Action.tapChooseOnItemPageWhenBuy(4,0);
+        else{ 
+            Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
         }
+        Assert.checkSearchPage("贈品");
     }
-    else{ 
-        Action.tapChooseOnItemPage(varTestsItemPageLinksAttachedToTheGift);
+    catch(err){
+        Action.tapButtonOnTabBar(2);
     }
-    Assert.checkSearchPage("贈品");
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -853,10 +902,15 @@ test("[1953627] verify Shopping methods.", function () {
     obj.scrollDowns(2);
     $.delay(10);
 
-    Action.tapChooseOnItemPage(varTestsShoppingInformationPage);
-    $.delay(5);
+    try{
+        Action.tapChooseOnItemPage(varTestsShoppingInformationPage);
+        $.delay(5);
 
-    Assert.ShoppingInformationPage();
+        Assert.ShoppingInformationPage();
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(2);
+    }
 
     Action.tapButtonOnTabBar(2);
     Action.tapButtonOnTabBar(2);
@@ -883,17 +937,22 @@ test("[1953630] Verify the store page, our goods.", function () {
     obj.scrollDowns(2);
     $.delay(sleep);
 
-    var version = target.systemVersion();
-    version = version.substring(0,1);
-    if(version == "6") {
-        Action.tapChooseOnItemPage(3);
-    }
-    else{
-        Action.tapChooseOnItemPage(varTestsItemPageLinksLookGoods);
-    }
+    try{
+        var version = target.systemVersion();
+        version = version.substring(0,1);
+        if(version == "6") {
+            Action.tapChooseOnItemPage(3);
+        }
+        else{
+            Action.tapChooseOnItemPage(varTestsItemPageLinksLookGoods);
+        }
     
-    $.delay(5);
-    Assert.checkStorelistShowCorrect();
+        $.delay(5);
+        Assert.checkStorelistShowCorrect();
+    }
+    catch(err){
+        Action.tapButtonOnTabBar(2);
+    }
 
     //restore
     Action.tapButtonOnTabBar(2);
