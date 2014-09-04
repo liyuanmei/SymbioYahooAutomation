@@ -508,7 +508,14 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 		solo.clickInList(1);
 		solo.sleep(ValidationText.WAIT_TIME_LONG);
 		TestHelper.swipeUp(solo, 1);
-		Action.clickText(solo, ValidationText.SEE_ALL_STORE_PRODUCT);
+		try{
+			Action.clickText(solo, ValidationText.SEE_ALL_STORE_PRODUCT);
+		} catch(AssertionFailedError e){
+			TestHelper.swipeUp(solo, 1);
+			Action.clickText(solo, ValidationText.SEE_ALL_STORE_PRODUCT);
+
+		}
+		
 		assertTrue(
 				"Shopping tips not show.",
 				solo.searchText(ValidationText.CATEGORIES)
@@ -1000,10 +1007,17 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			Action.searchAfterPutData(solo, 0, ValidationText.BIKINI);
 			Assert.hideSoftKeyboard(solo);
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
-
-			TextView storeName = (TextView) solo
-					.getView("listitem_productlist_store_name");
-			solo.clickOnView(storeName);
+			try{
+				TextView storeName = (TextView) solo
+						.getView("listitem_productlist_store_name");
+				solo.clickOnView(storeName);
+			} catch(AssertionError e){
+				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+				TextView storeName = (TextView) solo
+						.getView("listitem_productlist_store_name");
+				solo.clickOnView(storeName);
+			}
+			
 
 			TestHelper.swipeUp(solo, 1);
 

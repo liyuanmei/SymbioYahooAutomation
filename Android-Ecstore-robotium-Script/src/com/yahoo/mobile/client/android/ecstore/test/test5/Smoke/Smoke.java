@@ -259,6 +259,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
 			
 			Account.judgementAccountLogin(solo);
+			Action.removeShoppingCart(solo);
 			Action.enterToItemPage(solo);
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			TestHelper.swipeUp(solo, 1);
@@ -322,6 +323,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 		} else {
 
 			Account.judgementAccountLogin(solo);
+			Action.removeShoppingCart(solo);
 			Action.enterToItemPage(solo);
 			Action.addToShoppingCart(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));

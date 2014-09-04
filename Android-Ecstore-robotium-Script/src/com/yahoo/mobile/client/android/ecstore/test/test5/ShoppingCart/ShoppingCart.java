@@ -353,6 +353,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
 
 			Account.judgementAccountLogin(solo);
+			Action.removeShoppingCart(solo);
 			Action.enterToItemPage(solo);
 			TestHelper.swipeUp(solo, 1);
 			Action.addToShoppingCart(solo);
@@ -371,6 +372,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 		} else {
 
 			Account.judgementAccountLogin(solo);
+			Action.removeShoppingCart(solo);
 			Action.enterToItemPage(solo);
 			Action.addToShoppingCart(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
