@@ -110,7 +110,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			Account.judgementAccountLogin(solo);
 
 			Action.enterToJacketAfterSearch(solo);
-			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickInList(0);
 
 			try {
@@ -143,7 +143,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 		} else {
 			Account.judgementAccountLogin(solo);
 			Action.enterToJacketAfterSearch(solo);
-			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickInList(0);
 
 			try {
@@ -201,7 +201,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			} catch (AssertionFailedError e) {
 
 				TestHelper.swipeDownLowPixle(solo, 6);
-				solo.sleep(ValidationText.WAIT_TIME_SHORT);
+				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 				solo.clickOnText(ValidationText.SALES_PROMOTION);
 
 			}
@@ -229,13 +229,13 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			TestHelper.swipeUp(solo, 1);
 			try {
 
-				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+				solo.sleep(ValidationText.WAIT_TIME_SHORT);
 				solo.clickOnText(ValidationText.SALES_PROMOTION);
 
 			} catch (AssertionFailedError e) {
 
 				TestHelper.swipeDownLowPixle(solo, 1);
-				solo.sleep(ValidationText.WAIT_TIME_SHORT);
+				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 				solo.clickOnText(ValidationText.SALES_PROMOTION);
 
 			}
