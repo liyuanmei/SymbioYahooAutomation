@@ -1277,7 +1277,29 @@ public final class Action {
         // input keyword and search
         Action.searchAfterPutData(solo, 0, ValidationText.JACKET);
     }
+    /**
+     * Enter include promotion and add on product page.
+     *
+     * @param solo
+     *            the Solo instance
+     * @throws Exception
+     *             if has error
+     */
+    public static void enterToPromotion(final Solo solo)
+            throws Exception {
 
+        // navigate to category screen
+        solo.clickOnView(solo.getView("tab_image", VIEW_ID_TWO));
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+        // click search button
+        Action.clickSearchButtonOnScreen(solo);
+        solo.sleep(ValidationText.WAIT_TIME_SHORT);
+
+        // input keyword and search
+        Action.searchAfterPutData(solo, 0, ValidationText.DONG_JING_ROMANTIC);
+    }
+    
     /**
      * Delete collected store.
      *

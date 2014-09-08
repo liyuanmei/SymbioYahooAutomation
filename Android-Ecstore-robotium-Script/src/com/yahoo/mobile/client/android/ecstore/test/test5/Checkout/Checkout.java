@@ -149,7 +149,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 				Action.clickElementsInWebviewByText(solo,
 						ValidationText.RESELECT_OTHER_STORE);
-				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			}
 			View storePage;
 			try {
@@ -202,7 +202,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 				Action.clickElementsInWebviewByText(solo,
 						ValidationText.RESELECT_OTHER_STORE);
-				 solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				 solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			}
 			View storePage;
 			try {
@@ -274,13 +274,13 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.FAMILY_PICKUP);
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
 			// Click check out button on web view.
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
 			View webPage = (View) solo.getView("webpage");
 			assertTrue("Cannot found family pick up.", webPage.isShown());
@@ -332,13 +332,13 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.FAMILY_PICKUP);
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
 			// Click check out button on web view.
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 
 			View webPage = (View) solo.getView("webpage");
 			assertTrue("Cannot found family pick up.", webPage.isShown());
@@ -363,6 +363,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			solo.clickInList(1);
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			TestHelper.swipeUp(solo, 1);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickOnText(ValidationText.BUY_NOW);
 
 			View buddle;
@@ -435,6 +436,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			solo.clickInList(1);
 			TestHelper.swipeUp(solo, 1);
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickOnText(ValidationText.BUY_NOW);
 
 			View buddle;

@@ -59,10 +59,10 @@ public final class Account {
         try {
         	
 	        // Input YAHOO account in account text field.
-	        solo.typeText(0, "mobilestoresymbio4");
+	        solo.typeText(0, ValidationText.ACCOUNT);
 	          
 	        // Input YAHOO password in password text field.
-	        solo.typeText(1, "Aa123456");
+	        solo.typeText(1, ValidationText.PWD);
 	          
 	        // Click sign button
 	        solo.clickOnButton(ValidationText.LOG_IN);

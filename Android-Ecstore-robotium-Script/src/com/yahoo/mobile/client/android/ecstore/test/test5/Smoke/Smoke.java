@@ -327,7 +327,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 			Action.enterToItemPage(solo);
 			Action.addToShoppingCart(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			
@@ -344,7 +344,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 			// Click "Check out" button on web view.
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
-			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			solo.sleep(ValidationText.WAIT_TIME_LONG);
 			Action.searchTextOnWebview(solo, ValidationText.BUY_INFO);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
 
@@ -444,7 +444,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 
 			solo.clickOnView(radioButton);
 			solo.clickOnText(ValidationText.OK);
-			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			
 			try {
 				View webpage = (View) solo.getView("webpage", 0);
@@ -881,6 +881,7 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 	public final void testAccessItemPageAfterClickAnyGoods() throws Exception {
 
 			Account.judgementAccountLogin(solo);
+			Action.removeShoppingCart(solo);
 			Action.removeFavoriteItem(solo);
 			solo.goBack();
 			Action.enterToItemPage(solo);
@@ -889,7 +890,39 @@ public class Smoke extends ActivityInstrumentationTestCase2<Activity> {
 			//Add three products to favorite list.
 			for (int i = 0; i < 3; i++) {
 				solo.sleep(ValidationText.WAIT_TIME_SHORT);
-				Action.clickStarIconNote(solo);
+		        View star = (View) solo.getView("star_button", i);
+		        solo.clickOnView(star);
+		        solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+		        boolean alreadyAdd;
+
+		        //sometimes,the toast did't pop up after click the star icon,so need  click again.
+		       try{
+
+		        // Get toast text.
+		        if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)){
+		            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+		            junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+		        } else {
+		            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+		            solo.clickOnView(star);
+		            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+		            junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+
+		        }
+		        }catch(AssertionFailedError e){
+		        	 View stars = (View) solo.getView("star_button", i);
+				     solo.clickOnView(stars);
+				     if (solo.waitForText(ValidationText.HAS_ADDED_COLLECTION)){
+				            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+				            junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+				        } else {
+				            solo.sleep(ValidationText.WAIT_TIME_SHORT);
+				            solo.clickOnView(star);
+				            alreadyAdd = solo.waitForText(ValidationText.HAS_ADDED_COLLECTION);
+				            junit.framework.Assert.assertTrue("Add failed.", alreadyAdd);
+
+				        }
+		        }
 				solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			}
 	

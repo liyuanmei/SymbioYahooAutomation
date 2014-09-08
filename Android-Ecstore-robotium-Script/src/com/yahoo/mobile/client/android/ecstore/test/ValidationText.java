@@ -6,6 +6,10 @@ package com.yahoo.mobile.client.android.ecstore.test;
  */
 public class ValidationText {
 	
+	public static final String ACCOUNT = "mobilestoresymbio4";
+    
+    public static final String PWD = "Aa123456";
+    
 	public static final int WAIT_TIME_MIN_SHORT = 400;
 	
 	public static final int WAIT_TIME_ONESEC = 1000;
@@ -23,6 +27,7 @@ public class ValidationText {
     public static final String WAIT = "等等";
 
     public static final String SKIP = "略過";
+    public static final String DONG_JING_ROMANTIC = "東京浪漫";
 
     public static final String MIUSTAR = "miustar";
 

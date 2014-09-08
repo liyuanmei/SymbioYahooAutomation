@@ -109,7 +109,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			
 			Account.judgementAccountLogin(solo);
 
-			Action.enterToJacketAfterSearch(solo);
+			Action.enterToPromotion(solo);
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickInList(0);
 
@@ -142,7 +142,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
 		} else {
 			Account.judgementAccountLogin(solo);
-			Action.enterToJacketAfterSearch(solo);
+			Action.enterToPromotion(solo);
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickInList(0);
 
@@ -187,9 +187,9 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 		if (android.os.Build.VERSION.RELEASE.matches("4.0." + "[0-9]+")) {
 			Account.judgementAccountLogin(solo);
 
-			Action.enterToJacketAfterSearch(solo);
+			Action.enterToPromotion(solo);
 			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
-			solo.clickInList(0);
+			solo.clickInList(1);
 			
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			TestHelper.swipeUp(solo, 1);
@@ -221,9 +221,9 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 		} else {
 			Account.judgementAccountLogin(solo);
 
-			Action.enterToJacketAfterSearch(solo);
+			Action.enterToPromotion(solo);
 			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
-			solo.clickInList(0);
+			solo.clickInList(1);
 
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			TestHelper.swipeUp(solo, 1);
@@ -268,7 +268,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 		Account.judgementAccountLogin(solo);
 
 		//Action.enterToItemPage(solo);
-		Action.enterToJacketAfterSearch(solo);
+		Action.enterToPromotion(solo);
 		solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
 		solo.clickInList(0);
 		TestHelper.swipeUp(solo, 1);
@@ -766,6 +766,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 
 			Action.addToShoppingCartForSmallScreen(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			Action.searchTextOnWebview(solo, ValidationText.PLUS_PURCHASE);
