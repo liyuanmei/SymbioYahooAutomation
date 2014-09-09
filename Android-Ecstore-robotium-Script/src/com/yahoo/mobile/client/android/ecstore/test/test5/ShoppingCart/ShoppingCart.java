@@ -144,10 +144,11 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			Account.judgementAccountLogin(solo);
 			Action.removeShoppingCart(solo);
 			Action.enterToItemPage(solo);
+			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			TestHelper.swipeUp(solo, 1);
 			Action.addToShoppingCart(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
 
@@ -165,6 +166,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			Action.clickElementsInWebviewByText(solo, ValidationText.NEXT_BUY);
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			assertTrue("Next buy operation failed",
 					solo.searchText(ValidationText.NEXT_BUY));
 
@@ -173,6 +175,8 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			Account.judgementAccountLogin(solo);
 			Action.removeShoppingCart(solo);
 			Action.enterToItemPage(solo);
+			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			TestHelper.swipeUp(solo, 1);
 			Action.addToShoppingCart(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
@@ -224,6 +228,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 				solo.sleep(ValidationText.WAIT_TIME_LONGER);
 				solo.clickOnView(solo
 						.getView("tab_image", Action.VIEW_ID_THREE));
+				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 				assertTrue("Next buy operation failed",
 						solo.searchText(ValidationText.NEXT_BUY));
 			}
@@ -268,7 +273,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			Action.clickElementsInWebviewByText(solo, ValidationText.OK);
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_LONG);
 			assertTrue(
 					"Total number displayed incorrect",
 					solo.searchText(ValidationText.ONE_COMMODITY)
@@ -300,7 +305,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
 
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			assertTrue(
 					"Total number displayed incorrect",
 					solo.searchText(ValidationText.ONE_COMMODITY)
@@ -323,7 +328,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 		Action.addToShoppingCart(solo);
 
 		solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-		solo.sleep(ValidationText.WAIT_TIME_SHORT);
+		solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 		solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 		solo.sleep(ValidationText.WAIT_TIME_LONGER);
 		Action.clickElementsInWebviewByClassname(solo, "pimg");
@@ -358,6 +363,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			TestHelper.swipeUp(solo, 1);
 			Action.addToShoppingCart(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			TestHelper.swipeUp(solo, 1);
@@ -366,7 +372,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			Action.searchTextOnWebview(solo, ValidationText.BUY_INFO);
 
 		} else {
@@ -376,6 +382,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			Action.enterToItemPage(solo);
 			Action.addToShoppingCart(solo);
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			TestHelper.swipeUp(solo, 2);
@@ -384,7 +391,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			Action.searchTextOnWebview(solo, ValidationText.BUY_INFO);
 		}
 
