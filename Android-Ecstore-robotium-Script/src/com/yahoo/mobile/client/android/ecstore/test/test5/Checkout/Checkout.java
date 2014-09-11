@@ -111,6 +111,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			Action.addToShoppingCart(solo);
 
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			TestHelper.swipeUp(solo, 2);
@@ -118,7 +119,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 
 			// Select "7-11"
 			Action.clickElementsInWebviewByClassname(solo, "shippingList");
-			solo.sleep(ValidationText.WAIT_TIME_LONG);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			try{
 				solo.clickOnText("7-11");
 			} catch(AssertionFailedError e){
@@ -171,6 +172,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			Action.addToShoppingCart(solo);
 
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
+			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
 			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			TestHelper.swipeUp(solo, 2);
@@ -178,16 +180,16 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			TestHelper.swipeUp(solo, 2);
 			// Select "7-11"
 			Action.clickElementsInWebviewByClassname(solo, "shippingList");
-			solo.sleep(ValidationText.WAIT_TIME_LONG);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			solo.clickOnText("7-11");
-			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			TestHelper.swipeUp(solo, 1);
 
 			// Click check out button on web view.
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			TestHelper.swipeUp(solo, 2);
 			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			TestHelper.swipeUp(solo, 2);
@@ -268,7 +270,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			TestHelper.swipeUp(solo, 2);
-
+			solo.sleep(ValidationText.WAIT_TIME_LONG);
 			TestHelper.swipeUp(solo, 1);
 			Log.i("number", "ME");
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
@@ -280,7 +282,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			View webPage = (View) solo.getView("webpage");
 			assertTrue("Cannot found family pick up.", webPage.isShown());
@@ -326,19 +328,19 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 
 			// solo.goBack();
 			TestHelper.swipeUp(solo, 2);
-
+			solo.sleep(ValidationText.WAIT_TIME_LONG);
 			TestHelper.swipeUp(solo, 1);
 			Log.i("number", "ME");
 			solo.sleep(ValidationText.WAIT_TIME_LONGER);
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.FAMILY_PICKUP);
-			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			// Click check out button on web view.
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			View webPage = (View) solo.getView("webpage");
 			assertTrue("Cannot found family pick up.", webPage.isShown());
@@ -391,7 +393,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 					solo.clickOnButton(ValidationText.OK);
 					solo.waitForText(ValidationText.ALREADY_ADD_SHOPPING_CART, 1,
 							ValidationText.WAIT_TIME_MIDDLE);
-					solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+					solo.sleep(ValidationText.WAIT_TIME_LONG);
 					buddle = solo.getView("tab_badge", Action.VIEW_ID_THREE);
 					junit.framework.Assert.assertTrue("No items in shopping cart.",
 							buddle.isShown());
@@ -409,22 +411,22 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			TestHelper.swipeUp(solo, 2);
-
+		 
 			TestHelper.swipeUp(solo, 1);
 			Log.i("number", "ME");
-			solo.sleep(ValidationText.WAIT_TIME_LONG);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.FAMILY_PICKUP);
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			// Click check out button on web view.
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			View webPage = (View) solo.getView("webpage");
 			assertTrue("Cannot found family pick up.", webPage.isShown());
@@ -482,7 +484,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_LONGER);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			// solo.goBack();
 			TestHelper.swipeUp(solo, 2);
@@ -492,13 +494,13 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_LONG);
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.FAMILY_PICKUP);
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			// Click check out button on web view.
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
 
-			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			View webPage = (View) solo.getView("webpage");
 			assertTrue("Cannot found family pick up.", webPage.isShown());
