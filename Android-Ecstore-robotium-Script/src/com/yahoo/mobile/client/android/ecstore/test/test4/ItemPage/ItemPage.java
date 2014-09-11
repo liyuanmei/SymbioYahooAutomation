@@ -188,7 +188,8 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			Account.judgementAccountLogin(solo);
 
 			Action.enterToPromotion(solo);
-			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			Assert.hideSoftKeyboard(solo);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			solo.clickInList(1);
 
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
@@ -209,12 +210,12 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			View webpage;
 			try {
 				solo.clickOnText(ValidationText.FULL);
-				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 				webpage = (View) solo.getView("webpage", 0);
 				assertTrue("No promotion link displayed. ", webpage.isShown());
 			} catch (AssertionFailedError e) {
 
-				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 				webpage = (View) solo.getView("webpage", 0);
 				assertTrue("No promotion link displayed. ", webpage.isShown());
 			}
@@ -222,7 +223,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			Account.judgementAccountLogin(solo);
 
 			Action.enterToPromotion(solo);
-			solo.sleep(ValidationText.WAIT_TIME_MIN_SHORT);
+			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			solo.clickInList(1);
 
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
@@ -243,7 +244,7 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			View webpage;
 			try {
 				solo.clickOnText(ValidationText.FULL);
-				solo.sleep(ValidationText.WAIT_TIME_LONGER);
+				solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 				webpage = (View) solo.getView("webpage", 0);
 				assertTrue("No promotion link displayed. ", webpage.isShown());
 			} catch (AssertionError e) {
@@ -732,12 +733,12 @@ public class ItemPage extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_SHORT);
 			TestHelper.swipeUp2(solo, 5);
 
-			try {
-				Action.addToShoppingCartForSmallScreen(solo);
-			} catch (AssertionFailedError e) {
+			//try {
+			Action.addToShoppingCartForSmallScreen(solo);
+			/*} catch (AssertionFailedError e) {
 				TestHelper.swipeUp2(solo, 5);
 				Action.addToShoppingCartForSmallScreen(solo);
-			}
+			}*/
 
 			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
 			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));

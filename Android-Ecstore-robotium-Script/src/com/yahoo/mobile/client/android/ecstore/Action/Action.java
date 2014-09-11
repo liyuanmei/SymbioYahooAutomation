@@ -772,7 +772,6 @@ public final class Action {
         } catch (AssertionFailedError e) {
 
             TestHelper.swipeUp2(solo, 4);
-
             shopCart = solo.getView("productitem_btn_add_to_shopping_cart");
             solo.clickOnView(shopCart);
 
