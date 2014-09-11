@@ -622,7 +622,7 @@ public class ShoppingCart extends ActivityInstrumentationTestCase2<Activity> {
 			// Click "check out" button on current web view.
 			Action.clickElementsInWebviewByText(solo,
 					ValidationText.WANT_CHECKOUT);
-			solo.sleep(ValidationText.WAIT_TIME_LONG);
+			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			TestHelper.swipeUp(solo, 2);
 
