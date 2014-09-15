@@ -171,26 +171,7 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 			solo.sleep(ValidationText.WAIT_TIME_ONESEC);
 			Action.addToShoppingCart(solo);
 
-			solo.clickOnView(solo.getView("tab_image", Action.VIEW_ID_THREE));
-			solo.sleep(ValidationText.WAIT_TIME_SHORT);
-			solo.clickOnView(solo.getView("ecshopping_cart_store_name", 0));
-			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
-			TestHelper.swipeUp(solo, 2);
-			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
-			TestHelper.swipeUp(solo, 2);
-			// Select "7-11"
-			Action.clickElementsInWebviewByClassname(solo, "shippingList");
-			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
-			solo.clickOnText("7-11");
-			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
-			TestHelper.swipeUp(solo, 1);
-
-			// Click check out button on web view.
-			Action.clickElementsInWebviewByText(solo,
-					ValidationText.WANT_CHECKOUT);
-
-			solo.sleep(ValidationText.WAIT_TIME_LONGEST);
-			TestHelper.swipeUp(solo, 2);
+			Action.select711AndCheckout(solo);		
 			solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
 			TestHelper.swipeUp(solo, 2);
 
@@ -201,7 +182,15 @@ public class Checkout extends ActivityInstrumentationTestCase2<Activity> {
 				solo.sleep(ValidationText.WAIT_TIME_LONGEST);
 
 			} catch (AssertionError e) {
+
 				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+				solo.goBack();
+
+				//Select 7-11 again if the checkout page not loaded.
+				Action.select711AndCheckout(solo);
+				solo.sleep(ValidationText.WAIT_TIME_MIDDLE);
+				TestHelper.swipeUp(solo, 2);
+				
 				Action.clickElementsInWebviewByText(solo,
 						ValidationText.RESELECT_OTHER_STORE);
 				 solo.sleep(ValidationText.WAIT_TIME_LONGEST);

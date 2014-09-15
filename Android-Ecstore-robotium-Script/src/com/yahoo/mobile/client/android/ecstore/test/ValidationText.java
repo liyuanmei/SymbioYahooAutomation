@@ -6,7 +6,7 @@ package com.yahoo.mobile.client.android.ecstore.test;
  */
 public class ValidationText {
 	
-	public static final String ACCOUNT = "mobilestoresymbio6";
+	public static final String ACCOUNT = "mobilestoresymbio4";
     
     public static final String PWD = "Aa123456";
     
